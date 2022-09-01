@@ -75,10 +75,15 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 " }}}
 
-" MAPPINGS --------------------------------------------------------------- {{{
-" Mappings code goes here.
-" }}}
+" KEY MAPPINGS ----------------------------------------------------------- {{{
 
+" Fold open
+nnoremap <LEADER>fo :foldopen<CR>
+
+" Fold close
+nnoremap <LEADER>fc :foldclose<CR>
+
+" }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
 " This will enable code folding.
@@ -91,7 +96,7 @@ augroup END
 " More Vimscripts code goes here.
 " }}}
 
-" Vim Wiki Options
+" Vim Wiki Options ------------------------------------------------------- {{{
 let g:vimwiki_list = [{'syntax':'markdown'}]
 au FileType vimwiki setlocal shiftwidth=6 tabstop=6 noexpandtab
 
@@ -101,13 +106,14 @@ augroup vimwikigroup
    " automatically update links on read diary
    autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
 augroup end
+" }}}
 
 " STATUS LINE ------------------------------------------------------------ {{{
 " Status bar code goes here.
-" }}}
 set statusline=
 set statusline+=\ %F\ %M\ %Y\ %R
 set statusline+=%=
 set statusline+=[%{strftime('%c')}]\ row:\ %l\ col:\ %c\ %p%%
 set laststatus=2
+" }}}
 
