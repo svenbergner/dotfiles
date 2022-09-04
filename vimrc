@@ -22,6 +22,7 @@ set cursorline
 " Remap leader key
 nnoremap <SPACE> <Nop>
 let mapleader = " "
+let maplocalleader = " "
 
 " Keymap for open Terminal
 noremap <LEADER>ot :botright vertical terminal<CR>
@@ -57,6 +58,9 @@ set wildmenu
 set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
+" Block visualization
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 
 
 " PLUGINS ---------------------------------------------------------------- {{{
@@ -105,6 +109,8 @@ augroup vimwikigroup
    autocmd!
    " automatically update links on read diary
    autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
+   autocmd BufNewFile */diary/[0-9]*.wiki :silent 0r !echo "\# `date +'\%d.\%m.\%Y'`"
+   autocmd BufNewFile */diary/[0-9]*.md :silent 0r !echo "\# `date +'\%d.\%m.\%Y'`"
 augroup end
 " }}}
 
