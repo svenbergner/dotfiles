@@ -62,6 +62,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
+updatetime=50
 
 " PLUGINS ---------------------------------------------------------------- {{{
 call plug#begin('~/.vim/plugged')
@@ -77,8 +78,15 @@ call plug#begin('~/.vim/plugged')
     Plug 'vimwiki/vimwiki'
     Plug 'mattn/calendar-vim'
     Plug 'scrooloose/nerdcommenter'
+    Plug 'gruvbox-community/gruvbox'
+    Plug 'miyakogi/conoline.vim'
 call plug#end()
 " }}}
+
+set background=dark
+colorscheme gruvbox
+
+let g:conoline_auto_enable = 1
 
 " KEY MAPPINGS ----------------------------------------------------------- {{{
 
