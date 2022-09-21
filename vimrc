@@ -1,3 +1,15 @@
+ "__      _______ __  __ _____   _____
+ "\ \    / /_   _|  \/  |  __ \ / ____|
+ " \ \  / /  | | | \  / | |__) | |
+ "  \ \/ /   | | | |\/| |  _  /| |
+ " _ \  /   _| |_| |  | | | \ \| |____
+ "(_) \/   |_____|_|  |_|_|  \_\\_____|
+ 
+
+" Set vim language explicitly to english for easier 
+" usage with tutorials
+let $LANG='en'
+
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
@@ -10,8 +22,11 @@ filetype plugin on
 " Load an indent file for the detected file type
 filetype indent on
 
+" Show current line number
+set number
+
 " Show relative line numbers
-set number relativenumber
+set relativenumber
 
 " Turn syntax highlighting on.
 syntax on
@@ -65,24 +80,32 @@ let &t_EI = "\e[2 q"
 updatetime=50
 
 " PLUGINS ---------------------------------------------------------------- {{{
-call plug#begin('~/.vim/plugged')
-
+call plug#begin()
+    Plug 'airblade/vim-gitgutter'
+    Plug 'dart-lang/dart-vim-plugin'
     Plug 'dense-analysis/ale'
+    Plug 'gruvbox-community/gruvbox'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'junegunn/goyo.vim'
+    Plug 'mattn/calendar-vim'
+    Plug 'kshenoy/vim-signature'
+    Plug 'miyakogi/conoline.vim'
     Plug 'preservim/nerdtree'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-markdown'
+    Plug 'natebosch/vim-lsc'
+    Plug 'natebosch/vim-lsc-dart'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'tpope/vim-markdown'
-    Plug 'junegunn/goyo.vim'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'tpope/vim-fugitive'
     Plug 'vimwiki/vimwiki'
-    Plug 'mattn/calendar-vim'
-    Plug 'scrooloose/nerdcommenter'
-    Plug 'gruvbox-community/gruvbox'
-    Plug 'miyakogi/conoline.vim'
 call plug#end()
 " }}}
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colorscheme
+""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
 colorscheme gruvbox
 
