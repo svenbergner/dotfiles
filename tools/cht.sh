@@ -1,8 +1,7 @@
 #/bin/bash
 
 languages="flutter dart cpp javascript html css bash"
-core_utils="xargs find fzf mv sed awk"
-
+core_utils="git xargs find fzf mv sed awk"
 list=""
 
 for element in $languages $core_utils
@@ -17,7 +16,8 @@ done
 
 selected=`echo $list | fzf`
 read -p "query: " query
-query=`echo $query | tr ' ' '+'`
+query=${query// /+}
+
 
 if [[ $languages =~ $selected ]]
 then
