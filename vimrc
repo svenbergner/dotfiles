@@ -85,9 +85,11 @@ call plug#begin()
     Plug 'dart-lang/dart-vim-plugin'
     Plug 'dense-analysis/ale'
     Plug 'gruvbox-community/gruvbox'
+    Plug 'haya14busa/is.vim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/limelight.vim'
     Plug 'mattn/calendar-vim'
     Plug 'kshenoy/vim-signature'
     Plug 'miyakogi/conoline.vim'
