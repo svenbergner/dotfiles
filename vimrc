@@ -77,8 +77,6 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
-updatetime=50
-
 " PLUGINS ---------------------------------------------------------------- {{{
 call plug#begin()
     Plug 'airblade/vim-gitgutter'
@@ -121,6 +119,17 @@ nnoremap <LEADER>fo :foldopen<CR>
 " Fold close
 nnoremap <LEADER>fc :foldclose<CR>
 
+" Move current line down
+noremap <C-Down> ddp
+
+" Move current line up
+noremap <C-Up> ddkP
+
+" Open .vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Source .vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
@@ -156,4 +165,5 @@ set statusline+=%=
 set statusline+=[%{strftime('%c')}]\ row:\ %l\ col:\ %c\ %p%%
 set laststatus=2
 " }}}
+
 
