@@ -183,12 +183,6 @@ nnoremap <LEADER>gw :Goyo 120<CR>
 " Source current file
 nnoremap <LEADER>s :source %<CR>
 
-" Fold open
-nnoremap <LEADER>fo :foldopen<CR>
-
-" Fold close
-nnoremap <LEADER>fc :foldclose<CR>
-
 " Move current line down
 noremap <C-Down> ddp
 
@@ -200,6 +194,9 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " Source .vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Open Vim Keymapping Cheat-Sheet
+nnoremap <leader>cs :30vsplit ~/.vim/docs/keymappings.md<cr>
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
@@ -214,7 +211,7 @@ augroup END
 " }}}
 
 " Vim Wiki Options ------------------------------------------------------- {{{
-let g:vimwiki_list = [{'syntax':'markdown'}]
+let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax':'markdown', 'ext': '.md'}]
 au FileType vimwiki setlocal shiftwidth=6 tabstop=6 noexpandtab
 
 command! Diary VimwikiDiaryIndex
