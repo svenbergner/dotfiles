@@ -51,8 +51,8 @@ let mapleader = " "
 let maplocalleader = " "
 
 " Spellchecking
-set spelllang=de,en_gb,en_us
-set spell
+" set spelllang=de,en_gb,en_us
+" set spell
 
 set nohlsearch
 set hidden
@@ -155,11 +155,10 @@ call plug#begin()
 call plug#end()
 " }}}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colorscheme
-""""""""""""""""""""""""""""""""""""""""""""""""""
+" Colorscheme ---------------------------------------------------------------- {{{
 set background=dark
 colorscheme gruvbox
+" }}}
 
 let g:conoline_auto_enable = 1
 let g:lsc_auto_map = v:true
@@ -181,7 +180,7 @@ nnoremap <LEADER>g :Goyo<CR>
 nnoremap <LEADER>gw :Goyo 120<CR>
 
 " Source current file
-nnoremap <LEADER>s :source %<CR>
+nnoremap <LEADER>s :w<CR>:source %<CR>
 
 " Move current line down
 noremap <C-Down> ddp
@@ -190,13 +189,13 @@ noremap <C-Down> ddp
 noremap <C-Up> ddkP
 
 " Open .vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
 " Source .vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <silent> <leader>sv :w<CR>:source $MYVIMRC<CR>
 
 " Open Vim Keymapping Cheat-Sheet
-nnoremap <leader>cs :30vsplit ~/.vim/docs/keymappings.md<cr>
+nnoremap <leader>scs :60vsplit ~/.vim/docs/keymappings.md<CR>
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
