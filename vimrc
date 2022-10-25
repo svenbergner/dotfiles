@@ -6,8 +6,7 @@
 "(_) \/   |_____|_|  |_|_|  \_\\_____|
  
 
-" Set vim language explicitly to english for easier 
-" usage with tutorials
+" Set vim language explicitly to english for easier usage with tutorials
 let $LANG='en'
 
 " Search for config files in pwd
@@ -90,14 +89,10 @@ set wildmenu
 set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Mouse Scrolling
-""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mouse Scrolling
 set mouse=nicr
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Splits and Tabbed Files
-""""""""""""""""""""""""""""""""""""""""""""""""""
+" Splits and Tabbed Files ---------------------------------------------------------------- {{{
 set splitbelow splitright
 
 " Remap splits navigation to just CTRL + hjkl
@@ -122,6 +117,7 @@ set fillchars+=vert:\
 " Block visualization
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
+" }}}
 
 " PLUGINS ---------------------------------------------------------------- {{{
 call plug#begin()
@@ -136,19 +132,19 @@ call plug#begin()
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
-    Plug 'mattn/calendar-vim'
     Plug 'kshenoy/vim-signature'
+    Plug 'mattn/calendar-vim'
     Plug 'miyakogi/conoline.vim'
+    Plug 'natebosch/vim-lsc'
+    Plug 'natebosch/vim-lsc-dart'
     Plug 'nelstrom/vim-visual-star-search'
     Plug 'preservim/nerdtree'
     Plug 'preservim/vim-lexical'
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-surround'
     Plug 'tpope/vim-markdown'
-    Plug 'natebosch/vim-lsc'
-    Plug 'natebosch/vim-lsc-dart'
+    Plug 'tpope/vim-surround'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
@@ -218,8 +214,19 @@ augroup vimwikigroup
    autocmd!
    " automatically update links on read diary
    autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
-   autocmd BufNewFile */diary/[0-9]*.wiki :silent 0r !echo "\# `date +'\%d.\%m.\%Y'`"
-   autocmd BufNewFile */diary/[0-9]*.md :silent 0r !echo "\# `date +'\%d.\%m.\%Y'`"
+   autocmd BufNewFile */diary/[0-9]*.wiki
+               \ call append(0,[
+               \ "# " . strftime("%d.%m.%Y"), "",
+               \ "## Todo", "", "",
+               \ "## Notizen", "", "",
+               \ "## Erkenntnis des Tages", "" ])
+
+   autocmd BufNewFile */diary/[0-9]*.md
+               \ call append(0,[
+               \ "# " . strftime("%d.%m.%Y"), "",
+               \ "## Todo", "", "",
+               \ "## Notizen", "", "",
+               \ "## Erkenntnis des Tages", "" ])
 augroup end
 " }}}
 
