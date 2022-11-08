@@ -15,18 +15,13 @@ set exrc
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
-" Enable type file detection. Vim will be able to try to detect the type of file in use.
-filetype on
- 
+" Enable filetype detection. Vim will be able to try to detect the type of file in use.
 " Enable plugins and load plugin for the detected file type.
-filetype plugin on
-
 " Load an indent file for the detected file type
-filetype indent on
+filetype plugin indent on
 
 " Show current line number and relative line numbers
-set number
-set relativenumber
+set number relativenumber
 
 " Toggle relative line numbers based on focus
 augroup numbertoggle
@@ -95,17 +90,17 @@ set mouse=nicr
 " Splits and Tabbed Files ---------------------------------------------------------------- {{{
 set splitbelow splitright
 
-" Remap splits navigation to just CTRL + hjkl
+" Move between splits with CTRL + hjkl
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Make adjusting split sizes a bit more friendly
-noremap <silent> <C-Left> :vertical resize +1<CR>
-noremap <silent> <C-Right> :vertical resize +1<CR>
-noremap <silent> <C-Up> :resize +1<CR>
-noremap <silent> <C-Down> :resize +1<CR>
+" noremap <silent> <C-Left> :vertical resize +1<CR>
+" noremap <silent> <C-Right> :vertical resize +1<CR>
+" noremap <silent> <C-Up> :resize +1<CR>
+" noremap <silent> <C-Down> :resize +1<CR>
 
 " Change 2 split windows from vert to horiz or horiz to vert
 map <leader>th <C-w>t<C-w>H
@@ -122,6 +117,7 @@ let &t_EI = "\e[2 q"
 " PLUGINS ---------------------------------------------------------------- {{{
 call plug#begin()
     Plug 'airblade/vim-gitgutter'
+    Plug 'cedarbaum/fugitive-azure-devops.vim'
     Plug 'dart-lang/dart-vim-plugin'
     Plug 'dense-analysis/ale'
     Plug 'gruvbox-community/gruvbox'
@@ -131,19 +127,25 @@ call plug#begin()
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/gv.vim'
     Plug 'junegunn/limelight.vim'
     Plug 'kshenoy/vim-signature'
     Plug 'mattn/calendar-vim'
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'miyakogi/conoline.vim'
     Plug 'natebosch/vim-lsc'
     Plug 'natebosch/vim-lsc-dart'
     Plug 'nelstrom/vim-visual-star-search'
+    Plug 'pedrohdz/vim-yaml-folds'
     Plug 'preservim/nerdtree'
     Plug 'preservim/vim-lexical'
+    Plug 'preservim/vim-pencil'
+    Plug 'rust-lang/rust.vim'
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-markdown'
+    Plug 'tpope/vim-rhubarb'
     Plug 'tpope/vim-surround'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -163,6 +165,7 @@ let g:lsc_auto_map = v:true
 
 " Use jk insteasd of the escape key
 inoremap jk <ESC>
+vnoremap jk <ESC>
 
 " Insert current date and time
 nmap <F3> i<C-R>=strftime("%A, %d.%m.%Y %I:%M")<CR><Esc>
@@ -185,13 +188,17 @@ noremap <C-Down> ddp
 noremap <C-Up> ddkP
 
 " Open .vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>ve :vsplit $MYVIMRC<CR>
 
 " Source .vimrc
-nnoremap <silent> <leader>sv :w<CR>:source $MYVIMRC<CR>
+nnoremap <silent> <leader>vs :w<CR>:source $MYVIMRC<CR>
 
 " Open Vim Keymapping Cheat-Sheet
 nnoremap <leader>scs :60vsplit ~/.vim/docs/keymappings.md<CR>
+
+" Switch Buffers
+map <PageUp> :bp<CR>
+map <PageDown> :bn<CR>
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
@@ -217,15 +224,13 @@ augroup vimwikigroup
    autocmd BufNewFile */diary/[0-9]*.wiki
                \ call append(0,[
                \ "# " . strftime("%d.%m.%Y"), "",
-               \ "## Todo", "", "",
-               \ "## Notizen", "", "",
+               \ "## Tagebuch", "", "",
                \ "## Erkenntnis des Tages", "" ])
 
    autocmd BufNewFile */diary/[0-9]*.md
                \ call append(0,[
                \ "# " . strftime("%d.%m.%Y"), "",
-               \ "## Todo", "", "",
-               \ "## Notizen", "", "",
+               \ "## Tagebuch", "", "",
                \ "## Erkenntnis des Tages", "" ])
 augroup end
 " }}}
