@@ -199,6 +199,17 @@ nnoremap <leader>scs :60vsplit ~/.vim/docs/keymappings.md<CR>
 " Switch Buffers
 map <PageUp> :bp<CR>
 map <PageDown> :bn<CR>
+
+" Some Git mappings
+" Open Git commit pane
+nnoremap g<CR> <Cmd>Git<CR>
+" Start a git command
+nnoremap g<SPACE> :Git<SPACE>
+" Show a 2 pane vertical diff split
+nnoremap g. <Cmd>Gvdiffsplit<CR>
+
+" Search lines in current Buffer with fzf
+nnoremap z/ <Cmd>BLines<CR>
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
