@@ -163,12 +163,15 @@ let g:lsc_auto_map = v:true
 
 " KEY MAPPINGS ----------------------------------------------------------- {{{
 
+" Show Commands
+nnoremap <LEADER><LEADER> :Maps<CR>
+
 " Use jk insteasd of the escape key
 inoremap jk <ESC>
 vnoremap jk <ESC>
 
 " Insert current date and time
-nmap <F3> i<C-R>=strftime("%A, %d.%m.%Y %I:%M")<CR><Esc>
+nmap <F3> i<C-R>=strftime("%A, %d.%m.%Y %I:%M")<CR><ESC>
 imap <F3> <C-R>=strftime("%d.%m.%Y %I:%M")<CR>
 
 " Open Terminal
@@ -188,13 +191,13 @@ noremap <C-Down> ddp
 noremap <C-Up> ddkP
 
 " Open .vimrc
-nnoremap <leader>ve :vsplit $MYVIMRC<CR>
+nnoremap <LEADER>ve :vsplit $MYVIMRC<CR>
 
 " Source .vimrc
-nnoremap <silent> <leader>vs :w<CR>:source $MYVIMRC<CR>
+nnoremap <SILENT> <LEADER>vs :w<CR>:source $MYVIMRC<CR>
 
 " Open Vim Keymapping Cheat-Sheet
-nnoremap <leader>scs :60vsplit ~/.vim/docs/keymappings.md<CR>
+nnoremap <LEADER>scs :60vsplit ~/.vim/docs/keymappings.md<CR>
 
 " Switch Buffers
 map <PageUp> :bp<CR>
@@ -207,6 +210,11 @@ nnoremap g<CR> <Cmd>Git<CR>
 nnoremap g<SPACE> :Git<SPACE>
 " Show a 2 pane vertical diff split
 nnoremap g. <Cmd>Gvdiffsplit<CR>
+
+" Fugitive Conflict Resolution
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
 
 " Search lines in current Buffer with fzf
 nnoremap z/ <Cmd>BLines<CR>
