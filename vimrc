@@ -184,16 +184,15 @@ nnoremap <LEADER>gw :Goyo 120<CR>
 nnoremap <LEADER>s :w<CR>:source %<CR>
 
 " Move current line down
-noremap <C-Down> ddp
+nnoremap <C-Down> ddp
+nnoremap <LEADER><Down> ddp
 
 " Move current line up
-noremap <C-Up> ddkP
+nnoremap <C-Up> ddkP
+nnoremap <LEADER><Up> ddkP
 
 " Open .vimrc
 nnoremap <LEADER>ve :vsplit $MYVIMRC<CR>
-
-" Source .vimrc
-nnoremap <SILENT> <LEADER>vs :w<CR>:source $MYVIMRC<CR>
 
 " Open Vim Keymapping Cheat-Sheet
 nnoremap <LEADER>scs :60vsplit ~/.vim/docs/keymappings.md<CR>
@@ -211,7 +210,7 @@ nnoremap g<SPACE> :Git<SPACE>
 nnoremap g. <Cmd>Gvdiffsplit<CR>
 
 " Fugitive Conflict Resolution
-nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <LEADER>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 
