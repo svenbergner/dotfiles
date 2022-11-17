@@ -168,7 +168,6 @@ nnoremap <LEADER><LEADER> :Maps<CR>
 
 " Use jk insteasd of the escape key
 inoremap jk <ESC>
-vnoremap jk <ESC>
 
 " Insert current date and time
 nmap <F3> i<C-R>=strftime("%A, %d.%m.%Y %I:%M")<CR><ESC>
