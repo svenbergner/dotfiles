@@ -52,13 +52,14 @@ set nohlsearch
 set hidden
 set noerrorbells
 
-set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-
+set shiftwidth=4
 set expandtab
+set autoindent
 set smartindent
 set nowrap
+
 set guicursor="n-v-c:block-Cursor/lCursor, ve:ver35-Cursor, o:hor50-Cursor, i-ci:ver25-Cursor/lCursor, r-cr:hor20-Cursor/lCursor, sm:block-Cursor -blinkwait175-blinkoff150-blinkon175"
 set noswapfile
 "set nobackup
