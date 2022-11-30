@@ -88,6 +88,9 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " Mouse Scrolling
 set mouse=nicr
 
+" Path to fzf added
+set rtp+=/usr/local/opt/fzf
+
 " Splits and Tabbed Files ---------------------------------------------------------------- {{{
 set splitbelow splitright
 
