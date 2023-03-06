@@ -20,6 +20,9 @@ set nocompatible
 " Load an indent file for the detected file type
 filetype plugin indent on
 
+" Backspace behaviour
+set backspace=indent,eol,start
+
 " Show current line number and relative line numbers
 set number relativenumber
 
