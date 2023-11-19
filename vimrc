@@ -239,7 +239,7 @@ augroup END
 " }}}
 
 " Vim Wiki Options ------------------------------------------------------- {{{
-let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax':'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax':'markdown', 'ext': '.md'}, {'path': '~/buch', 'syntax':'markdown', 'ext': '.md'}]
 au FileType vimwiki setlocal shiftwidth=6 tabstop=6 noexpandtab
 
 command! Diary VimwikiDiaryIndex
