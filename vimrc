@@ -9,6 +9,8 @@
 " Set vim language explicitly to english for easier usage with tutorials
 let $LANG='en'
 
+set encoding=utf-8
+
 " Search for config files in pwd
 set exrc
 
@@ -145,6 +147,7 @@ call plug#begin()
     Plug 'natebosch/vim-lsc'
     Plug 'natebosch/vim-lsc-dart'
     Plug 'nelstrom/vim-visual-star-search'
+    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'pedrohdz/vim-yaml-folds'
     Plug 'preservim/nerdtree'
     Plug 'preservim/vim-lexical'
