@@ -171,6 +171,10 @@ let g:conoline_auto_enable = 1
 let g:lsc_auto_map = v:true
 
 " KEY MAPPINGS ----------------------------------------------------------- {{{
+" Prevent x and the delete key from overriding what's in the clipboard.
+noremap x "_x
+noremap X "_X
+noremap <Del> "_x
 
 " Show Commands
 nnoremap <LEADER><LEADER> :Maps<CR>
