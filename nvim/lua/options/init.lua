@@ -1,4 +1,4 @@
--- let $LANG='en'
+vim.api.nvim_exec ('language en_US', true)
 
 vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
 
