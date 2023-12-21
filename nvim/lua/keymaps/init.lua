@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.keymap.set("n", "<LEADER><LEADER>", ":Maps<CR>")
+
 vim.g.backspace = "indent,eol,start"
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
