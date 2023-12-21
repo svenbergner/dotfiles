@@ -123,7 +123,6 @@ call plug#begin()
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-markdown'
     Plug 'tpope/vim-rhubarb'
-    Plug 'tpope/vim-surround'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
@@ -135,16 +134,6 @@ let g:conoline_auto_enable = 1
 let g:lsc_auto_map = v:true
 
 " KEY MAPPINGS ----------------------------------------------------------- {{{
-" Prevent x and the delete key from overriding what's in the clipboard.
-noremap x "_x
-noremap X "_X
-noremap <Del> "_x
-
-" Show Commands
-nnoremap <LEADER><LEADER> :Maps<CR>
-
-" Use jk insteasd of the escape key
-inoremap jk <ESC>
 
 " Insert current date and time
 nmap <F3> i<C-R>=strftime("%A, %d.%m.%Y %I:%M")<CR><ESC>
