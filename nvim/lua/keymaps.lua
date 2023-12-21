@@ -1,6 +1,11 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Prevent x and the delete key from overriding what's in the clipboard.
+vim.keymap.set("n", "x", '"_x')
+vim.keymap.set("n", "X", '"_X')
+vim.keymap.set("n", "<Del>", '"_x')
+
 vim.keymap.set("n", "<C-p>", ":Files<CR>")
 vim.keymap.set("n", "<LEADER>?", ":Maps<CR>")
 
