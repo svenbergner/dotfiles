@@ -17,7 +17,8 @@ local plugins = {
 require('plugins.treesitter'),
 require('plugins.telescope'),
 require('plugins.colorscheme'),
-require('plugins.fzf')
+require('plugins.fzf'),
+require('plugins.surround')
 }
 
 
