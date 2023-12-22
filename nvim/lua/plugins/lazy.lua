@@ -13,7 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 "nvim-lua/plenary.nvim",
-
+'vimwiki/vimwiki',
+require('plugins.lsp-config'),
 require('plugins.treesitter'),
 require('plugins.telescope'),
 require('plugins.colorscheme'),
