@@ -10,33 +10,14 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
 
-" Spellchecking
-" set spelllang=de,en_gb,en_us
-" set spell
 
-set noswapfile
-"set nobackup
 set undodir=~/.vim/undodir
 set undofile
-set incsearch
 set scrolloff=5
 set signcolumn=yes
 set cmdheight=2
 set timeoutlen=1000
 set ttimeoutlen=100
-
-" Ignore capital letters during search.
-set ignorecase
-set smartcase
-
-set showcmd
-set showmatch
-set hlsearch
-set history=10000
-
-set wildmenu
-set wildmode=list:longest
-set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " Splits and Tabbed Files ---------------------------------------------------------------- {{{
 " Block visualization
