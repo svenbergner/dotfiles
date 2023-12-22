@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/sh
 
 languages="flutter dart cpp javascript html css bash"
 core_utils="git xargs find fzf mv sed awk"
