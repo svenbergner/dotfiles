@@ -27,6 +27,8 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
             lspconfig.lua_ls.setup({})
+            lspconfig.ast_grep.setup({})
+            lspconfig.bashls.setup({})
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
             vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, {})
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
