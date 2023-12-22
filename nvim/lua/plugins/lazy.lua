@@ -15,6 +15,7 @@ local plugins = {
 "nvim-lua/plenary.nvim",
 'vimwiki/vimwiki',
 require('plugins.lsp-config'),
+require('plugins.flutter-tools'),
 require('plugins.treesitter'),
 require('plugins.telescope'),
 require('plugins.colorscheme'),
