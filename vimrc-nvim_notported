@@ -14,8 +14,6 @@ augroup END
 " set spelllang=de,en_gb,en_us
 " set spell
 
-
-set guicursor="n-v-c:block-Cursor/lCursor, ve:ver35-Cursor, o:hor50-Cursor, i-ci:ver25-Cursor/lCursor, r-cr:hor20-Cursor/lCursor, sm:block-Cursor -blinkwait175-blinkoff150-blinkon175"
 set noswapfile
 "set nobackup
 set undodir=~/.vim/undodir
@@ -39,9 +37,6 @@ set history=10000
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
-
-" Mouse Scrolling
-set mouse=nicr
 
 " Splits and Tabbed Files ---------------------------------------------------------------- {{{
 " Block visualization
