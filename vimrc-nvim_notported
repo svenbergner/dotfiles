@@ -3,9 +3,6 @@
 " Load an indent file for the detected file type
 filetype plugin indent on
 
-" Show current line number and relative line numbers
-set number relativenumber
-
 " Toggle relative line numbers based on focus
 augroup numbertoggle
   autocmd!
@@ -13,25 +10,10 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
 
-
-" Highlight cursor line
-set cursorline
-
 " Spellchecking
 " set spelllang=de,en_gb,en_us
 " set spell
 
-set nohlsearch
-set hidden
-set noerrorbells
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-set smartindent
-set nowrap
 
 set guicursor="n-v-c:block-Cursor/lCursor, ve:ver35-Cursor, o:hor50-Cursor, i-ci:ver25-Cursor/lCursor, r-cr:hor20-Cursor/lCursor, sm:block-Cursor -blinkwait175-blinkoff150-blinkon175"
 set noswapfile
@@ -61,31 +43,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " Mouse Scrolling
 set mouse=nicr
 
-" Path to fzf added
-set rtp+=/usr/local/opt/fzf
-
 " Splits and Tabbed Files ---------------------------------------------------------------- {{{
-set splitbelow splitright
-
-" Move between splits with CTRL + hjkl
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Make adjusting split sizes a bit more friendly
-" noremap <silent> <C-Left> :vertical resize +1<CR>
-" noremap <silent> <C-Right> :vertical resize +1<CR>
-" noremap <silent> <C-Up> :resize +1<CR>
-" noremap <silent> <C-Down> :resize +1<CR>
-
-" Change 2 split windows from vert to horiz or horiz to vert
-map <leader>th <C-w>t<C-w>H
-map <leader>tk <C-w>t<C-w>K
-
-" Removes pipes | that act as seperators on splits
-set fillchars+=vert:\
-
 " Block visualization
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
@@ -125,7 +83,6 @@ call plug#begin()
     Plug 'tpope/vim-rhubarb'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'vimwiki/vimwiki'
 call plug#end()
 " }}}
 
