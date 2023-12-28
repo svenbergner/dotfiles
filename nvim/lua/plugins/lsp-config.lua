@@ -16,7 +16,7 @@ return {
                     "clangd",
                     "cmake",
                     --"neocmake",
-                    --"dockerls",
+                    "dockerls",
                     --"",
                 }
             })
