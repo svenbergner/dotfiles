@@ -1,42 +1,12 @@
-" Enable filetype detection. Vim will be able to try to detect the type of file in use.
-" Enable plugins and load plugin for the detected file type.
-" Load an indent file for the detected file type
-filetype plugin indent on
-
-" Toggle relative line numbers based on focus
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-augroup END
-
-
-set undodir=~/.vim/undodir
-set undofile
-set scrolloff=5
-set signcolumn=yes
-set cmdheight=2
-set timeoutlen=1000
-set ttimeoutlen=100
-
-" Splits and Tabbed Files ---------------------------------------------------------------- {{{
-" Block visualization
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
-" }}}
-
 " PLUGINS ---------------------------------------------------------------- {{{
 call plug#begin()
     Plug 'airblade/vim-gitgutter'
     Plug 'cedarbaum/fugitive-azure-devops.vim'
     Plug 'dart-lang/dart-vim-plugin'
     Plug 'dense-analysis/ale'
-    Plug 'gruvbox-community/gruvbox'
     Plug 'haya14busa/is.vim'
     Plug 'iamcco/markdown-preview.nvim', {'do':{->mkdp#util#install()}, 'for':['markdown','vim-plug']}
     Plug 'jiangmiao/auto-pairs'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/gv.vim'
     Plug 'junegunn/limelight.vim'
@@ -57,8 +27,6 @@ call plug#begin()
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-markdown'
     Plug 'tpope/vim-rhubarb'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " }}}
 
@@ -115,17 +83,6 @@ nnoremap gdl :diffget //3<CR>
 
 " Search lines in current Buffer with fzf
 nnoremap z/ <Cmd>BLines<CR>
-" }}}
-
-" VIMSCRIPT -------------------------------------------------------------- {{{
-" This will enable code folding.
-" Use the marker method of folding.
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
-
-" More Vimscripts code goes here.
 " }}}
 
 " Vim Wiki Options ------------------------------------------------------- {{{
