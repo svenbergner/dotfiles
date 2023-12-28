@@ -29,3 +29,5 @@ return {
 								transparent_mode = false,
 				}
 }
+
+-- Alternative source: 'gruvbox-community/gruvbox'
