@@ -41,3 +41,6 @@ vim.keymap.set("n", "<s-tab>", ":tabprev<Return>")
 vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set("n", "Y", "y$")
 
+-- LazyGit
+vim.keymap.set("n", "<LEADER>gg", ":LazyGit<CR>")
+
