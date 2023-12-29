@@ -104,4 +104,7 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias open="xdg-open"
 
+# gulc -- git undo last commit but preserve the changes
+alias gulc="git reset --soft HEAD~"
+
 if [ -e /home/bergner/.nix-profile/etc/profile.d/nix.sh ]; then . /home/bergner/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
