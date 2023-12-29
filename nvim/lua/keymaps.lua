@@ -6,7 +6,6 @@ vim.keymap.set("n", "x", '"_x', { desc = "Delete without yank" } )
 vim.keymap.set("n", "X", '"_X')
 vim.keymap.set("n", "<Del>", '"_x')
 
-vim.keymap.set("n", "<C-p>", ":Files<CR>")
 vim.keymap.set("n", "<LEADER>?", ":Maps<CR>")
 
 vim.g.backspace = "indent,eol,start"
