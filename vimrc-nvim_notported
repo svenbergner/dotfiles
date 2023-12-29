@@ -1,6 +1,4 @@
 " PLUGINS ---------------------------------------------------------------- {{{
-call plug#begin()
-    Plug 'airblade/vim-gitgutter'
     Plug 'cedarbaum/fugitive-azure-devops.vim'
     Plug 'dense-analysis/ale'
     Plug 'haya14busa/is.vim'
@@ -24,7 +22,6 @@ call plug#begin()
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-markdown'
     Plug 'tpope/vim-rhubarb'
-call plug#end()
 " }}}
 
 
@@ -63,19 +60,6 @@ nnoremap <LEADER>scs :60vsplit ~/.vim/docs/keymappings.md<CR>
 " Switch Buffers
 map <PageUp> :bp<CR>
 map <PageDown> :bn<CR>
-
-" Some Git mappings
-" Open Git commit pane
-nnoremap g<CR> <Cmd>Git<CR>
-" Start a git command
-nnoremap g<SPACE> :Git<SPACE>
-" Show a 2 pane vertical diff split
-nnoremap g. <Cmd>Gvdiffsplit<CR>
-
-" Fugitive Conflict Resolution
-nnoremap <LEADER>gd :Gvdiff<CR>
-nnoremap gdh :diffget //2<CR>
-nnoremap gdl :diffget //3<CR>
 
 " Search lines in current Buffer with fzf
 nnoremap z/ <Cmd>BLines<CR>
