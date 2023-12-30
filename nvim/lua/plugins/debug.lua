@@ -36,6 +36,21 @@ return {
                 end,
             },
         }
+        dap.adapters.dart = {
+            type = "executable",
+            command = "dart",
+            args = {"debug_adapter"}
+        }
+        dap.configurations.dart = {
+            {
+                type = "dart",
+                request = "launch",
+                name = "Launch Dart Program",
+                program = "${file}",
+                cwd = "${workspaceFolder}",
+                args = {}, -- Note for Dart Apps this is args, for Flutter apps toolArgs
+            }
+        }
 
         vim.api.nvim_create_user_command("SetDebuggee", function()
             local dap = require("dap")
