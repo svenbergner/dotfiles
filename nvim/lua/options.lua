@@ -1,5 +1,5 @@
 -- Set vim language explicitly to english for easier usage with tutorials
-vim.api.nvim_exec ('language en_US', true)
+vim.api.nvim_exec("language en_US", true)
 
 vim.opt.compatible = false
 
@@ -13,12 +13,12 @@ vim.opt.relativenumber = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
-vim.opt.shiftwidth=4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
-vim.opt.scrolloff=5
+vim.opt.scrolloff = 5
 
 --
 vim.opt.hidden = true
@@ -41,7 +41,7 @@ vim.opt.syntax = "on"
 
 -- Show lineendings
 vim.opt.list = true
-vim.opt.listchars = { tab = '> ', trail = '-', eol = '↵' }
+vim.opt.listchars = { tab = "> ", trail = "-", eol = "↵" }
 
 vim.g.noerrorbells = true
 vim.g.nohlsearch = true
@@ -58,7 +58,7 @@ vim.opt.history = 1000
 vim.opt.laststatus = 2
 vim.opt.cmdheight = 2
 vim.opt.showcmd = true
-vim.opt.showmode = true -- change to false after 
+vim.opt.showmode = true -- change to false after
 vim.opt.showmatch = true
 vim.opt.timeoutlen = 1000
 vim.opt.ttimeoutlen = 100
@@ -69,7 +69,7 @@ vim.opt.signcolumn = "yes"
 -- Wildmenu
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full"
-vim.opt.wildignore:append{'*.docx', '*.jpg', '*.png', '*.gif', '*.pdf', '*.pyc', '*.exe', '*.flv', '*.img', '*.xlsx'}
+vim.opt.wildignore:append({ "*.docx", "*.jpg", "*.png", "*.gif", "*.pdf", "*.pyc", "*.exe", "*.flv", "*.img", "*.xlsx" })
 
 -- Check for neovim equivalent
 -- Spellchecking
@@ -80,4 +80,3 @@ vim.opt.wildignore:append{'*.docx', '*.jpg', '*.png', '*.gif', '*.pdf', '*.pyc',
 local prefix = vim.fn.expand("~/.config")
 vim.opt.undodir = { prefix .. "/nvim/.undo//" }
 vim.opt.undofile = true
-
