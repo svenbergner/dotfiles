@@ -4,7 +4,16 @@ return {
 		{ "MunifTanjim/nui.nvim" },
 	},
     config = function ()
-        require('fine-cmdline').setup()
+        require('fine-cmdline').setup({
+            popup = {
+                border = {
+                    text = {
+                        top = "CmdLine",
+                        top_align = "center",
+                    }
+                }
+            }
+        })
         vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
     end
 }
