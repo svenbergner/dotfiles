@@ -1,7 +1,13 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-export PATH=~/.emacs.d/bin/:$PATH
+export PATH=/home/bergner/Repos/flutter/bin/:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/bergner/.oh-my-zsh"
@@ -14,8 +20,9 @@ export ZSH="/home/bergner/.oh-my-zsh"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="crunch"
 #ZSH_THEME="fino-time"
-ZSH_THEME="codeknight"
+#ZSH_THEME="codeknight"
 #ZSH_THEME="spaceship"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -40,9 +47,6 @@ HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -89,7 +93,8 @@ source $ZSH/oh-my-zsh.sh
 export LANG=de_DE.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='vim'
+export EDITOR='nvim'
+alias v="nvim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -107,4 +112,31 @@ alias open="xdg-open"
 # gulc -- git undo last commit but preserve the changes
 alias gulc="git reset --soft HEAD~"
 
-if [ -e /home/bergner/.nix-profile/etc/profile.d/nix.sh ]; then . /home/bergner/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+alias ls='exa'
+alias la='ls -laa'
+
+if [ -e /home/bergner/.nix-profile/etc/profile.d/nix.sh ]; then 
+    . /home/bergner/.nix-profile/etc/profile.d/nix.sh; 
+fi # added by Nix installer
+
+alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+alias nvim-kick="NVIM_APPNAME=kickstart nvim"
+alias nvim-chad="NVIM_APPNAME=NvChad nvim"
+alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
+
+function nvims() {
+  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config " --height=20% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+
+bindkey -s ^a "nvims\n"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
