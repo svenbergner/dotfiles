@@ -1,23 +1,23 @@
 return {
-	"stevearc/oil.nvim",
-	lazy = true,
-	opts = {},
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	config = function()
-		require("oil").setup({
-			keymaps = {
-				["<leader>v"] = "actions.select_vsplit",
-				["<leader>s"] = "actions.select_split",
-				["<leader>p"] = "actions.preview",
-				["<leader>r"] = "actions.refresh",
-				["<leader>t"] = "actions.select_tab",
-			},
-		})
-		vim.keymap.set("n", "<leader>tt", function()
-			vim.api.nvim_command("Oil")
-		end, { desc = "[T]oggle Filetree" })
+    "stevearc/oil.nvim",
+    lazy = true,
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+        require("oil").setup({
+            keymaps = {
+                ["<leader>v"] = "actions.select_vsplit",
+                ["<leader>s"] = "actions.select_split",
+                ["<leader>p"] = "actions.preview",
+                ["<leader>r"] = "actions.refresh",
+                ["<leader>t"] = "actions.select_tab",
+            },
+        })
+        vim.keymap.set("n", "<leader>tt", function()
+            vim.api.nvim_command("Oil")
+        end, { desc = "[T]oggle Filetree" })
 
-		--[[ Auto open Oil if no file is open
+        --[[ Auto open Oil if no file is open
         local noFile = true
         for _, buffer in ipairs(vim.fn.getbufinfo()) do
             if string.len(buffer.name) ~= 0 then
@@ -29,6 +29,6 @@ return {
             vim.api.nvim_command("Oil")
         end
 ]]
-		--
-	end,
+        --
+    end,
 }
