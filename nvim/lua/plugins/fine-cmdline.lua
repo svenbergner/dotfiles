@@ -6,6 +6,9 @@ return {
     config = function ()
         require('fine-cmdline').setup({
             popup = {
+                position = {
+                    row = "30%",
+                },
                 border = {
                     text = {
                         top = "CmdLine",
