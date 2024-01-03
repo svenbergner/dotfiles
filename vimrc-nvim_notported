@@ -1,27 +1,23 @@
 " PLUGINS ---------------------------------------------------------------- {{{
-    Plug 'cedarbaum/fugitive-azure-devops.vim'
-    Plug 'dense-analysis/ale'
-    Plug 'haya14busa/is.vim'
-    Plug 'iamcco/markdown-preview.nvim', {'do':{->mkdp#util#install()}, 'for':['markdown','vim-plug']}
-    Plug 'jiangmiao/auto-pairs'
-    Plug 'junegunn/goyo.vim'
-    Plug 'junegunn/gv.vim'
-    Plug 'junegunn/limelight.vim'
-    Plug 'kshenoy/vim-signature'
-    Plug 'mattn/calendar-vim'
-    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+    'haya14busa/is.vim' -- Incremental search
+
+    'tpope/vim-markdown'
+    'iamcco/markdown-preview.nvim', {'do':{->mkdp#util#install()}, 'for':['markdown','vim-plug']}
+
+    'junegunn/goyo.vim'
+    'junegunn/limelight.vim'
+
+    'kshenoy/vim-signature' -- Marks
+    'mg979/vim-visual-multi', {'branch': 'master'}
+
     " Highlight current line only in active buffer
-    Plug 'miyakogi/conoline.vim'
-    Plug 'nelstrom/vim-visual-star-search'
-    Plug 'pedrohdz/vim-yaml-folds'
-    Plug 'preservim/nerdtree'
-    Plug 'preservim/vim-lexical'
-    Plug 'preservim/vim-pencil'
-    Plug 'scrooloose/nerdcommenter'
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-markdown'
-    Plug 'tpope/vim-rhubarb'
+    'miyakogi/conoline.vim'
+
+    'nelstrom/vim-visual-star-search'
+    'pedrohdz/vim-yaml-folds'
+    'preservim/vim-lexical'
+    'preservim/vim-pencil'
+    'tpope/vim-commentary'
 " }}}
 
 
@@ -33,36 +29,9 @@ let g:conoline_auto_enable = 1
 nmap <F3> i<C-R>=strftime("%A, %d.%m.%Y %I:%M")<CR><ESC>
 imap <F3> <C-R>=strftime("%d.%m.%Y %I:%M")<CR>
 
-" Open Terminal
-noremap <LEADER>ot :botright vertical terminal<CR>
-
 " Toggle Goyo
 nnoremap <LEADER>g :Goyo<CR>
 nnoremap <LEADER>gw :Goyo 120<CR>
-
-" Source current file
-nnoremap <LEADER>s :w<CR>:source %<CR>
-
-" Move current line down
-nnoremap <C-Down> ddp
-nnoremap <LEADER><Down> ddp
-
-" Move current line up
-nnoremap <C-Up> ddkP
-nnoremap <LEADER><Up> ddkP
-
-" Open .vimrc
-nnoremap <LEADER>ve :vsplit $MYVIMRC<CR>
-
-" Open Vim Keymapping Cheat-Sheet
-nnoremap <LEADER>scs :60vsplit ~/.vim/docs/keymappings.md<CR>
-
-" Switch Buffers
-map <PageUp> :bp<CR>
-map <PageDown> :bn<CR>
-
-" Search lines in current Buffer with fzf
-nnoremap z/ <Cmd>BLines<CR>
 " }}}
 
 " Vim Wiki Options ------------------------------------------------------- {{{
