@@ -42,3 +42,14 @@ vim.keymap.set("n", "Y", "y$")
 
 -- LazyGit
 vim.keymap.set("n", "<LEADER>gg", ":LazyGit<CR>")
+
+-- Move current line down and up
+vim.keymap.set( "n", "<C-Down>","ddp")
+vim.keymap.set( "n", "<C-Up>","ddkP")
+
+-- Source current file
+vim.keymap.set("n","<LEADER>s", ":w<CR>:source %<CR>")
+
+-- Switch Buffers
+vim.keymap.set("n","<PageUp>", ":bp<CR>")
+vim.keymap.set("n","<PageDown>", ":bn<CR>")
