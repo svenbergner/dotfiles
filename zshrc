@@ -96,6 +96,12 @@ export LANG=de_DE.UTF-8
 export EDITOR='nvim'
 alias v="nvim"
 
+if [[ "$OSTYPE" == "win32" ]] then
+    alias dotfiles='cd C:\\Repos\\dotfiles'
+else
+    alias dotfiles='cd ~/Repos/dotfiles'
+fi
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
