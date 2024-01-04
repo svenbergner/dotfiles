@@ -44,6 +44,7 @@ vim.opt.listchars = { tab = "> ", trail = "-", eol = "↵" }
 
 vim.g.noerrorbells = true
 vim.g.nohlsearch = true
+vim.g.icm = "nosplit"
 
 -- file search
 vim.opt.ignorecase = true
