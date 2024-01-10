@@ -1,5 +1,5 @@
 -- Set vim language explicitly to english for easier usage with tutorials
-vim.api.nvim_exec("language en_US", true)
+vim.api.nvim_exec("language C", true)
 
 vim.opt.compatible = false
 
@@ -73,8 +73,8 @@ vim.opt.wildignore:append({ "*.docx", "*.jpg", "*.png", "*.gif", "*.pdf", "*.pyc
 
 -- Check for neovim equivalent
 -- Spellchecking
--- set spelllang=de,en_gb,en_us
--- set spell
+vim.g.spelllang=de,en_gb
+vim.g.spell = true
 
 -- Undo
 local prefix = vim.fn.expand("~/.config")
