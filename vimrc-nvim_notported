@@ -34,29 +34,6 @@ nnoremap <LEADER>g :Goyo<CR>
 nnoremap <LEADER>gw :Goyo 120<CR>
 " }}}
 
-" Vim Wiki Options ------------------------------------------------------- {{{
-let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax':'markdown', 'ext': '.md'}, {'path': '~/buch', 'syntax':'markdown', 'ext': '.md'}]
-au FileType vimwiki setlocal shiftwidth=6 tabstop=6 noexpandtab
-
-command! Diary VimwikiDiaryIndex
-augroup vimwikigroup
-   autocmd!
-   " automatically update links on read diary
-   autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
-   autocmd BufNewFile */diary/[0-9]*.wiki
-               \ call append(0,[
-               \ "# " . strftime("%d.%m.%Y"), "",
-               \ "## Tagebuch", "", "",
-               \ "## Erkenntnis des Tages", "" ])
-
-   autocmd BufNewFile */diary/[0-9]*.md
-               \ call append(0,[
-               \ "# " . strftime("%d.%m.%Y"), "",
-               \ "## Tagebuch", "", "",
-               \ "## Erkenntnis des Tages", "" ])
-augroup end
-" }}}
-
 " STATUS LINE ------------------------------------------------------------ {{{
 let g:airline#extensions#wordcount#enabled = 1
 let g:airline#extensions#wordcount#filetypes = '\vasciidoc|help|mail|markdown|markdown.pandoc|org|rst|tex|text'
