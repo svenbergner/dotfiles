@@ -23,10 +23,10 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Make adjusting split sizes a bit more friendly
-vim.keymap.set("n", "<C-Left>", ":vertical resize +1<CR>")
-vim.keymap.set("n", "<C-Right>", ":vertical resize +1<CR>")
-vim.keymap.set("n", "<C-Up>", ":resize +1<CR>")
-vim.keymap.set("n", "<C-Down>", ":resize +1<CR>")
+vim.keymap.set("n", "<C-S-Left>", ":vertical resize +1<CR>", {silent = true})
+vim.keymap.set("n", "<C-S-Right>", ":vertical resize -1<CR>", {silent = true})
+vim.keymap.set("n", "<C-S-Up>", ":resize +1<CR>", {silent = true})
+vim.keymap.set("n", "<C-S-Down>", ":resize -1<CR>", {silent = true})
 
 -- Change 2 split windows from vert to horiz or horiz to vert
 vim.keymap.set("n", "<leader>th", "<C-w>t<C-w>H")
