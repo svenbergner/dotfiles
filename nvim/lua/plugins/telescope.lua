@@ -7,6 +7,7 @@ return {
             local builtin = require("telescope.builtin")
             vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+            vim.keymap.set("n", "<leader>?", builtin.keymaps, {desc = "Show all keymaps" })
         end,
     },
     {
@@ -22,5 +23,19 @@ return {
             require("telescope").load_extension("ui-select")
             require("telescope").load_extension("flutter")
         end,
+    },
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+        cond = function()
+            return vim.fn.executable 'make' == 1
+        end,
+    },
+    {
+        'LukasPietzschmann/telescope-tabs',
+        dependencies = { 'nvim-telescope/telescope.nvim' },
+        config = function()
+            require('telescope-tabs').setup()
+        end
     },
 }
