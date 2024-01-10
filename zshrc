@@ -100,6 +100,7 @@ if [[ "$OSTYPE" == "win32" ]] then
     alias dotfiles='cd C:\\Repos\\dotfiles'
 else
     alias dotfiles='cd ~/Repos/dotfiles'
+    alias vimwiki='nvim ~/Repos/vimwiki/index.md'
 fi
 
 # Compilation flags
