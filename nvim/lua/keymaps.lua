@@ -6,14 +6,16 @@ vim.keymap.set("n", "x", '"_x', { desc = "Delete char under cursor without yank"
 vim.keymap.set("n", "X", '"_X', { desc = "Delete char before cursor without yank" })
 vim.keymap.set("n", "<Del>", '"_x', { desc = "Delete char under cursor without yank" })
 
-vim.keymap.set("n", "<LEADER>?", ":Maps<CR>", { silent = true, desc = "Show all keymaps" })
-
 vim.g.backspace = "indent,eol,start"
 
 vim.keymap.set("i", "jk", "<ESC>", { desc = "ESC back to normal mode" })
 
 vim.g.splitbelow = true
 vim.g.splitright = true
+
+-- Switch Buffers
+vim.keymap.set("n", "<PageUp>", ":bp<CR>", { silent = true, desc = "Goto next buffer" })
+vim.keymap.set("n", "<PageDown>", ":bn<CR>", { silent = true, desc = "Goto previous buffer" })
 
 -- Move between splits with CTRL + hjkl
 vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -49,7 +51,3 @@ vim.keymap.set("n", "<C-Up>", "ddkP", { desc = "Move current line down" })
 -- Save and source current file
 vim.keymap.set("n", "<LEADER><LEADER>x", ":w<CR>:source %<CR>",
     { silent = true, desc = "Safe and source the current file." })
-
--- Switch Buffers
-vim.keymap.set("n", "<PageUp>", ":bp<CR>", { silent = true, desc = "Goto next buffer" })
-vim.keymap.set("n", "<PageDown>", ":bn<CR>", { silent = true, desc = "Goto previous buffer" })
