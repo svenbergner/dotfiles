@@ -8,8 +8,8 @@ return {
         "3rd/image.nvim",
     },
     config = function()
-        vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
-        vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
+        vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {silent = true})
+        vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {silent = true})
 
         require("neo-tree").setup({})
     end,
