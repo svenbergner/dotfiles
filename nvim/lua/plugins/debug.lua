@@ -53,11 +53,9 @@ return {
         }
 
         vim.api.nvim_create_user_command("SetDebuggee", function()
-            local dap = require("dap")
             dap.configurations.cpp[1].program = vim.fn.input("Path to debugee: ", vim.fn.getcwd() .. "/", "file")
         end, { nargs = 0 })
         vim.api.nvim_create_user_command("ResetDebuggee", function()
-            local dap = require("dap")
             dap.configurations.cpp = {
                 {
                     name = "Launch",
@@ -78,22 +76,24 @@ return {
         vim.api.nvim_create_user_command("DapLoadLldbForCpp", function()
             require("dap.ext.vscode").load_launchjs(vim.fn.getcwd() .. "/.vscode/launch.json", { lldb = { "cpp" } })
         end, { nargs = 0 })
-        dap.adapters.python = {
-            type = "executable",
-            command = "/Users/jurica.bacurin/.local/share/nvim/mason/packages/debugpy/venv/bin/python",
-            args = { "-m", "debugpy.adapter" },
-        }
+        -- dap.adapters.python = {
+        --     type = "executable",
+        --     command = vim.fn.expand("~/") .. "/.local/share/nvim/mason/packages/debugpy/venv/bin/python",
+        --     args = { "-m", "debugpy.adapter" },
+        -- }
 
         vim.fn.sign_define("DapStopped", { text = "▶️", texthl = "", linehl = "", numhl = "" })
 
-        vim.keymap.set("n", "<F5>", dap.continue)
-        vim.keymap.set("n", "<F1>", dap.step_into)
-        vim.keymap.set("n", "<F2>", dap.step_over)
-        vim.keymap.set("n", "<F3>", dap.step_out)
-        vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint)
+        vim.keymap.set("n", "<F5>", dap.continue, { desc = 'Start/Continue Debugging' } )
+        vim.keymap.set("n", "S-<F5>", dap.terminate, { desc = 'Stop Debugging' } )
+        vim.keymap.set("n", "C-S-<F5>", dap.run_last, { desc = 'Restart Debugging' } )
+        vim.keymap.set("n", "<F10>", dap.step_over, { desc = 'Step over' } )
+        vim.keymap.set("n", "<F11>", dap.step_into, { desc = 'Step into' } )
+        vim.keymap.set("n", "S-<F11>", dap.step_out, { desc = 'Step out' } )
+        vim.keymap.set("n", "<F9>", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' } )
         vim.keymap.set("n", "<leader>B", function()
             dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-        end)
+        end, { desc = 'Set conditional breakpoint' } )
 
         dapui.setup({
             icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
