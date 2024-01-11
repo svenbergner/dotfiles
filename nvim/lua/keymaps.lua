@@ -51,3 +51,5 @@ vim.keymap.set("n", "<C-Up>", "ddkP", { desc = "Move current line down" })
 -- Save and source current file
 vim.keymap.set("n", "<LEADER><LEADER>x", ":w<CR>:source %<CR>",
     { silent = true, desc = "Safe and source the current file." })
+
+vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
