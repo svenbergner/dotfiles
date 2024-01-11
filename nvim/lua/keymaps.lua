@@ -41,9 +41,6 @@ vim.keymap.set("n", "<s-tab>", ":tabprev<Return>", { silent = true, desc = "Goto
 vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set("n", "Y", "y$")
 
--- LazyGit
-vim.keymap.set("n", "<LEADER>gg", ":LazyGit<CR>", { silent = true, desc = "Open LazyGit overlay" })
-
 -- Move current line down and up
 vim.keymap.set("n", "<C-Down>", "ddp", { desc = "Move current line up" })
 vim.keymap.set("n", "<C-Up>", "ddkP", { desc = "Move current line down" })
