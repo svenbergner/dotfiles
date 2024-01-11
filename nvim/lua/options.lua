@@ -73,8 +73,8 @@ vim.opt.wildignore:append({ "*.docx", "*.jpg", "*.png", "*.gif", "*.pdf", "*.pyc
 
 -- Check for neovim equivalent
 -- Spellchecking
-vim.g.spelllang=de,en_gb
-vim.g.spell = true
+vim.opt.spelllang = 'de_de,en_gb'
+vim.opt.spell = true
 
 -- Undo
 local prefix = vim.fn.expand("~/.config")
