@@ -1,5 +1,5 @@
 -- Set vim language explicitly to english for easier usage with tutorials
-vim.api.nvim_exec("language C", true)
+vim.api.nvim_exec("language en_us.UTF-8", true)
 
 vim.opt.compatible = false
 
