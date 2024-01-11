@@ -15,9 +15,7 @@ return {
                     "bashls",
                     "clangd",
                     "cmake",
-                    --"neocmake",
                     "dockerls",
-                    --"",
                 },
             })
         end,
