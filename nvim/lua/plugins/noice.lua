@@ -1,16 +1,24 @@
 return {
     "folke/noice.nvim",
-    opts = {
-        lsp = {
-            override = {
-                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                ["vim.lsp.util.stylize_markdown"] = true,
-                ["cmp.entry.get_documentation"] = true,
-            },
-        },
+    event = "VeryLazy",
+    keys = {
+        { "<leader>nsl", function() require("noice").cmd("last") end,                                   desc = "Noice Last Message" },
+        { "<leader>nsh", function() require("noice").cmd("history") end,                                desc = "Noice History" },
+        { "<leader>nsa", function() require("noice").cmd("all") end,                                    desc = "Noice All" },
+        { "<leader>nda", function() require("noice").cmd("dismiss") end,                                desc = "Dismiss All" },
+        { "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end,                 desc = "Redirect Cmdline", mode = "c" },
+        { "<c-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  desc = "Scroll forward",   mode = { "i", "n", "s" },  silent = true, expr = true, },
+        { "<c-b>",       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, desc = "Scroll backward",  mode = { "i", "n", "s" } , silent = true, expr = true, },
     },
     config = function()
         require('noice').setup({
+            lsp = {
+                override = {
+                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                    ["vim.lsp.util.stylize_markdown"] = true,
+                    ["cmp.entry.get_documentation"] = true,
+                },
+            },
             views = {
                 cmdline_popup = {
                     position = {
@@ -29,6 +37,20 @@ return {
                     win_options = {
                         winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
                     },
+                },
+                routes = {
+                    {
+                        view = "notify",
+                        filter = {
+                            event = "msg_showmode"
+                        },
+                    },
+                },
+                presets = {
+                    bottom_search = true,
+                    command_palette = true,
+                    long_message_to_split = true,
+                    inc_rename = true,
                 },
             },
         })
