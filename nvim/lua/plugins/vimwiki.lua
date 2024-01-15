@@ -41,6 +41,9 @@ return {
             pattern = "*/diary/[0-9]*.(wiki|md)",
             command = 'call append(0,[ "# " . strftime("%d.%m.%Y"), "", "## Tagebuch", "", "", "## Erkenntnis des Tages", "" ])',
         })
+
+        vim.keymap.set( "n", "<F3>", 'i<C-R> =strftime("%A, %d.%m.%Y %I:%M")<CR><ESC>', {} )
+        vim.keymap.set( "i", "<F3>", '<C-R> =strftime("%d.%m.%Y %I:%M")<CR>', {} )
     end
 }
 

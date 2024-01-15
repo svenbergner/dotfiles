@@ -25,10 +25,6 @@ let g:conoline_auto_enable = 1
 
 " KEY MAPPINGS ----------------------------------------------------------- {{{
 
-" Insert current date and time
-nmap <F3> i<C-R>=strftime("%A, %d.%m.%Y %I:%M")<CR><ESC>
-imap <F3> <C-R>=strftime("%d.%m.%Y %I:%M")<CR>
-
 " Toggle Goyo
 nnoremap <LEADER>g :Goyo<CR>
 nnoremap <LEADER>gw :Goyo 120<CR>
