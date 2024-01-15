@@ -1,9 +1,10 @@
--- Set vim language explicitly to english for easier usage with tutorials
-vim.api.nvim_exec("language en_us.UTF-8", true)
+-- Set vim language explicitly to English for easier usage with tutorials
+vim.api.nvim_exec("language en_US.UTF-8", true)
 
 vim.opt.compatible = false
 
 vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
+vim.opt.termguicolors = true
 
 -- Show current line number and relative line numbers
 vim.opt.number = true
@@ -73,8 +74,13 @@ vim.opt.wildignore:append({ "*.docx", "*.jpg", "*.png", "*.gif", "*.pdf", "*.pyc
 
 -- Check for neovim equivalent
 -- Spellchecking
-vim.opt.spelllang = 'de_de,en_gb'
+if vim.fn.has('linux') then
+    vim.opt.spelllang = 'de,en'
+else
+    vim.opt.spelllang = 'de_de,en_gb'
+end
 vim.opt.spell = true
+vim.cmd("highlight SpellBad cterm=bold,undercurl gui=bold,undercurl guisp=Red")
 
 -- Undo
 local prefix = vim.fn.expand("~/.config")
