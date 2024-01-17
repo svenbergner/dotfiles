@@ -64,6 +64,10 @@ vim.opt.showmatch = true
 vim.opt.timeoutlen = 1000
 vim.opt.ttimeoutlen = 100
 
+-- New splits open to the right and below
+vim.g.splitbelow = true
+vim.g.splitright = true
+
 -- show signs on the left
 vim.opt.signcolumn = "yes"
 
