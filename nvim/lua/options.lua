@@ -10,13 +10,15 @@ vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Enable virtual edit in block mode
+vim.opt.virtualedit = "block"
 -- tab
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 2
 vim.opt.autoindent = true
-vim.opt.smartindent = false
+vim.opt.smartindent = true
 
 vim.opt.scrolloff = 5
 
@@ -28,10 +30,10 @@ vim.opt.swapfile = false
 vim.opt.wrap = false
 vim.wo.wrap = false
 
--- split behaviour
+-- New splits open to the right and below
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.equalalways = true
+vim.opt.equalalways = true -- all windows automatically made same size after splitting or closing a window
 
 -- Highlight cursor line
 vim.opt.cursorline = true
@@ -49,8 +51,8 @@ vim.g.icm = "nosplit"
 
 -- file search
 vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = true
+vim.opt.smartcase = true -- Override 'ignorecase' option if search pattern contains upper case characters
+vim.opt.hlsearch = true -- Highlight search matches
 vim.opt.incsearch = true
 
 vim.opt.history = 1000
@@ -64,10 +66,6 @@ vim.opt.showmatch = true
 vim.opt.timeoutlen = 1000
 vim.opt.ttimeoutlen = 100
 
--- New splits open to the right and below
-vim.g.splitbelow = true
-vim.g.splitright = true
-
 -- show signs on the left
 vim.opt.signcolumn = "yes"
 
@@ -79,9 +77,9 @@ vim.opt.wildignore:append({ "*.docx", "*.jpg", "*.png", "*.gif", "*.pdf", "*.pyc
 -- Check for neovim equivalent
 -- Spellchecking
 if vim.fn.has('linux') then
-    vim.opt.spelllang = 'de,en'
+  vim.opt.spelllang = 'de,en'
 else
-    vim.opt.spelllang = 'de_de,en_gb'
+  vim.opt.spelllang = 'de_de,en_gb'
 end
 vim.opt.spell = true
 vim.cmd("highlight SpellBad cterm=bold,undercurl gui=bold,undercurl guisp=Red")
