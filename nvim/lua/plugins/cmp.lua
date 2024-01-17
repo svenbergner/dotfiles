@@ -45,9 +45,11 @@ return {
                 end, { "i", "s" }),
             }),
             sources = {
+                { name = "nvim_lua" },
                 { name = "nvim_lsp" },
+                { name = "path" },
                 { name = "luasnip" },
-                { name = "buffer" },
+                { name = "buffer", keyword_length = 5 },
             },
         })
     end,
