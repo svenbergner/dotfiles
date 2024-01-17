@@ -42,8 +42,8 @@ return {
             command = 'call append(0,[ "# " . strftime("%d.%m.%Y"), "", "## Tagebuch", "", "", "## Erkenntnis des Tages", "" ])',
         })
 
-        vim.keymap.set( "n", "<F3>", 'i<C-R> =strftime("%A, %d.%m.%Y %I:%M")<CR><ESC>', {} )
-        vim.keymap.set( "i", "<F3>", '<C-R> =strftime("%d.%m.%Y %I:%M")<CR>', {} )
+        vim.keymap.set( "n", "<F3>", 'i<C-R> =strftime("%A, %d.%m.%Y %I:%M")<CR><ESC>', { desc = "Insert current date and time" } )
+        vim.keymap.set( "i", "<F3>", '<C-R> =strftime("%d.%m.%Y %I:%M")<CR>', { desc = "Insert current date and time" } )
     end
 }
 
