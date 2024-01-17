@@ -18,4 +18,4 @@ require("lazy").setup({
     { import = "plugins" },
 }, {})
 
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd.colorscheme("gruvbox")
