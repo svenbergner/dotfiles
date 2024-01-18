@@ -52,7 +52,7 @@ vim.g.icm = "nosplit"
 -- file search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true -- Override 'ignorecase' option if search pattern contains upper case characters
-vim.opt.hlsearch = true -- Highlight search matches
+vim.opt.hlsearch = true  -- Highlight search matches
 vim.opt.incsearch = true
 
 vim.opt.history = 1000
@@ -77,9 +77,9 @@ vim.opt.wildignore:append({ "*.docx", "*.jpg", "*.png", "*.gif", "*.pdf", "*.pyc
 -- Check for neovim equivalent
 -- Spellchecking
 if vim.fn.has('linux') then
-  vim.opt.spelllang = 'de,en'
+   vim.opt.spelllang = 'de,en'
 else
-  vim.opt.spelllang = 'de_de,en_gb'
+   vim.opt.spelllang = 'de_de,en_gb'
 end
 vim.opt.spell = true
 vim.cmd("highlight SpellBad cterm=bold,undercurl gui=bold,undercurl guisp=Red")
