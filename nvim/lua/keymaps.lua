@@ -7,7 +7,7 @@ vim.keymap.set("n", "x", '"_x', { desc = "Delete char under cursor without yank"
 vim.keymap.set("n", "X", '"_X', { desc = "Delete char before cursor without yank" })
 vim.keymap.set("n", "<Del>", '"_x', { desc = "Delete char under cursor without yank" })
 
--- Backspace deletes indent, end of line and 
+-- Backspace deletes indent, end of line and
 vim.g.backspace = "indent,eol,start"
 
 -- use jk as alternative for ESC key to go back to normal mode
@@ -47,7 +47,7 @@ vim.keymap.set("n", "<C-Up>", "ddkP", { desc = "Move current line down" })
 
 -- Save and source current file
 vim.keymap.set("n", "<LEADER><LEADER>x", ":w<CR>:source %<CR>",
-    { silent = true, desc = "Safe and source the current file." })
+   { silent = true, desc = "Safe and source the current file." })
 
 -- Format current buffer
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current buffer" })
