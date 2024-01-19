@@ -18,6 +18,7 @@ return {
             "markdown",
             "markdown_inline",
             "gitignore",
+            "git_config",
             "dockerfile",
             "cpp",
             "cmake",
