@@ -13,10 +13,11 @@ return {
                "lua_ls",
                "ast_grep",
                "bashls",
-               "clangd",
+               -- "clangd",
                "cmake",
                "dockerls",
             },
+            automatic_installation = true,
          })
       end,
    },
