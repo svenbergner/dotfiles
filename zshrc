@@ -122,6 +122,8 @@ alias gulc="git reset --soft HEAD~"
 alias ls='exa'
 alias la='ls -laa'
 
+alias bat='bat --theme gruvbox-dark'
+
 if [ -e /home/bergner/.nix-profile/etc/profile.d/nix.sh ]; then 
     . /home/bergner/.nix-profile/etc/profile.d/nix.sh; 
 fi # added by Nix installer
