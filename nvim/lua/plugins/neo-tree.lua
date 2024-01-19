@@ -23,13 +23,30 @@ return {
       },
    },
    config = function()
-      vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", { silent = true })
-      vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", { silent = true })
+      vim.keymap.set("n", "<leader>tf", ":Neotree filesystem reveal left<CR>:Neotree focus filesystem<CR>", { silent = true, desc = {"Show Neotree Filesystem"} })
+      vim.keymap.set("n", "<leader>tb", ":Neotree buffers reveal left<CR>:Neotree focus buffers<CR>", { silent = true, desc = {"Show Neotree Buffers"} })
+      vim.keymap.set("n", "<leader>tg", ":Neotree git_status reveal left<CR>:Neotree focus git_status<CR>", { silent = true, desc = {"Show Neotree Git Status"} })
 
       require("neo-tree").setup({
-         close_if_last_window = true,
+         sources = {
+            "filesystem",
+            "buffers",
+            "git_status",
+         },
+         close_if_last_window = false,
+         auto_clean_after_session_restore = true,
+         default_source = "filesystem",
          source_selector = {
             winbar = true,
+            status_line = true,
+            sources = {
+               { source = "filesystem" },
+               { source = "buffers" },
+               { source = "git_status" },
+            },
+         },
+         git_status = {
+            follow_current_file = true,
          },
          buffers = {
             follow_current_file = true,
@@ -46,7 +63,5 @@ return {
             },
          },
       })
-      -- Reload neo-tree after a file has changed on disk
-      require("neo-tree.sources.filesystem.commands").refresh( require("neo-tree.sources.manager") .get_state("filesystem"))
    end,
 }
