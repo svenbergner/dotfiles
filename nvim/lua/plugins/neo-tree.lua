@@ -23,9 +23,12 @@ return {
       },
    },
    config = function()
-      vim.keymap.set("n", "<leader>tf", ":Neotree filesystem reveal left<CR>:Neotree focus filesystem<CR>", { silent = true, desc = {"Show Neotree Filesystem"} })
-      vim.keymap.set("n", "<leader>tb", ":Neotree buffers reveal left<CR>:Neotree focus buffers<CR>", { silent = true, desc = {"Show Neotree Buffers"} })
-      vim.keymap.set("n", "<leader>tg", ":Neotree git_status reveal left<CR>:Neotree focus git_status<CR>", { silent = true, desc = {"Show Neotree Git Status"} })
+      vim.keymap.set("n", "<leader>tf", ":Neotree filesystem reveal left<CR>:Neotree focus filesystem<CR>",
+         { silent = true, desc = { "Show Neotree Filesystem" } })
+      vim.keymap.set("n", "<leader>tb", ":Neotree buffers reveal left<CR>:Neotree focus buffers<CR>",
+         { silent = true, desc = { "Show Neotree Buffers" } })
+      vim.keymap.set("n", "<leader>tg", ":Neotree git_status reveal left<CR>:Neotree focus git_status<CR>",
+         { silent = true, desc = { "Show Neotree Git Status" } })
 
       require("neo-tree").setup({
          sources = {
@@ -49,10 +52,10 @@ return {
             follow_current_file = true,
          },
          buffers = {
-            follow_current_file = true,
+            follow_current_file = { enabled = true, },
          },
          filesystem = {
-            follow_current_file = true,
+            follow_current_file = { enabled = true, },
             filtered_items = {
                hide_dotfiles = true,
                hide_gitignored = false,
