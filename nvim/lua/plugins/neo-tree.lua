@@ -23,7 +23,7 @@ return {
       },
    },
    config = function()
-      vim.keymap.set("n", "<leader>tf", ":Neotree filesystem reveal left<CR>:Neotree focus filesystem<CR>",
+      vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>:Neotree focus filesystem<CR>",
          { silent = true, desc = { "Show Neotree Filesystem" } })
       vim.keymap.set("n", "<leader>tb", ":Neotree buffers reveal left<CR>:Neotree focus buffers<CR>",
          { silent = true, desc = { "Show Neotree Buffers" } })
