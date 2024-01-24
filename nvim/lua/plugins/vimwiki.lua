@@ -3,19 +3,37 @@ return {
    dependencies = {
       'mattn/calendar-vim',
    },
-   config = function()
+   init = function()
       vim.g.vimwiki_ext2syntax = { ['.md'] = 'markdown', ['.markdown'] = 'markdown', ['.mdown'] = 'markdown' }
       vim.g.vimwiki_list = {
          {
+            auto_diary_index = 1
+         },
+         {
             path = '~/Repos/vimwiki',
             syntax = 'markdown',
-            ext = '.md'
+            ext = 'md'
          },
          {
             path = '~/Repos/buch',
             syntax = 'markdown',
-            ext = '.md'
+            ext = 'md'
          },
+      }
+
+      vim.g.vimwiki_diary_months = {
+         ["1"] = "Januar",
+         ["2"] = "Februar",
+         ["3"] = "März",
+         ["4"] = "April",
+         ["5"] = "Mai",
+         ["6"] = "Juni",
+         ["7"] = "Juli",
+         ["8"] = "August",
+         ["9"] = "September",
+         ["10"] = "Oktober",
+         ["11"] = "November",
+         ["12"] = "Dezember",
       }
 
       local api = vim.api
