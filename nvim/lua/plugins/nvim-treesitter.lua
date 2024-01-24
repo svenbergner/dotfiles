@@ -24,6 +24,7 @@ return {
             "cmake",
             "commonlisp",
             "json",
+            "kdl",
          },
          incremental_selection = {
             enable = true,
