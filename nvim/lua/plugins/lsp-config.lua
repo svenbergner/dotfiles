@@ -63,7 +63,7 @@ return {
 
       local servers = {
          clangd = {},
-         ast_grep = {},
+         dartls = {},
          lua_ls = {
             Lua = {
                workspace = { checkThirdParty = false },
