@@ -1,10 +1,8 @@
 return {
    {
       "nvim-telescope/telescope.nvim",
-      tag = "0.1.4",
       dependencies = {
          "nvim-lua/plenary.nvim",
-         'dawsers/telescope-floaterm.nvim',
       },
       config = function()
          local builtin = require("telescope.builtin")
@@ -29,6 +27,8 @@ return {
       "nvim-telescope/telescope-live-grep-args.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
       "debugloop/telescope-undo.nvim",
+      "cljoly/telescope-repo.nvim",
+      'dawsers/telescope-floaterm.nvim',
       config = function()
          require("telescope").setup({
             extensions = {
@@ -49,6 +49,7 @@ return {
          require("telescope").load_extension("undo")
          require("telescope").load_extension("live_grep_args")
          require("telescope").load_extension("floaterm")
+         require("telescope").load_extension("repo")
       end,
    },
    {
@@ -62,7 +63,7 @@ return {
       'LukasPietzschmann/telescope-tabs',
       dependencies = { 'nvim-telescope/telescope.nvim' },
       config = function()
-         require('telescope-tabs').setup()
+         require('telescope-tabs').setup({})
       end
    },
 }
