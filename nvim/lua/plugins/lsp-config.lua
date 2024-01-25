@@ -63,7 +63,9 @@ return {
 
       local servers = {
          clangd = {},
-         dartls = {},
+         -- dartls will be installed and configured 
+         -- by flutter-tools.lua
+         -- dartls = {},
          lua_ls = {
             Lua = {
                workspace = { checkThirdParty = false },
