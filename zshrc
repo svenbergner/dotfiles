@@ -81,7 +81,14 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases history git zsh-autosuggestions zsh-syntax-highlighting)
+
+plugins=(git git-prompt)
+plugins+=(common-aliases sudo)
+plugins+=(history history-substring-search)
+plugins+=(zsh-vi-mode zsh-fzf-history-search zsh-autosuggestions zsh-syntax-highlighting)
+if [[ "$OSTYPE" == "darwin22.0" ]] then
+   plugins+=(brew)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
