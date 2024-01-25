@@ -29,12 +29,30 @@ return {
       "debugloop/telescope-undo.nvim",
       "cljoly/telescope-repo.nvim",
       'dawsers/telescope-floaterm.nvim',
+      'LukasPietzschmann/telescope-tabs',
       config = function()
          require("telescope").setup({
             extensions = {
                ["ui-select"] = {
                   require("telescope.themes").get_dropdown({}),
                },
+               ['flutter'] = {},
+               ['noice'] = {},
+               ['neoclip'] = {},
+               ['undo'] = {},
+               ['live_grep_args'] = {},
+               ['floaterm'] = {},
+               ['repo'] = {
+                  list = {
+                     fd_opts = {
+                        "--no-ignore-vcs",
+                     },
+                     search_dirs = {
+                        "/Users/svenbergner/Repos/",
+                     },
+                  },
+               },
+               ['telescope-tabs'] = {},
             },
          })
          require("telescope").load_extension("ui-select")
@@ -42,7 +60,6 @@ return {
          require("telescope").load_extension("noice")
 
          require("telescope").load_extension("neoclip")
-         require("telescope").load_extension("fzf")
 
          vim.g.zoxide_use_select = true
 
@@ -51,19 +68,5 @@ return {
          require("telescope").load_extension("floaterm")
          require("telescope").load_extension("repo")
       end,
-   },
-   {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'make',
-      cond = function()
-         return vim.fn.executable 'make' == 1
-      end,
-   },
-   {
-      'LukasPietzschmann/telescope-tabs',
-      dependencies = { 'nvim-telescope/telescope.nvim' },
-      config = function()
-         require('telescope-tabs').setup({})
-      end
    },
 }
