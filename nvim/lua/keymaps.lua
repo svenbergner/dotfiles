@@ -51,3 +51,6 @@ vim.keymap.set("n", "<LEADER><LEADER>x", ":w<CR>:source %<CR>",
 
 -- Format current buffer
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current buffer" })
+
+-- Toggle folds
+vim.keymap.set("n", "zz", "za", { silent = true, desc = "Toggle current fold" } )
