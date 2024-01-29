@@ -5,3 +5,4 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never --line-numbers --features side-by-side --syntax-theme gruvbox-dark
+  disableForcePushing: true
