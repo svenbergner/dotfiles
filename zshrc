@@ -85,7 +85,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git git-prompt)
 plugins+=(common-aliases sudo)
 plugins+=(history history-substring-search)
-plugins+=(zsh-vi-mode zsh-fzf-history-search zsh-autosuggestions zsh-syntax-highlighting)
+plugins+=(vi-mode zsh-fzf-history-search zsh-autosuggestions zsh-syntax-highlighting)
 if [[ "$OSTYPE" == "darwin22.0" ]] then
    plugins+=(brew)
 fi
