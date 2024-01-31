@@ -54,3 +54,6 @@ vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current b
 
 -- Toggle folds
 vim.keymap.set("n", "zz", "za", { silent = true, desc = "Toggle current fold" } )
+
+-- Close current buffer without closing the window
+vim.keymap.set("n", "<leader>Q", ":enew<bar>bd #<CR>", { silent = true, desc = "Close current buffer but leave window open" } )
