@@ -76,7 +76,7 @@ return {
          bashls = {},
          cmake = {},
          dockerls = {},
-         marksmanlsp = {},
+         marksman = {},
       }
 
       require('neodev').setup()
