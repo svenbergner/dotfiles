@@ -3,8 +3,16 @@ vim.api.nvim_exec("language en_US.UTF-8", true)
 
 vim.opt.compatible = false
 
-vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
 vim.opt.termguicolors = true
+
+vim.opt.guicursor = {
+	"n-v-c:block", -- Normal, visual, command-line: block cursor
+	"i-ci-ve:ver25", -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
+	"r-cr:hor20", -- Replace, command-line replace: horizontal bar cursor with 20% height
+	"o:hor50", -- Operator-pending: horizontal bar cursor with 50% height
+	"a:blinkwait700-blinkoff400-blinkon250", -- All modes: blinking settings
+	"sm:block-blinkwait175-blinkoff150-blinkon175", -- Showmatch: block cursor with specific blinking settings
+}
 
 -- Show current line number and relative line numbers
 vim.opt.number = true
@@ -12,6 +20,7 @@ vim.opt.relativenumber = true
 
 -- Enable virtual edit in block mode
 vim.opt.virtualedit = "block"
+
 -- tab
 vim.opt.expandtab = true
 vim.opt.tabstop = 3
@@ -19,6 +28,7 @@ vim.opt.softtabstop = 3
 vim.opt.shiftwidth = 3
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.opt.breakindent = true
 
 vim.opt.scrolloff = 5
 
@@ -26,14 +36,16 @@ vim.opt.scrolloff = 5
 vim.opt.hidden = true
 vim.opt.swapfile = false
 
--- linewrap
+-- line wrap
 vim.opt.wrap = false
 vim.wo.wrap = false
 
 -- New splits open to the right and below
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.equalalways = true -- all windows automatically made same size after splitting or closing a window
+
+-- all windows automatically made same size after splitting or closing a window
+vim.opt.equalalways = true
 
 -- Highlight cursor line
 vim.opt.cursorline = true
@@ -88,3 +100,7 @@ vim.cmd("highlight SpellBad cterm=bold,undercurl gui=bold,undercurl guisp=Red")
 local prefix = vim.fn.expand("~/.config")
 vim.opt.undodir = { prefix .. "/nvim/.undo//" }
 vim.opt.undofile = true
+
+-- Better completen
+vim.opt.completeopt = { "menuone" }
+
