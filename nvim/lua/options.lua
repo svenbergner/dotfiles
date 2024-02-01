@@ -11,7 +11,7 @@ vim.opt.guicursor = {
 	"r-cr:hor20", -- Replace, command-line replace: horizontal bar cursor with 20% height
 	"o:hor50", -- Operator-pending: horizontal bar cursor with 50% height
 	"a:blinkwait700-blinkoff400-blinkon250", -- All modes: blinking settings
-	"sm:block-blinkwait175-blinkoff150-blinkon175", -- Showmatch: block cursor with specific blinking settings
+	"sm:block-blinkwait175-blinkoff150-blinkon175", -- Show match: block cursor with specific blinking settings
 }
 
 -- Show current line number and relative line numbers
@@ -53,7 +53,7 @@ vim.opt.cursorline = true
 -- Turn syntax highlighting on.
 vim.opt.syntax = "on"
 
--- Show lineendings
+-- Show line endings
 vim.opt.list = true
 vim.opt.listchars = { tab = "> ", trail = "-", eol = "↵" }
 
@@ -69,7 +69,7 @@ vim.opt.incsearch = true
 
 vim.opt.history = 1000
 
--- statusline
+-- status-line
 vim.opt.laststatus = 2
 vim.opt.cmdheight = 2
 vim.opt.showcmd = true
@@ -81,12 +81,12 @@ vim.opt.ttimeoutlen = 100
 -- show signs on the left
 vim.opt.signcolumn = "yes"
 
--- Wildmenu
+-- Wild menu
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full"
 vim.opt.wildignore:append({ "*.docx", "*.jpg", "*.png", "*.gif", "*.pdf", "*.pyc", "*.exe", "*.flv", "*.img", "*.xlsx" })
 
--- Check for neovim equivalent
+-- Check for Neovim equivalent
 -- Spellchecking
 if vim.fn.has('linux') then
    vim.opt.spelllang = 'de,en'
@@ -101,6 +101,6 @@ local prefix = vim.fn.expand("~/.config")
 vim.opt.undodir = { prefix .. "/nvim/.undo//" }
 vim.opt.undofile = true
 
--- Better completen
+-- Better completion
 vim.opt.completeopt = { "menuone" }
 
