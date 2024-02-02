@@ -45,7 +45,7 @@ return {
          nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
          nmap('<leader>Ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
          nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-         nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+         nmap('<C-S-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
          nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
          nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
          nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
