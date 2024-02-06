@@ -57,3 +57,7 @@ vim.keymap.set("n", "zz", "za", { silent = true, desc = "Toggle current fold" } 
 
 -- Close current buffer without closing the window
 vim.keymap.set("n", "<leader>Q", ":enew<bar>bd #<CR>", { silent = true, desc = "Close current buffer but leave window open" } )
+
+-- Insert empty lines without switch to insert mode
+vim.keymap.set("n", "<return>", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', { silent = true, desc = "Insert empty line below current line without switch to insert mode" })
+vim.keymap.set("n", "<leader><return>", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', { silent = true, desc = "Insert empty line above current line without switch to insert mode" })
