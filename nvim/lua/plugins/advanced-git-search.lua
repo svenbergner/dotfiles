@@ -1,11 +1,11 @@
 return {
-   "aaronhallaert/advanced-git-search.nvim",
+   'aaronhallaert/advanced-git-search.nvim',
    config = function()
-      require("telescope").setup {
+      require('telescope').setup {
          extensions = {
             advanced_git_search = {
                -- fugitive or diffview
-               diff_plugin = "fugitive",
+               diff_plugin = 'fugitive',
                -- customize git in previewer
                -- e.g. flags such as { "--no-pager" }, or { "-c", "delta.side-by-side=false" }
                git_flags = {},
@@ -14,14 +14,14 @@ return {
                git_diff_flags = {},
                -- Show builtin git pickers when executing "show_custom_functions" or :AdvancedGitSearch
                show_builtin_git_pickers = false,
-               entry_default_author_or_date = "author", -- one of "author" or "date"
+               entry_default_author_or_date = 'author', -- one of "author" or "date"
 
                -- Telescope layout setup
                telescope_theme = {
                   function_name_1 = {
                      -- Theme options
                   },
-                  function_name_2 = "dropdown",
+                  function_name_2 = 'dropdown',
                   show_custom_functions = {
                      layout_config = { width = 0.4, height = 0.4 },
                   },
@@ -31,13 +31,13 @@ return {
          }
       }
 
-      require("telescope").load_extension("advanced_git_search")
+      require('telescope').load_extension('advanced_git_search')
    end,
    dependencies = {
       {
-         "nvim-telescope/telescope.nvim",
-         "tpope/vim-fugitive",
-         "tpope/vim-rhubarb",
+         'nvim-telescope/telescope.nvim',
+         'tpope/vim-fugitive',
+         'tpope/vim-rhubarb',
       }
    },
 }
