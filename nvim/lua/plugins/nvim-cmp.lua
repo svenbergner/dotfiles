@@ -2,15 +2,13 @@ return {
    "hrsh7th/nvim-cmp",
    dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "L3MON4D3/LuaSnip",
-      "rafamadriz/friendly-snippets",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
-      "saadparwaiz1/cmp_luasnip",
    },
    config = function()
       local cmp = require("cmp")
+      require("luasnip.loaders.from_vscode").lazy_load()
       local luasnip = require("luasnip")
       luasnip.config.setup({})
       cmp.setup({
@@ -19,8 +17,12 @@ return {
                luasnip.lsp_expand(args.body)
             end,
          },
+         window = {
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered(),
+         },
          mapping = cmp.mapping.preset.insert({
-            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+            ["<C-b>"] = cmp.mapping.scroll_docs(-4),
             ["<C-f>"] = cmp.mapping.scroll_docs(4),
             ["<C-Space>"] = cmp.mapping.complete({}),
             ["<C-CR>"] = cmp.mapping.complete({}),
@@ -50,8 +52,8 @@ return {
             { name = "nvim_lua" },
             { name = "nvim_lsp" },
             { name = "path" },
-            { name = "luasnip", keyword_length = 2  },
-            { name = "buffer", keyword_length = 3 },
+            { name = "luasnip", keyword_length = 2 },
+            { name = "buffer",  keyword_length = 3 },
          },
       })
       -- `/` cmdline setup.
