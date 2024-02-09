@@ -40,9 +40,25 @@ return {
 
       api.nvim_create_autocmd("FileType", {
          group = vimwikigroup,
-         pattern = "vimwiki",
-         command = 'setlocal shiftwidth=6 tabstop=6 noexpandtab'
+         pattern = "*/vimwiki/*",
+         command = 'setlocal shiftwidth=4 tabstop=4 expandtab'
       })
+
+      -- api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+      --    group = vimwikigroup,
+      --    pattern = "*/vimwiki/*",
+      --    callback = function()
+      --       vim.cmd('ZenMode | set wrap')
+      --    end
+      -- })
+      --
+      -- api.nvim_create_autocmd({ 'BufDelete' }, {
+      --    group = vimwikigroup,
+      --    pattern = "*/vimwiki/*",
+      --    callback = function()
+      --       vim.cmd('ZenMode | set unwrap')
+      --    end
+      -- })
 
       -- automatically update links on read diary
       api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
@@ -59,7 +75,9 @@ return {
          'call append(0,[ "# " . strftime("%d.%m.%Y"), "", "## Tagebuch", "", "", "## Erkenntnis des Tages", "" ])',
       })
 
-      vim.keymap.set("n", "<F3>", ':language de_DE.UTF-8<CR>i<C-R>=strftime("%A, %d.%m.%Y %H:%M")<CR><ESC>:language en_US.UTF-8<CR>', { desc = "Insert current date and time" })
+      vim.keymap.set("n", "<F3>",
+         ':language de_DE.UTF-8<CR>i<C-R>=strftime("%A, %d.%m.%Y %H:%M")<CR><ESC>:language en_US.UTF-8<CR>',
+         { desc = "Insert current date and time" })
       vim.keymap.set("i", "<F3>", '<C-R>=strftime("%d.%m.%Y %H:%M")<CR>', { desc = "Insert current date and time" })
    end
 }
