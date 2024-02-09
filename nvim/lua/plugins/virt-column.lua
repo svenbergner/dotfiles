@@ -2,6 +2,6 @@
 return {
    "lukas-reineke/virt-column.nvim",
    opts = {
-      virtcolumn = "120"
+      virtcolumn = "80,120"
    }
 }
