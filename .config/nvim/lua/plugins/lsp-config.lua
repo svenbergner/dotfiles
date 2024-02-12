@@ -77,17 +77,17 @@ return {
          cmake = {},
          dockerls = {},
          marksman = {},
-         azure_pipelines_ls = {
-            settings = {
-               yaml = {
-                  schemas = {
-                     ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
-                        "*.y*l",
-                     }
-                  }
-               }
-            }
-         },
+         -- azure_pipelines_ls = {
+         --    settings = {
+         --       yaml = {
+         --          schemas = {
+         --             ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
+         --                "*.y*l",
+         --             }
+         --          }
+         --       }
+         --    }
+         -- },
       }
 
       require('neodev').setup()
