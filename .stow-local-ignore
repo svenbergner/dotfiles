@@ -1,2 +1,10 @@
+\.git
+\.gitignore
+
+scripts
 fonts
+
+^/README.*
+^/LICENSE.*
+^/COPYING
 
