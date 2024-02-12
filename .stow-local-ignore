@@ -2,7 +2,6 @@
 \.gitignore
 
 scripts
-fonts
 
 ^/README.*
 ^/LICENSE.*
