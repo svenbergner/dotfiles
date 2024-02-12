@@ -1,10 +1,3 @@
 " PLUGINS 
 
-'kshenoy/vim-signature' -- Marks
-
-
-'nelstrom/vim-visual-star-search'
-'pedrohdz/vim-yaml-folds'
-'preservim/vim-lexical'
-'preservim/vim-pencil'
 
