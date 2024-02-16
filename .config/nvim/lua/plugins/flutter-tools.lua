@@ -28,7 +28,7 @@ return {
          vim.keymap.set('n', keys, func, { desc = desc })
       end
       nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-      nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+      -- nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
       nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
       nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
       nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
