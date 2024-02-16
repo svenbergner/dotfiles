@@ -72,7 +72,7 @@ return {
          group = vimwikigroup,
          pattern = "*/diary/[0-9]*.md",
          command =
-         'call append(0,[ "# " . strftime("%d.%m.%Y"), "", "## Tagebuch", "", "","","## Die 3 schönsten Dinge des Tages","  1. ", "  2. ", "  3.","", "## Erkenntnis des Tages", "" ])',
+         'call append(0,[ "# " . strftime("%d.%m.%Y"), "", "## Tagebuch", "", "","","## Die 3 schönsten Dinge des Tages","  1. ", "  2. ", "  3. ","", "## Erkenntnis des Tages", "" ])',
       })
 
       vim.keymap.set("n", "<F3>",
