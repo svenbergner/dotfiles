@@ -1,3 +1,4 @@
+-- Shows a preview of the code action before applying it
 return {
    "aznhe21/actions-preview.nvim",
    config = function()
