@@ -1,5 +1,6 @@
 return {
    "vimwiki/vimwiki",
+   event = 'VeryLazy',
    dependencies = {
       'mattn/calendar-vim',
    },

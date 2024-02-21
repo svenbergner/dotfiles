@@ -2,6 +2,7 @@
 -- Search git history by commit message, content and author in Neovim
 return {
    'aaronhallaert/advanced-git-search.nvim',
+   event = 'VeryLazy',
    config = function()
       require('telescope').setup {
          extensions = {
