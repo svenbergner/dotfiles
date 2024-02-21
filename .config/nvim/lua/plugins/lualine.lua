@@ -1,3 +1,5 @@
+-- Neovim status line configuration
+
 local getWords = function()
    if vim.bo.filetype == "text" or vim.bo.filetype == "markdown" or vim.bo.filetype == "vimwiki" then
       if vim.fn.wordcount().visual_words == 1 then
