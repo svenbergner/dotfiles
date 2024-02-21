@@ -131,6 +131,8 @@ alias la='ls -laa'
 
 alias bat='bat --theme gruvbox-dark'
 
+alias fman='compgen -c | fzf | xargs man'
+
 if [ -e /home/bergner/.nix-profile/etc/profile.d/nix.sh ]; then 
     . /home/bergner/.nix-profile/etc/profile.d/nix.sh; 
 fi # added by Nix installer
@@ -153,6 +155,11 @@ function nvims() {
 }
 
 bindkey -s ^a "nvims\n"
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^X^e' edit-command-line
+# bindkey -M vicmd v edit-command-line
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
