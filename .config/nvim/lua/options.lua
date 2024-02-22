@@ -26,9 +26,9 @@ vim.opt.virtualedit = "block"
 
 -- tab
 vim.opt.expandtab = true
-vim.opt.tabstop = 3
-vim.opt.softtabstop = 3
-vim.opt.shiftwidth = 3
+-- vim.opt.tabstop = 3
+-- vim.opt.softtabstop = 3
+-- vim.opt.shiftwidth = 3
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
@@ -82,7 +82,7 @@ vim.opt.showcmd = true
 vim.opt.showmode = true -- change to false after
 vim.opt.showmatch = true
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 800
 vim.opt.ttimeoutlen = 100
 
 -- show signs on the left
