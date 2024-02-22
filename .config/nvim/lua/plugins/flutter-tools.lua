@@ -1,3 +1,4 @@
+-- Plugin which adds some tools for developing with flutter
 return {
    "akinsho/flutter-tools.nvim",
    event = 'VeryLazy',

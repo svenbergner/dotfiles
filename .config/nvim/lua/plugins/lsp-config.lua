@@ -1,3 +1,4 @@
+-- All LSP configurations go here
 return {
    'neovim/nvim-lspconfig',
    dependencies = {
