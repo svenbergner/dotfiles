@@ -13,6 +13,10 @@ vim.g.backspace = "indent,eol,start"
 -- use jk as alternative for ESC key to go back to normal mode
 vim.keymap.set("i", "jk", "<ESC>", { desc = "ESC back to normal mode" })
 
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
 -- Switch Buffers
 vim.keymap.set("n", "<PageUp>", ":bp<CR>", { silent = true, desc = "Goto next buffer" })
 vim.keymap.set("n", "<PageDown>", ":bn<CR>", { silent = true, desc = "Goto previous buffer" })
@@ -61,3 +65,9 @@ vim.keymap.set("n", "<leader>Q", ":enew<bar>bd #<CR>", { silent = true, desc = "
 -- Insert empty lines without switch to insert mode
 vim.keymap.set("n", "<return>", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', { silent = true, desc = "Insert empty line below current line without switch to insert mode" })
 vim.keymap.set("n", "<leader><return>", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', { silent = true, desc = "Insert empty line above current line without switch to insert mode" })
+
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <c-\><c-n>, which
+-- is not what someone will guess without a bit more experience.
+vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Escape Escape exits terminal mode' })
+
