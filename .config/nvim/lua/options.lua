@@ -5,6 +5,9 @@ vim.opt.compatible = false
 
 vim.opt.termguicolors = true
 
+-- Enable mouse mode
+vim.opt.mouse = 'a'
+
 vim.opt.guicursor = {
 	"n-v-c:block", -- Normal, visual, command-line: block cursor
 	"i-ci-ve:ver25", -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
@@ -53,9 +56,9 @@ vim.opt.cursorline = true
 -- Turn syntax highlighting on.
 vim.opt.syntax = "on"
 
--- Show line endings
+-- Show tab stops, trailing whitespace and line endings
 vim.opt.list = true
-vim.opt.listchars = { tab = "> ", trail = "-", eol = "↵" }
+vim.opt.listchars = { tab = '> ', trail = '.', eol = '↵' }
 
 vim.g.noerrorbells = true
 vim.g.nohlsearch = true
@@ -67,6 +70,9 @@ vim.opt.smartcase = true -- Override 'ignorecase' option if search pattern conta
 vim.opt.hlsearch = true  -- Highlight search matches
 vim.opt.incsearch = true
 
+-- Clear highlighting on pressing Escape
+vim.keymap.set('n', '<Esc>', '<esc>:nohlsearch<CR>', { silent = true })
+
 vim.opt.history = 1000
 
 -- status-line
@@ -75,11 +81,12 @@ vim.opt.cmdheight = 2
 vim.opt.showcmd = true
 vim.opt.showmode = true -- change to false after
 vim.opt.showmatch = true
-vim.opt.timeoutlen = 1000
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 vim.opt.ttimeoutlen = 100
 
 -- show signs on the left
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = 'yes'
 
 -- Wild menu
 vim.opt.wildmenu = true
