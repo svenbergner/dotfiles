@@ -34,10 +34,9 @@ return {
       vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
          { desc = "Open harpoon window" })
 
-      -- vim.keymap.set("n", "<C-E>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
       for i = 1, 6, 1 do
-         vim.keymap.set("n", "<leader>" .. i, function() harpoon:list():select(i) end)
+         vim.keymap.set("n", "<leader>" .. i, function() harpoon:list():select(i) end,
+            { desc = 'Harpoon select file ' .. i })
       end
 
       -- Toggle previous & next buffers stored within Harpoon list
