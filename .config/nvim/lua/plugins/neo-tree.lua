@@ -1,3 +1,4 @@
+-- Plugin which adds a neat filetree
 return {
    "nvim-neo-tree/neo-tree.nvim",
    branch = "v3.x",

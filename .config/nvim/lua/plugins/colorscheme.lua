@@ -1,3 +1,4 @@
+-- Current used colorscheme is gruvbox
 vim.o.background = "dark"
 
 return {

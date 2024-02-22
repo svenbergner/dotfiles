@@ -1,3 +1,4 @@
+-- Treesitter configuration
 return {
    "nvim-treesitter/nvim-treesitter",
    build = ":TSUpdate",
@@ -34,7 +35,6 @@ return {
                scope_incremental = "sc",
                node_decremental = "<bs>",
             },
-
          },
          sync_install = false,
          highlight = { enable = true },
