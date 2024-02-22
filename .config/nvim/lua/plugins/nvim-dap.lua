@@ -1,3 +1,4 @@
+-- Debugger configuration
 return {
    "mfussenegger/nvim-dap",
    event = 'VeryLazy',

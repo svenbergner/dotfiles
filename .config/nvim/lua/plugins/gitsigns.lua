@@ -1,3 +1,4 @@
+-- Adds custom signs for current git status
 return {
    "lewis6991/gitsigns.nvim",
    event = 'VeryLazy',
