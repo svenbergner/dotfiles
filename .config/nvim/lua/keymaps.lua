@@ -42,12 +42,17 @@ vim.keymap.set("n", "te", ":tabedit", { desc = "Open new tab" })
 vim.keymap.set("n", "<tab>", ":tabnext<Return>", { silent = true, desc = "Goto next tab" })
 vim.keymap.set("n", "<s-tab>", ":tabprev<Return>", { silent = true, desc = "Goto previous tab" })
 
+-- 
 vim.keymap.set("v", "p", '"_dP', { desc = "" })
 vim.keymap.set("n", "Y", "y$", { desc = "" })
 
 -- Move current line down and up
-vim.keymap.set("n", "<C-Down>", "ddp", { desc = "Move current line up" })
-vim.keymap.set("n", "<C-Up>", "ddkP", { desc = "Move current line down" })
+vim.keymap.set("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+vim.keymap.set("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+vim.keymap.set("i", "<C-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+vim.keymap.set("i", "<C-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+vim.keymap.set("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+vim.keymap.set("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Save and source current file
 vim.keymap.set("n", "<leader><leader>x", ":w<CR>:source %<CR>",
@@ -57,17 +62,37 @@ vim.keymap.set("n", "<leader><leader>x", ":w<CR>:source %<CR>",
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current buffer" })
 
 -- Toggle folds
-vim.keymap.set("n", "zz", "za", { silent = true, desc = "Toggle current fold" } )
+vim.keymap.set("n", "zz", "za", { silent = true, desc = "Toggle current fold" })
 
 -- Close current buffer without closing the window
-vim.keymap.set("n", "<leader>Q", ":enew<bar>bd #<CR>", { silent = true, desc = "Close current buffer but leave window open" } )
+vim.keymap.set("n", "<leader>Q", ":enew<bar>bd #<CR>",
+   { silent = true, desc = "Close current buffer but leave window open" })
 
 -- Insert empty lines without switch to insert mode
-vim.keymap.set("n", "<return>", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', { silent = true, desc = "Insert empty line below current line without switch to insert mode" })
-vim.keymap.set("n", "<leader><return>", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', { silent = true, desc = "Insert empty line above current line without switch to insert mode" })
+vim.keymap.set("n", "<return>", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>',
+   { silent = true, desc = "Insert empty line below current line without switch to insert mode" })
+vim.keymap.set("n", "<leader><return>", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>',
+   { silent = true, desc = "Insert empty line above current line without switch to insert mode" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <c-\><c-n>, which
 -- is not what someone will guess without a bit more experience.
 vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Escape Escape exits terminal mode' })
 
+-- use `+` and `-` to increment and decrement
+vim.keymap.set('n', '+', '<C-a>')
+vim.keymap.set('n', '-', '<C-x>')
+vim.keymap.set('v', '+', 'g<C-a>gv')
+vim.keymap.set('v', '-', 'g<C-x>gv')
+
+-- `U` to undo
+vim.keymap.set('n', 'U', '<C-R>')
+
+-- Use `Q` to play the macro recorded in `@q`
+vim.keymap.set('n', 'Q', '@q')
+
+-- Better indenting
+vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('v', '>', '>gv')
+vim.keymap.set('n', '>', '>>_')
+vim.keymap.set('n', '<', '<<_')
