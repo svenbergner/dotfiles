@@ -1,3 +1,4 @@
+-- Shows an outline view for the current buffer
 return {
   "hedyhli/outline.nvim",
   lazy = true,
