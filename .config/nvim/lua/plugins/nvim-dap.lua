@@ -26,6 +26,7 @@ return {
             args = { "--port", "${port}" },
          },
       }
+
       dap.configurations.cpp = {
          {
             name = "Launch",
@@ -44,11 +45,13 @@ return {
             end,
          },
       }
+
       dap.adapters.dart = {
          type = "executable",
          command = "dart",
          args = { "debug_adapter" }
       }
+
       dap.configurations.dart = {
          {
             type = "dart",
