@@ -1,5 +1,5 @@
 -- Telescope extension to search for a bookmark
--- and open it with the system defauult browser
+-- and open it with the system default browser
 return {
    'dhruvmanila/browser-bookmarks.nvim',
    version = '*',
