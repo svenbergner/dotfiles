@@ -1,6 +1,7 @@
 -- All LSP configurations go here
 return {
    'neovim/nvim-lspconfig',
+   lazy = true,
    dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
@@ -64,8 +65,7 @@ return {
 
       local servers = {
          clangd = {},
-         -- dartls will be installed and configured 
-         -- by flutter-tools.lua
+         -- dartls will be installed and configured by flutter-tools.lua
          -- dartls = {},
          lua_ls = {
             Lua = {
@@ -78,17 +78,13 @@ return {
          cmake = {},
          dockerls = {},
          marksman = {},
-         -- azure_pipelines_ls = {
-         --    settings = {
-         --       yaml = {
-         --          schemas = {
-         --             ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
-         --                "*.y*l",
-         --             }
-         --          }
-         --       }
-         --    }
-         -- },
+         azure_pipelines_ls = {
+            settings = {
+               yaml = {
+                  schemas = { ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = { "*.y*l", } }
+               }
+            }
+         },
       }
 
       require('neodev').setup()
