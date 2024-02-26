@@ -13,3 +13,13 @@ colorscheme
 cmdline
 popupmenu
 Treesitter
+localleader
+unicode
+filetree
+config
+args
+toolArgs
+colorcolumn
+tabstop
+shiftwidth
+filesize
