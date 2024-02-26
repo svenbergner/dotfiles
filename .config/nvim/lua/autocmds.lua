@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
    end,
 })
 
--- Toogle reletive line numbers based on focus
+-- Toggle relative line numbers based on focus
 local numberToggleGroup = api.nvim_create_augroup("NumberToggle", { clear = true })
 api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
    command = [[if &nu && mode() != "i" | set rnu | endif]],
