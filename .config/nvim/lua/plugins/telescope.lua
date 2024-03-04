@@ -1,3 +1,4 @@
+-- Telescope - the swiss army knife for finding things
 return {
    {
       "nvim-telescope/telescope.nvim",
