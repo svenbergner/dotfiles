@@ -23,6 +23,13 @@ return {
          },
          widgets_guides = {
             enabled = true,
+         },
+         lsp = {
+            settings = {
+               lineLength = 120,
+               renameFilesWithClasses = "always",
+               documentation = "full",
+            }
          }
       }) -- use defaults
 
