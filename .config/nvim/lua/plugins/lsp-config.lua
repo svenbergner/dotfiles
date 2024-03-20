@@ -66,8 +66,6 @@ return {
 
       local servers = {
          clangd = {},
-         -- dartls will be installed and configured by flutter-tools.lua
-         -- dartls = {},
          lua_ls = {
             Lua = {
                workspace = { checkThirdParty = false },
@@ -79,13 +77,14 @@ return {
          cmake = {},
          dockerls = {},
          marksman = {},
-         azure_pipelines_ls = {
-            settings = {
-               yaml = {
-                  schemas = { ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = { "*.y*l", } }
-               }
-            }
-         },
+         yamlls = {},
+         -- azure_pipelines_ls = {
+         --    settings = {
+         --       yaml = {
+         --          schemas = { ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = { "*.y*l", } }
+         --       }
+         --    }
+         -- },
       }
 
       require('neodev').setup()
