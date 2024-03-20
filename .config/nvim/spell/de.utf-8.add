@@ -31,3 +31,6 @@ io
 yaml
 swiss
 Riverpod
+Codemagic
+workflowId
+Sonarqube
