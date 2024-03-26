@@ -88,8 +88,8 @@ return {
 
       require('neodev').setup()
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+      local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+      local capabilities = require('cmp_nvim_lsp').default_capabilities(default_capabilities)
 
       require('mason').setup()
       local mason_lspconfig = require ('mason-lspconfig')
