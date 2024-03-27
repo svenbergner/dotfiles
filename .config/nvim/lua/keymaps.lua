@@ -22,10 +22,10 @@ vim.keymap.set("n", "<PageUp>", ":bp<CR>", { silent = true, desc = "Goto next bu
 vim.keymap.set("n", "<PageDown>", ":bn<CR>", { silent = true, desc = "Goto previous buffer" })
 
 -- Move between splits with CTRL + hjkl
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to the left split" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to the down split" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to the upper split" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to the right split" })
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { silent = true, desc = "Move to the left split" })
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { silent = true, desc = "Move to the down split" })
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { silent = true, desc = "Move to the upper split" })
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { silent = true, desc = "Move to the right split" })
 
 -- Make adjusting split sizes a bit more friendly
 vim.keymap.set("n", "<C-S-Left>", ":vertical resize -1<CR>", { silent = true, desc = "Increase current window width" })
