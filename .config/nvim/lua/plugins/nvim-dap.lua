@@ -7,6 +7,7 @@ return {
       "rcarriga/nvim-dap-ui",
       "williamboman/mason.nvim",
       "leoluz/nvim-dap-go",
+      "svenbergner/telescope-debugee-selector",
    },
    config = function()
       local dap = require("dap")
@@ -87,7 +88,8 @@ return {
       }
 
       vim.api.nvim_create_user_command("SetDebuggee", function()
-         dap.configurations.cpp[1].program = vim.fn.input("Path to debugee: ", vim.fn.getcwd() .. "/", "file")
+         require('telescope').extensions.debugee_selector.show_debugee_candidates()
+         -- dap.configurations.cpp[1].program = vim.fn.input("Path to debugee: ", vim.fn.getcwd() .. "/", "file")
       end, { nargs = 0 })
       vim.api.nvim_create_user_command("ResetDebuggee", function()
          dap.configurations.cpp = {
