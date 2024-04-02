@@ -33,6 +33,7 @@ return {
       "cljoly/telescope-repo.nvim",
       'dawsers/telescope-floaterm.nvim',
       'LukasPietzschmann/telescope-tabs',
+      "svenbergner/telescope-debugee-selector",
       config = function()
          require("telescope").setup({
             extensions = {
@@ -56,6 +57,7 @@ return {
                   },
                },
                ['telescope-tabs'] = {},
+               ['debugee_selector'] = {},
             },
          })
          require("telescope").load_extension("ui-select")
@@ -70,6 +72,7 @@ return {
          require("telescope").load_extension("live_grep_args")
          require("telescope").load_extension("floaterm")
          require("telescope").load_extension("repo")
+         require("telescope").load_extension("debugee_selector")
       end,
    },
 }
