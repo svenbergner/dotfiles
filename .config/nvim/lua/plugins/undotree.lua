@@ -2,5 +2,6 @@
 -- between different undo branches.
 return {
    "mbbill/undotree",
-   opts = {}
+   config = function ()
+   end
 }
