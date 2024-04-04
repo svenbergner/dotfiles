@@ -8,9 +8,10 @@ return {
       { "<leader>nsh", function() require("noice").cmd("history") end,                                desc = "[N]oice [S]how [H]istory" },
       { "<leader>nsa", function() require("noice").cmd("all") end,                                    desc = "[N]oice [S]how [A]ll" },
       { "<leader>nda", function() require("noice").cmd("dismiss") end,                                desc = "[N]oice [D]ismiss [A]ll" },
-      { "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end,                 desc = "Redirect Cmdline",  mode = "c" },
-      { "<c-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  desc = "Scroll forward",    mode = { "i", "n", "s" },  silent = true, expr = true, },
-      { "<c-b>",       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, desc = "Scroll backward",   mode = { "i", "n", "s" },  silent = true, expr = true, },
+      { '<leader>sn',  function() require("telescope").extensions.notify.notify() end,                desc = '[S]earch [N]otificanions'  },
+      { "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end,                 desc = "Redirect Cmdline", mode = "c" },
+      { "<c-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  desc = "Scroll forward",   mode = { "i", "n", "s" },  silent = true, expr = true, },
+      { "<c-b>",       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, desc = "Scroll backward",  mode = { "i", "n", "s" },  silent = true, expr = true, },
    },
    config = function()
       require('noice').setup({
