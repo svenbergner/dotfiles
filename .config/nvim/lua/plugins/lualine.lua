@@ -17,7 +17,6 @@ end
 return {
    'nvim-lualine/lualine.nvim',
    config = function()
-      local gitblame = require('gitblame')
       require('lualine').setup({
          options = {
             icons_enabled = true,
@@ -39,9 +38,7 @@ return {
                { 'branch' },
                { 'diff' },
             },
-            lualine_c = {
-               { gitblame.get_current_blame_text, cond = gitblame.is_blame_text_available }
-            },
+            lualine_c = {},
             lualine_y = {
                { 'progress' },
                { getWords },
@@ -62,14 +59,6 @@ return {
    dependencies = {
       {
          "nvim-tree/nvim-web-devicons",
-         "f-person/git-blame.nvim",
-         config = function()
-            vim.g.gitblame_date_format = '%d.%m.%y %H:%M'
-            vim.g.gitblame_message_template = '<author>  <date>  <summary>'
-            vim.g.gitblame_message_when_not_committed = 'Not Committed Yet'
-            vim.g.gitblame_display_virtual_text = 0
-            vim.g.gitblame_ignored_filetypes = { 'log', 'dump' }
-         end,
       },
    },
 }
