@@ -7,8 +7,11 @@ return {
       "stevearc/dressing.nvim", -- optional for vim.ui.select
    },
    config = function()
+      local line = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
       require("flutter-tools").setup({
          fvm = true,
+         ui = { border = line },
+         outline = { auto_open = true },
          decorations = {
             statusline = {
                app_version = true,
@@ -19,18 +22,32 @@ return {
          debugger = {
             enabled = true,
             run_via_dap = true,
+            exception_breakpoints = {},
          },
          widgets_guides = {
             enabled = true,
+            debug = true,
+         },
+         dev_log = {
+            enabled = true,
+            open_cmd = "tabedit"
          },
          lsp = {
+            color = {
+               enabled = true,
+               background = true,
+               virtual_text = false,
+            },
             settings = {
+               showTodos = true,
                lineLength = 120,
                renameFilesWithClasses = "always",
                documentation = "full",
+               updateImportsOnRename = true,
+               completeFunctionCalls = true,
             }
          }
-      }) -- use defaults
+      })
 
       local nmap = function(keys, func, desc)
          vim.keymap.set('n', keys, func, { desc = desc })
