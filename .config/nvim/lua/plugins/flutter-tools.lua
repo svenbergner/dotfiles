@@ -11,7 +11,7 @@ return {
       require("flutter-tools").setup({
          fvm = true,
          ui = { border = line },
-         outline = { auto_open = true },
+         outline = { auto_open = false },
          decorations = {
             statusline = {
                app_version = true,
