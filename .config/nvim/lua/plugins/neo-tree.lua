@@ -1,4 +1,5 @@
 -- Plugin which adds a neat filetree
+
 return {
    "nvim-neo-tree/neo-tree.nvim",
    branch = "v3.x",
@@ -26,9 +27,13 @@ return {
    config = function()
       vim.keymap.set("n", "<leader><leader>n", ":Neotree filesystem reveal left<CR>:Neotree focus filesystem<CR>",
          { silent = true, desc = { "Show Neotree Filesystem" } })
-      vim.keymap.set("n", "<leader>tb", ":Neotree buffers reveal left<CR>:Neotree focus buffers<CR>",
+      vim.keymap.set("n", "<leader>nn", ":Neotree filesystem reveal left<CR>:Neotree focus filesystem<CR>",
+         { silent = true, desc = { "Show Neotree Filesystem" } })
+      vim.keymap.set("n", "<leader>nf", ":Neotree filesystem reveal left<CR>:Neotree focus filesystem<CR>",
+         { silent = true, desc = { "Show Neotree Filesystem" } })
+      vim.keymap.set("n", "<leader>nb", ":Neotree buffers reveal left<CR>:Neotree focus buffers<CR>",
          { silent = true, desc = { "Show Neotree Buffers" } })
-      vim.keymap.set("n", "<leader>tg", ":Neotree git_status reveal left<CR>:Neotree focus git_status<CR>",
+      vim.keymap.set("n", "<leader>ng", ":Neotree git_status reveal left<CR>:Neotree focus git_status<CR>",
          { silent = true, desc = { "Show Neotree Git Status" } })
 
       require("neo-tree").setup({
