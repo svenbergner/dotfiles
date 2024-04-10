@@ -6,6 +6,7 @@ vim.g.maplocalleader = " "
 vim.keymap.set("n", "x", '"_x', { desc = "Delete char under cursor without yank" })
 vim.keymap.set("n", "X", '"_X', { desc = "Delete char before cursor without yank" })
 vim.keymap.set("n", "<Del>", '"_x', { desc = "Delete char under cursor without yank" })
+vim.keymap.set("n", "<BS>", '"_X', { desc = "Delete char before cursor without yank" })
 
 -- Backspace deletes indent, end of line and
 vim.g.backspace = "indent,eol,start"
@@ -78,9 +79,6 @@ vim.keymap.set("n", "<leader><return>", ':<C-u>call append(line(".")-1, repeat([
 -- for people to discover. Otherwise, you normally need to press <c-\><c-n>, which
 -- is not what someone will guess without a bit more experience.
 vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Escape Escape exits terminal mode' })
-
--- `U` to undo
-vim.keymap.set('n', 'U', '<C-R>')
 
 -- Use `Q` to play the macro recorded in `@q`
 vim.keymap.set('n', 'Q', '@q')
