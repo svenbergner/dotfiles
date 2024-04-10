@@ -79,12 +79,6 @@ vim.keymap.set("n", "<leader><return>", ':<C-u>call append(line(".")-1, repeat([
 -- is not what someone will guess without a bit more experience.
 vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Escape Escape exits terminal mode' })
 
--- use `+` and `-` to increment and decrement
-vim.keymap.set('n', '+', '<C-a>')
-vim.keymap.set('n', '-', '<C-x>')
-vim.keymap.set('v', '+', 'g<C-a>gv')
-vim.keymap.set('v', '-', 'g<C-x>gv')
-
 -- `U` to undo
 vim.keymap.set('n', 'U', '<C-R>')
 
