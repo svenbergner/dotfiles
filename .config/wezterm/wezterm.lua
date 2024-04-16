@@ -35,10 +35,10 @@ config.font = wezterm.font_with_fallback({
   { family = "JetBrainsMono Nerd Font Mono", scale = 1.2, weight = "Medium", },
 })
 config.window_background_opacity = 0.5
-config.text_background_opacity = 0.9
-config.window_decorations = "RESIZE"
+-- config.text_background_opacity = 0.9
+config.window_decorations = "RESIZE|TITLE"
 config.window_close_confirmation = "AlwaysPrompt"
-config.scrollback_lines = 3000
+config.scrollback_lines = 10000
 config.default_workspace = "Development"
 
 -- Dim inactive panes
@@ -139,14 +139,15 @@ require('utils/tabs_format')
 -- Tab bar
 -- I don't like the look of "fancy" tab bar
 config.use_fancy_tab_bar = false
+config.tab_max_width = 20
 config.status_update_interval = 1000
 config.tab_bar_at_bottom = false
 config.tab_and_split_indices_are_zero_based = false
 wezterm.on("update-status", function(window, pane)
   -- Workspace name
   local stat = window:active_workspace()
-  local stat_color_bg = "#000"
-  local stat_color_fg = "#000"
+  local stat_color_bg = "#3c3836"
+  local stat_color_fg = "#3c3836"
   local stat_icon = wezterm.nerdfonts.oct_table
   -- It's a little silly to have workspace name all the time
   -- Utilize this to display LDR or current key table name
