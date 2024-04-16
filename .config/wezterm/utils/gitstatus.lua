@@ -30,15 +30,24 @@ local splitGitmuxString = function(gitmux)
   local remainingGitmux = gitmux
   local gitmuxElements = {}
   local endOfElement = 1
-  while not endOfElement == nil do
-    local endOfElement = remainingGitmux:find('#', endOfElement)
+  while endOfElement ~= nil do
+    endOfElement = remainingGitmux:find('#', endOfElement+1)
     if( endOfElement == nil ) then break end
 
-    local gitmuxElement = remainingGitmux:sub(1,endOfElement)
+    local gitmuxElement = remainingGitmux:sub(1,endOfElement-1)
     remainingGitmux = remainingGitmux:gsub(gitmuxElement, '')
-    table:insert(gitmuxElements, gitmuxElement)
+    table.insert(gitmuxElements, gitmuxElement)
   end
   return gitmuxElements
+end
+
+local parseElement = function (element)
+  local fg = "#FF00BB"
+  local bg = "#000"
+  local attr = "attr"-- element.gmatch("bold")
+  local text = "text"
+
+  return fg, bg, attr, text
 end
 
 M.get_gitstatus = function(cwd)
@@ -53,13 +62,15 @@ M.get_gitstatus = function(cwd)
 
     local gitstatus = getFormattedElement('#fb4934', '#000', '') ..
                       getFormattedElement('#000', '#fb4934', wezterm.nerdfonts.custom_folder_git .. ' ')
-    gitstatus = gitstatus .. getFormattedElement('', '', 'E-S:')
-    -- gitstatus = gitstatus .. getFormattedElement('#fff', '', gitmux)
-    -- local gitmuxElement = gitmux:match('#%[.*%][^#]*')
-    -- gitstatus = gitstatus .. getFormattedElement('', '', gitmuxElement)
-    -- gitstatus = gitstatus .. getFormattedElement('', '', gitmuxElements)
-    gitstatus = gitstatus .. getFormattedElement('', '', ' E-E')
-    gitstatus = gitstatus .. getFormattedElement('', '', ' ')
+
+    for _, element in ipairs(gitmuxElements) do
+      local fg, bg, attr, text = parseElement(element)
+      -- gitstatus = gitstatus .. fg .. bg .. attr .. text
+      gitstatus = gitstatus .. getFormattedElement(fg, bg, text)
+    end
+    -- -- local gitmuxElement = gitmux:match('#%[.*%][^#]*')
+    -- -- gitstatus = gitstatus .. getFormattedElement('', '', gitmuxElement)
+    -- -- gitstatus = gitstatus .. getFormattedElement('', '', gitmuxElements)
     return gitstatus
   else
     return stderr
