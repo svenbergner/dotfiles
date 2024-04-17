@@ -83,23 +83,11 @@ M.get_gitstatus = function(cwd)
       local fg, bg, attr, text = parseElement(element)
       gitstatus = gitstatus .. getFormattedElement(fg, bg, attr, text)
     end
-    return gitstatus
+    return gitstatus .. " "
   else
     return stderr
   end
 end
 
 return M
--- #[fg=blue,bold,bg=default]string
---
--- local gitstatus = wezterm.format({
---  { Foreground = { Color = '#fb4934' }, },
---   { Text = "" },
---   { Background = { Color = '#fb4934' }, },
---   { Foreground = { AnsiColor = 'Black' }, },
---   { Text = wezterm.nerdfonts.custom_folder_git .. " " },
---   "ResetAttributes",
---   { Text = " " .. gitmux },
---   "ResetAttributes",
---   { Text = " " },
--- })
+
