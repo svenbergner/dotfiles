@@ -18,34 +18,50 @@ local getBackgroundColorElement = function(color)
   end
 end
 
-local getFormattedElement = function(fg, bg, text)
-  return wezterm.format({
-    getForegroundColorElement(fg),
-    getBackgroundColorElement(bg),
-    { Text = text },
-  })
+local getFormattedElement = function(fg, bg, attr, text)
+  if attr then
+    return wezterm.format({
+      getForegroundColorElement(fg),
+      getBackgroundColorElement(bg),
+      { Attribute = { Intensity = "Bold" } },
+      { Text = text },
+    })
+  else
+    return wezterm.format({
+      getForegroundColorElement(fg),
+      getBackgroundColorElement(bg),
+      { Attribute = { Intensity = "Normal" } },
+      { Text = text },
+    })
+  end
 end
 
 local splitGitmuxString = function(gitmux)
-  local remainingGitmux = gitmux
+  local gitmux_len = #gitmux
   local gitmuxElements = {}
-  local endOfElement = 1
-  while endOfElement ~= nil do
-    endOfElement = remainingGitmux:find('#', endOfElement+1)
-    if( endOfElement == nil ) then break end
+  local startOfElement = 1
+  local endOfElement = 2
+  while startOfElement < gitmux_len do
+    endOfElement = gitmux:find('#', startOfElement + 1)
+    if endOfElement == nil then
+      endOfElement = #gitmux
+    else
+      endOfElement = endOfElement - 1
+    end
 
-    local gitmuxElement = remainingGitmux:sub(1,endOfElement-1)
-    remainingGitmux = remainingGitmux:gsub(gitmuxElement, '')
+    local gitmuxElement = gitmux:sub(startOfElement, endOfElement)
     table.insert(gitmuxElements, gitmuxElement)
+    startOfElement = endOfElement + 1
   end
+
   return gitmuxElements
 end
 
-local parseElement = function (element)
-  local fg = "#FF00BB"
-  local bg = "#000"
-  local attr = "attr"-- element.gmatch("bold")
-  local text = "text"
+local parseElement = function(element)
+  local fg = element:match("fg=(%w+)")
+  local bg = element:match("bg=(%w+)")
+  local attr = string.find(element, "bold", 1, true)
+  local text = element:gsub("#%[.*%]", "")
 
   return fg, bg, attr, text
 end
@@ -60,17 +76,13 @@ M.get_gitstatus = function(cwd)
     gitmux = gitmux:gsub('#%[none%]', '')
     local gitmuxElements = splitGitmuxString(gitmux)
 
-    local gitstatus = getFormattedElement('#fb4934', '#000', '') ..
-                      getFormattedElement('#000', '#fb4934', wezterm.nerdfonts.custom_folder_git .. ' ')
+    local gitstatus = getFormattedElement('#fb4934', '#000', false, '') ..
+        getFormattedElement('#000', '#fb4934', false, wezterm.nerdfonts.custom_folder_git .. ' ')
 
     for _, element in ipairs(gitmuxElements) do
       local fg, bg, attr, text = parseElement(element)
-      -- gitstatus = gitstatus .. fg .. bg .. attr .. text
-      gitstatus = gitstatus .. getFormattedElement(fg, bg, text)
+      gitstatus = gitstatus .. getFormattedElement(fg, bg, attr, text)
     end
-    -- -- local gitmuxElement = gitmux:match('#%[.*%][^#]*')
-    -- -- gitstatus = gitstatus .. getFormattedElement('', '', gitmuxElement)
-    -- -- gitstatus = gitstatus .. getFormattedElement('', '', gitmuxElements)
     return gitstatus
   else
     return stderr
