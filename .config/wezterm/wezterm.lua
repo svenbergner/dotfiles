@@ -170,8 +170,8 @@ wezterm.on("update-status", function(window, pane)
   -- Current working directory
   local cwd = pane:get_current_working_dir()
   if cwd then
-    -- cwd = basename(cwd.file_path)
-    cwd = cwd.file_path
+    cwd = basename(cwd.file_path)
+    -- cwd = cwd.file_path
   else
     cwd = ""
   end
