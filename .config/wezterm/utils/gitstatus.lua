@@ -78,6 +78,7 @@ M.get_gitstatus = function(cwd)
 
     local gitstatus = getFormattedElement('#fb4934', '#000', false, '') ..
         getFormattedElement('#000', '#fb4934', false, wezterm.nerdfonts.custom_folder_git .. ' ')
+    gitstatus = gitstatus .. " "
 
     for _, element in ipairs(gitmuxElements) do
       local fg, bg, attr, text = parseElement(element)
