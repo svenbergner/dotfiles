@@ -43,6 +43,17 @@ wezterm.on('format-tab-title',
     -- and that we have room for the edges.
     title = wezterm.truncate_right(title, max_width - 2)
 
+    local title_intensity = "Normal"
+    local p = tab.active_pane
+    if p.is_zoomed then
+      title_intensity = "Bold"
+      edge_foreground = "#fe8019"
+    end
+
+    local tab_index_intensity = "Normal"
+    if tab.is_active then
+      tab_index_intensity = "Bold"
+    end
     return {
       { Background = { Color = edge_background } },
       { Text = " " },
@@ -50,12 +61,14 @@ wezterm.on('format-tab-title',
       { Text = SOLID_LEFT_ARROW },
       { Background = { Color = background } },
       { Foreground = { Color = foreground } },
-      { Attribute = { Intensity = "Bold" } },
+      { Attribute = { Intensity = tab_index_intensity } },
       { Text = tab.tab_index + 1 .. " " },
       { Attribute = { Intensity = "Normal" } },
       { Background = { Color = edge_background } },
       { Foreground = { Color = edge_foreground } },
+      { Attribute = { Intensity = title_intensity } },
       { Text = " " .. title },
+      { Attribute = { Intensity = "Normal" } },
     }
   end
 )
