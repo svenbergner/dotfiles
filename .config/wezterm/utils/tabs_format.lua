@@ -44,10 +44,12 @@ wezterm.on('format-tab-title',
     title = wezterm.truncate_right(title, max_width - 2)
 
     local title_intensity = "Normal"
+    local zoom_indicator = ""
     local p = tab.active_pane
     if p.is_zoomed then
-      title_intensity = "Bold"
-      edge_foreground = "#fe8019"
+      -- title_intensity = "Bold"
+      -- edge_foreground = "#fe8019"
+      zoom_indicator = " " .. wezterm.nerdfonts.oct_zoom_in
     end
 
     local tab_index_intensity = "Normal"
@@ -62,7 +64,7 @@ wezterm.on('format-tab-title',
       { Background = { Color = background } },
       { Foreground = { Color = foreground } },
       { Attribute = { Intensity = tab_index_intensity } },
-      { Text = tab.tab_index + 1 .. " " },
+      { Text = tab.tab_index + 1 .. zoom_indicator .. " " },
       { Attribute = { Intensity = "Normal" } },
       { Background = { Color = edge_background } },
       { Foreground = { Color = edge_foreground } },
