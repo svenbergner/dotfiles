@@ -43,9 +43,11 @@ vim.keymap.set("n", "te", ":tabedit", { desc = "Open new tab" })
 vim.keymap.set("n", "<tab>", ":tabnext<Return>", { silent = true, desc = "Goto next tab" })
 vim.keymap.set("n", "<s-tab>", ":tabprev<Return>", { silent = true, desc = "Goto previous tab" })
 
--- 
-vim.keymap.set("v", "p", '"_dP', { desc = "" })
-vim.keymap.set("n", "Y", "y$", { desc = "" })
+-- Replace visual selection by pasting without changing paste buffer
+vim.keymap.set("v", "p", '"_dP', { desc = "Replace visual selection" })
+
+-- Yank from cursor till end of line
+vim.keymap.set("n", "Y", "y$", { desc = "Yank from cursor till end of line" })
 
 -- Move current line down and up
 vim.keymap.set("n", "<M-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
