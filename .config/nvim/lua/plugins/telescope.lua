@@ -14,15 +14,33 @@ return {
          vim.keymap.set('n', '<leader>fc',
             '<cmd>lua require("telescope.builtin").live_grep({ glob_pattern = "!{spec,test}"})<CR>',
             { desc = "Live Grep Code" })
-         vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find Buffers" })
+
+         vim.keymap.set('n', '<leader>fb', function()
+            local function mapping(prompt_bufnr, map)
+               local delete_buf = function()
+                  local selection = require('telescope.actions.state').get_selected_entry()
+                  require('telescope.actions').close(prompt_bufnr)
+                  vim.api.nvim_buf_delete(selection.bufnr, { force = true })
+                  require('telescope.builtin').buffers { attach_mappings = mapping }
+               end
+               map('i', '<C-x>', delete_buf)
+               return true
+            end
+            builtin.buffers { attach_mappings = mapping }
+         end, { desc = "[f]ind [b]uffers" })
+
          vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find Help Tags" })
          vim.keymap.set('n', '<F12>', builtin.help_tags, { desc = "Find Help Tags" })
          vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "Find Symbols" })
          vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = "Find Old Files" })
          vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = "Find Word under Cursor" })
          vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = "Search Git Commits" })
-         vim.keymap.set('n', '<leader>gb', builtin.git_bcommits, { desc = "Search Git Commits for Buffer" })
+         vim.keymap.set('n', '<leader>gC', builtin.git_bcommits, { desc = "Search Git Commits for Buffer" })
+         vim.keymap.set('n', '<leader>Gb', builtin.git_branches, { desc = '[G]it [b]ranches' })
          vim.keymap.set('n', '<leader>sj', builtin.jumplist, { desc = "[S]how [J]umplist" })
+         vim.keymap.set('n', '<leader>df', require('telescope.builtin').filetypes, { desc = '[D]ocument [f]iletype' })
+
+         pcall(require('telescope').load_extension, 'fzf')
       end,
    },
    {
