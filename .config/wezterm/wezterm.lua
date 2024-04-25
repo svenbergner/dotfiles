@@ -8,6 +8,7 @@
 --- My Wezterm config file
 
 local wezterm = require("wezterm")
+local smart_splits = wezterm.plugin.require('https://github.com/mrjones2014/smart-splits.nvim')
 local act = wezterm.action
 
 local config = {}
@@ -28,14 +29,15 @@ config.colors = {
   visual_bell = '#202020'
 }
 
-config.background = require('utils/background').getBackground()
+-- config.background = require('utils/background').getBackground()
+-- config.window_background_opacity = 0.5
+config.window_background_opacity = 0.95
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.font = wezterm.font_with_fallback({
   { family = "JetBrainsMono Nerd Font Mono", scale = 1.2, weight = "Medium", },
 })
-config.window_background_opacity = 0.5
 -- config.text_background_opacity = 0.9
-config.window_decorations = "RESIZE|TITLE"
+config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 10000
 config.default_workspace = "Development"
@@ -47,6 +49,8 @@ config.inactive_pane_hsb = {
 }
 
 config.window_frame = {
+  border_top_color = '#3c3836',
+  border_top_height = '0.25cell',
   border_left_width = '0.5cell',
   border_right_width = '0.5cell',
 }
@@ -56,7 +60,11 @@ config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
   -- Send C-s when pressing C-s twice
   { key = "s",          mods = "LEADER|CTRL", action = act.SendKey { key = "s", mods = "CTRL" } },
-  -- TODO: How does this work??
+  -- Send C-l when pressing C-s C-l
+  { key = "l",          mods = "LEADER|CTRL", action = act.SendKey { key = "l", mods = "CTRL" } },
+  -- Send C-k when pressing C-s C-k
+  { key = "k",          mods = "LEADER|CTRL", action = act.SendKey { key = "k", mods = "CTRL" } },
+  -- TODO: How does CopyMode work??
   { key = "c",          mods = "LEADER",      action = act.ActivateCopyMode },
   -- Shows all available commands in a popup menu
   { key = "phys:Space", mods = "LEADER",      action = act.ActivateCommandPalette },
@@ -64,10 +72,6 @@ config.keys = {
   -- Pane keybindings
   { key = "s",          mods = "LEADER",      action = act.SplitVertical { domain = "CurrentPaneDomain" } },
   { key = "v",          mods = "LEADER",      action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
-  { key = "h",          mods = "CMD",      action = act.ActivatePaneDirection("Left") },
-  { key = "j",          mods = "CMD",      action = act.ActivatePaneDirection("Down") },
-  { key = "k",          mods = "CMD",      action = act.ActivatePaneDirection("Up") },
-  { key = "l",          mods = "CMD",      action = act.ActivatePaneDirection("Right") },
   { key = "q",          mods = "LEADER",      action = act.CloseCurrentPane { confirm = true } },
   { key = "z",          mods = "LEADER",      action = act.TogglePaneZoomState },
   { key = "o",          mods = "LEADER",      action = act.RotatePanes "Clockwise" },
@@ -241,8 +245,21 @@ config.window_padding = {
   right = '0.5cell',
   top = '0.5cell',
   bottom = '0cell',
-
 }
 --]]
+
+smart_splits.apply_to_config(config, {
+  -- the default config is here, if you'd like to use the default keys,
+  -- you can omit this configuration table parameter and just use
+  -- smart_splits.apply_to_config(config)
+
+  -- directional keys to use in order of: left, down, up, right
+  direction_keys = { 'h', 'j', 'k', 'l' },
+  -- modifier keys to combine with direction_keys
+  modifiers = {
+    move = 'CTRL', -- modifier to use for pane movement, e.g. CTRL+h to move left
+    resize = 'META', -- modifier to use for pane resize, e.g. META+h to resize to the left
+  },
+})
 
 return config
