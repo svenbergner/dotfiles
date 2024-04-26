@@ -1,3 +1,5 @@
+-- A completion engine plugin for neovim written in Lua. 
+-- Completion sources are installed from external repositories and "sourced".
 return {
    "hrsh7th/nvim-cmp",
    event = 'VeryLazy',

@@ -1,3 +1,4 @@
+-- A terminal in a floating window
 return {
    'voldikss/vim-floaterm',
    event = 'VeryLazy',
