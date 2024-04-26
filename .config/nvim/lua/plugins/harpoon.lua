@@ -1,3 +1,4 @@
+-- Getting you where you want with the fewest keystrokes.
 return {
    "ThePrimeagen/harpoon",
    event = 'VeryLazy',
