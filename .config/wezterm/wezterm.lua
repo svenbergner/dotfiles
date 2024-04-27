@@ -15,8 +15,11 @@ local config = {}
 -- Use config builder object if possible
 if wezterm.config_builder then config = wezterm.config_builder() end
 
--- Settings
+-- Setup default layout
+require("layouts.personal").setup_layout(wezterm)
+require("layouts.development").setup_layout(wezterm)
 
+-- Settings
 config.audible_bell = "Disabled"
 config.visual_bell = {
   fade_in_function = 'EaseIn',
@@ -236,7 +239,6 @@ wezterm.on("update-status", function(window, pane)
   }))
 end)
 
-require("layouts/development")
 
 --[[ Appearance setting for when I need to take pretty screenshots
 config.enable_tab_bar = false
