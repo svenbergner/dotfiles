@@ -3,6 +3,7 @@ local M = {}
 M.setup_layout = function(wezterm)
   local mux = wezterm.mux
   local act = wezterm.action
+
   wezterm.on('gui-startup', function()
     local home_dir = wezterm.home_dir
     local first_tab, _, window = mux.spawn_window {
