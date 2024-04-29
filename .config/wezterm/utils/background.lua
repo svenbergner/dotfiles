@@ -19,15 +19,17 @@ M.getEmptyBackground = function()
 end
 
 M.toggleBackground = function(config)
-  if config.window_background_opacity == nil then
-    config.window_background_opacity = 0.95
+  if wezterm.GLOBAL.fancy_background == nil then
+    wezterm.GLOBAL.fancy_background = true
   end
-  if config.window_background_opacity == 0.95 then
+  if wezterm.GLOBAL.fancy_background then
     config.background = M.getFancyBackground()
     config.window_background_opacity = 0.5
+    wezterm.GLOBAL.fancy_background = false
   else
     config.background = M.getEmptyBackground()
     config.window_background_opacity = 0.95
+    wezterm.GLOBAL.fancy_background = true
   end
 end
 
