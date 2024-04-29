@@ -27,6 +27,7 @@ M.add_to_config = function(config, wezterm, act)
       action = wezterm.action_callback(
         function()
           require('utils.background').toggleBackground(config)
+          wezterm.reload_configuration()
         end)
     },
     -- We can make separate keybindings for resizing panes
