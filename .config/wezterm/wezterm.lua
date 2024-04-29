@@ -34,6 +34,7 @@ config.colors = {
   visual_bell = '#202020'
 }
 
+config.window_background_opacity = 0.95
 require('utils.background').toggleBackground(config)
 
 config.color_scheme = "Gruvbox Dark (Gogh)"
