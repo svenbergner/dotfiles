@@ -1,11 +1,12 @@
 local M = {}
-Fancy_background = false
+local wezterm = require("wezterm")
 
-M.getBackground = function()
+M.getFancyBackground = function()
+  local home_dir = wezterm.home_dir
   return {
     {
       source = {
-        File = "/Users/svenbergner/.config/wezterm/background/Matrix-Wallpaper.gif"
+        File = home_dir .. "/.config/wezterm/background/Matrix-Wallpaper.gif"
       },
       width = '100%',
       hsb = { brightness = .3 },
@@ -13,15 +14,18 @@ M.getBackground = function()
   }
 end
 
+M.getEmptyBackground = function()
+  return {}
+end
+
 M.toggleBackground = function(config)
-  if not Fancy_background then
-    config.background = M.getBackground()
+  if config.window_background_opacity == 0.95 then
+    config.background = M.getFancyBackground()
     config.window_background_opacity = 0.5
   else
-    config.background = {}
+    config.background = M.getEmptyBackground()
     config.window_background_opacity = 0.95
   end
-    Fancy_background = not Fancy_background
 end
 
 return M
