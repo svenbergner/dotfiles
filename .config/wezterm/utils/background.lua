@@ -19,6 +19,9 @@ M.getEmptyBackground = function()
 end
 
 M.toggleBackground = function(config)
+  if config.window_background_opacity == nil then
+    config.window_background_opacity = 0.95
+  end
   if config.window_background_opacity == 0.95 then
     config.background = M.getFancyBackground()
     config.window_background_opacity = 0.5
