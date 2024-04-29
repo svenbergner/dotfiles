@@ -9,6 +9,7 @@ return {
          local builtin = require("telescope.builtin")
          vim.keymap.set("n", "<leader>?", builtin.keymaps, { desc = "Show all keymaps" })
          vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find Files" })
+         vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = "Resume last search" })
          vim.keymap.set('n', '<leader>fg', "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
             { desc = "Live Grep" })
          vim.keymap.set('n', '<leader>fc',
