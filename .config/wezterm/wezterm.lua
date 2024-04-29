@@ -118,7 +118,7 @@ wezterm.on("update-status", function(window, pane)
   -- Time
   local time = wezterm.strftime("%d.%m.%y %H:%M")
 
-  local gitstatus = require('utils/gitstatus').get_gitstatus(pane:get_current_working_dir().file_path)
+  local gitstatus = require('utils.gitstatus').get_gitstatus(pane:get_current_working_dir().file_path)
 
   -- Left status (left of the tab line)
   window:set_left_status(wezterm.format({}))
