@@ -24,6 +24,7 @@ M.setup_layout = function(wezterm)
     }
     third_tab:set_title('Build-Pipelines')
 
+    window:gui_window():maximize()
     act.ActivateTab(0)
 
     -- local editor_pane = build_pane:split {
