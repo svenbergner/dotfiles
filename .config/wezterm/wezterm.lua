@@ -17,6 +17,10 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- Additional reload path
+wezterm.add_to_config_reload_watch_list('layouts')
+wezterm.add_to_config_reload_watch_list('utils')
+
 -- Setup default layout
 require("layouts.personal").setup_layout(wezterm)
 require("layouts.development").setup_layout(wezterm)
@@ -72,6 +76,7 @@ config.tab_max_width = 20
 config.status_update_interval = 1000
 config.tab_bar_at_bottom = false
 config.tab_and_split_indices_are_zero_based = false
+
 wezterm.on("update-status", function(window, pane)
   -- Workspace name
   local stat = window:active_workspace()
@@ -99,8 +104,8 @@ wezterm.on("update-status", function(window, pane)
   -- Current working directory
   local cwd = pane:get_current_working_dir()
   if cwd then
-    cwd = basename(cwd.file_path)
-    -- cwd = cwd.file_path
+    -- cwd = basename(cwd.file_path)
+    cwd = cwd.file_path
   else
     cwd = ""
   end
@@ -161,15 +166,8 @@ wezterm.on("update-status", function(window, pane)
 end)
 
 
---[[ Appearance setting for when I need to take pretty screenshots
-config.enable_tab_bar = false
-config.window_padding = {
-  left = '0.5cell',
-  right = '0.5cell',
-  top = '0.5cell',
-  bottom = '0cell',
-}
---]]
+-- Appearance setting for when I need to take pretty screenshots
+-- require('utils.pretty_screenshots').apply_to_config(config)
 
 smart_splits.apply_to_config(config, {
   -- the default config is here, if you'd like to use the default keys,
