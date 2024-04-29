@@ -1,7 +1,5 @@
 local M = {}
 
-local background = require('utils.background')
-
 M.add_to_config = function(config, wezterm, act)
   config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
   config.keys = {
@@ -23,16 +21,23 @@ M.add_to_config = function(config, wezterm, act)
     { key = "z",          mods = "LEADER",      action = act.TogglePaneZoomState },
     { key = "o",          mods = "LEADER",      action = act.RotatePanes "Clockwise" },
     { key = "O",          mods = "LEADER",      action = act.RotatePanes "CounterClockwise" },
-    { key = "b",          mods = "LEADER",      action = wezterm.action_callback(function() background.toggleBackground(config) end) },
+    {
+      key = "b",
+      mods = "LEADER",
+      action = wezterm.action_callback(
+        function()
+          require('utils.background').toggleBackground(config)
+        end)
+    },
     -- We can make separate keybindings for resizing panes
     -- But Wezterm offers custom "mode" in the name of "KeyTable"
-    { key = "r",          mods = "LEADER",      action = act.ActivateKeyTable { name = "resize_pane", one_shot = false } },
+    { key = "r",          mods = "LEADER", action = act.ActivateKeyTable { name = "resize_pane", one_shot = false } },
 
     -- Tab keybindings
-    { key = "t",          mods = "LEADER",      action = act.SpawnTab("CurrentPaneDomain") },
-    { key = "LeftArrow",  mods = "CMD",         action = act.ActivateTabRelative(-1) },
-    { key = "RightArrow", mods = "CMD",         action = act.ActivateTabRelative(1) },
-    { key = "n",          mods = "LEADER",      action = act.ShowTabNavigator },
+    { key = "t",          mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
+    { key = "LeftArrow",  mods = "CMD",    action = act.ActivateTabRelative(-1) },
+    { key = "RightArrow", mods = "CMD",    action = act.ActivateTabRelative(1) },
+    { key = "n",          mods = "LEADER", action = act.ShowTabNavigator },
     {
       key = "e",
       mods = "LEADER",
@@ -56,7 +61,8 @@ M.add_to_config = function(config, wezterm, act)
 
     -- Lastly, workspace
     { key = "w", mods = "LEADER",       action = act.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" } },
-
+    { key = 'n', mods = 'CTRL',         action = act.SwitchWorkspaceRelative(1) },
+    { key = 'p', mods = 'CTRL',         action = act.SwitchWorkspaceRelative(-1) },
   }
   -- I can use the tab navigator (LDR t), but I also want to quickly navigate tabs with index
   for i = 1, 9 do
