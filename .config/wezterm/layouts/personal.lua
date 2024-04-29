@@ -8,17 +8,17 @@ M.setup_layout = function(wezterm)
     local first_tab, _, window = mux.spawn_window {
       workspace = 'Personal',
       cwd = home_dir .. '/Repos/dotfiles/.config/',
-      -- args = { '/usr/local/bin/nvim', '.' },
+      -- args = { '/usr/local/bin/nvim', home_dir .. '/Repos/dotfiles/.config/' },
     }
     first_tab:set_title('Dotfiles')
 
     local second_tab, _, _ = window:spawn_tab {
       cwd = home_dir .. '/Repos/vimwiki',
-      -- args = { '/usr/local/bin/nvim', '.' },
+      -- args = { '/usr/local/bin/nvim', home_dir .. '/Repos/vimwiki' },
     }
     second_tab:set_title('VimWiki')
 
-    act.ActivateTab(1)
+    act.ActivateTab(0)
   end)
 end
 
