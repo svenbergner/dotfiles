@@ -9,7 +9,8 @@ M.add_to_config = function(config, wezterm, act)
     { key = "l",          mods = "LEADER|CTRL", action = act.SendKey { key = "l", mods = "CTRL" } },
     -- Send C-k when pressing C-s C-k
     { key = "k",          mods = "LEADER|CTRL", action = act.SendKey { key = "k", mods = "CTRL" } },
-    -- TODO: How does CopyMode work??
+    -- When copy mode is active vim keymapping could be used to move around the
+    -- scrollback buffer to select and copy text
     { key = "c",          mods = "LEADER",      action = act.ActivateCopyMode },
     -- Shows all available commands in a popup menu
     { key = "phys:Space", mods = "LEADER",      action = act.ActivateCommandPalette },
@@ -30,15 +31,12 @@ M.add_to_config = function(config, wezterm, act)
           wezterm.reload_configuration()
         end)
     },
-    -- We can make separate keybindings for resizing panes
-    -- But Wezterm offers custom "mode" in the name of "KeyTable"
-    { key = "r",          mods = "LEADER", action = act.ActivateKeyTable { name = "resize_pane", one_shot = false } },
 
     -- Tab keybindings
-    { key = "t",          mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "LeftArrow",  mods = "CMD",    action = act.ActivateTabRelative(-1) },
     { key = "RightArrow", mods = "CMD",    action = act.ActivateTabRelative(1) },
-    { key = "n",          mods = "LEADER", action = act.ShowTabNavigator },
+    -- { key = "n",          mods = "LEADER", action = act.ShowTabNavigator },
+    -- Rename current tab
     {
       key = "e",
       mods = "LEADER",
@@ -54,18 +52,15 @@ M.add_to_config = function(config, wezterm, act)
         end)
       }
     },
-    -- Key table for moving tabs around
-    { key = "m", mods = "LEADER",       action = act.ActivateKeyTable { name = "move_tab", one_shot = false } },
-    -- Or shortcuts to move tab w/o move_tab table. SHIFT is for when caps lock is on
-    { key = "{", mods = "LEADER|SHIFT", action = act.MoveTabRelative(-1) },
-    { key = "}", mods = "LEADER|SHIFT", action = act.MoveTabRelative(1) },
+    -- Move tabs around
+    { key = "LeftArrow", mods = "CTRL|SHIFT", action = act.MoveTabRelative(-1) },
+    { key = "RightArrow", mods = "CTRL|SHIFT", action = act.MoveTabRelative(1) },
 
-    -- Lastly, workspace
-    { key = "w", mods = "LEADER",       action = act.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" } },
+    -- Switching workspaces
     { key = 'UpArrow', mods = 'CMD',         action = act.SwitchWorkspaceRelative(1) },
     { key = 'DownArrow', mods = 'CMD',         action = act.SwitchWorkspaceRelative(-1) },
   }
-  -- I can use the tab navigator (LDR t), but I also want to quickly navigate tabs with index
+  -- Quickly navigate tabs with index
   for i = 1, 9 do
     table.insert(config.keys, {
       key = tostring(i),
@@ -74,6 +69,7 @@ M.add_to_config = function(config, wezterm, act)
     })
   end
 
+  -- Navigate through panes 
   config.key_tables = {
     resize_pane = {
       { key = "h",      action = act.AdjustPaneSize { "Left", 1 } },
