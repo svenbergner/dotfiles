@@ -25,6 +25,8 @@ wezterm.add_to_config_reload_watch_list('utils')
 require("layouts.personal").setup_layout(wezterm)
 require("layouts.development").setup_layout(wezterm)
 
+require('utils.background').toggleBackground(config)
+
 -- Settings
 config.audible_bell = "Disabled"
 config.visual_bell = {
@@ -38,13 +40,11 @@ config.colors = {
   visual_bell = '#202020'
 }
 
-require('utils.background').toggleBackground(config)
 
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.font = wezterm.font_with_fallback({
   { family = "JetBrainsMono Nerd Font Mono", scale = 1.2, weight = "Medium", },
 })
--- config.text_background_opacity = 0.9
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 10000
