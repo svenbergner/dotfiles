@@ -34,8 +34,11 @@ M.apply_to_config = function(config, wezterm)
     -- Current working directory
     local cwd = pane:get_current_working_dir()
     if cwd then
-      -- cwd = basename(cwd.file_path)
-      cwd = cwd.file_path
+      if window:get_dimensions().pixel_width < 1500 then
+        cwd = basename(cwd.file_path)
+      else
+        cwd = cwd.file_path
+      end
     else
       cwd = ""
     end
