@@ -62,8 +62,8 @@ M.add_to_config = function(config, wezterm, act)
 
     -- Lastly, workspace
     { key = "w", mods = "LEADER",       action = act.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" } },
-    { key = 'n', mods = 'CTRL',         action = act.SwitchWorkspaceRelative(1) },
-    { key = 'p', mods = 'CTRL',         action = act.SwitchWorkspaceRelative(-1) },
+    { key = 'UpArrow', mods = 'CMD',         action = act.SwitchWorkspaceRelative(1) },
+    { key = 'DownArrow', mods = 'CMD',         action = act.SwitchWorkspaceRelative(-1) },
   }
   -- I can use the tab navigator (LDR t), but I also want to quickly navigate tabs with index
   for i = 1, 9 do
