@@ -30,6 +30,7 @@ return {
             builtin.buffers { attach_mappings = mapping }
          end, { desc = "[f]ind [b]uffers" })
 
+         vim.keymap.set("n", "<leader>fi", '<cmd>AdvancedGitSearch<cr>', { desc = "Advanced Git Search" })
          vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find Help Tags" })
          vim.keymap.set('n', '<F12>', builtin.help_tags, { desc = "Find Help Tags" })
          vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "Find Symbols" })
