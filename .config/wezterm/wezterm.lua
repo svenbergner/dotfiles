@@ -40,7 +40,6 @@ config.colors = {
   visual_bell = '#202020'
 }
 
-
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.font = wezterm.font_with_fallback({
   { family = "JetBrainsMono Nerd Font Mono", scale = 1.2, weight = "Medium", },
