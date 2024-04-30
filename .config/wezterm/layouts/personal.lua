@@ -2,7 +2,6 @@ local M = {}
 
 M.setup_layout = function(wezterm)
   local mux = wezterm.mux
-  local act = wezterm.action
 
   wezterm.on('gui-startup', function()
     local home_dir = wezterm.home_dir
@@ -19,7 +18,7 @@ M.setup_layout = function(wezterm)
     second_tab:set_title('VimWiki')
     second_pane:send_text('nvim .\n')
 
-    first_tab:acivate()
+    first_tab:activate()
   end)
 end
 
