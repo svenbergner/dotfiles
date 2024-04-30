@@ -19,7 +19,7 @@ M.setup_layout = function(wezterm)
     second_tab:set_title('VimWiki')
     second_pane:send_text('nvim .\n')
 
-    act.ActivateTab(0)
+    first_tab:acivate()
   end)
 end
 
