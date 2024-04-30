@@ -26,8 +26,8 @@ M.setup_layout = function(wezterm)
     third_tab:set_title('Build-Pipelines')
     third_pane:send_text('nvim .\n')
 
+    first_tab:activate()
     window:gui_window():maximize()
-    act.ActivateTab(0)
 
     -- local editor_pane = build_pane:split {
     --   direction = 'Top',
