@@ -47,7 +47,7 @@ M.add_to_config = function(config, wezterm, act)
           { Attribute = { Intensity = "Bold" } },
           { Text = "Renaming Tab Title...:" },
         },
-        action = wezterm.action_callback(function(window, pane, line)
+        action = wezterm.action_callback(function(window, _, line)
           if line then
             window:active_tab():set_title(line)
           end
