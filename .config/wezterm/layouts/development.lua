@@ -3,26 +3,28 @@ local M = {}
 M.setup_layout = function(wezterm)
   local mux = wezterm.mux
   local act = wezterm.action
+
   wezterm.on('gui-startup', function()
     local home_dir = wezterm.home_dir
-    local first_tab, _, window = mux.spawn_window {
+
+    local first_tab, first_pane, window = mux.spawn_window {
       workspace = 'Development',
       cwd = home_dir .. '/Repos/simply_tax_app',
-      -- args = { '/usr/local/bin/nvim', home_dir .. '/Repos/simply_tax_app' },
     }
     first_tab:set_title('SimplyTaxApp')
+    first_pane:send_text('nvim .\n')
 
-    local second_tab, _, _ = window:spawn_tab {
+    local second_tab, second_pane, _ = window:spawn_tab {
       cwd = home_dir .. '/Repos/SSE/Dev',
-      -- args = { '/usr/local/bin/nvim', home_dir .. '/Repos/SSE/Dev' },
     }
     second_tab:set_title('SSE/TaxCoreApi')
+    second_pane:send_text('nvim .\n')
 
-    local third_tab, _, _ = window:spawn_tab {
+    local third_tab, third_pane, _ = window:spawn_tab {
       cwd = home_dir .. '/Repos/webhook-builds',
-      -- args = { '/usr/local/bin/nvim', home_dir .. '/Repos/webhook-builds' },
     }
     third_tab:set_title('Build-Pipelines')
+    third_pane:send_text('nvim .\n')
 
     window:gui_window():maximize()
     act.ActivateTab(0)
