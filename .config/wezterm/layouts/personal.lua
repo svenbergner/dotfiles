@@ -9,7 +9,7 @@ M.setup_layout = function(wezterm)
     local first_tab, _, window = mux.spawn_window {
       workspace = 'Personal',
       cwd = home_dir .. '/Repos/dotfiles/.config/',
-      -- args = { '/usr/local/bin/nvim', home_dir .. '/Repos/dotfiles/.config/' },
+      -- args = { os.getenv('SHELL'), '-c', 'nvim ' .. wezterm.shell_quote_arg( home_dir .. '/Repos/dotfiles/.config/'  )},
     }
     first_tab:set_title('Dotfiles')
 
