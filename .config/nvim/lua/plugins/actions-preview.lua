@@ -3,6 +3,6 @@ return {
    "aznhe21/actions-preview.nvim",
    event = 'VeryLazy',
    config = function()
-      vim.keymap.set({ "v", "n" }, "ca", require("actions-preview").code_actions, { desc = "Preview [ C ]ode [ A ]ctions" })
+      vim.keymap.set({ "v", "n" }, "ca", require("actions-preview").code_actions, { desc = "Preview [c]ode [a]ctions" })
    end
 }
