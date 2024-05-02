@@ -9,5 +9,9 @@ return {
    },
    dependencies = {
       'nvim-telescope/telescope.nvim',
-   }
+   },
+   config = function()
+      vim.keymap.set('n', '<leader>bb', require('browser_bookmarks').select,
+         { desc = 'Search a [b]rowser-[b]ookmark and open it' })
+   end
 }
