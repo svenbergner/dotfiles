@@ -20,8 +20,7 @@ M.add_to_config = function(config, wezterm, act)
     { key = "v",          mods = "LEADER",      action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
     { key = "q",          mods = "LEADER",      action = act.CloseCurrentPane { confirm = true } },
     { key = "z",          mods = "LEADER",      action = act.TogglePaneZoomState },
-    { key = "r",          mods = "LEADER",      action = act.RotatePanes "Clockwise" },
-    { key = "R",          mods = "LEADER",      action = act.RotatePanes "CounterClockwise" },
+    { key = "R",          mods = "LEADER",      action = act.RotatePanes "Clockwise" },
     {
       key = "b",
       mods = "LEADER",
@@ -33,8 +32,8 @@ M.add_to_config = function(config, wezterm, act)
     },
 
     -- Tab keybindings
-    { key = "LeftArrow",  mods = "CMD",    action = act.ActivateTabRelative(-1) },
-    { key = "RightArrow", mods = "CMD",    action = act.ActivateTabRelative(1) },
+    { key = "LeftArrow",  mods = "CMD", action = act.ActivateTabRelative(-1) },
+    { key = "RightArrow", mods = "CMD", action = act.ActivateTabRelative(1) },
     -- { key = "n",          mods = "LEADER", action = act.ShowTabNavigator },
     -- Rename current tab
     {
@@ -53,12 +52,27 @@ M.add_to_config = function(config, wezterm, act)
       }
     },
     -- Move tabs around
-    { key = "LeftArrow", mods = "CTRL|SHIFT", action = act.MoveTabRelative(-1) },
+    { key = "LeftArrow",  mods = "CTRL|SHIFT", action = act.MoveTabRelative(-1) },
     { key = "RightArrow", mods = "CTRL|SHIFT", action = act.MoveTabRelative(1) },
 
     -- Switching workspaces
-    { key = 'UpArrow', mods = 'CMD',         action = act.SwitchWorkspaceRelative(1) },
-    { key = 'DownArrow', mods = 'CMD',         action = act.SwitchWorkspaceRelative(-1) },
+    { key = 'UpArrow',    mods = 'CMD',        action = act.SwitchWorkspaceRelative(1) },
+    { key = 'DownArrow',  mods = 'CMD',        action = act.SwitchWorkspaceRelative(-1) },
+
+    -- Resize for showing emulator
+    {
+      key = 'r',
+      mods = 'LEADER',
+      action = wezterm.action_callback(function(window, _, _)
+        if wezterm.GLOBAL.emulator_visible then
+          window:set_inner_size(window:get_dimensions().pixel_width + 542, window:get_dimensions().pixel_height)
+          wezterm.GLOBAL.emulator_visible = false
+        else
+          window:set_inner_size(window:get_dimensions().pixel_width - 542, window:get_dimensions().pixel_height)
+          wezterm.GLOBAL.emulator_visible = true
+        end
+      end)
+    },
   }
   -- Quickly navigate tabs with index
   for i = 1, 9 do
@@ -69,7 +83,7 @@ M.add_to_config = function(config, wezterm, act)
     })
   end
 
-  -- Navigate through panes 
+  -- Navigate through panes
   config.key_tables = {
     resize_pane = {
       { key = "h",      action = act.AdjustPaneSize { "Left", 1 } },
