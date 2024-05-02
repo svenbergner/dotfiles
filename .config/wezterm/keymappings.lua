@@ -20,8 +20,8 @@ M.add_to_config = function(config, wezterm, act)
     { key = "v",          mods = "LEADER",      action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
     { key = "q",          mods = "LEADER",      action = act.CloseCurrentPane { confirm = true } },
     { key = "z",          mods = "LEADER",      action = act.TogglePaneZoomState },
-    { key = "o",          mods = "LEADER",      action = act.RotatePanes "Clockwise" },
-    { key = "O",          mods = "LEADER",      action = act.RotatePanes "CounterClockwise" },
+    { key = "r",          mods = "LEADER",      action = act.RotatePanes "Clockwise" },
+    { key = "R",          mods = "LEADER",      action = act.RotatePanes "CounterClockwise" },
     {
       key = "b",
       mods = "LEADER",
