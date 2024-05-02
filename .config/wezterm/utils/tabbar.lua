@@ -43,11 +43,6 @@ M.apply_to_config = function(config, wezterm)
       cwd = ""
     end
 
-    -- Current command
-    local cmd = pane:get_foreground_process_name()
-    -- CWD and CMD could be nil (e.g. viewing log using Ctrl-Alt-l)
-    cmd = cmd and basename(cmd) or ""
-
     -- Time
     local time = wezterm.strftime("%d.%m.%y %H:%M")
 
@@ -67,15 +62,6 @@ M.apply_to_config = function(config, wezterm)
       { Text = wezterm.nerdfonts.md_folder .. " " },
       "ResetAttributes",
       { Text = " " .. cwd },
-      "ResetAttributes",
-      { Text = " " },
-      { Foreground = { Color = "#e0af68" } },
-      { Text = "" },
-      { Background = { Color = "#e0af68" } },
-      { Foreground = { AnsiColor = 'Black' }, },
-      { Text = wezterm.nerdfonts.fa_code .. " " },
-      "ResetAttributes",
-      { Text = " " .. cmd },
       "ResetAttributes",
       { Text = " " },
       { Foreground = { Color = '#83a598' }, },
