@@ -8,6 +8,11 @@ return {
          "joshmedeski/telescope-smart-goto.nvim",
       },
       config = function()
+         require("telescope").setup({
+            defaults = {
+               sorting_strategy = 'ascending',
+            }
+         })
          local builtin = require("telescope.builtin")
          vim.keymap.set("n", "<leader>?", builtin.keymaps, { desc = "Show all keymaps" })
          vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find Files" })
