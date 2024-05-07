@@ -120,6 +120,17 @@ return {
 
       vim.fn.sign_define("DapStopped", { text = "▶️", texthl = "", linehl = "", numhl = "" })
 
+      -- vim-style debugging
+      vim.keymap.set("n", "<leader>d", dap.continue, { desc = 'Start/Continue Debugging' })
+      vim.keymap.set("n", "<leader>D", dap.terminate, { desc = 'Stop Debugging' })
+      vim.keymap.set("n", "<leader><C-S>d", dap.run_last, { desc = 'Restart Debugging' })
+      vim.keymap.set("n", "<leader>l", dap.step_over, { desc = 'Step over' })
+      vim.keymap.set("n", "<leader>j", dap.step_into, { desc = 'Step into' })
+      vim.keymap.set("n", "<leader>k", dap.step_out, { desc = 'Step out' })
+      vim.keymap.set("n", "<leader>h", dap.step_back, { desc = 'Step back' })
+      vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
+
+      -- vscode-style debugging
       vim.keymap.set("n", "<F5>", dap.continue, { desc = 'Start/Continue Debugging' })
       vim.keymap.set("n", "<S-F5>", dap.terminate, { desc = 'Stop Debugging' })
       vim.keymap.set("n", "<C-S-F5>", dap.run_last, { desc = 'Restart Debugging' })
@@ -127,13 +138,9 @@ return {
       vim.keymap.set("n", "<F11>", dap.step_into, { desc = 'Step into' })
       vim.keymap.set("n", "<S-F11>", dap.step_out, { desc = 'Step out' })
       vim.keymap.set("n", "<F9>", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
-      vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
       vim.keymap.set("n", "<leader>B", function()
          dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
       end, { desc = 'Set conditional breakpoint' })
-
-      vim.keymap.set("n", "<S-F5>", function() print("<S-F5>") end)
-      vim.keymap.set("n", "<C-S-F5>", function() print("<C-S-F5>") end)
 
       dapui.setup({
          icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
