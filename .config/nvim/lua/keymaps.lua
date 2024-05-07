@@ -65,12 +65,6 @@ vim.keymap.set("n", "zz", "za", { silent = true, desc = "Toggle current fold" })
 vim.keymap.set("n", "<leader>Q", ":enew<bar>bd #<CR>",
    { silent = true, desc = "Close current buffer but leave window open" })
 
--- Insert empty lines without switch to insert mode
-vim.keymap.set("n", "<return>", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>',
-   { silent = true, desc = "Insert empty line below current line without switch to insert mode" })
-vim.keymap.set("n", "<leader><return>", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>',
-   { silent = true, desc = "Insert empty line above current line without switch to insert mode" })
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <c-\><c-n>, which
 -- is not what someone will guess without a bit more experience.
