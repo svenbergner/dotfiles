@@ -9,11 +9,11 @@ vim.opt.termguicolors = true
 vim.opt.mouse = 'a'
 
 vim.opt.guicursor = {
-	"n-v-c:block", -- Normal, visual, command-line: block cursor
-	"i-ci-ve:ver25", -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
-	"r-cr:hor20", -- Replace, command-line replace: horizontal bar cursor with 20% height
-	"o:hor50", -- Operator-pending: horizontal bar cursor with 50% height
-	"a:blinkwait700-blinkoff400-blinkon250", -- All modes: blinking settings
+	"n-v-c:block",                                -- Normal, visual, command-line: block cursor
+	"i-ci-ve:ver25",                              -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
+	"r-cr:hor20",                                 -- Replace, command-line replace: horizontal bar cursor with 20% height
+	"o:hor50",                                    -- Operator-pending: horizontal bar cursor with 50% height
+	"a:blinkwait700-blinkoff400-blinkon250",      -- All modes: blinking settings
 	"sm:block-blinkwait175-blinkoff150-blinkon175", -- Show match: block cursor with specific blinking settings
 }
 
@@ -93,12 +93,12 @@ vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full"
 vim.opt.wildignore:append({ "*.docx", "*.jpg", "*.png", "*.gif", "*.pdf", "*.pyc", "*.exe", "*.flv", "*.img", "*.xlsx" })
 
--- Check for Neovim equivalent
 -- Spellchecking
+-- Manual download at http://ftp.vim.org/vim/runtime/spell/
 if vim.fn.has('linux') then
-   vim.opt.spelllang = 'de,en'
+	vim.opt.spelllang = 'de,en'
 else
-   vim.opt.spelllang = 'de_de,en_gb'
+	vim.opt.spelllang = 'de_de,en_gb'
 end
 vim.opt.spell = true
 vim.cmd("highlight SpellBad cterm=bold,undercurl gui=bold,undercurl guisp=Red")
@@ -110,4 +110,3 @@ vim.opt.undofile = true
 
 -- Better completion
 vim.opt.completeopt = { "menuone" }
-
