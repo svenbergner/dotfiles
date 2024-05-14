@@ -5,6 +5,9 @@ M.setup_layout = function(wezterm)
 
   wezterm.on('gui-startup', function()
     local home_dir = wezterm.home_dir
+    if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+      home_dir = '/C'
+    end
     local first_tab, first_pane, window = mux.spawn_window {
       workspace = 'Personal',
       cwd = home_dir .. '/Repos/dotfiles/.config/',
