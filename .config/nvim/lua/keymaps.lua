@@ -19,23 +19,8 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Switch Buffers
-vim.keymap.set("n", "<PageUp>", ":bp<CR>", { silent = true, desc = "Goto next buffer" })
-vim.keymap.set("n", "<PageDown>", ":bn<CR>", { silent = true, desc = "Goto previous buffer" })
-
--- Make adjusting split sizes a bit more friendly
-vim.keymap.set("n", "<C-S-Left>", ":vertical resize -1<CR>", { silent = true, desc = "Increase current window width" })
-vim.keymap.set("n", "<C-S-Right>", ":vertical resize +1<CR>", { silent = true, desc = "Decrease current window width" })
-vim.keymap.set("n", "<C-S-Up>", ":resize +1<CR>", { silent = true, desc = "Increase current window height" })
-vim.keymap.set("n", "<C-S-Down>", ":resize -1<CR>", { silent = true, desc = "Decrease current window height" })
-
--- Change 2 split windows from vert to horiz or horiz to vert
-vim.keymap.set("n", "<leader>th", "<C-w>t<C-w>H", { desc = "" })
-vim.keymap.set("n", "<leader>tk", "<C-w>t<C-w>K", { desc = "" })
-
--- Create and change tabs
-vim.keymap.set("n", "te", ":tabedit", { desc = "Open new tab" })
-vim.keymap.set("n", "<tab>", ":tabnext<Return>", { silent = true, desc = "Goto next tab" })
-vim.keymap.set("n", "<s-tab>", ":tabprev<Return>", { silent = true, desc = "Goto previous tab" })
+vim.keymap.set("n", "<PageUp>", "<cmd>bp<CR>", { silent = true, desc = "Goto next buffer" })
+vim.keymap.set("n", "<PageDown>", "<cmd>bn<CR>", { silent = true, desc = "Goto previous buffer" })
 
 -- Replace visual selection by pasting without changing paste buffer
 vim.keymap.set("v", "p", '"_dP', { desc = "Replace visual selection" })
@@ -43,16 +28,9 @@ vim.keymap.set("v", "p", '"_dP', { desc = "Replace visual selection" })
 -- Yank from cursor till end of line
 vim.keymap.set("n", "Y", "y$", { desc = "Yank from cursor till end of line" })
 
--- Move current line down and up
-vim.keymap.set("n", "<M-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-vim.keymap.set("n", "<M-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-vim.keymap.set("i", "<M-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-vim.keymap.set("i", "<M-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-vim.keymap.set("v", "<M-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-vim.keymap.set("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
-
 -- Save and source current file
-vim.keymap.set("n", "<leader><leader>x", ":w<CR>:source %<CR>",
+vim.keymap.set("n", "<leader>x", "<cmd>.lua<CR>", { silent = true, desc = "Source the current line." })
+vim.keymap.set("n", "<leader><leader>x", "<cmd>w<CR><cmd>source %<CR>",
    { silent = true, desc = "Safe and source the current file." })
 
 -- Format current buffer
