@@ -22,6 +22,7 @@ alias lt='eza --tree -l'
 
 alias lg='lazygit'
 alias gwl='git worktree list'
+alias undolastcommit='git reset --soft HEAD~'
 
 alias dev="tmuxifier load-session 'Development'"
 
