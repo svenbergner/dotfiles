@@ -108,5 +108,3 @@ local prefix = vim.fn.expand("~/.config")
 vim.opt.undodir = { prefix .. "/nvim/.undo//" }
 vim.opt.undofile = true
 
--- Better completion
-vim.opt.completeopt = { "menuone" }
