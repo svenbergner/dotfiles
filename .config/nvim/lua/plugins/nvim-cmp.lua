@@ -15,17 +15,24 @@ return {
       "rafamadriz/friendly-snippets",
    },
    config = function()
-      vim.opt.completeopt = { "menuone" }
+      vim.opt.completeopt = { "menu", "menuone", "preview" }
       vim.opt.shortmess:append("c")
 
       local lspkind = require("lspkind")
-      lspkind.init({})
 
       local cmp = require("cmp")
       require("luasnip.loaders.from_vscode").lazy_load()
       local luasnip = require("luasnip")
       luasnip.config.setup({})
       cmp.setup({
+         formatting = {
+            format = lspkind.cmp_format({
+               mode = "symbol_text",
+               maxwidth = 120,
+               ellipsis_char = '...',
+               show_labelDetails = true,
+            })
+         },
          snippet = {
             expand = function(args)
                luasnip.lsp_expand(args.body)
