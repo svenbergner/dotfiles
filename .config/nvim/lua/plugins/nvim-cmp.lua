@@ -1,15 +1,26 @@
--- A completion engine plugin for neovim written in Lua. 
+-- A completion engine plugin for neovim written in Lua.
 -- Completion sources are installed from external repositories and "sourced".
 return {
    "hrsh7th/nvim-cmp",
-   event = 'VeryLazy',
+   lazy = false,
+   priority = 100,
    dependencies = {
+      "onsails/lspkind.nvim",
       "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-cmdline",
+      { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets",
    },
    config = function()
+      vim.opt.completeopt = { "menuone" }
+      vim.opt.shortmess:append("c")
+
+      local lspkind = require("lspkind")
+      lspkind.init({})
+
       local cmp = require("cmp")
       require("luasnip.loaders.from_vscode").lazy_load()
       local luasnip = require("luasnip")
