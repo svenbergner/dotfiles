@@ -17,9 +17,12 @@ alias cbr='git branch --sort=-committerdate | fzf --header "Checkout Recent Bran
 
 alias ls='eza'
 alias l='eza -la'
+alias la='eza -laa'
 alias ll='eza -l'
 alias lt='eza --tree -l'
 
+# gulc -- git undo last commit but preserve the changes
+alias gulc="git reset --soft HEAD~"
 alias lg='lazygit'
 alias gwl='git worktree list'
 alias undolastcommit='git reset --soft HEAD~'
@@ -38,3 +41,13 @@ alias checkdartformat='find . -name "*.dart" ! -name "*.g.dart" ! -name "*.freez
 alias cmake_configure_preset='cmake --preset=$(cmake --list-presets | tail -n +3 | fzf | cut -d '\''"'\'' -f2)'
 alias cmake_build_preset='cmake --build --preset=$(cmake --list-presets=build | tail -n +3 | fzf | cut -d '\''"'\'' -f2) $@'
 
+if [[ "$OSTYPE" == "win32" ]] then
+    alias dotfiles='cd C:\\Repos\\dotfiles'
+else
+    alias dotfiles='cd ~/Repos/dotfiles'
+    alias vimwiki='nvim ~/Repos/vimwiki/index.md'
+fi
+
+alias open="xdg-open"
+
+alias fman='compgen -c | fzf | xargs man'
