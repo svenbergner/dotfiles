@@ -33,6 +33,12 @@ return {
       vim.keymap.set("n", "<leader>dt", function() neotest.run.run({ strategy = "dap" }) end,
          { desc = '[d]ebug nearest [t]est' });
       vim.keymap.set("n", "<leader>t", function() neotest.run.run() end, { desc = 'Run nearest [t]est' });
+      vim.keymap.set("n", "<leader>tr",
+         function() neotest.output.open({ enter = true, quiet = true, auto_close = true, last_run = true }) end,
+         { desc = 'Show [t]est [r]esults' });
+      vim.keymap.set("n", "<leader>tst",
+         function() neotest.summary.toggle() end,
+         { desc = '[t]est [s]ummary [t]oggle' });
       -- vim.keymap.set("n", "<leader>a", function()  end, { desc = 'Run [a]ll [t]ests in suite' });
       -- vim.keymap.set("n", "<leader>l", function()  end, { desc = 'Run [l]ast test' });
       -- vim.keymap.set("n", "<leader>g", function()  end, { desc = '[g]oto last test' });
