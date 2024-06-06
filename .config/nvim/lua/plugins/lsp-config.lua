@@ -6,7 +6,6 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
-      'folke/neodev.nvim',
    },
    config = function()
       vim.keymap.set('n', '<S-F6>', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
@@ -16,7 +15,7 @@ return {
 
       vim.diagnostic.config({
          float = {
-            source = 'always',
+            source = true,
             border = "single"
          },
       })
@@ -29,7 +28,7 @@ return {
             vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
          end
          local is_clangd = function()
-            for _, client in pairs(vim.lsp.get_active_clients { bufnr = bufnr }) do
+            for _, client in pairs(vim.lsp.get_clients { bufnr = bufnr }) do
                if client.name == "clangd" then
                   return true
                end
@@ -85,8 +84,6 @@ return {
             }
          },
       }
-
-      require('neodev').setup()
 
       local default_capabilities = vim.lsp.protocol.make_client_capabilities()
       local capabilities = require('cmp_nvim_lsp').default_capabilities(default_capabilities)
