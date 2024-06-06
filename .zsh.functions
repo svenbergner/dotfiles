@@ -1,3 +1,6 @@
+# Fuzzy search over Git commits
+# Enter will view the commit
+# Ctrl-o will checkout the selected commit
 function fshow() {
   git log --graph --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
@@ -13,6 +16,8 @@ function fshow() {
 FZF-EOF" --preview-window=right:60%
 }
 
+# Fuzzy search Git branches in a repo
+# Looks for local and remote branches
 function fsb() {
     local pattern=$*
         local branches branch
@@ -24,3 +29,5 @@ function fsb() {
     fi;
     git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
 }
+
+# https://levelup.gitconnected.com/search-git-branches-and-commits-using-fzf-33df960fcc9c
