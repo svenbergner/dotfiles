@@ -1,23 +1,14 @@
 -- 💻 lazydev.nvim
--- lazydev.nvim is a plugin that properly configures LuaLS for editing your Neovim config by lazily updating your workspace libraries.
---
--- ✨ Features
--- much faster auto-completion, since only the modules you require in open Neovim files will be loaded.
--- no longer needed to configure what plugin sources you want to have enabled for a certain project
--- load third-party addons from LLS-Addons
--- will update your workspace libraries for:
--- require statements: require("nvim-treesitter")
--- module annotations: ---@module "nvim-treesitter"
--- nvim-cmp and nvim_coq completion source for the above
--- 2024-06-01_21-02-40
+-- lazydev.nvim is a plugin that properly configures LuaLS for editing your 
+-- Neovim config by lazily updating your workspace libraries.
 --
 -- ⚠️ Limitations
--- If you have files that only use types from a plugin, then those types won't be available in your workspace.
--- completion for module names when typing require(...) will only return loaded modules in your workspace.
--- To get around the above, you can:
--- pre-load those plugins with the library option.
--- use the nvim-cmp or coq_nvim completion source to get all available modules.
--- Neovim types are NOT included and also no longer needed on Neovim >= 0.10
+-- If you have files that only use types from a plugin, then those types won't 
+-- be available in your workspace.
+-- Completion for module names when typing require(...) will only return loaded 
+-- modules in your workspace.
+-- To get around the above, you can: pre-load those plugins with the library option.
+-- use the nvim-cmp completion source to get all available modules.
 
 return {
   {
