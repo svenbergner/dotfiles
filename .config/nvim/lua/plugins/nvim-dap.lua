@@ -87,9 +87,12 @@ return {
          }
       }
 
+      vim.api.nvim_create_user_command("SelectDebuggeeSearchPath", function()
+         require('telescope').extensions.debugee_selector.selectSearchPathRoot()
+      end, { nargs = 0 })
+
       vim.api.nvim_create_user_command("SetDebuggee", function()
          require('telescope').extensions.debugee_selector.show_debugee_candidates()
-         -- dap.configurations.cpp[1].program = vim.fn.input("Path to debugee: ", vim.fn.getcwd() .. "/", "file")
       end, { nargs = 0 })
       vim.api.nvim_create_user_command("ResetDebuggee", function()
          dap.configurations.cpp = {
