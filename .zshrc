@@ -88,6 +88,9 @@ _fzf_compgen_dir() {
 }
 
 source ~/fzf-git.sh/fzf-git.sh
+# Unbind ^G which is used by fzf
+bindkey -r '^G'
+
 
 # If you come from bash you might have to change your $PATH.
 if [[ "$OSTYPE" =~ "darwin".* ]] then
