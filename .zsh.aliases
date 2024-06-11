@@ -15,11 +15,11 @@ alias showPID='(){ps aux | grep -i $1 | grep -v grep | cut -f7 -d " " ;}'
 
 alias cbr='git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff {1} --color=always" --pointer="" | xargs git checkout'
 
-alias ls='eza'
-alias l='eza -la'
-alias la='eza -laa'
-alias ll='eza -l'
-alias lt='eza --tree -l'
+alias ls='eza --color=always --icons=always --git'
+alias l='ls -la'
+alias la='ls -laa'
+alias ll='ls -l'
+alias lt='ls --tree -l'
 
 # gulc -- git undo last commit but preserve the changes
 alias gulc="git reset --soft HEAD~"
