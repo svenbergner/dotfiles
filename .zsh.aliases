@@ -50,3 +50,6 @@ else
 fi
 
 alias fman='compgen -c | fzf | xargs man'
+
+eval $(thefuck --alias)
+eval $(thefuck --alias f)
