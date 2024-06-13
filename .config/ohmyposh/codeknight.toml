@@ -89,7 +89,7 @@ console_title_template = '{{ .Folder }}'
   [[blocks.segments]]
     type = 'go'
     style = 'diamond'
-    foreground = '#06aad5'
+    foreground = '#06aaff'
     background = '#ffffff'
     leading_diamond = ''
     trailing_diamond = ' '
