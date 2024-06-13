@@ -53,6 +53,7 @@ return {
          vim.keymap.set('n', keys, func, { desc = desc })
       end
       nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+      nmap('<F2>', vim.lsp.buf.rename, '[R]e[n]ame')
       -- Replaced by actions-preview.lua plugin
       -- nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
       nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
