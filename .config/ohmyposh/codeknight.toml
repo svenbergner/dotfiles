@@ -82,6 +82,10 @@ console_title_template = '{{ .Folder }}'
     trailing_diamond = ' '
     template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}'
 
+    [blocks.segments.properties]
+      display_mode = 'files'
+      fetch_virtual_env = true
+
   [[blocks.segments]]
     type = 'go'
     style = 'diamond'
@@ -90,6 +94,9 @@ console_title_template = '{{ .Folder }}'
     leading_diamond = ''
     trailing_diamond = ' '
     template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}'
+
+    [blocks.segments.properties]
+      fetch_version = true
 
   [[blocks.segments]]
     type = 'rust'
@@ -126,6 +133,10 @@ console_title_template = '{{ .Folder }}'
     leading_diamond = ''
     trailing_diamond = ' '
     template = '<#f5bf45></> {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}'
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      fetch_version = false
 
 [[blocks]]
   type = 'prompt'
