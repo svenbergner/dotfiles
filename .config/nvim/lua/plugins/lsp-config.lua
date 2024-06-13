@@ -59,6 +59,7 @@ return {
             vim.lsp.buf.format()
          end, { desc = 'Format current buffer with LSP' })
          nmap('<leader>df', vim.lsp.buf.format, 'LSP: format document')
+         vim.lsp.inlay_hint.enable(true)
       end
 
       local servers = {
