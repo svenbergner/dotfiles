@@ -3,8 +3,6 @@ alias v='nvim'
 # Edit configuration aliases
 alias zshrc="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias vimrc="nvim ~/.vimrc"
-
 alias repos="cd ~/Repos"
 alias downloads="cd ~/Downloads"
 
