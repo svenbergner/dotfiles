@@ -29,6 +29,7 @@ zinit snippet OMZP::history
 if [[ "$OSTYPE" == "darwin".* ]] then
 #    plugins+=(brew)
   zinit snippet OMZP::brew
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Load completions
