@@ -50,7 +50,7 @@ return {
             lualine_x = {},
          },
          inactive_sections = {
-            lualine_b = { { 'filename', path = 1 } },
+            lualine_b = {},
             lualine_c = {},
             lualine_x = {},
          },
