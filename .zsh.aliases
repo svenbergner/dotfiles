@@ -3,8 +3,7 @@ alias v='nvim'
 # Edit configuration aliases
 alias zshrc="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias repos="cd ~/Repos"
-alias downloads="cd ~/Downloads"
+alias vimrc="nvim ~/.config/nvim/"
 
 alias bat="bat --theme gruvbox-dark"
 alias o="bat"
