@@ -67,6 +67,9 @@ local parseElement = function(element)
 end
 
 M.get_gitstatus = function(cwd)
+  if cwd == nil or cwd == '' then
+    return ''
+  end
   local success, stdout, stderr = wezterm.run_child_process { '/opt/homebrew/bin/gitmux', '-cfg', '/Users/sven.bergner/.gitmux.conf', cwd }
   if success then
     if stdout == nil or stdout == '' then
