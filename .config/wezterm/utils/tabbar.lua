@@ -46,7 +46,11 @@ M.apply_to_config = function(config, wezterm)
     -- Time
     local time = wezterm.strftime("%d.%m.%y %H:%M")
 
-    local gitstatus = require('utils.gitstatus').get_gitstatus(pane:get_current_working_dir().file_path)
+    local gitstatus = ""
+
+    if cwd ~= nil and cwd ~= "" then
+      gitstatus = require('utils.gitstatus').get_gitstatus(cwd)
+    end
 
     -- Left status (left of the tab line)
     window:set_left_status(wezterm.format({}))
