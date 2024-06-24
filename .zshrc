@@ -57,9 +57,17 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+# If you come from bash you might have to change your $PATH.
+if [[ "$OSTYPE" =~ "darwin".* ]] then
+   export PATH="/usr/local/sbin:$PATH:/Users/sven.bergner/fvm/default/bin"
+else
+   export PATH=/home/bergner/Repos/flutter/bin/:$PATH
+fi
+
 # Shell integrations
 source <(fzf --zsh)
 source <(zoxide init --cmd cd zsh)
+source <(flutter bash-completion)
 
 # -- Use fd instead of fzf --
 
@@ -102,13 +110,6 @@ _fzf_comprun() {
   esac
 }
 
-# If you come from bash you might have to change your $PATH.
-if [[ "$OSTYPE" =~ "darwin".* ]] then
-   export PATH="/usr/local/sbin:$PATH:/Users/svenbergner/Development/flutter/bin"
-else
-   export PATH=/home/bergner/Repos/flutter/bin/:$PATH
-fi
-
 # Better Search for Commands
 zstyle ':autocomplete:*' default-context history-incremental-search-backward
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -142,4 +143,12 @@ fi
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^X^e' edit-command-line
+
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+if [[ -f /Users/sven.bergner/.dart-cli-completion/zsh-config.zsh ]] then 
+  source /Users/sven.bergner/.dart-cli-completion/zsh-config.zsh 
+fi
+## [/Completion]
 
