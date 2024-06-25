@@ -140,7 +140,7 @@ return {
                         "--no-ignore-vcs",
                      },
                      search_dirs = {
-                        "/Users/svenbergner/Repos/",
+                        "/Users/sven.bergner/Repos/",
                      },
                   },
                },
