@@ -24,7 +24,7 @@ return {
          type = "server",
          port = "${port}",
          executable = {
-            command = '/Users/svenbergner/.local/share/nvim/mason/bin/codelldb',--vim.fn.exepath("codelldb"),
+            command = '/Users/sven.bergner/.local/share/nvim/mason/bin/codelldb',--vim.fn.exepath("codelldb"),
             args = { "--port", "${port}" },
          },
       }
@@ -61,7 +61,8 @@ return {
             name = "Launch Dart Program",
             program = "${file}",
             cwd = "${workspaceFolder}",
-            args = {}, -- Note for Dart Apps this is args, for Flutter apps toolArgs
+            args = { "--dart-define-from-file=emv-vars.json"}, -- Note for Dart Apps this is args, for Flutter apps toolArgs
+            toolsArgs = { "--dart-define-from-file=emv-vars.json"}, -- Note for Dart Apps this is args, for Flutter apps toolArgs
          }
       }
 
