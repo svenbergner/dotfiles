@@ -39,6 +39,8 @@ return {
             nmap('<F4>', sw, 'F4 - switch source/header')
          end
          nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+         nmap('<F2>', vim.lsp.buf.rename, '[R]e[n]ame')
+         -- Replaced by actions preview
          -- nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
          nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
          nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
@@ -89,7 +91,7 @@ return {
       local capabilities = require('cmp_nvim_lsp').default_capabilities(default_capabilities)
 
       require('mason').setup()
-      local mason_lspconfig = require ('mason-lspconfig')
+      local mason_lspconfig = require('mason-lspconfig')
       mason_lspconfig.setup {
          ensure_installed = vim.tbl_keys(servers),
          automatic_installation = true,
@@ -109,4 +111,3 @@ return {
       }
    end
 }
-
