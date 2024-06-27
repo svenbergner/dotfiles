@@ -49,6 +49,9 @@ if [[ "$OSTYPE" == "win32" ]] then
 else
     alias dotfiles='cd ~/Repos/dotfiles'
     alias vimwiki='nvim ~/Repos/vimwiki/index.md'
+fi
+
+if [[ "$OSTYPE" == "linux" ]] then
     alias open="xdg-open"
 fi
 
