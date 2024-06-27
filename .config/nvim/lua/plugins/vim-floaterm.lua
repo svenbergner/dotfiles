@@ -14,6 +14,6 @@ return {
       vim.keymap.set('n', '<leader>tk', ':FloatermKill<CR>', { silent = true, desc = 'Float[T]erm [K]ill' })
       vim.keymap.set('t', '<leader>tk', '<C-\\><C-n>:FloatermKill<CR>', { silent = true, desc = 'Float[T]erm [K]ill' })
       vim.keymap.set('n', '<leader>tl', ':Telescope floaterm<CR>', { silent = true, desc = '' })
-      vim.keymap.set('x', '<leader>ts', ':FloatermSend<CR>', { silent = true, desc = '' })
+      -- vim.keymap.set('x', '<leader>ts', ':FloatermSend<CR>', { silent = true, desc = '' })
    end
 }
