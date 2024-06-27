@@ -108,3 +108,6 @@ local prefix = vim.fn.expand("~/.config")
 vim.opt.undodir = { prefix .. "/nvim/.undo//" }
 vim.opt.undofile = true
 
+-- No perl provider needed
+vim.g.loaded_perl_provider = 0
+
