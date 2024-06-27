@@ -29,7 +29,7 @@ vim.keymap.set("v", "p", '"_dP', { desc = "Replace visual selection" })
 vim.keymap.set("n", "Y", "y$", { desc = "Yank from cursor till end of line" })
 
 -- Save and source current file
-vim.keymap.set("n", "<leader>x", "<cmd>.lua<CR>", { silent = true, desc = "Source the current line." })
+-- vim.keymap.set("n", "<leader>x", "<cmd>.lua<CR>", { silent = true, desc = "Source the current line." })
 vim.keymap.set("n", "<leader><leader>x", "<cmd>w<CR><cmd>source %<CR>",
    { silent = true, desc = "Safe and source the current file." })
 
@@ -52,10 +52,10 @@ vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Escape Escape exits t
 vim.keymap.set('n', 'Q', '@q')
 
 -- Better indenting
-vim.keymap.set('v', '<', '<gv')
-vim.keymap.set('v', '>', '>gv')
-vim.keymap.set('n', '>', '>>_')
-vim.keymap.set('n', '<', '<<_')
+-- vim.keymap.set('v', '<', '<gv')
+-- vim.keymap.set('v', '>', '>gv')
+-- vim.keymap.set('n', '>', '>>_')
+-- vim.keymap.set('n', '<', '<<_')
 
 -- Goto prev/next item in quickfixlist
 vim.keymap.set('n', '<F7>', ':cn<CR>', { silent = true, desc = 'Goto next item in Quickfix-List' })
