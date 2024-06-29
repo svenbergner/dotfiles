@@ -20,14 +20,11 @@ alias lt='ls --tree -l'
 
 # gulc -- git undo last commit but preserve the changes
 alias gulc="git reset --soft HEAD~"
+alias undolastcommit='git reset --soft HEAD~'
 alias lg='lazygit'
 alias gwl='git worktree list'
-alias undolastcommit='git reset --soft HEAD~'
-
-alias dev="tmuxifier load-session 'Development'"
 
 alias flutter='flutter --no-version-check'
-alias extractsimplytax='tar xvz --strip-components 1 --exclude package.json -f'
 alias flutterrebuild='fvm flutter clean && fvm flutter pub get && fvm dart run build_runner build --delete-conflicting-outputs'
 alias fbb='fvm flutter build bundle'
 alias updatelocales='fvm dart run easy_localization:generate --source-dir assets/translations --output-dir lib/generated/localization && fvm dart run easy_localization:generate -f keys --source-dir ./assets/translations --output-file localization/locale_keys.g.dart'
