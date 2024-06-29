@@ -68,6 +68,7 @@ fi
 source <(fzf --zsh)
 source <(zoxide init --cmd cd zsh)
 source <(flutter bash-completion)
+source <(gitleaks completion zsh)
 
 # -- Use fd instead of fzf --
 
