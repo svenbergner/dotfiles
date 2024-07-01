@@ -47,3 +47,7 @@ init
 ohmyposh
 codeknight
 toml
+FileOpen
+showBlockWidget
+hideBlockWidget
+processEvents
