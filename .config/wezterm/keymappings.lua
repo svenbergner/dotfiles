@@ -59,6 +59,17 @@ M.add_to_config = function(config, wezterm, act)
     { key = 'UpArrow',    mods = 'CMD',        action = act.SwitchWorkspaceRelative(1) },
     { key = 'DownArrow',  mods = 'CMD',        action = act.SwitchWorkspaceRelative(-1) },
 
+    {
+      key = 'f',
+      mods = 'LEADER',
+      action = wezterm.action_callback(function(window, _, _)
+          local active_screen = wezterm.gui.screens().active
+          local screen_height = active_screen.height
+          local screen_width = active_screen.width
+          window:set_position(0, 0)
+          window:set_inner_size(screen_width, screen_height)
+      end)
+    },
     -- Resize for showing emulator
     {
       key = 'r',
