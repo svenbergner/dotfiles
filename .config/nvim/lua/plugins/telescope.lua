@@ -68,7 +68,7 @@ return {
       "cljoly/telescope-repo.nvim",
       'dawsers/telescope-floaterm.nvim',
       'LukasPietzschmann/telescope-tabs',
-      "svenbergner/telescope-debugee-selector",
+      { "svenbergner/telescope-debugee-selector", dev = false },
 
       config = function()
          local telescopeConfig = require("telescope.config")
