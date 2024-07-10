@@ -153,3 +153,10 @@ if [[ -f /Users/sven.bergner/.dart-cli-completion/zsh-config.zsh ]] then
 fi
 ## [/Completion]
 
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+
+if [[ -f /opt/homebrew/opt/asdf/libexec/asdf.sh ]] then
+  source /opt/homebrew/opt/asdf/libexec/asdf.sh
+fi
+
