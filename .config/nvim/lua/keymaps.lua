@@ -58,5 +58,5 @@ vim.keymap.set('n', 'Q', '@q')
 -- vim.keymap.set('n', '<', '<<_')
 
 -- Goto prev/next item in quickfixlist
-vim.keymap.set('n', '<F7>', ':cn<CR>', { silent = true, desc = 'Goto next item in Quickfix-List' })
-vim.keymap.set('n', '<S-F7>', ':cp<CR>', { silent = true, desc = 'Goto previous item in Quickfix-List' })
+vim.keymap.set('n', '<F8>', ':cn<CR>', { silent = true, desc = 'Goto next item in Quickfix-List' })
+vim.keymap.set('n', '<S-F8>', ':cp<CR>', { silent = true, desc = 'Goto previous item in Quickfix-List' })
