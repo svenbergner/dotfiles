@@ -61,19 +61,38 @@ return {
             vim.lsp.buf.format()
          end, { desc = 'Format current buffer with LSP' })
          nmap('<leader>df', vim.lsp.buf.format, 'LSP: format document')
-         nmap('<S-F7>', '<cmd>20split<bar>term cmake --preset=build_mac-SSE-ub-debug<CR>', 'Run cmake configure')
-         nmap('<F7>', '<cmd>20split<bar>term cmake --build --preset=build_mac-SSE-ub-debug<CR>', 'Run cmake build')
+         nmap('<S-F7>', '<cmd>wa<bar>20split<bar>term cmake --preset=build_mac-SSE-ub-debug<CR>', 'Run cmake configure')
+         nmap('<F7>', '<cmd>wa<bar>20split<bar>term cmake --build --preset=build_mac-SSE-ub-debug<CR>', 'Run cmake build')
          vim.lsp.inlay_hint.enable(true)
       end
 
       local servers = {
-         clangd = {},
+         clangd = {
+            inlay_hints = {
+               includeInlayEnumMemberValueHints = true,
+               includeInlayFunctionLikeReturnTypeHints = true,
+               includeInlayFunctionParameterTypeHints = true,
+               includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+               includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+               includeInlayPropertyDeclarationTypeHints = true,
+               includeInlayVariableTypeHints = false,
+            }
+         },
          lua_ls = {
             Lua = {
                workspace = { checkThirdParty = false },
                telemetry = { enable = false },
                diagnostics = { disable = { 'missing-fields' } },
             },
+            inlay_hints = {
+               includeInlayEnumMemberValueHints = true,
+               includeInlayFunctionLikeReturnTypeHints = true,
+               includeInlayFunctionParameterTypeHints = true,
+               includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+               includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+               includeInlayPropertyDeclarationTypeHints = true,
+               includeInlayVariableTypeHints = false,
+            }
          },
          bashls = {},
          cmake = {},
