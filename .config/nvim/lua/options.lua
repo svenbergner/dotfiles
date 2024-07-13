@@ -4,6 +4,7 @@ vim.api.nvim_exec("language en_US.UTF-8", true)
 vim.opt.compatible = false
 
 vim.opt.termguicolors = true
+vim.opt.background = "dark"
 
 -- Enable mouse mode
 vim.opt.mouse = 'a'
