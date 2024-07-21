@@ -7,12 +7,14 @@ return {
    },
    config = function()
       require('which-key').setup({
+         preset = "modern",
+         notify = true,
          win = {
             no_overlap = true,
             border = "single",
-            margin = { 2, 20, 2, 20 },
-            padding = { 2, 5, 2, 5 },
-            winblend = 20,
+            wo = {
+               winblend = 10,
+            },
          },
          layout = {
             align = "center",
@@ -35,6 +37,11 @@ return {
             { "<leader>t_", hidden = true },
             { "<leader>w",  group = "[W]orkspace" },
             { "<leader>w_", hidden = true },
+         },
+         show_help = true,
+         show_keys = true,
+         disable = {
+            ft = { "lazygit", "LazyGit", "float" }
          }
       })
    end
