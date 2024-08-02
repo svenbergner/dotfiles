@@ -52,7 +52,6 @@ return {
          vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "Find Symbols" })
          vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = "Find Old Files" })
          vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = "Find Word under Cursor" })
-         vim.keymap.set('v', '<leader>fw', builtin.grep_string, { desc = "Find Word under Cursor" })
          vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = "Search Git Commits" })
          vim.keymap.set('n', '<leader>gC', builtin.git_bcommits, { desc = "Search Git Commits for Buffer" })
          vim.keymap.set('n', '<leader>Gb', builtin.git_branches, { desc = '[G]it [b]ranches' })
