@@ -57,6 +57,7 @@ return {
          vim.keymap.set('n', '<leader>Gb', builtin.git_branches, { desc = '[G]it [b]ranches' })
          vim.keymap.set('n', '<leader>sj', builtin.jumplist, { desc = "[S]how [J]umplist" })
          vim.keymap.set('n', '<leader>df', require('telescope.builtin').filetypes, { desc = '[D]ocument [f]iletype' })
+         vim.keymap.set('n', '<leader>fa', "<cmd>Telescope autocommands<CR>", { desc = '[f]ind [a]utocommands' })
       end,
    },
    {
