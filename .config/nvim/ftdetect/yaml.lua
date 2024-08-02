@@ -1,7 +1,18 @@
 -- Based on this medium article
 -- https://itnext.io/better-kubernetes-yaml-editing-with-neo-vim-af7da9a1b150
+vim.api.nvim_create_autocmd(
+   {'BufRead','BufNewFile'},
+   {
+      pattern = '*.yaml',
+      command = 'set filetype=yaml',
+   }
+)
 
--- Helpers
-vim.api.nvim_buf_set_keymap(0, "n", "<leader>yt", ":YAMLTelescope<CR>", { noremap = false })
-vim.api.nvim_buf_set_keymap(0, "n", "<leader>yl", ":!yamllint %<CR>", { noremap = true, silent = true })
+vim.api.nvim_create_autocmd(
+   {'BufRead','BufNewFile'},
+   {
+      pattern = '*.yml',
+      command = 'set filetype=yaml',
+   }
+)
 
