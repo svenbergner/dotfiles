@@ -1,5 +1,5 @@
 -- Set vim language explicitly to English for easier usage with tutorials
-vim.api.nvim_exec("language en_US.UTF-8", true)
+vim.api.nvim_exec2("language en_US.UTF-8", { output = true })
 
 vim.opt.compatible = false
 
@@ -10,11 +10,11 @@ vim.opt.background = "dark"
 vim.opt.mouse = 'a'
 
 vim.opt.guicursor = {
-	"n-v-c:block",                                -- Normal, visual, command-line: block cursor
-	"i-ci-ve:ver25",                              -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
-	"r-cr:hor20",                                 -- Replace, command-line replace: horizontal bar cursor with 20% height
-	"o:hor50",                                    -- Operator-pending: horizontal bar cursor with 50% height
-	"a:blinkwait700-blinkoff400-blinkon250",      -- All modes: blinking settings
+	"n-v-c:block",                           -- Normal, visual, command-line: block cursor
+	"i-ci-ve:ver25",                         -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
+	"r-cr:hor20",                            -- Replace, command-line replace: horizontal bar cursor with 20% height
+	"o:hor50",                               -- Operator-pending: horizontal bar cursor with 50% height
+	"a:blinkwait700-blinkoff400-blinkon250", -- All modes: blinking settings
 	"sm:block-blinkwait175-blinkoff150-blinkon175", -- Show match: block cursor with specific blinking settings
 }
 
@@ -111,4 +111,3 @@ vim.opt.undofile = true
 
 -- No perl provider needed
 vim.g.loaded_perl_provider = 0
-
