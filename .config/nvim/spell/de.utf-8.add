@@ -53,3 +53,4 @@ hideBlockWidget
 processEvents
 Bergner
 softtabstop
+nvim
