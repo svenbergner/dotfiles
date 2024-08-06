@@ -1,5 +1,13 @@
 # Neovim Config
 
+The whole config is written in lua. Based on folkes lazy.nvim package manager.
+
+## File type detection
+
+- Treat files ending with aavdrm as dosini files to get proper syntax highlighting.
+- Set explicitly *.pri and *.pro files to qmake syntax.
+- Set explicitly *.yaml and *.yml files to filetype yaml.
+
 ## Plugins
 
 - [actions-preview.nvim](https://github.com/aznhe21/actions-preview.nvim)
