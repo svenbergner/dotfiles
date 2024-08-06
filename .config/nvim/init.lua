@@ -2,6 +2,7 @@ require("options")
 require("keymaps")
 require("autocmds")
 
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
    vim.fn.system({
@@ -20,6 +21,8 @@ require("lazy").setup(
       { import = "plugins" },
    },
    {
+      -- Path to local development folder which is used if option dev = true 
+      -- is set in the plugin definition
       dev = {
          path = '~/Repos/'
       },
