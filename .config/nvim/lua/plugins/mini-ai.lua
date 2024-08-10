@@ -19,5 +19,9 @@
 -- - Treesitter textobjects (through MiniAi.gen_spec.treesitter() helper).
 
 return {
-   'echasnovski/mini.ai', version = '*'
+   'echasnovski/mini.ai',
+   version = '*',
+   config = function()
+      require('mini.ai').setup()
+   end,
 }
