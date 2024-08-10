@@ -6,6 +6,7 @@ return {
          "ThePrimeagen/harpoon",
          "nvim-lua/plenary.nvim",
          "joshmedeski/telescope-smart-goto.nvim",
+         "nvim-telescope/telescope-dap.nvim",
       },
       config = function()
          require("telescope").setup({
@@ -68,7 +69,8 @@ return {
       "cljoly/telescope-repo.nvim",
       'dawsers/telescope-floaterm.nvim',
       'LukasPietzschmann/telescope-tabs',
-      { "svenbergner/telescope-debugee-selector", dev = false },
+      { "svenbergner/telescope-debugee-selector", dev = true },
+      { "svenbergner/telescope-cmake-preset-selector", dev = true },
 
       config = function()
          local telescopeConfig = require("telescope.config")
@@ -160,6 +162,7 @@ return {
          require("telescope").load_extension("flutter")
 
          require("telescope").load_extension("undo")
+         require("telescope").load_extension("dap")
          require("telescope").load_extension("live_grep_args")
          require("telescope").load_extension("floaterm")
          require("telescope").load_extension("repo")
