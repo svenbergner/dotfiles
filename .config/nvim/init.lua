@@ -26,5 +26,11 @@ require("lazy").setup(
       dev = {
          path = '~/Repos/'
       },
+      checker = {
+         enable = true,
+      },
+      change_detection = {
+         enable = true,
+      }
    }
 )
