@@ -96,6 +96,22 @@ return {
          require('telescope').extensions.debugee_selector.show_debugee_candidates()
       end, { nargs = 0 })
 
+      vim.api.nvim_create_user_command("ConfigureCMakeBuild", function()
+         require('telescope').extensions.cmake_preset_selector.show_cmake_configure_presets()
+      end, { nargs = 0 })
+
+      vim.api.nvim_create_user_command("ShowSelectedConfigurePreset", function()
+         vim.print("Current CMake Configure Preset: ", require('telescope').extensions.cmake_preset_selector.get_configure_preset())
+      end, { nargs = 0 })
+
+      vim.api.nvim_create_user_command("RunCMakeBuild", function()
+         require('telescope').extensions.cmake_preset_selector.show_cmake_build_presets()
+      end, { nargs = 0 })
+
+      vim.api.nvim_create_user_command("ShowSelectedBuildPreset", function()
+         vim.print("Current CMake Build Preset: ", require('telescope').extensions.cmake_preset_selector.get_build_preset())
+      end, { nargs = 0 })
+
       vim.api.nvim_create_user_command("ResetDebuggee", function()
          dap.configurations.cpp = {
             {
