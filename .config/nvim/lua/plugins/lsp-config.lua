@@ -1,9 +1,11 @@
 -- All LSP configurations go here
 return {
    'neovim/nvim-lspconfig',
+   event = 'VeryLazy',
    dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
    },
    config = function()
@@ -61,12 +63,13 @@ return {
             vim.lsp.buf.format()
          end, { desc = 'Format current buffer with LSP' })
          nmap('<leader>df', vim.lsp.buf.format, 'LSP: format document')
-         nmap('<S-F7>', '<cmd>wa<bar>20split<bar>term cmake --preset=build_mac-SSE-ub-debug<CR>', 'Run cmake configure')
-         nmap('<F7>', '<cmd>wa<bar>20split<bar>term cmake --build --preset=build_mac-SSE-ub-debug<CR>', 'Run cmake build')
+         nmap('<S-F7>', '<cmd>ConfigureCMakeBuild<CR>', 'Run cmake configure')
+         nmap('<F7>', '<cmd>RunCMakeBuild<CR>', 'Run cmake build')
          vim.lsp.inlay_hint.enable(true)
       end
 
       local servers = {
+         bashls = {},
          clangd = {
             inlay_hints = {
                includeInlayEnumMemberValueHints = true,
@@ -78,11 +81,17 @@ return {
                includeInlayVariableTypeHints = false,
             }
          },
+         cssls = {},
+         cmake = {},
+         jsonls = {},
          lua_ls = {
             Lua = {
                workspace = { checkThirdParty = false },
                telemetry = { enable = false },
-               diagnostics = { disable = { 'missing-fields' } },
+               diagnostics = {
+                  disable = { 'missing-fields' },
+                  globals = { 'vim' },
+               },
             },
             inlay_hints = {
                includeInlayEnumMemberValueHints = true,
@@ -94,11 +103,10 @@ return {
                includeInlayVariableTypeHints = false,
             }
          },
-         bashls = {},
-         cmake = {},
          dockerls = {},
          marksman = {},
-         -- yamlls = {},
+         pyright = {},
+         yamlls = {},
          azure_pipelines_ls = {
             settings = {
                yaml = {
@@ -130,5 +138,15 @@ return {
             }
          end,
       }
+
+      vim.api.nvim_command('MasonToolsInstall')
+
+      -- Globally configure all LSP floating preview popups (like hover, signature help, etc)
+      local open_floating_preview = vim.lsp.util.open_floating_preview
+      function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+         opts = opts or {}
+         opts.border = opts.border or "rounded" -- Set border to rounded
+         return open_floating_preview(contents, syntax, opts, ...)
+      end
    end
 }
