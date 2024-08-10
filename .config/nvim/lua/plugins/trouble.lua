@@ -3,13 +3,28 @@
 return {
    "folke/trouble.nvim",
    dependencies = { "nvim-tree/nvim-web-devicons" },
-   opts = {},
-   config = function()
-      vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
-      vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
-      vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
-      vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
-      vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
-      vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
-   end
+   cmd = { "TroubleToggle", "Trouble" },
+   keys = {
+      { "<leader>xx", "<cmd>TroubleToggle<CR>", desc = "Workspace Diagnostics" },
+      { "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", desc = "Lsp Workspace Diagnostics" },
+      { "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<CR>", desc = "Lsp Document Diagnostics" },
+      { "<leader>xq", "<cmd>TroubleToggle quickfix<CR>", desc = "Quickfix" },
+      { "<leader>xl", "<cmd>TroubleToggle loclist<CR>", desc = "loclist" },
+      { "gR", "<cmd>TroubleToggle lsp_references<CR>", desc = "Lsp References" },
+   },
+   opts = {
+      use_diagnostic_signs = true,
+      action_keys = {
+         close = "q",
+         cancel = "<esc>",
+         refresh = "r",
+         jump = { "<cr>", "<tab>" },
+         toggle_mode = "m",
+         toggle_preview = "<C-p>",
+         preview = "P",
+         close_folds = { "zM", "zm" },
+         open_folds = { "zR", "zr" },
+         toggle_fold = "zA",
+      },
+   },
 }
