@@ -54,3 +54,4 @@ processEvents
 Bergner
 softtabstop
 nvim
+quickfix
