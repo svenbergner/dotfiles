@@ -3,14 +3,14 @@
 return {
    "folke/trouble.nvim",
    dependencies = { "nvim-tree/nvim-web-devicons" },
-   cmd = { "TroubleToggle", "Trouble" },
+   cmd = "Trouble",
    keys = {
-      { "<leader>xx", "<cmd>TroubleToggle<CR>", desc = "Workspace Diagnostics" },
-      { "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", desc = "Lsp Workspace Diagnostics" },
-      { "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<CR>", desc = "Lsp Document Diagnostics" },
-      { "<leader>xq", "<cmd>TroubleToggle quickfix<CR>", desc = "Quickfix" },
-      { "<leader>xl", "<cmd>TroubleToggle loclist<CR>", desc = "loclist" },
-      { "gR", "<cmd>TroubleToggle lsp_references<CR>", desc = "Lsp References" },
+      { "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", desc = "Diagnostics (Trouble)" },
+      { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Buffer Diagnostics (Trouble)" },
+      { "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Location List (Trouble)" },
+      { "<leader>xq", "<cmd>Trouble qflist toggle<CR>", desc = "Quickfix List (Trouble)" },
+      { "<leader>cs", "<cmd>Trouble symbols toggle focus=false<CR>", desc = "Symbols (Trouble)" },
+      { "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<CR>", desc = "Symbols (Trouble)" },
    },
    opts = {
       use_diagnostic_signs = true,
