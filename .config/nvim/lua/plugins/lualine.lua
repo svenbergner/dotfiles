@@ -17,6 +17,15 @@ end
 return {
    'nvim-lualine/lualine.nvim',
    config = function()
+      local trouble = require('trouble')
+      local symbols = trouble.statusline({
+         mode = "lsp_document_symbols",
+         groups = {},
+         title = false,
+         filter = { range = true },
+         format = "{kind_icon}{symbol.name:Normal}",
+         hl_group = "lualine_c_normal",
+      })
       require('lualine').setup({
          options = {
             icons_enabled = true,
@@ -38,7 +47,10 @@ return {
                { 'branch' },
                { 'diff' },
             },
-            lualine_c = {},
+            lualine_c = {
+               symbols.get,
+               -- cond = symbols.has,
+            },
             lualine_y = {
                { 'progress' },
                { getWords },
@@ -59,6 +71,7 @@ return {
    dependencies = {
       {
          "nvim-tree/nvim-web-devicons",
+         "folke/trouble.nvim",
       },
    },
 }
