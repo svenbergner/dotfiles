@@ -30,7 +30,17 @@ return {
          return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
       end
 
-      luasnip.config.setup({})
+      local types = require "luasnip.util.types"
+      luasnip.config.setup({
+         ext_opts = {
+            [types.choiceNode] = {
+               active = { virt_text = { { "⇥", "GruvboxRed" } }, },
+            },
+            [types.insertNode] = {
+               active = { virt_text = { { "⇥", "GruvboxBlue" } }, },
+            },
+         }
+      })
       cmp.setup({
          formatting = {
             format = lspkind.cmp_format({
