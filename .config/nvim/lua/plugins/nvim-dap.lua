@@ -172,10 +172,13 @@ return {
       -- vscode-style debugging
       vim.keymap.set("n", "<F5>", dap.continue, { desc = 'Start/Continue Debugging' })
       vim.keymap.set("n", "<S-F5>", dap.terminate, { desc = 'Stop Debugging' })
+      vim.keymap.set("n", "<F17>", dap.terminate, { desc = 'Stop Debugging' })
       vim.keymap.set("n", "<C-S-F5>", dap.run_last, { desc = 'Restart Debugging' })
+      vim.keymap.set("n", "<C-F17>", dap.run_last, { desc = 'Restart Debugging' })
       vim.keymap.set("n", "<F10>", dap.step_over, { desc = 'Step over' })
       vim.keymap.set("n", "<F11>", dap.step_into, { desc = 'Step into' })
       vim.keymap.set("n", "<S-F11>", dap.step_out, { desc = 'Step out' })
+      vim.keymap.set("n", "<F23>", dap.step_out, { desc = 'Step out' })
       vim.keymap.set("n", "<F9>", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
       vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
       vim.keymap.set("n", "<leader>B", function()

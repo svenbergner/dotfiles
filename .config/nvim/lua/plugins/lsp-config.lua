@@ -1,7 +1,6 @@
 -- All LSP configurations go here
 return {
    'neovim/nvim-lspconfig',
-   event = 'VeryLazy',
    dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
@@ -10,6 +9,7 @@ return {
    },
    config = function()
       vim.keymap.set('n', '<S-F6>', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+      vim.keymap.set('n', '<F18>', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
       vim.keymap.set('n', '<F6>', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
       vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
       vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
@@ -64,6 +64,7 @@ return {
          end, { desc = 'Format current buffer with LSP' })
          nmap('<leader>df', vim.lsp.buf.format, 'LSP: format document')
          nmap('<S-F7>', '<cmd>ConfigureCMakeBuild<CR>', 'Run cmake configure')
+         nmap('<F19>', '<cmd>ConfigureCMakeBuild<CR>', 'Run cmake configure')
          nmap('<F7>', '<cmd>RunCMakeBuild<CR>', 'Run cmake build')
          vim.lsp.inlay_hint.enable(true)
       end
@@ -137,6 +138,17 @@ return {
             }
          end,
       }
+
+      require('lspconfig')['pyright'].setup({
+         capabilities = capabilities,
+         on_attach = on_attach,
+         filetypes = { 'python' },
+         settings = {},
+         handlers = {
+            ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
+            ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' })
+         },
+      })
 
       require('mason-tool-installer').setup({
          ensure_installed = {}
