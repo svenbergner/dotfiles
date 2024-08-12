@@ -105,7 +105,6 @@ return {
          },
          dockerls = {},
          marksman = {},
-         pyright = {},
          yamlls = {},
          azure_pipelines_ls = {
             settings = {
@@ -139,14 +138,10 @@ return {
          end,
       }
 
+      require('mason-tool-installer').setup({
+         ensure_installed = {}
+      }
+      )
       vim.api.nvim_command('MasonToolsInstall')
-
-      -- Globally configure all LSP floating preview popups (like hover, signature help, etc)
-      local open_floating_preview = vim.lsp.util.open_floating_preview
-      function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-         opts = opts or {}
-         opts.border = opts.border or "rounded" -- Set border to rounded
-         return open_floating_preview(contents, syntax, opts, ...)
-      end
    end
 }
