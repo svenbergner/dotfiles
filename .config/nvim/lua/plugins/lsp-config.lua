@@ -106,6 +106,7 @@ return {
          },
          dockerls = {},
          marksman = {},
+         pylsp = {},
          yamlls = {},
          azure_pipelines_ls = {
             settings = {
@@ -138,17 +139,6 @@ return {
             }
          end,
       }
-
-      require('lspconfig')['pyright'].setup({
-         capabilities = capabilities,
-         on_attach = on_attach,
-         filetypes = { 'python' },
-         settings = {},
-         handlers = {
-            ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
-            ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' })
-         },
-      })
 
       require('mason-tool-installer').setup({
          ensure_installed = {}
