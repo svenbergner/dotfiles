@@ -70,12 +70,15 @@ return {
          filesystem = {
             follow_current_file = { enabled = true, },
             filtered_items = {
-               hide_dotfiles = true,
+               hide_dotfiles = false,
                hide_gitignored = false,
                never_show = {
                   ".DS_Store",
                   "thumbs.db"
                },
+               always_show = {
+                  ".env",
+               }
             },
          },
       })
