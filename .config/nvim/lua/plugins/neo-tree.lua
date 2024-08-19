@@ -42,9 +42,14 @@ return {
             "buffers",
             "git_status",
          },
+         popup_border_style = "rounded",
          close_if_last_window = false,
          auto_clean_after_session_restore = true,
          default_source = "filesystem",
+         enable_git_status = true,
+         enable_diagnostics = true,
+         open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
+         use_libuv_file_watcher = false,
          source_selector = {
             winbar = true,
             status_line = true,
@@ -59,6 +64,8 @@ return {
          },
          buffers = {
             follow_current_file = { enabled = true, },
+            group_empty_dirs = true,
+            show_unloaded = true,
          },
          filesystem = {
             follow_current_file = { enabled = true, },
