@@ -1,4 +1,4 @@
--- Helps to open really big files
+-- Helps to open really big files by disabling resource hungry features
 return {
    'LunarVim/bigfile.nvim',
    event = 'BufReadPre',
