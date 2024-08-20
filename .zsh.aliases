@@ -17,6 +17,7 @@ alias l='ls -la'
 alias la='ls -laa'
 alias ll='ls -l'
 alias lt='ls --tree -l'
+alias cls='clear&&ls'
 
 # gulc -- git undo last commit but preserve the changes
 alias gulc="git reset --soft HEAD~"
