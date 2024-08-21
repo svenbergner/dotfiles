@@ -1,4 +1,3 @@
----@diagnostic disable: inject-field
 -- Set vim language explicitly to English for easier usage with tutorials
 vim.api.nvim_exec2("language en_US.UTF-8", { output = true })
 
@@ -62,10 +61,6 @@ vim.opt.syntax = "on"
 vim.opt.list = true
 vim.opt.listchars = { tab = '> ', trail = '.', eol = '↵' }
 
-vim.g.noerrorbells = true
-vim.g.nohlsearch = true
-vim.g.icm = "nosplit"
-
 -- file search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true -- Override 'ignorecase' option if search pattern contains upper case characters
@@ -110,5 +105,3 @@ local prefix = vim.fn.expand("~/.config")
 vim.opt.undodir = { prefix .. "/nvim/.undo//" }
 vim.opt.undofile = true
 
--- No perl provider needed
-vim.g.loaded_perl_provider = 0
