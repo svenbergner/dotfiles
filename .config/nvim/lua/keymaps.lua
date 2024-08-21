@@ -37,7 +37,7 @@ vim.keymap.set("n", "<leader><leader>x", "<cmd>w<CR><cmd>source %<CR>",
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current buffer" })
 
 -- Toggle folds
-vim.keymap.set("n", "zz", "za", { silent = true, desc = "Toggle current fold" })
+vim.keymap.set("n", "<leader>zz", "za", { silent = true, desc = "Toggle current fold" })
 
 -- Close current buffer without closing the window
 vim.keymap.set("n", "<leader>Q", ":enew<bar>bd #<CR>",
@@ -64,5 +64,3 @@ vim.keymap.set('n', '<F20>', ':cp<CR>', { silent = true, desc = 'Goto previous i
 
 -- Copy filename to clipboard
 vim.keymap.set('n', '<leader>cfn', '<cmd>let @+=@%<CR>', { silent = true, desc = 'Copy filename to clipboard' })
-
-
