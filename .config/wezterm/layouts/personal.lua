@@ -21,6 +21,18 @@ M.setup_layout = function(wezterm)
     second_tab:set_title('VimWiki')
     second_pane:send_text('nvim .\n')
 
+    local third_tab, third_pane, _ = window:spawn_tab {
+      cwd = home_dir .. '/Repos/telescope-cmake-preset-selector',
+    }
+    third_tab:set_title('CMake Preset Selector')
+    third_pane:send_text('nvim .\n')
+
+    local fourth_tab, fourth_pane, _ = window:spawn_tab {
+      cwd = home_dir .. '/Repos/telescope-debugee-selector',
+    }
+    fourth_tab:set_title('Debugee Selector')
+    fourth_pane:send_text('nvim .\n')
+
     first_tab:activate()
   end)
 end
