@@ -1,16 +1,8 @@
----@diagnostic disable: inject-field
--- Map leader and localleader to space
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- Prevent x and the delete key from overriding what's in the clipboard.
 vim.keymap.set("n", "x", '"_x', { desc = "Delete char under cursor without yank" })
 vim.keymap.set("n", "X", '"_X', { desc = "Delete char before cursor without yank" })
 vim.keymap.set("n", "<Del>", '"_x', { desc = "Delete char under cursor without yank" })
 vim.keymap.set("n", "<BS>", '"_X', { desc = "Delete char before cursor without yank" })
-
--- Backspace deletes indent, end of line and
-vim.g.backspace = "indent,eol,start"
 
 -- use jk as alternative for ESC key to go back to normal mode
 vim.keymap.set("i", "jk", "<ESC>", { desc = "ESC back to normal mode" })
