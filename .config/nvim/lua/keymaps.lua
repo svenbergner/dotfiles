@@ -1,3 +1,4 @@
+---@diagnostic disable: inject-field
 -- Map leader and localleader to space
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
