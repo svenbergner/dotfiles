@@ -9,7 +9,7 @@ return {
    },
    config = function()
       require("yaml_nvim").setup({
-         on_attach = function(client, bufnr)
+         on_attach = function(client, _)
             client.resolved_capabilities.document_formatting = false
             require("nvim-treesitter.configs").setup({
                ensure_installed = "yaml",
