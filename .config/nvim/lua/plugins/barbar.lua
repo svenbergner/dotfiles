@@ -1,3 +1,4 @@
+---@diagnostic disable: inject-field
 -- Tabs, as understood by any other editor.
 -- barbar.nvim is a tabline plugin with re-orderable, auto-sizing, clickable tabs,
 -- icons, nice highlighting, sort-by commands and a magic jump-to-buffer mode.

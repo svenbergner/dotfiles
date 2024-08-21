@@ -1,3 +1,4 @@
+---@diagnostic disable: inject-field
 -- Set vim language explicitly to English for easier usage with tutorials
 vim.api.nvim_exec2("language en_US.UTF-8", { output = true })
 
