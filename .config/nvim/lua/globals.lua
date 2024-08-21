@@ -1,3 +1,4 @@
+-- This file contains global variables that are used in the configuration
 -- Map leader and localleader to space
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
