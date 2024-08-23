@@ -12,7 +12,7 @@ return {
       local harpoon = require('harpoon')
       harpoon.setup(harpoon, {})
 
-      vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
+      vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "Harpoon add file" })
 
       -- basic telescope configuration
       local conf = require("telescope.config").values
