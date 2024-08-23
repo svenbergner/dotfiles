@@ -10,6 +10,8 @@ return {
          preset = "modern",
          notify = true,
          win = {
+            width = { min = 20, max = 200 },
+
             no_overlap = true,
             border = "single",
             wo = {
