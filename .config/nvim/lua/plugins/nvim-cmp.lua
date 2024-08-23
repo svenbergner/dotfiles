@@ -113,6 +113,15 @@ return {
             { name = "buffer" },
          },
       })
+
+      cmp.setup.cmdline("@", {
+         mapping = cmp.mapping.preset.cmdline(),
+         sources = cmp.config.sources({
+            { name = "path" },
+            { name = "cmdline" },
+         }),
+      })
+
       -- `/` cmdline setup.
       cmp.setup.cmdline('/', {
          mapping = cmp.mapping.preset.cmdline(),
@@ -127,8 +136,8 @@ return {
       cmp.setup.cmdline(':', {
          mapping = cmp.mapping.preset.cmdline(),
          sources = cmp.config.sources({
-            { name = 'path' }
-         }, {
+            { name = 'path', },
+            { name = 'nvim_lua', },
             {
                name = 'cmdline',
                option = {
