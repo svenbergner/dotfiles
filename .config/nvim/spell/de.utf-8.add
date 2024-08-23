@@ -58,3 +58,5 @@ quickfix
 vscode
 perl
 treesitter
+keymaps
+textobjects
