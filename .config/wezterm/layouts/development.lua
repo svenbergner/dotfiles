@@ -28,6 +28,13 @@ M.setup_layout = function(wezterm)
     third_tab:set_title('Build-Pipelines')
     third_pane:send_text('nvim .\n')
 
+
+    local fourth_tab, fourth_pane, _ = window:spawn_tab {
+      cwd = home_dir .. '/Repos/Content/StP/30/DMSource',
+    }
+    fourth_tab:set_title('Content StP')
+    fourth_pane:send_text('nvim .\n')
+
     first_tab:activate()
     window:gui_window():maximize()
 
