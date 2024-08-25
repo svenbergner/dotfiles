@@ -61,3 +61,4 @@ treesitter
 keymaps
 textobjects
 neovim
+lua
