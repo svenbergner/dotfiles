@@ -1,15 +1,16 @@
+-- Common keymaps for neovim which are not plugin specific.
+-- use jk as alternative for ESC key to go back to normal mode
+vim.keymap.set("i", "jk", "<ESC>", { desc = "ESC back to normal mode" })
+
 -- Prevent x and the delete key from overriding what's in the clipboard.
 vim.keymap.set("n", "x", '"_x', { desc = "Delete char under cursor without yank" })
 vim.keymap.set("n", "X", '"_X', { desc = "Delete char before cursor without yank" })
 vim.keymap.set("n", "<Del>", '"_x', { desc = "Delete char under cursor without yank" })
 vim.keymap.set("n", "<BS>", '"_X', { desc = "Delete char before cursor without yank" })
 
--- use jk as alternative for ESC key to go back to normal mode
-vim.keymap.set("i", "jk", "<ESC>", { desc = "ESC back to normal mode" })
-
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Switch Buffers
 vim.keymap.set("n", "<PageUp>", "<cmd>bp<CR>", { silent = true, desc = "Goto next buffer" })
@@ -32,10 +33,6 @@ vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current b
 -- Toggle folds
 vim.keymap.set("n", "<leader>zz", "za", { silent = true, desc = "Toggle current fold" })
 
--- Close current buffer without closing the window
-vim.keymap.set("n", "<leader>Q", ":enew<bar>bd #<CR>",
-   { silent = true, desc = "Close current buffer but leave window open" })
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <c-\><c-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -43,12 +40,6 @@ vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Escape Escape exits t
 
 -- Use `Q` to play the macro recorded in `@q`
 vim.keymap.set('n', 'Q', '@q')
-
--- Better indenting
--- vim.keymap.set('v', '<', '<gv')
--- vim.keymap.set('v', '>', '>gv')
--- vim.keymap.set('n', '>', '>>_')
--- vim.keymap.set('n', '<', '<<_')
 
 -- Goto prev/next item in quickfixlist
 vim.keymap.set('n', '<F8>', ':cn<CR>', { silent = true, desc = 'Goto next item in Quickfix-List' })
