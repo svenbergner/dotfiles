@@ -56,7 +56,7 @@ links to their github repos.
 - [mason: Easily install and manage LSP servers, DAP servers, linters, and formatters](https://github.com/williamboman/mason.nvim)
 - [mini.icons: Icon provider](https://github.com/echasnovski/mini.icons)
 - [neotest: A framework for interacting with tests within Neovim](https://github.com/nvim-neotest/neotest)
-  - [neotest-dart: ](https://github.com/sidlatau/neotest-dart)
+  - [neotest-dart: Support for running dart unit test](https://github.com/sidlatau/neotest-dart)
 - [nvim-cmp: ](https://github.com/hrsh7th/nvim-cmp/)
   - [LuaSnip: ](https://github.com/L3MON4D3/LuaSnip)
   - [cmp-buffer: ](https://github.com/hrsh7th/cmp-buffer)
