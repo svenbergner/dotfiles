@@ -48,7 +48,6 @@ links to their github repos.
 - [gitsigns: Adds custom signs for current git status](https://github.com/lewis6991/gitsigns.nvim)
 - [gruvbox: My current colorscheme](https://github.com/ellisonleao/gruvbox.nvim/)
 - [harpoon: Getting you where you want with the fewest keystrokes.](https://github.com/ThePrimeagen/harpoon)
-- [image: Show images inside of neovim: ](https://github.com3rd/image.nvim/)
 - [inc-rename: Incremental renaming plugin](https://github.com/smjonas/inc-rename.nvim/)
 - [indent-blankline: Adds indentation guides to Neovim.](https://github.com/lukas-reineke/indent-blankline.nvim/)
 - [is: Improved incremental search](https://github.com/haya14busa/is.vim/)
