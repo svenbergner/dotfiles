@@ -27,9 +27,6 @@ vim.opt.virtualedit = "block"
 
 -- tab
 vim.opt.expandtab = true
--- vim.opt.tabstop = 3
--- vim.opt.softtabstop = 3
--- vim.opt.shiftwidth = 3
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
@@ -47,9 +44,6 @@ vim.wo.wrap = false
 -- New splits open to the right and below
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-
--- all windows automatically made same size after splitting or closing a window
-vim.opt.equalalways = true
 
 -- Highlight cursor line
 vim.opt.cursorline = true
@@ -104,4 +98,6 @@ vim.cmd("highlight SpellBad cterm=bold,undercurl gui=bold,undercurl guisp=Red")
 local prefix = vim.fn.expand("~/.config")
 vim.opt.undodir = { prefix .. "/nvim/.undo/" }
 vim.opt.undofile = true
+
+vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
