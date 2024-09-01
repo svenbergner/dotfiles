@@ -37,6 +37,7 @@ vim.keymap.set("n", "<leader>zz", "za", { silent = true, desc = "Toggle current 
 -- for people to discover. Otherwise, you normally need to press <c-\><c-n>, which
 -- is not what someone will guess without a bit more experience.
 vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Escape Escape exits terminal mode' })
+vim.keymap.set('n', '<esc><esc>', '<c-w><c-q>', { desc = 'Escape Escape closes current buffer' })
 
 -- Use `Q` to play the macro recorded in `@q`
 vim.keymap.set('n', 'Q', '@q')
