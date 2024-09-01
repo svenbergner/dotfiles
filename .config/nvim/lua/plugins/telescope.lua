@@ -67,7 +67,6 @@ return {
       "nvim-telescope/telescope-ui-select.nvim",
       "debugloop/telescope-undo.nvim",
       "cljoly/telescope-repo.nvim",
-      'dawsers/telescope-floaterm.nvim',
       'LukasPietzschmann/telescope-tabs',
       { "svenbergner/telescope-debugee-selector", dev = true },
       { "svenbergner/telescope-cmake-preset-selector", dev = true },
@@ -135,7 +134,6 @@ return {
                ['neoclip'] = {},
                ['undo'] = {},
                ['live_grep_args'] = {},
-               ['floaterm'] = {},
                ['repo'] = {
                   list = {
                      fd_opts = {
@@ -164,7 +162,6 @@ return {
          require("telescope").load_extension("undo")
          require("telescope").load_extension("dap")
          require("telescope").load_extension("live_grep_args")
-         require("telescope").load_extension("floaterm")
          require("telescope").load_extension("repo")
          require("telescope").load_extension("debugee_selector")
          require("telescope").load_extension("noice")
