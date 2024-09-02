@@ -8,7 +8,6 @@ return {
          "nvim-neotest/nvim-nio",
          "rcarriga/nvim-dap-ui",
          "williamboman/mason.nvim",
-         "leoluz/nvim-dap-go",
          "svenbergner/telescope-debugee-selector",
       },
       config = function()
