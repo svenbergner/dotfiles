@@ -57,22 +57,22 @@ links to their github repos.
 - [mini.icons: Icon provider](https://github.com/echasnovski/mini.icons)
 - [neotest: A framework for interacting with tests within Neovim](https://github.com/nvim-neotest/neotest)
   - [neotest-dart: Support for running dart unit test](https://github.com/sidlatau/neotest-dart)
-- [nvim-cmp: ](https://github.com/hrsh7th/nvim-cmp/)
+  - [nvim-nio: A library for asynchronous IO in Neovim](https://github.com/nvim-neotest/nvim-nio)
+- [nvim-cmp: A completion engine plugin for neovim written in Lua](https://github.com/hrsh7th/nvim-cmp/)
   - [LuaSnip: ](https://github.com/L3MON4D3/LuaSnip)
-  - [cmp-buffer: ](https://github.com/hrsh7th/cmp-buffer)
-  - [cmp-cmdline: ](https://github.com/hrsh7th/cmp-cmdline)
+  - [cmp-buffer: nvim-cmp source for buffer words](https://github.com/hrsh7th/cmp-buffer)
+  - [cmp-cmdline: nvim-cmp source for vim's cmdline](https://github.com/hrsh7th/cmp-cmdline)
   - [cmp-nvim-lsp: ](https://github.com/hrsh7th/cmp-nvim-lsp)
-  - [cmp-path: ](https://github.com/hrsh7th/cmp-path)
+  - [cmp-path: nvim-cmp source for neovim's built-in language server client](https://github.com/hrsh7th/cmp-path)
   - [cmp_luasnip: ](https://github.com/saadparwaiz1/cmp_luasnip)
-  - [friendly-snippets: ](https://github.com/rafamadriz/friendly-snippets)
+  - [friendly-snippets: luasnip completion source for nvim-cmp](https://github.com/rafamadriz/friendly-snippets)
   - [lspkind: ](https://github.com/onsails/lspkind.nvim)
-- [nvim-colorizer: ](https://github.com/NvChad/nvim-colorizer.lua)
+- [nvim-colorizer: This tiny plugin adds vscode-like pictograms to neovim built-in lsp](https://github.com/NvChad/nvim-colorizer.lua)
 - [nvim-dap: Debug adapter](https://github.com/mfussenegger/nvim-dap)
-  - [nvim-dap-go: ](https://github.com/leoluz/nvim-dap-go)
   - [nvim-dap-ui: Debug TUI](https://github.com/rcarriga/nvim-dap-ui)
-- [nvim-nio: ](https://github.com/nvim-neotest/nvim-nio)
+  - [nvim-nio: A library for asynchronous IO in Neovim](https://github.com/nvim-neotest/nvim-nio)
 - [nvim-silicon: ](https://github.com/michaelrommel/nvim-silicon)
-- [nvim-surround: ](https://github.com/kylechui/nvim-surround)
+- [nvim-surround: Plugin to create code images using the external silicon tool](https://github.com/kylechui/nvim-surround)
 - [nvim-treesitter: ](https://github.com/nvim-treesitter/nvim-treesitter)
   - [nvim-treesitter-textobjects: ](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
 - [oil: ](https://github.com/stevearc/oil.nvim)
@@ -89,7 +89,7 @@ links to their github repos.
   - [telescope-tabs: ](https://github.com/LukasPietzschmann/telescope-tabs)
   - [telescope-ui-select: ](https://github.com/nvim-telescope/telescope-ui-select.nvim)
   - [telescope-undo: ](https://github.com/debugloop/telescope-undo.nvim)
-- [todo-comments: ](https://github.com/folke/todo-comments.nvim)
+- [todo-comments: Highlight todo, notes, etc in comments](https://github.com/folke/todo-comments.nvim)
 - [trouble: A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.](https://github.com/folke/trouble.nvim)
   - [nvim-web-devicons: ](https://github.com/nvim-tree/nvim-web-devicons)
 - [twilight: ](https://github.com/folke/twilight.nvim)
@@ -109,5 +109,9 @@ links to their github repos.
  
 ## Spellchecking
 
+The folder spell contains spell checking files for the German language.
+
 ## Syntax Highlighting
 
+The folder syntax contains a vimscript file which adds syntax highlighting for
+Qt qmake files.
