@@ -35,6 +35,8 @@ return {
          { silent = true, desc = "Show Neotree Buffers" })
       vim.keymap.set("n", "<leader>ng", ":Neotree git_status reveal left<CR>:Neotree focus git_status<CR>",
          { silent = true, desc = "Show Neotree Git Status" })
+      vim.keymap.set("n", "<leader>nc", ":Neotree close<CR>",
+         { silent = true, desc = "Close Neotree" })
 
       require("neo-tree").setup({
          sources = {
