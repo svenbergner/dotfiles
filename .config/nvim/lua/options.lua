@@ -99,5 +99,5 @@ local prefix = vim.fn.expand("~/.config")
 vim.opt.undodir = { prefix .. "/nvim/.undo/" }
 vim.opt.undofile = true
 
-vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.opt.sessionoptions="buffers,curdir,folds,help,tabpages,winsize,localoptions"
 
