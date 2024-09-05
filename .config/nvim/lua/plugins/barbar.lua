@@ -65,10 +65,19 @@ return {
          insert_at_end = true,
          insert_at_start = false,
          tabpages = true,
+         exclude_ft = { 'terminal' },
+         exclude_name = { 'NvimTree', },
          icons = {
             button = "✗", -- alternative: ❌
             buffer_index = true,
             filetype = { enable = true },
+            -- Enables / disables diagnostic symbols
+            diagnostics = {
+               [vim.diagnostic.severity.ERROR] = { enabled = true, icon = 'ﬀ' },
+               [vim.diagnostic.severity.WARN] = { enabled = false },
+               [vim.diagnostic.severity.INFO] = { enabled = false },
+               [vim.diagnostic.severity.HINT] = { enabled = true },
+            },
             visible = { modified = { buffer_number = false } },
             gitsigns = {
                added = { enabled = true, icon = "+" },
