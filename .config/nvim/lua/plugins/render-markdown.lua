@@ -1,5 +1,7 @@
 return {
-   "MeanderingProgrammer/render-markdown.nvim",
+   "MeanderingProgrammer/markdown.nvim",
+   main = 'render-markdown',
    opts = {},
-   dependencies = {'nvim-treesitter', 'echasnovski/mini.icons'},
+   name = 'render-markdown',
+   dependencies = {'nvim-treesitter', 'nvim-treesitter/nvim-web-devicons'},
 }
