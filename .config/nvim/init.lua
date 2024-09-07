@@ -22,7 +22,7 @@ require("lazy").setup(
       { import = "plugins" },
    },
    {
-      -- Path to local development folder which is used if option dev = true 
+      -- Path to local development folder which is used if option dev = true
       -- is set in the plugin definition
       dev = {
          path = '~/Repos/'
