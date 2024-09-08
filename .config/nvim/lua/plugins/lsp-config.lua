@@ -110,13 +110,15 @@ return {
          marksman = {},
          pylsp = {},
          yamlls = {},
-         azure_pipelines_ls = {
-            settings = {
-               yaml = {
-                  schemas = { ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = { "*.y*l", } }
-               }
-            }
-         },
+         -- azure_pipelines_ls = {
+         --    settings = {
+         --       yaml = {
+         --          schemas = { 
+         --             ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = { "*.y*l", } 
+         --          }
+         --       }
+         --    }
+         -- },
       }
 
       local default_capabilities = vim.lsp.protocol.make_client_capabilities()
