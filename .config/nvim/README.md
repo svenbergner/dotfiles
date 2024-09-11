@@ -9,6 +9,15 @@ inspiration or a starting point for your own config.
 The config is written in lua. External packages are getting installed and updated
 using the lazy.nvim package manager.
 
+## My currently used version
+
+```
+NVIM v0.10.1
+Build type: Release
+LuaJIT 2.1.1725453128
+```
+
+
 ## The starting point: init.lua
 
 It's the main entry point of the config. It sets up the package manager and
