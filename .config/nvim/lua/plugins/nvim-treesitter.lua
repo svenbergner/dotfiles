@@ -36,8 +36,8 @@ return {
             "luadoc",
             "luap",
             "make",
-            "markdown",
-            "markdown_inline",
+            "markdown", -- basic highlighting
+            "markdown_inline", -- needed for full highlighting
             "ninja",
             "nix",
             "python",
