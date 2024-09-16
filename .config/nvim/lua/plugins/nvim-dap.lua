@@ -42,6 +42,8 @@ return {
                stopOnEntry = false,
                -- args = { "-update" },
                -- args = { "-c", "-mnormal" },
+               -- args = { "-mnormal" },
+               -- args = { "-nih" }, -- BelegManager: no instance handling
                args = {},
                initCommands = function()
                   local commands = {}
