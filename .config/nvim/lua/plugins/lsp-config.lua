@@ -81,11 +81,13 @@ return {
                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
                includeInlayPropertyDeclarationTypeHints = true,
-               includeInlayVariableTypeHints = false,
+               includeInlayVariableTypeHints = true,
             }
          },
+         clang_format = {},
          cssls = {},
          cmake = {},
+         codelldb = {},
          jsonls = {},
          lua_ls = {
             Lua = {
