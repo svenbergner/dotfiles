@@ -49,6 +49,11 @@ return {
                initCommands = function()
                   local commands = {}
                   table.insert(commands, "breakpoint name configure --disable cpp_exception")
+                  if vim.fn.has("mac") == 1 then
+                     table.insert(commands,
+                        'script -l python -- import sys; sys.path += [ "' .. vim.fn.expand("$HOME") .. '/Library/Python/3.9/lib/python/site-packages" ]')
+                  end
+                  table.insert(commands, "settings set target.load-script-from-symbol-file true")
                   return commands
                end,
             },
