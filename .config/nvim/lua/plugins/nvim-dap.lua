@@ -36,7 +36,8 @@ return {
                type = "lldb",
                request = "launch",
                program = function()
-                  return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                  print('No program specified! Call SetDebuggee or ResetDebuggee!')
+                  -- return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
                end,
                cwd = "${workspaceFolder}",
                stopOnEntry = false,
