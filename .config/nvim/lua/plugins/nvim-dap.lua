@@ -217,6 +217,7 @@ return {
    {
       "theHamsta/nvim-dap-virtual-text",
       opts = {
+         enabled = true,                     -- enables this plugin
          enabled_commands = true,            -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
          highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
          highlight_new_as_changed = true,    -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
@@ -225,6 +226,16 @@ return {
          only_first_definition = false,      -- only show virtual text at first definition (if there are multiple)
          all_references = true,              -- show virtual text on all all references of the variable (not only definitions)
          clear_on_continue = false,          -- clear virtual text on "continue" (might cause flickering when stepping)
+         --- A callback that determines how a variable is displayed or whether it should be omitted
+         --- @param variable Variable https://microsoft.github.io/debug-adapter-protocol/specification#Types_Variable
+         --- @param buf number
+         --- @param stackframe dap.StackFrame https://microsoft.github.io/debug-adapter-protocol/specification#Types_StackFrame
+         --- @param node userdata tree-sitter node identified as variable definition of reference (see `:h tsnode`)
+         --- @param options nvim_dap_virtual_text_options Current options for nvim-dap-virtual-text
+         --- @return string|nil A text how the virtual text should be displayed or nil, if this variable shouldn't be displayed
+         display_callback = function(variable, buf, stackframe, node, options)
+            return variable.name .. ' = ' .. variable.value:gsub("%s+", " ")
+         end,
          virt_text_win_col = 120,
          virt_text_pos = "inline",
       }
