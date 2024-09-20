@@ -81,6 +81,7 @@ links to their github repos.
 - [nvim-dap: Debug adapter](https://github.com/mfussenegger/nvim-dap)
   - [nvim-dap-ui: Debug TUI](https://github.com/rcarriga/nvim-dap-ui)
   - [nvim-nio: A library for asynchronous IO in Neovim](https://github.com/nvim-neotest/nvim-nio)
+  - [nvim-dap-virtual-text: Shows var content inline](https://github.com/theHamsta/nvim-dap-virtual-text)
 - [neo-tree: Plugin to browse the file system, buffers and git changes in a tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - [nvim-silicon: ](https://github.com/michaelrommel/nvim-silicon)
 - [nvim-surround: Plugin to create code images using the external silicon tool](https://github.com/kylechui/nvim-surround)
