@@ -84,10 +84,8 @@ return {
                includeInlayVariableTypeHints = true,
             }
          },
-         clang_format = {},
          cssls = {},
          cmake = {},
-         codelldb = {},
          jsonls = {},
          lua_ls = {
             Lua = {
