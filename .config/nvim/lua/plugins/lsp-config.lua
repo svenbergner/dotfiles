@@ -110,13 +110,23 @@ return {
          },
          dockerls = {},
          marksman = {},
-         pylsp = {},
+         pylsp = {
+            plugins = {
+               pycodestyle = {
+                  ignore = {
+                     "E501", -- line too long
+                     "E402", -- module level import not at top of file
+                  },
+                  maxLineLength = 120,
+               }
+            }
+         },
          yamlls = {},
          -- azure_pipelines_ls = {
          --    settings = {
          --       yaml = {
-         --          schemas = { 
-         --             ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = { "*.y*l", } 
+         --          schemas = {
+         --             ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = { "*.y*l", }
          --          }
          --       }
          --    }
