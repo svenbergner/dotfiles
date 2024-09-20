@@ -90,6 +90,7 @@ links to their github repos.
 - [outline: A treeview of the current file content](https://github.com/hedyhli/outline.nvim)
 - [plenary: A collection of lua functions](https://github.com/nvim-lua/plenary.nvim)
 - [smart-splits: ](https://github.com/mrjones2014/smart-splits.nvim)
+- [rest: A very fast HTTP client written in lus](https://github.com/rest-nvim/rest.nvim)
 - [telescope: a highly extendable fuzzy finder over lists](https://github.com/nvim-telescope/telescope.nvim)
   - [telescope-cmake-preset-selector: Searches for all presets in a cmake project and lets you select one to build with](https://github.com/svenbergner/telescope-cmake-preset-selector)
   - [telescope-dap: Integration for nvim-dap](https://github.com/nvim-telescope/telescope-dap.nvim)
