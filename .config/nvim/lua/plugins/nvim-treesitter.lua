@@ -28,6 +28,7 @@ return {
             "gitignore",
             "go",
             "html",
+            "http",
             "javascript",
             "json",
             "kdl",
