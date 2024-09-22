@@ -52,7 +52,7 @@ return {
          enable_git_status = true,
          enable_diagnostics = true,
          open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
-         use_libuv_file_watcher = false,
+         use_libuv_file_watcher = true,
          source_selector = {
             winbar = true,
             status_line = true,
