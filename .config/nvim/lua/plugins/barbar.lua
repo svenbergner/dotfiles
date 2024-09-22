@@ -1,4 +1,3 @@
----@diagnostic disable: inject-field
 -- Tabs, as understood by any other editor.
 -- barbar.nvim is a tabline plugin with re-orderable, auto-sizing, clickable tabs,
 -- icons, nice highlighting, sort-by commands and a magic jump-to-buffer mode.
@@ -7,6 +6,8 @@
 -- Jump to any buffer by simply typing their target letter. Even better, the
 -- target letter stays constant for the lifetime of the buffer, so if you're
 -- working with a set of files you can even type the letter ahead from memory.
+-- https://github.com/romgrk/barbar.nvim
+---@diagnostic disable: inject-field
 
 return {
    {
