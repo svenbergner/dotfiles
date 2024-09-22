@@ -65,7 +65,6 @@ set backspace=indent,eol,start
 
 set guicursor="n-v-c:block-Cursor/lCursor, ve:ver35-Cursor, o:hor50-Cursor, i-ci:ver25-Cursor/lCursor, r-cr:hor20-Cursor/lCursor, sm:block-Cursor -blinkwait175-blinkoff150-blinkon175"
 set noswapfile
-"set nobackup
 set undodir=~/.local/state/undo/vim/
 set undofile
 set incsearch
@@ -91,10 +90,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " Mouse Scrolling
 set mouse=nicr
 
-" Path to fzf added
-set rtp+=/usr/local/opt/fzf
-
-" Splits and Tabbed Files ---------------------------------------------------------------- {{{
+" Splits and Tabbed Files
 set splitbelow splitright
 
 " Move between splits with CTRL + hjkl
@@ -103,60 +99,32 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Make adjusting split sizes a bit more friendly
-" noremap <silent> <C-Left> :vertical resize +1<CR>
-" noremap <silent> <C-Right> :vertical resize +1<CR>
-" noremap <silent> <C-Up> :resize +1<CR>
-" noremap <silent> <C-Down> :resize +1<CR>
-
-" Change 2 split windows from vert to horiz or horiz to vert
-map <leader>th <C-w>t<C-w>H
-map <leader>tk <C-w>t<C-w>K
-
 " Removes pipes | that act as seperators on splits
 set fillchars+=vert:\
 
 " Block visualization
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
-" }}}
 
-" Colorscheme ---------------------------------------------------------------- {{{
+" Colorscheme
 set background=dark
-" }}}
 
-" KEY MAPPINGS ----------------------------------------------------------- {{{
+" KEY MAPPINGS
 " Prevent x and the delete key from overriding what's in the clipboard.
 noremap x "_x
 noremap X "_X
 noremap <Del> "_x
 
-" Show Commands
-nnoremap <LEADER><LEADER> :Maps<CR>
-
 " Use jk insteasd of the escape key
 inoremap jk <ESC>
 
 " Source current file
-nnoremap <LEADER>s :w<CR>:source %<CR>
-
-" Move current line down
-nnoremap <C-Down> ddp
-nnoremap <LEADER><Down> ddp
-
-" Move current line up
-nnoremap <C-Up> ddkP
-nnoremap <LEADER><Up> ddkP
-
-" Open .vimrc
-nnoremap <LEADER>ve :vsplit $MYVIMRC<CR>
+nnoremap <LEADER><LEADER>x :w<CR>:source %<CR>
 
 " Switch Buffers
 map <PageUp> :bp<CR>
 map <PageDown> :bn<CR>
-" }}}
 
-" STATUS LINE ------------------------------------------------------------ {{{
+" STATUS LINE
 set laststatus=2
-" }}}
 
