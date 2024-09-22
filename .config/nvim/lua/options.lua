@@ -95,8 +95,8 @@ vim.opt.spell = true
 vim.cmd("highlight SpellBad cterm=bold,undercurl gui=bold,undercurl guisp=Red")
 
 -- Undo
-local prefix = vim.fn.expand("~/.config")
-vim.opt.undodir = { prefix .. "/nvim/.undo/" }
+local prefix = vim.fn.expand("~/.local/state/undo/")
+vim.opt.undodir = { prefix .. "nvim/" }
 vim.opt.undofile = true
 
 vim.opt.sessionoptions="buffers,curdir,folds,help,tabpages,winsize,localoptions"
