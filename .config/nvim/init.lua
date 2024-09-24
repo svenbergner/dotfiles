@@ -2,6 +2,7 @@ require("globals")
 require("options")
 require("keymaps")
 require("autocmds")
+require("usercmds")
 
 -- Bootstrap the lazy.nvim package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
