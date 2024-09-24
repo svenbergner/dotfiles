@@ -47,8 +47,6 @@ wezterm.on('format-tab-title',
     local zoom_indicator = ""
     local p = tab.active_pane
     if p.is_zoomed then
-      -- title_intensity = "Bold"
-      -- edge_foreground = "#fe8019"
       zoom_indicator = " " .. wezterm.nerdfonts.oct_zoom_in
     end
 
