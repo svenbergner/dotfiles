@@ -73,7 +73,7 @@ return {
       "debugloop/telescope-undo.nvim",
       "cljoly/telescope-repo.nvim",
       'LukasPietzschmann/telescope-tabs',
-      { "svenbergner/telescope-debugee-selector", dev = true },
+      { "svenbergner/telescope-debugee-selector",      dev = true },
       { "svenbergner/telescope-cmake-preset-selector", dev = true },
 
       config = function()
