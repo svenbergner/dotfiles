@@ -1,8 +1,8 @@
 -- Telescope - the swiss army knife for finding things
 --
 -- Default keybindings:
--- <C-x> go to file selection as a split   
--- <C-v> go to file selection as a vsplit   
+-- <C-x> go to file selection as a split
+-- <C-v> go to file selection as a vsplit
 -- <C-t> go to a file in a new tab
 
 return {
