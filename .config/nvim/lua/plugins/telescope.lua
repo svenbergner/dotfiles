@@ -55,7 +55,6 @@ return {
 
          vim.keymap.set("n", "<leader>fi", '<cmd>AdvancedGitSearch<cr>', { desc = "Advanced Git Search" })
          vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find Help Tags" })
-         vim.keymap.set('n', '<F12>', builtin.help_tags, { desc = "Find Help Tags" })
          vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "Find Symbols" })
          vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = "Find Old Files" })
          vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = "Find Word under Cursor" })
