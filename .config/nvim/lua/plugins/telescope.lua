@@ -58,8 +58,19 @@ return {
          vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "Find Symbols" })
          vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = "Find Old Files" })
          vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = "Find Word under Cursor" })
-         vim.keymap.set('n', '<leader>gC', builtin.git_commits, { desc = "Search all [g]it [C]ommits" })
-         vim.keymap.set('n', '<leader>gc', builtin.git_bcommits, { desc = "Search [g]it [c]ommits for Buffer" })
+         vim.keymap.set('n', '<leader>gC', function()
+               require("telescope.builtin").git_commits({
+                  -- git_command = { 'git', 'log', '--pretty=format:%h  %ad  %aN  %s', '--date=relative', '--' }
+                  git_command = { 'git', 'log', '--pretty=reference', '--date=relative', '--', '.' }
+               })
+            end, { desc = "Search all [g]it [C]ommits" })
+         vim.keymap.set('n', '<leader>gc', function()
+               require("telescope.builtin").git_bcommits({
+                  -- git_command = { 'git', 'log', '--pretty=format:%h  %ad  %aN  %s', '--date=relative', '--' }
+                  git_command = { 'git', 'log', '--pretty=reference', '--date=relative', '--' }
+               })
+            end,
+            { desc = "Search [g]it [c]ommits for Buffer" })
          vim.keymap.set('n', '<leader>Gb', builtin.git_branches, { desc = '[G]it [b]ranches' })
          vim.keymap.set('n', '<leader>sj', builtin.jumplist, { desc = "[S]how [J]umplist" })
          vim.keymap.set('n', '<leader>df', require('telescope.builtin').filetypes, { desc = '[D]ocument [f]iletype' })
