@@ -53,22 +53,19 @@ return {
             }))
          end, { desc = "[/] Fuzzily search in current buffer" })
 
+         local git_opts = { git_command = { 'git', 'log', '--pretty=format:%h %<(20)%aN  %<(16)%ad  %s', '--date=relative', '--' } }
+         -- pretty=format:"%C(yellow)%h %Cblue%>(16)%ad  %Cgreen%<(20)%aN%Cred%d %Creset%s"
+
          vim.keymap.set("n", "<leader>fi", '<cmd>AdvancedGitSearch<cr>', { desc = "Advanced Git Search" })
          vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find Help Tags" })
          vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "Find Symbols" })
          vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = "Find Old Files" })
          vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = "Find Word under Cursor" })
          vim.keymap.set('n', '<leader>gC', function()
-               require("telescope.builtin").git_commits({
-                  -- git_command = { 'git', 'log', '--pretty=format:%h  %ad  %aN  %s', '--date=relative', '--' }
-                  git_command = { 'git', 'log', '--pretty=reference', '--date=relative', '--', '.' }
-               })
-            end, { desc = "Search all [g]it [C]ommits" })
+            require("telescope.builtin").git_commits(git_opts)
+         end, { desc = "Search all [g]it [C]ommits" })
          vim.keymap.set('n', '<leader>gc', function()
-               require("telescope.builtin").git_bcommits({
-                  -- git_command = { 'git', 'log', '--pretty=format:%h  %ad  %aN  %s', '--date=relative', '--' }
-                  git_command = { 'git', 'log', '--pretty=reference', '--date=relative', '--' }
-               })
+               require("telescope.builtin").git_bcommits(git_opts)
             end,
             { desc = "Search [g]it [c]ommits for Buffer" })
          vim.keymap.set('n', '<leader>Gb', builtin.git_branches, { desc = '[G]it [b]ranches' })
