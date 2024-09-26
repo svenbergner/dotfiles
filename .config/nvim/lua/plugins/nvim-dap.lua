@@ -176,6 +176,8 @@ return {
             { text = "→", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
 
          -- vscode-style debugging
+         vim.keymap.set("n", "<M-F5>", function() vim.cmd('SetDebuggee') end, { desc = 'Set Debugee' })
+         vim.keymap.set("n", "<F53>", function() vim.cmd('SetDebuggee') end, { desc = 'Set Debugee' })
          vim.keymap.set("n", "<F5>", dap.continue, { desc = 'Start/Continue Debugging' })
          vim.keymap.set("n", "<S-F5>", dap.terminate, { desc = 'Stop Debugging' })
          vim.keymap.set("n", "<F17>", dap.terminate, { desc = 'Stop Debugging' })
