@@ -65,3 +65,17 @@ lua
 unbesuchten
 userdb
 Doctronic
+DapVirtualTextEnable
+DapVirtualTextDisable
+DapVirtualTextToggle
+DapVirtualTextForceRefresh
+NvimDapVirtualText
+NvimDapVirtualTextChanged
+microsoft
+param
+buf
+stackframe
+userdata
+dap
+StackFrame
+tsnode
