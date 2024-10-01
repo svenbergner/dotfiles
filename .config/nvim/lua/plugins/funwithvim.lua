@@ -6,24 +6,24 @@
 -- 5. https://github.com/AndrewRadev/dealwithit.vim
 
 return {
-   {
-      'eandrju/cellular-automaton.nvim'
-   },
-   {
-      'tamton-aquib/duck.nvim',
-      config = function()
-         vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, {})
-         vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
-         vim.keymap.set('n', '<leader>da', function() require("duck").cook_all() end, {})
-      end
-   },
-   {
-      'AndrewRadev/typewriter.vim'
-   },
-   {
-      'rhysd/vim-syntax-christmas-tree'
-   },
-   {
-      'AndrewRadev/dealwithit.vim'
-   }
+   -- {
+   --    'eandrju/cellular-automaton.nvim'
+   -- },
+   -- {
+   --    'tamton-aquib/duck.nvim',
+   --    config = function()
+   --       vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, {})
+   --       vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
+   --       vim.keymap.set('n', '<leader>da', function() require("duck").cook_all() end, {})
+   --    end
+   -- },
+   -- {
+   --    'AndrewRadev/typewriter.vim'
+   -- },
+   -- {
+   --    'rhysd/vim-syntax-christmas-tree'
+   -- },
+   -- {
+   --    'AndrewRadev/dealwithit.vim'
+   -- }
 }
