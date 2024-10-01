@@ -28,6 +28,12 @@ return {
             end
             vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
          end
+         local imap = function(keys, func, desc)
+            if desc then
+               desc = 'LSP: ' .. desc
+            end
+            vim.keymap.set('i', keys, func, { buffer = bufnr, desc = desc })
+         end
          local is_clangd = function()
             for _, client in pairs(vim.lsp.get_clients { bufnr = bufnr }) do
                if client.name == "clangd" then
@@ -41,6 +47,8 @@ return {
             nmap('<F4>', sw, 'F4 - switch source/header')
             nmap('<A-o>', sw, 'Alt + o - switch source/header')
             nmap('<M-o>', sw, 'Meta + o - switch source/header')
+            imap('<A-o>', sw, 'Alt + o - switch source/header')
+            imap('<M-o>', sw, 'Meta + o - switch source/header')
          end
          nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
          nmap('<F2>', vim.lsp.buf.rename, '[R]e[n]ame')
