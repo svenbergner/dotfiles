@@ -36,7 +36,7 @@ return {
          end
          local is_clangd = function()
             for _, client in pairs(vim.lsp.get_clients { bufnr = bufnr }) do
-               if client.name == "clangd" then
+               if client.name == "clangd" or client.name == "sonarlint.nvim" then
                   return true
                end
                return false
