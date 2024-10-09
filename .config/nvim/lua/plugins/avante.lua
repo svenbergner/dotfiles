@@ -3,6 +3,7 @@ return {}
 -- Cursor AI IDE. It provides users with AI-driven code suggestions and the
 -- ability to apply these recommendations directly to their source files
 -- with minimal effort.
+-- https://github.com/yetone/avante.nvim
 
 -- return {
 --    "yetone/avante.nvim",
