@@ -8,6 +8,7 @@ return {
       { 'j-hui/fidget.nvim', opts = {} },
    },
    config = function()
+      vim.lsp.set_log_level('OFF')
       vim.keymap.set('n', '<S-F6>', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
       vim.keymap.set('n', '<F18>', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
       vim.keymap.set('n', '<F6>', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
