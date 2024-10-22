@@ -38,7 +38,7 @@ vim.keymap.set("n", "<leader>zz", "za", { silent = true, desc = "Toggle current 
 vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Escape Escape exits terminal mode' })
 vim.keymap.set('n', '<esc><esc>', '<c-w><c-q>', { desc = 'Escape Escape closes current buffer' })
 
-vim.keymap.set('n', 'Q', '@q')
+vim.keymap.set('n', 'Q', '@q', { desc = 'Use [Q] to play the macro recorded in @q' })
 
 -- Goto prev/next item in quickfixlist
 vim.keymap.set('n', '<F8>', ':cn<CR>', { silent = true, desc = 'Goto next item in Quickfix-List' })
