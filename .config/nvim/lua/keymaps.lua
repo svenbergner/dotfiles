@@ -46,3 +46,5 @@ vim.keymap.set('n', '<S-F8>', ':cp<CR>', { silent = true, desc = 'Goto previous 
 vim.keymap.set('n', '<F20>', ':cp<CR>', { silent = true, desc = 'Goto previous item in Quickfix-List' })
 
 vim.keymap.set('n', '<leader>cfn', '<cmd>let @+=@%<CR>', { silent = true, desc = 'Copy filename to clipboard' })
+
+vim.keymap.set('n', '<BS>', '^', { desc = 'Move to first non-blank character' })
