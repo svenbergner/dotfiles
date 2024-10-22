@@ -9,7 +9,6 @@ return {
    {
       "nvim-telescope/telescope.nvim",
       dependencies = {
-         "ThePrimeagen/harpoon",
          "nvim-lua/plenary.nvim",
          "joshmedeski/telescope-smart-goto.nvim",
          "nvim-telescope/telescope-dap.nvim",
