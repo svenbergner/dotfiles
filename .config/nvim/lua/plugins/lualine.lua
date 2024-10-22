@@ -14,6 +14,10 @@ local getWords = function()
    end
 end
 
+local getNeoVimSymbol = function()
+   return ""
+end
+
 return {
    'nvim-lualine/lualine.nvim',
    config = function()
@@ -43,6 +47,10 @@ return {
             lualine_c = { { 'filename', path = 1 } },
          },
          sections = {
+            lualine_a = {
+               { getNeoVimSymbol },
+               { 'mode' },
+            },
             lualine_b = {
                { 'branch' },
                { 'diff' },
