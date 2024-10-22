@@ -27,7 +27,6 @@ vim.keymap.set("n", "Y", "y$", { desc = "Yank from cursor till end of line" })
 vim.keymap.set("n", "<leader><leader>x", "<cmd>w<CR><cmd>source %<CR>",
    { silent = true, desc = "Safe and source the current file." })
 
--- Format current buffer
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current buffer" })
 
 -- Toggle folds
@@ -39,7 +38,6 @@ vim.keymap.set("n", "<leader>zz", "za", { silent = true, desc = "Toggle current 
 vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Escape Escape exits terminal mode' })
 vim.keymap.set('n', '<esc><esc>', '<c-w><c-q>', { desc = 'Escape Escape closes current buffer' })
 
--- Use `Q` to play the macro recorded in `@q`
 vim.keymap.set('n', 'Q', '@q')
 
 -- Goto prev/next item in quickfixlist
@@ -47,5 +45,4 @@ vim.keymap.set('n', '<F8>', ':cn<CR>', { silent = true, desc = 'Goto next item i
 vim.keymap.set('n', '<S-F8>', ':cp<CR>', { silent = true, desc = 'Goto previous item in Quickfix-List' })
 vim.keymap.set('n', '<F20>', ':cp<CR>', { silent = true, desc = 'Goto previous item in Quickfix-List' })
 
--- Copy filename to clipboard
 vim.keymap.set('n', '<leader>cfn', '<cmd>let @+=@%<CR>', { silent = true, desc = 'Copy filename to clipboard' })
