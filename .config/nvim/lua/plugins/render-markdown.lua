@@ -1,3 +1,6 @@
+-- Plugin to improve viewing Markdown files in Neovim
+-- https://www.github.com/MeanderingProgrammer/markdown.nvim
+
 return {
    "MeanderingProgrammer/markdown.nvim",
    main = 'render-markdown',
