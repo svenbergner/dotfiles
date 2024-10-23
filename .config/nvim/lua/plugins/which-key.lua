@@ -1,4 +1,6 @@
 -- Shows the available keymaps
+-- http://www.github.com/folke/which-key.nvim
+
 return {
    'folke/which-key.nvim',
    event = 'VeryLazy',
@@ -8,6 +10,21 @@ return {
    config = function()
       require('which-key').setup({
          preset = "modern",
+         icons = {
+            mappings = true,
+            keys = {},
+         },
+         spec = {
+            { '<leader>f', group = '[f]ind', },
+            { '<leader>g', group = '[g]it', },
+            { '<leader>w', group = 'vim[w]iki', },
+            { '<leader>n', group = '[n]eotree' },
+            --    { '<leader>d', group = '[D]ocument' },
+            --    { '<leader>r', group = '[R]ename' },
+            --    { '<leader>s', group = '[S]earch' },
+            --    { '<leader>t', group = '[T]oggle' },
+            --    { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+         },
          notify = true,
          win = {
             width = { min = 20, max = 200 },
