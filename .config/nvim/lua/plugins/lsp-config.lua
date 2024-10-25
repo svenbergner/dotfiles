@@ -44,7 +44,7 @@ return {
             end
          end
          if is_clangd() then
-            local sw = require('lspconfig.server_configurations.clangd').commands.ClangdSwitchSourceHeader[1]
+            local sw = '<cmd>ClangdSwitchSourceHeader<CR>'
             nmap('<F4>', sw, 'F4 - switch source/header')
             nmap('<A-o>', sw, 'Alt + o - switch source/header')
             nmap('<M-o>', sw, 'Meta + o - switch source/header')
@@ -95,6 +95,7 @@ return {
          },
          cssls = {},
          cmake = {},
+         dockerls = {},
          jsonls = {},
          lua_ls = {
             Lua = {
@@ -115,7 +116,6 @@ return {
                includeInlayVariableTypeHints = false,
             }
          },
-         dockerls = {},
          marksman = {},
          pylsp = {
             plugins = {
