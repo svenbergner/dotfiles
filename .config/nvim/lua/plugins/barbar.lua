@@ -82,9 +82,9 @@ return {
             },
             visible = { modified = { buffer_number = false } },
             gitsigns = {
-               added = { enabled = true, icon = "+" },
-               changed = { enabled = true, icon = "~" },
-               deleted = { enabled = true, icon = "-" },
+               added = { enabled = true, icon = " " },
+               changed = { enabled = true, icon = " " },
+               deleted = { enabled = true, icon = "⊟ " },
             },
          },
          sidebar_filetypes = {
