@@ -15,11 +15,11 @@ return {
             keys = {},
          },
          spec = {
+            { '<leader>d', group = '[d]ebug' },
             { '<leader>f', group = '[f]ind', },
             { '<leader>g', group = '[g]it', },
-            { '<leader>w', group = 'vim[w]iki', },
             { '<leader>n', group = '[n]eotree' },
-            --    { '<leader>d', group = '[D]ocument' },
+            { '<leader>w', group = 'vim[w]iki', },
             --    { '<leader>r', group = '[R]ename' },
             --    { '<leader>s', group = '[S]earch' },
             --    { '<leader>t', group = '[T]oggle' },
