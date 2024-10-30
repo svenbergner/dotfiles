@@ -4,6 +4,7 @@
 -- 3. https://github.com/AndrewRadev/typewriter.vim
 -- 4. https://github.com/rhysd/vim-syntax-christmas-tree
 -- 5. https://github.com/AndrewRadev/dealwithit.vim
+-- 6. https://github.com/folke/drop.nvim
 
 return {
    -- {
@@ -25,5 +26,16 @@ return {
    -- },
    -- {
    --    'AndrewRadev/dealwithit.vim'
+   -- },
+   -- {
+   --    "folke/drop.nvim",
+   --    opt = {
+   --       screensaver = 1000 * 60 * 5, -- show after 5 minutes. Set to false, to disable
+   --       filetype = { "markdown", "vimwiki", "text", "lua" },
+   --    },
+   -- },
+   -- { 
+   --    "ThePrimeagen/vim-be-good",
+   --    event = "VeryLazy",
    -- }
 }
