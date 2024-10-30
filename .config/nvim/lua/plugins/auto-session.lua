@@ -1,6 +1,9 @@
 -- Automatically manage vim sessions
+-- https://www.github.com/rmagatti/auto-session
+
 return {
    'rmagatti/auto-session',
+   lazy = false,
    config = function()
       require('auto-session').setup(
          {
