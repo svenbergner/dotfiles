@@ -5,6 +5,7 @@ My config files
 
 ### Neovim lua config
 After using several IDEs and Vim I ended up using Neovim as my PDE (Personal Development Environment.)
+[NeoVim Readme](/.config/nvim/README.md)
 
 ### lazygit
 
