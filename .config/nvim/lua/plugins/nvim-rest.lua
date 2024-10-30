@@ -9,5 +9,5 @@
 -- HTTP clients, such as the postman CLI.
 
 return {
-   -- "rest-nvim/rest.nvim",
+   "rest-nvim/rest.nvim",
 }
