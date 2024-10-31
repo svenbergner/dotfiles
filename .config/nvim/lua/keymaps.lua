@@ -1,6 +1,4 @@
 -- Common keymaps for neovim which are not plugin specific.
--- use jk as alternative for ESC key to go back to normal mode
-vim.keymap.set("i", "jk", "<ESC>", { desc = "ESC back to normal mode" })
 
 -- Prevent x and the delete key from overriding what's in the clipboard.
 vim.keymap.set("n", "x", '"_x', { desc = "Delete char under cursor without yank" })
