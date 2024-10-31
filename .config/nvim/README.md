@@ -49,6 +49,7 @@ links to their github repos.
 - [auto-session: Automatically manage vim sessions](https://github.com/rmagatti/auto-session)
 - [autoclose: Automatically add the closing element](https://github.com/m4xshen/autoclose.nvim)
 - [barbar: Tabs, as understood by any other editor](https://github.com/romgrk/barbar.nvim)
+- [better escape: Better solution for using jk or jj instead of esc](https://github.com/max397574/better-escape.nvim) 
 - [bigfile: Helps to open really big files by disabling resource hungry features](https://github.com/LunarVim/bigfile.nvim/)
 - [copilot: Support for Github Copilot](https://github.com/zbirenbaum/copilot.lua/)
 - [flash: lets you navigate your code](https://github.comfolke/flash.nvim/)
