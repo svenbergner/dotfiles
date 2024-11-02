@@ -21,3 +21,11 @@ api.nvim_create_autocmd(
    { "BufLeave", "FocusLost", "InsertEnter", "WinLeave" },
    { command = [[if &nu | set nornu | endif ]], group = numberToggleGroup }
 )
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  desc = "Disable automatic comment insertion",
+  group = vim.api.nvim_create_augroup("AutoComment", {}),
+  callback = function()
+    vim.opt_local.formatoptions:remove({ "o" })
+  end,
+})
