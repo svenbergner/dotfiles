@@ -13,7 +13,7 @@ fingertips.
 [lazygit config](./lazygit)
 
 ### wezterm
-After using a bunch of terminal emulators and terminal multiplexers I ended up using wezterm as my daily driver.
+After using a bunch of terminal emulators and multiplexers I'm currently using wezterm.
 Following points were my reason to switch:
  - configuration is written in lua. Same as neovim.
  - highly customizable using lua
@@ -21,18 +21,10 @@ Following points were my reason to switch:
  - supports kitty image protocol
  - fast and lightweight
 
-## Older configs
+## Colors
 
-Tools I used some time on my way to the perfect development setup.
-
-### zellij
-A terminal multiplexer with a nice and easy TUI. It has a very low learning curve but after some time I wanted to get
-my screen space back to use it for my work and not for help text.
-
-### tmux
-
-### vimrc
-
+My preferred colorscheme is **gruvbox dark**. Therefore I have the colors as iTerm colors and in a simply json format.
+I use these colors in my wezterm statusbar, lazygit, delta and neovim.
 
 ## Scripts
 
@@ -40,8 +32,22 @@ my screen space back to use it for my work and not for help text.
 
 This script can be used to look up information from the cht.sh website.
 
-## Colors
+## Fallback config
 
-I like the Gruvbox dark Colorscheme. Therefore I have the colors as iTerm colors and in a simply json format.
-I use these colors in my wezterm statusbar.
+### vimrc
+I stripped down my .vimrc to a minimal one-file configuration without any external
+dependencies. No package manager is used. So it can easily be copied to any
+machine and I have a really good base to work with within seconds.
+
+
+## Older configs
+
+Tools I used for some time on my way to a perfect development setup.
+
+### zellij
+A terminal multiplexer with a nice and easy TUI. It has a very low learning curve but after some time I wanted to get
+my screen space back to use it for my work and not for help text.
+
+### tmux
+
 
