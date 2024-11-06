@@ -28,6 +28,7 @@ require("layouts.development").setup_layout(wezterm)
 require('utils.background').toggleBackground(config)
 
 -- Settings
+config.max_fps = 120
 config.enable_kitty_graphics = true
 config.audible_bell = "Disabled"
 config.visual_bell = {
