@@ -29,3 +29,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
     vim.opt_local.formatoptions:remove({ "o" })
   end,
 })
+
+-- Prevent Telescope from entering insert mode after leaving a prompt
+vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
+  callback = function(event)
+    if vim.bo[event.buf].filetype == "TelescopePrompt" then
+      vim.api.nvim_exec2("silent! stopinsert!", {})
+    end
+  end
+})
