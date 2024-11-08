@@ -27,9 +27,6 @@ vim.keymap.set("n", "<leader><leader>x", "<cmd>w<CR><cmd>source %<CR>",
 
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current buffer" })
 
--- Toggle folds
-vim.keymap.set("n", "<leader>zz", "za", { silent = true, desc = "Toggle current fold" })
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <c-\><c-n>, which
 -- is not what someone will guess without a bit more experience.
