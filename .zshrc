@@ -37,9 +37,7 @@ autoload -U compinit && compinit
 
 zinit cdreplay -q
 
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/codeknight.toml)"
-fi
+eval "$(starship init zsh)"
 
 # Keybindings
 bindkey -e
