@@ -1,5 +1,13 @@
 local M = {}
 
+M.addTab = function(window, cwd, title, command)
+  local tab, pane, _ = window:spawn_tab {
+    cwd = cwd,
+  }
+  tab:set_title(title)
+  pane:send_text(command)
+end
+
 M.setup_layout = function(wezterm)
   local mux = wezterm.mux
 
@@ -15,20 +23,9 @@ M.setup_layout = function(wezterm)
     first_tab:set_title('Dotfiles')
     first_pane:send_text('nvim .\n')
 
-    local second_tab, _, _ = window:spawn_tab {
-      cwd = home_dir .. '/Repos/vimwiki',
-    }
-    second_tab:set_title('VimWiki')
-
-    local third_tab, _, _ = window:spawn_tab {
-      cwd = home_dir .. '/Repos/telescope-cmake-preset-selector',
-    }
-    third_tab:set_title('CMake Preset Selector')
-
-    local fourth_tab, _, _ = window:spawn_tab {
-      cwd = home_dir .. '/Repos/telescope-debugee-selector',
-    }
-    fourth_tab:set_title('Debugee Selector')
+    M.addTab(window, home_dir .. '/Repos/vimwiki', 'VimWiki', 'nvim .\n')
+    M.addTab(window, home_dir .. '/Repos/telescope-cmake-preset-selector', 'CMake Preset Selector', 'nvim .\n')
+    M.addTab(window, home_dir .. '/Repos/telescope-debugee-selector', 'Debugee Selector', 'nvim .\n')
 
     first_tab:activate()
   end)

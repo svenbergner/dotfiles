@@ -1,5 +1,14 @@
 local M = {}
 
+M.addTab = function(window, cwd, title, command)
+  local tab, pane, _ = window:spawn_tab {
+    cwd = cwd,
+  }
+  tab:set_title(title)
+  pane:send_text(command)
+  return tab
+end
+
 M.setup_layout = function(wezterm)
   local mux = wezterm.mux
 
@@ -15,30 +24,13 @@ M.setup_layout = function(wezterm)
     }
     first_tab:set_title('SimplyTaxApp')
 
-    local second_tab, _, _ = window:spawn_tab {
-      cwd = home_dir .. '/Repos/SSE/Dev',
-    }
-    second_tab:set_title('SSE/TaxCoreApi')
+    local activateTab = M.addTab(window, home_dir .. '/Repos/SSE/Dev', 'SSE/TaxCoreApi', 'nvim .\n')
+    M.addTab(window, home_dir .. '/Repos/webhook-builds', 'Build-Pipelines', 'nvim .\n')
+    M.addTab(window, home_dir .. '/Repos/Content/StP/30/DMSource', 'Content StP', 'nvim .\n')
 
-    local third_tab, _, _ = window:spawn_tab {
-      cwd = home_dir .. '/Repos/webhook-builds',
-    }
-    third_tab:set_title('Build-Pipelines')
-
-
-    local fourth_tab, _, _ = window:spawn_tab {
-      cwd = home_dir .. '/Repos/Content/StP/30/DMSource',
-    }
-    fourth_tab:set_title('Content StP')
-
-    first_tab:activate()
+    activateTab:activate()
     window:gui_window():maximize()
 
-    -- local editor_pane = build_pane:split {
-    --   direction = 'Top',
-    --   size = 0.6,
-    --   cwd = project_dir,
-    -- }
   end)
 end
 
