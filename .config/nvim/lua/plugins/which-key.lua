@@ -17,7 +17,7 @@ return {
          spec = {
             { '<leader>a', group = '[a]vante' },
             { '<leader>c', group = '[c]ode' },
-            { '<leader>d', group = '[d]ebug' },
+            { '<leader>d', group = '[d]apui' },
             { '<leader>f', group = '[f]ind', },
             { '<leader>g', group = '[g]it', },
             { '<leader>n', group = '[n]eotree' },

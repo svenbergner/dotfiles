@@ -55,7 +55,8 @@ return {
                         vim.fn.expand("$HOME") .. '/Library/Python/3.9/lib/python/site-packages" ]')
                   end
                   table.insert(commands, "settings set target.load-script-from-symbol-file true")
-                  table.insert(commands, "settings set target.source-map /Users/qt/work/qt/ /Users/sven.bergner/Qt/6.7.3/Src/")
+                  table.insert(commands,
+                     "settings set target.source-map /Users/qt/work/qt/ /Users/sven.bergner/Qt/6.7.3/Src/")
                   return commands
                end,
             },
@@ -189,17 +190,16 @@ return {
          vim.keymap.set("n", "<S-F11>", dap.step_out, { desc = 'Step out' })
          vim.keymap.set("n", "<F23>", dap.step_out, { desc = 'Step out' })
          vim.keymap.set("n", "<F9>", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
-         vim.keymap.set("n", "<leader>cd", dapui.close, { desc = '[c]lose [d]apui' })
-         vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = 'Toggle [d]ap[u]i' })
+         vim.keymap.set("n", "<leader>dc", dapui.close, { desc = '[d]apui [c]lose' })
+         vim.keymap.set("n", "<leader>dT", dapui.toggle, { desc = '[d]apui [T]oggle ' })
          vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
-         vim.keymap.set("n", "<leader>B", function()
-            dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-         end, { desc = 'Set conditional breakpoint' })
-         vim.keymap.set('n', '<Leader>lp',
-            function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
-            { desc = 'Set [l]og [p]oint' })
-         vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
-            require('dap.ui.widgets').hover()
+         vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = 'Toggle [d]abui [b]reakpoint' })
+         vim.keymap.set("n", "<leader>dcb", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
+            { desc = 'Set [d]apui [c]onditional [b]reakpoint' })
+         vim.keymap.set('n', '<Leader>dtp',
+            function() dap.set_breakpoint(nil, nil, vim.fn.input('Trace point message: ')) end,
+            { desc = 'Set [d]apui [t]race [p]oint' })
+         vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function() require('dap.ui.widgets').hover()
          end, { desc = 'Show hover information' })
 
          dapui.setup({
