@@ -39,7 +39,7 @@ zinit cdreplay -q
 
 eval "$(starship init zsh)"
 
-# Keybindings
+# Keybindings -e for emacs, -v for vi
 bindkey -e
 
 # History
