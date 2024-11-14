@@ -1,4 +1,3 @@
--- return {}
 -- avante.nvim is a Neovim plugin designed to emulate the behaviour of the
 -- Cursor AI IDE. It provides users with AI-driven code suggestions and the
 -- ability to apply these recommendations directly to their source files
