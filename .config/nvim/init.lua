@@ -1,6 +1,7 @@
 require("globals")
 require("options")
 require("keymaps")
+require("keymaps_markdown")
 require("autocmds")
 require("usercmds")
 
