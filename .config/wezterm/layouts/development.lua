@@ -1,11 +1,13 @@
 local M = {}
 
-M.addTab = function(window, cwd, title, command)
+M.addTab = function(window, cwd, title, text_to_send)
   local tab, pane, _ = window:spawn_tab {
     cwd = cwd,
   }
   tab:set_title(title)
-  pane:send_text(command)
+  if #text_to_send > 0 then
+    pane:send_text(text_to_send)
+  end
   return tab
 end
 
@@ -24,11 +26,11 @@ M.setup_layout = function(wezterm)
     }
     first_tab:set_title('SimplyTaxApp')
 
-    local activateTab = M.addTab(window, home_dir .. '/Repos/SSE/Dev', 'SSE/TaxCoreApi', 'nvim .\n')
-    M.addTab(window, home_dir .. '/Repos/webhook-builds', 'Build-Pipelines', 'nvim .\n')
-    M.addTab(window, home_dir .. '/Repos/Content/StP/30/DMSource', 'Content StP', 'nvim .\n')
+    local activatedTab = M.addTab(window, home_dir .. '/Repos/SSE/Dev', 'SSE/TaxCoreApi', 'nvim .\n')
+    M.addTab(window, home_dir .. '/Repos/webhook-builds', 'Build-Pipelines', '')
+    M.addTab(window, home_dir .. '/Repos/Content/StP/30/DMSource', 'Content StP', '')
 
-    activateTab:activate()
+    activatedTab:activate()
     window:gui_window():maximize()
 
   end)
