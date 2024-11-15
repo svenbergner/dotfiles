@@ -5,7 +5,9 @@ M.addTab = function(window, cwd, title, command)
     cwd = cwd,
   }
   tab:set_title(title)
-  pane:send_text(command)
+  if #command > 0 then
+    pane:send_text(command)
+  end
 end
 
 M.setup_layout = function(wezterm)
@@ -24,8 +26,8 @@ M.setup_layout = function(wezterm)
     first_pane:send_text('nvim .\n')
 
     M.addTab(window, home_dir .. '/Repos/vimwiki', 'VimWiki', 'nvim .\n')
-    M.addTab(window, home_dir .. '/Repos/telescope-cmake-preset-selector', 'CMake Preset Selector', 'nvim .\n')
-    M.addTab(window, home_dir .. '/Repos/telescope-debugee-selector', 'Debugee Selector', 'nvim .\n')
+    M.addTab(window, home_dir .. '/Repos/telescope-cmake-preset-selector', 'CMake Preset Selector', '')
+    M.addTab(window, home_dir .. '/Repos/telescope-debugee-selector', 'Debugee Selector', '')
 
     first_tab:activate()
   end)
