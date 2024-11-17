@@ -1,4 +1,6 @@
 --[=====[
+Flash
+https://gitbub.com/folke/flash.nvim
 flash.nvim lets you navigate your code with search labels,
 enhanced character motions, and Treesitter integration.
 Features
