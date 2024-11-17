@@ -1,4 +1,4 @@
---[====[
+--[=====[
 Telescope - the swiss army knife for finding things
 https://github.ccom/nvim-telescope/telescope.nvim
 
