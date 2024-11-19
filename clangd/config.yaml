@@ -8,8 +8,10 @@ Diagnostics:
               modernize-use-trailing-return-type, 
               modernize-use-nodiscard, 
               modernize-use-override, 
+              cppcoreguidelines-non-private-member-variables-in-classes,
+              cppcoreguidelines-owning-memory,
               cppcoreguidelines-explicit-virtual-functions,
-              bugprone-easily-swappable-parameters
+              bugprone-easily-swappable-parameters,
     ]
 
 InlayHints:
