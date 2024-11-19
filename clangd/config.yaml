@@ -1,11 +1,17 @@
 Hover:
-  ShowAKA: Yes
+  ShowAKA: true
 Diagnostics:
   UnusedIncludes: Strict
   ClangTidy:
-    Add: [modernize*, bugprone-*]
-    Remove: [modernize-use-trailing-return-type, modernize-use-nodiscard, modernize-use-override]
+    Add: [modernize*, bugprone-*, cppcoreguidelines-*]
+    Remove: [
+              modernize-use-trailing-return-type, 
+              modernize-use-nodiscard, 
+              modernize-use-override, 
+              cppcoreguidelines-explicit-virtual-functions,
+              bugprone-easily-swappable-parameters
+    ]
 
 InlayHints:
-  BlockEnd: Yes
+  BlockEnd: true
 
