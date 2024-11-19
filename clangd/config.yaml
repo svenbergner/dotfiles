@@ -1,0 +1,11 @@
+Hover:
+  ShowAKA: Yes
+Diagnostics:
+  UnusedIncludes: Strict
+  ClangTidy:
+    Add: [modernize*, bugprone-*]
+    Remove: [modernize-use-trailing-return-type, modernize-use-nodiscard, modernize-use-override]
+
+InlayHints:
+  BlockEnd: Yes
+
