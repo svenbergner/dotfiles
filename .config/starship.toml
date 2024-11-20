@@ -18,6 +18,7 @@ right_format = """
 [](color_aqua)\
 [](fg:color_aqua bg:color_blue)\
 $c\
+$dart\
 $rust\
 $golang\
 $nodejs\
@@ -114,6 +115,14 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 symbol = " "
 style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[cmake]
+format = '[$symbol($version )]($style)'
+style = "bg:color_blue"
+
+[dart]
+format = '[$symbol($version )]($style)'
+style = "bg:color_blue"
 
 [rust]
 symbol = ""
