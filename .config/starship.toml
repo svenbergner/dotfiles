@@ -84,9 +84,10 @@ format = '[ $user ]($style)'
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
-format = "[ $path ]($style)"
+format = "[$read_only $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
+read_only = " 󰌾"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
