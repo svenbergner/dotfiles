@@ -60,3 +60,16 @@ alias fman='compgen -c | fzf | xargs man'
 
 eval $(thefuck --alias)
 eval $(thefuck --alias f)
+
+# Check if the shell is interactive
+if [[ $- == *i* ]]; then
+    # Define a zle widget for the cdi command
+    cdi_widget() {
+        BUFFER="cdi"
+        zle accept-line
+    }
+    zle -N cdi_widget
+
+    # Bind Ctrl+f to the cdi_widget
+    bindkey '^f' cdi_widget
+fi
