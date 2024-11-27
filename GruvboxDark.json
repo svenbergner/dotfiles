@@ -1,4 +1,5 @@
 {
+  "name" : "Gruvbox Dark",
   "background" : "#282828",
   "foreground" : "#EBDBB2",
   "brightBlack" : "#928374",
@@ -13,7 +14,6 @@
   "blue" : "#458588",
   "cyan" : "#689D6A",
   "green" : "#98971A",
-  "name" : "Gruvbox Dark",
   "purple" : "#B16286",
   "red" : "#CC241D",
   "white" : "#A89984",
