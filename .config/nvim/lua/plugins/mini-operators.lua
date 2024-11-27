@@ -10,7 +10,7 @@ Features:
    - Replace text with register.
    - Sort text.
 
-- Automated configurable mappings to operate on textobject, line, selection. 
+- Automated configurable mappings to operate on textobject, line, selection.
   Can be disabled in favor of more control with MiniOperators.make_mappings().
 
 - All operators support [count] and dot-repeat.
@@ -19,9 +19,10 @@ See *MiniOperators-overview* and *MiniOperators.config* tags in help for more de
 --]=====]
 
 return {
-   'echasnovski/mini.operators',
-   version = '*',
-   config = function()
-      require('mini.operators').setup()
-   end,
+  'echasnovski/mini.operators',
+  enabled = false,
+  version = '*',
+  config = function()
+    require('mini.operators').setup()
+  end,
 }
