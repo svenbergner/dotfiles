@@ -36,7 +36,7 @@ https://github.com/echasnovski/mini.surround
   can be used with suffix that changes search method to find previous/last. 
   See more in help for MiniSurround.config.
 --]=====]
---
+
 return {
    'echasnovski/mini.surround',
    version = '*',
