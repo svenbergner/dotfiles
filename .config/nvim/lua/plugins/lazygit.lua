@@ -1,4 +1,5 @@
 -- Integrates lazygit into Neovim
+-- https://github.com/kdheepak/lazygit.nvim
 return {
    "kdheepak/lazygit.nvim",
    event = 'VeryLazy',
