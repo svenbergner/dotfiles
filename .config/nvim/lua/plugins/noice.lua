@@ -26,7 +26,8 @@ return {
             {
                view = "notify",
                filter = {
-                  event = "msg_showmode"
+                  event = "msg_showmode",
+                  kind = "",
                },
             },
          },
