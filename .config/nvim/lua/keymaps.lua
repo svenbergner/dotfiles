@@ -44,3 +44,12 @@ vim.keymap.set('n', '<leader>cfn', '<cmd>let @+=@%<CR>', { silent = true, desc =
 
 vim.keymap.set('n', '<BS>', '^', { desc = 'Move to first non-blank character' })
 
+-- visual mode keymaps
+vim.keymap.set('v', '<leader>r', '\"hy:%s/<C-r>h//g<left><left>', { desc = 'Replace selection' })
+vim.keymap.set('v', '<leader>R', '\"hy:%s/<C-r>h//gc<left><left>', { desc = 'Replace selection with confirmation' })
+vim.keymap.set('v', '<leader>u', '\"hyU', { desc = 'Uppercase selection' })
+vim.keymap.set('v', '<leader>l', '\"hyl', { desc = 'Lowercase selection' })
+vim.keymap.set('v', '<C-s>', ':sort<CR>', { desc = 'Sort selection' })
+vim.keymap.set('v', '<leader>z', ':sort u<CR>', { desc = 'Sort selection unique' })
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = '' })
+vim.keymap.set('v', 'K', ":m '>-2<CR>gv=gv", { desc = '' })
