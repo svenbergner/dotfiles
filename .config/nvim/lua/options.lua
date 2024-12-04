@@ -32,6 +32,7 @@ vim.opt.smartindent = true
 vim.opt.breakindent = true
 
 vim.opt.scrolloff = 5
+vim.opt.sidescrolloff = 5
 
 --
 vim.opt.hidden = true
