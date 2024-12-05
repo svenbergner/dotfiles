@@ -5,7 +5,7 @@ https://github.ccom/nvim-telescope/telescope.nvim
 Default keybindings:
 <C-x> go to file selection as a split
 <C-v> go to file selection as a vsplit
-<C-t> go to a file in a new tab 
+<C-t> go to a file in a new tab
 --]=====]
 
 return {
@@ -85,6 +85,7 @@ return {
       "debugloop/telescope-undo.nvim",
       "cljoly/telescope-repo.nvim",
       'LukasPietzschmann/telescope-tabs',
+      'piersolenski/telescope-import.nvim',
       { "svenbergner/telescope-debugee-selector",      dev = true },
       { "svenbergner/telescope-cmake-preset-selector", dev = true },
 
@@ -143,6 +144,9 @@ return {
                },
             },
             extensions = {
+               ["import"] = {
+                  insert_at_top = false,
+               },
                ["ui-select"] = {
                   require("telescope.themes").get_dropdown({}),
                },
@@ -195,23 +199,20 @@ return {
             },
          })
 
-
-         require("telescope").load_extension("neoclip")
-
-         require("telescope").load_extension("fzf")
-
-         require("telescope").load_extension("ui-select")
          vim.g.zoxide_use_select = true
 
-         require("telescope").load_extension("flutter")
-
-         require("telescope").load_extension("undo")
-         require("telescope").load_extension("dap")
-         require("telescope").load_extension("live_grep_args")
-         require("telescope").load_extension("repo")
-         require("telescope").load_extension("debugee_selector")
-         require("telescope").load_extension("noice")
          require("telescope").load_extension("advanced_git_search")
+         require("telescope").load_extension("dap")
+         require("telescope").load_extension("debugee_selector")
+         require("telescope").load_extension("flutter")
+         require("telescope").load_extension("fzf")
+         require("telescope").load_extension("import")
+         require("telescope").load_extension("live_grep_args")
+         require("telescope").load_extension("neoclip")
+         require("telescope").load_extension("noice")
+         require("telescope").load_extension("repo")
+         require("telescope").load_extension("ui-select")
+         require("telescope").load_extension("undo")
          require("telescope").load_extension("zoxide")
       end,
    },
