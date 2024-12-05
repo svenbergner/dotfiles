@@ -1,4 +1,4 @@
--- This plugin attempts to add image support to Neovim.
+-- This plugin adds image support to Neovim.
 -- https://www.github.com/3rd/image.nvim
 
 -- Example for configuring Neovim to load user-installed installed Lua rocks:
