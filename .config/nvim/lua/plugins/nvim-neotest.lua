@@ -1,5 +1,6 @@
 -- Flutter Test support
 -- See :h neotest.run.run() for parameters.
+-- http://github.com/nvim-neotest/neotest
 return {
    "nvim-neotest/neotest",
    dependencies = {
@@ -8,6 +9,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "sidlatau/neotest-dart",
+      "nvim-neotest/neotest-python",
    },
    config = function()
       local neotest = require('neotest')
@@ -19,8 +21,14 @@ return {
                -- Useful when using custom test names with @isTest annotation
                custom_test_method_names = {},
             },
+            require('neotest-python') {
+               runner = "pytest",
+               python = "python",
+               use_lsp = true,
+            },
          }
       })
+
       vim.keymap.set("n", "<leader>t", function() neotest.run.run() end, { desc = 'Run nearest [t]est' });
       -- Attach to the nearest test, see :h neotest.run.attach()
       vim.keymap.set("n", "<leader>ta", function() neotest.run.run() end, { desc = 'Nearest [t]est [a]ttach' });
