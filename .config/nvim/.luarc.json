@@ -2,6 +2,7 @@
     "diagnostics.globals": [
         "vim",
         "require",
-        "package"
+        "package",
+        "Snacks"
     ]
 }
