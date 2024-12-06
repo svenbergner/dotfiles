@@ -1,5 +1,15 @@
+--[=====[
+Github Copilot Plugin
+
+https://github.com/github/copilot.vim
+https://github.com/zbirenbaum/copilot.lua
+https://github.com/zbirenbaum/copilot-cmp
+https://github.com/CopilotC-Nvim/CopilotChat.nvim
+--]=====]
+
 return {
-   -- "github/copilot.vim"
+   "github/copilot.vim",
+   enabled = false,
    {
       "zbirenbaum/copilot.lua",
       config = function()
@@ -17,10 +27,9 @@ return {
    },
    {
       "CopilotC-Nvim/CopilotChat.nvim",
-      branch = "canary",
       dependencies = {
          { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-         { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+         { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
       },
       opts = {
          debug = false, -- Enable debugging
