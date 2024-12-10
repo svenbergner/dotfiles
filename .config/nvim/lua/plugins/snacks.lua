@@ -12,6 +12,30 @@ return {
       bufdelete = { enabled = true, },
       git = { enabled = true, },
       gitbrowse = { enabled = true, },
+      indent = {
+         enabled = true,
+         indent = {
+            char = "▎",
+            blank = "·",
+            hl = {
+               "SnacksIndent1",
+               "SnacksIndent2",
+               "SnacksIndent3",
+               "SnacksIndent4",
+               "SnacksIndent5",
+               "SnacksIndent6",
+               "SnacksIndent7",
+               "SnacksIndent8",
+            },
+         },
+         scope = {
+            char = "▎",
+         },
+         blank = {
+            char = "·",
+            hl = "SnacksIndentBlank", ---@type string|string[] hl group for blank spaces
+         },
+      },
       lazygit = { enabled = true, },
       notify = { enabled = true, },
       notifier = { enabled = true, },
@@ -21,8 +45,8 @@ return {
          left = { "mark", "sign" }, -- priority of signs on the left (high to low)
          right = { "fold", "git" }, -- priority of signs on the right (high to low)
          folds = {
-            open = true,           -- show open fold icons
-            git_hl = true,         -- use Git Signs hl for fold icons
+            open = true,            -- show open fold icons
+            git_hl = true,          -- use Git Signs hl for fold icons
          },
          git = {
             -- patterns to match Git signs
