@@ -1,5 +1,5 @@
 --[=====[
-Show mardown file in presentation mode
+Show markdown file in presentation mode
 http:s//github.com/sotte/presenting.nvim
 
 --]=====]
