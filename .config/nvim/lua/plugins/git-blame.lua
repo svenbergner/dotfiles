@@ -1,6 +1,7 @@
 -- Show git blame at the end of each line
 return {
    "f-person/git-blame.nvim",
+   enabled = true,
    event = 'VeryLazy',
    opts = {
       gitblame_date_format = '%d.%m.%y %H:%M',
