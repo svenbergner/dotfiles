@@ -83,6 +83,10 @@ return {
       local servers = {
          bashls = {},
          clangd = {
+            cmd = {
+               "clangd",
+               "--offset-encoding=utf-16",
+            },
             inlay_hints = {
                includeInlayEnumMemberValueHints = true,
                includeInlayFunctionLikeReturnTypeHints = true,
