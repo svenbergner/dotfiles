@@ -18,6 +18,12 @@ return {
       },
       config = function()
          require("telescope").setup({
+            pickers = {
+               find_files = {
+                  -- theme = "ivy",
+               },
+
+            },
             defaults = {
                sorting_strategy = 'ascending',
             }
@@ -72,7 +78,7 @@ return {
             { desc = "Search [g]it [c]ommits for Buffer" })
          vim.keymap.set('n', '<leader>Gb', builtin.git_branches, { desc = '[G]it [b]ranches' })
          vim.keymap.set('n', '<leader>sj', builtin.jumplist, { desc = "[S]how [J]umplist" })
-         vim.keymap.set('n', '<leader>df', require('telescope.builtin').filetypes, { desc = '[D]ocument [f]iletype' })
+         vim.keymap.set('n', '<leader>df', builtin.filetypes, { desc = '[D]ocument [f]iletype' })
          vim.keymap.set('n', '<leader>fa', "<cmd>Telescope autocommands<CR>", { desc = '[f]ind [a]utocommands' })
          vim.keymap.set("n", "<leader>fz", "<cmd>lua require('telescope').extensions.zoxide.list()<CR>",
             { desc = "List zoxide directories" })
@@ -203,7 +209,6 @@ return {
 
          require("telescope").load_extension("advanced_git_search")
          require("telescope").load_extension("dap")
-         require("telescope").load_extension("debugee_selector")
          require("telescope").load_extension("flutter")
          require("telescope").load_extension("fzf")
          require("telescope").load_extension("import")
@@ -214,6 +219,12 @@ return {
          require("telescope").load_extension("ui-select")
          require("telescope").load_extension("undo")
          require("telescope").load_extension("zoxide")
+         -- require('telescope').load_extension('live_multigrep')
+
+         -- Personal extensions
+         require("telescope").load_extension("cmake_preset_selector")
+         require("telescope").load_extension("debugee_selector")
+         require('telescope.multigrep').setup()
       end,
    },
 }
