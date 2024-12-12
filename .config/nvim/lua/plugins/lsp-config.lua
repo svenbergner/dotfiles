@@ -105,6 +105,13 @@ return {
             Lua = {
                workspace = { checkThirdParty = false },
                telemetry = { enable = false },
+               format = {
+                  enable = true,
+                  defaultConfig = {
+                     align_continuous_assign_statement = false,
+                     align_continuous_rect_table_field = false
+                  },
+               },
                diagnostics = {
                   disable = { 'missing-fields' },
                   globals = { 'vim' },
@@ -121,16 +128,30 @@ return {
             }
          },
          marksman = {},
-         pylsp = {
-            plugins = {
-               pycodestyle = {
-                  ignore = {
-                     "E501", -- line too long
-                     "E402", -- module level import not at top of file
-                  },
-                  maxLineLength = 120,
+         -- pylsp = {
+         --    plugins = {
+         --       pycodestyle = {
+         --          ignore = {
+         --             "E501", -- line too long
+         --             "E402", -- module level import not at top of file
+         --          },
+         --          maxLineLength = 120,
+         --       }
+         --    }
+         -- },
+         pyright = {
+            settings = {
+               python = {
+                  analysis = {
+                     typeCheckingMode = "strict",
+                     maxLineLength = 120,
+                     autoSearchPaths = true,
+                     useLibraryCodeForTypes = true,
+                     diagnosticMode = "workspace",
+                     -- stubPath = "/usr/lib/python3.9/site-packages",
+                  }
                }
-            }
+            },
          },
          yamlls = {},
          -- azure_pipelines_ls = {
