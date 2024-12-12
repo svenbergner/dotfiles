@@ -22,7 +22,8 @@ vim.keymap.set("n", "Y", "y$", { desc = "Yank from cursor till end of line" })
 
 -- Save and source current file
 -- vim.keymap.set("n", "<leader>x", "<cmd>.lua<CR>", { silent = true, desc = "Source the current line." })
-vim.keymap.set("n", "<leader><leader>x", "<cmd>w<CR><cmd>source %<CR>",
+vim.keymap.set("n", "<leader><leader>x",
+   "<cmd>w<CR><cmd>source %<CR><cmd>lua print('File ' .. vim.fn.expand('%:t') .. ' sourced.')<CR>",
    { silent = true, desc = "Safe and source the current file." })
 
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current buffer" })
