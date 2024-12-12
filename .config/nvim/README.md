@@ -48,20 +48,19 @@ links to their github repos.
   - [vim-rhubarb: ](https://github.com/tpope/vim-rhubarb)
 - [auto-session: Automatically manage vim sessions](https://github.com/rmagatti/auto-session)
 - [autoclose: Automatically add the closing element](https://github.com/m4xshen/autoclose.nvim)
+- [avante: A cursor like AI ide frontend](https://github.com/avante/avante.nvim)
 - [barbar: Tabs, as understood by any other editor](https://github.com/romgrk/barbar.nvim)
 - [better escape: Better solution for using jk or jj instead of esc](https://github.com/max397574/better-escape.nvim) 
-- [bigfile: Helps to open really big files by disabling resource hungry features](https://github.com/LunarVim/bigfile.nvim/)
-- [copilot: Support for Github Copilot](https://github.com/zbirenbaum/copilot.lua/)
 - [flash: lets you navigate your code](https://github.comfolke/flash.nvim/)
 - [flutter-tools: Tools for writing flutter and dart apps](https://github.com/akinsho/flutter-tools.nvim/)
 - [git-blame: Show git blame at the end of each line](https://github.com/f-person/git-blame.nvim/)
+- [github-copilot: Support for Github Copilot](https://github.com/zbirenbaum/copilot.lua/)
 - [gitsigns: Adds custom signs for current git status](https://github.com/lewis6991/gitsigns.nvim)
 - [gruvbox: My current colorscheme](https://github.com/ellisonleao/gruvbox.nvim/)
 - [helpview: Decorations for vimdoc/help files in Neovim](https://github.com/OXY2DEV/helpview.nvim)
 - [harpoon: Getting you where you want with the fewest keystrokes.](https://github.com/ThePrimeagen/harpoon)
 - [image: Show images inside of neovim: ](https://github.com/3rd/image.nvim/)
 - [inc-rename: Incremental renaming plugin](https://github.com/smjonas/inc-rename.nvim/)
-- [indent-blankline: Adds indentation guides to Neovim.](https://github.com/lukas-reineke/indent-blankline.nvim/)
 - [is: Improved incremental search](https://github.com/haya14busa/is.vim/)
 - [lazydev: Configures LuaLS for editing your Neovim config by lazily updating your workspace libraries](https://github.com/folke/lazydev.nvim/)
   - [luvit-meta: This project is a collection of definition files for the framework Luvit](https://github.com/Bilal2453/luvit-meta/)
@@ -94,6 +93,21 @@ links to their github repos.
 - [outline: A treeview of the current file content](https://github.com/hedyhli/outline.nvim)
 - [plenary: A collection of lua functions](https://github.com/nvim-lua/plenary.nvim)
 - [smart-splits: ](https://github.com/mrjones2014/smart-splits.nvim)
+- [snacks: A QoL plugin for Neovim by Folke](https://github.com/folke/snacks.nvim)
+  - List of snacks plugins I use:
+    - bigfile
+    - bufdelete
+    - git
+    - gitbrowse
+    - indent
+    - lazygit
+    - notify
+    - notifier
+    - quickfile
+    - statuscolumn
+    - toggle
+    - words
+    - zen
 - [rest: A very fast HTTP client written in lus](https://github.com/rest-nvim/rest.nvim)
 - [telescope: a highly extendable fuzzy finder over lists](https://github.com/nvim-telescope/telescope.nvim)
   - [telescope-cmake-preset-selector: Searches for all presets in a cmake project and lets you select one to build with](https://github.com/svenbergner/telescope-cmake-preset-selector)
@@ -120,7 +134,6 @@ links to their github repos.
 - [virt-column: ](https://github.com/lukas-reineke/virt-column.nvim)
 - [which-key: ](https://github.com/folke/which-key.nvim)
 - [yaml: ](https://github.com/cuducos/yaml.nvim)
-- [zen-mode: ](https://github.com/folke/zen-mode.nvim)
 - [zoxide: ](https://github.com/nanotee/zoxide.vim)
  
 ## Spellchecking
