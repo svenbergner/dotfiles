@@ -199,8 +199,8 @@ return {
          vim.keymap.set('n', '<Leader>dtp',
             function() dap.set_breakpoint(nil, nil, vim.fn.input('Trace point message: ')) end,
             { desc = 'Set [d]apui [t]race [p]oint' })
-         vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function() require('dap.ui.widgets').hover()
-         end, { desc = 'Show hover information' })
+         vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function() require('dap.ui.widgets').hover() end,
+            { desc = 'Show hover information' })
 
          dapui.setup({
             icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
