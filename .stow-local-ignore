@@ -7,3 +7,15 @@ scripts
 ^/LICENSE.*
 ^/COPYING
 
+GruvboxDark.itermcolors
+GruvboxDark.json
+brew_packages.txt
+
+\.vimrc
+\.vimrc.old
+
+\.stowrc
+\.stow-local-ignore
+\.luarc.json
+\.gitmux.conf
+
