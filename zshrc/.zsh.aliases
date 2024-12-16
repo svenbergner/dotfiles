@@ -58,9 +58,6 @@ fi
 
 alias fman='compgen -c | fzf | xargs man'
 
-eval $(thefuck --alias)
-eval $(thefuck --alias f)
-
 # Check if the shell is interactive
 if [[ $- == *i* ]]; then
     # Define a zle widget for the cdi command
