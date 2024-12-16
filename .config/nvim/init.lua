@@ -1,4 +1,18 @@
 --[=====[
+
+ _   _            __     __ _            
+| \ | |  ___   ___\ \   / /(_) _ __ ___  
+|  \| | / _ \ / _ \\ \ / / | || '_ ` _ \ 
+| |\  ||  __/| (_) |\ V /  | || | | | | |
+|_| \_| \___| \___/  \_/   |_||_| |_| |_|
+                                         
+ _                     ____                __  _        
+| |    _   _   __ _   / ___| ___   _ __   / _|(_)  __ _ 
+| |   | | | | / _` | | |    / _ \ | '_ \ | |_ | | / _` |
+| |___| |_| || (_| | | |___| (_) || | | ||  _|| || (_| |
+|_____|\__,_| \__,_|  \____|\___/ |_| |_||_|  |_| \__, |
+                                                  |___/ 
+
 Starting point for the configuration of Neovim. This file is loaded when Neovim
 is started and is responsible for setting up the configuration.
 https://githhub.com/svenbergner/dotfiles
