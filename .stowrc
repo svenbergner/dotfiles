@@ -1,4 +1,3 @@
---dir=~/Repos/dotfiles/
 --target=~/.config
 --dotfiles
 --ignore=.stowrc
