@@ -20,7 +20,7 @@ M.setup_layout = function(wezterm)
     end
     local first_tab, first_pane, window = mux.spawn_window {
       workspace = 'Personal',
-      cwd = home_dir .. '/Repos/dotfiles/.config/',
+      cwd = home_dir .. '/Repos/dotfiles/',
     }
     first_tab:set_title('Dotfiles')
     first_pane:send_text('nvim\n')
