@@ -1,0 +1,6 @@
+--dir=~/Repos/dotfiles/
+--target=~/.config
+--dotfiles
+--ignore=.stowrc
+--ignore=DS_Store
+--ignore=atuin/*
