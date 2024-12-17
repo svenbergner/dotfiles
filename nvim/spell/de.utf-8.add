@@ -100,3 +100,5 @@ nvzone
 showkeys
 diffview
 AdvancedGitSearch
+nohlsearch
+autocmd
