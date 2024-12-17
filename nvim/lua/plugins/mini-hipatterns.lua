@@ -1,4 +1,4 @@
--- https://github.com/echasnovski/mini.hipatterns
+-- URL: https://github.com/echasnovski/mini.hipatterns
 --
 return {
    'echasnovski/mini.hipatterns',

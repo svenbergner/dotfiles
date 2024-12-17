@@ -1,10 +1,10 @@
 --[=====[
 Github Copilot Plugin
 
-https://github.com/github/copilot.vim
-https://github.com/zbirenbaum/copilot.lua
-https://github.com/zbirenbaum/copilot-cmp
-https://github.com/CopilotC-Nvim/CopilotChat.nvim
+URL: https://github.com/github/copilot.vim
+URL: https://github.com/zbirenbaum/copilot.lua
+URL: https://github.com/zbirenbaum/copilot-cmp
+URL: https://github.com/CopilotC-Nvim/CopilotChat.nvim
 --]=====]
 
 return {

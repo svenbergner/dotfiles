@@ -15,9 +15,9 @@
 
 Starting point for the configuration of Neovim. This file is loaded when Neovim
 is started and is responsible for setting up the configuration.
-https://githhub.com/svenbergner/dotfiles
+URL: https://githhub.com/svenbergner/dotfiles
 
-https://neovim.io/doc/user/lua.html 
+URL: https://neovim.io/doc/user/lua.html 
 --]=====]
 
 require("globals")

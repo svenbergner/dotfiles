@@ -1,5 +1,5 @@
 -- Plugin to improve viewing Markdown files in Neovim
--- https://www.github.com/MeanderingProgrammer/markdown.nvim
+-- URL: https://www.github.com/MeanderingProgrammer/markdown.nvim
 
 return {
    "MeanderingProgrammer/markdown.nvim",
