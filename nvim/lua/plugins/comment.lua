@@ -1,5 +1,5 @@
 -- Add or remove line or block comments
--- https://github.com/numToStr/Comment.nvim
+-- URL: https://github.com/numToStr/Comment.nvim
 return {
    'numToStr/Comment.nvim',
    lazy = false,

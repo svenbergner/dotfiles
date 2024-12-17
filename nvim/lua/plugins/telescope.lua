@@ -1,6 +1,6 @@
 --[=====[
 Telescope - the swiss army knife for finding things
-https://github.ccom/nvim-telescope/telescope.nvim
+URL: https://github.ccom/nvim-telescope/telescope.nvim
 
 Default keybindings:
 <C-x> go to file selection as a split

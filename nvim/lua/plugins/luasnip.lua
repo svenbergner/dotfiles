@@ -1,7 +1,7 @@
 -- These are custom snippets created using LuaSnip
 
 -- I took the idea from this video:
--- https://youtu.be/FmHhonPjvvA?si=8NrcRWu4GGdmTzee
+-- URL: https://youtu.be/FmHhonPjvvA?si=8NrcRWu4GGdmTzee
 
 return {
    "L3MON4D3/LuaSnip",
