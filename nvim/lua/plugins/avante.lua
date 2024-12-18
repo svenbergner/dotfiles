@@ -40,7 +40,7 @@ return {
             prev = "[x",
          },
          suggestion = {
-            accept = "<M-l>",
+            accept = "<M-Tab>",
             next = "<M-]>",
             prev = "<M-[>",
             dismiss = "<C-]>",
