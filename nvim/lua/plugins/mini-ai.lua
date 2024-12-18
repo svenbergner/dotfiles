@@ -19,13 +19,13 @@ Features:
   - Default for punctuation, digit, or whitespace single character.
 - Motions for jumping to left/right edge of textobject.
 - Set of specification generators to tweak some builtin textobjects (see help for MiniAi.gen_spec).
-- Treesitter textobjects (through MiniAi.gen_spec.treesitter() helper). 
+- Treesitter textobjects (through MiniAi.gen_spec.treesitter() helper).
 --]=====]
 
 return {
-   'echasnovski/mini.ai',
-   version = '*',
-   config = function()
-      require('mini.ai').setup()
-   end,
+  'echasnovski/mini.ai',
+  version = '*',
+  config = function()
+    require('mini.ai').setup()
+  end,
 }
