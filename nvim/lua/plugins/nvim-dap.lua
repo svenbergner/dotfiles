@@ -25,7 +25,7 @@ return {
             type = "server",
             port = "${port}",
             executable = {
-               command = '/Users/sven.bergner/.local/share/nvim/mason/bin/codelldb', --vim.fn.exepath("codelldb"),
+               command = vim.fn.expand("~/.local/share/nvim/mason/bin/codelldb"),
                args = { "--port", "${port}" },
             },
          }
