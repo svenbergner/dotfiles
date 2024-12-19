@@ -102,3 +102,4 @@ diffview
 AdvancedGitSearch
 nohlsearch
 autocmd
+quickfixlist
