@@ -1,4 +1,4 @@
--- Set vim language explicitly to English for easier usage with tutorials
+-- Set Vim language explicitly to English for easier usage with tutorials
 vim.api.nvim_exec2("language en_US.UTF-8", { output = true })
 
 vim.opt.compatible = false
@@ -6,7 +6,7 @@ vim.opt.compatible = false
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
 
--- Enable mouse mode
+-- Enable mouse support
 vim.opt.mouse = 'a'
 
 vim.opt.guicursor = {
@@ -18,14 +18,14 @@ vim.opt.guicursor = {
 	"sm:block-blinkwait175-blinkoff150-blinkon175", -- Show match: block cursor with specific blinking settings
 }
 
--- Show current line number and relative line numbers
+-- Show the current line number and relative line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Enable virtual edit in block mode
+-- Enable virtual editing in block mode
 vim.opt.virtualedit = "block"
 
--- tab
+-- Tab settings
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -38,7 +38,7 @@ vim.opt.sidescrolloff = 5
 vim.opt.hidden = true
 vim.opt.swapfile = false
 
--- line wrap
+-- Line wrapping
 vim.opt.wrap = false
 vim.wo.wrap = false
 
@@ -49,25 +49,25 @@ vim.opt.splitright = true
 -- Highlight cursor line
 vim.opt.cursorline = true
 
--- Turn syntax highlighting on.
+-- Enable syntax highlighting
 vim.opt.syntax = "on"
 
--- Show tab stops, trailing whitespace and line endings
+-- Show tab stops, trailing whitespace, and line endings
 vim.opt.list = true
 vim.opt.listchars = { tab = '> ', trail = '.', eol = '↵' }
 
--- file search
+-- File search settings
 vim.opt.ignorecase = true
-vim.opt.smartcase = true -- Override 'ignorecase' option if search pattern contains upper case characters
-vim.opt.hlsearch = true  -- Highlight search matches
+vim.opt.smartcase = true -- Override the 'ignorecase' option if the search pattern contains uppercase characters
+vim.opt.hlsearch = true  -- Highlight search results
 vim.opt.incsearch = true
 
--- Clear highlighting on pressing Escape
+-- Clear search highlighting on pressing Escape
 vim.keymap.set('n', '<Esc>', '<esc>:nohlsearch<CR>', { silent = true })
 
 vim.opt.history = 1000
 
--- status-line
+-- Status line settings
 vim.opt.laststatus = 2
 vim.opt.cmdheight = 2
 vim.opt.showcmd = true
@@ -77,15 +77,15 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 800
 vim.opt.ttimeoutlen = 100
 
--- show signs on the left
+-- Show signs on the left
 vim.opt.signcolumn = 'yes'
 
--- Wild menu
+-- Wild menu settings
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full"
 vim.opt.wildignore:append({ "*.docx", "*.jpg", "*.png", "*.gif", "*.pdf", "*.pyc", "*.exe", "*.flv", "*.img", "*.xlsx" })
 
--- Spellchecking
+-- Spell checking settings
 -- Manual download at http://ftp.vim.org/vim/runtime/spell/
 if vim.fn.has('linux') then
 	vim.opt.spelllang = 'de,en'
@@ -95,10 +95,9 @@ end
 vim.opt.spell = true
 vim.cmd("highlight SpellBad cterm=bold,undercurl gui=bold,undercurl guisp=Red")
 
--- Undo
+-- Undo settings
 local prefix = vim.fn.expand("~/.local/state/undo/")
 vim.opt.undodir = { prefix .. "nvim/" }
 vim.opt.undofile = true
 
-vim.opt.sessionoptions="buffers,curdir,folds,help,tabpages,winsize,localoptions"
-
+vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,localoptions"
