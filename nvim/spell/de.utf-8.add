@@ -103,3 +103,4 @@ AdvancedGitSearch
 nohlsearch
 autocmd
 quickfixlist
+whitespace
