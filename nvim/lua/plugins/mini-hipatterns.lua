@@ -1,5 +1,5 @@
 -- URL: https://github.com/echasnovski/mini.hipatterns
---
+
 return {
    'echasnovski/mini.hipatterns',
    version = '*',
