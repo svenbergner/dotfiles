@@ -2,6 +2,7 @@
 --  under the cursor using either LSP, Tree-sitter, or regex matching.
 return {
    "RRethy/vim-illuminate",
+   enabled = false,
    config = function()
       require("illuminate").configure({
          providers = {
