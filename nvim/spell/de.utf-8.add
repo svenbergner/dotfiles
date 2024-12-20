@@ -104,3 +104,6 @@ nohlsearch
 autocmd
 quickfixlist
 whitespace
+luarocks
+vhyrro
+LuaRocks
