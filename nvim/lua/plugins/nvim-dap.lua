@@ -8,11 +8,36 @@ return {
          "nvim-neotest/nvim-nio",
          "rcarriga/nvim-dap-ui",
          "williamboman/mason.nvim",
+         "theHamsta/nvim-dap-virtual-text",
          "svenbergner/telescope-debugee-selector",
       },
       config = function()
          local dap = require("dap")
          local dapui = require("dapui")
+
+         require('nvim-dap-virtual-text').setup({
+            enabled = true,                  -- enables this plugin
+            enabled_commands = true,         -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
+            highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
+            highlight_new_as_changed = true, -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
+            show_stop_reason = true,         -- show stop reason when stopped for exceptions
+            commented = false,               -- prefix virtual text with comment string
+            only_first_definition = false,   -- only show virtual text at first definition (if there are multiple)
+            all_references = true,           -- show virtual text on all all references of the variable (not only definitions)
+            clear_on_continue = false,       -- clear virtual text on "continue" (might cause flickering when stepping)
+            -- A callback that determines how a variable is displayed or whether it should be omitted
+            -- @param variable Variable https://microsoft.github.io/debug-adapter-protocol/specification#Types_Variable
+            -- @param buf number
+            -- @param stackframe dap.StackFrame https://microsoft.github.io/debug-adapter-protocol/specification#Types_StackFrame
+            -- @param node userdata tree-sitter node identified as variable definition of reference (see `:h tsnode`)
+            -- @param options nvim_dap_virtual_text_options Current options for nvim-dap-virtual-text
+            -- @return string|nil A text how the virtual text should be displayed or nil, if this variable shouldn't be displayed
+            display_callback = function(variable, _, _, _, _)
+               return '<' .. variable.name .. ' = ' .. variable.value:gsub("%s+", " ") .. '>'
+            end,
+            virt_text_win_col = 120,
+            virt_text_pos = "inline",
+         })
 
          dap.adapters.bashdb = {
             type = 'executable',
@@ -190,10 +215,11 @@ return {
          vim.keymap.set("n", "<S-F11>", dap.step_out, { desc = 'Step out' })
          vim.keymap.set("n", "<F23>", dap.step_out, { desc = 'Step out' })
          vim.keymap.set("n", "<F9>", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
-         vim.keymap.set("n", "<leader>dc", dapui.close, { desc = '[d]apui [c]lose' })
+         vim.keymap.set("n", "<leader>dq", dapui.close, { desc = '[d]apui [c]lose' })
          vim.keymap.set("n", "<leader>dT", dapui.toggle, { desc = '[d]apui [T]oggle ' })
          vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
          vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = 'Toggle [d]abui [b]reakpoint' })
+         vim.keymap.set("n", "<leader>dc", dap.run_to_cursor, { desc = 'Run to [d]abui [c]ursor' })
          vim.keymap.set("n", "<leader>dcb", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
             { desc = 'Set [d]apui [c]onditional [b]reakpoint' })
          vim.keymap.set('n', '<Leader>dtp',
@@ -222,31 +248,5 @@ return {
          dap.listeners.before.event_terminated["dapui_config"] = dapui.close
          dap.listeners.before.event_exited["dapui_config"] = dapui.close
       end,
-   },
-   {
-      "theHamsta/nvim-dap-virtual-text",
-      opts = {
-         enabled = true,                     -- enables this plugin
-         enabled_commands = true,            -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
-         highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
-         highlight_new_as_changed = true,    -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
-         show_stop_reason = true,            -- show stop reason when stopped for exceptions
-         commented = false,                  -- prefix virtual text with comment string
-         only_first_definition = false,      -- only show virtual text at first definition (if there are multiple)
-         all_references = true,              -- show virtual text on all all references of the variable (not only definitions)
-         clear_on_continue = false,          -- clear virtual text on "continue" (might cause flickering when stepping)
-         -- A callback that determines how a variable is displayed or whether it should be omitted
-         -- @param variable Variable https://microsoft.github.io/debug-adapter-protocol/specification#Types_Variable
-         -- @param buf number
-         -- @param stackframe dap.StackFrame https://microsoft.github.io/debug-adapter-protocol/specification#Types_StackFrame
-         -- @param node userdata tree-sitter node identified as variable definition of reference (see `:h tsnode`)
-         -- @param options nvim_dap_virtual_text_options Current options for nvim-dap-virtual-text
-         -- @return string|nil A text how the virtual text should be displayed or nil, if this variable shouldn't be displayed
-         display_callback = function(variable, _, _, _, _)
-            return '<' .. variable.name .. ' = ' .. variable.value:gsub("%s+", " ") .. '>'
-         end,
-         virt_text_win_col = 120,
-         virt_text_pos = "inline",
-      }
    }
 }
