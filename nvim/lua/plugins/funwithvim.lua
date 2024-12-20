@@ -21,9 +21,10 @@ return {
    -- {
    --    'AndrewRadev/typewriter.vim'
    -- },
-   -- {
-   --    'rhysd/vim-syntax-christmas-tree'
-   -- },
+   {
+      'rhysd/vim-syntax-christmas-tree'
+      -- Shows a christmas tree in a split with :MerryChristmas
+   },
    -- {
    --    'AndrewRadev/dealwithit.vim'
    -- },
