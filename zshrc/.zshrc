@@ -121,6 +121,30 @@ export EDITOR='nvim'
 
 # User configuration
 
+# Activate vim mode
+bindkey -v
+
+# Function to change cursor shape
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'  # Set cursor to block
+  else
+    echo -ne '\e[5 q'  # Set cursor to beam
+  fi
+}
+
+# Function to reset cursor shape on exit
+function zle-line-init {
+  echo -ne '\e[5 q'  # Set cursor to beam
+}
+
+# Bind the functions to zle events
+zle -N zle-keymap-select
+zle -N zle-line-init
+
+# Ensure the cursor shape is set correctly when starting zsh
+zle-keymap-select
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
