@@ -10,6 +10,7 @@ return {
    opts = {
       bigfile = { enabled = true, },
       bufdelete = { enabled = true, },
+      dim = { enabled = true, },
       git = { enabled = true, },
       gitbrowse = { enabled = true, },
       indent = {
