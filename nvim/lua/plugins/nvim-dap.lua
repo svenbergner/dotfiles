@@ -8,6 +8,7 @@ return {
          "nvim-neotest/nvim-nio",
          "rcarriga/nvim-dap-ui",
          "williamboman/mason.nvim",
+         'jbyuki/one-small-step-for-vimkind',
          "theHamsta/nvim-dap-virtual-text",
          "svenbergner/telescope-debugee-selector",
       },
@@ -16,15 +17,15 @@ return {
          local dapui = require("dapui")
 
          require('nvim-dap-virtual-text').setup({
-            enabled = true,                  -- enables this plugin
-            enabled_commands = true,         -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
+            enabled = true,                     -- enables this plugin
+            enabled_commands = true,            -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
             highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
-            highlight_new_as_changed = true, -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
-            show_stop_reason = true,         -- show stop reason when stopped for exceptions
-            commented = false,               -- prefix virtual text with comment string
-            only_first_definition = false,   -- only show virtual text at first definition (if there are multiple)
-            all_references = true,           -- show virtual text on all all references of the variable (not only definitions)
-            clear_on_continue = false,       -- clear virtual text on "continue" (might cause flickering when stepping)
+            highlight_new_as_changed = true,    -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
+            show_stop_reason = true,            -- show stop reason when stopped for exceptions
+            commented = false,                  -- prefix virtual text with comment string
+            only_first_definition = false,      -- only show virtual text at first definition (if there are multiple)
+            all_references = true,              -- show virtual text on all all references of the variable (not only definitions)
+            clear_on_continue = false,          -- clear virtual text on "continue" (might cause flickering when stepping)
             -- A callback that determines how a variable is displayed or whether it should be omitted
             -- @param variable Variable https://microsoft.github.io/debug-adapter-protocol/specification#Types_Variable
             -- @param buf number
@@ -38,12 +39,6 @@ return {
             virt_text_win_col = 120,
             virt_text_pos = "inline",
          })
-
-         dap.adapters.bashdb = {
-            type = 'executable',
-            command = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/bash-debug-adapter',
-            name = 'bashdb',
-         }
 
          dap.adapters.lldb = {
             name = "lldb",
@@ -103,6 +98,24 @@ return {
                args = { "--dart-define-from-file=emv-vars.json" },      -- Note for Dart Apps this is args, for Flutter apps toolArgs
                toolsArgs = { "--dart-define-from-file=emv-vars.json" }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
             }
+         }
+
+         dap.configurations.lua = {
+            {
+               type = 'nlua',
+               request = 'attach',
+               name = "Attach to running Neovim instance",
+            }
+         }
+
+         dap.adapters.nlua = function(callback, config)
+            callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
+         end
+
+         dap.adapters.bashdb = {
+            type = 'executable',
+            command = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/bash-debug-adapter',
+            name = 'bashdb',
          }
 
          dap.configurations.sh = {
@@ -227,6 +240,15 @@ return {
             { desc = 'Set [d]apui [t]race [p]oint' })
          vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function() require('dap.ui.widgets').hover() end,
             { desc = 'Show hover information' })
+
+         vim.keymap.set('n', '<leader>dl', function() require "osv".launch({ port = 8086 }) end,
+            { desc = '[l]aunch server in [d]ebuggee', noremap = true })
+
+         vim.keymap.set('n', '<leader>df',
+            function()
+               local widgets = require "dap.ui.widgets"
+               widgets.centered_float(widgets.frames)
+            end, { desc = '[d]apui floating [f]rames' })
 
          dapui.setup({
             icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
