@@ -10,6 +10,7 @@ After using several IDEs and Vim I ended up using Neovim as my PDE (Personal Dev
 ### lazygit
 My preferred way to deal with my git repos. I even have a neovim plugin to have it all the time right at my
 fingertips.
+Lazygit is integrated into my neovim config using snacks.nvim and I use it as a git client.
 [lazygit config](./lazygit)
 
 ### wezterm
@@ -20,6 +21,22 @@ Following points were my reason to switch:
  - no need to use a multiplexer
  - supports kitty image protocol
  - fast and lightweight
+
+### eza
+A modern replacement for the ls command. It is written in rust and has a lot of features.
+I use it as my default ls command. 
+
+### zoxide
+A smarter cd command. It is written in rust and I use it as my default cd command.
+
+### delta
+A viewer for git and diff output. I use it as my default git diff viewer.
+
+### bat
+A cat clone with syntax highlighting and git integration. I use it as my default cat command.
+
+### stow
+I use stow to manage my dotfiles. It is a symlink farm manager. I reorganized my dotfiles to use stow.
 
 ## Colors
 
@@ -38,16 +55,4 @@ This script can be used to look up information from the cht.sh website.
 I stripped down my .vimrc to a minimal one-file configuration without any external
 dependencies. No package manager is used. So it can easily be copied to any
 machine and I have a really good base to work with within seconds.
-
-
-## Older configs
-
-Tools I used for some time on my way to a perfect development setup.
-
-### zellij
-A terminal multiplexer with a nice and easy TUI. It has a very low learning curve but after some time I wanted to get
-my screen space back to use it for my work and not for help text.
-
-### tmux
-
 
