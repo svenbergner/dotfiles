@@ -31,3 +31,13 @@ function fsb() {
 }
 
 # https://levelup.gitconnected.com/search-git-branches-and-commits-using-fzf-33df960fcc9c
+
+functiob y()
+{
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
