@@ -47,7 +47,8 @@ wezterm.on('format-tab-title',
     local zoom_indicator = ""
     local p = tab.active_pane
     if p.is_zoomed then
-      zoom_indicator = " " .. wezterm.nerdfonts.oct_zoom_in
+      -- zoom_indicator = " " .. wezterm.nerdfonts.oct_zoom_in
+      zoom_indicator = " 👀"
     end
 
     local tab_index_intensity = "Normal"
