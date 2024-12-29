@@ -1,3 +1,11 @@
+#  ____ _____  _    ____  ____  _   _ ___ ____  
+# / ___|_   _|/ \  |  _ \/ ___|| | | |_ _|  _ \ 
+# \___ \ | | / _ \ | |_) \___ \| |_| || || |_) |
+#  ___) || |/ ___ \|  _ < ___) |  _  || ||  __/ 
+# |____/ |_/_/   \_\_| \_\____/|_| |_|___|_|    
+# The minimal, blazing-fast, and infinitely customizable prompt
+# https://starship.rs
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = false
@@ -14,7 +22,7 @@ $directory\
 $git_branch\
 $git_status\
 [ ](color_aqua)\
-$line_break$character"""
+$line_break$status$character"""
 
 right_format = """
 [](color_aqua)\
@@ -35,7 +43,6 @@ $time\
 [ ](fg:color_bg1)\
 """
 
-
 palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
@@ -49,6 +56,14 @@ color_orange = '#d65d0e'
 color_purple = '#b16286'
 color_red = '#cc241d'
 color_yellow = '#d79921'
+
+[status]
+# style = 'bg:color_red'
+symbol = '☠  '
+success_symbol = '✅ '
+format = '[$symbol$status]($style) '
+map_symbol = false
+disabled = false
 
 [os]
 disabled = false
