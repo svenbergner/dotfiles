@@ -19,6 +19,14 @@ alias ll='ls -l'
 alias lt='ls --tree -l'
 alias cls='clear&&ls'
 
+# go up aliases
+alias .='pwd'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
 # gulc -- git undo last commit but preserve the changes
 alias gulc="git reset --soft HEAD~"
 alias undolastcommit='git reset --soft HEAD~'
