@@ -27,7 +27,7 @@ A modern replacement for the ls command. It is written in rust and has a lot of 
 I use it as my default ls command. 
 
 ### zoxide
-A smarter cd command. It is written in rust and I use it as my default cd command.
+A smarter cd command with memory. It is written in rust and I use it as a in-place replacement cd command.
 
 ### delta
 A viewer for git and diff output. I use it as my default git diff viewer.
@@ -41,7 +41,7 @@ I use stow to manage my dotfiles. It is a symlink farm manager. I reorganized my
 ## Colors
 
 My preferred colorscheme is **gruvbox dark**. Therefore I have the colors as iTerm colors and in a simply json format.
-I use these colors in my wezterm statusbar, lazygit, delta and neovim.
+I use these colors in my wezterm statusbar, lazygit, bat, delta and neovim.
 
 ## Scripts
 
