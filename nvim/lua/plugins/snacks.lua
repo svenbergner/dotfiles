@@ -2,6 +2,7 @@
 A collection of small QoL plugins for Neovim.
 URL: https://github.com/folke/snacks.nvim
 --]=====]
+
 return {
    "folke/snacks.nvim",
    priority = 1000,
@@ -55,6 +56,9 @@ return {
             patterns = { "GitSign", "MiniDiffSign" },
          },
          refresh = 50, -- refresh at most every 50ms
+      },
+      terminal = {
+         enabled = true,
       },
       toggle = { enabled = true, },
       words = { enabled = true, },
