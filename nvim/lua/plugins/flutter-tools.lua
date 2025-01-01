@@ -6,8 +6,14 @@ return {
    dependencies = {
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim", -- optional for vim.ui.select
+      "dart-lang/dart-vim-plugin",
    },
    config = function()
+      -- dart-vim-plugin options
+      vim.g.dart_style_guide = 2
+      vim.g.dart_format_on_save = 1
+      vim.g.dart_trailing_comma_indent = true
+
       local line = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
       require("flutter-tools").setup({
          fvm = true,
@@ -29,9 +35,14 @@ return {
             enabled = true,
             debug = true,
          },
+         closing_tags = {
+            highlight = 'Comment',
+            prefix = '//',
+            enabled = true,
+         },
          dev_log = {
             enabled = true,
-            open_cmd = "tabedit"
+            open_cmd = 'tabedit'
          },
          lsp = {
             color = {
@@ -42,10 +53,11 @@ return {
             settings = {
                showTodos = true,
                lineLength = 120,
-               renameFilesWithClasses = "always",
-               documentation = "full",
+               renameFilesWithClasses = 'always',
+               documentation = 'full',
                updateImportsOnRename = true,
                completeFunctionCalls = true,
+               enableSnippets = true,
             }
          }
       })
