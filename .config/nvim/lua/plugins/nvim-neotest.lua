@@ -1,6 +1,6 @@
 -- Flutter Test support
 -- See :h neotest.run.run() for parameters.
--- http://github.com/nvim-neotest/neotest
+-- https://github.com/nvim-neotest/neotest
 return {
    "nvim-neotest/neotest",
    dependencies = {
