@@ -10,6 +10,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "sidlatau/neotest-dart",
       "nvim-neotest/neotest-python",
+      "nvim-neotest/neotest-plenary",
    },
    config = function()
       local neotest = require('neotest')
@@ -26,6 +27,7 @@ return {
                python = "python",
                use_lsp = true,
             },
+            require('neotest-plenary') {},
          }
       })
 
