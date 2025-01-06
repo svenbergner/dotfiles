@@ -64,6 +64,9 @@ return {
          }
       })
       cmp.setup({
+         experimental = {
+            ghost_text = true,
+         },
          formatting = {
             format = lspkind.cmp_format({
                mode = "symbol_text",
@@ -90,6 +93,8 @@ return {
             ["<CR>"] = cmp.mapping.confirm({
                select = false,
             }),
+            ["<Up>"] = cmp.mapping.select_prev_item(),
+            ["<Down>"] = cmp.mapping.select_next_item(),
             ["<Tab>"] = cmp.mapping(function(fallback)
                if cmp.visible() and has_words_before() then
                   cmp.select_next_item()
