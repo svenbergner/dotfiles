@@ -11,6 +11,9 @@ return {
       "sidlatau/neotest-dart",
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-plenary",
+      "antoinemadec/FixCursorHold.nvim",
+      "Shatur/neovim-tasks",
+      "rosstang/neotest-catch2",
    },
    config = function()
       local neotest = require('neotest')
@@ -28,6 +31,8 @@ return {
                use_lsp = true,
             },
             require('neotest-plenary') {},
+            -- Needs luarocks lpx module which needs lua 5.2
+            -- require('neotest-catch2') {},
          }
       })
 
