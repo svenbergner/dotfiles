@@ -39,6 +39,33 @@ return {
       vim.keymap.set("n", "<leader>nc", ":Neotree close<CR>",
          { silent = true, desc = "Close Neo-tree" })
 
+      local highlights = require("neo-tree.ui.highlights")
+
+      local function file_contains(filename, pattern)
+         local current_file = filename
+         print(current_file)
+         if not vim.fn.filereadable(current_file) then
+            print("File not readable: " .. current_file)
+            return false
+         end
+         -- local file_content = vim.fn.readfile(current_file)
+         -- for _, line in ipairs(file_content) do
+         --    if line:match(pattern) then
+         --       return true
+         --    end
+         -- end
+            print("File readable: " .. current_file)
+         return false
+      end
+
+      local function is_plugin_disabled(filename)
+         return file_contains(filename, "enabled%s*=%s*false")
+      end
+
+      local function is_plugin_enabled(filename)
+         return file_contains(filename, "enabled%s*=%s*true")
+      end
+
       require("neo-tree").setup({
          sources = {
             "filesystem",
@@ -82,6 +109,42 @@ return {
                always_show = {
                   ".env",
                }
+            },
+            components = {
+               icon = function(config, node, state)
+                  local icon = config.default or " "
+                  local padding = config.padding or " "
+                  local highlight = config.highlight or highlights.FILE_ICON
+                  local plugin_state = ""
+
+                  if node.type == "directory" then
+                     highlight = highlights.DIRECTORY_ICON
+                     if node:is_expanded() then
+                        icon = config.folder_open or "-"
+                     else
+                        icon = config.folder_closed or "+"
+                     end
+                  elseif node.type == "file" then
+                     if node.ext == "lua" then
+                        if is_plugin_enabled(node.name) then
+                           plugin_state = ""
+                        elseif is_plugin_disabled(node.name) then
+                           plugin_state = ""
+                        end
+                     end
+                     local success, web_devicons = pcall(require, "nvim-web-devicons")
+                     if success then
+                        local devicon, hl = web_devicons.get_icon(node.name, node.ext)
+                        icon = devicon or icon
+                        highlight = hl or highlight
+                     end
+                  end
+
+                  return {
+                     text = icon .. padding .. plugin_state,
+                     highlight = highlight,
+                  }
+               end,
             },
          },
       })
