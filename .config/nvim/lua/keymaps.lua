@@ -26,6 +26,7 @@ vim.keymap.set("n", "<leader><leader>x",
    { silent = true, desc = "Save and source the current file" })
 
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format the current buffer" })
+vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format the current buffer" })
 
 -- Exit terminal mode in the built-in terminal with a shortcut that is easier to discover.
 -- Otherwise, you normally need to press <c-\><c-n>, which is not what someone will guess without a bit more experience.
