@@ -16,6 +16,7 @@ return {
          },
          spec = {
             { '<leader>a', group = '[a]vante' },
+            { '<leader>b', group = '[b]uffer' },
             { '<leader>c', group = '[c]ode' },
             { '<leader>d', group = '[d]apui' },
             { '<leader>f', group = '[f]ind', },
@@ -23,6 +24,9 @@ return {
             { '<leader>n', group = '[n]eotree' },
             { '<leader>t', group = '[t]est' },
             { '<leader>w', group = 'vim[w]iki', },
+            { '<leader>W', group = 'LSP [W]orkspace', },
+            { '<leader>z', group = '[z]en' },
+
             --    { '<leader>r', group = '[R]ename' },
             --    { '<leader>s', group = '[S]earch' },
             --    { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
