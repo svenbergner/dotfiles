@@ -43,9 +43,7 @@ return {
 
       local function file_contains(filename, pattern)
          local current_file = filename
-         print(current_file)
          if not vim.fn.filereadable(current_file) then
-            print("File not readable: " .. current_file)
             return false
          end
          -- local file_content = vim.fn.readfile(current_file)
@@ -54,7 +52,6 @@ return {
          --       return true
          --    end
          -- end
-            print("File readable: " .. current_file)
          return false
       end
 
