@@ -2,6 +2,7 @@
 -- for messages, cmdline and the popupmenu.
 return {
    "folke/noice.nvim",
+   enabled = true,
    event = "VeryLazy",
    keys = {
       { "<leader>nsl", function() require("noice").cmd("last") end,                                   desc = "[N]oice [S]how [L]ast Message" },
