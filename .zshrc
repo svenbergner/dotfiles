@@ -58,6 +58,7 @@ setopt hist_find_no_dups
 # If you come from bash you might have to change your $PATH.
 if [[ "$OSTYPE" =~ "darwin".* ]] then
    export PATH="/usr/local/sbin:$PATH:/Users/sven.bergner/fvm/default/bin"
+  export CMAKE_ANDROID_NDK=/Users/sven.bergner/Library/Android/sdk/ndk/28.0.12674087
 else
    export PATH=/home/bergner/Repos/flutter/bin/:$PATH
 fi
