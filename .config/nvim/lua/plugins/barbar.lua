@@ -70,7 +70,7 @@ return {
          insert_at_start = false,
          tabpages = true,
          exclude_ft = { 'terminal' },
-         exclude_name = { 'NvimTree', },
+         exclude_name = { 'NvimTree', '__FLUTTER_DEV_LOG__' },
          icons = {
             button = "✗", -- alternative: ❌
             buffer_index = true,
