@@ -28,6 +28,7 @@ M.setup_layout = function(wezterm)
     M.addTab(window, home_dir .. '/Repos/vimwiki', 'VimWiki', 'nvim\n')
     M.addTab(window, home_dir .. '/Repos/telescope-cmake-preset-selector', 'CMake Preset Selector', 'nvim\n')
     M.addTab(window, home_dir .. '/Repos/telescope-debugee-selector', 'Debugee Selector', 'nvim\n')
+    M.addTab(window, home_dir .. '/Repos/presenter.nvim', 'Presenter', 'nvim\n')
 
     first_tab:activate()
   end)
