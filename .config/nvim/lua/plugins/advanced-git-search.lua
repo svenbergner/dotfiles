@@ -6,6 +6,7 @@
 return {
    'aaronhallaert/advanced-git-search.nvim',
    event = 'VeryLazy',
+   enabled = true,
    config = function()
       require('telescope').setup {
          extensions = {
