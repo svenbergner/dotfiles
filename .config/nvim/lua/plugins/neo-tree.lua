@@ -46,12 +46,12 @@ return {
          if not vim.fn.filereadable(current_file) then
             return false
          end
-         -- local file_content = vim.fn.readfile(current_file)
-         -- for _, line in ipairs(file_content) do
-         --    if line:match(pattern) then
-         --       return true
-         --    end
-         -- end
+         local file_content = vim.fn.readfile(current_file)
+         for _, line in ipairs(file_content) do
+            if line:match(pattern) then
+               return true
+            end
+         end
          return false
       end
 
@@ -108,40 +108,54 @@ return {
                }
             },
             components = {
-               icon = function(config, node, state)
-                  local icon = config.default or " "
+               plugin_state = function(config, node)
                   local padding = config.padding or " "
-                  local highlight = config.highlight or highlights.FILE_ICON
+                  local highlight = config.highlight or highlights.FILE_NAME
                   local plugin_state = ""
-
-                  if node.type == "directory" then
-                     highlight = highlights.DIRECTORY_ICON
-                     if node:is_expanded() then
-                        icon = config.folder_open or "-"
-                     else
-                        icon = config.folder_closed or "+"
-                     end
-                  elseif node.type == "file" then
-                     if node.ext == "lua" then
-                        if is_plugin_enabled(node.name) then
-                           plugin_state = ""
-                        elseif is_plugin_disabled(node.name) then
-                           plugin_state = ""
-                        end
-                     end
-                     local success, web_devicons = pcall(require, "nvim-web-devicons")
-                     if success then
-                        local devicon, hl = web_devicons.get_icon(node.name, node.ext)
-                        icon = devicon or icon
-                        highlight = hl or highlight
+                  if node.type == "file" and node.ext == "lua" then
+                     if is_plugin_enabled(node.path) then
+                        plugin_state = ""
+                        highlight = highlights.GIT_ADDED
+                     elseif is_plugin_disabled(node.path) then
+                        plugin_state = ""
+                        highlight = highlights.GIT_DELETED
                      end
                   end
-
                   return {
-                     text = icon .. padding .. plugin_state,
+                     text = padding .. plugin_state,
                      highlight = highlight,
                   }
                end,
+            },
+            renderers = {
+               file = {
+                  { "indent" },
+                  { "icon" },
+                  {
+                     "container",
+                     content = {
+                        {
+                           "name",
+                           zindex = 10
+                        },
+                        {
+                           "symlink_target",
+                           zindex = 10,
+                           highlight = "NeoTreeSymbolicLinkTarget",
+                        },
+                        { "clipboard",     zindex = 10 },
+                        { "bufnr",         zindex = 10 },
+                        { "modified",      zindex = 20, align = "right" },
+                        { "diagnostics",   zindex = 20, align = "right" },
+                        { "git_status",    zindex = 10, align = "right" },
+                        { "plugin_state",  zindex = 10, align = "right" },
+                        { "file_size",     zindex = 10, align = "right" },
+                        { "type",          zindex = 10, align = "right" },
+                        { "last_modified", zindex = 10, align = "right" },
+                        { "created",       zindex = 10, align = "right" },
+                     },
+                  },
+               },
             },
          },
       })
