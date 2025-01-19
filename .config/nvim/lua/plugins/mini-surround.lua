@@ -1,4 +1,4 @@
---[=====[
+--[===[
 Fast and feature-rich surround actions
 URL: https://www.github.com/echasnovski/mini.surround
 
@@ -35,7 +35,7 @@ URL: https://www.github.com/echasnovski/mini.surround
 - All actions involving finding surrounding (delete, replace, find, highlight)
   can be used with suffix that changes search method to find previous/last.
   See more in help for MiniSurround.config.
---]=====]
+--]===]
 
 return {
    'echasnovski/mini.surround',

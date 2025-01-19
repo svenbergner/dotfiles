@@ -1,8 +1,8 @@
---[=====[
+--[===[
 luarocks.nvim
 A LuaRocks frontend for Neovim.
 URL: https://www.github.com/vhyrro/luarocks.nvim
---]=====]
+--]===]
 
 return {
    'vhyrro/luarocks.nvim',

@@ -1,7 +1,7 @@
---[=====[
+--[===[
 Decorations for vimdoc/help files in Neovim.
 URL: https://www.github.com/OXY2DEV/helpview.nvim
---]=====]
+--]===]
 
 return {
    "OXY2DEV/helpview.nvim",

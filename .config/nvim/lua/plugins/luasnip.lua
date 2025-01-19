@@ -1,9 +1,9 @@
---[====[
+--[===[
 These are custom snippets created using LuaSnip
 
 I took the idea from this video:
 URL: https://youtu.be/FmHhonPjvvA?si=8NrcRWu4GGdmTzee 
---]====]
+--]===]
 
 return {
   "L3MON4D3/LuaSnip",

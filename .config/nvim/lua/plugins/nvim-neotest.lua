@@ -1,8 +1,8 @@
---[====[
+--[===[
 Flutter Test support
 See :h neotest.run.run() for parameters.
 URL: https://www.github.com/nvim-neotest/neotest
---]====]
+--]===]
 
 return {
    "nvim-neotest/neotest",
