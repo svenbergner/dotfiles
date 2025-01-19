@@ -1,5 +1,7 @@
--- Add or remove line or block comments
--- URL: https://github.com/numToStr/Comment.nvim
+--[====[
+Add or remove line or block comments
+URL: https://www.github.com/numToStr/Comment.nvim
+--]====]
 
 return {
    'numToStr/Comment.nvim',

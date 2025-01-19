@@ -3,7 +3,7 @@ avante.nvim is a Neovim plugin designed to emulate the behaviour of the
 Cursor AI IDE. It provides users with AI-driven code suggestions and the
 ability to apply these recommendations directly to their source files
 with minimal effort.
-URL: https://github.com/yetone/avante.nvim
+URL: https://www.github.com/yetone/avante.nvim
 --]=====]
 
 return {
@@ -58,16 +58,16 @@ return {
       hints = { enabled = true },
       windows = {
          ---@type "right" | "left" | "top" | "bottom"
-         position = "right", -- the position of the sidebar
-         wrap = true,   -- similar to vim.o.wrap
-         width = 30,    -- default % based on available width
+         position = "right",  -- the position of the sidebar
+         wrap = true,         -- similar to vim.o.wrap
+         width = 30,          -- default % based on available width
          sidebar_header = {
             align = "center", -- left, center, right for title
             rounded = true,
          },
       },
       highlights = {
-         ---@type AvanteConflictHighlights
+         ---@class AvanteConflictHighlights
          diff = {
             current = "DiffText",
             incoming = "DiffAdd",
@@ -89,7 +89,7 @@ return {
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua",    -- for providers='copilot'
+      "zbirenbaum/copilot.lua",      -- for providers='copilot'
       {
          -- support for image pasting
          "HakonHarnes/img-clip.nvim",

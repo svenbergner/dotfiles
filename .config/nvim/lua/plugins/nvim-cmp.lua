@@ -1,7 +1,12 @@
--- An autocompletion engine plugin for neovim written in Lua.
--- Completion sources are installed from external repositories and "sourced".
+--[====[
+An autocompletion engine plugin for neovim written in Lua.
+Completion sources are installed from external repositories and "sourced".
+URL: https://www.github.com/hrsh7th/nvim-cmp
+--]====]
+
 return {
    "hrsh7th/nvim-cmp",
+   enabled = true,
    event = "InsertEnter",
    priority = 100,
    dependencies = {
@@ -20,7 +25,7 @@ return {
          dependencies = {
             -- `friendly-snippets` contains a variety of premade snippets.
             --    See the README about individual language/framework/plugin snippets:
-            --    URL: https://github.com/rafamadriz/friendly-snippets
+            --    URL: https://www.github.com/rafamadriz/friendly-snippets
             {
                'rafamadriz/friendly-snippets',
                config = function()
@@ -40,34 +45,6 @@ return {
       local rhs = function(rhs_str)
          return vim.api.nvim_replace_termcodes(rhs_str, true, true, true)
       end
-
-      local lsp_kinds = {
-         Class = ' ',
-         Color = ' ',
-         Constant = ' ',
-         Constructor = ' ',
-         Enum = ' ',
-         EnumMember = ' ',
-         Event = ' ',
-         Field = ' ',
-         File = ' ',
-         Folder = ' ',
-         Function = ' ',
-         Interface = ' ',
-         Keyword = ' ',
-         Method = ' ',
-         Module = ' ',
-         Operator = ' ',
-         Property = ' ',
-         Reference = ' ',
-         Snippet = ' ',
-         Struct = ' ',
-         Text = ' ',
-         TypeParameter = ' ',
-         Unit = ' ',
-         Value = ' ',
-         Variable = ' ',
-      }
 
       -- Returns the current column number.
       local column = function()
@@ -208,7 +185,7 @@ return {
          }
       })
 
-      -- Until https://github.com/hrsh7th/nvim-cmp/issues/1716
+      -- Until https:.com/hrsh7th/nvim-cmp/issues/1716
       -- (cmp.ConfirmBehavior.MatchSuffix) gets implemented, use this local wrapper
       -- to choose between `cmp.ConfirmBehavior.Insert` and
       -- `cmp.ConfirmBehavior.Replace`:
@@ -293,7 +270,7 @@ return {
             ["<Up>"] = cmp.mapping.select_prev_item(),
             ["<Down>"] = cmp.mapping.select_next_item(),
 
-            ["<Tab>"] = cmp.mapping(function(fallback)
+            ["<Tab>"] = cmp.mapping(function(_)
                if cmp.visible() and has_words_before() then
                   -- If there is only one completion candidate, use it.
                   local entries = cmp.get_entries()
@@ -386,7 +363,7 @@ return {
       })
 
       -- Only show ghost text at word boundaries, not inside keywords. Based on idea
-      -- from: https://github.com/hrsh7th/nvim-cmp/issues/2035#issuecomment-2347186210
+      -- from: https:.com/hrsh7th/nvim-cmp/issues/2035#issuecomment-2347186210
 
       local config = require('cmp.config')
 

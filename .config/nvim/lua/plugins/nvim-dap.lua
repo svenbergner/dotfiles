@@ -1,5 +1,9 @@
+--[===[
+Debugger configuration 
+URL: https://www.github.com/mfussenegger/nvim-dap
+--]===]
+
 ---@diagnostic disable: undefined-field
--- Debugger configuration
 return {
    {
       "mfussenegger/nvim-dap",
@@ -82,23 +86,23 @@ return {
             },
          }
 
-         dap.adapters.dart = {
-            type = "executable",
-            command = "dart",
-            args = { "debug_adapter" }
-         }
-
-         dap.configurations.dart = {
-            {
-               type = "dart",
-               request = "launch",
-               name = "Launch Dart Program",
-               program = "${file}",
-               cwd = "${workspaceFolder}",
-               args = { "--dart-define-from-file=emv-vars.json" },      -- Note for Dart Apps this is args, for Flutter apps toolArgs
-               toolsArgs = { "--dart-define-from-file=emv-vars.json" }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
-            }
-         }
+         -- dap.adapters.dart = {
+         --    type = "executable",
+         --    command = "dart",
+         --    args = { "debug_adapter" }
+         -- }
+         --
+         -- dap.configurations.dart = {
+         --    {
+         --       type = "dart",
+         --       request = "launch",
+         --       name = "Launch Dart Program",
+         --       program = "${file}",
+         --       cwd = "${workspaceFolder}",
+         --       args = { "--dart-define-from-file=emv-vars.json" },      -- Note for Dart Apps this is args, for Flutter apps toolArgs
+         --       toolsArgs = { "--dart-define-from-file=emv-vars.json" }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
+         --    }
+         -- }
 
          dap.configurations.lua = {
             {
@@ -176,6 +180,7 @@ return {
          end, { nargs = 0 })
 
          vim.api.nvim_create_user_command("DapLoadLldbForCpp", function()
+---@diagnostic disable-next-line: deprecated
             require("dap.ext.vscode").load_launchjs(vim.fn.getcwd() .. "/.vscode/launch.json", { lldb = { "cpp" } })
          end, { nargs = 0 })
 

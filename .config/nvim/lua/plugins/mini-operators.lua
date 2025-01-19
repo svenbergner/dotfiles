@@ -1,6 +1,6 @@
 --[=====[
 Text edit operators
-URL: https://github.com/echasnovski/mini.operators
+URL: https://www.github.com/echasnovski/mini.operators
 
 Features:
  - Operators:
@@ -19,10 +19,10 @@ See *MiniOperators-overview* and *MiniOperators.config* tags in help for more de
 --]=====]
 
 return {
-  'echasnovski/mini.operators',
-  enabled = false,
-  version = '*',
-  config = function()
-    require('mini.operators').setup()
-  end,
+   'echasnovski/mini.operators',
+   enabled = false,
+   version = '*',
+   config = function()
+      require('mini.operators').setup()
+   end,
 }

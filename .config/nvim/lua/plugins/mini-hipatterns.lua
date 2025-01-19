@@ -1,4 +1,7 @@
--- URL: https://github.com/echasnovski/mini.hipatterns
+--[====[
+Highlight patterns in text
+URL: https://www.github.com/echasnovski/mini.hipatterns
+--]====]
 
 return {
    'echasnovski/mini.hipatterns',

@@ -1,6 +1,11 @@
--- Plugin to generate source code screenshots
+--[===[
+Plugin to generate source code screenshots
+URL: https://www.github.com/michaelrommel/nvim-silicon
+--]===]
+
 return {
    "michaelrommel/nvim-silicon",
+   enabled = true,
    lazy = true,
    cmd = "Silicon",
    config = function()
