@@ -1,4 +1,4 @@
---[=====[
+--[===[
 Better Escape
 URL: https://www.github.com/max397574/better-escape.nvim
 
@@ -10,7 +10,7 @@ Then you always get a delay when typing a j.
 An example where this has a big impact is e.g. telescope.
 Because the characters which are mapped aren't really inserted at first the
 whole filtering isn't instant.
---]=====]
+--]===]
 
 return {
    "max397574/better-escape.nvim",

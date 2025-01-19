@@ -1,8 +1,8 @@
---[====[
+--[===[
 An autocompletion engine plugin for neovim written in Lua.
 Completion sources are installed from external repositories and "sourced".
 URL: https://www.github.com/hrsh7th/nvim-cmp
---]====]
+--]===]
 
 return {
    "hrsh7th/nvim-cmp",

@@ -1,4 +1,4 @@
---[=====[
+--[===[
 Flash
 URL: https://www.github.com/folke/flash.nvim
 flash.nvim lets you navigate your code with search labels,
@@ -19,7 +19,7 @@ Features
 🌐 Remote Actions: perform motions in remote locations
 ⚫ dot-repeatable jumps
 📡 highly extensible: check the examples
---]=====]
+--]===]
 
 return {
    "folke/flash.nvim",
