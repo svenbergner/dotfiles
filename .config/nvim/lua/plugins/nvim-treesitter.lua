@@ -1,6 +1,11 @@
--- Treesitter configuration
+--[===[
+Treesitter configuration
+URL: https://www.github.com/nvim-treesitter/nvim-treesitter
+--]===]
+
 return {
    "nvim-treesitter/nvim-treesitter",
+   enabled = true,
    build = ":TSUpdate",
    event = { "BufReadPre", "BufNewFile" },
    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
@@ -37,7 +42,7 @@ return {
             "luadoc",
             "luap",
             "make",
-            "markdown", -- basic highlighting
+            "markdown",    -- basic highlighting
             "markdown_inline", -- needed for full highlighting
             "ninja",
             "nix",

@@ -1,18 +1,21 @@
--- Highlight todo, notes, etc in comments
--- TODO: 
--- OPTIMIZE:
--- PERFORMANCE:
--- TEST:
--- PROJECT:
--- FIXME:
--- BUG:
--- WARN:
--- HACK:
--- NOTE:
--- INFO:
+--[===[ 
+Highlight todo, notes, etc in comments
+TODO:
+OPTIMIZE:
+PERFORMANCE:
+TEST:
+PROJECT:
+FIXME:
+BUG:
+WARN:
+HACK:
+NOTE:
+INFO: 
+--]===]
 
 return {
    'folke/todo-comments.nvim',
+   enabled = true,
    dependencies = {
       'nvim-lua/plenary.nvim'
    },

@@ -1,7 +1,11 @@
--- Simple tools to help developers working YAML in Neovim.
+--[===[
+Simple tools to help developers working YAML in Neovim.
+URL: https://www.github.com/cuducos/yaml.nvim
+--]===]
 
 return {
    "cuducos/yaml.nvim",
+   enabled = true,
    ft = { "yaml", "yml" },
    dependencies = {
       "nvim-treesitter/nvim-treesitter",

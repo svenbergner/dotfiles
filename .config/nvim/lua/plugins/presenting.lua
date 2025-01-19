@@ -1,6 +1,6 @@
 --[=====[
 Show markdown file as a slide presentation.
-URL: https://github.com/sotte/presenting.nvim
+URL: https://www.github.com/sotte/presenting.nvim
 --]=====]
 
 return {
