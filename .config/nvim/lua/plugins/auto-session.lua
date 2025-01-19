@@ -1,5 +1,7 @@
--- Automatically manage vim sessions
--- URL: https://www.github.com/rmagatti/auto-session
+--[=====[
+Automatically manage vim sessions
+URL: https://www.github.com/rmagatti/auto-session
+--]=====]
 
 return {
    'rmagatti/auto-session',
