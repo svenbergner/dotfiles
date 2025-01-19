@@ -1,6 +1,6 @@
 --[=====[
 Telescope - the swiss army knife for finding things
-URL: https://github.ccom/nvim-telescope/telescope.nvim
+URL: https://www.github.com/nvim-telescope/telescope.nvim
 
 Default keybindings:
 <C-x> go to file selection as a split
@@ -11,6 +11,7 @@ Default keybindings:
 return {
    {
       "nvim-telescope/telescope.nvim",
+      enabled = true,
       dependencies = {
          "nvim-lua/plenary.nvim",
          "joshmedeski/telescope-smart-goto.nvim",
@@ -80,12 +81,9 @@ return {
          vim.keymap.set('n', '<leader>sj', builtin.jumplist, { desc = "[S]how [J]umplist" })
          vim.keymap.set('n', '<leader>df', builtin.filetypes, { desc = '[D]ocument [f]iletype' })
          vim.keymap.set('n', '<leader>fa', "<cmd>Telescope autocommands<CR>", { desc = '[f]ind [a]utocommands' })
-         vim.keymap.set("n", "<leader>fz", "<cmd>lua require('telescope').extensions.zoxide.list()<CR>",
-            { desc = "List zoxide directories" })
       end,
    },
    {
-      "jvgrootveld/telescope-zoxide",
       "nvim-telescope/telescope-live-grep-args.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
       "debugloop/telescope-undo.nvim",
@@ -173,35 +171,6 @@ return {
                },
                ['telescope-tabs'] = {},
                ['debugee_selector'] = {},
-               ['zoxide'] = {
-                  prompt_title = "[ Zoxide List ]",
-                  -- Zoxide list command with score
-                  list_command = "zoxide query -ls",
-                  mappings = {
-                     default = {
-                        keepinsert = true,
-                        action = function(selection)
-                           builtin.find_files { cwd = selection.path, find_command = { "rg", "--files", "--hidden", "-g", "!.git" } }
-                           -- builtin.find_files({ cwd = selection.path })
-                        end,
-                     },
-                     ["<C-h>"] = { action = z_utils.create_basic_command "split" },
-                     ["<C-v>"] = { action = z_utils.create_basic_command "vsplit" },
-                     ["<C-e>"] = { action = z_utils.create_basic_command "edit" },
-                     ["<C-b>"] = {
-                        keepinsert = true,
-                        action = function(selection)
-                           builtin.file_browser { cwd = selection.path }
-                        end,
-                     },
-                     ["<C-f>"] = {
-                        keepinsert = true,
-                        action = function(selection)
-                           builtin.find_files { cwd = selection.path, find_command = { "rg", "--files", "--hidden", "-g", "!.git" } }
-                        end,
-                     },
-                  },
-               },
             },
          })
 
@@ -218,7 +187,6 @@ return {
          require("telescope").load_extension("repo")
          require("telescope").load_extension("ui-select")
          require("telescope").load_extension("undo")
-         require("telescope").load_extension("zoxide")
 
          -- Personal extensions
          require("telescope").load_extension("cmake_preset_selector")

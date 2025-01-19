@@ -1,8 +1,11 @@
--- Plugin to improve viewing Markdown files in Neovim
--- URL: https://www.github.com/MeanderingProgrammer/markdown.nvim
+--[===[
+Plugin to improve viewing Markdown files in Neovim
+URL: https://www.github.com/MeanderingProgrammer/markdown.nvim
+--]===]
 
 return {
    "MeanderingProgrammer/markdown.nvim",
+   enabled = true,
    main = 'render-markdown',
    opts = {},
    name = 'render-markdown',
@@ -13,7 +16,7 @@ return {
    config = function()
       require('render-markdown').setup({
          file_type = { 'markdown', 'vimwwiki', },
-         vim.treesitter.language.register( 'markdown', 'vimwiki')
+         vim.treesitter.language.register('markdown', 'vimwiki')
       })
    end
 }

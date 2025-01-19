@@ -1,6 +1,10 @@
--- Define special keymaps for treesitter textobjects
+--[===[ Define special keymaps for treesitter textobjects
+URL: https://www.github.com/nvim-treesitter/nvim-treesitter-textobjects
+--]===]
+
 return {
    "nvim-treesitter/nvim-treesitter-textobjects",
+   enabled = true,
    lazy = true,
    config = function()
       require("nvim-treesitter.configs").setup({

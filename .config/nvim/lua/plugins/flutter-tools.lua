@@ -1,7 +1,10 @@
--- Plugin which adds some tools for developing with flutter
--- URL: https://www.github.com/akinsho/flutter-tools.nvim
+--[===[ Plugin which adds some tools for developing with flutter
+URL: https://www.github.com/akinsho/flutter-tools.nvim
+--]===]
+
 return {
    "akinsho/flutter-tools.nvim",
+   enabled = true,
    lazy = true,
    ft = { "dart" },
    dependencies = {
@@ -15,11 +18,13 @@ return {
       vim.g.dart_format_on_save = 1
       vim.g.dart_trailing_comma_indent = true
 
-      local line = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
+      -- local line = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
       require("flutter-tools").setup({
          fvm = true,
-         ui = { border = line },
-         outline = { auto_open = false },
+         ui = {
+            border = "rounded",
+            notification_style = 'native',
+         },
          decorations = {
             statusline = {
                app_version = true,
@@ -29,8 +34,23 @@ return {
          },
          debugger = {
             enabled = true,
-            run_via_dap = true,
-            exception_breakpoints = {},
+            register_configurations = function(_)
+               require("dap").configurations.dart = {
+                  {
+                     type = "dart",
+                     request = "launch",
+                     name = "Launch Dart Program",
+                     program = "${file}",
+                     cwd = "${workspaceFolder}",
+                     args = { "--dart-define-from-file=emv-vars.json" },      -- Note for Dart Apps this is args, for Flutter apps toolArgs
+                     toolsArgs = { "--dart-define-from-file=emv-vars.json" }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
+                  }
+               }
+               ---@diagnostic disable-next-line: deprecated
+               require("dap.ext.vscode").load_launchjs()
+            end,
+            -- run_via_dap = true,
+            -- exception_breakpoints = {},
          },
          widgets_guides = {
             enabled = true,
@@ -38,12 +58,22 @@ return {
          },
          closing_tags = {
             highlight = 'Comment',
-            prefix = '//',
+            prefix = '// ',
             enabled = true,
          },
          dev_log = {
             enabled = true,
-            open_cmd = 'tabedit'
+            open_cmd = '15split',
+            focus_on_open = false,
+            notity_errors = true,
+         },
+         dev_tools = {
+            autostart = true,
+            auto_open_browser = true,
+         },
+         outline = {
+            open_cmd = '30vnew',
+            auto_open = false,
          },
          lsp = {
             color = {
@@ -62,6 +92,14 @@ return {
             }
          }
       })
+
+      -- require("flutter-tools").setup_project({
+      --    {
+      --       name = 'simplytaxapp',
+      --       flavor = 'dev',
+      --       target = 'lib/main.dart',
+      --    }
+      -- })
 
       local nmap = function(keys, func, desc)
          vim.keymap.set('n', keys, func, { desc = desc })

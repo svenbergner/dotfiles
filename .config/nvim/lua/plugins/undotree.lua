@@ -1,10 +1,13 @@
--- Undotree visualizes the undo history and makes it easy to browse and switch 
--- between different undo branches.
--- URL: https://github.com/mbbill/undotree
+--[====[
+Undotree visualizes the undo history and makes it easy to browse and switch
+between different undo branches.
+URL: https://www.github.com/mbbill/undotree 
+--]====]
 
 return {
    "mbbill/undotree",
-   config = function ()
+   enabled = true,
+   config = function()
       -- TODO: Add keymap for toggling undotree
    end
 }

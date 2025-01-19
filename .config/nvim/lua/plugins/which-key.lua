@@ -1,8 +1,11 @@
--- Shows the available keymaps
--- http://www.github.com/folke/which-key.nvim
+--[====[
+Shows the available keymaps
+URL: http://www.github.com/folke/which-key.nvim
+--]====]
 
 return {
    'folke/which-key.nvim',
+   enabled = true,
    event = 'VeryLazy',
    dependencies = {
       { 'echasnovski/mini.icons', version = false },

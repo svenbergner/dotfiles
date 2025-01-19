@@ -1,4 +1,8 @@
--- Show git blame at the end of each line
+--[====[
+Show git blame at the end of each line
+URL: https://www.github.com/f-person/git-blame.nvim 
+--]====]
+
 return {
    "f-person/git-blame.nvim",
    enabled = true,

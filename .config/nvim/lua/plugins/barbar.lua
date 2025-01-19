@@ -7,7 +7,7 @@ In jump-to-buffer mode, tabs display a target letter instead of their icon.
 Jump to any buffer by simply typing their target letter. Even better, the
 target letter stays constant for the lifetime of the buffer, so if you're
 working with a set of files you can even type the letter ahead from memory.
-URL: https://github.com/romgrk/barbar.nvim
+URL: https://www.github.com/romgrk/barbar.nvim
 --]=====]
 ---@diagnostic disable: inject-field
 

@@ -1,5 +1,9 @@
--- A vim-vinegar like file explorer that lets you edit your filesystem
--- like a normal Neovim buffer.
+--[===[
+A vim-vinegar like file explorer that lets you edit your filesystem
+like a normal Neovim buffer.
+URL: https://www.github.com/stevearc/oil.nvim
+--]===]
+
 return {
    "stevearc/oil.nvim",
    enabled = false,

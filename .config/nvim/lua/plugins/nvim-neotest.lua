@@ -1,8 +1,12 @@
--- Flutter Test support
--- See :h neotest.run.run() for parameters.
--- https://github.com/nvim-neotest/neotest
+--[====[
+Flutter Test support
+See :h neotest.run.run() for parameters.
+URL: https://www.github.com/nvim-neotest/neotest
+--]====]
+
 return {
    "nvim-neotest/neotest",
+   enabled = true,
    dependencies = {
       "mfussenegger/nvim-dap",
       "nvim-neotest/nvim-nio",
