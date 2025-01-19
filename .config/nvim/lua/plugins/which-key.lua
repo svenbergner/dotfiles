@@ -1,7 +1,7 @@
---[====[
+--[===[
 Shows the available keymaps
 URL: http://www.github.com/folke/which-key.nvim
---]====]
+--]===]
 
 return {
    'folke/which-key.nvim',

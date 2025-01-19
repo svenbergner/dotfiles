@@ -1,4 +1,4 @@
---[====[
+--[===[
 💻 lazydev.nvim
 lazydev.nvim is a plugin that properly configures LuaLS for editing your
 Neovim config by lazily updating your workspace libraries.
@@ -10,7 +10,7 @@ Completion for module names when typing require(...) will only return loaded
 modules in your workspace.
 To get around the above, you can: pre-load those plugins with the library option.
 use the nvim-cmp completion source to get all available modules.
---]====]
+--]===]
 
 return {
    {

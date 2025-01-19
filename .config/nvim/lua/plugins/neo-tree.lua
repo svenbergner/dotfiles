@@ -1,7 +1,7 @@
---[=====[
+--[===[
 Plugin that adds a neat file tree
 URL: https://www.github.com/nvim-neo-tree/neo-tree.nvim
---]=====]
+--]===]
 
 return {
    "nvim-neo-tree/neo-tree.nvim",

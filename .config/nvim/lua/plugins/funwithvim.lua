@@ -1,4 +1,4 @@
---[====[
+--[===[
 Collection of plugins that are fun to use
 1. URL: https://www.github.com/eandrju/cellular-automaton.nvim
 2. URL: https://www.github.com/tamton-aquib/duck.nvim
@@ -6,7 +6,7 @@ Collection of plugins that are fun to use
 4. URL: https://www.github.com/rhysd/vim-syntax-christmas-tree
 5. URL: https://www.github.com/AndrewRadev/dealwithit.vim
 6. URL: https://www.github.com/folke/drop.nvim 
---]====]
+--]===]
 
 return {
    -- {

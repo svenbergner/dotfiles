@@ -1,4 +1,4 @@
---[=====[
+--[===[
 Text edit operators
 URL: https://www.github.com/echasnovski/mini.operators
 
@@ -16,7 +16,7 @@ Features:
 - All operators support [count] and dot-repeat.
 
 See *MiniOperators-overview* and *MiniOperators.config* tags in help for more details.
---]=====]
+--]===]
 
 return {
    'echasnovski/mini.operators',

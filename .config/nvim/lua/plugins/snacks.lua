@@ -1,7 +1,7 @@
---[=====[
+--[===[
 Snacks.nvim: A collection of small QoL plugins for Neovim.
 URL: https://www.github.com/folke/snacks.nvim
---]=====]
+--]===]
 
 return {
    "folke/snacks.nvim",

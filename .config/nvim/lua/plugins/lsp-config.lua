@@ -1,7 +1,7 @@
---[====[
+--[===[
 All LSP configurations go here 
 URL: https://www.github.com/neovim/nvim-lspconfig
---]====]
+--]===]
 
 return {
   'neovim/nvim-lspconfig',

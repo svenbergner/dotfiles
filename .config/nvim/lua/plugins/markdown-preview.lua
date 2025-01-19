@@ -1,7 +1,7 @@
---[====[
+--[===[
 install without yarn or npm
 URL: https://www.github.com/iamcco/markdown-preview.nvim 
---]====]
+--]===]
 
 return {
   "iamcco/markdown-preview.nvim",
