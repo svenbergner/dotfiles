@@ -1,5 +1,7 @@
--- Shows a preview of the code action before applying it
--- URL: https://github.cvoom/aznhe21/actions-preview.nvim
+--[=====[
+Shows a preview of the code action before applying it
+URL: https://github.cvoom/aznhe21/actions-preview.nvim
+--]=====]
 
 return {
    "aznhe21/actions-preview.nvim",
