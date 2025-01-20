@@ -11,7 +11,12 @@ After using several IDEs and Vim I ended up using Neovim as my PDE (Personal Dev
 My preferred way to deal with my git repos. I even have a neovim plugin to have it all the time right at my
 fingertips.
 Lazygit is integrated into my neovim config using snacks.nvim and I use it as a git client.
-[lazygit config](./lazygit)
+[lazygit config](./config/lazygit/config.yml)
+On MacOS is the config located at '~/Library/Application Support/lazygit/config.yml'
+
+```bash
+ln -s ~/Repos/dotfiles/.config/lazygit/config.yml ~/Library/Application Support/lazygit/config.yml
+```
 
 ### wezterm
 After using a bunch of terminal emulators and multiplexers I'm currently using wezterm.
