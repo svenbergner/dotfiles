@@ -2,7 +2,7 @@
 VimWiki is a personal wiki for Vim -- a number of linked text files that 
 have their own syntax highlighting. 
 See the VimWiki Wiki for an example website built with VimWiki!
-URL: https://www.github.com/vimwiki/vimwiki
+URL: https://github.com/vimwiki/vimwiki
 --]===]
 
 return {

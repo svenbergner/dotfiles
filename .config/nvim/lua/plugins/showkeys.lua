@@ -1,7 +1,7 @@
 --[===[
   Showkeys
   Show the keys that are pressed in the bottom right corner.
-  URL: https://www.github.com/nvzone/showkeys
+  URL: https://github.com/nvzone/showkeys
 --]===]
 
 return {

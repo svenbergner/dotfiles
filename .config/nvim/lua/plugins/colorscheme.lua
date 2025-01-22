@@ -1,6 +1,6 @@
 --[===[
 Current used colorscheme is gruvbox
-URL: https://www.github.com/ellisonleao/gruvbox.nvim
+URL: https://github.com/ellisonleao/gruvbox.nvim
 --]===]
 
 vim.o.background = "dark"

@@ -1,6 +1,6 @@
 --[===[
 Plugin to improve viewing Markdown files in Neovim
-URL: https://www.github.com/MeanderingProgrammer/markdown.nvim
+URL: https://github.com/MeanderingProgrammer/markdown.nvim
 --]===]
 
 return {

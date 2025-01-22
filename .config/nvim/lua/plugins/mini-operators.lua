@@ -1,6 +1,6 @@
 --[===[
 Text edit operators
-URL: https://www.github.com/echasnovski/mini.operators
+URL: https://github.com/echasnovski/mini.operators
 
 Features:
  - Operators:

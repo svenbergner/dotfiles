@@ -1,6 +1,6 @@
 --[===[
 Automatically add the closing element
-URL: https://www.github.com/m4xshen/autoclose.nvim
+URL: https://github.com/m4xshen/autoclose.nvim
 --]===]
 
 return {

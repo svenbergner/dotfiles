@@ -1,11 +1,11 @@
 --[===[
 Collection of plugins that are fun to use
-1. URL: https://www.github.com/eandrju/cellular-automaton.nvim
-2. URL: https://www.github.com/tamton-aquib/duck.nvim
-3. URL: https://www.github.com/AndrewRadev/typewriter.vim
-4. URL: https://www.github.com/rhysd/vim-syntax-christmas-tree
-5. URL: https://www.github.com/AndrewRadev/dealwithit.vim
-6. URL: https://www.github.com/folke/drop.nvim 
+1. URL: https://github.com/eandrju/cellular-automaton.nvim
+2. URL: https://github.com/tamton-aquib/duck.nvim
+3. URL: https://github.com/AndrewRadev/typewriter.vim
+4. URL: https://github.com/rhysd/vim-syntax-christmas-tree
+5. URL: https://github.com/AndrewRadev/dealwithit.vim
+6. URL: https://github.com/folke/drop.nvim 
 --]===]
 
 return {

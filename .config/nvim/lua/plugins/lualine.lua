@@ -1,6 +1,6 @@
 --[===[
 Neovim status line configuration
-URL: https://www.github.com/nvim-lualine/lualine.nvim 
+URL: https://github.com/nvim-lualine/lualine.nvim 
 --]===]
 
 local getWords = function()
