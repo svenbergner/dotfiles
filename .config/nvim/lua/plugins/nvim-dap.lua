@@ -1,6 +1,6 @@
 --[===[
 Debugger configuration 
-URL: https://www.github.com/mfussenegger/nvim-dap
+URL: https://github.com/mfussenegger/nvim-dap
 --]===]
 
 ---@diagnostic disable: undefined-field

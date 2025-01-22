@@ -1,6 +1,6 @@
 --[===[
 Fast and feature-rich surround actions
-URL: https://www.github.com/echasnovski/mini.surround
+URL: https://github.com/echasnovski/mini.surround
 
 - Actions (all of them are dot-repeatable out of the box and respect v:count
   for searching surrounding) with configurable keymappings:

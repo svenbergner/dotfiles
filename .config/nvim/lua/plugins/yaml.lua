@@ -1,6 +1,6 @@
 --[===[
 Simple tools to help developers working YAML in Neovim.
-URL: https://www.github.com/cuducos/yaml.nvim
+URL: https://github.com/cuducos/yaml.nvim
 --]===]
 
 return {

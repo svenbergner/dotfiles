@@ -1,6 +1,6 @@
 --[===[
 Better Escape
-URL: https://www.github.com/max397574/better-escape.nvim
+URL: https://github.com/max397574/better-escape.nvim
 
 A lot of people have mappings like jk or jj to escape insert mode.
 The problem with this mappings is that whenever you type a j, neovim wait

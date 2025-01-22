@@ -1,7 +1,7 @@
 --[===[
 A vim-vinegar like file explorer that lets you edit your filesystem
 like a normal Neovim buffer.
-URL: https://www.github.com/stevearc/oil.nvim
+URL: https://github.com/stevearc/oil.nvim
 --]===]
 
 return {

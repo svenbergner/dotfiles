@@ -1,6 +1,6 @@
 --[===[
 Decorations for vimdoc/help files in Neovim.
-URL: https://www.github.com/OXY2DEV/helpview.nvim
+URL: https://github.com/OXY2DEV/helpview.nvim
 --]===]
 
 return {

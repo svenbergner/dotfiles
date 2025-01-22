@@ -1,6 +1,6 @@
 --[===[
 Detect tabstop and shiftwidth automatically
-URL: https://www.github.com/tpope/vim-sleuth
+URL: https://github.com/tpope/vim-sleuth
 --]===]
 
 return {

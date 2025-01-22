@@ -1,6 +1,6 @@
 --[===[
 Automatically manage vim sessions
-URL: https://www.github.com/rmagatti/auto-session
+URL: https://github.com/rmagatti/auto-session
 --]===]
 
 return {

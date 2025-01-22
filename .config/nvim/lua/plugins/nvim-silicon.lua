@@ -1,6 +1,6 @@
 --[===[
 Plugin to generate source code screenshots
-URL: https://www.github.com/michaelrommel/nvim-silicon
+URL: https://github.com/michaelrommel/nvim-silicon
 --]===]
 
 return {

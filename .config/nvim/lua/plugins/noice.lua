@@ -1,7 +1,7 @@
 --[===[
 Highly experimental plugin that completely replaces the UI
 for messages, cmdline and the popupmenu.
-URL: https://www.github.com/folke/noice.nvim
+URL: https://github.com/folke/noice.nvim
 --]===]
 
 return {

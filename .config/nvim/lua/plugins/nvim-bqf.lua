@@ -1,6 +1,6 @@
 --[===[
 Nvim Better QuickFix
-URL: https://www.github.com/kevinhwang91/nvim-bqf
+URL: https://github.com/kevinhwang91/nvim-bqf
 --]===]
 
 return {

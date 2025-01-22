@@ -1,6 +1,6 @@
 --[===[
 MiniAI plugin
-URL: https://www.github.com/echasnovski/mini.ai
+URL: https://github.com/echasnovski/mini.ai
 Extend and create a/i textobjects
 Features:
 - Customizable creation of a/i textobjects using Lua patterns and functions. Supports:

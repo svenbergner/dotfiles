@@ -1,6 +1,6 @@
 --[===[
 Flash
-URL: https://www.github.com/folke/flash.nvim
+URL: https://github.com/folke/flash.nvim
 flash.nvim lets you navigate your code with search labels,
 enhanced character motions, and Treesitter integration.
 Features

@@ -1,7 +1,7 @@
 --[===[
 An autocompletion engine plugin for neovim written in Lua.
 Completion sources are installed from external repositories and "sourced".
-URL: https://www.github.com/hrsh7th/nvim-cmp
+URL: https://github.com/hrsh7th/nvim-cmp
 --]===]
 
 return {
@@ -25,7 +25,7 @@ return {
          dependencies = {
             -- `friendly-snippets` contains a variety of premade snippets.
             --    See the README about individual language/framework/plugin snippets:
-            --    URL: https://www.github.com/rafamadriz/friendly-snippets
+            --    URL: https://github.com/rafamadriz/friendly-snippets
             {
                'rafamadriz/friendly-snippets',
                config = function()

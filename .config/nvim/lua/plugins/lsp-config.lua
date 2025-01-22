@@ -1,6 +1,6 @@
 --[===[
 All LSP configurations go here 
-URL: https://www.github.com/neovim/nvim-lspconfig
+URL: https://github.com/neovim/nvim-lspconfig
 --]===]
 
 return {

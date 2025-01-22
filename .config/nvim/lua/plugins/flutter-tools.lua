@@ -1,5 +1,5 @@
 --[===[ Plugin which adds some tools for developing with flutter
-URL: https://www.github.com/akinsho/flutter-tools.nvim
+URL: https://github.com/akinsho/flutter-tools.nvim
 --]===]
 
 return {

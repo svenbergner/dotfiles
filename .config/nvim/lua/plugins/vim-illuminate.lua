@@ -1,7 +1,7 @@
 --[===[
 Neovim plugin for automatically highlighting other uses of the word
  under the cursor using either LSP, Tree-sitter, or regex matching.
-URL: https://www.github.com/RRethy/vim-illuminate
+URL: https://github.com/RRethy/vim-illuminate
 --]===]
 
 return {
