@@ -97,6 +97,7 @@ links to their github repos.
   - List of snacks plugins I use:
     - bigfile
     - bufdelete
+    - dim
     - git
     - gitbrowse
     - indent
@@ -104,7 +105,9 @@ links to their github repos.
     - notify
     - notifier
     - quickfile
+    - scroll
     - statuscolumn
+    - terminal
     - toggle
     - words
     - zen
