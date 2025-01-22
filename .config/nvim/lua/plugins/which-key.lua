@@ -1,6 +1,6 @@
 --[===[
 Shows the available keymaps
-URL: http://www.github.com/folke/which-key.nvim
+URL: http://github.com/folke/which-key.nvim
 --]===]
 
 return {

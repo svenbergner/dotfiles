@@ -1,7 +1,7 @@
 --[===[
 Undotree visualizes the undo history and makes it easy to browse and switch
 between different undo branches.
-URL: https://www.github.com/mbbill/undotree 
+URL: https://github.com/mbbill/undotree 
 --]===]
 
 return {

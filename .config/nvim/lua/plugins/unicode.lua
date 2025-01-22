@@ -1,6 +1,6 @@
 --[===[
 Plugin for searching and inserting unicode characters
-URL: http://www.github.com/chrisbra/unicode.vim
+URL: http://github.com/chrisbra/unicode.vim
 --]===]
 
 return {
