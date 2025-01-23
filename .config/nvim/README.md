@@ -79,7 +79,7 @@ links to their github repos.
 - [luarocks: A luarocks frontend for neovim](https://github.com/vhyrro/luarocks.nvim)
 - [luasnip: These are custom snippets created using LuaSnip](./lua/plugins/luasnip.lua)
 - [mini.ai: Extend and create a/i textobjects](https://github.com/echasnovski/mini.ai)
-- [mini.icons: Icon provider](https://github.com/echasnovski/mini.icons)
+- [mini.hipatterns: Highlight patterns in neovim](https://github.com/echasnovski/mini.hipatterns)
 - [mini.surround: Fast and feature-rich surround actions](https://github.com/echasnovski/mini.surround)
 - [neotest: A framework for interacting with tests within Neovim](https://github.com/nvim-neotest/neotest)
   - [neotest-dart: Support for running dart unit test](https://github.com/sidlatau/neotest-dart)
@@ -148,6 +148,7 @@ links to their github repos.
   - [calendar: ](https://github.com/mattn/calendar-vim)
 - [virt-column: ](https://github.com/lukas-reineke/virt-column.nvim)
 - [which-key: ](https://github.com/folke/which-key.nvim)
+  - [mini.icons: Icon provider](https://github.com/echasnovski/mini.icons)
 - [yaml: ](https://github.com/cuducos/yaml.nvim)
 - [zoxide: ](https://github.com/nanotee/zoxide.vim)
  
