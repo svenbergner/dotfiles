@@ -17,6 +17,8 @@ Build type: Release
 LuaJIT 2.1.1727870382
 ```
 
+# Recommended Youtube Videos
+
 
 ## The starting point: init.lua
 
