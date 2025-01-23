@@ -26,6 +26,7 @@ return {
                   },
                   group = word_color_group
                },
+               hex_color = hipatterns.gen_highlighter.hex_color(),
             }
          }
       )
