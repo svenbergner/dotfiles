@@ -89,7 +89,6 @@ links to their github repos.
   - [cmp_luasnip: ](https://github.com/saadparwaiz1/cmp_luasnip)
   - [friendly-snippets: luasnip completion source for nvim-cmp](https://github.com/rafamadriz/friendly-snippets)
   - [lspkind: ](https://github.com/onsails/lspkind.nvim)
-- [nvim-colorizer: This tiny plugin adds vscode-like pictograms to neovim built-in lsp](https://github.com/NvChad/nvim-colorizer.lua)
 - [nvim-dap: Debug adapter](https://github.com/mfussenegger/nvim-dap)
   - [nvim-dap-ui: Debug TUI](https://github.com/rcarriga/nvim-dap-ui)
   - [nvim-nio: A library for asynchronous IO in Neovim](https://github.com/nvim-neotest/nvim-nio)
