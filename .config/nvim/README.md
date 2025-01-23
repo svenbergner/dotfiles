@@ -40,7 +40,6 @@ files that are not detected by default.
 Here is a list of the plugins that I use in my config with the correspondig
 links to their github repos.
 
-- [Comment: Add or remove line or block comments](https://github.com/numToStr/Comment.nvim/)
 - [actions-preview: Shows a preview of the code action before applying it](https://github.com/aznhe21/actions-preview.nvim)
 - [advanced-git-search: Advanced git search extension for Telescope and fzf-lua](https://github.com/aaronhallaert/advanced-git-search.nvim)
   - [telescope: a highly extendable fuzzy finder over lists](https://github.com/nvim-telescope/telescope.nvim)
@@ -51,20 +50,30 @@ links to their github repos.
 - [avante: A cursor like AI ide frontend](https://github.com/avante/avante.nvim)
 - [barbar: Tabs, as understood by any other editor](https://github.com/romgrk/barbar.nvim)
 - [better escape: Better solution for using jk or jj instead of esc](https://github.com/max397574/better-escape.nvim) 
+- [colorscheme: My current colorscheme is gruvbox](https://github.com/ellisonleao/gruvbox.nvim/)
+- [comment: Add or remove line or block comments](https://github.com/numToStr/Comment.nvim/)
 - [flash: lets you navigate your code](https://github.comfolke/flash.nvim/)
 - [flutter-tools: Tools for writing flutter and dart apps](https://github.com/akinsho/flutter-tools.nvim/)
+- [fun with (neo)vim: Collection of funny plugins](./lua/plugins/funwithvim.lua)
+  - [cellular-automaton]( https://github.com/eandrju/cellular-automaton.nvim )
+  - [duck]( https://github.com/tamton-aquib/duck.nvim )
+  - [typewriter]( https://github.com/AndrewRadev/typewriter.vim )
+  - [christmas tree]( https://github.com/rhysd/vim-syntax-christmas-tree )
+  - [deal with it]( https://github.com/AndrewRadev/dealwithit.vim )
+  - [drop]( https://github.com/folke/drop.nvim  )
 - [git-blame: Show git blame at the end of each line](https://github.com/f-person/git-blame.nvim/)
 - [github-copilot: Support for Github Copilot](https://github.com/zbirenbaum/copilot.lua/)
 - [gitsigns: Adds custom signs for current git status](https://github.com/lewis6991/gitsigns.nvim)
-- [gruvbox: My current colorscheme](https://github.com/ellisonleao/gruvbox.nvim/)
 - [helpview: Decorations for vimdoc/help files in Neovim](https://github.com/OXY2DEV/helpview.nvim)
-- [harpoon: Getting you where you want with the fewest keystrokes.](https://github.com/ThePrimeagen/harpoon)
 - [image: Show images inside of neovim: ](https://github.com/3rd/image.nvim/)
 - [inc-rename: Incremental renaming plugin](https://github.com/smjonas/inc-rename.nvim/)
 - [is: Improved incremental search](https://github.com/haya14busa/is.vim/)
 - [lazydev: Configures LuaLS for editing your Neovim config by lazily updating your workspace libraries](https://github.com/folke/lazydev.nvim/)
   - [luvit-meta: This project is a collection of definition files for the framework Luvit](https://github.com/Bilal2453/luvit-meta/)
 - [mason: Easily install and manage LSP servers, DAP servers, linters, and formatters](https://github.com/williamboman/mason.nvim)
+- [lualine: Neovim status line configuration](https://github.com/nvim-lualine/lualine.nvim )
+- [luarocks: A luarocks frontend for neovim](https://github.com/vhyrro/luarocks.nvim)
+- [luasnip: These are custom snippets created using LuaSnip](./lua/plugins/luasnip.lua)
 - [mini.ai: Extend and create a/i textobjects](https://github.com/echasnovski/mini.ai)
 - [mini.icons: Icon provider](https://github.com/echasnovski/mini.icons)
 - [mini.surround: Fast and feature-rich surround actions](https://github.com/echasnovski/mini.surround)
@@ -94,7 +103,7 @@ links to their github repos.
 - [plenary: A collection of lua functions](https://github.com/nvim-lua/plenary.nvim)
 - [smart-splits: ](https://github.com/mrjones2014/smart-splits.nvim)
 - [snacks: A QoL plugin for Neovim by Folke](https://github.com/folke/snacks.nvim)
-  - List of snacks plugins I use:
+  - List of used snacks plugins:
     - bigfile
     - bufdelete
     - dim
