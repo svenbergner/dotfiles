@@ -42,6 +42,7 @@ A cat clone with syntax highlighting and git integration. I use it as my default
 
 ### stow
 I use stow to manage my dotfiles. It is a symlink farm manager. I reorganized my dotfiles to use stow.
+URL: https://youtu.be/y6XCebnB9gs?si=cisaCuaYR3tC28Qm
 
 ## Colors
 
