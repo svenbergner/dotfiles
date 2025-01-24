@@ -19,6 +19,8 @@ LuaJIT 2.1.1727870382
 
 # Recommended Youtube Videos
 
+## Kickstarter
+- [The Only Video You Need to Get Started with Neovim](https://www.youtube.com/watch?v=m8C0Cq9Uv9o)
 
 ## The starting point: init.lua
 
