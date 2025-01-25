@@ -58,9 +58,7 @@ return {
          },
          refresh = 50, -- refresh at most every 50ms
       },
-      terminal = {
-         enabled = true,
-      },
+      terminal = { enabled = true, },
       toggle = { enabled = true, },
       words = { enabled = true, },
       zen = { enabled = true, },
