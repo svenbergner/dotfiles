@@ -42,6 +42,7 @@ return {
       notify = { enabled = true, },
       notifier = { enabled = true, },
       quickfile = { enabled = true, },
+      rename = { enabled = true, },
       scroll = { enabled = true, },
       statuscolumn = {
          enabled = true,
