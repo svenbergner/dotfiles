@@ -8,7 +8,10 @@ return {
    version = '*',
    config = function()
       local hipatterns = require('mini.hipatterns')
-      local words = { ['enabled = true'] = '#B8BB26', ['enabled = false'] = '#CC241D' }
+      local words = {
+         ['enabled = true'] = '#B8BB26',
+         ['enabled = false'] = '#CC241D'
+      }
 
       local word_color_group = function(_, match)
          local hex = words[match]
