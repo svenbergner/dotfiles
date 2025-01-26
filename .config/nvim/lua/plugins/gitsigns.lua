@@ -1,5 +1,6 @@
 --[===[
 Adds custom signs for current git status
+URL: https://github.com/lewis6991/gitsigns.nvim
 --]===]
 
 return {
