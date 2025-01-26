@@ -78,8 +78,8 @@ return {
       { "<leader>zm",        function() Snacks.toggle.zen() end,                    desc = "Toggle Zen Mode" },
       { "<leader>gg",        function() vim.cmd("wa") Snacks.lazygit() end,         desc = "Lazygit" },
       { "<leader><leader>g", function() vim.cmd("wa") Snacks.lazygit() end,         desc = "Lazygit" },
-      { "gn",                function() Snacks.words.jump(vim.v.count1, true) end,  desc = "Next Reference",              mode = { "n", "t" } },
-      { "gp",                function() Snacks.words.jump(-vim.v.count1, true) end, desc = "Prev Reference",              mode = { "n", "t" } },
+      { "gn",                function() Snacks.words.jump(vim.v.count1, true) end,  desc = "Next Reference", mode = { "n", "t" } },
+      { "gp",                function() Snacks.words.jump(-vim.v.count1, true) end, desc = "Prev Reference", mode = { "n", "t" } },
       {
          "<leader>N",
          desc = "Neovim News",
