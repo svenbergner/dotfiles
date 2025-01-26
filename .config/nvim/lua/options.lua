@@ -61,10 +61,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true -- Override the 'ignorecase' option if the search pattern contains uppercase characters
 vim.opt.hlsearch = true  -- Highlight search results
 vim.opt.incsearch = true
-
--- Clear search highlighting on pressing Escape
-vim.keymap.set('n', '<Esc>', '<esc>:nohlsearch<CR>', { silent = true })
-
 vim.opt.history = 1000
 
 -- Status line settings
