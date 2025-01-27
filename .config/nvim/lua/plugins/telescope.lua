@@ -15,6 +15,10 @@ return {
       dependencies = {
          "nvim-lua/plenary.nvim",
          "joshmedeski/telescope-smart-goto.nvim",
+         --[[ telescope-dap.nvim
+              Integration for nvim-dap with telescope.nvim.
+              Overrides dap internal ui, any dap command, which makes use of 
+              internal ui, will result in a telescope prompt. ]]
          "nvim-telescope/telescope-dap.nvim",
       },
       config = function()
