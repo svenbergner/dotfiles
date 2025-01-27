@@ -83,6 +83,7 @@ return {
       { "<leader>gF", function() Snacks.lazygit.log_file() end,      desc = "Lazygit Current File History" },
       { "<leader>gl", function() Snacks.lazygit.log() end,           desc = "Lazygit Log (cwd)" },
       { "<leader>sj", function() Snacks.notifier.jumps() end,        desc = "[s]how [j]umps" },
+      { "<leader>su", function() Snacks.notifier.undo() end,         desc = "[s]how [u]ndo history" },
       { "<leader>un", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
       { "<leader>zm", function() Snacks.toggle.zen() end,            desc = "Toggle Zen Mode" },
       { "<leader>fa", function() Snacks.picker.autocmds() end,       desc = "[f]ind [a]utocommands" },
