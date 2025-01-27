@@ -98,6 +98,7 @@ return {
       { "<leader>fs", function() Snacks.picker.lsp_symbols() end,    desc = "[f]ind [s]ymbols" },
       { "<leader>ft", function() Snacks.picker.todo_comments() end,  desc = "[f]ind [t]odos" },
       { "<leader>fw", function() Snacks.picker.grep_word() end,      desc = "[f]ind [w]ord under cursor" },
+      { "<leader>fz", function() Snacks.picker.zoxide() end,         desc = "[f]ind [z]oxide" },
       {
          "<leader>gg",
          function()
