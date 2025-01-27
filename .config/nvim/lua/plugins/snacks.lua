@@ -41,6 +41,12 @@ return {
       lazygit = { enabled = true, },
       notify = { enabled = true, },
       notifier = { enabled = true, },
+      picker = {
+         enabled = true,
+         layout = {
+            preset = "telescope",
+         },
+      },
       quickfile = { enabled = true, },
       rename = { enabled = true, },
       scroll = { enabled = true, },
