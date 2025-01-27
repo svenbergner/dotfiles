@@ -115,10 +115,15 @@ return {
                   local highlight = config.highlight or highlights.FILE_NAME
                   local plugin_state = ""
                   if node.type == "file" and node.ext == "lua" then
-                     if is_plugin_enabled(node.path) then
+                     local plugin_enabled = is_plugin_enabled(node.path)
+                     local plugin_disabled = is_plugin_disabled(node.path)
+                     if plugin_enabled and plugin_disabled then
+                        plugin_state = "±"
+                        highlight = highlights.GIT_MODIFIED
+                     elseif plugin_enabled then
                         plugin_state = ""
                         highlight = highlights.GIT_ADDED
-                     elseif is_plugin_disabled(node.path) then
+                     elseif plugin_disabled then
                         plugin_state = ""
                         highlight = highlights.GIT_DELETED
                      end
