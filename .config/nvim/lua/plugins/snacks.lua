@@ -71,21 +71,51 @@ return {
    },
 
    keys = {
-      { "<leader>.",         function() Snacks.scratch() end,                       desc = "Toggle Scratch Buffer" },
-      { "<leader>S",         function() Snacks.scratch.select() end,                desc = "Select Scratch Buffer" },
-      { "<leader>n",         function() Snacks.notifier.show_history() end,         desc = "Notification History" },
-      { "<leader>bd",        function() Snacks.bufdelete() end,                     desc = "Delete Buffer" },
-      { "<leader>cR",        function() Snacks.rename.rename_file() end,            desc = "Rename File" },
-      { "<leader>gB",        function() Snacks.gitbrowse() end,                     desc = "Git Browse" },
-      { "<leader>gb",        function() Snacks.git.blame_line() end,                desc = "Git Blame Line" },
-      { "<leader>gF",        function() Snacks.lazygit.log_file() end,              desc = "Lazygit Current File History" },
-      { "<leader>gl",        function() Snacks.lazygit.log() end,                   desc = "Lazygit Log (cwd)" },
-      { "<leader>un",        function() Snacks.notifier.hide() end,                 desc = "Dismiss All Notifications" },
-      { "<leader>zm",        function() Snacks.toggle.zen() end,                    desc = "Toggle Zen Mode" },
-      { "<leader>gg",        function() vim.cmd("wa") Snacks.lazygit() end,         desc = "Lazygit" },
-      { "<leader><leader>g", function() vim.cmd("wa") Snacks.lazygit() end,         desc = "Lazygit" },
-      { "gn",                function() Snacks.words.jump(vim.v.count1, true) end,  desc = "Next Reference", mode = { "n", "t" } },
-      { "gp",                function() Snacks.words.jump(-vim.v.count1, true) end, desc = "Prev Reference", mode = { "n", "t" } },
+      { "<leader>/",  function() Snacks.lines() end,                 desc = "[/] Fuzzily search in current buffer" },
+      { "<leader>.",  function() Snacks.scratch() end,               desc = "Toggle Scratch Buffer" },
+      { "<leader>S",  function() Snacks.scratch.select() end,        desc = "Select Scratch Buffer" },
+      { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
+      { "<leader>bd", function() Snacks.bufdelete() end,             desc = "Delete Buffer" },
+      { "<leader>cR", function() Snacks.rename.rename_file() end,    desc = "Rename File" },
+      { "<leader>gB", function() Snacks.gitbrowse() end,             desc = "Git Browse" },
+      { "<leader>Gb", function() Snacks.git_branches() end,          desc = "[G]it [b]ranches" },
+      { "<leader>gb", function() Snacks.git.blame_line() end,        desc = "Git Blame Line" },
+      { "<leader>gF", function() Snacks.lazygit.log_file() end,      desc = "Lazygit Current File History" },
+      { "<leader>gl", function() Snacks.lazygit.log() end,           desc = "Lazygit Log (cwd)" },
+      { "<leader>sj", function() Snacks.notifier.jumps() end,        desc = "[s]how [j]umps" },
+      { "<leader>un", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
+      { "<leader>zm", function() Snacks.toggle.zen() end,            desc = "Toggle Zen Mode" },
+      { "<leader>fa", function() Snacks.picker.autocmds() end,       desc = "[f]ind [a]utocommands" },
+      { "<leader>fb", function() Snacks.picker.buffers() end,        desc = "[f]ind [b]uffers" },
+      { "<leader>fB", function() Snacks.picker.grep_buffers() end,   desc = "[f]ind [g]rep in open buffers" },
+      { "<leader>ff", function() Snacks.picker.files() end,          desc = "[f]ind [f]iles" },
+      { "<leader>fg", function() Snacks.picker.grep() end,           desc = "[f]ind [g]rep" },
+      { "<leader>fh", function() Snacks.picker.help() end,           desc = "[f]ind [h]elp" },
+      { "<leader>fk", function() Snacks.picker.keymaps() end,        desc = "[f]ind [k]eymaps" },
+      { "<leader>fl", function() Snacks.picker.lazy() end,           desc = "[f]ind [l]azy plugins specs" },
+      { "<leader>fo", function() Snacks.picker.recent() end,         desc = "[f]ind [o]ld files" },
+      { "<leader>fr", function() Snacks.picker.resume() end,         desc = "[f]ind [r]esume last search" },
+      { "<leader>fs", function() Snacks.picker.lsp_symbols() end,    desc = "[f]ind [s]ymbols" },
+      { "<leader>ft", function() Snacks.picker.todo_comments() end,  desc = "[f]ind [t]odos" },
+      { "<leader>fw", function() Snacks.picker.grep_word() end,      desc = "[f]ind [w]ord under cursor" },
+      {
+         "<leader>gg",
+         function()
+            vim.cmd("wa")
+            Snacks.lazygit()
+         end,
+         desc = "Lazygit"
+      },
+      {
+         "<leader><leader>g",
+         function()
+            vim.cmd("wa")
+            Snacks.lazygit()
+         end,
+         desc = "Lazygit"
+      },
+      { "gn", function() Snacks.words.jump(vim.v.count1, true) end,  desc = "Next Reference", mode = { "n", "t" } },
+      { "gp", function() Snacks.words.jump(-vim.v.count1, true) end, desc = "Prev Reference", mode = { "n", "t" } },
       {
          "<leader>N",
          desc = "Neovim News",
