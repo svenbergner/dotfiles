@@ -14,7 +14,6 @@ return {
       enabled = true,
       dependencies = {
          "nvim-lua/plenary.nvim",
-         "joshmedeski/telescope-smart-goto.nvim",
          --[[ telescope-dap.nvim
               Integration for nvim-dap with telescope.nvim.
               Overrides dap internal ui, any dap command, which makes use of 
@@ -31,12 +30,7 @@ return {
             }
          })
          local builtin = require("telescope.builtin")
-         vim.keymap.set('n', '<leader>fc',
-            '<cmd>lua require("telescope.builtin").live_grep({ glob_pattern = "!{spec,test}"})<CR>',
-            { desc = "Live Grep Code" })
-
          local git_opts = { git_command = { 'git', 'log', '--pretty=format:%h %<(20)%aN  %<(16)%ad  %s', '--date=relative', '--' } }
-         -- pretty=format:"%C(yellow)%h %Cblue%>(16)%ad  %Cgreen%<(20)%aN%Cred%d %Creset%s"
 
          vim.keymap.set("n", "<leader>fi", '<cmd>AdvancedGitSearch<cr>', { desc = "Advanced Git Search" })
          vim.keymap.set('n', '<leader>gC', function()
@@ -138,8 +132,6 @@ return {
                ['debugee_selector'] = {},
             },
          })
-
-         vim.g.zoxide_use_select = true
 
          require("telescope").load_extension("advanced_git_search")
          require("telescope").load_extension("dap")
