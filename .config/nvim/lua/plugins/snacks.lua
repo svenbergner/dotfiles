@@ -38,6 +38,7 @@ return {
             hl = "SnacksIndentBlank", ---@type string | string[] hl group for blank spaces
          },
       },
+      input = { enabled = true, },
       lazygit = { enabled = true, },
       notify = { enabled = true, },
       notifier = { enabled = true, },
