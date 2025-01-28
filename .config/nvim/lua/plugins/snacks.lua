@@ -46,6 +46,7 @@ return {
          enabled = true,
          layout = {
             preset = "telescope",
+            reverse = false,
          },
       },
       quickfile = { enabled = true, },
