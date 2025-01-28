@@ -1,6 +1,6 @@
 --[===[
 Shows an outline view for the current buffer
-URL: https://github.com/hedhli/outline.nvim
+URL: https://github.com/hedyhli/outline.nvim
 --]===]
 
 return {
