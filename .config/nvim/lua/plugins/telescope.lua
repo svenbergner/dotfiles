@@ -16,54 +16,14 @@ return {
          "nvim-lua/plenary.nvim",
          --[[ telescope-dap.nvim
               Integration for nvim-dap with telescope.nvim.
-              Overrides dap internal ui, any dap command, which makes use of 
+              Overrides dap internal ui, any dap command, which makes use of
               internal ui, will result in a telescope prompt. ]]
          "nvim-telescope/telescope-dap.nvim",
+         { "svenbergner/telescope-debugee-selector",      dev = true },
+         { "svenbergner/telescope-cmake-preset-selector", dev = true },
+         'piersolenski/telescope-import.nvim',
       },
       config = function()
-         require("telescope").setup({
-            pickers = {
-               find_files = {},
-            },
-            defaults = {
-               sorting_strategy = 'ascending',
-            }
-         })
-         local builtin = require("telescope.builtin")
-         local git_opts = { git_command = { 'git', 'log', '--pretty=format:%h %<(20)%aN  %<(16)%ad  %s', '--date=relative', '--' } }
-
-         vim.keymap.set("n", "<leader>fi", '<cmd>AdvancedGitSearch<cr>', { desc = "Advanced Git Search" })
-         vim.keymap.set('n', '<leader>gC', function()
-            builtin.git_commits(git_opts)
-         end, { desc = "Search all [g]it [C]ommits" })
-         vim.keymap.set('n', '<leader>gc', function()
-               builtin.git_bcommits(git_opts)
-            end,
-            { desc = "Search [g]it [c]ommits for Buffer" })
-      end,
-   },
-   {
-      "nvim-telescope/telescope-live-grep-args.nvim",
-      "nvim-telescope/telescope-ui-select.nvim",
-      "debugloop/telescope-undo.nvim",
-      "cljoly/telescope-repo.nvim",
-      'LukasPietzschmann/telescope-tabs',
-      'piersolenski/telescope-import.nvim',
-      { "svenbergner/telescope-debugee-selector",      dev = true },
-      { "svenbergner/telescope-cmake-preset-selector", dev = true },
-
-      config = function()
-         local telescopeConfig = require("telescope.config")
-
-         -- Clone the default Telescope configuration
-         local vimgrep_arguments = { table.unpack(telescopeConfig.values.vimgrep_arguments) }
-
-         -- I want to search in hidden/dot files.
-         table.insert(vimgrep_arguments, "--hidden")
-         -- I don't want to search in the `.git` directory.
-         table.insert(vimgrep_arguments, "--glob")
-         table.insert(vimgrep_arguments, "!**/.git/*")
-
          local actions = require("telescope.actions")
 
          local select_one_or_multi = function(prompt_bufnr)
@@ -81,23 +41,19 @@ return {
             end
          end
          require("telescope").setup({
-            defaults = {
-               -- `hidden = true` is not supported in text grep commands.
-               vimgrep_arguments = vimgrep_arguments,
-               path_display = { "truncate" },
-               mappings = {
-                  n = {
-                     ["<C-w>"] = actions.send_selected_to_qflist + actions.open_qflist,
-                  },
-                  i = {
-                     ["<C-j>"] = actions.cycle_history_next,
-                     ["<C-k>"] = actions.cycle_history_prev,
-                     ["<CR>"] = select_one_or_multi,
-                     ["<C-w>"] = actions.send_selected_to_qflist + actions.open_qflist,
-                     ["<C-S-d>"] = actions.delete_buffer,
-                     ["<C-s>"] = actions.cycle_previewers_next,
-                     ["<C-a>"] = actions.cycle_previewers_prev,
-                  },
+            path_display = { "truncate" },
+            mappings = {
+               n = {
+                  ["<C-w>"] = actions.send_selected_to_qflist + actions.open_qflist,
+               },
+               i = {
+                  ["<C-j>"] = actions.cycle_history_next,
+                  ["<C-k>"] = actions.cycle_history_prev,
+                  ["<CR>"] = select_one_or_multi,
+                  ["<C-w>"] = actions.send_selected_to_qflist + actions.open_qflist,
+                  ["<C-S-d>"] = actions.delete_buffer,
+                  ["<C-s>"] = actions.cycle_previewers_next,
+                  ["<C-a>"] = actions.cycle_previewers_prev,
                },
             },
             pickers = {
@@ -106,44 +62,35 @@ return {
                   find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
                },
             },
+            defaults = {
+               sorting_strategy = 'ascending',
+            },
             extensions = {
-               ["import"] = {
-                  insert_at_top = false,
-               },
-               ["ui-select"] = {
-                  require("telescope.themes").get_dropdown({}),
-               },
+               ["import"] = { insert_at_top = false, },
+               ["ui-select"] = { require("telescope.themes").get_dropdown({}), },
                ['flutter'] = {},
                ['noice'] = {},
-               ['neoclip'] = {},
-               ['undo'] = {},
-               ['live_grep_args'] = {},
-               ['repo'] = {
-                  list = {
-                     fd_opts = {
-                        "--no-ignore-vcs",
-                     },
-                     search_dirs = {
-                        "/Users/sven.bergner/Repos/",
-                     },
-                  },
-               },
-               ['telescope-tabs'] = {},
                ['debugee_selector'] = {},
             },
          })
+         local builtin = require("telescope.builtin")
+         local git_opts = { git_command = { 'git', 'log', '--pretty=format:%h %<(20)%aN  %<(16)%ad  %s', '--date=relative', '--' } }
+
+         vim.keymap.set("n", "<leader>fi", '<cmd>AdvancedGitSearch<cr>', { desc = "Advanced Git Search" })
+         vim.keymap.set('n', '<leader>gC', function()
+            builtin.git_commits(git_opts)
+         end, { desc = "Search all [g]it [C]ommits" })
+         vim.keymap.set('n', '<leader>gc', function()
+               builtin.git_bcommits(git_opts)
+            end,
+            { desc = "Search [g]it [c]ommits for Buffer" })
+
 
          require("telescope").load_extension("advanced_git_search")
          require("telescope").load_extension("dap")
          require("telescope").load_extension("flutter")
-         require("telescope").load_extension("fzf")
          require("telescope").load_extension("import")
-         require("telescope").load_extension("live_grep_args")
-         require("telescope").load_extension("neoclip")
          require("telescope").load_extension("noice")
-         require("telescope").load_extension("repo")
-         require("telescope").load_extension("ui-select")
-         require("telescope").load_extension("undo")
 
          -- Personal extensions
          require("telescope").load_extension("cmake_preset_selector")
