@@ -73,7 +73,7 @@ return {
    },
 
    keys = {
-      { "<leader>/",  function() Snacks.lines() end,                 desc = "[/] Fuzzily search in current buffer" },
+      { "<leader>/",  function() Snacks.picker.lines() end,          desc = "[/] Fuzzily search in current buffer" },
       { "<leader>.",  function() Snacks.scratch() end,               desc = "Toggle Scratch Buffer" },
       { "<leader>S",  function() Snacks.scratch.select() end,        desc = "Select Scratch Buffer" },
       { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
@@ -137,6 +137,14 @@ return {
                },
             })
          end,
-      }
+      },
+      -- LSP
+      { "gD",         function() Snacks.picker.lsp_declarations() end,      desc = "Goto Declaration" },
+      { "gd",         function() Snacks.picker.lsp_definitions() end,       desc = "Goto Definition" },
+      { "gi",         function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
+      { "gr",         function() Snacks.picker.lsp_references() end,        nowait = true,                  desc = "References" },
+      { "gy",         function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto T[y]pe Definition" },
+      { "<leader>ss", function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
+      { "<leader>Ws", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
    },
 }
