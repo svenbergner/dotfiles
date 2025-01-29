@@ -19,7 +19,5 @@ return {
          },
          numhl = true, -- Change color of line number
       })
-      vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "[g]it [p]review hunk" })
-      vim.keymap.set("n", "<leader>gs", ":Gitsigns stage_hunk<CR>", { desc = "[g]it [s]tage hunk" })
    end
 }
