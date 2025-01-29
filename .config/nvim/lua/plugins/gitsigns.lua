@@ -12,10 +12,10 @@ return {
          -- See `:help gitsigns.txt`
          signs = {
             add = { text = "+" },
-            change = { text = "~" },
+            change = { text = "" },
             delete = { text = "_" },
             topdelete = { text = "‾" },
-            changedelete = { text = "~" },
+            changedelete = { text = "" },
          },
          numhl = true, -- Change color of line number
       })
