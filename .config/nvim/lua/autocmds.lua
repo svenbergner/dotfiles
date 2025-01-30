@@ -38,3 +38,12 @@ vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
     end
   end
 })
+
+-- Disable spell checking in the quickfix list
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+})
+
