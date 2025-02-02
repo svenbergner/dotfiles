@@ -12,6 +12,7 @@ return {
       bigfile = { enabled = true, },
       bufdelete = { enabled = true, },
       dim = { enabled = true, },
+      explorer = { enabled = true, },
       git = { enabled = true, },
       gitbrowse = { enabled = true, },
       indent = {
