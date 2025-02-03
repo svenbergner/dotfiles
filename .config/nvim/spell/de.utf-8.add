@@ -339,3 +339,5 @@ outputDebugString
 Exe
 table
 Checkmarx
+TaxCore
+Blackduck
