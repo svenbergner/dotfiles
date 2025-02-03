@@ -15,7 +15,7 @@ return {
    },
    config = function()
       require('render-markdown').setup({
-         file_type = { 'markdown', 'vimwwiki', },
+         file_types = { 'markdown', 'vimwwiki', },
          vim.treesitter.language.register('markdown', 'vimwiki')
       })
    end
