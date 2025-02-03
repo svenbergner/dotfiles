@@ -1,5 +1,5 @@
 --[===[
-Debugger configuration 
+Debugger configuration
 URL: https://github.com/mfussenegger/nvim-dap
 --]===]
 
@@ -179,7 +179,7 @@ return {
          end, { nargs = 0 })
 
          vim.api.nvim_create_user_command("DapLoadLldbForCpp", function()
----@diagnostic disable-next-line: deprecated
+            ---@diagnostic disable-next-line: deprecated
             require("dap.ext.vscode").load_launchjs(vim.fn.getcwd() .. "/.vscode/launch.json", { lldb = { "cpp" } })
          end, { nargs = 0 })
 
