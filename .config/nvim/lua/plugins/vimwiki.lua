@@ -2,6 +2,34 @@
 VimWiki is a personal wiki for Vim -- a number of linked text files that 
 have their own syntax highlighting. 
 See the VimWiki Wiki for an example website built with VimWiki!
+
+Key bindings
+Normal mode
+Note: your terminal may prevent capturing some of the default bindings listed below.
+See :h vimwiki-local-mappings for suggestions for alternative bindings if you encounter a problem.
+
+Basic key bindings
+<Leader>ww -- Open default wiki index file.
+<Leader>wt -- Open default wiki index file in a new tab.
+<Leader>ws -- Select and open wiki index file.
+<Leader>wd -- Delete wiki file you are in.
+<Leader>wr -- Rename wiki file you are in.
+<Enter> -- Follow/Create wiki link.
+<Shift-Enter> -- Split and follow/create wiki link.
+<Ctrl-Enter> -- Vertical split and follow/create wiki link.
+<Backspace> -- Go back to parent(previous) wiki link.
+<Tab> -- Find next wiki link.
+<Shift-Tab> -- Find previous wiki link.
+
+Advanced key bindings
+Refer to the complete documentation at :h vimwiki-mappings to see many more bindings.
+
+Commands
+:Vimwiki2HTML -- Convert current wiki link to HTML.
+:VimwikiAll2HTML -- Convert all your wiki links to HTML.
+:help vimwiki-commands -- List all commands.
+:help vimwiki -- General vimwiki help docs.
+
 URL: https://github.com/vimwiki/vimwiki
 --]===]
 
