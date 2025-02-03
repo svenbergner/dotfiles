@@ -25,6 +25,14 @@ vim.keymap.set("n", "<leader><leader>x",
    "<cmd>w<CR><cmd>source %<CR><cmd>lua print('File ' .. vim.fn.expand('%:t') .. ' sourced.')<CR>",
    { silent = true, desc = "Save and source the current file" })
 
+-- Source the current line
+vim.keymap.set("n", "<leader>x", ":.lua<CR><cmd>lua print('Current line sourced.')<CR>",
+   { silent = true, desc = "Source the current line" })
+
+-- Save and source the current selection
+vim.keymap.set("n", "<leader>x", ":lua<CR><cmd>lua print('Current selection sourced.')<CR>",
+   { silent = true, desc = "Source the current selection" })
+
 vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format the current buffer" })
 
 -- Exit terminal mode in the built-in terminal with a shortcut that is easier to discover.
