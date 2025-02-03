@@ -3,6 +3,14 @@ Neovim status line configuration
 URL: https://github.com/nvim-lualine/lualine.nvim 
 --]===]
 
+local getLineInfo = function()
+   local current_line = vim.fn.line('.')
+   local total_lines = vim.fn.line('$')
+   local current_column = vim.fn.col('.')
+   local line_length = vim.fn.strdisplaywidth(vim.fn.getline('.'))
+   return string.format("%d/%d:%d/%d", current_line, total_lines, current_column, line_length)
+end
+
 local getWords = function()
    if vim.bo.filetype == "text" or vim.bo.filetype == "markdown" or vim.bo.filetype == "vimwiki" then
       if vim.fn.wordcount().visual_words == 1 then
@@ -65,6 +73,9 @@ return {
             lualine_y = {
                { 'progress' },
                { getWords },
+            },
+            lualine_z = {
+               { getLineInfo },
             },
          },
          inactive_winbar = {
