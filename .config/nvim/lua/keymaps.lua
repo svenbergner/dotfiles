@@ -54,8 +54,6 @@ vim.keymap.set('n', '<BS>', '^', { desc = 'Move to the first non-blank character
 -- visual mode keymaps
 vim.keymap.set('v', '<leader>r', '\"hy:%s/<C-r>h//g<left><left>', { desc = 'Replace the selection' })
 vim.keymap.set('v', '<leader>R', '\"hy:%s/<C-r>h//gc<left><left>', { desc = 'Replace the selection with confirmation' })
-vim.keymap.set('v', '<leader>u', '\"hyU', { desc = 'Uppercase the selection' })
-vim.keymap.set('v', '<leader>l', '\"hyl', { desc = 'Lowercase the selection' })
 vim.keymap.set('v', '<C-s>', ':sort<CR>', { desc = 'Sort the selection' })
 vim.keymap.set('v', '<leader>z', ':sort u<CR>', { desc = 'Sort the selection uniquely' })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move the selection one line down' })
