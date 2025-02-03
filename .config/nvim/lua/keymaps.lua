@@ -29,7 +29,7 @@ vim.keymap.set("n", "<leader><leader>x",
 vim.keymap.set("n", "<leader>x", ":.lua<CR><cmd>lua print('Current line sourced.')<CR>",
    { silent = true, desc = "Source the current line" })
 
--- Save and source the current selection
+-- Source the current selection
 vim.keymap.set("n", "<leader>x", ":lua<CR><cmd>lua print('Current selection sourced.')<CR>",
    { silent = true, desc = "Source the current selection" })
 
