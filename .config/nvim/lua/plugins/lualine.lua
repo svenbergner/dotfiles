@@ -8,7 +8,7 @@ local getLineInfo = function()
    local total_lines = vim.fn.line('$')
    local current_column = vim.fn.col('.')
    local line_length = vim.fn.strdisplaywidth(vim.fn.getline('.'))
-   return string.format("%d/%d:%d/%d", current_line, total_lines, current_column, line_length)
+   return string.format("%d/%d : %d/%d", current_line, total_lines, current_column, line_length)
 end
 
 local getWords = function()
