@@ -234,7 +234,6 @@ return {
          vim.keymap.set("n", "<F9>", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
          vim.keymap.set("n", "<leader>dq", dapui.close, { desc = '[d]apui [c]lose' })
          vim.keymap.set("n", "<leader>dT", dapui.toggle, { desc = '[d]apui [T]oggle ' })
-         vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
          vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = 'Toggle [d]abui [b]reakpoint' })
          vim.keymap.set("n", "<leader>dc", dap.run_to_cursor, { desc = 'Run to [d]abui [c]ursor' })
          vim.keymap.set("n", "<leader>dcb", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
