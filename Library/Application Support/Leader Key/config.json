@@ -1,0 +1,73 @@
+{
+  "type" : "group",
+  "actions" : [
+    {
+      "type" : "application",
+      "label" : "",
+      "key" : "t",
+      "value" : "/Applications/WezTerm.app"
+    },
+    {
+      "key" : "o",
+      "type" : "group",
+      "label" : "Open",
+      "actions" : [
+        {
+          "key" : "o",
+          "value" : "/Applications/Microsoft Outlook.app",
+          "label" : "",
+          "type" : "application"
+        },
+        {
+          "key" : "i",
+          "label" : "",
+          "value" : "/Applications/Inkscape.app",
+          "type" : "application"
+        },
+        {
+          "key" : "m",
+          "value" : "/Applications/Messages.app",
+          "type" : "application",
+          "label" : ""
+        },
+        {
+          "value" : "/Applications/Google Chrome.app",
+          "type" : "application",
+          "label" : null,
+          "key" : "c"
+        },
+        {
+          "label" : null,
+          "value" : "/Applications/Microsoft Teams.app",
+          "key" : "t",
+          "type" : "application"
+        }
+      ]
+    },
+    {
+      "type" : "group",
+      "label" : "",
+      "key" : "r",
+      "actions" : [
+        {
+          "key" : "e",
+          "label" : "",
+          "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols",
+          "type" : "url"
+        },
+        {
+          "label" : "",
+          "type" : "url",
+          "key" : "p",
+          "value" : "raycast://confetti"
+        },
+        {
+          "key" : "c",
+          "value" : "raycast://extensions/raycast/system/open-camera",
+          "type" : "url",
+          "label" : ""
+        }
+      ]
+    }
+  ]
+}
