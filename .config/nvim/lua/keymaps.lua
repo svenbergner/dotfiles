@@ -25,7 +25,6 @@ vim.keymap.set("n", "<leader><leader>x",
    "<cmd>w<CR><cmd>source %<CR><cmd>lua print('File ' .. vim.fn.expand('%:t') .. ' sourced.')<CR>",
    { silent = true, desc = "Save and source the current file" })
 
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format the current buffer" })
 vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format the current buffer" })
 
 -- Exit terminal mode in the built-in terminal with a shortcut that is easier to discover.
