@@ -5,11 +5,10 @@ URL: https://github.com/OXY2DEV/helpview.nvim
 
 return {
    "OXY2DEV/helpview.nvim",
-   lazy = false,   -- Recommended
-   enabled = true, -- Recommended
+   lazy = true,
+   enabled = true,
 
-   -- In case you still want to lazy load
-   -- ft = "help",
+   ft = "help",
 
    dependencies = {
       "nvim-treesitter/nvim-treesitter"
