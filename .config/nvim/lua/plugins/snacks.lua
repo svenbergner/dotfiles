@@ -113,8 +113,6 @@ return {
          end,
          desc = "Lazygit"
       },
-      { "gn", function() Snacks.words.jump(vim.v.count1, true) end,  desc = "Next Reference", mode = { "n", "t" } },
-      { "gp", function() Snacks.words.jump(-vim.v.count1, true) end, desc = "Prev Reference", mode = { "n", "t" } },
       {
          "<leader>N",
          desc = "Neovim News",
