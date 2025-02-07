@@ -75,7 +75,6 @@ return {
    },
 
    keys = {
-      { "<leader>/",  function() Snacks.picker.lines() end,          desc = "[/] Fuzzily search in current buffer" },
       { "<leader>.",  function() Snacks.scratch() end,               desc = "Toggle Scratch Buffer" },
       { "<leader>S",  function() Snacks.scratch.select() end,        desc = "Select Scratch Buffer" },
       { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
@@ -86,25 +85,34 @@ return {
       { "<leader>gb", function() Snacks.git.blame_line() end,        desc = "Git Blame Line" },
       { "<leader>gF", function() Snacks.lazygit.log_file() end,      desc = "Lazygit Current File History" },
       { "<leader>gl", function() Snacks.lazygit.log() end,           desc = "Lazygit Log (cwd)" },
-      { "<leader>sj", function() Snacks.notifier.jumps() end,        desc = "[s]how [j]umps" },
-      { "<leader>su", function() Snacks.notifier.undo() end,         desc = "[s]how [u]ndo history" },
       { "<leader>un", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
-      { "<leader>zm", function() Snacks.toggle.zen() end,            desc = "Toggle Zen Mode" },
+      { "<leader>zm", function() Snacks.toggle.zen() end,            desc = "Toggle [z]en [m]ode" },
+      -- Picker
+      { "<leader>aa", function() Snacks.picker.autocmds() end,       desc = "[a]utocommands" },
       { "<leader>fa", function() Snacks.picker.autocmds() end,       desc = "[f]ind [a]utocommands" },
       { "<leader>fb", function() Snacks.picker.buffers() end,        desc = "[f]ind [b]uffers" },
       { "<leader>fB", function() Snacks.picker.grep_buffers() end,   desc = "[f]ind [g]rep in open buffers" },
       { "<leader>ff", function() Snacks.picker.files() end,          desc = "[f]ind [f]iles" },
       { "<leader>fg", function() Snacks.picker.grep() end,           desc = "[f]ind [g]rep" },
+      { "<leader>fw", function() Snacks.picker.grep_word() end,      desc = "[f]ind [w]ord under cursor" },
       { "<leader>fh", function() Snacks.picker.help() end,           desc = "[f]ind [h]elp" },
+      { "<leader>sj", function() Snacks.picker.jumps() end,          desc = "[s]how [j]umps" },
       { "<leader>fk", function() Snacks.picker.keymaps() end,        desc = "[f]ind [k]eymaps" },
       { "<leader>fl", function() Snacks.picker.lazy() end,           desc = "[f]ind [l]azy plugins specs" },
+      { "<leader>/",  function() Snacks.picker.lines() end,          desc = "[/] Fuzzily search in current buffer" },
       { "<leader>fo", function() Snacks.picker.recent() end,         desc = "[f]ind [o]ld files" },
       { "<leader>fr", function() Snacks.picker.resume() end,         desc = "[f]ind [r]esume last search" },
-      { "<leader>fs", function() Snacks.picker.lsp_symbols() end,    desc = "[f]ind [s]ymbols" },
       { "<leader>ft", function() Snacks.picker.todo_comments() end,  desc = "[f]ind [t]odos" },
-      { "<leader>fw", function() Snacks.picker.grep_word() end,      desc = "[f]ind [w]ord under cursor" },
+      { "<leader>su", function() Snacks.picker.undo() end,           desc = "[s]how [u]ndo history" },
       { "<leader>fz", function() Snacks.picker.zoxide() end,         desc = "[f]ind [z]oxide" },
-      { "<leader>gg", function() vim.cmd("wa") Snacks.lazygit() end, desc = "Lazygit" },
+      {
+         "<leader>gg",
+         function()
+            vim.cmd("wa")
+            Snacks.lazygit()
+         end,
+         desc = "Lazygit"
+      },
       {
          "<leader><leader>g",
          function()
@@ -137,8 +145,8 @@ return {
       { "gi",         function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
       { "gr",         function() Snacks.picker.lsp_references() end,        nowait = true,                  desc = "References" },
       { "gy",         function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto T[y]pe Definition" },
-      { "<leader>ss", function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
-      { "<leader>Ws", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+      { "<leader>fs", function() Snacks.picker.lsp_symbols() end,           desc = "LSP: [f]ind [s]ymbols" },
+      { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP: [f]ind workspace [S]ymbols" },
       { "<leader>gs", function() Snacks.picker.git_status() end,            desc = "[g]it [s]tatus" },
    },
    init = function()
@@ -164,7 +172,7 @@ return {
                 :map("<leader>uc")
             Snacks.toggle.treesitter():map("<leader>uT")
             Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map(
-            "<leader>ub")
+               "<leader>ub")
             Snacks.toggle.inlay_hints():map("<leader>uh")
             Snacks.toggle.indent():map("<leader>ug")
             Snacks.toggle.dim():map("<leader>uD")
