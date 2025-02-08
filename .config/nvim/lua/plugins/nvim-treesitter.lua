@@ -9,6 +9,31 @@ return {
    build = ":TSUpdate",
    event = { "BufReadPre", "BufNewFile" },
    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+   opts = {
+      inlay_hints = {
+         inline = true,
+      },
+      ast = {
+         --These require codicons (https://github.com/microsoft/vscode-codicons)
+         role_icons = {
+            type = "",
+            declaration = "",
+            expression = "",
+            specifier = "",
+            statement = "",
+            ["template argument"] = "",
+         },
+         kind_icons = {
+            Compound = "",
+            Recovery = "",
+            TranslationUnit = "",
+            PackExpansion = "",
+            TemplateTypeParm = "",
+            TemplateTemplateParm = "",
+            TemplateParamObject = "",
+         },
+      },
+   },
    config = function()
       local configs = require("nvim-treesitter.configs")
       configs.setup({
@@ -42,7 +67,7 @@ return {
             "luadoc",
             "luap",
             "make",
-            "markdown",    -- basic highlighting
+            "markdown",        -- basic highlighting
             "markdown_inline", -- needed for full highlighting
             "ninja",
             "nix",
