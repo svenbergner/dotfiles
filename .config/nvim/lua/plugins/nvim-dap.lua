@@ -84,6 +84,13 @@ return {
                   return commands
                end,
             },
+            {
+               type = "lldb",
+               request = "attach",
+               name = "Attach to process",
+               pid = require("dap.utils").pick_process,
+               cwd = "${workspaceFolder}",
+            },
          }
 
          -- dap.adapters.dart = {
