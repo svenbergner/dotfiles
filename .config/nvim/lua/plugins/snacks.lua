@@ -106,6 +106,13 @@ return {
       { "<leader>su", function() Snacks.picker.undo() end,           desc = "[s]how [u]ndo history" },
       { "<leader>fz", function() Snacks.picker.zoxide() end,         desc = "[f]ind [z]oxide" },
       {
+         "<leader>fc",
+         function()
+            Snacks.picker.files({ cwd = vim.fn.expand("$HOME") .. "/Repos/dotfiles/.config/nvim" })
+         end,
+         desc = "[f]ind [c]onfig files"
+      },
+      {
          "<leader>gg",
          function()
             vim.cmd("wa")
@@ -143,7 +150,7 @@ return {
       { "gD",         function() Snacks.picker.lsp_declarations() end,      desc = "Goto Declaration" },
       { "gd",         function() Snacks.picker.lsp_definitions() end,       desc = "Goto Definition" },
       { "gi",         function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
-      { "gr",         function() Snacks.picker.lsp_references() end,        nowait = true,                  desc = "References" },
+      { "gr",         function() Snacks.picker.lsp_references() end,        nowait = true,                           desc = "References" },
       { "gy",         function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto T[y]pe Definition" },
       { "<leader>fs", function() Snacks.picker.lsp_symbols() end,           desc = "LSP: [f]ind [s]ymbols" },
       { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP: [f]ind workspace [S]ymbols" },
