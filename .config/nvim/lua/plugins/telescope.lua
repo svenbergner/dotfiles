@@ -73,18 +73,8 @@ return {
                ['debugee_selector'] = {},
             },
          })
-         local builtin = require("telescope.builtin")
-         local git_opts = { git_command = { 'git', 'log', '--pretty=format:%h %<(20)%aN  %<(16)%ad  %s', '--date=relative', '--' } }
 
          vim.keymap.set("n", "<leader>fi", '<cmd>AdvancedGitSearch<cr>', { desc = "Advanced Git Search" })
-         vim.keymap.set('n', '<leader>gC', function()
-            builtin.git_commits(git_opts)
-         end, { desc = "Search all [g]it [C]ommits" })
-         vim.keymap.set('n', '<leader>gc', function()
-               builtin.git_bcommits(git_opts)
-            end,
-            { desc = "Search [g]it [c]ommits for Buffer" })
-
 
          require("telescope").load_extension("advanced_git_search")
          require("telescope").load_extension("dap")

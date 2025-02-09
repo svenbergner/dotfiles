@@ -147,7 +147,7 @@ return {
       { "gD",         function() Snacks.picker.lsp_declarations() end,      desc = "Goto Declaration" },
       { "gd",         function() Snacks.picker.lsp_definitions() end,       desc = "Goto Definition" },
       { "gi",         function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
-      { "gr",         function() Snacks.picker.lsp_references() end,        desc = "References",                     nowait = true },
+      { "gr",         function() Snacks.picker.lsp_references() end,        desc = "References",                       nowait = true },
       { "gy",         function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto T[y]pe Definition" },
       { "<leader>fs", function() Snacks.picker.lsp_symbols() end,           desc = "LSP: [f]ind [s]ymbols" },
       { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP: [f]ind workspace [S]ymbols" },
@@ -162,6 +162,8 @@ return {
       { "<leader>gf", function() Snacks.picker.git_log_file() end,          desc = "Git Log File" },
       { "<leader>gl", function() Snacks.lazygit.log() end,                  desc = "Lazygit Log (cwd)" },
       { "<leader>gs", function() Snacks.picker.git_status() end,            desc = "[g]it [s]tatus" },
+      { '<leader>gC', function() Snacks.picker.git_log() end,               desc = "Search all [g]it [C]ommits" },
+      { '<leader>gc', function() Snacks.picker.git_log_file() end,          desc = "Search [g]it [c]ommits for Buffer" },
    },
    init = function()
       vim.api.nvim_create_autocmd("User", {
