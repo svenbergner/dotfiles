@@ -10,6 +10,8 @@ Completion for module names when typing require(...) will only return loaded
 modules in your workspace.
 To get around the above, you can: pre-load those plugins with the library option.
 use the nvim-cmp completion source to get all available modules.
+
+URL: https://github.com/folke/lazydev.nvim
 --]===]
 
 return {
