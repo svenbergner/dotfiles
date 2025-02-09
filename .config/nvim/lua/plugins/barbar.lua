@@ -1,14 +1,18 @@
 --[===[
 Tabs, as understood by any other editor.
-barbar.nvim is a tabline plugin with re-orderable, auto-sizing, clickable tabs,
+
+The barbar.nvim is a tabline plugin with re-orderable, auto-sizing, clickable tabs,
 icons, nice highlighting, sort-by commands and a magic jump-to-buffer mode.
+
 Plus the tab names are made unique when two filenames match.
 In jump-to-buffer mode, tabs display a target letter instead of their icon.
 Jump to any buffer by simply typing their target letter. Even better, the
 target letter stays constant for the lifetime of the buffer, so if you're
 working with a set of files you can even type the letter ahead from memory.
+
 URL: https://github.com/romgrk/barbar.nvim
 --]===]
+
 ---@diagnostic disable: inject-field
 
 return {
@@ -79,8 +83,8 @@ return {
             -- Enables / disables diagnostic symbols
             diagnostics = {
                [vim.diagnostic.severity.ERROR] = { enabled = true, icon = 'ﬀ' },
-               [vim.diagnostic.severity.WARN] = { enabled = false },
-               [vim.diagnostic.severity.INFO] = { enabled = false },
+               [vim.diagnostic.severity.WARN] = { enabled = true },
+               [vim.diagnostic.severity.INFO] = { enabled = true },
                [vim.diagnostic.severity.HINT] = { enabled = true },
             },
             visible = { modified = { buffer_number = false } },
