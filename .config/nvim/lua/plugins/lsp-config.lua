@@ -131,7 +131,12 @@ return {
                },
                diagnostics = {
                   disable = { 'missing-fields' },
-                  globals = { 'vim' },
+                  globals = {
+                     'vim',
+                     "require",
+                     "package",
+                     "Snacks"
+                  },
                },
             },
             inlay_hints = {
