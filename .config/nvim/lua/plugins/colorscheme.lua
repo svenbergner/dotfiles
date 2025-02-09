@@ -38,4 +38,3 @@ return {
    end
 }
 
--- Alternative source: 'gruvbox-community/gruvbox'
