@@ -347,3 +347,10 @@ taxcore
 TaxCoreApi
 mobileprovision
 DistributionCertificatePassword
+DMExplorer
+DMElsterServiceTest
+DMSystemTest
+exe
+pytest
+AkadEdit2
+frbviewer
