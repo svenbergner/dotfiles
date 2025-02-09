@@ -14,11 +14,6 @@ return {
       enabled = true,
       dependencies = {
          "nvim-lua/plenary.nvim",
-         --[[ telescope-dap.nvim
-              Integration for nvim-dap with telescope.nvim.
-              Overrides dap internal ui, any dap command, which makes use of
-              internal ui, will result in a telescope prompt. ]]
-         "nvim-telescope/telescope-dap.nvim",
          { "svenbergner/telescope-debugee-selector",      dev = true },
          { "svenbergner/telescope-cmake-preset-selector", dev = true },
          'piersolenski/telescope-import.nvim',
@@ -77,7 +72,6 @@ return {
          vim.keymap.set("n", "<leader>fi", '<cmd>AdvancedGitSearch<cr>', { desc = "Advanced Git Search" })
 
          require("telescope").load_extension("advanced_git_search")
-         require("telescope").load_extension("dap")
          require("telescope").load_extension("flutter")
          require("telescope").load_extension("import")
          require("telescope").load_extension("noice")
