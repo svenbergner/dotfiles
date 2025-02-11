@@ -1,73 +1,79 @@
 {
+  "type" : "group",
   "actions" : [
     {
+      "key" : "t",
       "type" : "application",
-      "value" : "/Applications/WezTerm.app",
       "label" : "",
-      "key" : "t"
+      "value" : "/Applications/WezTerm.app"
     },
     {
-      "type" : "group",
+      "key" : "o",
       "label" : "Open",
+      "type" : "group",
       "actions" : [
         {
-          "key" : "o",
-          "type" : "application",
+          "label" : "",
           "value" : "/Applications/Microsoft Outlook.app",
-          "label" : ""
+          "key" : "o",
+          "type" : "application"
         },
         {
-          "label" : "",
+          "type" : "application",
           "value" : "/Applications/Inkscape.app",
           "key" : "i",
-          "type" : "application"
+          "label" : ""
         },
         {
           "value" : "/Applications/Messages.app",
-          "type" : "application",
-          "label" : "",
-          "key" : "m"
-        },
-        {
-          "key" : "c",
-          "value" : "/Applications/Google Chrome.app",
+          "key" : "m",
           "label" : "",
           "type" : "application"
         },
         {
-          "key" : "t",
-          "value" : "/Applications/Microsoft Teams.app",
+          "key" : "c",
+          "label" : "",
           "type" : "application",
-          "label" : ""
+          "value" : "/Applications/Google Chrome.app"
+        },
+        {
+          "value" : "/Applications/Microsoft Teams.app",
+          "label" : "",
+          "type" : "application",
+          "key" : "t"
         }
-      ],
-      "key" : "o"
+      ]
     },
     {
-      "type" : "group",
       "actions" : [
         {
           "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols",
-          "type" : "url",
           "key" : "e",
+          "type" : "url",
           "label" : ""
         },
         {
-          "type" : "url",
           "key" : "p",
           "label" : "",
-          "value" : "raycast://confetti"
+          "value" : "raycast://confetti",
+          "type" : "url"
         },
         {
+          "type" : "url",
           "value" : "raycast://extensions/raycast/system/open-camera",
           "key" : "c",
-          "type" : "url",
           "label" : ""
         }
       ],
+      "type" : "group",
       "key" : "r",
       "label" : ""
+    },
+    {
+      "value" : "/System/Applications/System Settings.app",
+      "type" : "application",
+      "key" : "s",
+      "label" : ""
     }
-  ],
-  "type" : "group"
+  ]
 }
