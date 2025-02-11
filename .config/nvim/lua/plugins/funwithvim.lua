@@ -28,4 +28,5 @@ return {
    --    },
    -- },
    -- { "ThePrimeagen/vim-be-good", }
+   { "svenbergner/sudokusolver.nvim", dev = true }
 }
