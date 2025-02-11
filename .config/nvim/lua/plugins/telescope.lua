@@ -69,8 +69,6 @@ return {
             },
          })
 
-         vim.keymap.set("n", "<leader>fi", '<cmd>AdvancedGitSearch<cr>', { desc = "Advanced Git Search" })
-
          require("telescope").load_extension("advanced_git_search")
          require("telescope").load_extension("flutter")
          require("telescope").load_extension("import")
