@@ -26,6 +26,7 @@ return {
             { '<leader>g', group = '[g]it', },
             { '<leader>n', group = '[n]eotree' },
             { '<leader>t', group = '[t]est' },
+            { '<leader>T', group = '[T]rouble' },
             { '<leader>w', group = 'vim[w]iki', },
             { '<leader>W', group = 'LSP [W]orkspace', },
             { '<leader>z', group = '[z]en' },
