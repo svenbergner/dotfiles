@@ -76,14 +76,13 @@ return {
 
    keys = {
       { "<leader>.",  function() Snacks.scratch() end,               desc = "Toggle Scratch Buffer" },
-      { "<leader>S",  function() Snacks.scratch.select() end,        desc = "Select Scratch Buffer" },
+      { "<leader>S",  function() Snacks.scratch.select() end,        desc = "[S]elect Scratch Buffer" },
       { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>bd", function() Snacks.bufdelete() end,             desc = "Delete Buffer" },
       { "<leader>cR", function() Snacks.rename.rename_file() end,    desc = "Rename File" },
       { "<leader>un", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
       { "<leader>zm", function() Snacks.toggle.zen() end,            desc = "Toggle [z]en [m]ode" },
       -- Picker
-      { "<leader>aa", function() Snacks.picker.autocmds() end,       desc = "[a]utocommands" },
       { "<leader>fa", function() Snacks.picker.autocmds() end,       desc = "[f]ind [a]utocommands" },
       { "<leader>fb", function() Snacks.picker.buffers() end,        desc = "[f]ind [b]uffers" },
       { "<leader>fB", function() Snacks.picker.grep_buffers() end,   desc = "[f]ind [g]rep in open buffers" },
@@ -101,6 +100,7 @@ return {
       { "<leader>ft", function() Snacks.picker.todo_comments() end,  desc = "[f]ind [t]odos" },
       { "<leader>su", function() Snacks.picker.undo() end,           desc = "[s]how [u]ndo history" },
       { "<leader>fz", function() Snacks.picker.zoxide() end,         desc = "[f]ind [z]oxide" },
+      { "<leader>fi", function() Snacks.picker.icons() end,          desc = "[f]ind [i]cons" },
       { "<leader>z=", function() Snacks.picker.spelling() end,       desc = "Show spellings" },
       {
          "<leader>fc",
@@ -127,7 +127,7 @@ return {
       },
       {
          "<leader>N",
-         desc = "Neovim News",
+         desc = "Neovim [N]ews",
          function()
             Snacks.win({
                file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
@@ -144,26 +144,26 @@ return {
          end,
       },
       -- LSP
-      { "gD",         function() Snacks.picker.lsp_declarations() end,      desc = "Goto Declaration" },
-      { "gd",         function() Snacks.picker.lsp_definitions() end,       desc = "Goto Definition" },
-      { "gi",         function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
-      { "gr",         function() Snacks.picker.lsp_references() end,        desc = "References",                       nowait = true },
-      { "gy",         function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto T[y]pe Definition" },
+      { "gD",         function() Snacks.picker.lsp_declarations() end,      desc = "LSP: [g]oto [D]eclaration" },
+      { "gd",         function() Snacks.picker.lsp_definitions() end,       desc = "LSP: [g]oto [d]efinition" },
+      { "gi",         function() Snacks.picker.lsp_implementations() end,   desc = "LSP: [G]oto [i]mplementation" },
+      { "gr",         function() Snacks.picker.lsp_references() end,        desc = "LSP: [g]oto [r]eferences",                       nowait = true },
+      { "gt",         function() Snacks.picker.lsp_type_definitions() end,  desc = "LSP: [g]oto [t]ype Definition" },
       { "<leader>fs", function() Snacks.picker.lsp_symbols() end,           desc = "LSP: [f]ind [s]ymbols" },
       { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP: [f]ind workspace [S]ymbols" },
       -- git
-      { "<leader>Gb", function() Snacks.git_branches() end,                 desc = "[G]it [b]ranches" },
-      { "<leader>gB", function() Snacks.gitbrowse() end,                    desc = "Git Browse" },
-      { "<leader>gF", function() Snacks.lazygit.log_file() end,             desc = "Lazygit Current File History" },
-      { "<leader>gL", function() Snacks.picker.git_log_line() end,          desc = "Git Log Line" },
+      { "<leader>Gb", function() Snacks.git_branches() end,                 desc = "show [G]it [b]ranches" },
+      { "<leader>gB", function() Snacks.gitbrowse() end,                    desc = "show [g]it repo in [B]rowse" },
+      { "<leader>gF", function() Snacks.lazygit.log_file() end,             desc = "lazy[g]it Current [F]ile log" },
+      { "<leader>gL", function() Snacks.picker.git_log_line() end,          desc = "[g]it [L]og current line" },
       { "<leader>gS", function() Snacks.picker.git_stash() end,             desc = "[g]it [S]tash" },
-      { "<leader>gb", function() Snacks.git.blame_line() end,               desc = "Git Blame Line" },
-      { "<leader>gd", function() Snacks.picker.git_diff() end,              desc = "Git Diff (Hunks)" },
-      { "<leader>gf", function() Snacks.picker.git_log_file() end,          desc = "Git Log File" },
-      { "<leader>gl", function() Snacks.lazygit.log() end,                  desc = "Lazygit Log (cwd)" },
+      { "<leader>gb", function() Snacks.git.blame_line() end,               desc = "[g]it [b]lame line" },
+      { "<leader>gd", function() Snacks.picker.git_diff() end,              desc = "[g]it [d]iff (Hunks)" },
+      { "<leader>gf", function() Snacks.picker.git_log_file() end,          desc = "[g]it log [f]ile" },
+      { "<leader>gl", function() Snacks.lazygit.log() end,                  desc = "lazy[g]it [l]og (cwd)" },
       { "<leader>gs", function() Snacks.picker.git_status() end,            desc = "[g]it [s]tatus" },
-      { '<leader>gC', function() Snacks.picker.git_log() end,               desc = "Search all [g]it [C]ommits" },
-      { '<leader>gc', function() Snacks.picker.git_log_file() end,          desc = "Search [g]it [c]ommits for Buffer" },
+      { '<leader>gC', function() Snacks.picker.git_log() end,               desc = "search all [g]it [C]ommits" },
+      { '<leader>gc', function() Snacks.picker.git_log_file() end,          desc = "search [g]it [c]ommits for Buffer" },
    },
    init = function()
       vim.api.nvim_create_autocmd("User", {
