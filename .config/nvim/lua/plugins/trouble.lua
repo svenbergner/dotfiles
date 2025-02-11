@@ -11,12 +11,12 @@ return {
    dependencies = { "nvim-tree/nvim-web-devicons" },
    cmd = "Trouble",
    keys = {
-      { "<leader><leader>td", "<cmd>Trouble diagnostics toggle<CR>",                        desc = "Diagnostics (Trouble)" },
-      { "<leader><leader>tD", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",           desc = "Buffer Diagnostics (Trouble)" },
-      { "<leader><leader>tl", "<cmd>Trouble loclist toggle<CR>",                            desc = "Location List (Trouble)" },
-      { "<leader><leader>tq", "<cmd>Trouble qflist toggle<CR>",                             desc = "Quickfix List (Trouble)" },
-      { "<leader><leader>ts", "<cmd>Trouble symbols toggle focus=false<CR>",                desc = "Symbols (Trouble)" },
-      { "<leader><leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<CR>", desc = "Symbols (Trouble)" },
+      { "<leader>TD", "<cmd>Trouble diagnostics toggle<CR>",                        desc = "[T]rouble: [D]iagnostics" },
+      { "<leader>TB", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",           desc = "[T]rouble: [B]uffer Diagnostics" },
+      { "<leader>TL", "<cmd>Trouble loclist toggle<CR>",                            desc = "[T]rouble: [L]ocation List" },
+      { "<leader>TQ", "<cmd>Trouble qflist toggle<CR>",                             desc = "[T]rouble: [Q]uickfix List" },
+      { "<leader>Ts", "<cmd>Trouble symbols toggle focus=false<CR>",                desc = "[T]rouble: [S]ymbols" },
+      { "<leader>TP", "<cmd>Trouble lsp toggle focus=false win.position=right<CR>", desc = "[T]rouble: LS[P] Symbols" },
    },
    opts = {
       use_diagnostic_signs = true,
