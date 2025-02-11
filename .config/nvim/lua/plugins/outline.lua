@@ -9,7 +9,7 @@ return {
    lazy = true,
    cmd = { "Outline", "OutlineOpen" },
    keys = {
-      { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+      { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle [o]utline" },
    },
    opts = {},
 }
