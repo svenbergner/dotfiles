@@ -83,7 +83,7 @@ return {
       { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>bd", function() Snacks.bufdelete() end,             desc = "Delete Buffer" },
       { "<leader>cR", function() Snacks.rename.rename_file() end,    desc = "Rename File" },
-      { "<leader>un", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
+      { "<leader>q",  function() Snacks.notifier.hide() end,         desc = "quit all notifications" },
       { "<leader>zm", function() Snacks.toggle.zen() end,            desc = "Toggle [z]en [m]ode" },
       -- Picker
       { "<leader>fa", function() Snacks.picker.autocmds() end,       desc = "[f]ind [a]utocommands" },
@@ -142,7 +142,7 @@ return {
       { "gD",         function() Snacks.picker.lsp_declarations() end,      desc = "LSP: [g]oto [D]eclaration" },
       { "gd",         function() Snacks.picker.lsp_definitions() end,       desc = "LSP: [g]oto [d]efinition" },
       { "gi",         function() Snacks.picker.lsp_implementations() end,   desc = "LSP: [G]oto [i]mplementation" },
-      { "gr",         function() Snacks.picker.lsp_references() end,        desc = "LSP: [g]oto [r]eferences",         nowait = true },
+      { "gr",         function() Snacks.picker.lsp_references() end,        desc = "LSP: [g]oto [r]eferences",           nowait = true },
       { "gt",         function() Snacks.picker.lsp_type_definitions() end,  desc = "LSP: [g]oto [t]ype Definition" },
       { "<leader>fs", function() Snacks.picker.lsp_symbols() end,           desc = "LSP: [f]ind [s]ymbols" },
       { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP: [f]ind workspace [S]ymbols" },
@@ -174,19 +174,19 @@ return {
             vim.print = _G.dd -- Override print to use snacks for `:=` command
 
             -- Create some toggle mappings
-            Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-            Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-            Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>ul")
-            Snacks.toggle.diagnostics():map("<leader>ud")
-            Snacks.toggle.line_number():map("<leader>uL")
+            Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>Ts")
+            Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>Tw")
+            Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>Tl")
+            Snacks.toggle.diagnostics():map("<leader>Td")
+            Snacks.toggle.line_number():map("<leader>TL")
             Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-                :map("<leader>uc")
-            Snacks.toggle.treesitter():map("<leader>uT")
+                :map("<leader>Tc")
+            Snacks.toggle.treesitter():map("<leader>TT")
             Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map(
-               "<leader>ub")
-            Snacks.toggle.inlay_hints():map("<leader>uh")
-            Snacks.toggle.indent():map("<leader>ug")
-            Snacks.toggle.dim():map("<leader>uD")
+               "<leader>Tb")
+            Snacks.toggle.inlay_hints():map("<leader>Th")
+            Snacks.toggle.indent():map("<leader>Tg")
+            Snacks.toggle.dim():map("<leader>TD")
          end,
       })
    end,
