@@ -41,6 +41,7 @@ return {
       }
 
       require('telescope').load_extension('advanced_git_search')
+      vim.keymap.set("n", "<leader>ga", '<cmd>AdvancedGitSearch<cr>', { desc = "[g]it [a]dvanced search" })
    end,
    dependencies = {
       {
