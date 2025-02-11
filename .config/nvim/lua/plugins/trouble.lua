@@ -10,14 +10,6 @@ return {
    enabled = true,
    dependencies = { "nvim-tree/nvim-web-devicons" },
    cmd = "Trouble",
-   keys = {
-      { "<leader>TD", "<cmd>Trouble diagnostics toggle<CR>",                        desc = "[T]rouble: [D]iagnostics" },
-      { "<leader>TB", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",           desc = "[T]rouble: [B]uffer Diagnostics" },
-      { "<leader>TL", "<cmd>Trouble loclist toggle<CR>",                            desc = "[T]rouble: [L]ocation List" },
-      { "<leader>TQ", "<cmd>Trouble qflist toggle<CR>",                             desc = "[T]rouble: [Q]uickfix List" },
-      { "<leader>Ts", "<cmd>Trouble symbols toggle focus=false<CR>",                desc = "[T]rouble: [S]ymbols" },
-      { "<leader>TP", "<cmd>Trouble lsp toggle focus=false win.position=right<CR>", desc = "[T]rouble: LS[P] Symbols" },
-   },
    opts = {
       use_diagnostic_signs = true,
       action_keys = {
