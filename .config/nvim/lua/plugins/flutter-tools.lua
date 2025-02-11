@@ -104,15 +104,7 @@ return {
       local nmap = function(keys, func, desc)
          vim.keymap.set('n', keys, func, { desc = desc })
       end
-      nmap('<F2>', vim.lsp.buf.rename, '[R]e[n]ame')
-      nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-      nmap('<leader>Ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-      nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+      nmap('<F2>', vim.lsp.buf.rename, 'Rename <F2>')
       nmap('<C-S-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-      nmap('<leader>Wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-      nmap('<leader>Wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-      nmap('<leader>Wl', function()
-         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end, '[W]orkspace [L]ist Folders')
    end,
 }
