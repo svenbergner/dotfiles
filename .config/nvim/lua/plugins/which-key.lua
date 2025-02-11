@@ -27,6 +27,7 @@ return {
             { '<leader>m', group = '[m]arkdown' },
             { '<leader>n', group = '[n]eotree' },
             { '<leader>N', group = '[N]oice and [N]ews' },
+            { '<leader>s', group = '[s]wap panes' },
             { '<leader>t', group = '[t]est' },
             { '<leader>T', group = '[T]rouble' },
             { '<leader>w', group = 'vim[w]iki', },
