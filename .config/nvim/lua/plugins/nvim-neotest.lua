@@ -52,18 +52,18 @@ return {
       vim.keymap.set("n", "<leader>ta", function()
          vim.cmd('wa')
          neotest.run.run(vim.fn.expand("%"))
-      end, { desc = '[T]ests run [a]ll in file' });
+      end, { desc = '[t]ests run [a]ll in file' });
 
       vim.keymap.set("n", "<leader>td", function()
          neotest.run.run({ strategy = "dap" })
-      end, { desc = '[d]ebug nearest [t]est' });
+      end, { desc = '[t]est: [d]ebug nearest test' });
 
       vim.keymap.set("n", "<leader>tr", function()
          neotest.output.open({ enter = true, quiet = true, auto_close = true, last_run = true })
       end, { desc = 'Show [t]est [r]esults' });
 
-      vim.keymap.set("n", "<leader>tst", function()
+      vim.keymap.set("n", "<leader>tt", function()
          neotest.summary.toggle()
-      end, { desc = '[t]est [s]ummary [t]oggle' });
+      end, { desc = '[t]est [t]oggle summary' });
    end,
 }
