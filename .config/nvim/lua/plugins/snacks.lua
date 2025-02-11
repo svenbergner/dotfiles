@@ -121,14 +121,6 @@ return {
          desc = "Lazygit"
       },
       {
-         "<leader><leader>g",
-         function()
-            vim.cmd("wa")
-            Snacks.lazygit()
-         end,
-         desc = "Lazygit"
-      },
-      {
          "<leader>NN",
          desc = "[N]eovim [N]ews",
          function()
