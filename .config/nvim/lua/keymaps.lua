@@ -21,17 +21,17 @@ vim.keymap.set("v", "p", '"_dP', { desc = "Replace visual selection" })
 vim.keymap.set("n", "Y", "y$", { desc = "Yank from cursor to end of line" })
 
 -- Save and source the current file
-vim.keymap.set("n", "<leader><leader>x",
+vim.keymap.set("n", "<leader>x",
    "<cmd>w<CR><cmd>source %<CR><cmd>lua print('File ' .. vim.fn.expand('%:t') .. ' sourced.')<CR>",
-   { silent = true, desc = "Save and source the current file" })
+   { silent = true, desc = "Save and e[x]ecute the current file" })
 
 -- Source the current line
-vim.keymap.set("n", "<leader>x", ":.lua<CR><cmd>lua print('Current line sourced.')<CR>",
-   { silent = true, desc = "Source the current line" })
+vim.keymap.set("n", "<leader>X", ":.lua<CR><cmd>lua print('Current line sourced.')<CR>",
+   { silent = true, desc = "E[X]ecute the current line" })
 
 -- Source the current selection
-vim.keymap.set("n", "<leader>x", ":lua<CR><cmd>lua print('Current selection sourced.')<CR>",
-   { silent = true, desc = "Source the current selection" })
+vim.keymap.set("v", "<leader>X", ":lua<CR><cmd>lua print('Current selection sourced.')<CR>",
+   { silent = true, desc = "E[X]ecute the current selection" })
 
 vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format the current buffer" })
 
