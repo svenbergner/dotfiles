@@ -17,9 +17,6 @@ return {
                theme_conf = { border = true },
             },
             suppress_dirs = { "~/", "~/Download", "/", },
-            vim.keymap.set('n', '<leader>ls',
-               require('auto-session.session-lens').search_session,
-               { noremap = true })
          }
       )
    end,
