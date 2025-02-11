@@ -24,8 +24,6 @@ return {
          vim.cmd('normal! zz')
       end, { desc = "Go to previous diagnostic message" })
       vim.keymap.set('n', '<F18>', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-      vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-      vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
       vim.diagnostic.config({
          float = {
