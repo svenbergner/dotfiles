@@ -37,13 +37,13 @@ return
       vim.keymap.set('v', '<C-\\>', smartsplits.move_cursor_previous, { desc = "Move focus to the previous pane" })
 
       -- swapping buffers between windows
-      vim.keymap.set('n', '<leader><leader>h', smartsplits.swap_buf_left, { desc = "Swap current pane with the left" })
-      vim.keymap.set('n', '<leader><leader>j', smartsplits.swap_buf_down, { desc = "Swap current pane with the bottom" })
-      vim.keymap.set('n', '<leader><leader>k', smartsplits.swap_buf_up, { desc = "Swap current pane with the top" })
-      vim.keymap.set('n', '<leader><leader>l', smartsplits.swap_buf_right, { desc = "Swap current pane with the right" })
-      vim.keymap.set('v', '<leader><leader>h', smartsplits.swap_buf_left, { desc = "Swap current pane with the left" })
-      vim.keymap.set('v', '<leader><leader>j', smartsplits.swap_buf_down, { desc = "Swap current pane with the bottom" })
-      vim.keymap.set('v', '<leader><leader>k', smartsplits.swap_buf_up, { desc = "Swap current pane with the top" })
-      vim.keymap.set('v', '<leader><leader>l', smartsplits.swap_buf_right, { desc = "Swap current pane with the right" })
+      vim.keymap.set('n', '<leader>sh', smartsplits.swap_buf_left, { desc = "Swap current pane with the left" })
+      vim.keymap.set('n', '<leader>sj', smartsplits.swap_buf_down, { desc = "Swap current pane with the bottom" })
+      vim.keymap.set('n', '<leader>sk', smartsplits.swap_buf_up, { desc = "Swap current pane with the top" })
+      vim.keymap.set('n', '<leader>sl', smartsplits.swap_buf_right, { desc = "Swap current pane with the right" })
+      vim.keymap.set('v', '<leader>sh', smartsplits.swap_buf_left, { desc = "Swap current pane with the left" })
+      vim.keymap.set('v', '<leader>sj', smartsplits.swap_buf_down, { desc = "Swap current pane with the bottom" })
+      vim.keymap.set('v', '<leader>sk', smartsplits.swap_buf_up, { desc = "Swap current pane with the top" })
+      vim.keymap.set('v', '<leader>sl', smartsplits.swap_buf_right, { desc = "Swap current pane with the right" })
    end
 }
