@@ -65,6 +65,8 @@ links to their github repos.
   - [christmas tree]( https://github.com/rhysd/vim-syntax-christmas-tree )
   - [deal with it]( https://github.com/AndrewRadev/dealwithit.vim )
   - [drop]( https://github.com/folke/drop.nvim  )
+  - [VimBeGood]( "https://github.com/ThePrimeagen/vim-be-good" )
+  - [SudokuSolver]( "https://github.com/svenbergner/sudokusolver.nvim" )
 - [git-blame: Show git blame at the end of each line](https://github.com/f-person/git-blame.nvim/)
 - [github-copilot: Support for Github Copilot](https://github.com/zbirenbaum/copilot.lua/)
 - [gitsigns: Adds custom signs for current git status](https://github.com/lewis6991/gitsigns.nvim)
