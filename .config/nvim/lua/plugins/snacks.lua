@@ -15,6 +15,7 @@ return {
       explorer = { enabled = true, },
       git = { enabled = true, },
       gitbrowse = { enabled = true, },
+      image = { enabled = true, },
       indent = {
          enabled = true,
          indent = {
