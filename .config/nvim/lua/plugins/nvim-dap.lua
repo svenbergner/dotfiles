@@ -46,13 +46,8 @@ return {
 
          dap.adapters.lldb = {
             name = "lldb",
-            type = "server",
-            host = "localhost",
-            port = "${port}",
-            executable = {
-               command = vim.fn.expand("~/.local/share/nvim/mason/bin/codelldb"),
-               args = { "--port", "${port}" },
-            },
+            type = "executable",
+            command = vim.fn.expand("~/.local/share/nvim/mason/bin/codelldb"),
          }
 
          dap.configurations.cpp = {
