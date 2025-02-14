@@ -83,7 +83,6 @@ return {
       { "<leader>S",  function() Snacks.scratch.select() end,        desc = "[S]elect Scratch Buffer" },
       { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>bd", function() Snacks.bufdelete() end,             desc = "Delete Buffer" },
-      { "<leader>cR", function() Snacks.rename.rename_file() end,    desc = "Rename File" },
       { "<leader>q",  function() Snacks.notifier.hide() end,         desc = "quit all notifications" },
       { "<leader>zm", function() Snacks.toggle.zen() end,            desc = "Toggle [z]en [m]ode" },
       -- Picker
