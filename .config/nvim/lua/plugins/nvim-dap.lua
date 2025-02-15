@@ -225,7 +225,10 @@ return {
          -- vscode-style debugging
          vim.keymap.set("n", "<M-F5>", function() vim.cmd('SetDebuggee') end, { desc = 'Set Debugee' })
          vim.keymap.set("n", "<F53>", function() vim.cmd('SetDebuggee') end, { desc = 'Set Debugee' })
-         vim.keymap.set("n", "<F5>", dap.continue, { desc = 'Start/Continue Debugging' })
+         vim.keymap.set("n", "<F5>", function()
+            vim.cmd("Neotree close")
+            dap.continue()
+         end, { desc = 'Start/Continue Debugging' })
          vim.keymap.set("n", "<S-F5>", dap.terminate, { desc = 'Stop Debugging' })
          vim.keymap.set("n", "<F17>", dap.terminate, { desc = 'Stop Debugging' })
          vim.keymap.set("n", "<C-S-F5>", dap.run_last, { desc = 'Restart Debugging' })
