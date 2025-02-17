@@ -6,7 +6,7 @@ URL: https://github.com/hrsh7th/nvim-cmp
 
 return {
    "hrsh7th/nvim-cmp",
-   enabled = true,
+   enabled = false,
    event = "InsertEnter",
    priority = 100,
    dependencies = {
