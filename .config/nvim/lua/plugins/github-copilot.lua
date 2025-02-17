@@ -21,12 +21,14 @@ return {
    },
    {
       "zbirenbaum/copilot-cmp",
+      enabled = false,
       config = function()
          require("copilot_cmp").setup()
       end
    },
    {
       "CopilotC-Nvim/CopilotChat.nvim",
+      enabled = false,
       dependencies = {
          { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
          { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
