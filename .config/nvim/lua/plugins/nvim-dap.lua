@@ -1,6 +1,9 @@
 --[===[
 Debugger configuration
 URL: https://github.com/mfussenegger/nvim-dap
+
+Dependencies:
+URL: https://github.com/jbyuki/one-small-step-for-vimkind
 --]===]
 
 ---@diagnostic disable: undefined-field
@@ -146,12 +149,8 @@ return {
             }
          }
 
-         vim.api.nvim_create_user_command("SelectDebuggeeSearchPath", function()
-            require('telescope').extensions.debugee_selector.selectSearchPathRoot()
-         end, { nargs = 0 })
-
          vim.api.nvim_create_user_command("SetDebuggee", function()
-            require('telescope').extensions.debugee_selector.show_debugee_candidates()
+            require('telescope').extensions.debugee_selector.selectSearchPathRoot()
          end, { nargs = 0 })
 
          vim.api.nvim_create_user_command("ResetDebuggee", function()
