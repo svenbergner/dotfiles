@@ -2,47 +2,47 @@
   "type" : "group",
   "actions" : [
     {
-      "key" : "t",
-      "type" : "application",
       "label" : "",
-      "value" : "/Applications/WezTerm.app"
+      "value" : "/Applications/WezTerm.app",
+      "key" : "t",
+      "type" : "application"
     },
     {
-      "key" : "o",
-      "label" : "Open",
-      "type" : "group",
       "actions" : [
         {
-          "label" : "",
           "value" : "/Applications/Microsoft Outlook.app",
-          "key" : "o",
-          "type" : "application"
+          "type" : "application",
+          "label" : "",
+          "key" : "o"
         },
         {
+          "label" : "",
           "type" : "application",
-          "value" : "/Applications/Inkscape.app",
           "key" : "i",
-          "label" : ""
+          "value" : "/Applications/Inkscape.app"
         },
         {
-          "value" : "/Applications/Messages.app",
-          "key" : "m",
           "label" : "",
+          "type" : "application",
+          "value" : "/Applications/Messages.app",
+          "key" : "m"
+        },
+        {
+          "value" : "/Applications/Google Chrome.app",
+          "label" : "",
+          "key" : "c",
           "type" : "application"
         },
         {
-          "key" : "c",
-          "label" : "",
           "type" : "application",
-          "value" : "/Applications/Google Chrome.app"
-        },
-        {
           "value" : "/Applications/Microsoft Teams.app",
-          "label" : "",
-          "type" : "application",
-          "key" : "t"
+          "key" : "t",
+          "label" : ""
         }
-      ]
+      ],
+      "key" : "o",
+      "type" : "group",
+      "label" : "Open"
     },
     {
       "actions" : [
@@ -53,27 +53,27 @@
           "label" : ""
         },
         {
+          "type" : "url",
           "key" : "p",
           "label" : "",
-          "value" : "raycast://confetti",
-          "type" : "url"
+          "value" : "raycast://confetti"
         },
         {
           "type" : "url",
-          "value" : "raycast://extensions/raycast/system/open-camera",
           "key" : "c",
+          "value" : "raycast://extensions/raycast/system/open-camera",
           "label" : ""
         }
       ],
-      "type" : "group",
       "key" : "r",
+      "type" : "group",
       "label" : ""
     },
     {
-      "value" : "/System/Applications/System Settings.app",
-      "type" : "application",
+      "label" : "",
       "key" : "s",
-      "label" : ""
+      "value" : "/System/Applications/System Settings.app",
+      "type" : "application"
     }
   ]
 }
