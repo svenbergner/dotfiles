@@ -254,7 +254,7 @@ return {
 
          vim.keymap.set('n', '<leader>df',
             function()
-               local widgets = require "dap.ui.widgets"
+               local widgets = require("dap.ui.widgets")
                widgets.centered_float(widgets.frames)
             end, { desc = '[d]apui floating [f]rames' })
 
