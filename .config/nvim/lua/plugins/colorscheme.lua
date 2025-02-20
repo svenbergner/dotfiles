@@ -18,7 +18,7 @@ return {
          strings = true,
          emphasis = true,
          comments = true,
-         operators = false,
+         operators = true,
          folds = true,
       },
       strikethrough = true,
