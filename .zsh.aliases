@@ -41,8 +41,8 @@ alias updatecoreandlz='fvm dart run dev_tools:install_core_and_lz'
 alias checkdartformat='find . -name "*.dart" ! -name "*.g.dart" ! -name "*.freezed.dart" | xargs dart format --line-length 120'
 
 # qmake aliases
-alias qmake_configure_sse29x_release="~/Qt/5.15.10/macos/bin/qmake ../Dev/Dev.pro CONFIG+=x86_64 -spec macx-clang CONFIG+=c++17"
-alias qmake_configure_sse29x_debug="~/Qt/5.15.10/macos/bin/qmake ../Dev/Dev.pro CONFIG+=x86_64 -spec macx-clang CONFIG+=c++17 CONFIG+=debug"
+alias qmake_configure_sse29x_release="~/Qt/5.15.10/macos/bin/qmake ../Dev/Dev.pro CONFIG+=arm64 -spec macx-clang CONFIG+=c++17"
+alias qmake_configure_sse29x_debug="~/Qt/5.15.10/macos/bin/qmake ../Dev/Dev.pro CONFIG+=arm64 -spec macx-clang CONFIG+=c++17 CONFIG+=debug"
 alias qmake_build_sse29x="make -j10"
 # CONFIG+=debug CONFIG+=qml_debug CONFIG-=seperate_debug_info
 # -d increases debug level
