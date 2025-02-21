@@ -34,9 +34,10 @@ return {
       enabled = function()
          -- Get the current buffer's filetype
          local filetype = vim.bo[0].filetype
-         -- Disable for Telescope buffers
+         -- Disable for the following buffers
          if filetype == "TelescopePrompt" or filetype == "minifiles" or
-             filetype == "snacks_picker_input" then
+             filetype == "snacks_picker_input" or filetype == "neo-tree" or
+             filetype == "neo-tree-popup" then
             return false
          end
          return true
