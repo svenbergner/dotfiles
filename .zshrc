@@ -11,31 +11,31 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-history-substring-search
-zinit light Aloxaf/fzf-tab
+zinit wait lucid light-mode for \
+  atinit'zicompinit; zicdreplay' \
+    zdharma-continuum/fast-syntax-highlighting \
+  zsh-users/zsh-completions \
+  atload'_zsh_autosuggest_start' \
+    zsh-users/zsh-autosuggestions \
+  zsh-users/zsh-history-substring-search \
+  Aloxaf/fzf-tab
 
 # Add in snippts
-zinit snippet OMZP::git
-zinit snippet OMZP::git-prompt
+zinit wait lucid light-mode for \
+  OMZP::git \
+  OMZP::git-prompt \
+  OMZP::sudo \
+  OMZP::archlinux \
+  OMZP::command-not-found \
+  OMZP::history
+
 zinit snippet OMZP::common-aliases
-zinit snippet OMZP::sudo
-zinit snippet OMZP::archlinux
-zinit snippet OMZP::command-not-found
-zinit snippet OMZP::history
 
 if [[ "$OSTYPE" == "darwin".* ]] then
 #    plugins+=(brew)
   zinit snippet OMZP::brew
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-
-# Load completions
-autoload -U compinit && compinit
-
-zinit cdreplay -q
 
 eval "$(starship init zsh)"
 
