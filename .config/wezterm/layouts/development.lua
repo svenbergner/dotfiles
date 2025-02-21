@@ -27,10 +27,8 @@ M.setup_layout = function(wezterm)
     first_tab:set_title('SimplyTaxApp')
 
     local activatedTab = M.addTab(window, home_dir .. '/Repos/SSE/Dev', 'SSE/TaxCoreApi', 'nvim\n')
-    M.addTab(window, home_dir .. '/Repos/SSE/Release/29/Dev', 'SSE 29.x', 'nvim\n')
-    M.addTab(window, home_dir .. '/Repos/SSE/Feature/cloud_pipelines_core', 'Cloud-Pipelines', 'nvim\n')
     M.addTab(window, home_dir .. '/Repos/webhook-builds', 'Build-Pipelines', 'nvim\n')
-    M.addTab(window, home_dir .. '/Repos/Content/StP/30/DMSource', 'Content StP', 'nvim\n')
+    M.addTab(window, home_dir .. '/Repos/Content/StP/30', 'Content StP', 'nvim\n')
     M.addTab(window, home_dir .. '/Repos/SSE/Tools/dmctest', 'DMCTest', 'nvim\n')
 
     activatedTab:activate()
