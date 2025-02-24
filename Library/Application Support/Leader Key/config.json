@@ -2,10 +2,10 @@
   "type" : "group",
   "actions" : [
     {
-      "label" : "",
+      "type" : "application",
       "value" : "/Applications/WezTerm.app",
-      "key" : "t",
-      "type" : "application"
+      "label" : "",
+      "key" : "t"
     },
     {
       "actions" : [
@@ -16,8 +16,8 @@
           "key" : "o"
         },
         {
-          "label" : "",
           "type" : "application",
+          "label" : "",
           "key" : "i",
           "value" : "/Applications/Inkscape.app"
         },
@@ -28,52 +28,52 @@
           "key" : "m"
         },
         {
-          "value" : "/Applications/Google Chrome.app",
           "label" : "",
+          "type" : "application",
           "key" : "c",
-          "type" : "application"
+          "value" : "/Applications/Google Chrome.app"
         },
         {
-          "type" : "application",
-          "value" : "/Applications/Microsoft Teams.app",
           "key" : "t",
+          "value" : "/Applications/Microsoft Teams.app",
+          "type" : "application",
           "label" : ""
         }
       ],
       "key" : "o",
-      "type" : "group",
-      "label" : "Open"
+      "label" : "Open",
+      "type" : "group"
     },
     {
+      "type" : "group",
+      "key" : "r",
+      "label" : "",
       "actions" : [
         {
+          "type" : "url",
           "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols",
-          "key" : "e",
+          "label" : "",
+          "key" : "e"
+        },
+        {
+          "key" : "p",
+          "value" : "raycast://confetti",
           "type" : "url",
           "label" : ""
         },
         {
-          "type" : "url",
-          "key" : "p",
-          "label" : "",
-          "value" : "raycast://confetti"
-        },
-        {
+          "value" : "raycast://extensions/raycast/system/open-camera",
           "type" : "url",
           "key" : "c",
-          "value" : "raycast://extensions/raycast/system/open-camera",
           "label" : ""
         }
-      ],
-      "key" : "r",
-      "type" : "group",
-      "label" : ""
+      ]
     },
     {
       "label" : "",
       "key" : "s",
-      "value" : "/System/Applications/System Settings.app",
-      "type" : "application"
+      "type" : "application",
+      "value" : "/System/Applications/System Settings.app"
     }
   ]
 }
