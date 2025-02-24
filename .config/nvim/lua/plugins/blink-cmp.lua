@@ -9,6 +9,7 @@ as intelligent as possible, such as frecency and proximity bonus on fuzzy
 matching, and this work is on-going.
 
 URL: https://github.com/saghen/blink.cmp
+Docs: https://cmp.saghen.dev/
 
 --]===]
 
