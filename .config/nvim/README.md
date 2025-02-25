@@ -144,7 +144,6 @@ links to their github repos.
 - [twilight: ](https://github.com/folke/twilight.nvim)
 - [undotree: ](https://github.com/mbbill/undotree)
 - [unicode: ](https://github.com/chrisbra/unicode.vim)
-- [vim-illuminate: ](https://github.com/RRethy/vim-illuminate)
 - [vim-lexical: ](https://github.com/preservim/vim-lexical)
 - [vim-pencil: ](https://github.com/preservim/vim-pencil)
 - [vim-sleuth: ](https://github.com/tpope/vim-sleuth)
