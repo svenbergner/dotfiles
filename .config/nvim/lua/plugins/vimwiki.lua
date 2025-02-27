@@ -31,6 +31,7 @@ Commands
 :help vimwiki -- General vimwiki help docs.
 
 URL: https://github.com/vimwiki/vimwiki
+URL: https://github.com/mattn/calendar-vim
 --]===]
 
 return {
