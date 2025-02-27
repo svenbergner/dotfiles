@@ -1,14 +1,32 @@
 --[===[
 Neovim status line configuration
-URL: https://github.com/nvim-lualine/lualine.nvim 
+URL: https://github.com/nvim-lualine/lualine.nvim
 --]===]
+
+local function getMaxLineLength()
+   local max_length = 0
+   local total_lines = vim.fn.line('$')
+
+   for i = 1, total_lines do
+      local line_length = vim.fn.getline(i):len()
+      if line_length > max_length then
+         max_length = line_length
+      end
+   end
+
+   return max_length
+end
 
 local getLineInfo = function()
    local current_line = vim.fn.line('.')
    local total_lines = vim.fn.line('$')
    local current_column = vim.fn.col('.')
-   local line_length = vim.fn.strdisplaywidth(vim.fn.getline('.'))
-   return string.format("󰦪 %d|%d 󰣟 %d|%d", current_line, total_lines, current_column, line_length)
+   local line_length = vim.fn.col('$') - 1
+   local total_lines_digits = #tostring(total_lines)
+   local max_line_length_digits = #tostring(getMaxLineLength())
+   local format_string = "󰦪 %" .. total_lines_digits .. "d|%" .. total_lines_digits .. "d "
+   format_string = format_string .. "󰣟 %" .. max_line_length_digits .. "d|%" .. max_line_length_digits .. "d"
+   return string.format(format_string, current_line, total_lines, current_column, line_length)
 end
 
 local getWords = function()
