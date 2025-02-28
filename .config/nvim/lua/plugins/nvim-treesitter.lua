@@ -83,10 +83,10 @@ return {
          incremental_selection = {
             enable = true,
             keymaps = {
-               init_selection = "<C-space>",
-               node_incremental = "sn",
-               scope_incremental = "sc",
-               node_decremental = "<bs>",
+               init_selection = "<C-Enter>",
+               node_incremental = "<C-Enter>",
+               scope_incremental = "<S-Enter>",
+               node_decremental = "<Backspace>",
             },
          },
          auto_install = true,
