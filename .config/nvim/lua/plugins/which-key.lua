@@ -34,10 +34,6 @@ return {
             { '<leader>w', group = 'vim[w]iki', },
             { '<leader>W', group = 'LSP [W]orkspace', },
             { '<leader>z', group = '[z]en' },
-
-            --    { '<leader>r', group = '[R]ename' },
-            --    { '<leader>s', group = '[S]earch' },
-            --    { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
          },
          notify = true,
          win = {
