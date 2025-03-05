@@ -73,7 +73,7 @@ return {
          clickable = true,
          insert_at_end = true,
          insert_at_start = false,
-         tabpages = true,
+         tabpages = false,
          exclude_ft = { 'terminal' },
          exclude_name = { 'NvimTree', '__FLUTTER_DEV_LOG__' },
          icons = {
