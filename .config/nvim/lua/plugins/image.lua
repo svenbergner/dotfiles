@@ -9,6 +9,7 @@ package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/shar
 
 return {
    "3rd/image.nvim",
+   enabled = true,
    config = function()
       require("image").setup({
          backend = "kitty",
