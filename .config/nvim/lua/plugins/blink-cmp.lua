@@ -83,6 +83,7 @@ return {
          },
          menu = {
             border = "rounded",
+            auto_show = true,
          },
          documentation = {
             auto_show = true,
