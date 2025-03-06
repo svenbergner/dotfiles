@@ -77,7 +77,6 @@ return {
          -- Personal extensions
          require("telescope").load_extension("cmake_preset_selector")
          require("telescope").load_extension("debugee_selector")
-         require('telescope.multigrep').setup()
       end,
    },
 }
