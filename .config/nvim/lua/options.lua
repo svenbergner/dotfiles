@@ -64,7 +64,7 @@ vim.opt.incsearch = true
 vim.opt.history = 1000
 
 -- Status line settings
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.cmdheight = 2
 vim.opt.showcmd = true
 vim.opt.showmode = true -- change to false after
