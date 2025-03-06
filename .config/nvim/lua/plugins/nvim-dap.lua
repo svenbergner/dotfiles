@@ -63,11 +63,14 @@ return {
                end,
                cwd = "${workspaceFolder}",
                stopOnEntry = false,
+               args = { "" },
                -- args = { "-update" },
                -- args = { "-c", "-mnormal" },
                -- args = { "-mnormal" }, -- Start with normal mode
                -- args = { "-nih" }, -- BelegManager: no instance handling
-               args = {},
+               -- args = { "Im Modus normal liefert der Bereich Weitere Angaben (/.tdlSteuererklaerung) einen Themenfilter-Content." },
+               -- args = { "Versenden der Einkommensteuer per ELSTER" },
+               -- args = { "Die Dateien in einem Ordner koennen per wildcard ermittelt werden." },
                initCommands = function()
                   local commands = {}
                   table.insert(commands, "breakpoint name configure --disable cpp_exception")
