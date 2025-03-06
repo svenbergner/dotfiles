@@ -82,7 +82,7 @@ return {
             },
          },
          menu = {
-            border = "single",
+            border = "rounded",
          },
          documentation = {
             auto_show = true,
