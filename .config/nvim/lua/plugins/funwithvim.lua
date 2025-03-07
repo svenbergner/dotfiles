@@ -7,6 +7,7 @@ Collection of plugins that are fun to use
 5. URL: https://github.com/AndrewRadev/dealwithit.vim
 6. URL: https://github.com/folke/drop.nvim 
 7. URL: https://github.com/ThePrimeagen/vim-be-good
+8. URL: https://github.com/ThePrimeagen/vim-guys
 --]===]
 
 return {
@@ -28,5 +29,6 @@ return {
    --    },
    -- },
    -- { "ThePrimeagen/vim-be-good", }
+   { "ThePrimeagen/vim-guys", },
    { "svenbergner/sudokusolver.nvim", dev = true }
 }
