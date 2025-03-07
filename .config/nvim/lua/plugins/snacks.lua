@@ -86,6 +86,7 @@ return {
       { "<leader>q",  function() Snacks.notifier.hide() end,         desc = "quit all notifications" },
       { "<leader>zm", function() Snacks.toggle.zen() end,            desc = "Toggle [z]en [m]ode" },
       -- Picker
+      { "<leader>fp", function() Snacks.picker.pickers() end,        desc = "[f]ind [p]ickers" },
       { "<leader>fa", function() Snacks.picker.autocmds() end,       desc = "[f]ind [a]utocommands" },
       { "<leader>fb", function() Snacks.picker.buffers() end,        desc = "[f]ind [b]uffers" },
       { "<leader>fB", function() Snacks.picker.grep_buffers() end,   desc = "[f]ind [g]rep in open buffers" },
