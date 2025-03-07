@@ -2,6 +2,8 @@
 Flutter Test support
 See :h neotest.run.run() for parameters.
 URL: https://github.com/nvim-neotest/neotest
+URL: https://github.com/rosstang/neotest-catch2
+URL: https://github.com/Shatur/neovim-tasks
 --]===]
 
 return {
@@ -17,9 +19,11 @@ return {
       "nvim-neotest/neotest-plenary",
       "antoinemadec/FixCursorHold.nvim",
       "Shatur/neovim-tasks",
-      "rosstang/neotest-catch2",
+      { "rosstang/neotest-catch2", branch = "use-catch2-with-json" },
    },
    config = function()
+      require('tasks').setup({})
+
       local neotest = require('neotest')
       neotest.setup({
          adapters = {
@@ -36,7 +40,7 @@ return {
             },
             require('neotest-plenary') {},
             -- Needs luarocks lpx module which needs lua 5.2
-            -- require('neotest-catch2') {},
+            require('neotest-catch2') {},
          }
       })
 
