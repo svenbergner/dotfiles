@@ -11,6 +11,7 @@ return {
    opts = {
       rocks = {
          'magick',
+         'lunajson',
          -- Needs lua 5.2
          -- 'lxp',
       },
