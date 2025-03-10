@@ -2,7 +2,20 @@
 Debugger configuration
 URL: https://github.com/mfussenegger/nvim-dap
 
+NVIM-Dap-UI:
+URL: https://github.com/rcarriga/nvim-dap-ui
+
+Default keybindings:
+- edit: e
+- expand: <CR> or left click
+- open: o
+- remove: d
+- repl: r
+- toggle: t
+
 Dependencies:
+one-small-step-for-vimkind a.k.a. osv is an adapter for the Neovim lua language.
+It allows you to debug any lua code running in a Neovim instance.
 URL: https://github.com/jbyuki/one-small-step-for-vimkind
 --]===]
 
