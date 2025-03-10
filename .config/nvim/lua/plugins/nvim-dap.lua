@@ -72,7 +72,7 @@ return {
                type = "lldb",
                request = "launch",
                program = function()
-                  print('No program specified! Call SetDebuggee or ResetDebuggee!')
+                  vim.cmd('SetDebuggee')
                end,
                cwd = "${workspaceFolder}",
                stopOnEntry = false,
