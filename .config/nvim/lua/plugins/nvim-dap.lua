@@ -76,6 +76,10 @@ return {
                end,
                cwd = "${workspaceFolder}",
                stopOnEntry = false,
+               -- env = {
+               --    LZ_ROOT="/Users/sven.bergner/Downloads/package/lz/",
+               --    DYLD_PRINT_LIBRARIES="YES", -- Print loaded libraries
+               -- },
                args = { "" },
                -- args = { "-update" },
                -- args = { "-c", "-mnormal" },
