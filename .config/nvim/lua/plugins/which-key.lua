@@ -20,7 +20,6 @@ return {
          spec = {
             { '<leader>a', group = '[a]vante', icon = '💬' },
             { '<leader>b', group = '[b]uffer', icon = '' },
-            { '<leader>c', group = '[c]ode', icon = '💻' },
             { '<leader>d', group = '[d]apui', icon = '' },
             { '<leader>f', group = '[f]ind', icon = '🔍' },
             { '<leader>g', group = '[g]it', icon = '' },
