@@ -23,27 +23,28 @@ api.nvim_create_autocmd(
 )
 
 vim.api.nvim_create_autocmd("BufEnter", {
-  desc = "Disable automatic comment insertion",
-  group = vim.api.nvim_create_augroup("AutoComment", {}),
-  callback = function()
-    vim.opt_local.formatoptions:remove({ "o" })
-  end,
+   desc = "Disable automatic comment insertion",
+   group = vim.api.nvim_create_augroup("AutoComment", {}),
+   callback = function()
+      vim.opt_local.formatoptions:remove({ "o" })
+      -- vim.keymap.del("n", "<Leader>cal")
+      -- vim.keymap.del("n", "<Leader>caL")
+   end,
 })
 
 -- Prevent Telescope from entering insert mode after leaving a prompt
 vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
-  callback = function(event)
-    if vim.bo[event.buf].filetype == "TelescopePrompt" then
-      vim.api.nvim_exec2("silent! stopinsert!", {})
-    end
-  end
+   callback = function(event)
+      if vim.bo[event.buf].filetype == "TelescopePrompt" then
+         vim.api.nvim_exec2("silent! stopinsert!", {})
+      end
+   end
 })
 
 -- Disable spell checking in the quickfix list
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "qf",
-  callback = function()
-    vim.opt_local.spell = false
-  end,
+   pattern = "qf",
+   callback = function()
+      vim.opt_local.spell = false
+   end,
 })
-
