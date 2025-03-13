@@ -10,6 +10,7 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+      'saghen/blink.cmp',
       { 'j-hui/fidget.nvim', opts = {} },
    },
    config = function()
@@ -189,8 +190,8 @@ return {
          -- },
       }
 
-      -- local default_capabilities = vim.lsp.protocol.make_client_capabilities()
-      -- local capabilities = require('cmp_nvim_lsp').default_capabilities(default_capabilities)
+      local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+      local capabilities = require('blink.cmp').get_lsp_capabilities(default_capabilities)
 
       require('mason').setup()
       local mason_lspconfig = require('mason-lspconfig')
