@@ -29,10 +29,10 @@ return {
                   -- You can also use captures from other query groups like `locals.scm`
                   ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
                   -- You can use capture groups defined in textobjects.scm
-                  ["a="] = { query = "@parameter.outer", description = "Select outer part of an assignment" },
-                  ["i="] = { query = "@parameter.inner", description = "Select inner part of an assignment" },
-                  ["l="] = { query = "@parameter.lhs", description = "Select left hand side of an assignment" },
-                  ["r="] = { query = "@parameter.rhs", description = "Select right hand side of an assignment" },
+                  ["a="] = { query = "@assignment.outer", description = "Select outer part of an assignment" },
+                  ["i="] = { query = "@assignment.inner", description = "Select inner part of an assignment" },
+                  ["l="] = { query = "@assignment.lhs", description = "Select left hand side of an assignment" },
+                  ["r="] = { query = "@assignment.rhs", description = "Select right hand side of an assignment" },
                },
                -- You can choose the select mode (default is charwise 'v')
                --
