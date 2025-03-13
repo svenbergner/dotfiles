@@ -8,7 +8,9 @@ return {
    enabled = true,
    build = ":TSUpdate",
    event = { "BufReadPre", "BufNewFile" },
-   dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+   dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects"
+   },
    opts = {
       inlay_hints = {
          inline = true,
@@ -40,8 +42,8 @@ return {
          ensure_installed = {
             "bash",
             "cmake",
-            -- "clojure",
-            -- "commonlisp",
+            "clojure",
+            "commonlisp",
             "cpp",
             "css",
             "csv",
@@ -49,20 +51,20 @@ return {
             "diff",
             "dockerfile",
             "editorconfig",
-            -- "elixir",
-            -- "erlang",
+            "elixir",
+            "erlang",
             "git_config",
             "git_rebase",
             "gitattributes",
             "gitcommit",
             "gitignore",
-            -- "go",
+            "go",
             "html",
             "http",
             "javascript",
             "json",
-            -- "kdl",
-            -- "kotlin",
+            "kdl",
+            "kotlin",
             "lua",
             "luadoc",
             "luap",
@@ -73,7 +75,7 @@ return {
             "nix",
             "python",
             "regex",
-            -- "rust",
+            "rust",
             "toml",
             "vim",
             "vimdoc",
@@ -91,7 +93,10 @@ return {
          },
          auto_install = true,
          sync_install = false,
-         highlight = { enable = true },
+         highlight = {
+            enable = true,
+            use_languagetree = true,
+         },
          indent = { enable = true },
       })
       vim.opt.foldlevel = 99
