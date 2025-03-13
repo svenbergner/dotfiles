@@ -39,8 +39,7 @@ return {
                use_lsp = true,
             },
             require('neotest-plenary') {},
-            -- Needs luarocks lpx module which needs lua 5.2
-            require('neotest-catch2') {},
+            -- require('neotest-catch2') {},
          }
       })
 
