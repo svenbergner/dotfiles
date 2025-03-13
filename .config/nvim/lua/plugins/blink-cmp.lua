@@ -96,6 +96,21 @@ return {
             enabled = true,
          },
       },
+      cmdline = {
+         keymap = {
+            -- recommended, as the default keymap will only show and select the next item
+            ['<Tab>'] = { 'show', 'accept' },
+         },
+         completion = {
+            menu = {
+               auto_show = function(ctx)
+                  return vim.fn.getcmdtype() == ':'
+                  -- enable for inputs as well, with:
+                  -- or vim.fn.getcmdtype() == '@'
+               end,
+            },
+         }
+      },
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
