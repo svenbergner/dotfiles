@@ -7,11 +7,15 @@ return {
    'neovim/nvim-lspconfig',
    enabled = true,
    dependencies = {
-      'williamboman/mason.nvim',
+      { 'williamboman/mason.nvim', opts = {} },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-      'saghen/blink.cmp',
+
+      -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
+
+      -- Allows extra capabilities provided by blink-cmp
+      'saghen/blink.cmp',
    },
    config = function()
       vim.lsp.set_log_level('OFF')
