@@ -90,6 +90,7 @@ return {
       { "<leader>fa", function() Snacks.picker.autocmds() end,       desc = "[f]ind [a]utocommands" },
       { "<leader>fb", function() Snacks.picker.buffers() end,        desc = "[f]ind [b]uffers" },
       { "<leader>fB", function() Snacks.picker.grep_buffers() end,   desc = "[f]ind [g]rep in open buffers" },
+      { "<leader>fe", function() Snacks.picker.explorer() end,       desc = "[f]ind [e]xplorer" },
       { "<leader>ff", function() Snacks.picker.files() end,          desc = "[f]ind [f]iles" },
       { "<leader>fF", function() Snacks.picker.smart() end,          desc = "[f]ind [F]iles smart" },
       { "<leader>fg", function() Snacks.picker.grep() end,           desc = "[f]ind [g]rep" },
