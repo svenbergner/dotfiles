@@ -108,13 +108,19 @@ links to their github repos.
     - bigfile
     - bufdelete
     - dim
+    - explorer
     - git
     - gitbrowse
+    - image
     - indent
+    - input
     - lazygit
     - notify
     - notifier
+    - picker
     - quickfile
+    - rename
+    - scope
     - scroll
     - statuscolumn
     - terminal
