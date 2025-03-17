@@ -31,8 +31,10 @@ return {
          'jbyuki/one-small-step-for-vimkind',
          "theHamsta/nvim-dap-virtual-text",
          "svenbergner/telescope-debugee-selector",
+         "folke/lazydev.nvim",
       },
       config = function()
+         require("lazydev").setup({ library = { "nvim-dap-ui" }, })
          local dap = require("dap")
          local dapui = require("dapui")
 
