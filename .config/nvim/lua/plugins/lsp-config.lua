@@ -12,7 +12,7 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- Allows extra capabilities provided by blink-cmp
       'saghen/blink.cmp',
@@ -85,6 +85,9 @@ return {
          nmap('<F7>', '<cmd>RunCMakeBuild<CR>', 'Run cmake build')
          vim.lsp.inlay_hint.enable(true)
       end
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
       local servers = {
          bashls = {},
@@ -159,7 +162,7 @@ return {
                      pycodestyle = {
                         ignore = {
                            "E501", -- line too long
-                           "E402", -- module level import not at top of file
+                           "E402", -- Module level import not at top of file
                         },
                         maxLineLength = 120,
                      }
@@ -193,33 +196,31 @@ return {
          -- },
       }
 
-      local default_capabilities = vim.lsp.protocol.make_client_capabilities()
-      local capabilities = require('blink.cmp').get_lsp_capabilities(default_capabilities)
+      local ensure_installed = vim.tbl_keys(servers or {})
+      vim.list_extend(ensure_installed, { 'stylua' })
+
+      require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
       require('mason').setup()
       local mason_lspconfig = require('mason-lspconfig')
       mason_lspconfig.setup {
-         ensure_installed = vim.tbl_keys(servers),
-         automatic_installation = true,
-      }
-      mason_lspconfig.setup_handlers {
-         function(server_name)
-            require('lspconfig')[server_name].setup {
-               capabilities = capabilities,
-               on_attach = on_attach,
-               settings = servers[server_name],
-               handlers = {
+         ensure_installed = {},
+         automatic_installation = false,
+         handlers = {
+            function(server_name)
+               local server = servers[server_name] or {}
+               server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+               server.on_attach = server.on_attach or on_attach
+               server.handlers = server.handlers or {
                   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
                   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' })
-               },
-            }
-         end,
+               }
+
+               require('lspconfig')[server_name].setup(server)
+            end,
+         }
       }
 
-      require('mason-tool-installer').setup({
-         ensure_installed = {}
-      }
-      )
       vim.api.nvim_command('MasonToolsInstall')
    end
 }
