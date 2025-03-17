@@ -54,7 +54,7 @@ vim.opt.syntax = "on"
 
 -- Show tab stops, trailing whitespace, and line endings
 vim.opt.list = true
-vim.opt.listchars = { tab = '> ', trail = '.', eol = '↵' }
+vim.opt.listchars = { tab = '> ', trail = '~', eol = '↲', extends = '→', precedes = '←', space = '∙' }
 
 -- File search settings
 vim.opt.ignorecase = true
