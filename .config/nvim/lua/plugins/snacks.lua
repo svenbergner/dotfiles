@@ -3,6 +3,14 @@ Snacks.nvim: A collection of small QoL plugins for Neovim.
 URL: https://github.com/folke/snacks.nvim
 --]===]
 
+local file_opts = {
+   hidden = true,
+}
+
+local config_path = {
+   cwd = vim.fn.expand("$HOME") .. "/Repos/dotfiles/.config/nvim"
+}
+
 return {
    "folke/snacks.nvim",
    priority = 1000,
@@ -79,41 +87,36 @@ return {
    },
 
    keys = {
-      { "<leader>.",  function() Snacks.scratch() end,               desc = "Toggle Scratch Buffer" },
-      { "<leader>S",  function() Snacks.scratch.select() end,        desc = "[S]elect Scratch Buffer" },
-      { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
-      { "<leader>bd", function() Snacks.bufdelete() end,             desc = "Delete Buffer" },
-      { "<leader>q",  function() Snacks.notifier.hide() end,         desc = "quit all notifications" },
-      { "<leader>zm", function() Snacks.toggle.zen() end,            desc = "Toggle [z]en [m]ode" },
+      { "<leader>.",  function() Snacks.scratch() end,                   desc = "Toggle Scratch Buffer" },
+      { "<leader>S",  function() Snacks.scratch.select() end,            desc = "[S]elect Scratch Buffer" },
+      { "<leader>n",  function() Snacks.notifier.show_history() end,     desc = "Notification History" },
+      { "<leader>bd", function() Snacks.bufdelete() end,                 desc = "Delete Buffer" },
+      { "<leader>q",  function() Snacks.notifier.hide() end,             desc = "quit all notifications" },
+      { "<leader>zm", function() Snacks.toggle.zen() end,                desc = "Toggle [z]en [m]ode" },
       -- Picker
-      { "<leader>fp", function() Snacks.picker.pickers() end,        desc = "[f]ind [p]ickers" },
-      { "<leader>fa", function() Snacks.picker.autocmds() end,       desc = "[f]ind [a]utocommands" },
-      { "<leader>fb", function() Snacks.picker.buffers() end,        desc = "[f]ind [b]uffers" },
-      { "<leader>fB", function() Snacks.picker.grep_buffers() end,   desc = "[f]ind [g]rep in open buffers" },
-      { "<leader>fe", function() Snacks.picker.explorer() end,       desc = "[f]ind [e]xplorer" },
-      { "<leader>ff", function() Snacks.picker.files() end,          desc = "[f]ind [f]iles" },
-      { "<leader>fF", function() Snacks.picker.smart() end,          desc = "[f]ind [F]iles smart" },
-      { "<leader>fg", function() Snacks.picker.grep() end,           desc = "[f]ind [g]rep" },
-      { "<leader>fw", function() Snacks.picker.grep_word() end,      desc = "[f]ind [w]ord under cursor" },
-      { "<leader>fh", function() Snacks.picker.help() end,           desc = "[f]ind [h]elp" },
-      { "<leader>fj", function() Snacks.picker.jumps() end,          desc = "[f]ind [j]umps" },
-      { "<leader>fk", function() Snacks.picker.keymaps() end,        desc = "[f]ind [k]eymaps" },
-      { "<leader>fl", function() Snacks.picker.lazy() end,           desc = "[f]ind [l]azy plugins specs" },
-      { "<leader>/",  function() Snacks.picker.lines() end,          desc = "[/] fuzzy search in buffer" },
-      { "<leader>fo", function() Snacks.picker.recent() end,         desc = "[f]ind [o]ld files" },
-      { "<leader>fr", function() Snacks.picker.resume() end,         desc = "[f]ind [r]esume last search" },
-      { "<leader>ft", function() Snacks.picker.todo_comments() end,  desc = "[f]ind [t]odos" },
-      { "<leader>fu", function() Snacks.picker.undo() end,           desc = "[f]ind [u]ndo history" },
-      { "<leader>fz", function() Snacks.picker.zoxide() end,         desc = "[f]ind [z]oxide" },
-      { "<leader>fi", function() Snacks.picker.icons() end,          desc = "[f]ind [i]cons" },
-      { "<leader>z=", function() Snacks.picker.spelling() end,       desc = "Show spellings" },
-      {
-         "<leader>fc",
-         function()
-            Snacks.picker.files({ cwd = vim.fn.expand("$HOME") .. "/Repos/dotfiles/.config/nvim" })
-         end,
-         desc = "[f]ind [c]onfig files"
-      },
+      { "<leader>fp", function() Snacks.picker.pickers() end,            desc = "[f]ind [p]ickers" },
+      { "<leader>fa", function() Snacks.picker.autocmds() end,           desc = "[f]ind [a]utocommands" },
+      { "<leader>fb", function() Snacks.picker.buffers() end,            desc = "[f]ind [b]uffers" },
+      { "<leader>fB", function() Snacks.picker.grep_buffers() end,       desc = "[f]ind [g]rep in open buffers" },
+      { "<leader>fc", function() Snacks.picker.files(config_path) end,   desc = "[f]ind [c]onfig files" },
+      { "<leader>fe", function() Snacks.picker.explorer() end,           desc = "[f]ind [e]xplorer" },
+      { "<leader>ff", function() Snacks.picker.files(file_opts) end,     desc = "[f]ind [f]iles" },
+      { "<leader>fF", function() Snacks.picker.smart() end,              desc = "[f]ind [F]iles smart" },
+      { "<leader>fg", function() Snacks.picker.grep(file_opts) end,      desc = "[f]ind [g]rep" },
+      { "<leader>fw", function() Snacks.picker.grep_word(file_opts) end, desc = "[f]ind [w]ord under cursor" },
+      { "<leader>fh", function() Snacks.picker.help() end,               desc = "[f]ind [h]elp" },
+      { "<leader>fj", function() Snacks.picker.jumps() end,              desc = "[f]ind [j]umps" },
+      { "<leader>fk", function() Snacks.picker.keymaps() end,            desc = "[f]ind [k]eymaps" },
+      { "<leader>fl", function() Snacks.picker.lazy() end,               desc = "[f]ind [l]azy plugins specs" },
+      { "<leader>/",  function() Snacks.picker.lines() end,              desc = "[/] fuzzy search in buffer" },
+      { "<leader>fo", function() Snacks.picker.recent() end,             desc = "[f]ind [o]ld files" },
+      { "<leader>fr", function() Snacks.picker.resume() end,             desc = "[f]ind [r]esume last search" },
+      { "<leader>ft", function() Snacks.picker.todo_comments() end,      desc = "[f]ind [t]odos" },
+      { "<leader>fu", function() Snacks.picker.undo() end,               desc = "[f]ind [u]ndo history" },
+      { "<leader>fz", function() Snacks.picker.zoxide() end,             desc = "[f]ind [z]oxide" },
+      { "<leader>fi", function() Snacks.picker.icons() end,              desc = "[f]ind [i]cons" },
+      { "<leader>z=", function() Snacks.picker.spelling() end,           desc = "Show spellings" },
+      -- lazygit
       {
          "<leader>gg",
          function()
@@ -122,6 +125,7 @@ return {
          end,
          desc = "Lazygit"
       },
+      -- Show latest NeoVim News
       {
          "<leader>NN",
          desc = "[N]eovim [N]ews",
