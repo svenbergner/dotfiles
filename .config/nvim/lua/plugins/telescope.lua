@@ -9,6 +9,7 @@ return {
       enabled = true,
       dependencies = {
          "nvim-lua/plenary.nvim",
+         { "j-hui/fidget.nvim", opts = {} },
          { "svenbergner/telescope-debugee-selector",      dev = true },
          { "svenbergner/telescope-cmake-preset-selector", dev = true },
       },
