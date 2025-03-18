@@ -126,7 +126,7 @@ return {
          end,
          desc = "Lazygit"
       },
-      -- Show latest NeoVim News
+      -- Show latest Neovim News
       {
          "<leader>NN",
          desc = "[N]eovim [N]ews",
