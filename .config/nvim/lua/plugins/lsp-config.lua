@@ -235,20 +235,17 @@ return {
          automatic_installation = false,
       }
       mason_lspconfig.setup_handlers {
-         handlers = {
-            function(server_name)
-               local server = servers[server_name] or {}
-               server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-               server.on_attach = server.on_attach or on_attach
-               server.settings = servers[server_name]
-               server.handlers = server.handlers or {
+         function(server_name)
+            require('lspconfig')[server_name].setup({
+               on_attach = on_attach,
+               capabilities = capabilities,
+               settings = servers[server_name],
+               handlers = {
                   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
                   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' })
                }
-
-               require('lspconfig')[server_name].setup(server)
-            end,
-         }
+            })
+         end,
       }
 
       vim.api.nvim_command('MasonToolsInstall')
