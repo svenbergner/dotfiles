@@ -13,6 +13,7 @@ return {
    config = function()
       require('which-key').setup({
          preset = "modern",
+         delay = 500,
          icons = {
             mappings = true,
             keys = {},
