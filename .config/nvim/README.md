@@ -140,7 +140,6 @@ links to their github repos.
 - [unicode: ](https://github.com/chrisbra/unicode.vim)
 - [vim-lexical: ](https://github.com/preservim/vim-lexical)
 - [vim-pencil: ](https://github.com/preservim/vim-pencil)
-- [vim-sleuth: ](https://github.com/tpope/vim-sleuth)
 - [vimwiki: ](https://github.com/vimwiki/vimwiki)
   - [calendar: ](https://github.com/mattn/calendar-vim)
 - [virt-column: ](https://github.com/lukas-reineke/virt-column.nvim)
