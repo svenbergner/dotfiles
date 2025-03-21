@@ -195,6 +195,8 @@ return {
             Snacks.toggle.inlay_hints():map("<leader>Th")
             Snacks.toggle.indent():map("<leader>Tg")
             Snacks.toggle.dim():map("<leader>TD")
+
+            vim.api.nvim_set_hl(0, "SnacksPickerDir", { link = "GruvboxBg4" })
          end,
       })
    end,
