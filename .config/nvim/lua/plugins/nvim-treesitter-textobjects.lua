@@ -42,6 +42,9 @@ return {
                   ["ac"] = { query = "@class.outer", desc = "Select outer part of a class region" },
                   ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
 
+                  ["aC"] = { query = "@comment.outer", desc = "Select outer part of a class region" },
+                  ["iC"] = { query = "@comment.inner", desc = "Select inner part of a class region" },
+
                   ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
                },
                -- You can choose the select mode (default is charwise 'v')
