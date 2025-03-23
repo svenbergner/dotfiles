@@ -107,6 +107,7 @@ return {
       { "<leader>fg", function() Snacks.picker.grep(file_opts) end,      desc = "[f]ind [g]rep" },
       { "<leader>fw", function() Snacks.picker.grep_word(file_opts) end, desc = "[f]ind [w]ord under cursor" },
       { "<leader>fh", function() Snacks.picker.help() end,               desc = "[f]ind [h]elp" },
+      { "<leader>fH", function() Snacks.picker.highlights() end,         desc = "[f]ind [H]ighlights" },
       { "<leader>fj", function() Snacks.picker.jumps() end,              desc = "[f]ind [j]umps" },
       { "<leader>fk", function() Snacks.picker.keymaps() end,            desc = "[f]ind [k]eymaps" },
       { "<leader>fl", function() Snacks.picker.lazy() end,               desc = "[f]ind [l]azy plugins specs" },
