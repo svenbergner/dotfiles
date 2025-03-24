@@ -1,79 +1,8 @@
 {
   "actions" : [
-    {
-      "key" : "t",
-      "label" : "",
-      "type" : "application",
-      "value" : "/Applications/WezTerm.app"
-    },
-    {
-      "actions" : [
-        {
-          "key" : "o",
-          "label" : "",
-          "type" : "application",
-          "value" : "/Applications/Microsoft Outlook.app"
-        },
-        {
-          "key" : "i",
-          "label" : "",
-          "type" : "application",
-          "value" : "/Applications/Inkscape.app"
-        },
-        {
-          "key" : "m",
-          "label" : "",
-          "type" : "application",
-          "value" : "/Applications/Messages.app"
-        },
-        {
-          "key" : "c",
-          "label" : "",
-          "type" : "application",
-          "value" : "/Applications/Google Chrome.app"
-        },
-        {
-          "key" : "t",
-          "label" : "",
-          "type" : "application",
-          "value" : "/Applications/Microsoft Teams.app"
-        }
-      ],
-      "key" : "o",
-      "label" : "Open",
-      "type" : "group"
-    },
-    {
-      "actions" : [
-        {
-          "key" : "e",
-          "label" : "",
-          "type" : "url",
-          "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
-        },
-        {
-          "key" : "p",
-          "label" : "",
-          "type" : "url",
-          "value" : "raycast://confetti"
-        },
-        {
-          "key" : "c",
-          "label" : "",
-          "type" : "url",
-          "value" : "raycast://extensions/raycast/system/open-camera"
-        }
-      ],
-      "key" : "r",
-      "label" : "",
-      "type" : "group"
-    },
-    {
-      "key" : "s",
-      "label" : "",
-      "type" : "application",
-      "value" : "/System/Applications/System Settings.app"
-    }
+
   ],
+  "key" : "🚫",
+  "label" : "Config error",
   "type" : "group"
 }
