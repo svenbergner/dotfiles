@@ -106,6 +106,8 @@ return {
                'select_next',
             },
             ['<S-Tab>'] = { 'show_and_insert', 'select_prev' },
+            ['<down>'] = { 'select_next', },
+            ['<up>'] = { 'select_prev', },
          },
          completion = {
             menu = {
