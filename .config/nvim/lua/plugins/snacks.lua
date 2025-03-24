@@ -11,6 +11,20 @@ local config_path = {
    cwd = vim.fn.expand("$HOME") .. "/Repos/dotfiles/.config/nvim"
 }
 
+local help_opts = {
+   win = {
+      input = {
+         keys = {
+            ["<return>"] = {
+               "edit_vsplit",
+               desc = "Edit Vsplit",
+               mode = { "n", "i" },
+            },
+         },
+      },
+   },
+}
+
 return {
    "folke/snacks.nvim",
    priority = 1000,
@@ -106,7 +120,7 @@ return {
       { "<leader>fF", function() Snacks.picker.smart() end,              desc = "[f]ind [F]iles smart" },
       { "<leader>fg", function() Snacks.picker.grep(file_opts) end,      desc = "[f]ind [g]rep" },
       { "<leader>fw", function() Snacks.picker.grep_word(file_opts) end, desc = "[f]ind [w]ord under cursor" },
-      { "<leader>fh", function() Snacks.picker.help() end,               desc = "[f]ind [h]elp" },
+      { "<leader>fh", function() Snacks.picker.help(help_opts) end,      desc = "[f]ind [h]elp" },
       { "<leader>fH", function() Snacks.picker.highlights() end,         desc = "[f]ind [H]ighlights" },
       { "<leader>fj", function() Snacks.picker.jumps() end,              desc = "[f]ind [j]umps" },
       { "<leader>fk", function() Snacks.picker.keymaps() end,            desc = "[f]ind [k]eymaps" },
