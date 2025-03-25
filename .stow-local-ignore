@@ -6,6 +6,7 @@ scripts
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
+DS_STORE
 
 GruvboxDark.itermcolors
 GruvboxDark.json
