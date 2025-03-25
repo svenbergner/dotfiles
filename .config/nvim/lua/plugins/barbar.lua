@@ -26,46 +26,51 @@ return {
       init = function()
          vim.g.barbar_auto_setup = false
          local map = vim.api.nvim_set_keymap
-         local keymap_options = { noremap = true, silent = true }
 
          -- Move to previous/next
-         map('n', '<M-,>', '<Cmd>BufferPrevious<CR>', keymap_options)
-         map('n', '<M-.>', '<Cmd>BufferNext<CR>', keymap_options)
+         map('n', '<M-,>', '<Cmd>BufferPrevious<CR>', { noremap = true, silent = true, desc = "Goto previous buffer" })
+         map('n', '<M-.>', '<Cmd>BufferNext<CR>', { noremap = true, silent = true, desc = "Goto next buffer" })
+
          -- Re-order to previous/next
-         map('n', '<M-<>', '<Cmd>BufferMovePrevious<CR>', keymap_options)
-         map('n', '<M->>', '<Cmd>BufferMoveNext<CR>', keymap_options)
+         map('n', '<M-<>', '<Cmd>BufferMovePrevious<CR>',
+            { noremap = true, silent = true, desc = "Move current buffer to the left" })
+         map('n', '<M->>', '<Cmd>BufferMoveNext<CR>',
+            { noremap = true, silent = true, desc = "Move current buffer to the right" })
+
          -- Goto buffer in position...
-         map('n', '<M-1>', '<Cmd>BufferGoto 1<CR>', keymap_options)
-         map('n', '<M-2>', '<Cmd>BufferGoto 2<CR>', keymap_options)
-         map('n', '<M-3>', '<Cmd>BufferGoto 3<CR>', keymap_options)
-         map('n', '<M-4>', '<Cmd>BufferGoto 4<CR>', keymap_options)
-         map('n', '<M-5>', '<Cmd>BufferGoto 5<CR>', keymap_options)
-         map('n', '<M-6>', '<Cmd>BufferGoto 6<CR>', keymap_options)
-         map('n', '<M-7>', '<Cmd>BufferGoto 7<CR>', keymap_options)
-         map('n', '<M-8>', '<Cmd>BufferGoto 8<CR>', keymap_options)
-         map('n', '<M-9>', '<Cmd>BufferGoto 9<CR>', keymap_options)
-         map('n', '<M-0>', '<Cmd>BufferLast<CR>', keymap_options)
+         map('n', '<M-1>', '<Cmd>BufferGoto 1<CR>', { noremap = true, silent = true, desc = "Goto buffer 1" })
+         map('n', '<M-2>', '<Cmd>BufferGoto 2<CR>', { noremap = true, silent = true, desc = "Goto buffer 2" })
+         map('n', '<M-3>', '<Cmd>BufferGoto 3<CR>', { noremap = true, silent = true, desc = "Goto buffer 3" })
+         map('n', '<M-4>', '<Cmd>BufferGoto 4<CR>', { noremap = true, silent = true, desc = "Goto buffer 4" })
+         map('n', '<M-5>', '<Cmd>BufferGoto 5<CR>', { noremap = true, silent = true, desc = "Goto buffer 5" })
+         map('n', '<M-6>', '<Cmd>BufferGoto 6<CR>', { noremap = true, silent = true, desc = "Goto buffer 6" })
+         map('n', '<M-7>', '<Cmd>BufferGoto 7<CR>', { noremap = true, silent = true, desc = "Goto buffer 7" })
+         map('n', '<M-8>', '<Cmd>BufferGoto 8<CR>', { noremap = true, silent = true, desc = "Goto buffer 8" })
+         map('n', '<M-9>', '<Cmd>BufferGoto 9<CR>', { noremap = true, silent = true, desc = "Goto buffer 9" })
+         map('n', '<M-0>', '<Cmd>BufferLast<CR>', { noremap = true, silent = true, desc = "Goto last buffer" })
+
          -- Pin/unpin buffer
-         map('n', '<M-p>', '<Cmd>BufferPin<CR>', keymap_options)
+         map('n', '<M-p>', '<Cmd>BufferPin<CR>', { noremap = true, silent = true, desc = "Pin current buffer" })
+
          -- Close buffer
-         map('n', '<M-c>', '<Cmd>BufferClose<CR>', keymap_options)
-         map('n', '<M-x>', '<Cmd>BufferClose<CR>', keymap_options)
-         -- Wipeout buffer
-         --                 :BufferWipeout
-         -- Close commands
-         --                 :BufferCloseAllButCurrent
-         --                 :BufferCloseAllButPinned
-         --                 :BufferCloseAllButCurrentOrPinned
-         --                 :BufferCloseBuffersLeft
-         --                 :BufferCloseBuffersRight
+         -- :BufferCloseAllButCurrent
+         -- :BufferCloseAllButPinned
+         -- :BufferWipeout
+         map('n', '<M-c>', '<Cmd>BufferClose<CR>', { noremap = true, silent = true, desc = "Close current buffer" })
+         map('n', '<M-x>', '<Cmd>BufferClose<CR>', { noremap = true, silent = true, desc = "Close current buffer" })
+         map('n', '<Leader>br', '<Cmd>BufferCloseBuffersRight<CR>', { noremap = true, silent = true, desc = "Close all buffers to right" })
+         map('n', '<Leader>bl', '<Cmd>BufferCloseBuffersLeft<CR>', { noremap = true, silent = true, desc = "Close all buffers to the left" })
+         map('n', '<Leader>bc', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>', { noremap = true, silent = true, desc = "Close all buffers but the current and pinned" })
+
          -- Magic buffer-picking mode
-         -- map('n', '<C-p>', '<Cmd>BufferPick<CR>', keymap_options)
-         -- -- Sort automatically by...
-         -- map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', keymap_options)
-         -- map('n', '<Space>bn', '<Cmd>BufferOrderByName<CR>', keymap_options)
-         -- map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', keymap_options)
-         -- map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', keymap_options)
-         -- map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', keymap_options)
+         map('n', '<Leader>bp', '<Cmd>BufferPick<CR>', { noremap = true, silent = true, desc = "Magic buffer-picking mode" })
+
+         -- Sort automatically by...
+         map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', { noremap = true, silent = true, desc = "Sort by buffer number" })
+         map('n', '<Space>bn', '<Cmd>BufferOrderByName<CR>', { noremap = true, silent = true, desc = "Sort by buffer name" })
+         map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', { noremap = true, silent = true, desc = "Sort by buffer directory" })
+         map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', { noremap = true, silent = true, desc = "Sort by buffer language" })
+         map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', { noremap = true, silent = true, desc = "Sort by window number" })
       end,
       opts = {
          animation = true,
