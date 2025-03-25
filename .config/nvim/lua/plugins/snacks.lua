@@ -214,6 +214,7 @@ return {
             Snacks.toggle.dim():map("<leader>TD")
 
             vim.api.nvim_set_hl(0, "SnacksPickerDir", { link = "GruvboxBg4" })
+            vim.api.nvim_set_hl(0, "SnacksPickerTotals", { link = "GruvboxBg4" })
          end,
       })
    end,
