@@ -16,6 +16,7 @@ Docs: https://cmp.saghen.dev/
 return {
    'saghen/blink.cmp',
    enabled = true,
+   event = "InsertEnter",
    -- optional: provides snippets for the snippet source
    dependencies = {
       'Kaiser-Yang/blink-cmp-avante',
