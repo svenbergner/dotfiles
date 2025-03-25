@@ -422,3 +422,6 @@ tomiis4
 CMake
 Bijan
 TODOs
+BufferCloseAllButCurrent
+BufferCloseAllButPinned
+BufferWipeout
