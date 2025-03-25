@@ -30,5 +30,5 @@ return {
    -- },
    -- { "ThePrimeagen/vim-be-good", }
    { "ThePrimeagen/vim-guys", },
-   { "svenbergner/sudokusolver.nvim", dev = true }
+   { "svenbergner/sudokusolver.nvim", enabled = true, dev = true }
 }
