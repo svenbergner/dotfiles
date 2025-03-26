@@ -11,6 +11,8 @@ WARN:
 HACK:
 NOTE:
 INFO: 
+
+URL: https://www.github.com/folke/todo-comments.nvim
 --]===]
 
 return {
