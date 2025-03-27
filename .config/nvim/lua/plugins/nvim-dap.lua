@@ -269,7 +269,7 @@ return {
             function() dap.set_breakpoint(nil, nil, vim.fn.input('Trace point message: ')) end,
             { desc = 'Set [d]apui [t]race [p]oint' })
          vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function() require('dap.ui.widgets').hover() end,
-            { desc = 'Show hover information' })
+            { desc = '[d]apui [h]over information' })
 
          vim.keymap.set('n', '<leader>dl', function() require "osv".launch({ port = 8086 }) end,
             { desc = '[l]aunch server in [d]ebuggee', noremap = true })
