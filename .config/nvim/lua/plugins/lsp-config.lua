@@ -67,7 +67,6 @@ return {
             imap('<M-o>', sw, 'Meta + o - switch source/header')
          end
          nmap('<F2>', vim.lsp.buf.rename, 'Rename <F2>')
-         nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
          nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
          nmap('<C-S-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
          nmap('<leader>Wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
@@ -79,7 +78,6 @@ return {
          vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
             vim.lsp.buf.format()
          end, { desc = 'Format current buffer with LSP' })
-         nmap('<leader>df', vim.lsp.buf.format, 'LSP: format document')
          nmap('<S-F7>', '<cmd>ConfigureCMakeBuild<CR>', 'Run cmake configure')
          nmap('<F19>', '<cmd>ConfigureCMakeBuild<CR>', 'Run cmake configure')
          nmap('<F7>', '<cmd>RunCMakeBuild<CR>', 'Run cmake build')
