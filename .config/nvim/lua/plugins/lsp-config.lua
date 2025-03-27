@@ -241,8 +241,8 @@ return {
                capabilities = capabilities,
                settings = servers[server_name],
                handlers = {
-                  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
-                  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' })
+                  ["textDocument/hover"] = vim.lsp.buf.hover, { border = 'single' },
+                  ["textDocument/signatureHelp"] = vim.lsp.buf.signature_help, { border = 'single' }
                }
             })
          end,
