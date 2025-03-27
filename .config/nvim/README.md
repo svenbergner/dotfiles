@@ -12,9 +12,9 @@ using the lazy.nvim package manager.
 ## My currently used version
 
 ```
-NVIM v0.10.2
+NVIM v0.11.0
 Build type: Release
-LuaJIT 2.1.1727870382
+LuaJIT 2.1.1741730670
 ```
 
 # Recommended Youtube Videos
