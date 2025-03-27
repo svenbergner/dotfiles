@@ -66,11 +66,11 @@ return {
          map('n', '<Leader>bp', '<Cmd>BufferPick<CR>', { noremap = true, silent = true, desc = "Magic buffer-picking mode" })
 
          -- Sort automatically by...
-         map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', { noremap = true, silent = true, desc = "Sort by buffer number" })
-         map('n', '<Space>bn', '<Cmd>BufferOrderByName<CR>', { noremap = true, silent = true, desc = "Sort by buffer name" })
-         map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', { noremap = true, silent = true, desc = "Sort by buffer directory" })
-         map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', { noremap = true, silent = true, desc = "Sort by buffer language" })
-         map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', { noremap = true, silent = true, desc = "Sort by window number" })
+         map('n', '<Leader>bob', '<Cmd>BufferOrderByBufferNumber<CR>', { noremap = true, silent = true, desc = "[b]uffer number" })
+         map('n', '<Leader>bon', '<Cmd>BufferOrderByName<CR>', { noremap = true, silent = true, desc = "buffer [n]ame" })
+         map('n', '<Leader>bod', '<Cmd>BufferOrderByDirectory<CR>', { noremap = true, silent = true, desc = "buffer [d]irectory" })
+         map('n', '<Leader>bol', '<Cmd>BufferOrderByLanguage<CR>', { noremap = true, silent = true, desc = "buffer [l]anguage" })
+         map('n', '<Leader>bow', '<Cmd>BufferOrderByWindowNumber<CR>', { noremap = true, silent = true, desc = "[w]indow number" })
       end,
       opts = {
          animation = true,
