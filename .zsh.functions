@@ -41,3 +41,78 @@ functiob y()
     fi
     rm -f -- "$tmp"
 }
+
+# Keep the screen awake
+wakeup() {
+ local duration=$1 
+ if [[ -z "$duration" ]]
+ then
+  # without any argument
+  echo "Keeping the screen awake indefinitely... Ctrl + C to exit"
+  caffeinate -d
+ else
+  local time_value=${duration%[mh]} 
+  local time_unit=${duration: -1} 
+  if ! [[ "$time_value" =~ ^[0-9]+$ ]]
+  then
+   echo "Invalid duration value. Please provide a positive integer followed by 'm' or 'h'."
+   return 1
+  fi
+  if [[ "$time_unit" == "m" ]]
+  then
+   local seconds=$((time_value * 60))
+   # m for minutes. Example, 34m for 34 minutes
+   echo "Keeping the screen awake for $time_value minutes ($seconds seconds)... Ctrl + C to exit"
+   caffeinate -d -t $seconds
+  elif [[ "$time_unit" == "h" ]]
+  then
+   local seconds=$((time_value * 3600)) 
+   # h for hour. example 3h for 3 hours
+   echo "Keeping the screen awake for $time_value hours ($seconds seconds)... Ctrl + C to exit"
+   caffeinate -d -t $seconds
+  else
+   echo "Invalid duration format. Use '15m', '1h', or no argument for indefinite."
+   return 1
+  fi
+ fi
+}
+
+# Decode JWT tokens
+jwtd() {
+    local input="${1:-}" 
+    if [ -z "$input" ]; then
+        if [ ! -t 0 ]; then
+            input=$(cat /dev/stdin)
+        else
+            echo '✗ Need an argument or have a piped input!' >&2
+            return 1
+        fi
+    fi
+
+    echo "$input" | awk -F'.' '{print $1"\n"$2}' | while read -r part; do
+        decoded=$(echo "$part" | tr '_-' '/+' | base64 -d 2>/dev/null)
+        if [ $? -eq 0 ]; then
+            # Try pretty-printing as JSON
+            if ! echo "$decoded" | jq . 2>/dev/null; then
+                # If jq failed, check if the decoded payload is missing a trailing }
+                # Remove any trailing whitespace and grab the last character.
+                lastChar=$(echo -n "$decoded" | sed -e 's/[[:space:]]*$//' | tail -c 1)
+                if [ "$lastChar" != "}" ]; then
+                    fixed="${decoded}}"
+                    if echo "$fixed" | jq . 2>/dev/null; then
+                        echo "$fixed" | jq .
+                    else
+                        echo "✗ Decoded part is not valid JSON even after appending '}':" >&2
+                        echo "$decoded" >&2
+                    fi
+                else
+                    echo "✗ Decoded part is not valid JSON:" >&2
+                    echo "$decoded" >&2
+                fi
+            fi
+        else
+            echo "✗ Failed to decode Base64 part: $part" >&2
+        fi
+    done
+}
+
