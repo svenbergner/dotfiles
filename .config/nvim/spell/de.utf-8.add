@@ -426,3 +426,4 @@ BufferCloseAllButCurrent
 BufferCloseAllButPinned
 BufferWipeout
 nerdfont
+JWT
