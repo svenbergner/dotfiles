@@ -150,7 +150,7 @@ return {
          function()
             local neovim_news = Snacks.win({
                file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-               width = 0.4,
+               width = 100,
                height = 0.8,
                border = 'rounded',
                wo = {
