@@ -19,8 +19,11 @@ return {
    event = "InsertEnter",
    -- optional: provides snippets for the snippet source
    dependencies = {
-      'Kaiser-Yang/blink-cmp-avante',
-      'rafamadriz/friendly-snippets',
+      'Kaiser-Yang/blink-cmp-avante', -- avante.cmp source for fuzzy matching
+      'rafamadriz/friendly-snippets', -- snippets for the snippet source
+      'moyiz/blink-emoji.nvim', -- blink.cmp source for emojis.
+      'MahanRahmati/blink-nerdfont.nvim', -- blink.cmp source for nerd fonts.
+      'bydlw98/blink-cmp-env', -- blink.cmp source for environment variables.
    },
 
    -- use a release tag to download pre-built binaries
@@ -154,7 +157,7 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-         default = { 'avante', 'lsp', 'path', 'snippets', 'buffer' },
+         default = { 'avante', 'lsp', 'path', 'snippets', 'buffer', 'omni', 'cmdline', 'emoji', 'nerdfont', 'env' },
          providers = {
             avante = {
                module = 'blink-cmp-avante',
@@ -162,7 +165,37 @@ return {
                opts = {
                   -- options for blink-cmp-avante
                }
-            }
+            },
+            emoji = {
+               module = "blink-emoji",
+               name = "Emoji",
+               score_offset = 15,        -- Tune by preference
+               opts = { insert = true }, -- Insert emoji (default) or complete its name
+               should_show_items = function()
+                  return vim.tbl_contains(
+                  -- Enable emoji completion only for git commits and markdown.
+                  -- By default, enabled for all file-types.
+                     { "gitcommit", "markdown", "vimwiki" },
+                     vim.o.filetype
+                  )
+               end,
+            },
+            nerdfont = {
+               module = "blink-nerdfont",
+               name = "Nerd Fonts",
+               score_offset = 15,        -- Tune by preference
+               opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+            },
+            env = {
+               name = "Env",
+               module = "blink-cmp-env",
+               --- @type blink-cmp-env.Options
+               opts = {
+                  -- item_kind = require("blink.cmp.types").CompletionItemKind.Variable,
+                  show_braces = false,
+                  show_documentation_window = true,
+               },
+            },
          },
       },
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
