@@ -427,3 +427,6 @@ BufferCloseAllButPinned
 BufferWipeout
 nerdfont
 JWT
+CompletionItemKind
+rustup
+winborder
