@@ -31,10 +31,11 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
 
+-- Keep the cursor of the edges while scrolling
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
 
---
+-- 
 vim.opt.hidden = true
 vim.opt.swapfile = false
 
