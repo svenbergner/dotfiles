@@ -187,3 +187,4 @@ fi
 
 eval $(starship completions zsh)
 
+export HOMEBREW_BUNDLE_FILE=~/.config/Brewfile
