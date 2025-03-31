@@ -13,8 +13,6 @@ working with a set of files you can even type the letter ahead from memory.
 URL: https://github.com/romgrk/barbar.nvim
 --]===]
 
----@diagnostic disable: inject-field
-
 return {
    {
       'romgrk/barbar.nvim',
