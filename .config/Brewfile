@@ -1,8 +1,11 @@
+# Taps
 tap "arl/arl"
 tap "dotenvx/brew"
 tap "homebrew/services"
 tap "leoafarias/fvm"
 tap "lusingander/tap"
+
+# Brews
 brew "asdf"
 brew "python@3.12"
 brew "azure-cli"
@@ -102,6 +105,8 @@ brew "arl/arl/gitmux"
 brew "dotenvx/brew/dotenvx"
 brew "leoafarias/fvm/fvm"
 brew "lusingander/tap/serie"
+
+# Casks
 cask "android-studio"
 cask "calibre"
 cask "font-hack-nerd-font"
