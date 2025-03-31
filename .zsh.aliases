@@ -32,6 +32,12 @@ alias gulc="git reset --soft HEAD~"
 alias undolastcommit='git reset --soft HEAD~'
 alias lg='lazygit'
 alias gwl='git worktree list'
+alias bb='brew bundle -q'
+alias be='nvim $HOMEBREW_BUNDLE_FILE'
+alias bbu='brew bundle upgrade'
+alias bbi='brew bundle install'
+alias bbc='brew bundle cleanup'
+alias bbuc='brew bundle upgrade && brew bundle cleanup'
 
 alias flutter='flutter --no-version-check'
 alias flutterrebuild='fvm flutter clean && fvm flutter pub get && fvm dart run build_runner build --delete-conflicting-outputs'
