@@ -22,6 +22,7 @@ return {
             { '<leader>a', group = '[a]vante', icon = '💬' },
             { '<leader>b', group = '[b]uffer', icon = '' },
             { '<leader>bo', group = '[o]rder by', icon = '' },
+            { '<leader>c', group = 'vimwiki [c]alendar', icon = '' },
             { '<leader>d', group = '[d]apui', icon = '' },
             { '<leader>f', group = '[f]ind', icon = '🔍' },
             { '<leader>g', group = '[g]it', icon = '' },
