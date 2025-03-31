@@ -56,19 +56,27 @@ return {
          -- :BufferWipeout
          map('n', '<M-c>', '<Cmd>BufferClose<CR>', { noremap = true, silent = true, desc = "Close current buffer" })
          map('n', '<M-x>', '<Cmd>BufferClose<CR>', { noremap = true, silent = true, desc = "Close current buffer" })
-         map('n', '<Leader>br', '<Cmd>BufferCloseBuffersRight<CR>', { noremap = true, silent = true, desc = "Close all buffers to right" })
-         map('n', '<Leader>bl', '<Cmd>BufferCloseBuffersLeft<CR>', { noremap = true, silent = true, desc = "Close all buffers to the left" })
-         map('n', '<Leader>bc', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>', { noremap = true, silent = true, desc = "Close all buffers but the current and pinned" })
+         map('n', '<Leader>br', '<Cmd>BufferCloseBuffersRight<CR>',
+            { noremap = true, silent = true, desc = "Close all buffers to right" })
+         map('n', '<Leader>bl', '<Cmd>BufferCloseBuffersLeft<CR>',
+            { noremap = true, silent = true, desc = "Close all buffers to the left" })
+         map('n', '<Leader>bc', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>',
+            { noremap = true, silent = true, desc = "Close all buffers but the current and pinned" })
 
          -- Magic buffer-picking mode
-         map('n', '<Leader>bp', '<Cmd>BufferPick<CR>', { noremap = true, silent = true, desc = "Magic buffer-picking mode" })
+         map('n', '<Leader>bp', '<Cmd>BufferPick<CR>',
+            { noremap = true, silent = true, desc = "Magic buffer-picking mode" })
 
          -- Sort automatically by...
-         map('n', '<Leader>bob', '<Cmd>BufferOrderByBufferNumber<CR>', { noremap = true, silent = true, desc = "[b]uffer number" })
+         map('n', '<Leader>bob', '<Cmd>BufferOrderByBufferNumber<CR>',
+            { noremap = true, silent = true, desc = "[b]uffer number" })
          map('n', '<Leader>bon', '<Cmd>BufferOrderByName<CR>', { noremap = true, silent = true, desc = "buffer [n]ame" })
-         map('n', '<Leader>bod', '<Cmd>BufferOrderByDirectory<CR>', { noremap = true, silent = true, desc = "buffer [d]irectory" })
-         map('n', '<Leader>bol', '<Cmd>BufferOrderByLanguage<CR>', { noremap = true, silent = true, desc = "buffer [l]anguage" })
-         map('n', '<Leader>bow', '<Cmd>BufferOrderByWindowNumber<CR>', { noremap = true, silent = true, desc = "[w]indow number" })
+         map('n', '<Leader>bod', '<Cmd>BufferOrderByDirectory<CR>',
+            { noremap = true, silent = true, desc = "buffer [d]irectory" })
+         map('n', '<Leader>bol', '<Cmd>BufferOrderByLanguage<CR>',
+            { noremap = true, silent = true, desc = "buffer [l]anguage" })
+         map('n', '<Leader>bow', '<Cmd>BufferOrderByWindowNumber<CR>',
+            { noremap = true, silent = true, desc = "[w]indow number" })
       end,
       opts = {
          animation = true,
