@@ -35,7 +35,7 @@ vim.opt.breakindent = true
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
 
--- 
+-- Buffer and swapfile settings
 vim.opt.hidden = true
 vim.opt.swapfile = false
 
