@@ -47,6 +47,12 @@ local getNeoVimSymbol = function()
    return ""
 end
 
+local function getRecordingMessage()
+   local reg = vim.fn.reg_recording()
+   if reg == "" then return "" end
+   return "recording to " .. reg
+end
+
 return {
    'nvim-lualine/lualine.nvim',
    config = function()
@@ -79,6 +85,9 @@ return {
             lualine_a = {
                { getNeoVimSymbol },
                { 'mode' },
+               {
+                  getRecordingMessage,
+               },
             },
             lualine_b = {
                { 'branch' },
