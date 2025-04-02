@@ -77,6 +77,27 @@ return {
             { noremap = true, silent = true, desc = "buffer [l]anguage" })
          map('n', '<Leader>bow', '<Cmd>BufferOrderByWindowNumber<CR>',
             { noremap = true, silent = true, desc = "[w]indow number" })
+
+         vim.api.nvim_create_autocmd("User", {
+            pattern = "VeryLazy",
+            callback = function()
+               vim.api.nvim_set_hl(0, "BufferCurrentMod", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferVisibleMod", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferDefaultCurrentModBtn", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferDefaultVisibleModBtn", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferCurrentModBtn", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferVisibleModBtn", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferInactiveMod", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferDefaultInactiveModBtn", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferInactiveModBtn", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferAlternateMod", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferDefaultAlternateModBtn", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferAlternateModBtn", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferDefaultCurrentMod", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferDefaultVisibleMod", { link = "GruvboxOrange" })
+               vim.api.nvim_set_hl(0, "BufferDefaultInactiveMod", { link = "GruvboxOrange" })
+            end,
+         })
       end,
       opts = {
          animation = true,
