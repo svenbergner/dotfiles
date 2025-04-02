@@ -9,7 +9,6 @@ return {
    ft = { "dart" },
    dependencies = {
       "nvim-lua/plenary.nvim",
-      "stevearc/dressing.nvim", -- optional for vim.ui.select
       "dart-lang/dart-vim-plugin",
    },
    config = function()
