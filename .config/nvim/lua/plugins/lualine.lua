@@ -50,7 +50,7 @@ end
 local function getRecordingMessage()
    local reg = vim.fn.reg_recording()
    if reg == "" then return "" end
-   return "recording to " .. reg
+   return "recording @" .. reg
 end
 
 return {
