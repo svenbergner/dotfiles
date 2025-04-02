@@ -13,8 +13,9 @@ return {
    enabled = true,
    event = "VeryLazy",
    opts = {
+      enable = true,
       mode = "cursor",
-      max_lines = 10,
+      max_lines = 0,
    },
    keys = {
       {
