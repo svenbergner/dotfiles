@@ -25,6 +25,12 @@ local help_opts = {
    },
 }
 
+local marks_opts = {
+   finder = "vim_marks",
+  format = "file",
+  global = true,
+  ["local"] = true,
+}
 return {
    "folke/snacks.nvim",
    priority = 1000,
@@ -127,6 +133,7 @@ return {
       { "<leader>fk", function() Snacks.picker.keymaps() end,            desc = "[f]ind [k]eymaps" },
       { "<leader>fl", function() Snacks.picker.lazy() end,               desc = "[f]ind [l]azy plugins specs" },
       { "<leader>/",  function() Snacks.picker.lines() end,              desc = "[/] fuzzy search in buffer" },
+      { "<leader>fm", function() Snacks.picker.marks(marks_opts) end,    desc = "[f]ind [m]arks" },
       { "<leader>fo", function() Snacks.picker.recent() end,             desc = "[f]ind [o]ld files" },
       { "<leader>fr", function() Snacks.picker.resume() end,             desc = "[f]ind [r]esume last search" },
       { "<leader>fR", function() Snacks.picker.registers() end,          desc = "[f]ind [r]egisters" },
