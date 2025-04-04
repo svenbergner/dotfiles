@@ -2,6 +2,9 @@ alias v='nvim'
 
 # Edit configuration aliases
 alias zshrc="nvim ~/.zshrc"
+alias zshaliases="nvim ~/.zsh.aliases"
+alias zshfunctions="nvim ~/.zsh.functions"
+alias zshlocal="nvim ~/.zsh.local"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias vimrc="nvim ~/.config/nvim/"
 
@@ -32,7 +35,7 @@ alias gulc="git reset --soft HEAD~"
 alias undolastcommit='git reset --soft HEAD~'
 alias lg='lazygit'
 alias gwl='git worktree list'
-alias bb='echo "Running brew bundle..."; brew bundle -q'
+alias bb='echo "Running brew bundle..."; brew bundle -q && brew bundle cleanup -q && echo "Done!"'
 alias be='nvim $HOMEBREW_BUNDLE_FILE'
 alias bbu='brew bundle upgrade'
 alias bbi='brew bundle install'
