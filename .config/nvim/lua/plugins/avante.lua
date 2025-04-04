@@ -10,10 +10,8 @@ return {
    "yetone/avante.nvim",
    enabled = true,
    event = "VeryLazy",
-   lazy = false,
-   version = false, -- set this if you want to always pull the latest change
+   version = false, -- Never set this value to "*"! Never!
    opts = {
-      --- @type "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
       provider = "copilot",
       auto_suggestions_provider = "copilot",
       claude = {
