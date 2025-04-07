@@ -35,7 +35,15 @@ alias gulc="git reset --soft HEAD~"
 alias undolastcommit='git reset --soft HEAD~'
 alias lg='lazygit'
 alias gwl='git worktree list'
-alias bb='echo "Running brew bundle..."; brew bundle -q && brew bundle cleanup -q && echo "Done!"'
+function bb() {
+        echo "Running brew bundle..."
+        if brew bundle -q; then
+            echo "Brew bundle succeeded. Running cleanup..."
+            brew bundle cleanup -q --force && echo "Done!" || echo "Cleanup failed."
+        else
+            echo "Brew bundle failed. Cleanup skipped."
+        fi
+} 
 alias be='nvim $HOMEBREW_BUNDLE_FILE'
 alias bbu='brew bundle upgrade'
 alias bbi='brew bundle install'
