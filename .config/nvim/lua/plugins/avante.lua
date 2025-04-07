@@ -67,6 +67,15 @@ return {
             align = "center", -- left, center, right for title
             rounded = true,
          },
+         edit = {
+            border = "rounded",
+            start_insert = true,
+         },
+         ask = {
+            floating = false,
+            border = "rounded",
+            start_insert = true,
+         }
       },
       highlights = {
          ---@class AvanteConflictHighlights
