@@ -139,7 +139,7 @@ return {
       { "<leader>fl", function() Snacks.picker.lazy() end,               desc = "[f]ind [l]azy plugins specs" },
       { "<leader>/",  function() Snacks.picker.lines() end,              desc = "[/] fuzzy search in buffer" },
       { "<leader>fm", function() Snacks.picker.marks(marks_opts) end,    desc = "[f]ind [m]arks" },
-      { "<leader>fn", function() Snacks.picker.noice(noice_opts) end,    desc = "[f]ind [n]oice" },
+      { "<leader>fn", function() Snacks.picker.noice(noice_opts) end,    desc = "[f]ind [n]oice messages" },
       { "<leader>fo", function() Snacks.picker.recent() end,             desc = "[f]ind [o]ld files" },
       { "<leader>fr", function() Snacks.picker.resume() end,             desc = "[f]ind [r]esume last search" },
       { "<leader>fR", function() Snacks.picker.registers() end,          desc = "[f]ind [r]egisters" },
