@@ -13,6 +13,11 @@ return {
    version = false, -- Never set this value to "*"! Never!
    opts = {
       provider = "copilot",
+      -- copilot = {
+      --    model = 'claude-3.7-sonnet',
+      --    temperature = 0,
+      --    max_tokens = 8192,
+      -- },
       auto_suggestions_provider = "copilot",
       behaviour = {
          auto_suggestions = true, -- Experimental stage
