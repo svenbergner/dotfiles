@@ -9,7 +9,7 @@ return {
    enabled = true,
    event = "VeryLazy",
    keys = {
-      { "<leader>NL", function() require("noice").cmd("last") end,    desc = "[N]oice show [L]ast message" },
+      { "<leader>NL", function() require("noice").cmd("last") end,    desc = "[N]oice show [L]ast Message" },
       { "<leader>NH", function() require("noice").cmd("history") end, desc = "[N]oice show [H]istory" },
       { "<leader>NA", function() require("noice").cmd("all") end,     desc = "[N]oice show [A]ll" },
       { "<leader>ND", function() require("noice").cmd("dismiss") end, desc = "[N]oice [D]ismiss all" },
