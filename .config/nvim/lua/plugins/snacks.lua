@@ -36,6 +36,23 @@ local noice_opts = {
    supports_live = true,
 }
 
+local zen_opts = {
+   enter = true,
+   fixbuf = false,
+   minimal = false,
+   width = 260,
+   height = 0,
+   backdrop = { transparent = false, blend = 1 },
+   keys = { q = false },
+   zindex = 40,
+   wo = {
+      winhighlight = "NormalFloat:Normal",
+   },
+   w = {
+      snacks_main = true,
+   },
+}
+
 return {
    "folke/snacks.nvim",
    priority = 1000,
@@ -118,7 +135,8 @@ return {
       { "<leader>bd", function() Snacks.bufdelete() end,                 desc = "Delete Buffer" },
       { "<leader>:",  function() Snacks.picker.command_history() end,    desc = "[p] Show command history" },
       { "<leader>q",  function() Snacks.notifier.hide() end,             desc = "quit all notifications" },
-      { "<leader>zm", function() Snacks.toggle.zen() end,                desc = "Toggle [z]en [m]ode" },
+      { "<leader>zm", function() Snacks.zen(zen_opts) end,               desc = "Toggle [z]en [m]ode" },
+      { "<leader>zz", function() Snacks.zen.zoom() end,                  desc = "[z]oom [z]en" },
       -- Picker
       { "<leader>fp", function() Snacks.picker.pickers() end,            desc = "[f]ind [p]ickers" },
       { "<leader>fa", function() Snacks.picker.autocmds() end,           desc = "[f]ind [a]utocommands" },
