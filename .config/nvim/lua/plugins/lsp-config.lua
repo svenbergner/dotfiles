@@ -20,15 +20,16 @@ return {
    config = function()
       vim.lsp.set_log_level('OFF')
       vim.keymap.set('n', '<F6>', function()
-         vim.diagnostic.goto_next()
+         vim.diagnostic.jump({ count = 1, float = true })
          vim.cmd('normal! zz')
       end
       , { desc = "Go to next diagnostic message" })
       vim.keymap.set('n', '<S-F6>', function()
-         vim.diagnostic.goto_prev()
+         vim.diagnostic.jump({ count = -1, float = true })
          vim.cmd('normal! zz')
       end, { desc = "Go to previous diagnostic message" })
-      vim.keymap.set('n', '<F18>', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+      vim.keymap.set('n', '<F18>', function() vim.diagnostic.jump({ count = -1, float = true }) end,
+         { desc = "Go to previous diagnostic message" })
 
       vim.diagnostic.config({
          float = {
