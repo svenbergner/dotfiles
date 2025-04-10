@@ -19,11 +19,11 @@ return {
    event = "InsertEnter",
    -- optional: provides snippets for the snippet source
    dependencies = {
-      'Kaiser-Yang/blink-cmp-avante', -- avante.cmp source for fuzzy matching
-      'rafamadriz/friendly-snippets', -- snippets for the snippet source
-      'moyiz/blink-emoji.nvim', -- blink.cmp source for emojis.
+      'Kaiser-Yang/blink-cmp-avante',     -- avante.cmp source for fuzzy matching
+      'rafamadriz/friendly-snippets',     -- snippets for the snippet source
+      'moyiz/blink-emoji.nvim',           -- blink.cmp source for emojis.
       'MahanRahmati/blink-nerdfont.nvim', -- blink.cmp source for nerd fonts.
-      'bydlw98/blink-cmp-env', -- blink.cmp source for environment variables.
+      'bydlw98/blink-cmp-env',            -- blink.cmp source for environment variables.
    },
 
    -- use a release tag to download pre-built binaries
