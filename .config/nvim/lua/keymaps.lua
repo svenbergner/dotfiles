@@ -40,7 +40,7 @@ vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format the curre
 vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Press Escape twice to exit terminal mode' })
 vim.keymap.set('n', '<esc><esc>', '<c-w><c-q>', { desc = 'Press Escape twice to close current buffer' })
 
-vim.keymap.set('n', 'Q', '@q', { desc = 'Use [Q] to play the macro recorded in @q' })
+vim.keymap.set('n', '<M-q>', '@q', { desc = 'Use [M-q] to play the macro recorded in @q' })
 
 -- Go to the previous/next item in the Quickfix-List
 vim.keymap.set('n', '<F8>', ':cn<CR>', { silent = true, desc = 'Go to next item in Quickfix-List' })
