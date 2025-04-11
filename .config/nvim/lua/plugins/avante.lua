@@ -13,18 +13,18 @@ return {
    version = false, -- Never set this value to "*"! Never!
    opts = {
       provider = "copilot",
-      -- copilot = {
-      --    model = 'claude-3.7-sonnet',
-      --    temperature = 0,
-      --    max_tokens = 8192,
-      -- },
+      copilot = {
+         model = 'claude-3.5-sonnet',
+         temperature = 0,
+         max_tokens = 8192,
+      },
       auto_suggestions_provider = "copilot",
       behaviour = {
          auto_suggestions = true, -- Experimental stage
          auto_set_highlight_group = true,
          auto_set_keymaps = true,
          auto_apply_diff_after_generation = false,
-         support_paste_from_clipboard = false,
+         support_paste_from_clipboard = true,
          enable_cursor_planning_mode = true,
       },
       mappings = {
@@ -82,6 +82,8 @@ return {
          diff = {
             current = "DiffText",
             incoming = "DiffAdd",
+            modified = "DiffChange", -- Neue Option
+            deleted = "DiffDelete", -- Neue Option
          },
       },
       --- @class AvanteConflictUserConfig
