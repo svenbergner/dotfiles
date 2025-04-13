@@ -178,7 +178,7 @@ if [[ -f /opt/homebrew/share/zsh/site-functions ]]; then
 fi
 ## [/Completion]
 
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH:$HOME/scripts"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 if [[ -f /opt/homebrew/opt/asdf/libexec/asdf.sh ]] then
