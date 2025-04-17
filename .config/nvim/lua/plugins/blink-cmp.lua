@@ -24,6 +24,8 @@ return {
       'moyiz/blink-emoji.nvim',           -- blink.cmp source for emojis.
       'MahanRahmati/blink-nerdfont.nvim', -- blink.cmp source for nerd fonts.
       'bydlw98/blink-cmp-env',            -- blink.cmp source for environment variables.
+      'echasnovski/mini.snippets',
+      { 'L3MON4D3/LuaSnip', version = '2.*' },
    },
 
    -- use a release tag to download pre-built binaries
@@ -100,6 +102,8 @@ return {
             show_documentation = true,
          },
       },
+
+      snippets = { preset = 'luasnip'  },
 
       completion = {
          keyword = {
