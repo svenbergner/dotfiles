@@ -28,7 +28,7 @@ URL: https://github.com/iamcco/markdown-preview.nvim
 -- install without yarn or npm
 return {
   "iamcco/markdown-preview.nvim",
-  enabled = true,
+  enabled = false,
   event = 'VeryLazy',
   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
   ft = { "markdown" },
