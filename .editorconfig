@@ -1,3 +1,6 @@
 [*.lua]
 indent_size = 3
 indent_style = space
+[*.json]
+indent_size = 3
+indent_style = space
