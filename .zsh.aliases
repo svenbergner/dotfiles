@@ -45,6 +45,7 @@ function bb() {
         fi
 } 
 alias be='nvim $HOMEBREW_BUNDLE_FILE'
+alias bd='brew doctor'
 alias bbu='brew bundle upgrade'
 alias bbi='brew bundle install'
 alias bbc='brew bundle cleanup'
