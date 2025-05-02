@@ -1,12 +1,25 @@
 {
-    "lua module template": {
-        "prefix": "luamodule",
-        "body": [
-            "local M = {}",
-            "    $0",
-            "return M",
-            ""
-        ],
-        "description": "Standard lua module snippet"
-    }
+   "lua module template": {
+      "prefix": "luamodule",
+      "body": [
+         "local M = {}",
+         "    $0",
+         "return M",
+         ""
+      ],
+      "description": "Standard lua module snippet"
+   },
+   "Neovim Module template": {
+      "prefix": "newmodule",
+      "body": [
+         "--[===[",
+         "",
+         "URL: https://github.com/",
+         "--]===]",
+         "",
+         "return $0",
+         ""
+      ],
+      "description": "Neovim Module snippet"
+   }
 }
