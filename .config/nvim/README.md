@@ -41,6 +41,11 @@ files that are not detected by default.
 
 ### Plugins Folder
 
+Each plugin has a header comment with a link to the github repo and a short 
+description of what it does and how to use it.
+To open a link just put the cursor over the link and press `gx` to open it in 
+your system browser.
+
 Here is a list of the plugins that I use in my config with the correspondig
 links to their github repos.
 
