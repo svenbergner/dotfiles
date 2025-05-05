@@ -11,6 +11,14 @@ matching, and this work is on-going.
 URL: https://github.com/saghen/blink.cmp
 Docs: https://cmp.saghen.dev/
 
+Sources: https://cmp.saghen.dev/configuration/sources#community-sources
+URL: https://github.com/Kaiser-Yang/blink-cmp-avante
+URL: https://github.com/rafamadriz/friendly-snippets
+URL: https://github.com/moyiz/blink-emoji.nvim
+URL: https://github.com/MahanRahmati/blink-nerdfont.nvim
+URL: https://github.com/bydlw98/blink-cmp-env
+URL: https://github.com/echasnovski/mini.snippets
+URL: https://github.com/L3MON4D3/LuaSnip
 --]===]
 
 return {
