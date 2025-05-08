@@ -13,7 +13,6 @@ return {
 
       -- Load my personal snippets
       local snippets_path = vim.fn.stdpath('config') .. "/snippets"
-      print("Loading snippets from: " .. snippets_path)
       require("luasnip.loaders.from_vscode").lazy_load({ paths = { snippets_path } })
 
       -- Preserve existing opts from LazyVim
