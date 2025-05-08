@@ -222,6 +222,21 @@ return {
          },
       })
 
+      local lspconfig = require("lspconfig")
+      for server, config in pairs(servers) do
+         config = config or {}
+         config.on_attach = on_attach
+         config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
+         config.handlers = {
+            ["textDocument/hover"] = vim.lsp.buf.hover, { border = 'single' },
+            ["textDocument/signatureHelp"] = vim.lsp.buf.signature_help, { border = 'single' },
+         }
+         if config.inlay_hints then
+            config.inlay_hints = vim.tbl_deep_extend("force", servers[server].inlay_hints, config.inlay_hints)
+         end
+         lspconfig[server].setup(config)
+      end
+
       local ensure_installed = vim.tbl_keys(servers or {})
 
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
