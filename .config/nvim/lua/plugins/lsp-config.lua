@@ -31,13 +31,6 @@ return {
       vim.keymap.set('n', '<F18>', function() vim.diagnostic.jump({ count = -1, float = true }) end,
          { desc = "Go to previous diagnostic message" })
 
-      vim.diagnostic.config({
-         float = {
-            source = true,
-            border = "single"
-         },
-      })
-
       local on_attach = function(_, bufnr)
          local nmap = function(keys, func, desc)
             if desc then
@@ -197,7 +190,7 @@ return {
 
       vim.diagnostic.config({
          severity_sort = true,
-         float = { border = 'rounded', source = 'if_many' },
+         float = { border = 'rounded', source = true },
          underline = { severity = vim.diagnostic.severity.ERROR },
          signs = {
             text = {
@@ -208,7 +201,7 @@ return {
             },
          } or {},
          virtual_lines = {
-            source = 'if_many',
+            source = true,
             spacing = 2,
             format = function(diagnostic)
                local diagnostic_message = {
