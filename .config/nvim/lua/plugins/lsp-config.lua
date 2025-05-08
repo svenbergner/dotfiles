@@ -223,31 +223,15 @@ return {
       })
 
       local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, { 'stylua' })
 
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
       require('mason').setup()
       local mason_lspconfig = require('mason-lspconfig')
-      mason_lspconfig.setup {
-         ensure_installed = {},
-         automatic_installation = false,
-      }
-      mason_lspconfig.setup_handlers {
-         function(server_name)
-            require('lspconfig')[server_name].setup({
-               on_attach = on_attach,
-               capabilities = capabilities,
-               settings = servers[server_name],
-               handlers = {
-                  ["textDocument/hover"] = vim.lsp.buf.hover,
-                  { border = 'single' },
-                  ["textDocument/signatureHelp"] = vim.lsp.buf.signature_help,
-                  { border = 'single' },
-               }
-            })
-         end,
-      }
+      mason_lspconfig.setup({
+         ensure_installed = ensure_installed,
+         automatic_enable = true,
+      })
 
       vim.api.nvim_command('MasonToolsInstall')
    end
