@@ -85,9 +85,7 @@ return {
             lualine_a = {
                { getNeoVimSymbol },
                { 'mode' },
-               {
-                  getRecordingMessage,
-               },
+               { getRecordingMessage, },
             },
             lualine_b = {
                { 'branch' },
