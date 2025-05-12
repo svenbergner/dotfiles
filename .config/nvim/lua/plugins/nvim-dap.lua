@@ -259,7 +259,7 @@ return {
          vim.keymap.set("n", "<S-F11>", dap.step_out, { desc = 'Step out' })
          vim.keymap.set("n", "<F23>", dap.step_out, { desc = 'Step out' })
          vim.keymap.set("n", "<F9>", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
-         vim.keymap.set("n", "<leader>dq", dapui.close, { desc = '[d]apui [c]lose' })
+         vim.keymap.set("n", "<leader>dq", dapui.close, { desc = '[d]apui [q]uit' })
          vim.keymap.set("n", "<leader>dt", dapui.toggle, { desc = '[d]apui [t]oggle ' })
          vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = 'Toggle [d]abui [b]reakpoint' })
          vim.keymap.set("n", "<leader>dc", dap.run_to_cursor, { desc = 'Run to [d]abui [c]ursor' })
