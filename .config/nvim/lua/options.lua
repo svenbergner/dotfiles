@@ -70,7 +70,7 @@ vim.opt.cmdheight = 2
 vim.opt.showcmd = true
 vim.opt.showmode = true -- change to false after
 vim.opt.showmatch = true
-vim.opt.updatetime = 250
+vim.opt.updatetime = 500
 vim.opt.timeoutlen = 800
 vim.opt.ttimeoutlen = 100
 
