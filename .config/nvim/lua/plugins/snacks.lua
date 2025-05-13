@@ -189,6 +189,7 @@ return {
       { "<leader>fr", function() Snacks.picker.resume() end,             desc = "[f]ind [r]esume last search" },
       { "<leader>fR", function() Snacks.picker.registers() end,          desc = "[f]ind [r]egisters" },
       { "<leader>ft", function() Snacks.picker.todo_comments() end,      desc = "[f]ind [t]odos" },
+      { "<leader>fT", function() Snacks.picker.treesitter() end,         desc = "[f]ind [T]reesitter" },
       { "<leader>fu", function() Snacks.picker.undo() end,               desc = "[f]ind [u]ndo history" },
       { "<leader>fz", function() Snacks.picker.zoxide() end,             desc = "[f]ind [z]oxide" },
       { "<leader>fi", function() Snacks.picker.icons() end,              desc = "[f]ind [i]cons" },
