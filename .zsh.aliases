@@ -13,8 +13,8 @@ alias o="bat"
 
 alias showPID='(){ps aux | grep -i $1 | grep -v grep | cut -f7 -d " " ;}'
 
-alias cbr='git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff {1} --color=always" --pointer="" | xargs git checkout'
 
+# ls aliases based on eza
 alias ls='eza --color=always --icons=always --git'
 alias l='ls -la'
 alias la='ls -laa'
@@ -30,11 +30,15 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
+# git aliases
+alias cbr='git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff {1} --color=always" --pointer="" | xargs git checkout'
 # gulc -- git undo last commit but preserve the changes
 alias gulc="git reset --soft HEAD~"
 alias undolastcommit='git reset --soft HEAD~'
 alias lg='lazygit'
 alias gwl='git worktree list'
+
+# Homebrew aliases
 function bb() {
         echo "Running brew bundle..."
         if brew bundle -q; then
@@ -51,6 +55,7 @@ alias bbi='brew bundle install'
 alias bbc='brew bundle cleanup'
 alias bbuc='brew bundle upgrade && brew bundle cleanup'
 
+# Flutter aliases
 alias flutter='flutter --no-version-check'
 alias flutterrebuild='fvm flutter clean && fvm flutter pub get && fvm dart run build_runner build --delete-conflicting-outputs'
 alias fbb='fvm flutter build bundle'
