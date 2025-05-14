@@ -10,6 +10,8 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+autoload -U compinit && compinit
+
 # Add in zsh plugins
 zinit wait lucid light-mode for \
   atinit'zicompinit; zicdreplay' \
