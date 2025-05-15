@@ -45,17 +45,21 @@ eval "$(starship init zsh)"
 bindkey -e
 
 # History
-HISTSIZE=5000
+HISTSIZE=100000
 HISTFILE=~/.zsh_history
+HISTCONTROL=ignoreboth
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
+setopt append_history share_history inc_append_history
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+
+# Additional options
+setopt auto_menu menu_complete
+setopt autocd
 
 # If you come from bash you might have to change your $PATH.
 if [[ "$OSTYPE" =~ "darwin".* ]] then
