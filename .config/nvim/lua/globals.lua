@@ -8,7 +8,7 @@ vim.g.backspace = "indent,eol,start"
 
 vim.g.noerrorbells = true
 vim.g.nohlsearch = true
-vim.cmd("packadd nohlsearch")
+-- vim.cmd("packadd nohlsearch")
 
 -- disable some default providers
 vim.g.loaded_node_provider = 0
