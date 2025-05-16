@@ -8,5 +8,5 @@ URL: https://github.com/haya14busa/is.vim
 return {
    'haya14busa/is.vim',
    event = 'VeryLazy',
-   enabled = false,
+   enabled = true,
 }
