@@ -103,7 +103,7 @@ style = "fg:color_fg0 bg:color_yellow"
 format = "[$read_only $path ]($style)"
 truncation_length = 10 
 truncation_symbol = "…/"
-truncate_to_repo = true
+truncate_to_repo = false
 read_only = " 󰌾"
 
 [git_branch]
