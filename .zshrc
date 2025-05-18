@@ -125,6 +125,8 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Preferred editor
 export EDITOR='nvim'
+export VISUAL='nvim'
+export MANPAGER='nvim +Man!'
 
 # User configuration
 
