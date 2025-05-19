@@ -58,3 +58,7 @@ vim.keymap.set('v', '<C-s>', ':sort<CR>', { desc = 'Sort the selection' })
 vim.keymap.set('v', '<leader>z', ':sort u<CR>', { desc = 'Sort the selection uniquely' })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move the selection one line down' })
 vim.keymap.set('v', 'K', ":m '>-2<CR>gv=gv", { desc = 'Move the selection one line up' })
+
+-- Spelling
+vim.keymap.set('n', 'gs', ']s', { desc = 'Next misspelled word' })
+
