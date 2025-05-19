@@ -48,12 +48,12 @@ function bb() {
             echo "Brew bundle failed. Cleanup skipped."
         fi
 } 
-alias be='nvim $HOMEBREW_BUNDLE_FILE'
 alias bd='brew doctor'
-alias bbu='brew bundle upgrade'
-alias bbi='brew bundle install'
+alias bba='brew bundle add'
 alias bbc='brew bundle cleanup'
-alias bbuc='brew bundle upgrade && brew bundle cleanup'
+alias bbe='brew bundle edit'
+alias bbl='brew bundle list'
+alias bbr='brew bundle remove'
 
 # Flutter aliases
 alias flutter='flutter --no-version-check'
