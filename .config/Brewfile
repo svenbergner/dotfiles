@@ -172,8 +172,6 @@ brew "sloc"
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
-# Terminal user interface for taskwarrior
-brew "taskwarrior-tui"
 # Color-based alternative to figlet (uses libcaca)
 brew "toilet"
 # Ncurses-based klondike solitaire game
