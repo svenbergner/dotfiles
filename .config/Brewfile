@@ -6,124 +6,242 @@ tap "lusingander/tap"
 
 # Brews
 brew "arl/arl/gitmux"
+# Record and share terminal sessions
 brew "asciinema"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
-brew "azure-cli"
-brew "bashdb"
-brew "bat"
-brew "bear"
-brew "boxes"
-brew "btop"
-brew "chafa"
-brew "cmake"
-brew "cmatrix"
-brew "cocoapods"
-brew "ctop"
-brew "curl"
-brew "devcontainer"
-brew "direnv"
-brew "dive"
-brew "docker"
-brew "dosbox-x"
-brew "dotenv-linter"
-brew "dotenvx/brew/dotenvx"
-brew "dust"
-brew "expat"
-brew "eza"
-brew "fastfetch"
-brew "fd"
-brew "ffmpegthumbnailer"
-brew "figlet"
-brew "fish"
-brew "fzf"
-brew "gh"
-brew "git"
-brew "git-delta"
-brew "git-series"
-brew "gitleaks"
-brew "glow"
-brew "go"
-brew "gping"
-brew "gum"
-brew "hub"
-brew "imagemagick"
-brew "intercept"
-brew "jq"
-brew "lazydocker"
-brew "lazygit"
-brew "leoafarias/fvm/fvm"
-brew "libgit2"
-brew "lld"
-brew "llm"
-brew "llvm"
-brew "lolcat"
-brew "lua"
-brew "luarocks"
-brew "lusingander/tap/serie"
-brew "lynx"
-brew "markdown-toc"
-brew "mise"
-brew "neovim"
-brew "ninja"
-brew "node"
-brew "nushell"
-brew "oh-my-posh"
-brew "onefetch"
-brew "openjdk"
-brew "pipx"
-brew "pkgconf"
-brew "pngpaste"
-brew "podman"
-brew "poppler"
-brew "pwgen"
-brew "pyright"
-brew "python-build"
-brew "python-tk@3.10"
-brew "python-tk@3.12"
-brew "python@3.10"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
+# Microsoft Azure CLI 2.0
+brew "azure-cli"
+# Bash shell debugger
+brew "bashdb"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Generate compilation database for clang tooling
+brew "bear"
+# Draw boxes around text
+brew "boxes"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Versatile and fast Unicode/ASCII/ANSI graphics renderer
+brew "chafa"
+# Cross-platform make
+brew "cmake"
+# Console Matrix
+brew "cmatrix"
+# Dependency manager for Cocoa projects
+brew "cocoapods"
+# Top-like interface for container metrics
+brew "ctop"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
+# Platform built on V8 to build network applications
+brew "node"
+# Reference implementation for the Development Containers specification
+brew "devcontainer"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Tool for exploring each layer in a docker image
+brew "dive"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# DOSBox with accurate emulation and wide testing
+brew "dosbox-x"
+# Lightning-fast linter for .env files written in Rust
+brew "dotenv-linter"
+# More intuitive version of du in rust
+brew "dust"
+# XML 1.0 parser
+brew "expat"
+# Modern, maintained replacement for ls
+brew "eza"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
+# Create thumbnails for your video files
+brew "ffmpegthumbnailer"
+# Banner-like program prints strings as ASCII art
+brew "figlet"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# Track changes to a patch series over time
+brew "git-series"
+# Audit git repos for secrets
+brew "gitleaks"
+# Render markdown on the CLI
+brew "glow"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Ping, but with a graph
+brew "gping"
+# Tool for glamorous shell scripts
+brew "gum"
+# Add GitHub support to git on the command-line
+brew "hub"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+# Static Application Security Testing (SAST) tool
+brew "intercept"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Lazier way to manage everything docker
+brew "lazydocker"
+# Simple terminal UI for git commands
+brew "lazygit"
+# LLVM Project Linker
+brew "lld"
+# Access large language models from the command-line
+brew "llm"
+# Rainbows and unicorns in your console!
+brew "lolcat"
+# Powerful, lightweight programming language
+brew "lua"
+# Package manager for the Lua programming language
+brew "luarocks"
+# Text-based web browser
+brew "lynx"
+# Generate a markdown TOC (table of contents) with Remarkable
+brew "markdown-toc"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Small build system for use with gyp or CMake
+brew "ninja"
+# Modern shell for the GitHub era
+brew "nushell"
+# Prompt theme engine for any shell
+brew "oh-my-posh"
+# Command-line Git information tool
+brew "onefetch"
+# Development kit for the Java programming language
+brew "openjdk"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Paste PNG into files
+brew "pngpaste"
+# Tool for managing OCI containers and pods
+brew "podman"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+# Password generator
+brew "pwgen"
+# Static type checker for Python
+brew "pyright"
+# Simple, correct PEP 517 build frontend
+brew "python-build"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Python interface to Tcl/Tk
+brew "python-tk@3.10"
+# Python interface to Tcl/Tk
+brew "python-tk@3.12"
+# Generic machine emulator and virtualizer
 brew "qemu"
+# File browser
 brew "ranger"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Safe, concurrent, practical language
 brew "rust"
+# Intuitive find & replace CLI
 brew "sd"
+# 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Create beautiful image of your source code
 brew "silicon"
+# Simple tool to count source lines of code
 brew "sloc"
+# Cross-shell prompt for astronauts
 brew "starship"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Terminal user interface for taskwarrior
 brew "taskwarrior-tui"
+# Color-based alternative to figlet (uses libcaca)
 brew "toilet"
+# Ncurses-based klondike solitaire game
 brew "tty-solitaire"
+# Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Executes a program periodically, showing output fullscreen
 brew "watch"
+# Internet file retriever
 brew "wget"
+# Friendly and fast tool for sending HTTP requests
 brew "xh"
+# Linter for YAML files
 brew "yamllint"
+# Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
+# Programming language designed for robustness, optimality, and clarity
 brew "zig"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
 
 # Casks
+# Git in your tmux status bar.
+brew "arl/arl/gitmux"
+# Better dotenv–from the creator of `dotenv`
+brew "dotenvx/brew/dotenvx"
+# Simple cli to manage Flutter SDK versions per project
+brew "leoafarias/fvm/fvm"
+# A rich git commit graph in your terminal, like magic
+brew "lusingander/tap/serie"
+# Tools for building Android applications
 cask "android-studio"
+# E-books management software
 cask "calibre"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Free and open-source image editor
 cask "gimp"
+# Git client for simultaneous branches on top of your existing workflow
 cask "gitbutler"
+# Open Source Multimedia Framework
 cask "gstreamer-runtime"
+# Adds an OpenGL renderer to the ZDoom source port
 cask "gzdoom"
+# Vector graphics editor
 cask "inkscape"
+# Keyboard customiser
 cask "karabiner-elements"
+# GPU-based terminal emulator
 cask "kitty"
+# Application launcher
 cask "leader-key"
+# 2D game framework for Lua
 cask "love"
+# Programmable solid 3D CAD modeller
 cask "openscad"
+# Keyboard-driven, vim-like browser based on PyQt5
 cask "qutebrowser"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Instant messaging application focusing on security
 cask "signal"
+# Run commands and display their output on the desktop
 cask "ubersicht"
+# Virtual machines UI using QEMU
 cask "utm"
+# Native desktop client for WhatsApp
 cask "whatsapp"
