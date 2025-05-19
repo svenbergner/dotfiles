@@ -195,5 +195,3 @@ if [[ -f /opt/homebrew/opt/asdf/libexec/asdf.sh ]] then
 fi
 
 eval $(starship completions zsh)
-
-export HOMEBREW_BUNDLE_FILE=~/.config/Brewfile

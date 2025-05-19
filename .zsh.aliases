@@ -38,7 +38,10 @@ alias undolastcommit='git reset --soft HEAD~'
 alias lg='lazygit'
 alias gwl='git worktree list'
 
-# Homebrew aliases
+# Homebrew aliases, functions, and environment variables
+export HOMEBREW_BUNDLE_FILE=~/.config/Brewfile
+export HOMEBREW_BUNDLE_DUMP_DESCRIBE=1
+export HOMEBREW_BUNDLE_INSTALL_CLEANUP=1
 function bb() {
         echo "Running brew bundle..."
         if brew bundle -q; then
