@@ -16,5 +16,4 @@ brew_packages.txt
 \.stowrc
 \.stow-local-ignore
 \.luarc.json
-\.gitmux.conf
 
