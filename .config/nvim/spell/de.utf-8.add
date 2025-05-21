@@ -492,3 +492,6 @@ readonly
 LocalExport
 SteuerBerater
 copySteuerBerater
+sed
+SIGPIPE
+FaListe
