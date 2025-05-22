@@ -1,14 +1,14 @@
 --[===[
 Collection of plugins that are fun to use
-1. URL: https://github.com/eandrju/cellular-automaton.nvim
-2. URL: https://github.com/tamton-aquib/duck.nvim
-3. URL: https://github.com/AndrewRadev/typewriter.vim
-4. URL: https://github.com/rhysd/vim-syntax-christmas-tree
-5. URL: https://github.com/AndrewRadev/dealwithit.vim
-6. URL: https://github.com/folke/drop.nvim
-7. URL: https://github.com/ThePrimeagen/vim-be-good
-8. URL: https://github.com/ThePrimeagen/vim-guys
-9. URL: https://github.com/vuciv/golf
+01. URL: https://github.com/eandrju/cellular-automaton.nvim
+02. URL: https://github.com/tamton-aquib/duck.nvim
+03. URL: https://github.com/AndrewRadev/typewriter.vim
+04. URL: https://github.com/rhysd/vim-syntax-christmas-tree
+05. URL: https://github.com/AndrewRadev/dealwithit.vim
+06. URL: https://github.com/folke/drop.nvim
+07. URL: https://github.com/ThePrimeagen/vim-be-good
+08. URL: https://github.com/ThePrimeagen/vim-guys
+09. URL: https://github.com/vuciv/golf
 --]===]
 
 return {
@@ -32,5 +32,5 @@ return {
    -- { "ThePrimeagen/vim-be-good", }
    { "ThePrimeagen/vim-guys", },
    { "svenbergner/sudokusolver.nvim", enabled = true, dev = true },
-   { 'vuciv/golf' }
+   { 'vuciv/golf' },
 }
