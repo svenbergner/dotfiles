@@ -30,6 +30,7 @@ M.setup_layout = function(wezterm)
     M.addTab(window, home_dir .. '/Repos/webhook-builds', 'Build-Pipelines', 'nvim\n')
     M.addTab(window, home_dir .. '/Repos/Content/StP/30', 'Content StP', 'nvim\n')
     M.addTab(window, home_dir .. '/Repos/SSE/Tools', 'Tools', 'nvim\n')
+    M.addTab(window, home_dir .. '/Repos/DevTools', 'DevTools', 'nvim\n')
 
     activatedTab:activate()
     window:gui_window():maximize()
