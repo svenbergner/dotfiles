@@ -27,12 +27,11 @@ return {
    event = "InsertEnter",
    -- optional: provides snippets for the snippet source
    dependencies = {
-      'Kaiser-Yang/blink-cmp-avante',             -- avante.cmp source for fuzzy matching
-      'rafamadriz/friendly-snippets',             -- snippets for the snippet source
-      'moyiz/blink-emoji.nvim',                   -- blink.cmp source for emojis.
-      'MahanRahmati/blink-nerdfont.nvim',         -- blink.cmp source for nerd fonts.
-      'bydlw98/blink-cmp-env',                    -- blink.cmp source for environment variables.
-      'disrupted/blink-cmp-conventional-commits', -- blink.cmp source for conventional commits.
+      'Kaiser-Yang/blink-cmp-avante',     -- avante.cmp source for fuzzy matching
+      'rafamadriz/friendly-snippets',     -- snippets for the snippet source
+      'moyiz/blink-emoji.nvim',           -- blink.cmp source for emojis.
+      'MahanRahmati/blink-nerdfont.nvim', -- blink.cmp source for nerd fonts.
+      'bydlw98/blink-cmp-env',            -- blink.cmp source for environment variables.
       'echasnovski/mini.snippets',
       { 'L3MON4D3/LuaSnip', version = '2.*' },
    },
@@ -176,7 +175,7 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-         default = { 'avante', 'lsp', 'path', 'snippets', 'buffer', 'omni', 'cmdline', 'emoji', 'nerdfont', 'env', 'conventional_commits', },
+         default = { 'avante', 'lsp', 'path', 'snippets', 'buffer', 'omni', 'cmdline', 'emoji', 'nerdfont', 'env', },
          providers = {
             avante = {
                module = 'blink-cmp-avante',
@@ -213,16 +212,6 @@ return {
                   show_braces = false,
                   show_documentation_window = true,
                },
-            },
-            conventional_commits = {
-               name = 'Conventional Commits',
-               module = 'blink-cmp-conventional-commits',
-               enabled = function()
-                  return vim.bo.filetype == 'gitcommit'
-               end,
-               ---@module 'blink-cmp-conventional-commits'
-               ---@type blink-cmp-conventional-commits.Options
-               opts = {},      -- none so far
             },
          },
       },
