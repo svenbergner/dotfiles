@@ -9,6 +9,16 @@
       ],
       "description": "Standard lua module snippet"
    },
+   "lua class template": {
+      "prefix": "luaclass",
+      "body": [
+         "",
+         "",
+         "",
+         ""
+      ],
+      "description": "Standard lua class snippet"
+   },
    "Neovim Module template": {
       "prefix": "newmodule",
       "body": [
