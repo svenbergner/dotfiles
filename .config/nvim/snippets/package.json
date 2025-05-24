@@ -3,6 +3,10 @@
    "contributes": {
       "snippets": [
          {
+            "language": "all",
+            "path": "./all.json"
+         },
+         {
             "language": "cpp",
             "path": "./cpp.json"
          },
@@ -17,6 +21,10 @@
          {
             "language": "lua",
             "path": "./lua.json"
+         },
+         {
+            "language": [ "markdown", "vimwiki" ],
+            "path": "./markdown.json"
          }
       ]
    }

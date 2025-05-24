@@ -1,0 +1,57 @@
+{
+   "Developer Log Entry": {
+      "prefix": "devlog",
+      "body": [
+         "# Datum: $CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR",
+         "- ",
+         "",
+         "## Woran habe ich gearbeitet:",
+         "- ",
+         "",
+         "## Blocker oder WTF Momente:",
+         "- ",
+         "",
+         "## Lösungen und/oder Erkenntnisse:",
+         "- ",
+         "",
+         "## Code Snippets:",
+         "- ",
+         "",
+         "## Stimmung:",
+         "- ",
+         ""
+      ],
+      "description": "A developer log entry template for markdown/vimwiki."
+   },
+   "Link to current file": {
+      "prefix": "link",
+      "body": [
+         "[${1:link text}](${2:link target})"
+      ],
+      "description": "Insert a link to the current file."
+   },
+   "Paste clipboard as .md link": {
+      "prefix": "linkclip",
+      "body": [
+         "[${1:link text}]($CLIPBOARD)"
+      ],
+      "description": "Paste clipboard contents in link section, move cursor to ()"
+   },
+   "Add TODO: item": {
+      "prefix": "todo",
+      "body": [
+         "<!-- TODO: ${1: todo text} -->"
+      ],
+      "description": "Add TODO: item"
+   },
+   "Code Block Snippet": {
+      "prefix": "codeblock",
+      "body": [
+         "```${1|txt,lua,sql,go,regex,bash,markdown,markdown_inline,yaml,json,jsonc,cpp,csv,java,javascript,python,dockerfile,html,css|}",
+         "${2}",
+         "```"
+      ],
+      "description": ""
+   }
+}
+
