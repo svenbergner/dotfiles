@@ -33,9 +33,6 @@ return {
          return vim.fn.getreg("+")
       end
 
-      -- #####################################################################
-      --                            Markdown
-      -- #####################################################################
 
       -- Helper function to create code block snippets
       local function create_code_block_snippet(lang)
@@ -78,89 +75,6 @@ return {
          table.insert(markdown_snippets, create_code_block_snippet(lang))
       end
 
-      table.insert(
-         markdown_snippets,
-         s({
-            trig = "link",
-            name = "Add this -> []()",
-         }, {
-            t("["),
-            i(1),
-            t("]("),
-            i(2),
-            t(")"),
-         })
-      )
-
-      table.insert(
-         markdown_snippets,
-         s({
-            trig = "linkt",
-            name = 'Add this -> [](){:target="_blank"}',
-         }, {
-            t("["),
-            i(1),
-            t("]("),
-            i(2),
-            t('){:target="_blank"}'),
-         })
-      )
-
-      table.insert(
-         markdown_snippets,
-         s({
-            trig = "todo",
-            name = "Add TODO: item",
-         }, {
-            t("<!-- TODO: "),
-            i(1),
-            t(" -->"),
-         })
-      )
-
-      -- Paste clipboard contents in link section, move cursor to ()
-      table.insert(
-         markdown_snippets,
-         s({
-            trig = "linkclip",
-            name = "Paste clipboard as .md link",
-         }, {
-            t("["),
-            i(1),
-            t("]("),
-            f(clipboard, {}),
-            t(")"),
-         })
-      )
-
-      -- Developer log snippet
-      table.insert(
-         markdown_snippets,
-         s({
-            trig = "devlog",
-            name = "Developer Log Entry",
-         }, {
-            t({"# Datum: "}),
-            t({os.date("%d.%m.%Y")}),
-            t({"",""}),
-            t({"","## Woran habe ich gearbeitet:"}),
-            t({"","- "}),
-            t({"",""}),
-            t({"","## Blocker oder WTF Momente:"}),
-            t({"","- "}),
-            t({"",""}),
-            t({"","## Lösungen und/oder Erkenntnisse:"}),
-            t({"","- "}),
-            t({"",""}),
-            t({"","## Code Snippets:"}),
-            t({"","- "}),
-            t({"",""}),
-            t({"","## Stimmung:"}),
-            t({"","- "}),
-            t({"",""}),
-         })
-      )
-      ls.add_snippets("markdown", markdown_snippets)
 
       -- #####################################################################
       --                         all the filetypes
