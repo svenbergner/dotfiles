@@ -1,6 +1,9 @@
 --[===[
 These are custom snippets created using LuaSnip
 
+URL: https://github.com/L3MON4D3/LuaSnip
+
+I have added a few snippets for markdown files, including code blocks and links.
 I took the idea from this video:
 URL: https://youtu.be/FmHhonPjvvA?si=8NrcRWu4GGdmTzee
 --]===]
@@ -130,6 +133,33 @@ return {
          })
       )
 
+      -- Developer log snippet
+      table.insert(
+         markdown_snippets,
+         s({
+            trig = "devlog",
+            name = "Developer Log Entry",
+         }, {
+            t({"# Datum: "}),
+            t({os.date("%d.%m.%Y")}),
+            t({"",""}),
+            t({"","## Woran habe ich gearbeitet:"}),
+            t({"","- "}),
+            t({"",""}),
+            t({"","## Blocker oder WTF Momente:"}),
+            t({"","- "}),
+            t({"",""}),
+            t({"","## Lösungen und/oder Erkenntnisse:"}),
+            t({"","- "}),
+            t({"",""}),
+            t({"","## Code Snippets:"}),
+            t({"","- "}),
+            t({"",""}),
+            t({"","## Stimmung:"}),
+            t({"","- "}),
+            t({"",""}),
+         })
+      )
       ls.add_snippets("markdown", markdown_snippets)
 
       -- #####################################################################
