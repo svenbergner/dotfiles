@@ -52,6 +52,7 @@ function bb() {
         fi
 } 
 alias bd='brew doctor'
+alias bi='brew info'
 alias bba='brew bundle add'
 alias bbc='brew bundle cleanup'
 alias bbe='brew bundle edit'
