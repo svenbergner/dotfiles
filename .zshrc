@@ -33,6 +33,11 @@ zinit wait lucid light-mode for \
 
 zinit snippet OMZP::common-aliases
 
+# Show vi mode in prompt
+# https://github.com/jeffreytse/zsh-vi-mode
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
 if [[ "$OSTYPE" == "darwin".* ]] then
 #    plugins+=(brew)
   zinit snippet OMZP::brew
