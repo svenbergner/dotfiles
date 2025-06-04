@@ -170,6 +170,7 @@ return {
       { "<leader>fb", function() Snacks.picker.buffers() end,            desc = "[f]ind [b]uffers" },
       { "<leader>fB", function() Snacks.picker.grep_buffers() end,       desc = "[f]ind [g]rep in open buffers" },
       { "<leader>fc", function() Snacks.picker.files(config_path) end,   desc = "[f]ind [c]onfig files" },
+      { "<leader>fC", function() Snacks.picker.colorschemes() end,       desc = "[f]ind [C]olorschemes" },
       { "<leader>fd", function() Snacks.picker.diagnostics() end,        desc = "[f]ind [d]iagnostics" },
       { '<leader>fD', function() Snacks.picker.diagnostics_buffer() end, desc = '[f]ind all [d]iagnostics of git repo', },
       { "<leader>fe", function() Snacks.picker.explorer() end,           desc = "[f]ind [e]xplorer" },
