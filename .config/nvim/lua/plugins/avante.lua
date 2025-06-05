@@ -13,10 +13,21 @@ return {
    version = false, -- Never set this value to "*"! Never!
    opts = {
       provider = "copilot",
-      copilot = {
-         model = 'claude-3.7-sonnet',
-         temperature = 0,
-         max_tokens = 8192,
+      providers = {
+         -- You can use multiple providers, but only one will be used at a time.
+         -- The first provider that is available will be used.
+         -- If you want to use multiple providers, you can set the `provider` option to a function that returns the provider name.
+         -- The function will be called with the current buffer and the current file type.
+         -- The function should return the provider name as a string.
+         copilot = {
+            model = 'claude-3.7-sonnet',
+            extra_request_body = {
+               -- You can add extra request body parameters here.
+               -- For example, you can add the `temperature` parameter to control the randomness of the response.
+               temperature = 0,
+               max_tokens = 8192,
+            },
+         },
       },
       auto_suggestions_provider = "copilot",
       behaviour = {
@@ -83,7 +94,7 @@ return {
             current = "DiffText",
             incoming = "DiffAdd",
             modified = "DiffChange", -- Neue Option
-            deleted = "DiffDelete", -- Neue Option
+            deleted = "DiffDelete",  -- Neue Option
          },
       },
       --- @class AvanteConflictUserConfig
