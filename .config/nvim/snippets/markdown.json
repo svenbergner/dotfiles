@@ -2,7 +2,8 @@
    "Developer Log Entry": {
       "prefix": "devlog",
       "body": [
-         "# Datum: $CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR",
+         "# Developer Log",
+         "## Datum: $CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR",
          "- ",
          "",
          "## Woran habe ich gearbeitet:",
