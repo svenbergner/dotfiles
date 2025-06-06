@@ -115,9 +115,12 @@ return {
          'call append(0,[ "# " . strftime("%d.%m.%Y"), "", "## Tagebuch", "", "","","## Die 3 schönsten Dinge des Tages","  1. ", "  2. ", "  3. ","", "## Erkenntnis des Tages", "" ])',
       })
 
-      vim.keymap.set("n", "<F3>",
+      vim.keymap.set("n", "<S-F3>",
          ':language de_DE.UTF-8<CR>i<C-R>=strftime("%A, %d.%m.%Y %H:%M")<CR><ESC>:language en_US.UTF-8<CR>',
          { desc = "Insert current date and time" })
-      vim.keymap.set("i", "<F3>", '<C-R>=strftime("%d.%m.%Y %H:%M")<CR>', { desc = "Insert current date and time" })
+      vim.keymap.set("i", "<S-F3>", '<C-R>=strftime("%d.%m.%Y %H:%M")<CR>', { desc = "Insert current date" })
+
+      vim.keymap.set("n", "<F3>", ':i<C-R>=strftime("%Y-%m-%d")<CR><ESC>', { desc = "Insert current date and time" })
+      vim.keymap.set("i", "<F3>", '<C-R>=strftime("%Y-%m-%d")<CR>', { desc = "Insert current date" })
    end
 }
