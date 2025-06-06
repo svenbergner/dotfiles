@@ -98,3 +98,7 @@ vim.opt.undodir = { prefix .. "nvim/" }
 vim.opt.undofile = true
 
 vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,localoptions"
+
+-- Number formats
+vim.opt.nrformats = "bin,hex,octal,alpha,unsigned,blank"
+
