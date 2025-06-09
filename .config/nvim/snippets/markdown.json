@@ -52,7 +52,24 @@
          "${2}",
          "```"
       ],
-      "description": ""
+      "description": "Insert a code block with language selection."
+   },
+   "Half Year Review": {
+      "prefix": "halfyearreview",
+      "body": [
+         "# Mein Rückblick vom $CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR",
+         "",
+         "- Dieser Wunsch ist seit meinem Geburtstag in Erfüllung gegangen:",
+         "",
+         "- Darauf freue ich mich in den nächsten 6 Monaten:",
+         "",
+         "- Das habe ich im letzten halben Jahr gelernt:",
+         "",
+         "- Das hat mich im neuen Lebensjahr verändert:",
+         "",
+         "- Das war für mich vor 6 Monaten noch ganz anders als heute:",
+         "",
+      ],
+      "description": "A half-year review template for markdown/vimwiki."
    }
 }
-
