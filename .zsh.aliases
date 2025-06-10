@@ -1,12 +1,12 @@
 alias v='nvim'
 
 # Edit configuration aliases
-alias zshrc="nvim ~/.zshrc"
-alias zshaliases="nvim ~/.zsh.aliases"
-alias zshfunctions="nvim ~/.zsh.functions"
-alias zshlocal="nvim ~/.zsh.local"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias vimrc="nvim ~/.config/nvim/"
+alias zshrc="nvim ~/.zshrc && source ~/.zshrc"
+alias zshaliases="nvim ~/.zsh.aliases && source ~/.zsh.aliases"
+alias zshfunctions="nvim ~/.zsh.functions && source ~/.zsh.functions"
+alias zshlocal="nvim ~/.zsh.local && source ~/.zsh.local"
+alias starship="nvim ~/.config/starship.toml && source ~/.config/starship.toml"
+alias vimrc="pushd ~/.config/nvim && nvim && popd"
 
 alias bat="bat --theme gruvbox-dark"
 alias o="bat"
@@ -51,6 +51,7 @@ function bb() {
             echo "Brew bundle failed. Cleanup skipped."
         fi
 } 
+alias ba='alias|brew'
 alias bd='brew doctor'
 alias bi='brew info'
 alias bba='brew bundle add'
