@@ -200,6 +200,11 @@ return {
                name = "Nerd Fonts",
                score_offset = 15,        -- Tune by preference
                opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+               should_show_items = function()
+                  -- Enable emoji completion only for git commits and markdown.
+                  -- By default, enabled for all file-types.
+                  return vim.tbl_contains({ "gitcommit", "markdown", "vimwiki" }, vim.o.filetype)
+               end,
             },
             env = {
                name = "Env",
