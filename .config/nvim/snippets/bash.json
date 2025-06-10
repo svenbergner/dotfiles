@@ -2,10 +2,10 @@
     "bash template": {
         "prefix": "shebang",
         "body": [
-            "int main(${1|void,int argc\\, char *argv[]|}) {",
-            "    $0",
-            "    return 0;",
-            "}"
+            "#!/usr/bin/env bash",
+            "",
+            "$0",
+            ""
         ],
         "description": "Standard bash shebang snippet"
     }
