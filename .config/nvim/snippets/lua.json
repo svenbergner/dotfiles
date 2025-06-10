@@ -10,12 +10,21 @@
       "description": "Standard lua module snippet"
    },
    "lua class template": {
-      "prefix": "luaclass",
+      "prefix": "class",
       "body": [
+         "$1 = {}",
+         "$1.__index = $1",
          "",
+         "function $1:new()",
+         "    local instance = setmetatable({}, $1)",
+         "    return instance",
+         "end",
          "",
+         "function $1:$2()",
+         "    $0",
+         "end",
          "",
-         ""
+         "return $1"
       ],
       "description": "Standard lua class snippet"
    },
