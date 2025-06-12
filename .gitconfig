@@ -1,0 +1,32 @@
+[init]
+	defaultBranch = main
+[user]
+	name = Sven Bergner
+[push]
+        default = simple
+	autoSetupRemote = true
+        followTags = true
+[pull]
+        rebase = true
+[rerere]
+	enabled = true
+	autoUpdate = true
+[column]
+        ui = auto 
+[branch]
+        sort = -committerdate
+[tag]
+        sort = version:refname
+[diff]
+        algorithm = histogram
+        colorMoved = plain
+        menomicPrefix = true
+        renames = true
+[help]
+        autoCorrect = prompt
+[rebase]
+        autoStash = true
+        autoSquash = true
+        updateRefs = true
+[alias]
+	loglog = log --oneline --graph --all
