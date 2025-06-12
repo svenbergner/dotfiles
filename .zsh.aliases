@@ -5,7 +5,7 @@ alias zshrc="nvim ~/.zshrc && source ~/.zshrc"
 alias zshaliases="nvim ~/.zsh.aliases && source ~/.zsh.aliases"
 alias zshfunctions="nvim ~/.zsh.functions && source ~/.zsh.functions"
 alias zshlocal="nvim ~/.zsh.local && source ~/.zsh.local"
-alias starship="nvim ~/.config/starship.toml && source ~/.config/starship.toml"
+alias starshiprc="nvim ~/.config/starship.toml && source ~/.config/starship.toml"
 alias vimrc="pushd ~/.config/nvim && nvim && popd"
 
 alias bat="bat --theme gruvbox-dark"
