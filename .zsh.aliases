@@ -44,16 +44,16 @@ export HOMEBREW_BUNDLE_DUMP_DESCRIBE=1
 export HOMEBREW_BUNDLE_INSTALL_CLEANUP=1
 export HOMEBREW_NO_ENV_HINTS=1
 function ba() {
-        figlet -w 53 -c HomeBrew Aliases
-        echo "     ba:  List all brew aliases"
-        echo "     bb:  Run brew bundle with cleanup"
-        echo "     bd:  Run brew doctor"
-        echo "     bi:  Show info about a brew package"
-        echo "     bba: Add a package to the Brewfile"
-        echo "     bbc: Cleanup Brewfile packages"
-        echo "     bbe: Edit the Brewfile"
-        echo "     bbl: List all packages in the Brewfile"
-        echo "     bbr: Remove a package from the Brewfile"
+        figlet -w 53 -c HomeBrew Aliases | boxes -d peek
+        echo "         ba:  List all brew aliases"
+        echo "         bb:  Run brew bundle with cleanup"
+        echo "         bd:  Run brew doctor"
+        echo "         bi:  Show info about a brew package"
+        echo "         bba: Add a package to the Brewfile"
+        echo "         bbc: Cleanup Brewfile packages"
+        echo "         bbe: Edit the Brewfile"
+        echo "         bbl: List all packages in the Brewfile"
+        echo "         bbr: Remove a package from the Brewfile"
 }
 function bb() {
         echo "Running brew bundle..."
