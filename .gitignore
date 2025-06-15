@@ -2,3 +2,4 @@
 .config/nvim/.undo
 .config/lazygit/state.yml
 .zsh.local
+Library/Application Support/nushell/history.txt
