@@ -190,6 +190,7 @@ return {
 
       vim.diagnostic.config({
          severity_sort = true,
+         update_in_insert = false,
          float = { border = 'rounded', source = true },
          underline = { severity = vim.diagnostic.severity.ERROR },
          signs = {
