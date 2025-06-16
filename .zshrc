@@ -33,6 +33,11 @@ zinit wait lucid light-mode for \
 
 zinit snippet OMZP::common-aliases
 
+# zsh-fzf-history-search
+zinit ice lucid wait'0'
+zinit light joshskidmore/zsh-fzf-history-search
+ZSH_FZF_HISTORY_SEARCH_REMOVE_DUPLICATES=1
+
 # Show vi mode in prompt
 # https://github.com/jeffreytse/zsh-vi-mode
 zinit ice depth=1
