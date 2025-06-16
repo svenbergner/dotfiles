@@ -1,18 +1,17 @@
 alias v='nvim'
 
-# Edit configuration aliases
-alias zshrc="nvim ~/.zshrc && source ~/.zshrc"
-alias zshaliases="nvim ~/.zsh.aliases && source ~/.zsh.aliases"
-alias zshfunctions="nvim ~/.zsh.functions && source ~/.zsh.functions"
-alias zshlocal="nvim ~/.zsh.local && source ~/.zsh.local"
-alias starshiprc="nvim ~/.config/starship.toml && source ~/.config/starship.toml"
-alias vimrc="pushd ~/.config/nvim && nvim && popd"
-
 alias bat="bat --theme gruvbox-dark"
 alias o="bat"
 
 alias showPID='(){ps aux | grep -i $1 | grep -v grep | cut -f7 -d " " ;}'
 
+# Edit configuration aliases
+alias zshrc="pushd ~/Repos/dotfiles && nvim .zshrc && source .zshrc && popd"
+alias zshaliases="pushd ~/Repos/dotfiles && nvim .zsh.aliases && source .zsh.aliases && popd"
+alias zshfunctions="pushd ~/Repos/dotfiles && nvim .zsh.functions && source .zsh.functions && popd"
+alias zshlocal="nvim ~/.zsh.local && source ~/.zsh.local"
+alias starshiprc="pushd ~/Repos/dotfiles && nvim .config/starship.toml && popd"
+alias nvimrc="pushd ~/.config/nvim && nvim && popd"
 
 # ls aliases based on eza
 alias ls='eza --color=always --icons=always --git'
