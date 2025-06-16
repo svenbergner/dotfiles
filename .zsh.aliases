@@ -31,7 +31,7 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
 # git aliases
-alias cbr='git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff {1} --color=always" --pointer="" | xargs git checkout'
+alias cbr='git branch --sort=-committerdate --list --column=never | grep -v ^+ | fzf --header "Checkout Recent Branch" --pointer="󰁔" --preview "git diff --color=always {1}" | xargs git checkout'
 # gulc -- git undo last commit but preserve the changes
 alias gulc="git reset --soft HEAD~"
 alias undolastcommit='git reset --soft HEAD~'
