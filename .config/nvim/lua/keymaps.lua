@@ -62,3 +62,6 @@ vim.keymap.set('v', 'K', ":m '>-2<CR>gv=gv", { desc = 'Move the selection one li
 -- Spelling
 vim.keymap.set('n', 'gs', ']s', { desc = 'Next misspelled word' })
 
+-- Add empty lines before and after cursor line
+vim.keymap.set('n', 'gO', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>")
+vim.keymap.set('n', 'go', "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>")
