@@ -20,10 +20,12 @@ URL: https://githhub.com/svenbergner/dotfiles
 URL: https://neovim.io/doc/user/lua.html 
 --]=====]
 
+require('mason-path')
+require('lsp-config')
 require("globals")
 require("options")
 require("keymaps")
-require("keymaps_markdown")
+require("keymaps-markdown")
 require("autocmds")
 require("usercmds")
 
