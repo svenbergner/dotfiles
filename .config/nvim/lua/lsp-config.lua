@@ -101,7 +101,7 @@ vim.keymap.set('n', '<F18>', function() vim.diagnostic.jump({ count = -1, float 
    { desc = "Go to previous diagnostic message" })
 
 nmap('<F2>', vim.lsp.buf.rename, 'Rename <F2>')
-nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+nmap('K', function() vim.lsp.buf.hover{ border='rounded' } end, 'Hover Documentation')
 nmap('<C-S-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 nmap('<leader>Wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
 nmap('<leader>Wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
