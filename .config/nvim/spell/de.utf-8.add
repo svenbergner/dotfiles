@@ -514,3 +514,11 @@ popd
 pushd
 󰁔
 WhoIsSethDaniel
+HFS
+configs
+bashls
+pylsp
+pylint
+flake8
+mccabe
+pyflakes
