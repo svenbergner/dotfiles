@@ -1,3 +1,6 @@
+-- Language Server Protocol configuration for pylsp
+-- URL: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#pylsp
+
 return {
    cmd = { "pylsp" },
    filetypes = { "python" },
@@ -12,10 +15,10 @@ return {
                },
                maxLineLength = 120,
             },
-            pylint = { enabled = true },
-            flake8 = { enabled = true },
-            mccabe = { enabled = true },
-            pyflakes = { enabled = true },
+            -- pylint = { enabled = true },
+            -- flake8 = { enabled = true },
+            -- mccabe = { enabled = true },
+            -- pyflakes = { enabled = true },
          },
       },
    },
