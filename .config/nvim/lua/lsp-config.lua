@@ -1,15 +1,13 @@
 vim.lsp.enable({
-   -- 'bashls',
+   -- 'azure_pipelines_ls',
+   'bashls',
    'clangd',
-   'cssls',
    'cmake',
-   'dockerls',
    'jsonls',
-   'marksman',
    'lua_ls',
+   'marksman',
    'pylsp',
-   'pyright',
-   'yamlls',
+   -- 'yamlls',
 })
 
 -- LSP servers are automatically managed by Mason
