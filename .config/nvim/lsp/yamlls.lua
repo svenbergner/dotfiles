@@ -9,6 +9,10 @@ vim.lsp.config('yamlls', {
             ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
             ["../path/relative/to/file.yml"] = "/.github/workflows/*",
             ["/path/from/root/of/project"] = "/.github/workflows/*",
+            ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
+               "*.yml",
+               "*.yaml",
+            },
          },
       },
    }
