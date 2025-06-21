@@ -56,14 +56,6 @@ local imap = function(keys, func, desc, bufnr)
    end
    vim.keymap.set('i', keys, func, { buffer = bufnr, desc = desc })
 end
-local is_clangd = function(bufnr)
-   for _, client in pairs(vim.lsp.get_clients { bufnr = bufnr }) do
-      if client.name == "clangd" then
-         return true
-      end
-      return false
-   end
-end
 
 local sw = '<cmd>LspClangdSwitchSourceHeader<CR>'
 nmap('<F4>', sw, 'F4 - switch source/header')
