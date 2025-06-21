@@ -30,12 +30,18 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
 # git aliases
+# cbr - Checkout Recent Branch
 alias cbr='git branch --sort=-committerdate --list --column=never | grep -v ^+ | fzf --header "Checkout Recent Branch" --pointer="󰁔" --preview "git diff --color=always {1}" | xargs git checkout'
 # gulc -- git undo last commit but preserve the changes
 alias gulc="git reset --soft HEAD~"
 alias undolastcommit='git reset --soft HEAD~'
 alias lg='lazygit'
 alias gwl='git worktree list'
+# gitcc - Git Commit CouNT - Show number of commits in repository
+alias gitcc='git rev-list --count HEAD'
+# gitcca - Git Commit CouNT ALL - Show number of commits across all branches
+alias gitcca='git rev-list --all --count'
+
 
 # Homebrew aliases, functions, and environment variables
 export HOMEBREW_BUNDLE_FILE=~/.config/Brewfile
