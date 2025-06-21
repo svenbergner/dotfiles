@@ -246,3 +246,4 @@ cask "utm"
 # Native desktop client for WhatsApp
 cask "whatsapp"
 brew "7zip"
+brew "tree"
