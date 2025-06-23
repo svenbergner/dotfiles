@@ -42,26 +42,12 @@ vim.diagnostic.config({
    },
 })
 
--- Helper function to set up LSP servers
-local nmap = function(keys, func, desc, bufnr)
-   if desc then
-      desc = 'LSP: ' .. desc
-   end
-   vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-end
-local imap = function(keys, func, desc, bufnr)
-   if desc then
-      desc = 'LSP: ' .. desc
-   end
-   vim.keymap.set('i', keys, func, { buffer = bufnr, desc = desc })
-end
-
 local sw = '<cmd>LspClangdSwitchSourceHeader<CR>'
-nmap('<F4>', sw, 'F4 - switch source/header')
-nmap('<A-o>', sw, 'Alt + o - switch source/header')
-nmap('<M-o>', sw, 'Meta + o - switch source/header')
-imap('<A-o>', sw, 'Alt + o - switch source/header')
-imap('<M-o>', sw, 'Meta + o - switch source/header')
+vim.keymap.set('n', '<F4>', sw, { desc = 'LSP: F4 - switch source/header' })
+vim.keymap.set('n', '<A-o>', sw, { desc = 'LSP: Alt + o - switch source/header' })
+vim.keymap.set('n', '<M-o>', sw, { desc = 'LSP: Meta + o - switch source/header' })
+vim.keymap.set('i', '<A-o>', sw, { desc = 'LSP: Alt + o - switch source/header' })
+vim.keymap.set('i', '<M-o>', sw, { desc = 'LSP: Meta + o - switch source/header' })
 
 -- Options for LSP
 vim.lsp.set_log_level("OFF") -- Set log level to OFF to disable logging
@@ -89,21 +75,21 @@ end, { desc = "Go to previous diagnostic message" })
 vim.keymap.set('n', '<F18>', function() vim.diagnostic.jump({ count = -1, float = true }) end,
    { desc = "Go to previous diagnostic message" })
 
-nmap('<F2>', vim.lsp.buf.rename, 'Rename <F2>')
-nmap('K', function() vim.lsp.buf.hover{ border='rounded' } end, 'Hover Documentation')
-nmap('<C-S-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-nmap('<leader>Wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-nmap('<leader>Wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-nmap('<leader>Wl', function()
+vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, { desc = 'LSP: Rename <F2>' })
+vim.keymap.set('n', 'K', function() vim.lsp.buf.hover { border = 'rounded' } end, { desc = 'LSP: Hover Documentation' })
+vim.keymap.set('n', '<C-S-k>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature Documentation' })
+vim.keymap.set('n', '<leader>Wa', vim.lsp.buf.add_workspace_folder, { desc = 'LSP: [W]orkspace [A]dd Folder' })
+vim.keymap.set('n', '<leader>Wr', vim.lsp.buf.remove_workspace_folder, { desc = 'LSP: [W]orkspace [R]emove Folder' })
+vim.keymap.set('n', '<leader>Wl', function()
    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-end, '[W]orkspace [L]ist Folders')
+end, { desc = 'LSP: [W]orkspace [L]ist Folders' })
 
 vim.api.nvim_buf_create_user_command(0, 'Format', function(_)
    vim.lsp.buf.format()
 end, { desc = 'Format current buffer with LSP' })
-nmap('<S-F7>', '<cmd>ConfigureCMakeBuild<CR>', 'Run cmake configure')
-nmap('<F19>', '<cmd>ConfigureCMakeBuild<CR>', 'Run cmake configure')
-nmap('<F7>', '<cmd>RunCMakeBuild<CR>', 'Run cmake build')
+vim.keymap.set('n', '<S-F7>', '<cmd>ConfigureCMakeBuild<CR>', { desc = 'LSP: Run cmake configure' })
+vim.keymap.set('n', '<F19>', '<cmd>ConfigureCMakeBuild<CR>', { desc = 'LSP: Run cmake configure' })
+vim.keymap.set('n', '<F7>', '<cmd>RunCMakeBuild<CR>', { desc = 'LSP: Run cmake build' })
 
 -- Extras
 
@@ -139,7 +125,8 @@ local function lsp_status()
    for i, client in ipairs(clients) do
       print(string.format("󰌘 Client %d: %s (ID: %d)", i, client.name, client.id))
       print("  Root: " .. (client.config.root_dir or "N/A"))
-      print("  Filetypes: " .. table.concat(client.config.filetypes or {}, ", "))
+---@diagnostic disable-next-line: undefined-field
+      print("  Filetypes: " .. table.concat(client.config.filetypes or {}))
 
       -- Check capabilities
       local caps = client.server_capabilities
@@ -267,7 +254,9 @@ local function lsp_info()
       print(string.format("󰌘 Client %d: %s", i, client.name))
       print("  ID: " .. client.id)
       print("  Root dir: " .. (client.config.root_dir or "Not set"))
+---@diagnostic disable-next-line: param-type-mismatch
       print("  Command: " .. table.concat(client.config.cmd or {}, " "))
+---@diagnostic disable-next-line: undefined-field
       print("  Filetypes: " .. table.concat(client.config.filetypes or {}, ", "))
 
       -- Server status
