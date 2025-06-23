@@ -1,6 +1,7 @@
 # Taps
 tap "arl/arl"
 tap "dotenvx/brew"
+tap "hashicorp/tap"
 tap "leoafarias/fvm"
 tap "lusingander/tap"
 
@@ -90,6 +91,10 @@ brew "go"
 brew "gping"
 # Tool for glamorous shell scripts
 brew "gum"
+# Packer lets you create identical machine images for multiple platforms from a single source configuration.
+brew "hashicorp/tap/packer"
+# Terraform: Define cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share.
+brew "hashicorp/tap/terraform"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Add GitHub support to git on the command-line
