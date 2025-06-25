@@ -161,7 +161,7 @@ return {
       { "<leader>n",  function() Snacks.notifier.show_history() end,     desc = "Notification History" },
       { "<leader>bd", function() Snacks.bufdelete() end,                 desc = "Delete Buffer" },
       { "<leader>:",  function() Snacks.picker.command_history() end,    desc = "[p] Show command history" },
-      { "<leader>q",  function() Snacks.notifier.hide() end,             desc = "quit all notifications" },
+      { "<leader>h",  function() Snacks.notifier.hide() end,             desc = "[h]ide all notifications" },
       { "<leader>zm", function() Snacks.zen(zen_opts) end,               desc = "Toggle [z]en [m]ode" },
       { "<leader>zz", function() Snacks.zen.zoom() end,                  desc = "[z]oom [z]en" },
       -- Picker
