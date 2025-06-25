@@ -211,10 +211,10 @@ local function lsp_diagnostics_info()
    end
 
    print("󰒡 Diagnostics for current buffer:")
-   print("  Errors: " .. counts.ERROR)
-   print("  Warnings: " .. counts.WARN)
-   print("  Info: " .. counts.INFO)
-   print("  Hints: " .. counts.HINT)
+   print("  󰅚 Errors: " .. counts.ERROR)
+   print("  󰀪 Warnings: " .. counts.WARN)
+   print("  󰋽 Info: " .. counts.INFO)
+   print("  󰌶 Hints: " .. counts.HINT)
    print("  Total: " .. #diagnostics)
 end
 
