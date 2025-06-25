@@ -59,7 +59,7 @@ vim.lsp.start {
       ["textDocument/signatureHelp"] = vim.lsp.buf.signature_help, { border = 'rounded' },
    } }
 
-vim.lsp.inlay_hint.enable(true) -- Enable inlay hints by default
+vim.lsp.inlay_hint.enable(true)
 
 -- Key mappings for LSP
 vim.keymap.set('n', '<F6>', function()
