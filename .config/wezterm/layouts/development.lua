@@ -31,6 +31,7 @@ M.setup_layout = function(wezterm)
     M.addTab(window, home_dir .. '/Repos/SSE/Tools', 'Tools', 'nvim\n')
     M.addTab(window, home_dir .. '/Repos/DevTools', 'DevTools', 'nvim\n')
     M.addTab(window, home_dir .. '/Repos/SetupSSE', 'SetupSSE', 'nvim\n')
+    M.addTab(window, home_dir .. '/Repos/BuildAgentIAC', 'BuildAgentIAC', 'nvim\n')
 
     activatedTab:activate()
     window:gui_window():maximize()
