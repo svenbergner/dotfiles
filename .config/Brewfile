@@ -49,8 +49,6 @@ brew "devcontainer"
 brew "direnv"
 # Tool for exploring each layer in a docker image
 brew "dive"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
 # DOSBox with accurate emulation and wide testing
 brew "dosbox-x"
 # Lightning-fast linter for .env files written in Rust
