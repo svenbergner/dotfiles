@@ -65,3 +65,7 @@ vim.keymap.set('n', 'gs', ']s', { desc = 'Next misspelled word' })
 -- Add empty lines before and after cursor line
 vim.keymap.set('n', 'gO', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>")
 vim.keymap.set('n', 'go', "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>")
+
+-- Toggle Diff Mode
+vim.keymap.set('n', '<leader>DT', ':windo diffthis<cr>', { desc = '[D]iff [T]his', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>DO', ':windo diffthis<cr>', { desc = '[D]iff [O]ff', noremap = true, silent = true })
