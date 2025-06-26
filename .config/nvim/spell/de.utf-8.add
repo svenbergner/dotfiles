@@ -535,3 +535,6 @@ gitcc
 commandline
 cmd
 doesn
+oneline
+arm64
+macx
