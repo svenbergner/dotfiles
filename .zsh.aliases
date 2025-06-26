@@ -41,7 +41,9 @@ alias gwl='git worktree list'
 alias gitcc='git rev-list --count HEAD'
 # gitcca - Git Commit CouNT ALL - Show number of commits across all branches
 alias gitcca='git rev-list --all --count'
+alias glog="git log --oneline --graph --decorate --all --color=always"
 
+alias dp='delta --dark --paging=always --line-numbers --features side-by-side --syntax-theme gruvbox-dark'
 
 # Homebrew aliases, functions, and environment variables
 export HOMEBREW_BUNDLE_FILE=~/.config/Brewfile
