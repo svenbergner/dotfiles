@@ -68,4 +68,4 @@ vim.keymap.set('n', 'go', "<Cmd>call append(line('.'),     repeat([''], v:count1
 
 -- Toggle Diff Mode
 vim.keymap.set('n', '<leader>DT', ':windo diffthis<cr>', { desc = '[D]iff [T]his', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>DO', ':windo diffthis<cr>', { desc = '[D]iff [O]ff', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>DO', ':windo diffoff<cr>', { desc = '[D]iff [O]ff', noremap = true, silent = true })
