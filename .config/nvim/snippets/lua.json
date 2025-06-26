@@ -28,6 +28,13 @@
       ],
       "description": "Standard lua class snippet"
    },
+   "Neovim keymap": {
+      "prefix": "keymap",
+      "body": [
+         "vim.keymap.set('$1', '$2', '$3', { desc = '$4', noremap = true, silent = true })"
+      ],
+      "description": "Standard lua module snippet"
+   },
    "Neovim Module template": {
       "prefix": "newmodule",
       "body": [
