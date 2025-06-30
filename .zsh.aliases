@@ -21,14 +21,6 @@ alias ll='ls -l'
 alias lt='ls --tree -l'
 alias cls='clear&&ls'
 
-# go up aliases
-alias .='pwd'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
-
 # git aliases
 # cbr - Checkout Recent Branch
 alias cbr='git branch --sort=-committerdate --list --column=never | grep -v ^+ | fzf --header "Checkout Recent Branch" --pointer="󰁔" --preview "git diff --color=always {1}" | xargs git checkout'
