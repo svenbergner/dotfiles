@@ -67,5 +67,14 @@ vim.keymap.set('n', 'gO', "<Cmd>call append(line('.') - 1, repeat([''], v:count1
 vim.keymap.set('n', 'go', "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>")
 
 -- Toggle Diff Mode
+local function toggle_diff_mode()
+  if vim.o.diff then
+    vim.cmd('windo diffoff')
+  else
+    vim.cmd('Neotree close')
+    vim.cmd('windo diffthis')
+  end
+end
+vim.keymap.set('n', '<leader>DD', function() toggle_diff_mode() end, { desc = 'Toggle [D]iff [D]iff', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>DT', ':Neotree close<CR>:windo diffthis<cr>', { desc = '[D]iff [T]his', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>DO', ':windo diffoff<cr>', { desc = '[D]iff [O]ff', noremap = true, silent = true })
