@@ -53,6 +53,14 @@ local function getRecordingMessage()
    return "recording @" .. reg
 end
 
+local function diffActive()
+   if vim.o.diff then
+      return "-- Diff --"
+   else
+      return ""
+   end
+end
+
 return {
    'nvim-lualine/lualine.nvim',
    config = function()
@@ -88,8 +96,8 @@ return {
                { getRecordingMessage, },
             },
             lualine_b = {
-               { 'branch' },
-               { 'diff' },
+               { 'branch', 'diff', 'diagnostics' },
+               { diffActive },
             },
             lualine_c = {
                symbols.get,
