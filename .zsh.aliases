@@ -67,7 +67,7 @@ alias bd='brew doctor'
 alias bi='brew info'
 alias bba='brew bundle add'
 alias bbc='brew bundle cleanup'
-alias bbe='brew bundle edit'
+alias bbe='pushd ~/Repos/dotfiles && brew bundle edit && popd'
 alias bbl='brew bundle list'
 alias bbr='brew bundle remove'
 
