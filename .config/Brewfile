@@ -1,12 +1,8 @@
-# Taps
 tap "arl/arl"
 tap "dotenvx/brew"
 tap "hashicorp/tap"
 tap "leoafarias/fvm"
 tap "lusingander/tap"
-
-# Brews
-brew "arl/arl/gitmux"
 # Record and share terminal sessions
 brew "asciinema"
 # Distributed revision control system
@@ -73,6 +69,8 @@ brew "figlet"
 brew "fish"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Interact with Google Gemini AI models from the command-line
+brew "gemini-cli"
 # GitHub command-line tool
 brew "gh"
 # Syntax-highlighting pager for git and diff output
@@ -87,12 +85,10 @@ brew "glow"
 brew "go"
 # Ping, but with a graph
 brew "gping"
+# GNU troff text-formatting system
+brew "groff"
 # Tool for glamorous shell scripts
 brew "gum"
-# Packer lets you create identical machine images for multiple platforms from a single source configuration.
-brew "hashicorp/tap/packer"
-# Terraform: Define cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share.
-brew "hashicorp/tap/terraform"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Add GitHub support to git on the command-line
@@ -135,6 +131,10 @@ brew "oh-my-posh"
 brew "onefetch"
 # Development kit for the Java programming language
 brew "openjdk"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Port of pdftk in java
+brew "pdftk-java"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Package compiler and linker metadata toolkit
@@ -179,6 +179,8 @@ brew "starship"
 brew "stow"
 # Color-based alternative to figlet (uses libcaca)
 brew "toilet"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
 # Ncurses-based klondike solitaire game
 brew "tty-solitaire"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -197,12 +199,14 @@ brew "yazi"
 brew "zig"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-
-# Casks
 # Git in your tmux status bar.
 brew "arl/arl/gitmux"
 # Better dotenv–from the creator of `dotenv`
 brew "dotenvx/brew/dotenvx"
+# Packer
+brew "hashicorp/tap/packer"
+# Terraform
+brew "hashicorp/tap/terraform"
 # Simple cli to manage Flutter SDK versions per project
 brew "leoafarias/fvm/fvm"
 # A rich git commit graph in your terminal, like magic
@@ -248,10 +252,3 @@ cask "ubersicht"
 cask "utm"
 # Native desktop client for WhatsApp
 cask "whatsapp"
-brew "7zip"
-brew "tree"
-brew "ruby"
-brew "groff"
-brew "pandoc"
-brew "pdftk-java"
-brew "gemini-cli"
