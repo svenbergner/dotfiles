@@ -77,6 +77,7 @@ return {
          options = {
             icons_enabled = true,
             theme = 'auto',
+            section_separators = { left = '', right = '' },
             ignore_focus = { 'dap-repl' },
             disabled_filetypes = {
                "dapui_watches", "dapui_breakpoints",
@@ -91,7 +92,7 @@ return {
          },
          sections = {
             lualine_a = {
-               { getNeoVimSymbol },
+               { getNeoVimSymbol, separator = { left = ' ' } },
                { 'mode' },
                { getRecordingMessage, },
             },
@@ -108,7 +109,7 @@ return {
                { getWords },
             },
             lualine_z = {
-               { getLineInfo },
+               { getLineInfo, separator = { right = ' ' } },
             },
          },
          inactive_winbar = {
