@@ -9,7 +9,7 @@ return {
    enabled = true,
    cmd = 'ShowkeysToggle',
    opts = {
-      position = 'bottom-right',
+      position = 'top-right',
       maxkeys = 5,
       show_count = true,
    },
