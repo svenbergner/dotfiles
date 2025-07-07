@@ -48,6 +48,7 @@ function ba() {
         echo "         bb:  Run brew bundle with cleanup"
         echo "         bd:  Run brew doctor"
         echo "         bi:  Show info about a brew package"
+        echo "         bs:  Search for a brew package"
         echo "         bba: Add a package to the Brewfile"
         echo "         bbc: Cleanup Brewfile packages"
         echo "         bbe: Edit the Brewfile"
@@ -65,6 +66,7 @@ function bb() {
 } 
 alias bd='brew doctor'
 alias bi='brew info'
+alias bs='brew search'
 alias bba='brew bundle add'
 alias bbc='brew bundle cleanup'
 alias bbe='pushd ~/Repos/dotfiles && brew bundle edit && popd'
