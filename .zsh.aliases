@@ -54,6 +54,7 @@ function ba() {
         echo "         bbe: Edit the Brewfile"
         echo "         bbl: List all packages in the Brewfile"
         echo "         bbr: Remove a package from the Brewfile"
+        echo "         bbu: Update package descriptions inside Brewfile"
 }
 function bb() {
         echo "Running brew bundle..."
