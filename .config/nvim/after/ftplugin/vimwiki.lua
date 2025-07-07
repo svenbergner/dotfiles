@@ -1,3 +1,4 @@
+-- This file is part of the Neovim configuration for managing VimWiki files.
 local group_id = vim.api.nvim_create_augroup("VimWikiSettings", { clear = true })
 
 vim.api.nvim_create_autocmd(
