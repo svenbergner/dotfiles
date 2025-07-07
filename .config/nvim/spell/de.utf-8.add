@@ -539,3 +539,6 @@ oneline
 arm64
 macx
 Buildnummer
+bs
+bsf
+bsc
