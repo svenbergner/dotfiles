@@ -1,17 +1,9 @@
 -- Detect qmake files
 
 vim.api.nvim_create_autocmd(
-   {'BufRead','BufNewFile'},
+   { 'BufEnter', 'BufRead', 'BufNewFile', 'VimEnter' },
    {
-      pattern = '*.pro',
-      command = 'set filetype=qmake',
-   }
-)
-
-vim.api.nvim_create_autocmd(
-   {'BufRead','BufNewFile'},
-   {
-      pattern = '*.pri',
+      pattern = { '*.pro', '*.pri' },
       command = 'set filetype=qmake',
    }
 )
