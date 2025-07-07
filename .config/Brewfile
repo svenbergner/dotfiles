@@ -97,12 +97,16 @@ brew "hub"
 brew "imagemagick"
 # Static Application Security Testing (SAST) tool
 brew "intercept"
+# Git-compatible distributed version control system
+brew "jj"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Lazier way to manage everything docker
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# TUI for Jujutsu/jj
+brew "lazyjj"
 # LLVM Project Linker
 brew "lld"
 # Access large language models from the command-line
