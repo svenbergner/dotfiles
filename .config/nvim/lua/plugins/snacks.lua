@@ -158,7 +158,7 @@ return {
    keys = {
       { "<leader>.",  function() Snacks.scratch() end,                   desc = "Toggle Scratch Buffer" },
       { "<leader>S",  function() Snacks.scratch.select() end,            desc = "[S]elect Scratch Buffer" },
-      { "<leader>n",  function() Snacks.notifier.show_history() end,     desc = "Notification History" },
+      { "<leader>nh",  function() Snacks.notifier.show_history() end,     desc = "Notification History" },
       { "<leader>bd", function() Snacks.bufdelete() end,                 desc = "Delete Buffer" },
       { "<leader>:",  function() Snacks.picker.command_history() end,    desc = "[p] Show command history" },
       { "<leader>h",  function() Snacks.notifier.hide() end,             desc = "[h]ide all notifications" },
