@@ -254,5 +254,7 @@ cask "signal"
 cask "ubersicht"
 # Virtual machines UI using QEMU
 cask "utm"
+# Free and open-source real time strategy game
+cask "warzone-2100"
 # Native desktop client for WhatsApp
 cask "whatsapp"
