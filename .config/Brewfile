@@ -81,6 +81,8 @@ brew "git-series"
 brew "gitleaks"
 # Render markdown on the CLI
 brew "glow"
+# Plays the game of Go
+brew "gnu-go"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Ping, but with a graph
