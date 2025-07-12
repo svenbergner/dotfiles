@@ -107,8 +107,6 @@ if [[ "$OSTYPE" == "linux" ]] then
     alias open="xdg-open"
 fi
 
-alias fman='compgen -c | fzf | xargs man'
-
 # Check if the shell is interactive
 if [[ $- == *i* ]]; then
     # Define a zle widget for the cdi command
