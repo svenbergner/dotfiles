@@ -20,7 +20,7 @@ return {
          -- The function will be called with the current buffer and the current file type.
          -- The function should return the provider name as a string.
          copilot = {
-            model = 'claude-3.7-sonnet',
+            model = 'claude-sonnet-4',
             extra_request_body = {
                -- You can add extra request body parameters here.
                -- For example, you can add the `temperature` parameter to control the randomness of the response.
