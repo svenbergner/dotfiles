@@ -35,6 +35,7 @@ vim.diagnostic.config({
    },
    virtual_text = false,
    virtual_lines = {
+      current_line = true,
       source = true,
       spacing = 2,
       format = function(diagnostic)
