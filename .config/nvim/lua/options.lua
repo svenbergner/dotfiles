@@ -97,8 +97,9 @@ local prefix = vim.fn.expand("~/.local/state/undo/")
 vim.opt.undodir = { prefix .. "nvim/" }
 vim.opt.undofile = true
 
-vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,localoptions"
+vim.opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,localoptions'
 
 -- Number formats
-vim.opt.nrformats = "bin,hex,octal,unsigned"
+vim.opt.nrformats = 'bin,hex,octal,unsigned'
 
+vim.opt.winborder = 'rounded'
