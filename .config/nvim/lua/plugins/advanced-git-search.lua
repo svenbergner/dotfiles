@@ -2,6 +2,7 @@
 Advanced git search extension for Telescope and fzf-lua.
 Search git history by commit message, content and author in Neovim
 URL: https://github.com/aaronhallaert/advanced-git-search.nvim
+URL: https://github.com/sindrets/diffview.nvim
 --]===]
 
 return {
