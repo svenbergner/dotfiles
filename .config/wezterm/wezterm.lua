@@ -44,7 +44,7 @@ config.colors = {
 
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.font = wezterm.font_with_fallback({
-   { family = "JetBrainsMono Nerd Font Mono", scale = 1.2, weight = "Medium", },
+   { family = "JetBrainsMono Nerd Font Propo", scale = 1.2, weight = "Medium", },
 })
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
