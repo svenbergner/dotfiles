@@ -14,7 +14,7 @@ local act = wezterm.action
 local config = {}
 -- Use config builder object if possible
 if wezterm.config_builder then
-  config = wezterm.config_builder()
+   config = wezterm.config_builder()
 end
 
 -- Additional reload path
@@ -32,19 +32,19 @@ config.max_fps = 120
 config.enable_kitty_graphics = true
 config.audible_bell = "Disabled"
 config.visual_bell = {
-  fade_in_function = 'EaseIn',
-  fade_in_duration_ms = 150,
-  fade_out_function = 'EaseOut',
-  fade_out_duration_ms = 150,
+   fade_in_function = 'EaseIn',
+   fade_in_duration_ms = 150,
+   fade_out_function = 'EaseOut',
+   fade_out_duration_ms = 150,
 }
 
 config.colors = {
-  visual_bell = '#202020'
+   visual_bell = '#202020'
 }
 
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.font = wezterm.font_with_fallback({
-  { family = "JetBrainsMono Nerd Font Mono", scale = 1.2, weight = "Medium", },
+   { family = "JetBrainsMono Nerd Font Mono", scale = 1.2, weight = "Medium", },
 })
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
@@ -53,15 +53,15 @@ config.default_workspace = "Development"
 
 -- Dim inactive panes
 config.inactive_pane_hsb = {
-  saturation = 0.24,
-  brightness = 0.5
+   saturation = 0.24,
+   brightness = 0.5
 }
 
 config.window_frame = {
-  border_top_color = '#3c3836',
-  border_top_height = '0.25cell',
-  border_left_width = '0.5cell',
-  border_right_width = '0.5cell',
+   border_top_color = '#3c3836',
+   border_top_height = '0.25cell',
+   border_left_width = '0.5cell',
+   border_right_width = '0.5cell',
 }
 
 -- Keys
