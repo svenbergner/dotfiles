@@ -13,7 +13,7 @@ return {
          extensions = {
             advanced_git_search = {
                -- fugitive or diffview
-               diff_plugin = 'fugitive',
+               diff_plugin = 'diffview',
                -- customize git in previewer
                -- e.g. flags such as { "--no-pager" }, or { "-c", "delta.side-by-side=false" }
                git_flags = {},
@@ -47,6 +47,7 @@ return {
          'nvim-telescope/telescope.nvim',
          'tpope/vim-fugitive',
          'tpope/vim-rhubarb',
+         'sindrets/diffview.nvim',
       }
    },
 }
