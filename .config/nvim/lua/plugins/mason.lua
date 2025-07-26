@@ -8,6 +8,7 @@ URL: https://github.com/saghen/blink.cmp
 
 return {
    'mason-org/mason.nvim',
+   enabled = true,
    dependencies = {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- Useful status updates for LSP.
