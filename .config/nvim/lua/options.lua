@@ -101,5 +101,3 @@ vim.opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,localoption
 
 -- Number formats
 vim.opt.nrformats = 'bin,hex,octal,unsigned'
-
-vim.opt.winborder = 'rounded'
