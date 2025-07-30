@@ -12,7 +12,7 @@ M.apply_to_config = function(config, wezterm)
       local stat = window:active_workspace()
       local stat_color_bg = "#3c3836"
       -- local stat_color_fg = "#3c3836"
-      local stat_icon = wezterm.nerdfonts.oct_table
+      local stat_icon = wezterm.nerdfonts.md_space_invaders
       -- It's a little silly to have workspace name all the time
       -- Utilize this to display LDR or current key table name
       if window:active_key_table() then
