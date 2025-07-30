@@ -77,4 +77,9 @@ local function toggle_diff_mode()
 end
 vim.keymap.set('n', '<leader>DD', function() toggle_diff_mode() end, { desc = 'Toggle [D]iff [D]iff', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>DT', ':Neotree close<CR>:windo diffthis<cr>', { desc = '[D]iff [T]his', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>DO', ':windo diffoff<cr>', { desc = '[D]iff [O]ff', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>Do', ':windo diffoff<cr>', { desc = '[D]iff [o]ff', noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>DC', ':DiffviewClose<cr>', { desc = '[D]iffview [C]lose', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>DF', ':DiffviewToggleFiles<cr>', { desc = '[D]iffview Toggle [F]iles', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>DO', ':DiffviewOpen<cr>', { desc = '[D]iffview [O]pen', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>DR', ':DiffviewRefresh<cr>', { desc = '[D]iffview [R]efresh', noremap = true, silent = true })
