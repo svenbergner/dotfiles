@@ -83,3 +83,9 @@ vim.keymap.set('n', '<leader>DC', ':DiffviewClose<cr>', { desc = '[D]iffview [C]
 vim.keymap.set('n', '<leader>DF', ':DiffviewToggleFiles<cr>', { desc = '[D]iffview Toggle [F]iles', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>DO', ':DiffviewOpen<cr>', { desc = '[D]iffview [O]pen', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>DR', ':DiffviewRefresh<cr>', { desc = '[D]iffview [R]efresh', noremap = true, silent = true })
+
+-- Better indenting
+vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('v', '>', '>gv')
+vim.keymap.set('n', '>', '>>_')
+vim.keymap.set('n', '<', '<<_')
