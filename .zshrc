@@ -193,7 +193,7 @@ if [[ -f /Users/sven.bergner/.dart-cli-completion/zsh-config.zsh ]] then
   source /Users/sven.bergner/.dart-cli-completion/zsh-config.zsh 
 fi
 if [[ -f /opt/homebrew/share/zsh/site-functions ]]; then
-  source /opt/homebrew/share/zsh/site-functions
+  fpath+=("/opt/homebrew/share/zsh/site-functions")
 fi
 ## [/Completion]
 
