@@ -151,6 +151,8 @@ brew "pngpaste"
 brew "podman"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Pretty, minimal and fast ZSH prompt
+brew "pure"
 # Password generator
 brew "pwgen"
 # Static type checker for Python
@@ -207,7 +209,7 @@ brew "zig"
 brew "zoxide"
 # Git in your tmux status bar.
 brew "arl/arl/gitmux"
-# Better dotenv–from the creator of `dotenv`
+# Secure dotenv–from the creator of `dotenv`
 brew "dotenvx/brew/dotenvx"
 # Packer
 brew "hashicorp/tap/packer"
