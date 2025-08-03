@@ -68,7 +68,15 @@ function bb() {
 alias bd='brew doctor'
 alias bi='brew info'
 alias bs='brew search'
-alias bba='brew bundle add'
+function bba() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: bba <package_name>"
+        return 1
+    fi
+    brew bundle add "$1" && echo "Package '$1' added to Brewfile." || echo "Failed to add package '$1'."
+    brew bundle -q && echo "Brew bundle succeeded." || echo "Brew bundle failed."
+    brew bundle dump --describe --force && echo "Brewfile updated!" || echo "Failed to update Brewfile."
+}
 alias bbc='brew bundle cleanup'
 alias bbe='pushd ~/Repos/dotfiles && brew bundle edit && popd'
 alias bbl='brew bundle list'
