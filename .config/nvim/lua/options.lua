@@ -3,6 +3,8 @@ vim.api.nvim_exec2("language en_US.UTF-8", { output = true })
 
 vim.opt.compatible = false
 
+vim.opt.exrc = true
+
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
 
