@@ -3,3 +3,4 @@
 .config/lazygit/state.yml
 .zsh.local
 Library/Application Support/nushell/history.txt
+.config/nvim/lua/plugins/flutter-tools-local.lua
