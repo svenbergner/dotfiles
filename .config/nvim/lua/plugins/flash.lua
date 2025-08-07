@@ -61,6 +61,14 @@ return {
          auto_jump = true,
       },
       modes = {
+         search = {
+            enabled = true,
+            label = {
+               after = { 0, 0 },
+               style = "overlay",
+            },
+            multi_window = true,
+         },
          char = {
             jump_labels = true,
             multi_line = true,
