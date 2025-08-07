@@ -6,6 +6,7 @@
         default = simple
 	autoSetupRemote = true
         followTags = true
+	useForceIfIncludes = true
 [pull]
         rebase = true
 [rerere]
