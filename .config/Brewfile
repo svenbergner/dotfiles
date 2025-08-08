@@ -169,6 +169,8 @@ brew "python-tk@3.12"
 brew "qemu"
 # File browser
 brew "ranger"
+# Find duplicate files based on content (NOT file names)
+brew "rdfind"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Safe, concurrent, practical language
@@ -260,6 +262,8 @@ cask "signal"
 cask "ubersicht"
 # Virtual machines UI using QEMU
 cask "utm"
+# Multimedia player
+cask "vlc"
 # Free and open-source real time strategy game
 cask "warzone-2100"
 # Native desktop client for WhatsApp
