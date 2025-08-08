@@ -89,3 +89,11 @@ vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('n', '>', '>>_')
 vim.keymap.set('n', '<', '<<_')
+
+-- Quickfix-List 
+vim.keymap.set('n', '<leader>qo', ':copen<CR>', { silent = true, desc = '[q]uickfix-list: [o]pen ' })
+vim.keymap.set('n', '<leader>qc', ':cclose<CR>', { silent = true, desc = '[q]uickfix-list: [c]lose' })
+vim.keymap.set('n', '<leader>qf', ':cfirst<CR>', { silent = true, desc = '[q]uickfix-list: Go to [f]irst item' })
+vim.keymap.set('n', '<leader>ql', ':clast<CR>', { silent = true, desc = '[q]uickfix-list: Go to [l]ast item' })
+vim.keymap.set('n', '<leader>qn', ':cnext<CR>', { silent = true, desc = '[q]uickfix-list: Go to [n]ext item' })
+vim.keymap.set('n', '<leader>qp', ':cprevious<CR>', { silent = true, desc = '[q]uickfix-list: Go to [p]revious item' })
