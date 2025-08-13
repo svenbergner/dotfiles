@@ -127,7 +127,7 @@ local function lsp_status()
    for i, client in ipairs(clients) do
       print(string.format("󰌘 Client %d: %s (ID: %d)", i, client.name, client.id))
       print("  Root: " .. (client.config.root_dir or "N/A"))
----@diagnostic disable-next-line: undefined-field
+      ---@diagnostic disable-next-line: undefined-field
       print("  Filetypes: " .. table.concat(client.config.filetypes or {}))
 
       -- Check capabilities
@@ -256,9 +256,9 @@ local function lsp_info()
       print(string.format("󰌘 Client %d: %s", i, client.name))
       print("  ID: " .. client.id)
       print("  Root dir: " .. (client.config.root_dir or "Not set"))
----@diagnostic disable-next-line: param-type-mismatch
+      ---@diagnostic disable-next-line: param-type-mismatch
       print("  Command: " .. table.concat(client.config.cmd or {}, " "))
----@diagnostic disable-next-line: undefined-field
+      ---@diagnostic disable-next-line: undefined-field
       print("  Filetypes: " .. table.concat(client.config.filetypes or {}, ", "))
 
       -- Server status
