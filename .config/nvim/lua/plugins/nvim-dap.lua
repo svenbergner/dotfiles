@@ -2,16 +2,41 @@
 Debugger configuration
 URL: https://github.com/mfussenegger/nvim-dap
 
-NVIM-Dap-UI:
-URL: https://github.com/rcarriga/nvim-dap-ui
+NVIM-Dap-View:
+URL: https://github.com/igorlfs/nvim-dap-view
 
 Default keybindings:
-- edit: e
-- expand: <CR> or left click
-- open: o
-- remove: d
-- repl: r
-- toggle: t
+Each view has its own keymaps, listed below.
+At any time (from within nvim-dap-view's main window) you can
+use g? to show a "help" window that lists all of them.
+
+   - Watches	
+       <CR>	Expand or collapse a variable
+         i	Insert an expression
+         d	Delete an expression
+         e	Edit an expression
+         c	Copy the value of an expression or variable
+         s	Set the value of an expression or variable
+
+   - Scopes	
+       <CR>	Expand or collapse a variable
+         o	Trigger actions
+
+   - Exceptions	
+       <CR>	Toggle filter
+
+   - Breakpoints	
+       <CR>	Jump to a breakpoint
+         d	Delete a breakpoint
+
+   - Threads	
+       <CR>	Jump to a frame
+         t	Toggle subtle frames
+         f	Filter frames (via Lua patterns1)
+         o	Omit results matching filter (invert filter)
+
+   - Sessions	
+       <CR>	Switch to a session
 
 Dependencies:
 one-small-step-for-vimkind a.k.a. osv is an adapter for the Neovim lua language.
@@ -26,7 +51,7 @@ return {
       event = 'VeryLazy',
       dependencies = {
          "nvim-neotest/nvim-nio",
-         "rcarriga/nvim-dap-ui",
+         "igorlfs/nvim-dap-view",
          "williamboman/mason.nvim",
          'jbyuki/one-small-step-for-vimkind',
          "theHamsta/nvim-dap-virtual-text",
@@ -34,9 +59,9 @@ return {
          "folke/lazydev.nvim",
       },
       config = function()
-         require("lazydev").setup({ library = { "nvim-dap-ui" }, })
+         require("lazydev").setup({})
          local dap = require("dap")
-         local dapui = require("dapui")
+         local dapview = require("dap-view")
 
          require('nvim-dap-virtual-text').setup({
             enabled = true,                     -- enables this plugin
@@ -246,10 +271,7 @@ return {
          -- vscode-style debugging
          vim.keymap.set("n", "<M-F5>", function() vim.cmd('SetDebuggee') end, { desc = 'Set Debugee' })
          vim.keymap.set("n", "<F53>", function() vim.cmd('SetDebuggee') end, { desc = 'Set Debugee' })
-         vim.keymap.set("n", "<F5>", function()
-            vim.cmd("Neotree close")
-            dap.continue()
-         end, { desc = 'Start/Continue Debugging' })
+         vim.keymap.set("n", "<F5>", function() dap.continue() end, { desc = 'Start/Continue Debugging' })
          vim.keymap.set("n", "<S-F5>", dap.terminate, { desc = 'Stop Debugging' })
          vim.keymap.set("n", "<F17>", dap.terminate, { desc = 'Stop Debugging' })
          vim.keymap.set("n", "<C-S-F5>", dap.run_last, { desc = 'Restart Debugging' })
@@ -259,8 +281,24 @@ return {
          vim.keymap.set("n", "<S-F11>", dap.step_out, { desc = 'Step out' })
          vim.keymap.set("n", "<F23>", dap.step_out, { desc = 'Step out' })
          vim.keymap.set("n", "<F9>", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
-         vim.keymap.set("n", "<leader>dq", dapui.close, { desc = '[d]apui [q]uit' })
-         vim.keymap.set("n", "<leader>dt", dapui.toggle, { desc = '[d]apui [t]oggle ' })
+         vim.keymap.set("n", "<leader>dq", dapview.close, { desc = '[d]apview [q]uit' })
+         vim.keymap.set("n", "<leader>dt", dapview.toggle, { desc = '[d]apview [t]oggle' })
+         vim.keymap.set("n", "<leader>do", dapview.open, { desc = '[d]apview [o]pen' })
+
+         vim.keymap.set("n", "<leader>dsw", function() vim.cmd('DapViewShow watches') end, { desc = '[d]apview [s]how [w]atches' })
+         vim.keymap.set("n", "<leader>dss", function() vim.cmd('DapViewShow scopes') end, { desc = '[d]apview [s]how [s]copes' })
+         vim.keymap.set("n", "<leader>dse", function() vim.cmd('DapViewShow exceptions') end, { desc = '[d]apview [s]how [e]xeptions' })
+         vim.keymap.set("n", "<leader>dsb", function() vim.cmd('DapViewShow breakpoints') end, { desc = '[d]apview [s]how [b]reakpoints' })
+         vim.keymap.set("n", "<leader>dst", function() vim.cmd('DapViewShow threads') end, { desc = '[d]apview [s]how [t]hreads' })
+         vim.keymap.set("n", "<leader>dsr", function() vim.cmd('DapViewShow repl') end, { desc = '[d]apview [s]how [r]epl' })
+
+         vim.keymap.set("n", "<leader>djw", function() vim.cmd('DapViewJump watches') end, { desc = '[d]apview [j]ump to [w]atches' })
+         vim.keymap.set("n", "<leader>djs", function() vim.cmd('DapViewJump scopes') end, { desc = '[d]apview [j]ump to [s]copes' })
+         vim.keymap.set("n", "<leader>dje", function() vim.cmd('DapViewJump exceptions') end, { desc = '[d]apview [j]ump to [e]xeptions' })
+         vim.keymap.set("n", "<leader>djb", function() vim.cmd('DapViewJump breakpoints') end, { desc = '[d]apview [j]ump to [b]reakpoints' })
+         vim.keymap.set("n", "<leader>djt", function() vim.cmd('DapViewJump threads') end, { desc = '[d]apview [j]ump to [t]hreads' })
+         vim.keymap.set("n", "<leader>djr", function() vim.cmd('DapViewJump repl') end, { desc = '[d]apview [j]ump to [r]epl' })
+
          vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = 'Toggle [d]abui [b]reakpoint' })
          vim.keymap.set("n", "<leader>dc", dap.run_to_cursor, { desc = 'Run to [d]abui [c]ursor' })
          vim.keymap.set("n", "<leader>dcb", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
@@ -280,27 +318,21 @@ return {
                widgets.centered_float(widgets.frames)
             end, { desc = '[d]apui floating [f]rames' })
 
-         dapui.setup({
-            icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
-            controls = {
-               icons = {
-                  pause = "⏸",
-                  play = "▶",
-                  step_into = "",
-                  step_over = "",
-                  step_out = "",
-                  step_back = "",
-                  run_last = "",
-                  terminate = "⏹",
-               },
+         dapview.setup({
+            winbar = {
+               show = true,
+               default_section = "scopes",
+               controls = {
+                  enabled = true,
+               }
             },
          })
 
-         dap.listeners.before.attach["dapui_config"] = dapui.open
-         dap.listeners.before.launch["dapui_config"] = dapui.open
-         dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-         -- dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-         -- dap.listeners.before.event_exited["dapui_config"] = dapui.close
+         dap.listeners.before.attach["dapui_config"] = dapview.open
+         dap.listeners.before.launch["dapui_config"] = dapview.open
+         dap.listeners.after.event_initialized["dapui_config"] = dapview.open
+         dap.listeners.before.event_terminated["dapui_config"] = dapview.close
+         dap.listeners.before.event_exited["dapui_config"] = dapview.close
       end,
    }
 }
