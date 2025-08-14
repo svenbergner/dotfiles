@@ -11,6 +11,7 @@ URL: https://github.com/sphamba/smear-cursor.nvim
 
 return {
    "sphamba/smear-cursor.nvim",
+   enabled = true,
    opts = {
       -- smear_to_cmd = false, -- can be removed in nvim 0.12.*
       cursor_color = "#ff8800", -- Cursor color, can be a hex color or a color name
