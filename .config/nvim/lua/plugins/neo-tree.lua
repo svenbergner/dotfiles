@@ -3,6 +3,60 @@ Plugin that adds a neat file tree
 URL: https://github.com/nvim-neo-tree/neo-tree.nvim
 --]===]
 
+local function file_contains(filename, pattern)
+   local current_file = filename
+   if not vim.fn.filereadable(current_file) then
+      return { contains = false, line_number = 0 }
+   end
+   local file_content = vim.fn.readfile(current_file)
+   local line_number = 0
+   for _, line in ipairs(file_content) do
+      line_number = line_number + 1
+      if line:match(pattern) then
+         return { contains = true, line_number = line_number }
+      end
+   end
+   return { contains = false, line_number = 0 }
+end
+
+local function contains_plugin_disabled(filename)
+   return file_contains(filename, "enabled%s*=%s*false")
+end
+
+local function contains_plugin_enabled(filename)
+   return file_contains(filename, "enabled%s*=%s*true")
+end
+
+local function check_plugin_state(config, node)
+   local highlights = require("neo-tree.ui.highlights")
+   local padding = config.padding or " "
+   local highlight = config.highlight or highlights.FILE_NAME
+   local plugin_state = ""
+   if node.type == "file" and node.ext == "lua" then
+      local contains_plugin_enabled_marker = contains_plugin_enabled(node.path)
+      local contains_plugin_disabled_marker = contains_plugin_disabled(node.path)
+      if contains_plugin_enabled_marker.contains and contains_plugin_disabled_marker.contains then
+         if contains_plugin_enabled_marker.line_number < contains_plugin_disabled_marker.line_number then
+            plugin_state = ""
+            highlight = highlights.GIT_ADDED
+         else
+            plugin_state = ""
+            highlight = highlights.GIT_DELETED
+         end
+      elseif contains_plugin_enabled_marker.contains then
+         plugin_state = ""
+         highlight = highlights.GIT_ADDED
+      elseif contains_plugin_disabled_marker.contains then
+         plugin_state = ""
+         highlight = highlights.GIT_DELETED
+      end
+   end
+   return {
+      text = padding .. plugin_state,
+      highlight = highlight,
+   }
+end
+
 return {
    "nvim-neo-tree/neo-tree.nvim",
    branch = "v3.x",
@@ -50,29 +104,7 @@ return {
       vim.keymap.set("n", "<leader>nc", ":Neotree close<CR>",
          { silent = true, desc = "[n]eotree [c]lose " })
 
-      local highlights = require("neo-tree.ui.highlights")
 
-      local function file_contains(filename, pattern)
-         local current_file = filename
-         if not vim.fn.filereadable(current_file) then
-            return false
-         end
-         local file_content = vim.fn.readfile(current_file)
-         for _, line in ipairs(file_content) do
-            if line:match(pattern) then
-               return true
-            end
-         end
-         return false
-      end
-
-      local function is_plugin_disabled(filename)
-         return file_contains(filename, "enabled%s*=%s*false")
-      end
-
-      local function is_plugin_enabled(filename)
-         return file_contains(filename, "enabled%s*=%s*true")
-      end
 
       require("neo-tree").setup({
          sources = {
@@ -119,29 +151,7 @@ return {
                }
             },
             components = {
-               plugin_state = function(config, node)
-                  local padding = config.padding or " "
-                  local highlight = config.highlight or highlights.FILE_NAME
-                  local plugin_state = ""
-                  if node.type == "file" and node.ext == "lua" then
-                     local plugin_enabled = is_plugin_enabled(node.path)
-                     local plugin_disabled = is_plugin_disabled(node.path)
-                     if plugin_enabled and plugin_disabled then
-                        plugin_state = "±"
-                        highlight = highlights.GIT_MODIFIED
-                     elseif plugin_enabled then
-                        plugin_state = ""
-                        highlight = highlights.GIT_ADDED
-                     elseif plugin_disabled then
-                        plugin_state = ""
-                        highlight = highlights.GIT_DELETED
-                     end
-                  end
-                  return {
-                     text = padding .. plugin_state,
-                     highlight = highlight,
-                  }
-               end,
+               plugin_state = check_plugin_state,
             },
             renderers = {
                file = {
