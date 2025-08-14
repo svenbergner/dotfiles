@@ -3,6 +3,7 @@ tap "dotenvx/brew"
 tap "hashicorp/tap"
 tap "leoafarias/fvm"
 tap "lusingander/tap"
+tap "sst/tap"
 # Record and share terminal sessions
 brew "asciinema"
 # Distributed revision control system
@@ -25,6 +26,10 @@ brew "bear"
 brew "boxes"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Console-based Audio Visualizer for ALSA
+brew "cava"
+# Console Bonsai is a bonsai tree generator, written in C using ncurses
+brew "cbonsai"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
 # Cross-platform make
@@ -193,6 +198,8 @@ brew "toilet"
 brew "tree"
 # Ncurses-based klondike solitaire game
 brew "tty-solitaire"
+# Markup-based typesetting system
+brew "typst"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Executes a program periodically, showing output fullscreen
@@ -223,6 +230,8 @@ brew "hashicorp/tap/terraform"
 brew "leoafarias/fvm/fvm"
 # A rich git commit graph in your terminal, like magic
 brew "lusingander/tap/serie"
+# The AI coding agent built for the terminal.
+brew "sst/tap/opencode"
 # Tools for building Android applications
 cask "android-studio"
 # E-books management software
