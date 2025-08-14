@@ -7,6 +7,7 @@ vim.lsp.enable({
    'marksman',
    'pylsp',
    'terraformls',
+   'tinymist',
    'yamlls',
 })
 
