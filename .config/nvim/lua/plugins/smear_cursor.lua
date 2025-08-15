@@ -13,6 +13,7 @@ return {
    "sphamba/smear-cursor.nvim",
    enabled = true,
    opts = {
+      legacy_computing_symbols_support = true, -- Set to true if you want to use legacy computing symbols
       -- smear_to_cmd = false, -- can be removed in nvim 0.12.*
       cursor_color = "#ff8800", -- Cursor color, can be a hex color or a color name
       stiffness = 0.3,
@@ -23,7 +24,7 @@ return {
       damping = 0.5,
       damping_insert_mode = 0.8,
       distance_stop_animating = 0.5,
-      gama = 1,
+      gama = 0.2,
       hide_target_hack = false,
       never_draw_over_target = false,
    },
