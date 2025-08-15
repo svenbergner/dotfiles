@@ -92,7 +92,16 @@ vim.api.nvim_buf_create_user_command(0, 'Format', function(_)
 end, { desc = 'Format current buffer with LSP' })
 vim.keymap.set('n', '<S-F7>', '<cmd>ConfigureCMakeBuild<CR>', { desc = 'LSP: Run cmake configure' })
 vim.keymap.set('n', '<F19>', '<cmd>ConfigureCMakeBuild<CR>', { desc = 'LSP: Run cmake configure' })
-vim.keymap.set('n', '<F7>', '<cmd>RunCMakeBuild<CR>', { desc = 'LSP: Run cmake build' })
+vim.keymap.set('n', '<F7>', function()
+   vim.cmd('RunCMakeBuild')
+   -- Switch to normal mode only if currently in insert mode
+   vim.schedule(function()
+      local mode = vim.api.nvim_get_mode().mode
+      if mode == 'i' or mode == 'ic' or mode == 'ix' then
+         vim.cmd('stopinsert')
+      end
+   end)
+end, { desc = 'LSP: Run cmake build' })
 
 -- Extras
 
