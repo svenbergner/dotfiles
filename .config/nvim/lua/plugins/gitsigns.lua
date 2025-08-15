@@ -11,11 +11,12 @@ return {
       require("gitsigns").setup({
          -- See `:help gitsigns.txt`
          signs = {
-            add = { text = "+" },
-            change = { text = "" },
+            add = { text = "" },
+
+            change = { text = "" },
             delete = { text = "_" },
             topdelete = { text = "‾" },
-            changedelete = { text = "" },
+            changedelete = { text = "" },
          },
          numhl = true, -- Change color of line number
       })
