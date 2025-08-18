@@ -98,3 +98,16 @@ vim.keymap.set('n', '<leader>qf', ':cfirst<CR>', { silent = true, desc = '[q]uic
 vim.keymap.set('n', '<leader>ql', ':clast<CR>', { silent = true, desc = '[q]uickfix-list: Go to [l]ast item' })
 vim.keymap.set('n', '<leader>qn', ':cnext<CR>', { silent = true, desc = '[q]uickfix-list: Go to [n]ext item' })
 vim.keymap.set('n', '<leader>qp', ':cprevious<CR>', { silent = true, desc = '[q]uickfix-list: Go to [p]revious item' })
+
+-- Toggle true false
+local function toggle_true_false()
+   vim.cmd('normal! yiw')
+   local current_word = vim.fn.getreg('"')
+   if current_word == 'true' then
+      vim.cmd('normal! ciwfalse')
+   elseif current_word == 'false' then
+      vim.cmd('normal! ciwtrue')
+   end
+end
+vim.keymap.set('n', '<leader>Tb', function() toggle_true_false() end,
+   { desc = '[T]oggle [b]ool', noremap = true, silent = true })
