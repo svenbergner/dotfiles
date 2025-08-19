@@ -104,6 +104,8 @@ brew "hub"
 brew "imagemagick"
 # Static Application Security Testing (SAST) tool
 brew "intercept"
+# Interactive computing in Python
+brew "ipython"
 # Git-compatible distributed version control system
 brew "jj"
 # Lightweight and flexible command-line JSON processor
