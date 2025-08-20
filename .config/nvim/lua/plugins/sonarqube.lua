@@ -26,7 +26,6 @@ local sonarlint_ft = {
    "yaml.docker-compose",
 }
 
----@type LazySpec
 return {
    "https://gitlab.com/schrieveslaach/sonarlint.nvim",
    ft = sonarlint_ft,
