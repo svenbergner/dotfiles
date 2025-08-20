@@ -44,7 +44,6 @@ return {
    -- build = 'nix run .#build-plugin',
 
    ---@module 'blink.cmp'
-   ---@type blink.cmp.Config
    opts = {
       enabled = function()
          -- Get the current buffer's filetype
