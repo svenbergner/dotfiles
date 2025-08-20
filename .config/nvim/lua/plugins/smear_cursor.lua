@@ -24,7 +24,7 @@ return {
       damping = 0.5,
       damping_insert_mode = 0.8,
       distance_stop_animating = 0.5,
-      gama = 0.2,
+      gamma = 1.0,
       hide_target_hack = false,
       never_draw_over_target = false,
    },
