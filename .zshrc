@@ -51,9 +51,6 @@ fi
 
 eval "$(starship init zsh)"
 
-# Keybindings -e for emacs, -v for vi
-bindkey -e
-
 # History
 HISTSIZE=100000
 HISTFILE=~/.zsh_history
@@ -141,7 +138,7 @@ export MANPAGER='nvim +Man!'
 
 # User configuration
 
-# Activate vim mode
+# Keybindings -e for emacs-, -v for vi-mode
 bindkey -v
 
 # Function to change cursor shape
