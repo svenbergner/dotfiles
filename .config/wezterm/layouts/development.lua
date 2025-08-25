@@ -23,6 +23,7 @@ M.setup_layout = function(wezterm)
     local first_tab, _, window = mux.spawn_window {
       workspace = 'Development',
       cwd = home_dir .. '/Repos/steuertipps_app',
+      args = { 'nvim', home_dir .. '/Repos/steuertipps_app' },
     }
     first_tab:set_title('SSECloud')
 
