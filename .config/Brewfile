@@ -54,6 +54,8 @@ brew "dive"
 brew "dosbox-x"
 # Lightning-fast linter for .env files written in Rust
 brew "dotenv-linter"
+# Terminal document viewer for .docx files
+brew "doxx"
 # More intuitive version of du in rust
 brew "dust"
 # XML 1.0 parser
@@ -267,6 +269,8 @@ cask "openscad"
 cask "qutebrowser"
 # Control your tools with a few keystrokes
 cask "raycast"
+# App that enables mouse-free UI interaction
+cask "shortcat"
 # Instant messaging application focusing on security
 cask "signal"
 # Run commands and display their output on the desktop
