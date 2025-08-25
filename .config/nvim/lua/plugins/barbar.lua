@@ -16,7 +16,7 @@ URL: https://github.com/romgrk/barbar.nvim
 return {
    {
       'romgrk/barbar.nvim',
-      enabled = false,
+      enabled = true,
       dependencies = {
          'lewis6991/gitsigns.nvim',
          'nvim-tree/nvim-web-devicons',
@@ -100,7 +100,7 @@ return {
          })
       end,
       opts = {
-         animation = true,
+         animation = false,
          auto_hide = false,
          clickable = true,
          insert_at_end = true,
