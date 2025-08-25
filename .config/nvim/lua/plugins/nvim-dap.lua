@@ -138,23 +138,23 @@ return {
             -- },
          }
 
-         -- dap.adapters.dart = {
-         --    type = "executable",
-         --    command = "dart",
-         --    args = { "debug_adapter" }
-         -- }
-         --
-         -- dap.configurations.dart = {
-         --    {
-         --       type = "dart",
-         --       request = "launch",
-         --       name = "Launch Dart Program",
-         --       program = "${file}",
-         --       cwd = "${workspaceFolder}",
-         --       args = { "--dart-define-from-file=emv-vars.json" },      -- Note for Dart Apps this is args, for Flutter apps toolArgs
-         --       toolsArgs = { "--dart-define-from-file=emv-vars.json" }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
-         --    }
-         -- }
+         dap.adapters.dart = {
+            type = "executable",
+            command = "dart",
+            args = { "debug_adapter" }
+         }
+
+         dap.configurations.dart = {
+            {
+               type = "dart",
+               request = "launch",
+               name = "Launch Dart Program",
+               program = "${file}",
+               cwd = "${workspaceFolder}",
+               args = { "--dart-define-from-file=env-vars.json" },      -- Note for Dart Apps this is args, for Flutter apps toolArgs
+               toolsArgs = { "--dart-define-from-file=env-vars.json" }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
+            }
+         }
 
          dap.configurations.lua = {
             {
