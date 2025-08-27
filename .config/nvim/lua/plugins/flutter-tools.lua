@@ -105,5 +105,6 @@ return {
       end
       nmap('<F2>', vim.lsp.buf.rename, 'Rename <F2>')
       nmap('<C-S-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+      nmap('<F5>', function() vim.cmd('FlutterDebug') end, 'Start/Continue Debugging')
    end,
 }
