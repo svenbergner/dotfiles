@@ -66,8 +66,6 @@ brew "eza"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@76"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
 # Banner-like program prints strings as ASCII art
@@ -102,6 +100,8 @@ brew "gum"
 brew "httpie"
 # Add GitHub support to git on the command-line
 brew "hub"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Static Application Security Testing (SAST) tool
@@ -162,6 +162,8 @@ brew "pngpaste"
 brew "podman"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Show ps output as a tree
+brew "pstree"
 # Pretty, minimal and fast ZSH prompt
 brew "pure"
 # Password generator
