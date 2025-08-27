@@ -47,7 +47,8 @@ vim.keymap.set('n', '<F8>', ':cn<CR>', { silent = true, desc = 'Go to next item 
 vim.keymap.set('n', '<S-F8>', ':cp<CR>', { silent = true, desc = 'Go to previous item in Quickfix-List' })
 vim.keymap.set('n', '<F20>', ':cp<CR>', { silent = true, desc = 'Go to previous item in Quickfix-List' })
 
-vim.keymap.set('n', '<leader>F', '<cmd>let @+=@%<CR><cmd>lua vim.notify("Filename copied to clipboard")<CR>', { silent = true, desc = 'copy [F]ilename to clipboard' })
+vim.keymap.set('n', '<leader>F', '<cmd>let @+=@%<CR><cmd>lua vim.notify("Filename copied to clipboard")<CR>',
+   { silent = true, desc = 'copy [F]ilename to clipboard' })
 
 vim.keymap.set('n', '<BS>', '^', { desc = 'Move to the first non-blank character in the line' })
 
@@ -68,21 +69,25 @@ vim.keymap.set('n', 'go', "<Cmd>call append(line('.'),     repeat([''], v:count1
 
 -- Toggle Diff Mode
 local function toggle_diff_mode()
-  if vim.o.diff then
-    vim.cmd('windo diffoff')
-  else
-    vim.cmd('Neotree close')
-    vim.cmd('windo diffthis')
-  end
+   if vim.o.diff then
+      vim.cmd('windo diffoff')
+   else
+      vim.cmd('Neotree close')
+      vim.cmd('windo diffthis')
+   end
 end
-vim.keymap.set('n', '<leader>DD', function() toggle_diff_mode() end, { desc = 'Toggle [D]iff [D]iff', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>DT', ':Neotree close<CR>:windo diffthis<cr>', { desc = '[D]iff [T]his', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>DD', function() toggle_diff_mode() end,
+   { desc = 'Toggle [D]iff [D]iff', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>DT', ':Neotree close<CR>:windo diffthis<cr>',
+   { desc = '[D]iff [T]his', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>Do', ':windo diffoff<cr>', { desc = '[D]iff [o]ff', noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>DC', ':DiffviewClose<cr>', { desc = '[D]iffview [C]lose', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>DF', ':DiffviewToggleFiles<cr>', { desc = '[D]iffview Toggle [F]iles', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>DF', ':DiffviewToggleFiles<cr>',
+   { desc = '[D]iffview Toggle [F]iles', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>DO', ':DiffviewOpen<cr>', { desc = '[D]iffview [O]pen', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>DR', ':DiffviewRefresh<cr>', { desc = '[D]iffview [R]efresh', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>DR', ':DiffviewRefresh<cr>',
+   { desc = '[D]iffview [R]efresh', noremap = true, silent = true })
 
 -- Better indenting
 vim.keymap.set('v', '<', '<gv')
@@ -90,7 +95,7 @@ vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('n', '>', '>>_')
 vim.keymap.set('n', '<', '<<_')
 
--- Quickfix-List 
+-- Quickfix-List
 vim.keymap.set('n', '<leader>qo', ':copen<CR>', { silent = true, desc = '[q]uickfix-list: [o]pen ' })
 vim.keymap.set('n', '<leader>qc', ':cclose<CR>', { silent = true, desc = '[q]uickfix-list: [c]lose' })
 vim.keymap.set('n', '<leader>qq', ':cclose<CR>', { silent = true, desc = '[q]uickfix-list: [q]uit' })
@@ -109,5 +114,6 @@ local function toggle_true_false()
       vim.cmd('normal! ciwtrue')
    end
 end
+
 vim.keymap.set('n', '<leader>Tb', function() toggle_true_false() end,
    { desc = '[T]oggle [b]ool', noremap = true, silent = true })
