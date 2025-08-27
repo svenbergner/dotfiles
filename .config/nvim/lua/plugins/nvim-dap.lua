@@ -151,8 +151,8 @@ return {
                name = "Launch Dart Program",
                program = "${file}",
                cwd = "${workspaceFolder}",
-               args = { "--dart-define-from-file=env-vars.json" },      -- Note for Dart Apps this is args, for Flutter apps toolArgs
-               toolsArgs = { "--dart-define-from-file=env-vars.json" }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
+               args = { "-d chrome", "--web-port=1337", "--dart-define-from-file=env-vars.json" },            -- Note for Dart Apps this is args, for Flutter apps toolArgs
+               toolsArgs = { "-d chrome", "--web-port=1337", "--dart-define-from-file=env-vars.json" },       -- Note for Dart Apps this is args, for Flutter apps toolArgs
             }
          }
 
@@ -285,19 +285,31 @@ return {
          vim.keymap.set("n", "<leader>dt", dapview.toggle, { desc = '[d]apview [t]oggle' })
          vim.keymap.set("n", "<leader>do", dapview.open, { desc = '[d]apview [o]pen' })
 
-         vim.keymap.set("n", "<leader>dsw", function() vim.cmd('DapViewShow watches') end, { desc = '[d]apview [s]how [w]atches' })
-         vim.keymap.set("n", "<leader>dss", function() vim.cmd('DapViewShow scopes') end, { desc = '[d]apview [s]how [s]copes' })
-         vim.keymap.set("n", "<leader>dse", function() vim.cmd('DapViewShow exceptions') end, { desc = '[d]apview [s]how [e]xeptions' })
-         vim.keymap.set("n", "<leader>dsb", function() vim.cmd('DapViewShow breakpoints') end, { desc = '[d]apview [s]how [b]reakpoints' })
-         vim.keymap.set("n", "<leader>dst", function() vim.cmd('DapViewShow threads') end, { desc = '[d]apview [s]how [t]hreads' })
-         vim.keymap.set("n", "<leader>dsr", function() vim.cmd('DapViewShow repl') end, { desc = '[d]apview [s]how [r]epl' })
+         vim.keymap.set("n", "<leader>dsw", function() vim.cmd('DapViewShow watches') end,
+            { desc = '[d]apview [s]how [w]atches' })
+         vim.keymap.set("n", "<leader>dss", function() vim.cmd('DapViewShow scopes') end,
+            { desc = '[d]apview [s]how [s]copes' })
+         vim.keymap.set("n", "<leader>dse", function() vim.cmd('DapViewShow exceptions') end,
+            { desc = '[d]apview [s]how [e]xeptions' })
+         vim.keymap.set("n", "<leader>dsb", function() vim.cmd('DapViewShow breakpoints') end,
+            { desc = '[d]apview [s]how [b]reakpoints' })
+         vim.keymap.set("n", "<leader>dst", function() vim.cmd('DapViewShow threads') end,
+            { desc = '[d]apview [s]how [t]hreads' })
+         vim.keymap.set("n", "<leader>dsr", function() vim.cmd('DapViewShow repl') end,
+            { desc = '[d]apview [s]how [r]epl' })
 
-         vim.keymap.set("n", "<leader>djw", function() vim.cmd('DapViewJump watches') end, { desc = '[d]apview [j]ump to [w]atches' })
-         vim.keymap.set("n", "<leader>djs", function() vim.cmd('DapViewJump scopes') end, { desc = '[d]apview [j]ump to [s]copes' })
-         vim.keymap.set("n", "<leader>dje", function() vim.cmd('DapViewJump exceptions') end, { desc = '[d]apview [j]ump to [e]xeptions' })
-         vim.keymap.set("n", "<leader>djb", function() vim.cmd('DapViewJump breakpoints') end, { desc = '[d]apview [j]ump to [b]reakpoints' })
-         vim.keymap.set("n", "<leader>djt", function() vim.cmd('DapViewJump threads') end, { desc = '[d]apview [j]ump to [t]hreads' })
-         vim.keymap.set("n", "<leader>djr", function() vim.cmd('DapViewJump repl') end, { desc = '[d]apview [j]ump to [r]epl' })
+         vim.keymap.set("n", "<leader>djw", function() vim.cmd('DapViewJump watches') end,
+            { desc = '[d]apview [j]ump to [w]atches' })
+         vim.keymap.set("n", "<leader>djs", function() vim.cmd('DapViewJump scopes') end,
+            { desc = '[d]apview [j]ump to [s]copes' })
+         vim.keymap.set("n", "<leader>dje", function() vim.cmd('DapViewJump exceptions') end,
+            { desc = '[d]apview [j]ump to [e]xeptions' })
+         vim.keymap.set("n", "<leader>djb", function() vim.cmd('DapViewJump breakpoints') end,
+            { desc = '[d]apview [j]ump to [b]reakpoints' })
+         vim.keymap.set("n", "<leader>djt", function() vim.cmd('DapViewJump threads') end,
+            { desc = '[d]apview [j]ump to [t]hreads' })
+         vim.keymap.set("n", "<leader>djr", function() vim.cmd('DapViewJump repl') end,
+            { desc = '[d]apview [j]ump to [r]epl' })
 
          vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = 'Toggle [d]abui [b]reakpoint' })
          vim.keymap.set("n", "<leader>dc", dap.run_to_cursor, { desc = 'Run to [d]abui [c]ursor' })
