@@ -182,7 +182,7 @@ return {
                }
             },
             emoji = {
-               module = "blink-emoji",
+               module = "blink-emoji",   -- blink.cmp source for emojis
                name = "Emoji",
                score_offset = 15,        -- Tune by preference
                opts = { insert = true }, -- Insert emoji (default) or complete its name
@@ -193,10 +193,10 @@ return {
                end,
             },
             nerdfont = {
-               module = "blink-nerdfont",
+               module = "blink-nerdfont", -- blink.cmp source for nerd fonts
                name = "Nerd Fonts",
-               score_offset = 15,        -- Tune by preference
-               opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+               score_offset = 15,         -- Tune by preference
+               opts = { insert = true },  -- Insert nerdfont icon (default) or complete its name
                should_show_items = function()
                   -- Enable emoji completion only for git commits and markdown.
                   -- By default, enabled for all file-types.
@@ -204,7 +204,7 @@ return {
                end,
             },
             env = {
-               name = "Env",
+               name = "Env", -- blink.cmp source for environment variables
                module = "blink-cmp-env",
                opts = {
                   -- item_kind = require("blink.cmp.types").CompletionItemKind.Variable,
