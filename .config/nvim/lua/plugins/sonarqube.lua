@@ -28,6 +28,7 @@ local sonarlint_ft = {
 
 return {
    "https://gitlab.com/schrieveslaach/sonarlint.nvim",
+   enabled = true,
    ft = sonarlint_ft,
    opts = {
       connected = {
