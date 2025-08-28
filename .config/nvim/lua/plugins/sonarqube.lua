@@ -32,11 +32,7 @@ return {
    ft = sonarlint_ft,
    opts = {
       connected = {
-         -- client_id is the ID of the Sonar LSP
-         -- url is the url it wants to connect to
-         get_credentials = function(client_id, url)
-            -- This must return a string (User token)
-            -- This is the default function. You can just set the environment variable.
+         get_credentials = function(_, _)
             return vim.fn.getenv("SONAR_TOKEN")
          end,
       },
@@ -74,9 +70,11 @@ return {
          },
 
          before_init = function(params, config)
-            -- Your personal configuration needs to provide a mapping of root folders and project keys
+            -- Your personal configuration needs to provide a mapping of root
+            -- folders and project keys
             --
-            -- In the future a integration with https://github.com/folke/neoconf.nvim or some similar
+            -- In the future a integration with
+            -- https://github.com/folke/neoconf.nvim or some similar
             -- plugin, might be worthwhile.
             local project_root_and_ids = {
                ["~/Repos/SSE/Dev/"] = "TAA.DE.Steuertipps.SSE",
