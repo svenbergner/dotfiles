@@ -54,8 +54,6 @@ return {
                      toolsArgs = { "-d chrome", "--web-port=1337", "--dart-define-from-file=env-vars.json" }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
                   }
                }
-               ---@diagnostic disable-next-line: deprecated
-               require("dap.ext.vscode").load_launchjs()
             end,
             -- run_via_dap = true,
             -- exception_breakpoints = {},
