@@ -100,7 +100,10 @@ return {
          indent = { enable = true },
       })
       vim.opt.foldlevel = 99
+      vim.opt.foldlevelstart = 99
       vim.opt.foldmethod = "expr"
+      vim.opt.foldcolumn = "1"
       vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+      vim.keymap.set("n", "<CR>", "za", { noremap = true, silent = true, desc = "Toggle current fold" })
    end,
 }
