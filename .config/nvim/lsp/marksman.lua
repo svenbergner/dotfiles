@@ -3,7 +3,7 @@
 
 return {
    cmd = { "marksman", "server" },
-   filetypes = { "markdown", "markdown.mdx" },
+   filetypes = { "markdown", "markdown.mdx", "vimwiki" },
    init_options = { provideFormatter = true, },
    root_markers = { ".marksman.toml", ".git", },
 }
