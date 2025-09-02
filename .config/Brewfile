@@ -265,8 +265,6 @@ cask "inkscape"
 cask "karabiner-elements"
 # GPU-based terminal emulator
 cask "kitty"
-# Application launcher
-cask "leader-key"
 # 2D game framework for Lua
 cask "love"
 # Programmable solid 3D CAD modeller
@@ -276,7 +274,6 @@ cask "qutebrowser"
 # Control your tools with a few keystrokes
 cask "raycast"
 # App that enables mouse-free UI interaction
-cask "shortcat"
 # Instant messaging application focusing on security
 cask "signal"
 # Run commands and display their output on the desktop
