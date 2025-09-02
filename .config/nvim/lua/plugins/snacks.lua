@@ -158,7 +158,7 @@ return {
    keys = {
       { "<leader>.",  function() Snacks.scratch() end,                   desc = "Toggle Scratch Buffer" },
       { "<leader>S",  function() Snacks.scratch.select() end,            desc = "[S]elect Scratch Buffer" },
-      { "<leader>nh",  function() Snacks.notifier.show_history() end,     desc = "Notification History" },
+      { "<leader>nh", function() Snacks.notifier.show_history() end,     desc = "Notification History" },
       { "<leader>bd", function() Snacks.bufdelete() end,                 desc = "Delete Buffer" },
       { "<leader>:",  function() Snacks.picker.command_history() end,    desc = "[p] Show command history" },
       { "<leader>h",  function() Snacks.notifier.hide() end,             desc = "[h]ide all notifications" },
@@ -262,19 +262,24 @@ return {
             vim.print = _G.dd -- Override print to use snacks for `:=` command
 
             -- Create some toggle mappings
-            Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>Ts")
-            Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>Tw")
-            Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>Tl")
+            Snacks.toggle.animate():map("<leader>Ta")
             Snacks.toggle.diagnostics():map("<leader>Td")
+            Snacks.toggle.dim():map("<leader>TD")
+            Snacks.toggle.indent():map("<leader>Tg")
+            Snacks.toggle.inlay_hints():map("<leader>Th")
             Snacks.toggle.line_number():map("<leader>TL")
-            Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-                :map("<leader>Tc")
-            Snacks.toggle.treesitter():map("<leader>TT")
             Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map(
                "<leader>TB")
-            Snacks.toggle.inlay_hints():map("<leader>Th")
-            Snacks.toggle.indent():map("<leader>Tg")
-            Snacks.toggle.dim():map("<leader>TD")
+            Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+                :map("<leader>Tc")
+            Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>Tl")
+            Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>Ts")
+            Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>Tw")
+            Snacks.toggle.treesitter():map("<leader>Tt")
+            Snacks.toggle.scroll():map("<leader>TS")
+            Snacks.toggle.words():map("<leader>TW")
+            Snacks.toggle.zen():map("<leader>Tz")
+            Snacks.toggle.zoom():map("<leader>TZ")
          end,
       })
    end,
