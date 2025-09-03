@@ -172,7 +172,7 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-         default = { 'avante', 'lsp', 'path', 'snippets', 'buffer', 'omni', 'cmdline', 'emoji', 'nerdfont', 'env', },
+         default = { 'avante', 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'omni', 'cmdline', 'emoji', 'nerdfont', 'env', },
          providers = {
             avante = {
                module = 'blink-cmp-avante',
@@ -212,6 +212,13 @@ return {
                   show_documentation_window = true,
                },
             },
+            lazydev = {
+               name = "LazyDev",
+               module = "lazydev.integrations.blink",
+               -- make lazydev completions top priority (see `:h blink.cmp`)
+               score_offset = 100,
+            },
+
          },
       },
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
