@@ -1,4 +1,5 @@
 --[===[
+BarBar
 Tabs, as understood by any other editor.
 
 The barbar.nvim is a tabline plugin with re-orderable, auto-sizing, clickable tabs,
@@ -56,6 +57,7 @@ return {
          -- :BufferWipeout
          map('n', '<M-c>', '<Cmd>BufferClose<CR>', { noremap = true, silent = true, desc = "Close current buffer" })
          map('n', '<M-x>', '<Cmd>BufferClose<CR>', { noremap = true, silent = true, desc = "Close current buffer" })
+         map('n', '<D-x>', '<Cmd>BufferClose<CR>', { noremap = true, silent = true, desc = "Close current buffer" })
          map('n', '<Leader>br', '<Cmd>BufferCloseBuffersRight<CR>',
             { noremap = true, silent = true, desc = "Close all buffers to right" })
          map('n', '<Leader>bl', '<Cmd>BufferCloseBuffersLeft<CR>',
