@@ -104,6 +104,15 @@ vim.keymap.set('n', '<leader>ql', ':clast<CR>', { silent = true, desc = '[q]uick
 vim.keymap.set('n', '<leader>qn', ':cnext<CR>', { silent = true, desc = '[q]uickfix-list: Go to [n]ext item' })
 vim.keymap.set('n', '<leader>qp', ':cprevious<CR>', { silent = true, desc = '[q]uickfix-list: Go to [p]revious item' })
 
+-- Lazy Package Manager
+vim.keymap.set('n', '<leader>ll', '<CMD>Lazy<CR>', { silent = true, desc = '[l]oad [l]azy' })
+vim.keymap.set('n', '<leader>lu', '<CMD>Lazy update<CR>', { silent = true, desc = '[l]azy [u]pdate' })
+vim.keymap.set('n', '<leader>ls', '<CMD>Lazy sync<CR>', { silent = true, desc = '[l]azy [s]ync' })
+vim.keymap.set('n', '<leader>lc', '<CMD>Lazy check<CR>', { silent = true, desc = '[l]azy [c]heck' })
+vim.keymap.set('n', '<leader>lp', '<CMD>Lazy profile<CR>', { silent = true, desc = '[l]azy [p]rofile' })
+vim.keymap.set('n', '<leader>lh', '<CMD>Lazy help<CR>', { silent = true, desc = '[l]azy [h]elp' })
+
+
 -- Toggle true false
 local function toggle_true_false()
    vim.cmd('normal! yiw')
