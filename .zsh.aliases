@@ -1,6 +1,5 @@
 alias v='nvim'
 
-alias bat="bat --theme gruvbox-dark"
 alias o="bat"
 
 alias showPID='(){ps aux | grep -i $1 | grep -v grep | cut -f7 -d " " ;}'
