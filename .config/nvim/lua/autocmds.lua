@@ -1,39 +1,39 @@
-local api = vim.api
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-api.nvim_create_autocmd('TextYankPost', {
+autocmd('TextYankPost', {
    pattern = '*',
-   group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
+   group = augroup('YankHighlight', { clear = true }),
    callback = function()
       vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 250 })
    end,
 })
 
 -- Toggle relative line numbers based on focus
-local numberToggleGroup = api.nvim_create_augroup("NumberToggle", { clear = true })
-api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
+local numberToggleGroup = augroup("NumberToggle", { clear = true })
+autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
    command = [[if &nu && mode() != "i" | set rnu | endif]],
    group = numberToggleGroup,
 })
 
-api.nvim_create_autocmd(
-   { "BufLeave", "FocusLost", "InsertEnter", "WinLeave" },
-   { command = [[if &nu | set nornu | endif ]], group = numberToggleGroup }
-)
+autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
+   command = [[if &nu | set nornu | endif ]],
+   group = numberToggleGroup
+})
 
-vim.api.nvim_create_autocmd("BufEnter", {
+-- Disable automatic comment insertion
+autocmd("BufEnter", {
    desc = "Disable automatic comment insertion",
-   group = vim.api.nvim_create_augroup("AutoComment", {}),
+   group = augroup("AutoComment", {}),
    callback = function()
       vim.opt_local.formatoptions:remove({ "o" })
-      -- vim.keymap.del("n", "<Leader>cal")
-      -- vim.keymap.del("n", "<Leader>caL")
    end,
 })
 
 -- Prevent Telescope from entering insert mode after leaving a prompt
-vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
+autocmd({ "BufLeave", "BufWinLeave" }, {
    callback = function(event)
       if vim.bo[event.buf].filetype == "TelescopePrompt" then
          vim.api.nvim_exec2("silent! stopinsert!", {})
@@ -42,9 +42,21 @@ vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
 })
 
 -- Disable spell checking in the quickfix list
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
    pattern = "qf",
    callback = function()
       vim.opt_local.spell = false
+   end,
+})
+
+-- Remove last search highlight after cursor moved
+autocmd({ "CursorMoved" }, {
+   group = augroup("auto-hlsearch", { clear = true }),
+   callback = function()
+      if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
+         vim.schedule(function()
+            vim.cmd.nohlsearch()
+         end)
+      end
    end,
 })
