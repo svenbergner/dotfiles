@@ -151,8 +151,8 @@ return {
                name = "Launch Dart Program",
                program = "${file}",
                cwd = "${workspaceFolder}",
-               args = { "-d chrome", "--web-port=1337", "--dart-define-from-file=env-vars.json" },            -- Note for Dart Apps this is args, for Flutter apps toolArgs
-               toolsArgs = { "-d chrome", "--web-port=1337", "--dart-define-from-file=env-vars.json" },       -- Note for Dart Apps this is args, for Flutter apps toolArgs
+               args = { "-d chrome", "--web-port=1337", "--dart-define-from-file=env-vars.json" },      -- NOTE: args is for Dart Apps
+               toolsArgs = { "-d chrome", "--web-port=1337", "--dart-define-from-file=env-vars.json" }, -- NOTE: toolsArgs is for Flutter apps
             }
          }
 
