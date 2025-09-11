@@ -227,11 +227,6 @@ return {
             vim.print("Current debuggee: ", dap.configurations.cpp[1].program)
          end, { nargs = 0 })
 
-         vim.api.nvim_create_user_command("DapLoadLldbForCpp", function()
-            ---@diagnostic disable-next-line: deprecated
-            require("dap.ext.vscode").load_launchjs(vim.fn.getcwd() .. "/.vscode/launch.json", { lldb = { "cpp" } })
-         end, { nargs = 0 })
-
          -- dap.adapters.python = {
          --     type = "executable",
          --     command = vim.fn.expand("~/") .. "/.local/share/nvim/mason/packages/debugpy/venv/bin/python",
