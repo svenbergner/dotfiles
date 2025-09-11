@@ -124,5 +124,5 @@ local function toggle_true_false()
    end
 end
 
-vim.keymap.set('n', '<leader>Tb', function() toggle_true_false() end,
-   { desc = '[T]oggle [b]ool', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tb', function() toggle_true_false() end,
+   { desc = '[t]oggle [b]ool', noremap = true, silent = true })
