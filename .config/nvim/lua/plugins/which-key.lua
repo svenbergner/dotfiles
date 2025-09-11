@@ -48,7 +48,7 @@ return {
             width = { min = 20, max = 200 },
 
             no_overlap = true,
-            border = "single",
+            border = "rounded",
             wo = {
                winblend = 10,
             },
