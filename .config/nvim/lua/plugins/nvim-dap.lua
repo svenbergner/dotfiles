@@ -306,10 +306,10 @@ return {
          vim.keymap.set("n", "<leader>djr", function() vim.cmd('DapViewJump repl') end,
             { desc = '[d]apview [j]ump to [r]epl' })
 
-         vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = 'Toggle [d]abui [b]reakpoint' })
-         vim.keymap.set("n", "<leader>dc", dap.run_to_cursor, { desc = 'Run to [d]abui [c]ursor' })
+         vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = 'Toggle [d]ab [b]reakpoint' })
+         vim.keymap.set("n", "<leader>dc", dap.run_to_cursor, { desc = 'Run to [d]ab [c]ursor' })
          vim.keymap.set("n", "<leader>dcb", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
-            { desc = 'Set [d]apui [c]onditional [b]reakpoint' })
+            { desc = 'Set [d]ap [c]onditional [b]reakpoint' })
          vim.keymap.set('n', '<Leader>dtp',
             function() dap.set_breakpoint(nil, nil, vim.fn.input('Trace point message: ')) end,
             { desc = 'Set [d]apui [t]race [p]oint' })
