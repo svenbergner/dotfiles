@@ -138,7 +138,7 @@ return {
          documentation = {
             auto_show = true,
             window = {
-               border = "single",
+               border = "rounded",
             },
          },
          -- Displays a preview of the selected item on the current line

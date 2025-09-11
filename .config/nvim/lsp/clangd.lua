@@ -51,7 +51,7 @@ local function symbol_info()
       width = math.max(string.len(name), string.len(container)),
       focusable = false,
       focus = false,
-      border = 'single',
+      border = 'rounded',
       title = 'Symbol Info',
     })
   end, bufnr)
