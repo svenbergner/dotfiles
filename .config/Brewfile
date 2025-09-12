@@ -248,6 +248,8 @@ brew "sst/tap/opencode"
 cask "android-studio"
 # E-books management software
 cask "calibre"
+# Software to layout and print images with Epson printers
+cask "epson-print-layout"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
