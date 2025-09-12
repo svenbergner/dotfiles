@@ -33,6 +33,8 @@ alias gitcc='git rev-list --count HEAD'
 # gitcca - Git Commit CouNT ALL - Show number of commits across all branches
 alias gitcca='git rev-list --all --count'
 alias glog="git log --oneline --graph --decorate --all --color=always"
+# List all branches which are completely merged
+alias gmb='git branch --merged'
 
 alias dp='delta --dark --paging=always --line-numbers --features side-by-side --syntax-theme gruvbox-dark'
 
