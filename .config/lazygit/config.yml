@@ -1,3 +1,4 @@
+# URL: https://github.com/jesseduffield/lazygit
 gui:
   nerdFontsVersion: "3"
   showDivergenceFromBaseBranch: arrowAndNumber
@@ -8,4 +9,4 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never --line-numbers --features side-by-side --syntax-theme gruvbox-dark --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"  
-  disableForcePushing: true
+  disableForcePushing: false
