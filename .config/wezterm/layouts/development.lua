@@ -28,7 +28,7 @@ M.setup_layout = function(wezterm)
       first_pane:send_text('nvim\n')
 
       local activatedTab = M.addTab(window, home_dir .. '/Repos/SSE/Dev', 'SSE/TaxCoreApi', 'nvim\n')
-      M.addTab(window, home_dir .. '/Repos/Content/StP/30', 'Content StP', 'nvim\n')
+      M.addTab(window, home_dir .. '/Repos/Content/StP/31', 'Content StP 31', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/SSE/Tools', 'Tools', 'nvim\n')
       -- M.addTab(window, home_dir .. '/Repos/DevTools', 'DevTools', 'nvim\n')
       -- M.addTab(window, home_dir .. '/Repos/SetupSSE', 'SetupSSE', 'nvim\n')
