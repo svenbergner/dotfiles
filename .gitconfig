@@ -2,6 +2,12 @@
 	defaultBranch = main
 [user]
 	name = Sven Bergner
+        email = sven.bergner@gmail.com
+        ; signingKey = 0x3F36A661
+[commit]
+        gpg-sign = true
+[tag]
+        gpg-sign = true
 [push]
         default = simple
 	autoSetupRemote = true
