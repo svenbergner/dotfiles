@@ -1,10 +1,10 @@
 --[===[
 Highlight patterns in text
-URL: https://github.com/echasnovski/mini.hipatterns
+URL: https://github.com/nvim-mini/mini.hipatterns
 --]===]
 
 return {
-   'echasnovski/mini.hipatterns',
+   'nvim-mini/mini.hipatterns',
    version = '*',
    config = function()
       local hipatterns = require('mini.hipatterns')

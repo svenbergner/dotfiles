@@ -17,7 +17,7 @@ URL: https://github.com/rafamadriz/friendly-snippets
 URL: https://github.com/moyiz/blink-emoji.nvim
 URL: https://github.com/MahanRahmati/blink-nerdfont.nvim
 URL: https://github.com/bydlw98/blink-cmp-env
-URL: https://github.com/echasnovski/mini.snippets
+URL: https://github.com/nvim-mini/mini.snippets
 URL: https://github.com/L3MON4D3/LuaSnip
 --]===]
 
@@ -32,7 +32,7 @@ return {
       'moyiz/blink-emoji.nvim',           -- blink.cmp source for emojis.
       'MahanRahmati/blink-nerdfont.nvim', -- blink.cmp source for nerd fonts.
       'bydlw98/blink-cmp-env',            -- blink.cmp source for environment variables.
-      'echasnovski/mini.snippets',
+      'nvim-mini/mini.snippets',
       { 'L3MON4D3/LuaSnip', version = '2.*' },
    },
 
