@@ -195,15 +195,6 @@ return {
       { "<leader>fz", function() Snacks.picker.zoxide() end,             desc = "[f]ind [z]oxide" },
       { "<leader>fi", function() Snacks.picker.icons() end,              desc = "[f]ind [i]cons" },
       { "<leader>z=", function() Snacks.picker.spelling() end,           desc = "Show spellings" },
-      -- lazygit
-      {
-         "<leader>gg",
-         function()
-            vim.cmd("wa")
-            Snacks.lazygit()
-         end,
-         desc = "Lazygit"
-      },
       -- Show latest Neovim News
       {
          "<leader>NN",
@@ -234,19 +225,18 @@ return {
       { "gt",         function() Snacks.picker.lsp_type_definitions() end,  desc = "LSP: [g]oto [t]ype Definition" },
       { "<leader>fs", function() Snacks.picker.lsp_symbols() end,           desc = "LSP: [f]ind [s]ymbols in current file" },
       { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP: [f]ind [S]ymbols in workspace " },
-      -- git
+      -- git / lazygit
       { "<leader>gB", function() Snacks.picker.git_branches() end,          desc = "show [g]it [B]ranches" },
-      { "<leader>gx", function() Snacks.gitbrowse() end,                    desc = "open [g]it repo in e[x]tern Browser" },
-      { "<leader>gF", function() Snacks.lazygit.log_file() end,             desc = "lazy[g]it Current [F]ile log" },
-      { "<leader>gL", function() Snacks.picker.git_log_line() end,          desc = "[g]it [L]og current line" },
+      { "<leader>gC", function() Snacks.lazygit.log() end,                  desc = "lazy[g]it [C]ommits" },
       { "<leader>gS", function() Snacks.picker.git_stash() end,             desc = "[g]it [S]tash" },
       { "<leader>gb", function() Snacks.git.blame_line() end,               desc = "[g]it [b]lame line" },
+      { "<leader>gc", function() Snacks.lazygit.log_file() end,             desc = "lazy[g]it [c]urrent file log" },
       { "<leader>gd", function() Snacks.picker.git_diff() end,              desc = "[g]it [d]iff (Hunks)" },
-      { "<leader>gf", function() Snacks.picker.git_log_file() end,          desc = "[g]it log [f]ile" },
-      { "<leader>gl", function() Snacks.lazygit.log() end,                  desc = "lazy[g]it [l]og (cwd)" },
+      { "<leader>gg", function() vim.cmd("wa") Snacks.lazygit() end,        desc = "Lazygit" },
+      { "<leader>gl", function() Snacks.picker.git_log_line() end,          desc = "[g]it [L]og current line" },
       { "<leader>gs", function() Snacks.picker.git_status() end,            desc = "[g]it [s]tatus" },
-      { '<leader>gC', function() Snacks.picker.git_log() end,               desc = "search all [g]it [C]ommits" },
-      { '<leader>gc', function() Snacks.picker.git_log_file() end,          desc = "search [g]it [c]ommits for Buffer" },
+      { '<leader>gL', function() Snacks.picker.git_log() end,               desc = "search all [g]it [L]ogs" },
+      { "<leader>gx", function() Snacks.gitbrowse() end,                    desc = "open [g]it repo in e[x]tern browser" },
    },
    init = function()
       vim.api.nvim_create_autocmd("User", {
