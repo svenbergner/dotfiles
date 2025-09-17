@@ -138,6 +138,8 @@ brew "lynx"
 brew "markdown-toc"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# FTP client with an advanced user interface
+brew "ncftp"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Small build system for use with gyp or CMake
