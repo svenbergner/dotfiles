@@ -8,7 +8,7 @@ return {
    enabled = true,
    event = 'VeryLazy',
    dependencies = {
-      { 'echasnovski/mini.icons', version = false },
+      { 'nvim-mini/mini.icons', version = false },
    },
    config = function()
       require('which-key').setup({

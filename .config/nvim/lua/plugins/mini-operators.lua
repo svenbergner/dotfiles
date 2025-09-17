@@ -1,6 +1,6 @@
 --[===[
 Text edit operators
-URL: https://github.com/echasnovski/mini.operators
+URL: https://github.com/nvim-mini/mini.operators
 
 Features:
  - Operators:
@@ -19,7 +19,7 @@ See *MiniOperators-overview* and *MiniOperators.config* tags in help for more de
 --]===]
 
 return {
-   'echasnovski/mini.operators',
+   'nvim-mini/mini.operators',
    enabled = true,
    version = '*',
    config = function()
