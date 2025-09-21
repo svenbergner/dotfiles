@@ -42,6 +42,7 @@ return {
             "-stdio",
             "-analyzers",
             analyzers_path .. "sonargo.jar",
+            analyzers_path .. "sonarcfamily.jar",
             analyzers_path .. "sonarhtml.jar",
             analyzers_path .. "sonariac.jar",
             analyzers_path .. "sonarjava.jar",
