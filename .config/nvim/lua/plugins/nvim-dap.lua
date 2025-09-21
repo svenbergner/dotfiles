@@ -50,13 +50,13 @@ return {
       "mfussenegger/nvim-dap",
       event = 'VeryLazy',
       dependencies = {
-         "nvim-neotest/nvim-nio",
+         "folke/lazydev.nvim",
          "igorlfs/nvim-dap-view",
+         "nvim-neotest/nvim-nio",
+         "svenbergner/telescope-debugee-selector",
+         "theHamsta/nvim-dap-virtual-text",
          "williamboman/mason.nvim",
          'jbyuki/one-small-step-for-vimkind',
-         "theHamsta/nvim-dap-virtual-text",
-         "svenbergner/telescope-debugee-selector",
-         "folke/lazydev.nvim",
       },
       config = function()
          require("lazydev").setup({})
@@ -120,7 +120,7 @@ return {
                   table.insert(commands, "breakpoint name configure --disable cpp_exception")
                   if vim.fn.has("mac") == 1 then
                      table.insert(commands,
-                        "settings set target.source-map /Users/qt/work/qt/ /Users/sven.bergner/Qt/6.7.3/Src/")
+                        "settings set target.source-map /Users/qt/work/qt/ /Users/sven.bergner/Qt/6.9.2/Src/")
                      table.insert(commands,
                         'script -l python -- import sys; sys.path += [ "' ..
                         vim.fn.expand("$HOME") .. '/Library/Python/3.9/lib/python/site-packages" ]')
