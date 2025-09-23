@@ -642,3 +642,7 @@ AutoTools
 orgmode
 jesseduffield
 onCurrentContentChanged
+SystemEventObserver
+FrameTitle
+sizeHint
+QWidget
