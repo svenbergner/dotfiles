@@ -166,6 +166,8 @@ brew "plantuml"
 brew "pngpaste"
 # Tool for managing OCI containers and pods
 brew "podman"
+# Cowsay but with ponies
+brew "ponysay"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Show ps output as a tree
@@ -252,6 +254,8 @@ brew "sst/tap/opencode"
 cask "android-studio"
 # E-books management software
 cask "calibre"
+# Screen annotation tool
+cask "drawpen"
 # Software to layout and print images with Epson printers
 cask "epson-print-layout"
 cask "font-hack-nerd-font"
@@ -287,6 +291,8 @@ cask "signal"
 cask "ubersicht"
 # Virtual machines UI using QEMU
 cask "utm"
+# Virtualization tool
+cask "virtualbuddy"
 # Multimedia player
 cask "vlc"
 # Free and open-source real time strategy game
