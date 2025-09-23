@@ -226,10 +226,10 @@ return {
       { "<leader>fs", function() Snacks.picker.lsp_symbols() end,           desc = "LSP: [f]ind [s]ymbols in current file" },
       { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP: [f]ind [S]ymbols in workspace " },
       -- git / lazygit
-      { "<leader>gB", function() Snacks.picker.git_branches() end,          desc = "show [g]it [B]ranches" },
+      -- { "<leader>gb", function() Snacks.git.blame_line() end,               desc = "[g]it [b]lame line" },
+      -- { "<leader>gB", function() Snacks.picker.git_branches() end,          desc = "show [g]it [B]ranches" },
       { "<leader>gC", function() Snacks.lazygit.log() end,                  desc = "lazy[g]it [C]ommits" },
       { "<leader>gS", function() Snacks.picker.git_stash() end,             desc = "[g]it [S]tash" },
-      { "<leader>gb", function() Snacks.git.blame_line() end,               desc = "[g]it [b]lame line" },
       { "<leader>gc", function() Snacks.lazygit.log_file() end,             desc = "lazy[g]it [c]urrent file log" },
       { "<leader>gd", function() Snacks.picker.git_diff() end,              desc = "[g]it [d]iff (Hunks)" },
       { "<leader>gg", function() vim.cmd("wa") Snacks.lazygit() end,        desc = "Lazygit" },
