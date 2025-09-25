@@ -646,3 +646,4 @@ SystemEventObserver
 FrameTitle
 sizeHint
 QWidget
+QtWin
