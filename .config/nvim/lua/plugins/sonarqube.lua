@@ -55,6 +55,20 @@ return {
          settings = {
             sonarlint = {
                pathToCompileCommands = analyzers_path .. "compile_commands.json",
+               rules = {
+                  -- Disable some rules that are not useful in our context
+                  -- or that produce too many false positives.
+                  -- See rule descriptions at
+                  -- https://sonarsource.github.io/rspec/#/rspec/SXXXX
+                  -- or search for a rule by name
+                  -- https://sonarsource.github.io/rspec/#/rspec/?lang=cfamily&query=replace+new
+                  ["cpp:S125"]  = { level = 'off' }, -- Sections of code should not be commented out
+                  ["cpp:S995"]  = { level = 'off' }, -- Change to pointer-to-const
+                  ["cpp:S3471"] = { level = 'off' }, -- "override" or "final" should be used instead of "virtual"
+                  ["cpp:S3576"] = { level = 'off' }, -- "final" classes should not have "virtual" functions
+                  ["cpp:S5025"] = { level = 'off' }, -- Memory should not be managed manually
+                  ["cpp:S6004"] = { level = 'off' }, -- "if" and "switch" initializer should be used to reduce scope of variables
+               },
                connectedMode = {
                   connections = {
                      sonarqube = {
