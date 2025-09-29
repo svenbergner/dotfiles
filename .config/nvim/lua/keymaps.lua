@@ -42,10 +42,10 @@ vim.keymap.set('n', '<esc><esc>', '<c-w><c-q>', { desc = 'Press Escape twice to 
 
 vim.keymap.set('n', '<M-q>', '@q', { desc = 'Use [M-q] to play the macro recorded in @q' })
 
--- Go to the previous/next item in the Quickfix-List
-vim.keymap.set('n', '<F8>', ':cn<CR>', { silent = true, desc = 'Go to next item in Quickfix-List' })
-vim.keymap.set('n', '<S-F8>', ':cp<CR>', { silent = true, desc = 'Go to previous item in Quickfix-List' })
-vim.keymap.set('n', '<F20>', ':cp<CR>', { silent = true, desc = 'Go to previous item in Quickfix-List' })
+-- Go to the previous/next item in quickfix list
+vim.keymap.set('n', '<F8>', ':cn<CR>', { silent = true, desc = 'Go to next item in quickfix list' })
+vim.keymap.set('n', '<S-F8>', ':cp<CR>', { silent = true, desc = 'Go to previous item in quickfix list' })
+vim.keymap.set('n', '<F20>', ':cp<CR>', { silent = true, desc = 'Go to previous item in quickfix list' })
 
 vim.keymap.set('n', '<leader>F', '<cmd>let @+=@%<CR><cmd>lua vim.notify("Filename copied to clipboard")<CR>',
    { silent = true, desc = 'copy [F]ilename to clipboard' })
@@ -95,14 +95,14 @@ vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('n', '>', '>>_')
 vim.keymap.set('n', '<', '<<_')
 
--- Quickfix-List
-vim.keymap.set('n', '<leader>qo', ':copen<CR>', { silent = true, desc = '[q]uickfix-list: [o]pen ' })
-vim.keymap.set('n', '<leader>qc', ':cclose<CR>', { silent = true, desc = '[q]uickfix-list: [c]lose' })
-vim.keymap.set('n', '<leader>qq', ':cclose<CR>', { silent = true, desc = '[q]uickfix-list: [q]uit' })
-vim.keymap.set('n', '<leader>qf', ':cfirst<CR>', { silent = true, desc = '[q]uickfix-list: Go to [f]irst item' })
-vim.keymap.set('n', '<leader>ql', ':clast<CR>', { silent = true, desc = '[q]uickfix-list: Go to [l]ast item' })
-vim.keymap.set('n', '<leader>qn', ':cnext<CR>', { silent = true, desc = '[q]uickfix-list: Go to [n]ext item' })
-vim.keymap.set('n', '<leader>qp', ':cprevious<CR>', { silent = true, desc = '[q]uickfix-list: Go to [p]revious item' })
+-- quickfix list
+vim.keymap.set('n', '<leader>qo', ':copen<CR>', { silent = true, desc = '[q]uickfix list: [o]pen ' })
+vim.keymap.set('n', '<leader>qc', ':cclose<CR>', { silent = true, desc = '[q]uickfix list: [c]lose' })
+vim.keymap.set('n', '<leader>qq', ':cclose<CR>', { silent = true, desc = '[q]uickfix list: [q]uit' })
+vim.keymap.set('n', '<leader>qf', ':cfirst<CR>', { silent = true, desc = '[q]uickfix list: Go to [f]irst item' })
+vim.keymap.set('n', '<leader>ql', ':clast<CR>', { silent = true, desc = '[q]uickfix list: Go to [l]ast item' })
+vim.keymap.set('n', '<leader>qn', ':cnext<CR>', { silent = true, desc = '[q]uickfix list: Go to [n]ext item' })
+vim.keymap.set('n', '<leader>qp', ':cprevious<CR>', { silent = true, desc = '[q]uickfix list: Go to [p]revious item' })
 
 -- Lazy Package Manager
 vim.keymap.set('n', '<leader>ll', '<CMD>Lazy<CR>', { silent = true, desc = '[l]oad [l]azy' })
