@@ -63,6 +63,7 @@ return {
                   -- or search for a rule by name
                   -- https://sonarsource.github.io/rspec/#/rspec/?lang=cfamily&query=replace+new
                   ["cpp:S125"]  = { level = 'off' }, -- Sections of code should not be commented out
+                  ["cpp:S134"]  = { level = 'off' }, -- Control flow statements "IF", "CASE", "DO", "LOOP", "SELECT", "WHILE" and "PROVIDE" should not be nested too deeply
                   ["cpp:S995"]  = { level = 'off' }, -- Change to pointer-to-const
                   ["cpp:S3471"] = { level = 'off' }, -- "override" or "final" should be used instead of "virtual"
                   ["cpp:S3576"] = { level = 'off' }, -- "final" classes should not have "virtual" functions
