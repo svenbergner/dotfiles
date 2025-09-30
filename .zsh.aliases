@@ -20,6 +20,9 @@ alias ll='ls -l'
 alias lt='ls --tree -l'
 alias cls='clear&&ls'
 
+# Avante
+alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
+
 # git aliases
 # cbr - Checkout Recent Branch
 alias cbr='git branch --sort=-committerdate --list --column=never | grep -v ^+ | fzf --header "Checkout Recent Branch" --pointer="󰁔" --preview "git diff --color=always {1}" | xargs git checkout'
