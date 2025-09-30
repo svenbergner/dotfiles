@@ -4,6 +4,8 @@ gui:
   showDivergenceFromBaseBranch: arrowAndNumber
   switchTabsWithPanelJumpKeys: true
   filterMode: fuzzy
+  expandFocusedSidePanel: true
+  showRandomTip: false
 
 git:
   paging:
