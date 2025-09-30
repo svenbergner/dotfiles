@@ -41,16 +41,16 @@ return {
             "sonarlint-language-server",
             "-stdio",
             "-analyzers",
-            analyzers_path .. "sonargo.jar",
-            analyzers_path .. "sonarcfamily.jar",
-            analyzers_path .. "sonarhtml.jar",
-            analyzers_path .. "sonariac.jar",
-            analyzers_path .. "sonarjava.jar",
-            analyzers_path .. "sonarjavasymbolicexecution.jar",
-            analyzers_path .. "sonarjs.jar",
-            analyzers_path .. "sonarphp.jar",
-            analyzers_path .. "sonarpython.jar",
-            analyzers_path .. "sonarxml.jar",
+            analyzers_path .. "sonargo.jar",      -- Go
+            analyzers_path .. "sonarcfamily.jar", -- C, C++
+            analyzers_path .. "sonarhtml.jar",    -- HTML
+            analyzers_path .. "sonariac.jar",     -- Infrastructure-as-Code
+            analyzers_path .. "sonarjs.jar",      -- JavaScript, TypeScript
+            analyzers_path .. "sonarpython.jar",  -- Python
+            analyzers_path .. "sonarxml.jar",     -- XML, XSLT
+            -- analyzers_path .. "sonarjava.jar",
+            -- analyzers_path .. "sonarjavasymbolicexecution.jar",
+            -- analyzers_path .. "sonarphp.jar",
          },
          settings = {
             sonarlint = {
