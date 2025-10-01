@@ -68,6 +68,7 @@ return {
                   ["cpp:S3471"] = { level = 'off' }, -- "override" or "final" should be used instead of "virtual"
                   ["cpp:S3576"] = { level = 'off' }, -- "final" classes should not have "virtual" functions
                   ["cpp:S5025"] = { level = 'off' }, -- Memory should not be managed manually
+                  ["cpp:S5350"] = { level = 'off' }, -- Pointer and reference local variables should be "const" if the corresponding object is not modified
                   ["cpp:S6004"] = { level = 'off' }, -- "if" and "switch" initializer should be used to reduce scope of variables
                },
                connectedMode = {
