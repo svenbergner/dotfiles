@@ -254,6 +254,8 @@ brew "sst/tap/opencode"
 cask "android-studio"
 # E-books management software
 cask "calibre"
+# Utilities designed to make common development tasks easier
+cask "devtoys"
 # Screen annotation tool
 cask "drawpen"
 # Software to layout and print images with Epson printers
