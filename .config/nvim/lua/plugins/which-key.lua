@@ -1,6 +1,7 @@
 --[===[
 Shows the available keymaps
 URL: http://github.com/folke/which-key.nvim
+URL: http://github.com/nvim-mini/mini.icons
 --]===]
 
 return {
@@ -33,6 +34,7 @@ return {
             { '<leader>m',        group = '[m]arkdown',          icon = '' },
             { '<leader>n',        group = '[n]eotree',           icon = '󱏒' },
             { '<leader>N',        group = '[N]oice and [N]ews',  icon = '' },
+            { '<leader>o',        group = '[o]rg mode',          icon = '' },
             { '<leader>q',        group = '[q]uickfix list',     icon = '' },
             { '<leader>s',        group = '[s]wap',              icon = '󰣁' },
             { '<leader>t',        group = '[t]oggle',            icon = '' },
