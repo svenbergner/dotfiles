@@ -114,7 +114,7 @@ vim.keymap.set('n', '<leader>lh', '<CMD>Lazy help<CR>', { silent = true, desc = 
 
 
 -- Toggle true false
-local function toggle_true_false()
+local function toggle_boolean()
    vim.cmd('normal! yiw')
    local current_word = vim.fn.getreg('"')
 
@@ -151,5 +151,5 @@ local function toggle_true_false()
    end
 end
 
-vim.keymap.set('n', '<leader>tb', function() toggle_true_false() end,
+vim.keymap.set('n', '<leader>tb', function() toggle_boolean() end,
    { desc = '[t]oggle [b]ool', noremap = true, silent = true })
