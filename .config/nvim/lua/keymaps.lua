@@ -117,10 +117,37 @@ vim.keymap.set('n', '<leader>lh', '<CMD>Lazy help<CR>', { silent = true, desc = 
 local function toggle_true_false()
    vim.cmd('normal! yiw')
    local current_word = vim.fn.getreg('"')
-   if current_word == 'true' then
-      vim.cmd('normal! ciwfalse')
-   elseif current_word == 'false' then
-      vim.cmd('normal! ciwtrue')
+
+   local toggle_map = {
+      ['true'] = 'false',
+      ['false'] = 'true',
+      ['True'] = 'False',
+      ['False'] = 'True',
+      ['TRUE'] = 'FALSE',
+      ['FALSE'] = 'TRUE',
+      ['~T'] = '~F',
+      ['~F'] = '~T',
+      ['on'] = 'off',
+      ['off'] = 'on',
+      ['yes'] = 'no',
+      ['no'] = 'yes',
+      ['Yes'] = 'No',
+      ['No'] = 'Yes',
+      ['YES'] = 'NO',
+      ['NO'] = 'YES',
+      ['enabled'] = 'disabled',
+      ['disabled'] = 'enabled',
+      ['enable'] = 'disable',
+      ['disable'] = 'enable',
+      ['=='] = '!=',
+      ['!='] = '==',
+      ['==='] = '!==',
+      ['!=='] = '===',
+   }
+
+   local replacement = toggle_map[current_word]
+   if replacement then
+      vim.cmd('normal! ciw' .. replacement)
    end
 end
 
