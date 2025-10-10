@@ -22,6 +22,8 @@ brew "bat"
 brew "bat-extras"
 # Generate compilation database for clang tooling
 brew "bear"
+# Binary editor written in Go
+brew "bed"
 # Draw boxes around text
 brew "boxes"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
