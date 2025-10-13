@@ -3,6 +3,7 @@ Flutter Test support
 See :h neotest.run.run() for parameters.
 URL: https://github.com/nvim-neotest/neotest
 URL: https://github.com/rosstang/neotest-catch2
+URL: https://github.com/orjangj/neotest-ctest
 URL: https://github.com/Shatur/neovim-tasks
 --]===]
 
@@ -19,6 +20,7 @@ return {
       "nvim-neotest/neotest-plenary",
       "antoinemadec/FixCursorHold.nvim",
       "Shatur/neovim-tasks",
+      "orjangj/neotest-ctest",
       { "rosstang/neotest-catch2", branch = "use-catch2-with-json" },
    },
    config = function()
@@ -39,6 +41,7 @@ return {
                use_lsp = true,
             },
             require('neotest-plenary') {},
+            require("neotest-ctest").setup({}),
             -- require('neotest-catch2') {},
          }
       })
