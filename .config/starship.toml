@@ -14,8 +14,6 @@ scan_timeout = 50
 
 format = """
 [](color_orange)\
-$os\
-$username\
 [](bg:color_yellow fg:color_orange)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
@@ -39,33 +37,11 @@ color_red = '#cc241d'
 color_yellow = '#d79921'
 
 [status]
-# style = 'bg:color_red'
 symbol = '☠  '
 success_symbol = '✅ '
 format = '[$symbol$status]($style) '
 map_symbol = false
 disabled = false
-
-[os]
-disabled = false
-style = "bg:color_orange fg:color_fg0"
-
-[os.symbols]
-Windows = "󰍲"
-Ubuntu = "󰕈"
-Macos = "󰀵"
-Linux = "󰌽"
-Android = ""
-Arch = "󰣇"
-EndeavourOS = ""
-Debian = "󰣚"
-Pop = ""
-
-[username]
-show_always = true
-style_user = "bg:color_orange fg:color_fg0"
-style_root = "bg:color_orange fg:color_fg0"
-format = '[ $user ]($style)'
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
