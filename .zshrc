@@ -140,8 +140,17 @@ export MANPAGER='nvim +Man!'
 
 # Keybindings -e for emacs-, -v for vi-mode
 bindkey -v
+export KEYTIMEOUT=1
+
+# Press 'v' in normal mode to edit the command line in $EDITOR
+autoload edit-command-line
+# autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+bindkey '^X^e' edit-command-line
 
 # Function to change cursor shape
+export VI_MODE_SET_CURSOR=true
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
     echo -ne '\e[1 q'  # Set cursor to block
@@ -152,12 +161,26 @@ function zle-keymap-select {
 
 # Function to reset cursor shape on exit
 function zle-line-init {
+  zle -K viins
   echo -ne '\e[5 q'  # Set cursor to beam
 }
 
 # Bind the functions to zle events
 zle -N zle-keymap-select
 zle -N zle-line-init
+
+# Yank to system clipboard
+# Use 'pbcopy' on macOS and 'xclip' on archlinux
+function vi-yank-to-clipboard() {
+  zle vi-yank
+  if [[ "$OSTYPE" == "darwin".* ]] then
+    print -rn -- "$CUTBUFFER" | pbcopy -i
+  else
+    print -rn -- "$CUTBUFFER" | xclip -selection clipboard
+  fi
+}
+zle -N vi-yank-to-clipboard 
+bindkey -M vicmd 'y' vi-yank-to-clipboard
 
 # Ensure the cursor shape is set correctly when starting zsh
 zle-keymap-select
@@ -178,10 +201,6 @@ fi
 if [[ -f ~/.zsh.local ]] then
   source ~/.zsh.local
 fi
-
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^X^e' edit-command-line
 
 
 ## [Completion]
