@@ -9,6 +9,7 @@ URL: https://github.com/gruvw/strudel.nvim
 
 return {
    "gruvw/strudel.nvim",
+   enabled = true,
    build = "npm install",
    config = function()
       require("strudel").setup()
