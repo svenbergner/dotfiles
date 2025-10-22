@@ -1,18 +1,6 @@
-vim.lsp.enable({
-   'bashls',
-   'clangd',
-   'cmake',
-   'jsonls',
-   'lua_ls',
-   'marksman',
-   'pylsp',
-   'terraformls',
-   'tinymist',
-   'yamlls',
-})
-
--- LSP servers are automatically managed by Mason
--- Use :MasonVerify to check which tools are Mason-managed
+--[===[
+LSP Diagnostics Configuration and Key Mappings
+--]===]
 
 vim.diagnostic.config({
    underline = { severity = vim.diagnostic.severity.ERROR },
