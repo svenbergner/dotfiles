@@ -21,13 +21,11 @@ return {
          'bashls',
          'clangd',
          'cmake',
-         -- 'codelldb',
          'jsonls',
          'lua_ls',
          'marksman',
          'pico8_ls',
          'pylsp',
-         -- 'sonarlint-language-server',
          'spectral',
          'terraformls',
          'tinymist',
@@ -53,6 +51,10 @@ return {
          'WhoIsSethDaniel/mason-tool-installer.nvim',
          opts = {
             ensure_installed = {
+               -- LSPs
+               'codelldb',
+               'sonarlint-language-server',
+
                -- DAPs
                'bash-debug-adapter',
                'dart-debug-adapter',
