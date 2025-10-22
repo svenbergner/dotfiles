@@ -1,6 +1,13 @@
+# EditorConfig: https://editorconfig.org
+
+root = true
+
 [*.lua]
 indent_size = 3
 indent_style = space
+quote_style = single
+spaces_around_brackets = inside
+
 [*.json]
 indent_size = 3
 indent_style = space
