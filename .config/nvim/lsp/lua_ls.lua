@@ -2,13 +2,13 @@
 -- URL: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
 
 return {
-   cmd = { "lua-language-server" },
-   filetypes = { "lua" },
+   cmd = { 'lua-language-server' },
+   filetypes = { 'lua' },
    root_markers = {
-      ".git",
-      ".luacheckrc",
-      ".stylua.toml",
-      "stylua.toml",
+      '.git',
+      '.luacheckrc',
+      '.stylua.toml',
+      'stylua.toml',
    },
    settings = {
       Lua = {
@@ -16,25 +16,21 @@ return {
             checkThirdParty = false,
             library = {
                vim.env.VIMRUNTIME,
-               "${3rd}/luv/library",
+               '${3rd}/luv/library',
             },
          },
          telemetry = { enable = false },
          format = {
             enable = true,
-            defaultConfig = {
-               align_continuous_assign_statement = false,
-               align_continuous_rect_table_field = false
-            },
          },
          diagnostics = {
             disable = { 'missing-fields' },
             globals = {
                'vim',
                'filetypes',
-               "require",
-               "package",
-               "Snacks"
+               'require',
+               'package',
+               'Snacks'
             },
          },
       },
@@ -42,7 +38,7 @@ return {
          includeInlayEnumMemberValueHints = true,
          includeInlayFunctionLikeReturnTypeHints = true,
          includeInlayFunctionParameterTypeHints = true,
-         includeInlayParameterNameHints = "all",       -- 'none' | 'literals' | 'all';
+         includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
          includeInlayPropertyDeclarationTypeHints = true,
          includeInlayVariableTypeHints = false,
