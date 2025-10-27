@@ -668,3 +668,6 @@ DAPs
 linters
 EditorConfig
 editorconfig
+getIconMultiSize
+DMCommandInterface
+ViewModel
