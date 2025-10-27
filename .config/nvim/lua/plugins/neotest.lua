@@ -39,7 +39,12 @@ return {
                use_lsp = true,
             },
             require('neotest-plenary') {},
-            require("neotest-ctest").setup({}),
+            require("neotest-ctest").setup({
+               is_test_file = function(file_path)
+                  return file_path:match("test_.*%.c$") ~= nil or file_path:match(".*_test%.c$") ~= nil or
+                     file_path:match("test_.*%.cpp$") ~= nil or file_path:match(".*Test%.cpp$") ~= nil
+               end,
+            }),
             -- require('neotest-catch2') {},
          }
       })
