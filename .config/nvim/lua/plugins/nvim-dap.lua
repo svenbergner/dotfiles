@@ -276,9 +276,9 @@ return {
          vim.keymap.set("n", "<S-F11>", dap.step_out, { desc = 'Step out' })
          vim.keymap.set("n", "<F23>", dap.step_out, { desc = 'Step out' })
          vim.keymap.set("n", "<F9>", dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
-         vim.keymap.set("n", "<leader>dq", dapview.close, { desc = '[d]apview [q]uit' })
-         vim.keymap.set("n", "<leader>dt", dapview.toggle, { desc = '[d]apview [t]oggle' })
+         vim.keymap.set("n", "<leader>dd", dapview.toggle, { desc = 'toggle [d]apview [d]isplay' })
          vim.keymap.set("n", "<leader>do", dapview.open, { desc = '[d]apview [o]pen' })
+         vim.keymap.set("n", "<leader>dq", dapview.close, { desc = '[d]apview [q]uit' })
 
          vim.keymap.set("n", "<leader>dsw", function() vim.cmd('DapViewShow watches') end,
             { desc = '[d]apview [s]how [w]atches' })
@@ -307,12 +307,12 @@ return {
             { desc = '[d]apview [j]ump to [r]epl' })
 
          vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = 'Toggle [d]ab [b]reakpoint' })
-         vim.keymap.set("n", "<leader>dc", dap.run_to_cursor, { desc = 'Run to [d]ab [c]ursor' })
-         vim.keymap.set("n", "<leader>dcb", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
-            { desc = 'Set [d]ap [c]onditional [b]reakpoint' })
-         vim.keymap.set('n', '<Leader>dtp',
+         vim.keymap.set("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
+            { desc = 'Set [d]ap conditional [B]reakpoint' })
+         vim.keymap.set("n", "<leader>dc", dap.run_to_cursor, { desc = '[d]ab: Run to [c]ursor' })
+         vim.keymap.set('n', '<Leader>dt',
             function() dap.set_breakpoint(nil, nil, vim.fn.input('Trace point message: ')) end,
-            { desc = 'Set [d]apui [t]race [p]oint' })
+            { desc = 'Set [d]ap [t]racepoint' })
          vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function() require('dap.ui.widgets').hover() end,
             { desc = '[d]apui [h]over information' })
 
