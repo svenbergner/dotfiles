@@ -85,7 +85,7 @@ alias bbc='brew bundle cleanup'
 alias bbe='pushd ~/Repos/dotfiles && brew bundle edit && popd'
 alias bbl='brew bundle list'
 alias bbr='brew bundle remove'
-alias bbu='brew bundle dump --describe --force && echo "Brewfile updated!" || echo "Failed to update Brewfile."'
+alias bbu='echo "Updating Brewfile..." && brew bundle dump --describe --force && echo "Brewfile updated!" || echo "Failed to update Brewfile."'
 
 # Flutter aliases
 alias flutter='flutter --no-version-check'
