@@ -285,6 +285,8 @@ cask "kitty"
 cask "love"
 # Programmable solid 3D CAD modeller
 cask "openscad"
+# Utility to uninstall apps and remove leftover files from old/uninstalled apps
+cask "pearcleaner"
 # Keyboard-driven, vim-like browser based on PyQt5
 cask "qutebrowser"
 # Control your tools with a few keystrokes
