@@ -7,7 +7,7 @@ vim.diagnostic.config({
    update_in_insert = false,
    severity_sort = true,
    float = {
-      border = "rounded",
+      border = 'rounded',
       source = true,
    },
    signs = {
@@ -18,8 +18,8 @@ vim.diagnostic.config({
          [vim.diagnostic.severity.HINT] = '󰌶 ',
       },
       numhl = {
-         [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-         [vim.diagnostic.severity.WARN] = "WarningMsg",
+         [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+         [vim.diagnostic.severity.WARN] = 'WarningMsg',
       },
    },
    virtual_text = false,
@@ -41,12 +41,12 @@ vim.keymap.set('i', '<A-o>', sw, { desc = 'LSP: Alt + o - switch source/header' 
 vim.keymap.set('i', '<M-o>', sw, { desc = 'LSP: Meta + o - switch source/header' })
 
 -- Options for LSP
-vim.lsp.set_log_level("OFF") -- Set log level to OFF to disable logging
+vim.lsp.set_log_level('OFF') -- Set log level to OFF to disable logging
 
 vim.lsp.start {
    handlers = {
-      ["textDocument/hover"] = vim.lsp.buf.hover, { border = 'rounded' },
-      ["textDocument/signatureHelp"] = vim.lsp.buf.signature_help, { border = 'rounded' },
+      ['textDocument/hover'] = vim.lsp.buf.hover, { border = 'rounded' },
+      ['textDocument/signatureHelp'] = vim.lsp.buf.signature_help, { border = 'rounded' },
    } }
 
 vim.lsp.inlay_hint.enable(true)
@@ -56,15 +56,15 @@ vim.keymap.set('n', '<F6>', function()
    vim.diagnostic.jump({ count = 1, float = true })
    vim.cmd('normal! zz')
 end
-, { desc = "Go to next diagnostic message" })
+, { desc = 'Go to next diagnostic message' })
 
 vim.keymap.set('n', '<S-F6>', function()
    vim.diagnostic.jump({ count = -1, float = true })
    vim.cmd('normal! zz')
-end, { desc = "Go to previous diagnostic message" })
+end, { desc = 'Go to previous diagnostic message' })
 
 vim.keymap.set('n', '<F18>', function() vim.diagnostic.jump({ count = -1, float = true }) end,
-   { desc = "Go to previous diagnostic message" })
+   { desc = 'Go to previous diagnostic message' })
 
 vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, { desc = 'LSP: Rename <F2>' })
 vim.keymap.set('n', 'K', function() vim.lsp.buf.hover { border = 'rounded' } end, { desc = 'LSP: Hover Documentation' })
@@ -115,88 +115,88 @@ local function lsp_status()
    local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
    if #clients == 0 then
-      print("󰅚 No LSP clients attached")
+      print('󰅚 No LSP clients attached')
       return
    end
 
-   print("󰒋 LSP Status for buffer " .. bufnr .. ":")
-   print("─────────────────────────────────")
+   print('󰒋 LSP Status for buffer ' .. bufnr .. ':')
+   print('─────────────────────────────────')
 
    for i, client in ipairs(clients) do
-      print(string.format("󰌘 Client %d: %s (ID: %d)", i, client.name, client.id))
-      print("  Root: " .. (client.config.root_dir or "N/A"))
+      print(string.format('󰌘 Client %d: %s (ID: %d)', i, client.name, client.id))
+      print('  Root: ' .. (client.config.root_dir or 'N/A'))
       ---@diagnostic disable-next-line: undefined-field
-      print("  Filetypes: " .. table.concat(client.config.filetypes or {}))
+      print('  Filetypes: ' .. table.concat(client.config.filetypes or {}))
 
       -- Check capabilities
       local caps = client.server_capabilities
       if not caps then
-         print("  No capabilities reported")
+         print('  No capabilities reported')
          return
       end
       local features = {}
-      if caps.completionProvider then table.insert(features, "completion") end
-      if caps.hoverProvider then table.insert(features, "hover") end
-      if caps.definitionProvider then table.insert(features, "definition") end
-      if caps.referencesProvider then table.insert(features, "references") end
-      if caps.renameProvider then table.insert(features, "rename") end
-      if caps.codeActionProvider then table.insert(features, "code_action") end
-      if caps.documentFormattingProvider then table.insert(features, "formatting") end
+      if caps.completionProvider then table.insert(features, 'completion') end
+      if caps.hoverProvider then table.insert(features, 'hover') end
+      if caps.definitionProvider then table.insert(features, 'definition') end
+      if caps.referencesProvider then table.insert(features, 'references') end
+      if caps.renameProvider then table.insert(features, 'rename') end
+      if caps.codeActionProvider then table.insert(features, 'code_action') end
+      if caps.documentFormattingProvider then table.insert(features, 'formatting') end
 
-      print("  Features: " .. table.concat(features, ", "))
-      print("")
+      print('  Features: ' .. table.concat(features, ', '))
+      print('')
    end
 end
 
-vim.api.nvim_create_user_command('LspStatus', lsp_status, { desc = "Show detailed LSP status" })
+vim.api.nvim_create_user_command('LspStatus', lsp_status, { desc = 'Show detailed LSP status' })
 
 local function check_lsp_capabilities()
    local bufnr = vim.api.nvim_get_current_buf()
    local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
    if #clients == 0 then
-      print("No LSP clients attached")
+      print('No LSP clients attached')
       return
    end
 
    for _, client in ipairs(clients) do
-      print("Capabilities for " .. client.name .. ":")
+      print('Capabilities for ' .. client.name .. ':')
       local caps = client.server_capabilities
       if not caps then
-         print("  No capabilities reported")
+         print('  No capabilities reported')
          return
       end
 
       local capability_list = {
-         { "Completion",                caps.completionProvider },
-         { "Hover",                     caps.hoverProvider },
-         { "Signature Help",            caps.signatureHelpProvider },
-         { "Go to Definition",          caps.definitionProvider },
-         { "Go to Declaration",         caps.declarationProvider },
-         { "Go to Implementation",      caps.implementationProvider },
-         { "Go to Type Definition",     caps.typeDefinitionProvider },
-         { "Find References",           caps.referencesProvider },
-         { "Document Highlight",        caps.documentHighlightProvider },
-         { "Document Symbol",           caps.documentSymbolProvider },
-         { "Workspace Symbol",          caps.workspaceSymbolProvider },
-         { "Code Action",               caps.codeActionProvider },
-         { "Code Lens",                 caps.codeLensProvider },
-         { "Document Formatting",       caps.documentFormattingProvider },
-         { "Document Range Formatting", caps.documentRangeFormattingProvider },
-         { "Rename",                    caps.renameProvider },
-         { "Folding Range",             caps.foldingRangeProvider },
-         { "Selection Range",           caps.selectionRangeProvider },
+         { 'Completion',                caps.completionProvider },
+         { 'Hover',                     caps.hoverProvider },
+         { 'Signature Help',            caps.signatureHelpProvider },
+         { 'Go to Definition',          caps.definitionProvider },
+         { 'Go to Declaration',         caps.declarationProvider },
+         { 'Go to Implementation',      caps.implementationProvider },
+         { 'Go to Type Definition',     caps.typeDefinitionProvider },
+         { 'Find References',           caps.referencesProvider },
+         { 'Document Highlight',        caps.documentHighlightProvider },
+         { 'Document Symbol',           caps.documentSymbolProvider },
+         { 'Workspace Symbol',          caps.workspaceSymbolProvider },
+         { 'Code Action',               caps.codeActionProvider },
+         { 'Code Lens',                 caps.codeLensProvider },
+         { 'Document Formatting',       caps.documentFormattingProvider },
+         { 'Document Range Formatting', caps.documentRangeFormattingProvider },
+         { 'Rename',                    caps.renameProvider },
+         { 'Folding Range',             caps.foldingRangeProvider },
+         { 'Selection Range',           caps.selectionRangeProvider },
       }
 
       for _, cap in ipairs(capability_list) do
-         local status = cap[2] and "✓" or "✗"
-         print(string.format("  %s %s", status, cap[1]))
+         local status = cap[2] and '✓' or '✗'
+         print(string.format('  %s %s', status, cap[1]))
       end
-      print("")
+      print('')
    end
 end
 
-vim.api.nvim_create_user_command('LspCapabilities', check_lsp_capabilities, { desc = "Show LSP capabilities" })
+vim.api.nvim_create_user_command('LspCapabilities', check_lsp_capabilities, { desc = 'Show LSP capabilities' })
 
 local function lsp_diagnostics_info()
    local bufnr = vim.api.nvim_get_current_buf()
@@ -209,68 +209,68 @@ local function lsp_diagnostics_info()
       counts[severity] = counts[severity] + 1
    end
 
-   print("󰒡 Diagnostics for current buffer:")
-   print("  󰅚 Errors: " .. counts.ERROR)
-   print("  󰀪 Warnings: " .. counts.WARN)
-   print("  󰋽 Info: " .. counts.INFO)
-   print("  󰌶 Hints: " .. counts.HINT)
-   print("  Total: " .. #diagnostics)
+   print('󰒡 Diagnostics for current buffer:')
+   print('  󰅚 Errors: ' .. counts.ERROR)
+   print('  󰀪 Warnings: ' .. counts.WARN)
+   print('  󰋽 Info: ' .. counts.INFO)
+   print('  󰌶 Hints: ' .. counts.HINT)
+   print('  Total: ' .. #diagnostics)
 end
 
-vim.api.nvim_create_user_command('LspDiagnostics', lsp_diagnostics_info, { desc = "Show LSP diagnostics count" })
+vim.api.nvim_create_user_command('LspDiagnostics', lsp_diagnostics_info, { desc = 'Show LSP diagnostics count' })
 
 
 local function lsp_info()
    local bufnr = vim.api.nvim_get_current_buf()
    local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
-   print("═══════════════════════════════════")
-   print("           LSP INFORMATION          ")
-   print("═══════════════════════════════════")
-   print("")
+   print('═══════════════════════════════════')
+   print('           LSP INFORMATION          ')
+   print('═══════════════════════════════════')
+   print('')
 
    -- Basic info
-   print("󰈙 Language client log: " .. vim.lsp.get_log_path())
-   print("󰈔 Detected filetype: " .. vim.bo.filetype)
-   print("󰈮 Buffer: " .. bufnr)
-   print("󰈔 Root directory: " .. (vim.fn.getcwd() or "N/A"))
-   print("")
+   print('󰈙 Language client log: ' .. vim.lsp.get_log_path())
+   print('󰈔 Detected filetype: ' .. vim.bo.filetype)
+   print('󰈮 Buffer: ' .. bufnr)
+   print('󰈔 Root directory: ' .. (vim.fn.getcwd() or 'N/A'))
+   print('')
 
    if #clients == 0 then
-      print("󰅚 No LSP clients attached to buffer " .. bufnr)
-      print("")
-      print("Possible reasons:")
-      print("  • No language server installed for " .. vim.bo.filetype)
-      print("  • Language server not configured")
-      print("  • Not in a project root directory")
-      print("  • File type not recognized")
+      print('󰅚 No LSP clients attached to buffer ' .. bufnr)
+      print('')
+      print('Possible reasons:')
+      print('  • No language server installed for ' .. vim.bo.filetype)
+      print('  • Language server not configured')
+      print('  • Not in a project root directory')
+      print('  • File type not recognized')
       return
    end
 
-   print("󰒋 LSP clients attached to buffer " .. bufnr .. ":")
-   print("─────────────────────────────────")
+   print('󰒋 LSP clients attached to buffer ' .. bufnr .. ':')
+   print('─────────────────────────────────')
 
    for i, client in ipairs(clients) do
-      print(string.format("󰌘 Client %d: %s", i, client.name))
-      print("  ID: " .. client.id)
-      print("  Root dir: " .. (client.config.root_dir or "Not set"))
+      print(string.format('󰌘 Client %d: %s', i, client.name))
+      print('  ID: ' .. client.id)
+      print('  Root dir: ' .. (client.config.root_dir or 'Not set'))
       ---@diagnostic disable-next-line: param-type-mismatch
-      print("  Command: " .. table.concat(client.config.cmd or {}, " "))
+      print('  Command: ' .. table.concat(client.config.cmd or {}, ' '))
       ---@diagnostic disable-next-line: undefined-field
-      print("  Filetypes: " .. table.concat(client.config.filetypes or {}, ", "))
+      print('  Filetypes: ' .. table.concat(client.config.filetypes or {}, ', '))
 
       -- Server status
       if client:is_stopped() then
-         print("  Status: 󰅚 Stopped")
+         print('  Status: 󰅚 Stopped')
       else
-         print("  Status: 󰄬 Running")
+         print('  Status: 󰄬 Running')
       end
 
       -- Workspace folders
       if client.workspace_folders and #client.workspace_folders > 0 then
-         print("  Workspace folders:")
+         print('  Workspace folders:')
          for _, folder in ipairs(client.workspace_folders) do
-            print("    • " .. folder.name)
+            print('    • ' .. folder.name)
          end
       end
 
@@ -279,33 +279,33 @@ local function lsp_info()
       for buf, _ in pairs(client.attached_buffers or {}) do
          table.insert(attached_buffers, buf)
       end
-      print("  Attached buffers: " .. #attached_buffers)
+      print('  Attached buffers: ' .. #attached_buffers)
 
       -- Key capabilities
       local caps = client.server_capabilities
       if not caps then
-         print("  No capabilities reported")
-         print("")
+         print('  No capabilities reported')
+         print('')
          return
       end
       local key_features = {}
-      if caps.completionProvider then table.insert(key_features, "completion") end
-      if caps.hoverProvider then table.insert(key_features, "hover") end
-      if caps.definitionProvider then table.insert(key_features, "definition") end
-      if caps.documentFormattingProvider then table.insert(key_features, "formatting") end
-      if caps.codeActionProvider then table.insert(key_features, "code_action") end
+      if caps.completionProvider then table.insert(key_features, 'completion') end
+      if caps.hoverProvider then table.insert(key_features, 'hover') end
+      if caps.definitionProvider then table.insert(key_features, 'definition') end
+      if caps.documentFormattingProvider then table.insert(key_features, 'formatting') end
+      if caps.codeActionProvider then table.insert(key_features, 'code_action') end
 
       if #key_features > 0 then
-         print("  Key features: " .. table.concat(key_features, ", "))
+         print('  Key features: ' .. table.concat(key_features, ', '))
       end
 
-      print("")
+      print('')
    end
 
    -- Diagnostics summary
    local diagnostics = vim.diagnostic.get(bufnr)
    if #diagnostics > 0 then
-      print("󰒡 Diagnostics Summary:")
+      print('󰒡 Diagnostics Summary:')
       local counts = { ERROR = 0, WARN = 0, INFO = 0, HINT = 0 }
 
       for _, diagnostic in ipairs(diagnostics) do
@@ -313,22 +313,22 @@ local function lsp_info()
          counts[severity] = counts[severity] + 1
       end
 
-      print("  󰅚 Errors: " .. counts.ERROR)
-      print("  󰀪 Warnings: " .. counts.WARN)
-      print("  󰋽 Info: " .. counts.INFO)
-      print("  󰌶 Hints: " .. counts.HINT)
-      print("  Total: " .. #diagnostics)
+      print('  󰅚 Errors: ' .. counts.ERROR)
+      print('  󰀪 Warnings: ' .. counts.WARN)
+      print('  󰋽 Info: ' .. counts.INFO)
+      print('  󰌶 Hints: ' .. counts.HINT)
+      print('  Total: ' .. #diagnostics)
    else
-      print("󰄬 No diagnostics")
+      print('󰄬 No diagnostics')
    end
 
-   print("")
-   print("Use :LspLog to view detailed logs")
-   print("Use :LspCapabilities for full capability list")
+   print('')
+   print('Use :LspLog to view detailed logs')
+   print('Use :LspCapabilities for full capability list')
 end
 
 -- Create command
-vim.api.nvim_create_user_command('LspInfo', lsp_info, { desc = "Show comprehensive LSP information" })
+vim.api.nvim_create_user_command('LspInfo', lsp_info, { desc = 'Show comprehensive LSP information' })
 
 
 local function lsp_status_short()
@@ -336,7 +336,7 @@ local function lsp_status_short()
    local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
    if #clients == 0 then
-      return "" -- Return empty string when no LSP
+      return '' -- Return empty string when no LSP
    end
 
    local names = {}
@@ -344,32 +344,32 @@ local function lsp_status_short()
       table.insert(names, client.name)
    end
 
-   return "󰒋 " .. table.concat(names, ",")
+   return '󰒋 ' .. table.concat(names, ',')
 end
 
 local function git_branch()
-   local ok, handle = pcall(io.popen, "git branch --show-current 2>/dev/null")
+   local ok, handle = pcall(io.popen, 'git branch --show-current 2>/dev/null')
    if not ok or not handle then
-      return ""
+      return ''
    end
-   local branch = handle:read("*a")
+   local branch = handle:read('*a')
    handle:close()
-   if branch and branch ~= "" then
-      branch = branch:gsub("\n", "")
-      return "󰊢 " .. branch
+   if branch and branch ~= '' then
+      branch = branch:gsub('\n', '')
+      return '󰊢 ' .. branch
    end
-   return ""
+   return ''
 end
 
 local function formatter_status()
-   local ok, conform = pcall(require, "conform")
+   local ok, conform = pcall(require, 'conform')
    if not ok then
-      return ""
+      return ''
    end
 
    local formatters = conform.list_formatters_to_run(0)
    if #formatters == 0 then
-      return ""
+      return ''
    end
 
    local formatter_names = {}
@@ -377,41 +377,41 @@ local function formatter_status()
       table.insert(formatter_names, formatter.name)
    end
 
-   return "󰉿 " .. table.concat(formatter_names, ",")
+   return '󰉿 ' .. table.concat(formatter_names, ',')
 end
 
 local function linter_status()
-   local ok, lint = pcall(require, "lint")
+   local ok, lint = pcall(require, 'lint')
    if not ok then
-      return ""
+      return ''
    end
 
    local linters = lint.linters_by_ft[vim.bo.filetype] or {}
    if #linters == 0 then
-      return ""
+      return ''
    end
 
-   return "󰁨 " .. table.concat(linters, ",")
+   return '󰁨 ' .. table.concat(linters, ',')
 end
 -- Safe wrapper functions for statusline
 local function safe_git_branch()
    local ok, result = pcall(git_branch)
-   return ok and result or ""
+   return ok and result or ''
 end
 
 local function safe_lsp_status()
    local ok, result = pcall(lsp_status_short)
-   return ok and result or ""
+   return ok and result or ''
 end
 
 local function safe_formatter_status()
    local ok, result = pcall(formatter_status)
-   return ok and result or ""
+   return ok and result or ''
 end
 
 local function safe_linter_status()
    local ok, result = pcall(linter_status)
-   return ok and result or ""
+   return ok and result or ''
 end
 
 _G.git_branch = safe_git_branch
@@ -421,14 +421,14 @@ _G.linter_status = safe_linter_status
 
 -- THEN set the statusline
 vim.opt.statusline = table.concat({
-   "%{v:lua.git_branch()}",       -- Git branch
-   "%f",                          -- File name
-   "%m",                          -- Modified flag
-   "%r",                          -- Readonly flag
-   "%=",                          -- Right align
-   "%{v:lua.linter_status()}",    -- Linter status
-   "%{v:lua.formatter_status()}", -- Formatter status
-   "%{v:lua.lsp_status()}",       -- LSP status
-   " %l:%c",                      -- Line:Column
-   " %p%%"                        -- Percentage through file
-}, " ")
+   '%{v:lua.git_branch()}',       -- Git branch
+   '%f',                          -- File name
+   '%m',                          -- Modified flag
+   '%r',                          -- Readonly flag
+   '%=',                          -- Right align
+   '%{v:lua.linter_status()}',    -- Linter status
+   '%{v:lua.formatter_status()}', -- Formatter status
+   '%{v:lua.lsp_status()}',       -- LSP status
+   ' %l:%c',                      -- Line:Column
+   ' %p%%'                        -- Percentage through file
+}, ' ')
