@@ -1,5 +1,6 @@
 --[===[
-Flutter Test support
+Unit Test support
+
 See :h neotest.run.run() for parameters.
 URL: https://github.com/nvim-neotest/neotest
 URL: https://github.com/orjangj/neotest-ctest
