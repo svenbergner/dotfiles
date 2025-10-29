@@ -1,14 +1,11 @@
 --[===[
 Plugin to improve viewing Markdown files in Neovim
-URL: https://github.com/MeanderingProgrammer/markdown.nvim
+URL: https://github.com/MeanderingProgrammer/render-markdown.nvim
 --]===]
 
 return {
-   "MeanderingProgrammer/markdown.nvim",
+   "MeanderingProgrammer/render-markdown.nvim",
    enabled = true,
-   main = 'render-markdown',
-   opts = {},
-   name = 'render-markdown',
    dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'nvim-treesitter/nvim-web-devicons',
