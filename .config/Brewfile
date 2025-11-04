@@ -44,7 +44,7 @@ brew "cocoapods"
 brew "ctop"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
-# Platform built on V8 to build network applications
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Reference implementation for the Development Containers specification
 brew "devcontainer"
@@ -60,6 +60,8 @@ brew "dotenv-linter"
 brew "doxx"
 # More intuitive version of du in rust
 brew "dust"
+# Functional metaprogramming aware language built on Erlang VM
+brew "elixir"
 # XML 1.0 parser
 brew "expat"
 # Modern, maintained replacement for ls
