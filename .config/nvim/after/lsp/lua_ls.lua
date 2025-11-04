@@ -30,7 +30,7 @@ return {
                'filetypes',
                'require',
                'package',
-               'Snacks'
+               'Snacks',
             },
          },
       },
@@ -42,7 +42,7 @@ return {
          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
          includeInlayPropertyDeclarationTypeHints = true,
          includeInlayVariableTypeHints = false,
-      }
+      },
    },
    single_file_support = true,
    log_level = vim.lsp.protocol.MessageType.Warning,

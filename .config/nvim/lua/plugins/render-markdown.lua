@@ -4,7 +4,7 @@ URL: https://github.com/MeanderingProgrammer/render-markdown.nvim
 --]===]
 
 return {
-   "MeanderingProgrammer/render-markdown.nvim",
+   'MeanderingProgrammer/render-markdown.nvim',
    enabled = true,
    dependencies = {
       'nvim-treesitter/nvim-treesitter',
@@ -12,9 +12,9 @@ return {
    },
    config = function()
       require('render-markdown').setup({
-         latex = { enabled = false, },
-         file_types = { 'markdown', 'vimwwiki', },
-         vim.treesitter.language.register('markdown', 'vimwiki')
+         latex = { enabled = false },
+         file_types = { 'markdown', 'vimwwiki' },
+         vim.treesitter.language.register('markdown', 'vimwiki'),
       })
-   end
+   end,
 }
