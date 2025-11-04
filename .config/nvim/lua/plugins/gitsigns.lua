@@ -25,7 +25,7 @@ return {
       vim.keymap.set('n', '<leader>gS', require('gitsigns').stage_buffer, { desc = '[g]it [S]tage current buffer' })
       vim.keymap.set('n', '<leader>gr', require('gitsigns').reset_hunk, { desc = '[g]it [r]eset hunk' })
       vim.keymap.set('n', '<leader>gR', require('gitsigns').reset_buffer, { desc = '[g]it [R]eset buffer' })
-      vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk, { desc = '[g]it [p]review hunk' })
+      vim.keymap.set('n', '<leader>gh', require('gitsigns').preview_hunk, { desc = '[g]it preview [h]unk' })
       vim.keymap.set('n', '<leader>gb', function() require('gitsigns').blame_line({ full = true }) end, { desc = '[g]it [b]lame current line' })
       vim.keymap.set('n', '<leader>gB', function() require('gitsigns').blame() end, { desc = '[g]it [B]lame current buffer' })
       vim.keymap.set('n', '<leader>gD', require('gitsigns').diffthis, { desc = '[G]it [D]iff this' })
