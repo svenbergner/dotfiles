@@ -8,6 +8,7 @@ return {
    "nvim-treesitter/nvim-treesitter-textobjects",
    enabled = true,
    lazy = true,
+   branch = "master",
    debenches = { "nvim-treesitter/nvim-treesitter" },
    config = function()
       require("nvim-treesitter.configs").setup({
