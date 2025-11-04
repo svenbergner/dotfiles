@@ -240,6 +240,11 @@ return {
          end,
          desc = 'Lazygit'
       },
+      { "<leader>gi", function() Snacks.picker.gh_issue() end,                  desc = "GitHub Issues (open)" },
+      { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
+      { "<leader>gp", function() Snacks.picker.gh_pr() end,                     desc = "GitHub Pull Requests (open)" },
+      { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end,    desc = "GitHub Pull Requests (all)" },
+
       { '<leader>gl', function() Snacks.picker.git_log_line() end, desc = '[g]it [L]og current line' },
       { '<leader>gs', function() Snacks.picker.git_status() end,   desc = '[g]it [s]tatus' },
       { '<leader>gL', function() Snacks.picker.git_log() end,      desc = 'search all [g]it [L]ogs' },
