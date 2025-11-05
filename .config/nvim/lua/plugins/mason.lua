@@ -29,7 +29,6 @@ return {
          'spectral',
          'terraformls',
          'tinymist',
-         'yamlls',
       },
    },
    dependencies = {
