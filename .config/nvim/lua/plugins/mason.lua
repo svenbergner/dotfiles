@@ -7,6 +7,7 @@ URL: https://github.com/mason-org/mason.nvim
 URL: https://github.com/mason-org/mason-lspconfig.nvim
 URL: https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
 URL: https://github.com/neovim/nvim-lspconfig
+URL: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 URL: https://github.com/j-hui/fidget.nvim
 URL: https://github.com/saghen/blink.cmp
 --]===]
