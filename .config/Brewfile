@@ -58,6 +58,8 @@ brew "dosbox-x"
 brew "dotenv-linter"
 # Terminal document viewer for .docx files
 brew "doxx"
+# Git-powered personal task tracker
+brew "dstask"
 # More intuitive version of du in rust
 brew "dust"
 # Functional metaprogramming aware language built on Erlang VM
