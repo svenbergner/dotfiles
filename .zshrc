@@ -222,4 +222,7 @@ fi
 
 export GPG_TTY=$(tty)
 
+# dstask git repo location
+export DSTASK_GIT_REPO="$HOME/Repos/Tasks"
+
 eval $(starship completions zsh)
