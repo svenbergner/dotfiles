@@ -10,7 +10,7 @@ Each view has its own keymaps, listed below.
 At any time (from within nvim-dap-view's main window) you can
 use g? to show a "help" window that lists all of them.
 
-   - Watches	
+   - Watches
        <CR>	Expand or collapse a variable
          i	Insert an expression
          d	Delete an expression
@@ -18,24 +18,24 @@ use g? to show a "help" window that lists all of them.
          c	Copy the value of an expression or variable
          s	Set the value of an expression or variable
 
-   - Scopes	
+   - Scopes
        <CR>	Expand or collapse a variable
          o	Trigger actions
 
-   - Exceptions	
+   - Exceptions
        <CR>	Toggle filter
 
-   - Breakpoints	
+   - Breakpoints
        <CR>	Jump to a breakpoint
          d	Delete a breakpoint
 
-   - Threads	
+   - Threads
        <CR>	Jump to a frame
          t	Toggle subtle frames
          f	Filter frames (via Lua patterns1)
          o	Omit results matching filter (invert filter)
 
-   - Sessions	
+   - Sessions
        <CR>	Switch to a session
 
 Dependencies:
@@ -216,6 +216,10 @@ return {
 
          vim.api.nvim_create_user_command("RunCMakeBuild", function()
             require('telescope').extensions.cmake_preset_selector.show_cmake_build_presets()
+         end, { nargs = 0 })
+
+         vim.api.nvim_create_user_command("StopCMakeBuild", function()
+            require('telescope').extensions.cmake_preset_selector.stop_current_cmake_build()
          end, { nargs = 0 })
 
          vim.api.nvim_create_user_command("ShowSelectedBuildPreset", function()
