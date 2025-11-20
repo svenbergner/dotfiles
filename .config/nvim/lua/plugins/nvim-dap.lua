@@ -8,7 +8,7 @@ URL: https://github.com/igorlfs/nvim-dap-view
 Default keybindings:
 Each view has its own keymaps, listed below.
 At any time (from within nvim-dap-view's main window) you can
-use g? to show a "help" window that lists all of them.
+use "g?" to show a "help" window that lists all of them.
 
    - Watches
        <CR>	Expand or collapse a variable
@@ -42,6 +42,9 @@ Dependencies:
 one-small-step-for-vimkind a.k.a. osv is an adapter for the Neovim lua language.
 It allows you to debug any lua code running in a Neovim instance.
 URL: https://github.com/jbyuki/one-small-step-for-vimkind
+
+The nvim-dap-python is a DAP adapter for python using debugpy.
+URL: https://codeberg.org/mfussenegger/nvim-dap-python
 --]===]
 
 ---@diagnostic disable: undefined-field
@@ -57,6 +60,7 @@ return {
          "theHamsta/nvim-dap-virtual-text",
          "williamboman/mason.nvim",
          'jbyuki/one-small-step-for-vimkind',
+         'mfussenegger/nvim-dap-python',
       },
       config = function()
          require("lazydev").setup({})
@@ -114,7 +118,7 @@ return {
                -- args = { "-nih" }, -- BelegManager: no instance handling
                -- args = { "Im Modus normal liefert der Bereich Weitere Angaben (/.tdlSteuererklaerung) einen Themenfilter-Content." },
                -- args = { "Versenden der Einkommensteuer per ELSTER" },
-               -- args = { "Die Dateien in einem Ordner koennen per wildcard ermittelt werden." },
+               -- args = { "Die Dateien in einem Ordner können per Wildcard ermittelt werden." },
                initCommands = function()
                   local commands = {}
                   table.insert(commands, "breakpoint name configure --disable cpp_exception")
@@ -195,6 +199,9 @@ return {
                terminalKind = "integrated",
             }
          }
+
+         -- require("dap-python").setup("python3")
+         require("dap-python").setup("uv")
 
          vim.api.nvim_create_user_command("SetDebuggee", function()
             require('telescope').extensions.debugee_selector.selectSearchPathRoot()
