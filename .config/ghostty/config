@@ -1,7 +1,7 @@
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 14 
-theme = "GruvboxDark"
+theme = Gruvbox Dark
 macos-titlebar-style = "tabs"
+gtk-wide-tabs = false
 window-decoration = true
 macos-window-shadow = true
-
