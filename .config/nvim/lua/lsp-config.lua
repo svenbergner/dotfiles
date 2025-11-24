@@ -43,11 +43,14 @@ vim.keymap.set('i', '<M-o>', sw, { desc = 'LSP: Meta + o - switch source/header'
 -- Options for LSP
 vim.lsp.set_log_level('OFF') -- Set log level to OFF to disable logging
 
-vim.lsp.start {
+vim.lsp.start({
    handlers = {
-      ['textDocument/hover'] = vim.lsp.buf.hover, { border = 'rounded' },
-      ['textDocument/signatureHelp'] = vim.lsp.buf.signature_help, { border = 'rounded' },
-   } }
+      ['textDocument/hover'] = vim.lsp.buf.hover,
+      { border = 'rounded' },
+      ['textDocument/signatureHelp'] = vim.lsp.buf.signature_help,
+      { border = 'rounded' },
+   },
+})
 
 vim.lsp.inlay_hint.enable(true)
 
@@ -55,19 +58,21 @@ vim.lsp.inlay_hint.enable(true)
 vim.keymap.set('n', '<F6>', function()
    vim.diagnostic.jump({ count = 1, float = true })
    vim.cmd('normal! zz')
-end
-, { desc = 'Go to next diagnostic message' })
+end, { desc = 'Go to next diagnostic message' })
 
 vim.keymap.set('n', '<S-F6>', function()
    vim.diagnostic.jump({ count = -1, float = true })
    vim.cmd('normal! zz')
 end, { desc = 'Go to previous diagnostic message' })
 
-vim.keymap.set('n', '<F18>', function() vim.diagnostic.jump({ count = -1, float = true }) end,
-   { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', '<F18>', function()
+   vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = 'Go to previous diagnostic message' })
 
 vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, { desc = 'LSP: Rename <F2>' })
-vim.keymap.set('n', 'K', function() vim.lsp.buf.hover { border = 'rounded' } end, { desc = 'LSP: Hover Documentation' })
+vim.keymap.set('n', 'K', function()
+   vim.lsp.buf.hover({ border = 'rounded' })
+end, { desc = 'LSP: Hover Documentation' })
 vim.keymap.set('n', '<C-S-k>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature Documentation' })
 vim.keymap.set('n', '<leader>Wa', vim.lsp.buf.add_workspace_folder, { desc = 'LSP: [W]orkspace [A]dd Folder' })
 vim.keymap.set('n', '<leader>Wr', vim.lsp.buf.remove_workspace_folder, { desc = 'LSP: [W]orkspace [R]emove Folder' })
@@ -139,13 +144,27 @@ local function lsp_status()
          return
       end
       local features = {}
-      if caps.completionProvider then table.insert(features, 'completion') end
-      if caps.hoverProvider then table.insert(features, 'hover') end
-      if caps.definitionProvider then table.insert(features, 'definition') end
-      if caps.referencesProvider then table.insert(features, 'references') end
-      if caps.renameProvider then table.insert(features, 'rename') end
-      if caps.codeActionProvider then table.insert(features, 'code_action') end
-      if caps.documentFormattingProvider then table.insert(features, 'formatting') end
+      if caps.completionProvider then
+         table.insert(features, 'completion')
+      end
+      if caps.hoverProvider then
+         table.insert(features, 'hover')
+      end
+      if caps.definitionProvider then
+         table.insert(features, 'definition')
+      end
+      if caps.referencesProvider then
+         table.insert(features, 'references')
+      end
+      if caps.renameProvider then
+         table.insert(features, 'rename')
+      end
+      if caps.codeActionProvider then
+         table.insert(features, 'code_action')
+      end
+      if caps.documentFormattingProvider then
+         table.insert(features, 'formatting')
+      end
 
       print('  Features: ' .. table.concat(features, ', '))
       print('')
@@ -172,24 +191,24 @@ local function check_lsp_capabilities()
       end
 
       local capability_list = {
-         { 'Completion',                caps.completionProvider },
-         { 'Hover',                     caps.hoverProvider },
-         { 'Signature Help',            caps.signatureHelpProvider },
-         { 'Go to Definition',          caps.definitionProvider },
-         { 'Go to Declaration',         caps.declarationProvider },
-         { 'Go to Implementation',      caps.implementationProvider },
-         { 'Go to Type Definition',     caps.typeDefinitionProvider },
-         { 'Find References',           caps.referencesProvider },
-         { 'Document Highlight',        caps.documentHighlightProvider },
-         { 'Document Symbol',           caps.documentSymbolProvider },
-         { 'Workspace Symbol',          caps.workspaceSymbolProvider },
-         { 'Code Action',               caps.codeActionProvider },
-         { 'Code Lens',                 caps.codeLensProvider },
-         { 'Document Formatting',       caps.documentFormattingProvider },
+         { 'Completion', caps.completionProvider },
+         { 'Hover', caps.hoverProvider },
+         { 'Signature Help', caps.signatureHelpProvider },
+         { 'Go to Definition', caps.definitionProvider },
+         { 'Go to Declaration', caps.declarationProvider },
+         { 'Go to Implementation', caps.implementationProvider },
+         { 'Go to Type Definition', caps.typeDefinitionProvider },
+         { 'Find References', caps.referencesProvider },
+         { 'Document Highlight', caps.documentHighlightProvider },
+         { 'Document Symbol', caps.documentSymbolProvider },
+         { 'Workspace Symbol', caps.workspaceSymbolProvider },
+         { 'Code Action', caps.codeActionProvider },
+         { 'Code Lens', caps.codeLensProvider },
+         { 'Document Formatting', caps.documentFormattingProvider },
          { 'Document Range Formatting', caps.documentRangeFormattingProvider },
-         { 'Rename',                    caps.renameProvider },
-         { 'Folding Range',             caps.foldingRangeProvider },
-         { 'Selection Range',           caps.selectionRangeProvider },
+         { 'Rename', caps.renameProvider },
+         { 'Folding Range', caps.foldingRangeProvider },
+         { 'Selection Range', caps.selectionRangeProvider },
       }
 
       for _, cap in ipairs(capability_list) do
@@ -222,7 +241,6 @@ local function lsp_diagnostics_info()
 end
 
 vim.api.nvim_create_user_command('LspDiagnostics', lsp_diagnostics_info, { desc = 'Show LSP diagnostics count' })
-
 
 local function lsp_info()
    local bufnr = vim.api.nvim_get_current_buf()
@@ -293,11 +311,21 @@ local function lsp_info()
          return
       end
       local key_features = {}
-      if caps.completionProvider then table.insert(key_features, 'completion') end
-      if caps.hoverProvider then table.insert(key_features, 'hover') end
-      if caps.definitionProvider then table.insert(key_features, 'definition') end
-      if caps.documentFormattingProvider then table.insert(key_features, 'formatting') end
-      if caps.codeActionProvider then table.insert(key_features, 'code_action') end
+      if caps.completionProvider then
+         table.insert(key_features, 'completion')
+      end
+      if caps.hoverProvider then
+         table.insert(key_features, 'hover')
+      end
+      if caps.definitionProvider then
+         table.insert(key_features, 'definition')
+      end
+      if caps.documentFormattingProvider then
+         table.insert(key_features, 'formatting')
+      end
+      if caps.codeActionProvider then
+         table.insert(key_features, 'code_action')
+      end
 
       if #key_features > 0 then
          print('  Key features: ' .. table.concat(key_features, ', '))
@@ -333,7 +361,6 @@ end
 
 -- Create command
 vim.api.nvim_create_user_command('LspInfo', lsp_info, { desc = 'Show comprehensive LSP information' })
-
 
 local function lsp_status_short()
    local bufnr = vim.api.nvim_get_current_buf()
@@ -425,14 +452,14 @@ _G.linter_status = safe_linter_status
 
 -- THEN set the statusline
 vim.opt.statusline = table.concat({
-   '%{v:lua.git_branch()}',       -- Git branch
-   '%f',                          -- File name
-   '%m',                          -- Modified flag
-   '%r',                          -- Readonly flag
-   '%=',                          -- Right align
-   '%{v:lua.linter_status()}',    -- Linter status
+   '%{v:lua.git_branch()}', -- Git branch
+   '%f', -- File name
+   '%m', -- Modified flag
+   '%r', -- Readonly flag
+   '%=', -- Right align
+   '%{v:lua.linter_status()}', -- Linter status
    '%{v:lua.formatter_status()}', -- Formatter status
-   '%{v:lua.lsp_status()}',       -- LSP status
-   ' %l:%c',                      -- Line:Column
-   ' %p%%'                        -- Percentage through file
+   '%{v:lua.lsp_status()}', -- LSP status
+   ' %l:%c', -- Line:Column
+   ' %p%%', -- Percentage through file
 }, ' ')
