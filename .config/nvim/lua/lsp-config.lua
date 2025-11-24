@@ -82,6 +82,8 @@ vim.keymap.set('n', '<S-F7>', '<cmd>ConfigureCMakeBuild<CR>', { desc = 'LSP: Run
 vim.keymap.set('n', '<F19>', '<cmd>ConfigureCMakeBuild<CR>', { desc = 'LSP: Run cmake configure' })
 vim.keymap.set('n', '<C-F7>', '<cmd>StopCMakeBuild<CR>', { desc = 'LSP: Stop cmake build' })
 vim.keymap.set('n', '<F31>', '<cmd>StopCMakeBuild<CR>', { desc = 'LSP: Stop cmake build' })
+vim.keymap.set('n', '<F55>', '<cmd>RunCMakeBuildWithTarget<CR>', { desc = 'LSP: Run cmake build with target' })
+vim.keymap.set('n', '<M-F7>', '<cmd>RunCMakeBuildWithTarget<CR>', { desc = 'LSP: Run cmake build with target' })
 vim.keymap.set('n', '<F7>', function()
    vim.cmd('RunCMakeBuild')
    -- Switch to normal mode only if currently in insert mode
