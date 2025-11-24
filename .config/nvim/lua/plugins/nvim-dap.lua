@@ -225,6 +225,10 @@ return {
             require('telescope').extensions.cmake_preset_selector.show_cmake_build_presets()
          end, { nargs = 0 })
 
+         vim.api.nvim_create_user_command("RunCMakeBuildWithTarget", function()
+            require('telescope').extensions.cmake_preset_selector.show_cmake_build_presets_with_target()
+         end, { nargs = 0 })
+
          vim.api.nvim_create_user_command("StopCMakeBuild", function()
             require('telescope').extensions.cmake_preset_selector.stop_current_cmake_build()
          end, { nargs = 0 })
