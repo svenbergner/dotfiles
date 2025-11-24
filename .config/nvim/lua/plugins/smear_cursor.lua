@@ -16,7 +16,7 @@ return {
       legacy_computing_symbols_support = true, -- Set to true if you want to use legacy computing symbols
       -- smear_to_cmd = false, -- can be removed in nvim 0.12.*
       cursor_color = "#ff8800", -- Cursor color, can be a hex color or a color name
-      stiffness = 0.3,
+      stiffness = 0.6,
       trailing_stiffness = 0.1,
       stiffness_insert_mode = 0.7,
       trailing_stiffness_insert_mode = 0.7,
