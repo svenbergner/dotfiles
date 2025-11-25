@@ -89,12 +89,6 @@ vim.keymap.set('n', '<leader>DO', ':DiffviewOpen<cr>', { desc = '[D]iffview [O]p
 vim.keymap.set('n', '<leader>DR', ':DiffviewRefresh<cr>',
    { desc = '[D]iffview [R]efresh', noremap = true, silent = true })
 
--- Better indenting
-vim.keymap.set('v', '<', '<gv')
-vim.keymap.set('v', '>', '>gv')
-vim.keymap.set('n', '>', '>>_')
-vim.keymap.set('n', '<', '<<_')
-
 -- quickfix list
 vim.keymap.set('n', '<leader>qo', ':copen<CR>', { silent = true, desc = '[q]uickfix list: [o]pen ' })
 vim.keymap.set('n', '<leader>qc', ':cclose<CR>', { silent = true, desc = '[q]uickfix list: [c]lose' })
