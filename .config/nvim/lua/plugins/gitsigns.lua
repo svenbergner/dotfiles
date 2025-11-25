@@ -33,8 +33,8 @@ return {
          { desc = '[g]it hu[N]k previous' })
       vim.keymap.set('n', '<leader>gr', require('gitsigns').reset_hunk, { desc = '[g]it [r]eset hunk' })
       vim.keymap.set('n', '<leader>gR', require('gitsigns').reset_buffer, { desc = '[g]it [R]eset buffer' })
-      vim.keymap.set('n', '<leader>gs', require('gitsigns').stage_hunk, { desc = '[g]it [s]tage or unstage hunk' })
-      vim.keymap.set('n', '<leader>gS', require('gitsigns').stage_buffer, { desc = '[g]it [S]tage current buffer' })
-      vim.keymap.set('n', '<leader>gt', require('gitsigns').preview_hunk_inline, { desc = '[g]it [t]oggle deleted' })
+      -- vim.keymap.set('n', '<leader>gs', require('gitsigns').stage_hunk, { desc = '[g]it [s]tage or unstage hunk' })
+      -- vim.keymap.set('n', '<leader>gS', require('gitsigns').stage_buffer, { desc = '[g]it [S]tage current buffer' })
+      -- vim.keymap.set('n', '<leader>gt', require('gitsigns').preview_hunk_inline, { desc = '[g]it [t]oggle deleted' })
    end
 }
