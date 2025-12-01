@@ -115,6 +115,7 @@ return {
                -- args = { "-update" },
                -- args = { "-c", "-mnormal" },
                -- args = { "-mnormal" }, -- Start with normal mode
+               -- args = { "-n", "-mnormal" }, -- Start with normal mode and new file with intro
                -- args = { "-nih" }, -- BelegManager: no instance handling
                -- args = { "Im Modus normal liefert der Bereich Weitere Angaben (/.tdlSteuererklaerung) einen Themenfilter-Content." },
                -- args = { "Versenden der Einkommensteuer per ELSTER" },
