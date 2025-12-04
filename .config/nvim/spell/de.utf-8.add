@@ -692,3 +692,8 @@ mnormal
 nih
 BelegManager
 tdlSteuererklaerung
+libcryptopp
+cryptopp
+ExternalLibs
+CryptoPP
+lipo
