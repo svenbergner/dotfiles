@@ -22,15 +22,16 @@ M.setup_layout = function(wezterm)
 
       local first_tab, first_pane, window = mux.spawn_window {
          workspace = 'Development',
-         cwd = home_dir .. '/Repos/steuertipps_app',
+         cwd = home_dir .. '/Repos/DevTools',
       }
-      first_tab:set_title('SSECloud')
+      first_tab:set_title('DevTools')
       first_pane:send_text('nvim\n')
 
       local activatedTab = M.addTab(window, home_dir .. '/Repos/SSE/Dev', 'SSE/TaxCoreApi', 'nvim\n')
+      M.addTab(window, home_dir .. '/Repos/SSE28', 'SSE 28', 'nvim\n')
+      M.addTab(window, home_dir .. '/Repos/SSE27', 'SSE 27', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/Content/StP/31', 'Content StP 31', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/SSE/Tools', 'Tools', 'nvim\n')
-      -- M.addTab(window, home_dir .. '/Repos/DevTools', 'DevTools', 'nvim\n')
       -- M.addTab(window, home_dir .. '/Repos/SetupSSE', 'SetupSSE', 'nvim\n')
       -- M.addTab(window, home_dir .. '/Repos/BuildAgentIAC', 'BuildAgentIAC', 'nvim\n')
 
