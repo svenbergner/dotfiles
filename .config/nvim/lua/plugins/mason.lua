@@ -22,6 +22,7 @@ return {
          'bashls',
          'clangd',
          'cmake',
+         'elixirls',
          'jsonls',
          'lua_ls',
          'marksman',
