@@ -220,6 +220,7 @@ return {
       { 'gC',         function() Snacks.picker.lsp_config() end,            desc = 'LSP: [g]oto [C]onfig' },
       { 'gD',         function() Snacks.picker.lsp_declarations() end,      desc = 'LSP: [g]oto [D]eclaration' },
       { 'gd',         function() Snacks.picker.lsp_definitions() end,       desc = 'LSP: [g]oto [d]efinition' },
+      { 'gi',         function() Snacks.picker.lsp_implementations() end,   desc = 'LSP: [G]oto [i]mplementation' },
       { 'gr',         function() Snacks.picker.lsp_references() end,        desc = 'LSP: [g]oto [r]eferences',             nowait = true },
       { 'gt',         function() Snacks.picker.lsp_type_definitions() end,  desc = 'LSP: [g]oto [t]ype Definition' },
       { '<leader>fs', function() Snacks.picker.lsp_symbols() end,           desc = 'LSP: [f]ind [s]ymbols in current file' },
