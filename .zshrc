@@ -202,6 +202,8 @@ if [[ -f ~/.zsh.local ]] then
   source ~/.zsh.local
 fi
 
+## magic-space expands !!
+bindkey ' ' magic-space
 
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
