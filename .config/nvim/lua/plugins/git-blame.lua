@@ -1,10 +1,14 @@
 --[===[
 Show git blame at the end of each line
-URL: https://github.com/f-person/git-blame.nvim 
+URL: https://github.com/f-person/git-blame.nvim
 --]===]
 
+if vim.fn.has('win32') == 1 then
+   return {}
+end
+
 return {
-   "f-person/git-blame.nvim",
+   'f-person/git-blame.nvim',
    enabled = true,
    event = 'VeryLazy',
    opts = {
