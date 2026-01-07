@@ -152,6 +152,17 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey '^X^e' edit-command-line
 
+# Insert git commit
+bindkey -s '^Xgc' 'git commit -m ""\C-b'
+
+# Copy current command to clipboard
+copy-command(){
+  echo -n $BUFFER | pbcopy
+  zle -M "Copied to clipboard"
+}
+zle -N copy-command
+bindkey '^Xc' copy-command
+
 # Function to change cursor shape
 export VI_MODE_SET_CURSOR=true
 function zle-keymap-select {
