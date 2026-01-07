@@ -20,6 +20,30 @@ alias ll='ls -l'
 alias lt='ls --tree -l'
 alias cls='clear&&ls'
 
+# suffix aliases
+alias -s cpp='nvim'
+alias -s gif='open'
+alias -s h='nvim'
+alias -s hpp='nvim'
+alias -s jpeg='open'
+alias -s jpg='open'
+alias -s json='nvim'
+alias -s lua='nvim'
+alias -s md='bat --theme="gruvbox-dark"'
+alias -s mov='open'
+alias -s mp4='open'
+alias -s png='open'
+alias -s txt='bat --theme="gruvbox-dark"'
+alias -s yaml='nvim'
+alias -s yml='nvim'
+
+# global aliases
+alias -g NE='2>/dev/null'
+alias -g DN='> /dev/null'
+alias -g NUL='>/dev/null 2>&1'
+alias -g C='| pbcopy'
+alias -g L='| bat --theme="gruvbox-dark"'
+
 # Avante
 alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
 
