@@ -142,6 +142,9 @@ export MANPAGER='nvim +Man!'
 bindkey -v
 export KEYTIMEOUT=1
 
+# Activate zmv
+autoload zmv
+
 # Press 'v' in normal mode to edit the command line in $EDITOR
 autoload edit-command-line
 # autoload -U edit-command-line
