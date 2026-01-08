@@ -24,14 +24,15 @@ URL: https://github.com/L3MON4D3/LuaSnip
 return {
    'saghen/blink.cmp',
    enabled = true,
-   event = "InsertEnter",
+   event = 'InsertEnter',
    -- optional: provides snippets for the snippet source
    dependencies = {
-      'Kaiser-Yang/blink-cmp-avante',     -- avante.cmp source for fuzzy matching
-      'rafamadriz/friendly-snippets',     -- snippets for the snippet source
-      'moyiz/blink-emoji.nvim',           -- blink.cmp source for emojis.
+      'giuxtaposition/blink-cmp-copilot',
+      'Kaiser-Yang/blink-cmp-avante', -- avante.cmp source for fuzzy matching
+      'rafamadriz/friendly-snippets', -- snippets for the snippet source
+      'moyiz/blink-emoji.nvim', -- blink.cmp source for emojis.
       'MahanRahmati/blink-nerdfont.nvim', -- blink.cmp source for nerd fonts.
-      'bydlw98/blink-cmp-env',            -- blink.cmp source for environment variables.
+      'bydlw98/blink-cmp-env', -- blink.cmp source for environment variables.
       'nvim-mini/mini.snippets',
       { 'L3MON4D3/LuaSnip', version = '2.*' },
    },
@@ -49,11 +50,12 @@ return {
          -- Get the current buffer's filetype
          local filetype = vim.bo[0].filetype
          -- Disable for the following buffers
-         if filetype == "TelescopePrompt" or
-             filetype == "minifiles" or
-             filetype == "snacks_picker_input" or
-             filetype == "neo-tree" or
-             filetype == "neo-tree-popup"
+         if
+            filetype == 'TelescopePrompt'
+            or filetype == 'minifiles'
+            or filetype == 'snacks_picker_input'
+            or filetype == 'neo-tree'
+            or filetype == 'neo-tree-popup'
          then
             return false
          end
@@ -76,7 +78,7 @@ return {
       appearance = {
          -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
          -- Adjusts spacing to ensure icons are aligned
-         nerd_font_variant = 'mono'
+         nerd_font_variant = 'mono',
       },
 
       -- Experimental signature help support
@@ -121,36 +123,40 @@ return {
             -- 'prefix' will fuzzy match on the text before the cursor
             -- 'full' will fuzzy match on the text before *and* after the cursor
             -- example: 'foo_|_bar' will match 'foo_' for 'prefix' and 'foo__bar' for 'full'
-            range = "prefix",
+            range = 'prefix',
          },
          list = {
             selection = {
                preselect = function(ctx)
                   return ctx.mode ~= 'cmdline' and not require('blink.cmp').snippet_active({ direction = 1 })
                end,
-               auto_insert = function(ctx) return ctx.mode ~= 'cmdline' end,
+               auto_insert = function(ctx)
+                  return ctx.mode ~= 'cmdline'
+               end,
             },
          },
          menu = {
-            border = "rounded",
+            border = 'rounded',
             auto_show = true,
          },
          documentation = {
             auto_show = true,
             window = {
-               border = "rounded",
+               border = 'rounded',
             },
          },
          -- Displays a preview of the selected item on the current line
          ghost_text = {
-            enabled = false,
+            enabled = true,
          },
       },
       cmdline = {
          keymap = {
             ['<Tab>'] = {
                function(cmp)
-                  if cmp.is_ghost_text_visible() then return cmp.accept() end
+                  if cmp.is_ghost_text_visible() then
+                     return cmp.accept()
+                  end
                end,
                'show_and_insert',
                'select_next',
@@ -167,45 +173,64 @@ return {
                   -- or vim.fn.getcmdtype() == '@'
                end,
             },
-         }
+         },
       },
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-         default = { 'avante', 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'omni', 'cmdline', 'emoji', 'nerdfont', 'env', },
+         default = {
+            'avante',
+            'copilot',
+            'lazydev',
+            'lsp',
+            'path',
+            'snippets',
+            'buffer',
+            'omni',
+            'cmdline',
+            'emoji',
+            'nerdfont',
+            'env',
+         },
          providers = {
+            copilot = {
+               name = 'copilot',
+               module = 'blink-cmp-copilot',
+               score_offset = 100,
+               async = true,
+            },
             avante = {
                module = 'blink-cmp-avante',
                name = 'Avante',
                opts = {
                   -- options for blink-cmp-avante
-               }
+               },
             },
             emoji = {
-               module = "blink-emoji",   -- blink.cmp source for emojis
-               name = "Emoji",
-               score_offset = 15,        -- Tune by preference
+               module = 'blink-emoji', -- blink.cmp source for emojis
+               name = 'Emoji',
+               score_offset = 15, -- Tune by preference
                opts = { insert = true }, -- Insert emoji (default) or complete its name
                should_show_items = function()
                   -- Enable emoji completion only for git commits and markdown.
                   -- By default, enabled for all file-types.
-                  return vim.tbl_contains({ "gitcommit", "markdown", "vimwiki" }, vim.o.filetype)
+                  return vim.tbl_contains({ 'gitcommit', 'markdown', 'vimwiki' }, vim.o.filetype)
                end,
             },
             nerdfont = {
-               module = "blink-nerdfont", -- blink.cmp source for nerd fonts
-               name = "Nerd Fonts",
-               score_offset = 15,         -- Tune by preference
-               opts = { insert = true },  -- Insert nerdfont icon (default) or complete its name
+               module = 'blink-nerdfont', -- blink.cmp source for nerd fonts
+               name = 'Nerd Fonts',
+               score_offset = 15, -- Tune by preference
+               opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
                should_show_items = function()
                   -- Enable emoji completion only for git commits and markdown.
                   -- By default, enabled for all file-types.
-                  return vim.tbl_contains({ "gitcommit", "markdown", "vimwiki" }, vim.o.filetype)
+                  return vim.tbl_contains({ 'gitcommit', 'markdown', 'vimwiki' }, vim.o.filetype)
                end,
             },
             env = {
-               name = "Env", -- blink.cmp source for environment variables
-               module = "blink-cmp-env",
+               name = 'Env', -- blink.cmp source for environment variables
+               module = 'blink-cmp-env',
                opts = {
                   -- item_kind = require("blink.cmp.types").CompletionItemKind.Variable,
                   show_braces = false,
@@ -213,8 +238,8 @@ return {
                },
             },
             lazydev = {
-               name = "LazyDev",
-               module = "lazydev.integrations.blink",
+               name = 'LazyDev',
+               module = 'lazydev.integrations.blink',
                -- make lazydev completions top priority (see `:h blink.cmp`)
                score_offset = 100,
             },
@@ -226,7 +251,7 @@ return {
       -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
       --
       -- See the fuzzy documentation for more information
-      fuzzy = { implementation = "prefer_rust_with_warning" }
+      fuzzy = { implementation = 'prefer_rust_with_warning' },
    },
-   opts_extend = { "sources.default" }
+   opts_extend = { 'sources.default' },
 }
