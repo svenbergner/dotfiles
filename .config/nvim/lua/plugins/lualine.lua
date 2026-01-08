@@ -24,40 +24,42 @@ local getLineInfo = function()
    local line_length = vim.fn.col('$') - 1
    local total_lines_digits = #tostring(total_lines)
    local max_line_length_digits = #tostring(getMaxLineLength())
-   local format_string = "󰦪 %" .. total_lines_digits .. "d|%" .. total_lines_digits .. "d "
-   format_string = format_string .. "󰣟 %" .. max_line_length_digits .. "d|%" .. max_line_length_digits .. "d"
+   local format_string = '󰦪 %' .. total_lines_digits .. 'd|%' .. total_lines_digits .. 'd '
+   format_string = format_string .. '󰣟 %' .. max_line_length_digits .. 'd|%' .. max_line_length_digits .. 'd'
    return string.format(format_string, current_line, total_lines, current_column, line_length)
 end
 
 local getWords = function()
-   if vim.bo.filetype == "text" or vim.bo.filetype == "markdown" or vim.bo.filetype == "vimwiki" then
+   if vim.bo.filetype == 'text' or vim.bo.filetype == 'markdown' or vim.bo.filetype == 'vimwiki' then
       if vim.fn.wordcount().visual_words == 1 then
-         return tostring(vim.fn.wordcount().visual_words) .. " word"
+         return tostring(vim.fn.wordcount().visual_words) .. ' word'
       elseif not (vim.fn.wordcount().visual_words == nil) then
-         return tostring(vim.fn.wordcount().visual_words) .. " words"
+         return tostring(vim.fn.wordcount().visual_words) .. ' words'
       else
-         return tostring(vim.fn.wordcount().words) .. " words"
+         return tostring(vim.fn.wordcount().words) .. ' words'
       end
    else
-      return ""
+      return ''
    end
 end
 
 local getNeoVimSymbol = function()
-   return ""
+   return ''
 end
 
 local function getRecordingMessage()
    local reg = vim.fn.reg_recording()
-   if reg == "" then return "" end
-   return "recording @" .. reg
+   if reg == '' then
+      return ''
+   end
+   return 'recording @' .. reg
 end
 
 local function diffActive()
    if vim.o.diff then
-      return "-- Diff --"
+      return '-- Diff --'
    else
-      return ""
+      return ''
    end
 end
 
@@ -66,12 +68,12 @@ return {
    config = function()
       local trouble = require('trouble')
       local symbols = trouble.statusline({
-         mode = "lsp_document_symbols",
+         mode = 'lsp_document_symbols',
          groups = {},
          title = false,
          filter = { range = true },
-         format = "{kind_icon}{symbol.name:Normal}",
-         hl_group = "lualine_c_normal",
+         format = '{kind_icon}{symbol.name:Normal}',
+         hl_group = 'lualine_c_normal',
       })
       require('lualine').setup({
          options = {
@@ -80,8 +82,12 @@ return {
             section_separators = { left = '', right = '' },
             ignore_focus = { 'dap-repl' },
             disabled_filetypes = {
-               "dap-repl", "dap-view",
-               "neo-tree", "Avante", "Avante Ask", "Avante Chat"
+               'dap-repl',
+               'dap-view',
+               'neo-tree',
+               'Avante',
+               'Avante Ask',
+               'Avante Chat',
             },
          },
          winbar = {
@@ -92,7 +98,7 @@ return {
             lualine_a = {
                { getNeoVimSymbol, separator = { left = ' ' } },
                { 'mode' },
-               { getRecordingMessage, },
+               { getRecordingMessage },
             },
             lualine_b = {
                { 'branch', 'diff', 'diagnostics' },
@@ -101,6 +107,12 @@ return {
             lualine_c = {
                symbols.get,
                -- cond = symbols.has,
+            },
+            lualine_x = {
+               { 'copilot' },
+               { 'filetype' },
+               { 'encoding' },
+               { 'fileformat' },
             },
             lualine_y = {
                { 'progress' },
@@ -124,8 +136,9 @@ return {
    end,
    dependencies = {
       {
-         "nvim-tree/nvim-web-devicons",
-         "folke/trouble.nvim",
+         'AndreM222/copilot-lualine',
+         'nvim-tree/nvim-web-devicons',
+         'folke/trouble.nvim',
       },
    },
 }
