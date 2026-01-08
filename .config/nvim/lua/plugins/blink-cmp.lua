@@ -68,6 +68,7 @@ return {
       keymap = {
          -- preset = 'enter',
          ['<CR>'] = { 'accept', 'fallback' },
+         ['<Tab>'] = { 'accept', 'fallback' },
          ['<C-\\>'] = { 'hide', 'fallback' },
          ['<C-n>'] = { 'select_next', 'show' },
          ['<C-p>'] = { 'select_prev' },
