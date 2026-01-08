@@ -34,6 +34,7 @@ alias -s mov='open'
 alias -s mp4='open'
 alias -s png='open'
 alias -s txt='bat --theme="gruvbox-dark"'
+alias -s xml='bat --theme="gruvbox-dark"'
 alias -s yaml='nvim'
 alias -s yml='nvim'
 
