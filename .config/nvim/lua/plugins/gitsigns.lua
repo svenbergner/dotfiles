@@ -20,6 +20,9 @@ return {
             changedelete = { text = '' },
          },
          numhl = true, -- Change color of line number
+         preview_config = {
+            border = 'rounded',
+         },
       })
       vim.keymap.set('n', '<leader>gB', function() require('gitsigns').blame_line({ full = true }) end,
          { desc = '[g]it [B]lame current line' })
