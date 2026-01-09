@@ -30,6 +30,7 @@ return {
          { desc = '[g]it [b]lame current buffer' })
       vim.keymap.set('n', '<leader>gD', require('gitsigns').diffthis, { desc = '[g]it [D]iff this' })
       vim.keymap.set('n', '<leader>gh', require('gitsigns').preview_hunk, { desc = '[g]it preview [h]unk' })
+      vim.keymap.set('n', '<leader>gH', require('gitsigns').stage_hunk, { desc = '[g]it stage [H]unk' })
       vim.keymap.set('n', '<leader>gn', function() require('gitsigns').nav_hunk('next') end,
          { desc = '[g]it Hunk [n]ext' })
       vim.keymap.set('n', '<leader>gN', function() require('gitsigns').nav_hunk('prev') end,
