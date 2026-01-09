@@ -12,13 +12,15 @@ URL: https://github.com/saghen/blink.cmp
 Docs: https://cmp.saghen.dev/
 
 Sources: https://cmp.saghen.dev/configuration/sources#community-sources
-URL: https://github.com/Kaiser-Yang/blink-cmp-avante
-URL: https://github.com/rafamadriz/friendly-snippets
-URL: https://github.com/moyiz/blink-emoji.nvim
-URL: https://github.com/MahanRahmati/blink-nerdfont.nvim
-URL: https://github.com/bydlw98/blink-cmp-env
-URL: https://github.com/nvim-mini/mini.snippets
-URL: https://github.com/L3MON4D3/LuaSnip
+Gives access to additional completion sources for blink.cmp.
+URL: https://github.com/Kaiser-Yang/blink-cmp-avante        A blink.cmp source for avante.nvim
+URL: https://github.com/giuxtaposition/blink-cmp-copilot    A blink.cmp source for GitHub Copilot suggestions.
+URL: https://github.com/rafamadriz/friendly-snippets        A blink.cmp source for friendly-snippets
+URL: https://github.com/moyiz/blink-emoji.nvim              A blink.cmp source for emojis.
+URL: https://github.com/MahanRahmati/blink-nerdfont.nvim    A blink.cmp source for nerd fonts.
+URL: https://github.com/bydlw98/blink-cmp-env               A blink.cmp source for environment variables.
+URL: https://github.com/nvim-mini/mini.snippets             A minimal snippet engine for Neovim.
+URL: https://github.com/L3MON4D3/LuaSnip                    A snippet engine for Neovim written in Lua.
 --]===]
 
 return {
