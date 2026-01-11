@@ -229,7 +229,7 @@ return {
       -- { "<leader>gb", function() Snacks.git.blame_line() end,               desc = "[g]it [b]lame line" },
       -- { "<leader>gB", function() Snacks.picker.git_branches() end,          desc = "show [g]it [B]ranches" },
       { '<leader>gC', function() Snacks.lazygit.log() end,                  desc = 'lazy[g]it [C]ommits' },
-      { '<leader>gS', function() Snacks.picker.git_stash() end,             desc = '[g]it [S]tash' },
+      -- { '<leader>gS', function() Snacks.picker.git_stash() end,             desc = '[g]it [S]tash' },
       { '<leader>gc', function() Snacks.lazygit.log_file() end,             desc = 'lazy[g]it [c]urrent file log' },
       { '<leader>gd', function() Snacks.picker.git_diff() end,              desc = '[g]it [d]iff (Hunks)' },
       {
@@ -246,7 +246,7 @@ return {
       { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end,    desc = "GitHub Pull Requests (all)" },
 
       { '<leader>gl', function() Snacks.picker.git_log_line() end, desc = '[g]it [L]og current line' },
-      { '<leader>gs', function() Snacks.picker.git_status() end,   desc = '[g]it [s]tatus' },
+      -- { '<leader>gs', function() Snacks.picker.git_status() end,   desc = '[g]it [s]tatus' },
       { '<leader>gL', function() Snacks.picker.git_log() end,      desc = 'search all [g]it [L]ogs' },
       { '<leader>gx', function() Snacks.gitbrowse() end,           desc = 'open [g]it repo in e[x]tern browser' },
    },
