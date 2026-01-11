@@ -56,6 +56,6 @@ return {
       vim.keymap.set('n', '<leader>gS', require('gitsigns').stage_buffer, { desc = '[g]it [S]tage current buffer' })
       vim.keymap.set('n', '<leader>gt', require('gitsigns').preview_hunk_inline, { desc = '[g]it [t]oggle deleted' })
 
-      vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = "#928374" })
+      vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = vim.api.nvim_get_hl(0, { name = 'GruvboxBlueSign' }).fg })
    end,
 }
