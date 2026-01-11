@@ -20,6 +20,7 @@ return {
             changedelete = { text = '' },
          },
          numhl = true, -- Change color of line number
+         word_diff = true, -- Toggle word diff
          current_line_blame = true, -- Show git blame info at the end of line
          current_line_blame_formatter = '  <author> • <author_time:%R> • <summary>  ',
          current_line_blame_formatter_nc = '  Not Committed Yet  ',
