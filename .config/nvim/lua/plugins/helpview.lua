@@ -4,13 +4,12 @@ URL: https://github.com/OXY2DEV/helpview.nvim
 --]===]
 
 return {
-   "OXY2DEV/helpview.nvim",
-   lazy = true,
+   'OXY2DEV/helpview.nvim',
    enabled = true,
 
-   ft = "help",
+   ft = 'help',
 
    dependencies = {
-      "nvim-treesitter/nvim-treesitter"
-   }
+      'nvim-treesitter/nvim-treesitter',
+   },
 }
