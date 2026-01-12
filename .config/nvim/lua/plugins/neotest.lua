@@ -10,6 +10,14 @@ URL: https://github.com/Shatur/neovim-tasks
 return {
    'nvim-neotest/neotest',
    enabled = true,
+   keys = {
+      { '<leader>TN', mode = 'n' },
+      { '<leader>TS', mode = 'n' },
+      { '<leader>TA', mode = 'n' },
+      { '<leader>TD', mode = 'n' },
+      { '<leader>TR', mode = 'n' },
+      { '<leader>TT', mode = 'n' },
+   },
    dependencies = {
       'mfussenegger/nvim-dap',
       'nvim-neotest/nvim-nio',

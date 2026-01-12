@@ -5,7 +5,7 @@ URL: https://github.com/aznhe21/actions-preview.nvim
 
 return {
    "aznhe21/actions-preview.nvim",
-   event = 'VeryLazy',
+   keys = { 'ca', mode = { 'n', 'v' } },
    enabled = true,
    config = function()
       vim.keymap.set({ "v", "n" }, "ca", require("actions-preview").code_actions, { desc = "Preview [c]ode [a]ctions" })

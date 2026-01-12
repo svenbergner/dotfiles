@@ -12,6 +12,7 @@ URL: https://github.com/sphamba/smear-cursor.nvim
 return {
    "sphamba/smear-cursor.nvim",
    enabled = true,
+   event = 'VeryLazy',
    opts = {
       legacy_computing_symbols_support = true, -- Set to true if you want to use legacy computing symbols
       -- smear_to_cmd = false, -- can be removed in nvim 0.12.*

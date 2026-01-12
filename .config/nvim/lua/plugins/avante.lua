@@ -9,7 +9,7 @@ URL: https://github.com/yetone/avante.nvim
 return {
    "yetone/avante.nvim",
    enabled = true,
-   event = "VeryLazy",
+   keys = { '<leader>a', mode = { 'n', 'v' } },
    version = false, -- Never set this value to "*"! Never!
    opts = {
       provider = "copilot",

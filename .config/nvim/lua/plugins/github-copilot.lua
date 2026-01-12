@@ -8,6 +8,7 @@ return {
    {
       'zbirenbaum/copilot.lua',
       enabled = true,
+      event = 'InsertEnter',
       config = function()
          require('copilot').setup({
             suggestion = { enabled = false },

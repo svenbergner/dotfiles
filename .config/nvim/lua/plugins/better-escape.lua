@@ -15,6 +15,10 @@ whole filtering isn't instant.
 return {
    "max397574/better-escape.nvim",
    enabled = true,
+   keys = {
+      { "jk", mode = { "i", "c", "t", "s" } },
+      { "jj", mode = { "i", "c" } },
+   },
    config = function()
       require("better_escape").setup({
          timeout = vim.o.timeoutlen,

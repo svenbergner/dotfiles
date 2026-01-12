@@ -18,6 +18,7 @@ URL: https://www.github.com/folke/todo-comments.nvim
 return {
    'folke/todo-comments.nvim',
    enabled = true,
+   event = { "BufReadPost", "BufNewFile" },
    dependencies = {
       'nvim-lua/plenary.nvim'
    },

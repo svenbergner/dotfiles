@@ -4,7 +4,14 @@ URL: http://github.com/chrisbra/unicode.vim
 --]===]
 
 return {
-   "chrisbra/unicode.vim",
+   'chrisbra/unicode.vim',
    enabled = true,
-   event = 'VeryLazy',
+   cmd = {
+      'UnicodeName',
+      'UnicodeSearch',
+      'UnicodeTable',
+      'Digraphs',
+      'DownloadUnicode',
+      'UnicodeCache',
+   },
 }

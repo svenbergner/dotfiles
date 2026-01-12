@@ -7,8 +7,11 @@ URL: https://github.com/nvim-orgmode/orgmode
 return {
    'nvim-orgmode/orgmode',
    enabled = true,
-   event = 'VeryLazy',
+   keys = {
+      {'<leader>o', mode = 'n' },
+   },
    ft = { 'org' },
+   cmd = { 'Org',  },
    config = function()
       -- Setup orgmode
       require('orgmode').setup({
