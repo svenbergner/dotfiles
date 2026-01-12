@@ -22,32 +22,32 @@ Features
 --]===]
 
 return {
-   "folke/flash.nvim",
+   'folke/flash.nvim',
    enabled = true,
-   event = "VeryLazy",
+   event = 'VeryLazy',
    ---@type Flash.Config
    opts = {
       picker = {
          win = {
             input = {
                keys = {
-                  -- Use s in normal mode and <a-s> in insert mode, 
+                  -- Use s in normal mode and <a-s> in insert mode,
                   -- to jump to a label in the picker results.
-                  ["<a-s>"] = { "flash", mode = { "n", "i" } },
-                  ["s"] = { "flash" },
+                  ['<a-s>'] = { 'flash', mode = { 'n', 'i' } },
+                  ['s'] = { 'flash' },
                },
             },
          },
          actions = {
             flash = function(picker)
-               require("flash").jump({
-                  pattern = "^",
+               require('flash').jump({
+                  pattern = '^',
                   label = { after = { 0, 0 } },
                   search = {
-                     mode = "search",
+                     mode = 'search',
                      exclude = {
                         function(win)
-                           return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "snacks_picker_list"
+                           return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= 'snacks_picker_list'
                         end,
                      },
                   },
@@ -67,22 +67,22 @@ return {
             enabled = true,
             label = {
                after = { 0, 0 },
-               style = "overlay",
+               style = 'overlay',
             },
             multi_window = true,
          },
          char = {
             jump_labels = true,
             multi_line = true,
-         }
-      }
+         },
+      },
    },
    -- stylua: ignore
    keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = { "o" },           function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+      { 's',     mode = { 'n', 'x', 'o' }, function() require('flash').jump() end,              desc = 'Flash' },
+      { 'S',     mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end,        desc = 'Flash Treesitter' },
+      { 'r',     mode = { 'o' },           function() require('flash').remote() end,            desc = 'Remote Flash' },
+      { 'R',     mode = { 'o', 'x' },      function() require('flash').treesitter_search() end, desc = 'Treesitter Search' },
+      { '<c-s>', mode = { 'c' },           function() require('flash').toggle() end,            desc = 'Toggle Flash Search' },
    },
 }
