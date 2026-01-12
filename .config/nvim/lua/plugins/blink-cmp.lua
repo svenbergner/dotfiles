@@ -26,7 +26,7 @@ URL: https://github.com/L3MON4D3/LuaSnip                    A snippet engine for
 return {
    'saghen/blink.cmp',
    enabled = true,
-   event = 'InsertEnter',
+   event = { 'InsertEnter', 'CmdwinEnter' },
    -- optional: provides snippets for the snippet source
    dependencies = {
       'giuxtaposition/blink-cmp-copilot',

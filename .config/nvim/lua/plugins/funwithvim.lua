@@ -7,7 +7,6 @@ Collection of plugins that are fun to use
 05. URL: https://github.com/AndrewRadev/dealwithit.vim
 06. URL: https://github.com/folke/drop.nvim
 07. URL: https://github.com/ThePrimeagen/vim-be-good
-08. URL: https://github.com/ThePrimeagen/vim-guys
 09. URL: https://github.com/vuciv/golf
 --]===]
 
@@ -30,7 +29,6 @@ return {
    --    },
    -- },
    -- { "ThePrimeagen/vim-be-good", }
-   { "ThePrimeagen/vim-guys", },
-   { "svenbergner/sudokusolver.nvim", enabled = true, dev = true },
-   { 'vuciv/golf' },
+   { "svenbergner/sudokusolver.nvim", enabled = true, cmd = 'SudokuSolverStart', dev = true },
+   { 'vuciv/golf', enabled = true, cmd = 'Golf' },
 }
