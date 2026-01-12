@@ -7,11 +7,13 @@ URL: https://github.com/sindrets/diffview.nvim
 
 return {
    'aaronhallaert/advanced-git-search.nvim',
-   event = 'VeryLazy',
    enabled = true,
-   cmd = { 'AdvancedGitSearch' },
+   keys = {
+      { '<leader>ga' },
+   },
+   cmd = 'AdvancedGitSearch',
    config = function()
-      require('advanced_git_search.snacks').setup {
+      require('advanced_git_search.snacks').setup({
          -- fugitive or diffview
          diff_plugin = 'diffview',
          -- customize git in previewer
@@ -23,12 +25,12 @@ return {
          -- Show builtin git pickers when executing "show_custom_functions" or :AdvancedGitSearch
          show_builtin_git_pickers = false,
          entry_default_author_or_date = 'author', -- one of "author" or "date"
-      }
+      })
 
       -- Eigener Keymap für show_custom_functions mit benutzerdefiniertem Layout
-      vim.keymap.set("n", "<leader>ga", function()
-         local global_picker = require("advanced_git_search.global_picker")
-         local keys = global_picker.keys("snacks")
+      vim.keymap.set('n', '<leader>ga', function()
+         local global_picker = require('advanced_git_search.global_picker')
+         local keys = global_picker.keys('snacks')
          local items = {}
          for _, key in ipairs(keys) do
             table.insert(items, { text = key })
@@ -37,7 +39,7 @@ return {
          Snacks.picker.pick(nil, {
             items = items,
             layout = {
-               preset = "select",
+               preset = 'select',
                preview = false,
                layout = {
                   width = 0.4,
@@ -47,31 +49,31 @@ return {
             win = {
                input = {
                   keys = {
-                     ["<CR>"] = { "open_picker", mode = { "n", "i" } },
+                     ['<CR>'] = { 'open_picker', mode = { 'n', 'i' } },
                   },
                },
             },
             actions = {
                open_picker = function(picker, item)
                   picker:close()
-                  global_picker.execute_git_function(item.text, "snacks")
+                  global_picker.execute_git_function(item.text, 'snacks')
                end,
             },
             format = function(item)
                local ret = {}
-               ret[#ret + 1] = { item.text, "SnacksPickerGitMsg" }
+               ret[#ret + 1] = { item.text, 'SnacksPickerGitMsg' }
                return ret
             end,
          })
-      end, { desc = "[g]it [a]dvanced search" })
+      end, { desc = '[g]it [a]dvanced search' })
    end,
    dependencies = {
       {
          -- 'nvim-telescope/telescope.nvim',
-         "folke/snacks.nvim",
+         'folke/snacks.nvim',
          'tpope/vim-fugitive',
          'tpope/vim-rhubarb',
          'sindrets/diffview.nvim',
-      }
+      },
    },
 }
