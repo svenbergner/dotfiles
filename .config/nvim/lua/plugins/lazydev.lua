@@ -16,16 +16,16 @@ URL: https://github.com/folke/lazydev.nvim
 
 return {
    {
-      "folke/lazydev.nvim",
+      'folke/lazydev.nvim',
       enabled = true,
-      ft = "lua", -- only load on lua files
+      ft = 'lua', -- only load on lua files
       opts = {
          library = {
             -- See the configuration section for more details
             -- Load luvit types when the `vim.uv` word is found
-            { path = "luvit-meta/library", words = { "vim%.uv" } },
+            { path = 'luvit-meta/library', words = { 'vim%.uv' } },
          },
       },
    },
-   { "Bilal2453/luvit-meta", lazy = true },
+   { 'Bilal2453/luvit-meta', lazy = true },
 }
