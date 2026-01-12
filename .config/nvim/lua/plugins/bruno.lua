@@ -15,6 +15,7 @@ URL: https://github.com/romek-codes/bruno.nvim
 
 return {
    "romek-codes/bruno.nvim",
+   ft = 'bruno',
    dependencies = {
       "nvim-lua/plenary.nvim",
       -- Pickers
