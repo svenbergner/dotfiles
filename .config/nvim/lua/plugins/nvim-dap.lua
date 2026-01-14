@@ -51,7 +51,6 @@ URL: https://codeberg.org/mfussenegger/nvim-dap-python
 return {
    {
       'mfussenegger/nvim-dap',
-      event = 'VeryLazy',
       dependencies = {
          'folke/lazydev.nvim',
          'igorlfs/nvim-dap-view',
