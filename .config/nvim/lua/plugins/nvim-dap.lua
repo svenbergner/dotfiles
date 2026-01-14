@@ -295,7 +295,13 @@ return {
          -- reload current color scheme to pick up colors override if it was set up in a lazy plugin definition fashion
          vim.cmd.colorscheme(vim.g.colors_name)
 
-         vim.fn.sign_define('DapBreakpoint', { text = '🛑', numhl = 'DapBreakpoint' })
+         vim.fn.sign_define('DapBreakpoint', { text = '', numhl = 'DapBreakpoint' })
+         vim.fn.sign_define(
+            'DapBreakpointRejected',
+            { text = '', texthl = 'DapBreakpointRejected', numhl = 'DapBreakpointRejected' }
+         )
+         vim.fn.sign_define('DapBreakpointCondition', { text = '', numhl = 'DapBreakpoint' })
+         vim.fn.sign_define('DapLogPoint', { text = '󰣕', numhl = 'DapLogPoint' })
          vim.fn.sign_define(
             'DapStopped',
             { text = '→', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' }
