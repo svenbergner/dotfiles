@@ -147,6 +147,10 @@ return {
             -- },
          }
 
+         -- Treat CMake and Objective-C the same as C++
+         dap.configurations.objcpp = dap.configurations.cpp
+         dap.configurations.cmake = dap.configurations.cpp
+
          dap.adapters.dart = {
             type = 'executable',
             command = 'dart',
