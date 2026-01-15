@@ -47,9 +47,6 @@ M.apply_to_config = function(config, wezterm)
          cwd = ""
       end
 
-      -- Time
-      local time = wezterm.strftime("%d.%m.%y %H:%M")
-
       local gitstatus = ""
 
       if cwd ~= nil and cwd ~= "" then
