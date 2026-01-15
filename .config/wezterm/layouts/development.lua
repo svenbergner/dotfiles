@@ -22,12 +22,14 @@ M.setup_layout = function(wezterm)
 
       local first_tab, first_pane, window = mux.spawn_window {
          workspace = 'Development',
-         cwd = home_dir .. '/Repos/DevTools',
+         cwd = home_dir,
       }
-      first_tab:set_title('DevTools')
-      first_pane:send_text('nvim\n')
+      first_tab:set_title('Shell')
+      first_pane:send_text('fastfetch\n')
 
-      local activatedTab = M.addTab(window, home_dir .. '/Repos/SSE/Dev', 'SSE/TaxCoreApi', 'nvim\n')
+      local activatedTab = M.addTab(window, home_dir .. '/Repos/SSE/Dev', 'SSE master', 'nvim\n')
+      M.addTab(window, home_dir .. '/Repos/SSE30/Dev', 'SSE 30', 'nvim\n')
+      M.addTab(window, home_dir .. '/Repos/SSE29/Dev', 'SSE 29', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/SSE28/Dev', 'SSE 28', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/SSE27/Dev', 'SSE 27', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/Content/StP/31', 'Content StP 31', 'nvim\n')
