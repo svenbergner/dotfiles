@@ -12,7 +12,11 @@ M.apply_to_config = function(config, wezterm)
       local stat = window:active_workspace()
       local stat_color_bg = "#3c3836"
       -- local stat_color_fg = "#3c3836"
-      local stat_icon = wezterm.nerdfonts.md_space_invaders
+      local stat_icon = wezterm.nerdfonts.oct_bug
+      if stat == "Personal" then
+         stat_icon = wezterm.nerdfonts.md_space_invaders
+      end
+
       -- It's a little silly to have workspace name all the time
       -- Utilize this to display LDR or current key table name
       if window:active_key_table() then
@@ -49,7 +53,7 @@ M.apply_to_config = function(config, wezterm)
       local gitstatus = ""
 
       if cwd ~= nil and cwd ~= "" then
-         gitstatus = require('utils.gitstatus').get_gitstatus(cwd)
+         gitstatus = require("utils.gitstatus").get_gitstatus(cwd)
       end
 
       -- Left status (left of the tab line)
@@ -59,23 +63,23 @@ M.apply_to_config = function(config, wezterm)
       window:set_right_status(gitstatus .. wezterm.format({
          -- Wezterm has a built-in nerd fonts
          -- URL: https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
-         { Foreground = { Color = '#d65d0e' }, },
+         { Foreground = { Color = "#d65d0e" } },
          { Text = "" },
-         { Background = { Color = '#d65d0e' }, },
-         { Foreground = { AnsiColor = 'Black' }, },
+         { Background = { Color = "#d65d0e" } },
+         { Foreground = { AnsiColor = "Black" } },
          { Text = wezterm.nerdfonts.md_folder .. " " },
          "ResetAttributes",
          { Text = " " .. cwd },
          "ResetAttributes",
          { Text = " " },
-         { Foreground = { Color = '#b8bb26' }, },
-         { Background = { AnsiColor = 'Black' }, },
+         { Foreground = { Color = "#b8bb26" } },
+         { Background = { AnsiColor = "Black" } },
          { Text = "" },
-         { Background = { Color = '#b8bb26' }, },
-         { Foreground = { AnsiColor = 'Black' }, },
+         { Background = { Color = "#b8bb26" } },
+         { Foreground = { AnsiColor = "Black" } },
          { Text = stat_icon .. " " },
          "ResetAttributes",
-         { Background = { Color = stat_color_bg }, },
+         { Background = { Color = stat_color_bg } },
          { Text = " " .. stat .. " " },
       }))
    end)
