@@ -23,14 +23,14 @@ vim.diagnostic.config({
       },
    },
    virtual_text = false,
-   virtual_lines = {
-      current_line = true,
-      source = true,
-      spacing = 2,
-      format = function(diagnostic)
-         return diagnostic.message
-      end,
-   },
+   -- virtual_lines = {
+   --    current_line = true,
+   --    source = true,
+   --    spacing = 2,
+   --    format = function(diagnostic)
+   --       return diagnostic.message
+   --    end,
+   -- },
 })
 
 local sw = '<cmd>LspClangdSwitchSourceHeader<CR>'
