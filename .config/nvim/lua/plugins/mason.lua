@@ -28,7 +28,6 @@ return {
          'marksman',
          'pico8_ls',
          'pylsp',
-         'spectral',
          'terraformls',
          'tinymist',
       },
