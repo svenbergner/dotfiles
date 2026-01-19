@@ -62,6 +62,7 @@ return {
          { desc = '[g]it [t]oggle current line blame' }
       )
       vim.keymap.set('n', '<leader>gt', require('gitsigns').preview_hunk_inline, { desc = '[g]it [T]oggle deleted' })
+      vim.keymap.set('n', '<leader>gw', require('gitsigns').toggle_word_diff, { desc = '[g]it toggle [w]ord diff' })
 
       vim.api.nvim_set_hl(
          0,
