@@ -1,6 +1,6 @@
 --[===[
 
-URL: https://github.com/
+URL: https://github.com/rachartier/tiny-inline-diagnostic.nvim
 --]===]
 
 return {
@@ -14,7 +14,7 @@ return {
          options = {
             override_open_float = true,
             add_messages = {
-               display_count = true,
+               display_count = false,
             },
             multilines = {
                enabled = true,
