@@ -19,8 +19,8 @@ return {
             topdelete = { text = '‾' },
             changedelete = { text = '' },
          },
-         numhl = true, -- Change color of line number
-         word_diff = true, -- Toggle word diff
+         numhl = true,              -- Change color of line number
+         word_diff = true,          -- Toggle word diff
          current_line_blame = true, -- Show git blame info at the end of line
          current_line_blame_formatter = '  <author> • <author_time:%R> • <summary>  ',
          current_line_blame_formatter_nc = '  Not Committed Yet  ',
@@ -55,9 +55,18 @@ return {
       vim.keymap.set('n', '<leader>gR', require('gitsigns').reset_buffer, { desc = '[g]it [R]eset buffer' })
       vim.keymap.set('n', '<leader>gs', require('gitsigns').stage_hunk, { desc = '[g]it [s]tage or unstage hunk' })
       vim.keymap.set('n', '<leader>gS', require('gitsigns').stage_buffer, { desc = '[g]it [S]tage current buffer' })
-      vim.keymap.set('n', '<leader>gt', require('gitsigns').toggle_current_line_blame, { desc = '[g]it [t]oggle current line blame' })
+      vim.keymap.set(
+         'n',
+         '<leader>gt',
+         require('gitsigns').toggle_current_line_blame,
+         { desc = '[g]it [t]oggle current line blame' }
+      )
       vim.keymap.set('n', '<leader>gt', require('gitsigns').preview_hunk_inline, { desc = '[g]it [T]oggle deleted' })
 
-      vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = vim.api.nvim_get_hl(0, { name = 'GruvboxBlueSign' }).fg })
+      vim.api.nvim_set_hl(
+         0,
+         'GitSignsCurrentLineBlame',
+         { fg = vim.api.nvim_get_hl(0, { name = 'GruvboxBlueSign' }).fg }
+      )
    end,
 }
