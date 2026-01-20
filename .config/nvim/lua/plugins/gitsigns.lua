@@ -20,8 +20,8 @@ return {
             topdelete = { text = '‾' },
             changedelete = { text = '' },
          },
-         numhl = true,              -- Change color of line number
-         word_diff = false,         -- Toggle word diff
+         numhl = true, -- Change color of line number
+         word_diff = false, -- Toggle word diff
          current_line_blame = true, -- Show git blame info at the end of line
          current_line_blame_formatter = '  <author> • <author_time:%R> • <summary>  ',
          current_line_blame_formatter_nc = '  Not Committed Yet  ',
@@ -67,7 +67,6 @@ return {
 
       vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', {
          fg = vim.api.nvim_get_hl(0, { name = 'GruvboxBlueSign' }).fg,
-         bg = vim.api.nvim_get_hl(0, { name = 'GruvboxBlueSign' }).bg,
       })
    end,
 }
