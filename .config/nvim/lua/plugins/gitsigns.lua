@@ -6,6 +6,7 @@ URL: https://github.com/lewis6991/gitsigns.nvim
 ---@diagnostic disable: param-type-mismatch
 return {
    'lewis6991/gitsigns.nvim',
+   -- { 'svenbergner/gitsigns.nvim', dev = true },
    enabled = true,
    event = 'VeryLazy',
    config = function()
@@ -20,7 +21,7 @@ return {
             changedelete = { text = '' },
          },
          numhl = true,              -- Change color of line number
-         word_diff = true,          -- Toggle word diff
+         word_diff = false,         -- Toggle word diff
          current_line_blame = true, -- Show git blame info at the end of line
          current_line_blame_formatter = '  <author> • <author_time:%R> • <summary>  ',
          current_line_blame_formatter_nc = '  Not Committed Yet  ',
@@ -64,10 +65,9 @@ return {
       vim.keymap.set('n', '<leader>gt', require('gitsigns').preview_hunk_inline, { desc = '[g]it [T]oggle deleted' })
       vim.keymap.set('n', '<leader>gw', require('gitsigns').toggle_word_diff, { desc = '[g]it toggle [w]ord diff' })
 
-      vim.api.nvim_set_hl(
-         0,
-         'GitSignsCurrentLineBlame',
-         { fg = vim.api.nvim_get_hl(0, { name = 'GruvboxBlueSign' }).fg }
-      )
+      vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', {
+         fg = vim.api.nvim_get_hl(0, { name = 'GruvboxBlueSign' }).fg,
+         bg = vim.api.nvim_get_hl(0, { name = 'GruvboxBlueSign' }).bg,
+      })
    end,
 }
