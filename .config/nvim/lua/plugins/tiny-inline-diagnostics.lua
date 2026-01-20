@@ -16,15 +16,9 @@ return {
          preset = 'amongus',
          options = {
             override_open_float = true,
-            add_messages = {
-               display_count = false,
-            },
-            multilines = {
-               enabled = true,
-            },
-            show_sources = {
-               enabled = true,
-            },
+            add_messages = { display_count = false },
+            multilines = { enabled = true },
+            show_sources = { enabled = true },
          },
       })
       vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
