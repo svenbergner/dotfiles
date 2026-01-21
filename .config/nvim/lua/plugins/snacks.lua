@@ -236,7 +236,7 @@ return {
             vim.cmd('wa')
             Snacks.lazygit()
          end,
-         desc = 'Lazygit'
+         desc = 'lazy[g]it'
       },
       { "<leader>gi", function() Snacks.picker.gh_issue() end,                  desc = "GitHub Issues (open)" },
       { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
