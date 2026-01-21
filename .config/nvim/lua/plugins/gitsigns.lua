@@ -6,7 +6,7 @@ URL: https://github.com/lewis6991/gitsigns.nvim
 ---@diagnostic disable: param-type-mismatch
 return {
    'lewis6991/gitsigns.nvim',
-   -- { 'svenbergner/gitsigns.nvim', dev = true },
+   dev = false,
    enabled = true,
    event = 'VeryLazy',
    config = function()

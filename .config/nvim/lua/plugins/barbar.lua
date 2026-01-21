@@ -19,8 +19,7 @@ return {
       'romgrk/barbar.nvim',
       enabled = true,
       dependencies = {
-         'lewis6991/gitsigns.nvim',
-         -- { 'svenbergner/gitsigns.nvim', dev = true },
+         { 'lewis6991/gitsigns.nvim', dev = false },
          'nvim-tree/nvim-web-devicons',
       },
       init = function()
