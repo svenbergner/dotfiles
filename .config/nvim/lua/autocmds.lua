@@ -47,6 +47,15 @@ autocmd('BufEnter', {
    end,
 })
 
+-- Prevent Telescope from entering insert mode after leaving a prompt
+autocmd({ "BufLeave", "BufWinLeave" }, {
+   callback = function(event)
+      if vim.bo[event.buf].filetype == "TelescopePrompt" then
+         vim.api.nvim_exec2("silent! stopinsert!", {})
+      end
+   end
+})
+
 -- Disable spell checking in the quickfix list
 autocmd('FileType', {
    pattern = 'qf',
