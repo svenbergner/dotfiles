@@ -64,8 +64,17 @@ return {
       vim.keymap.set('n', '<leader>gt', require('gitsigns').preview_hunk_inline, { desc = '[g]it [T]oggle deleted' })
       vim.keymap.set('n', '<leader>gw', require('gitsigns').toggle_word_diff, { desc = '[g]it toggle [w]ord diff' })
 
-      vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', {
-         fg = vim.api.nvim_get_hl(0, { name = 'GruvboxBlueSign' }).fg,
+      -- Remove last search highlight after cursor moved
+      local autocmd = vim.api.nvim_create_autocmd
+      local augroup = vim.api.nvim_create_augroup
+      autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'WinEnter' }, {
+         once = true,
+         group = augroup('gitsigns-set-lineblamecolor', { clear = true }),
+         callback = function()
+            vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', {
+               fg = vim.api.nvim_get_hl(0, { name = 'GruvboxBlueSign' }).fg,
+            })
+         end,
       })
    end,
 }
