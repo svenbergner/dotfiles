@@ -5,6 +5,8 @@ tap "hashicorp/tap"
 tap "leoafarias/fvm"
 tap "lusingander/tap"
 tap "sst/tap"
+# Simple, modern, secure file encryption
+brew "age"
 # Record and share terminal sessions
 brew "asciinema"
 # Distributed revision control system
@@ -73,7 +75,7 @@ brew "eza"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Play, record, convert, and stream audio and video
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
@@ -81,6 +83,8 @@ brew "ffmpegthumbnailer"
 brew "figlet"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Fort Knox for your secrets - flexible secret management tool
+brew "fnox"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Interact with Google Gemini AI models from the command-line
@@ -111,9 +115,7 @@ brew "httpie"
 brew "hub"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
-# Tools and libraries to manipulate images in many formats
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # Static Application Security Testing (SAST) tool
 brew "intercept"
@@ -191,6 +193,8 @@ brew "python-build"
 brew "python@3.10"
 # Python interface to Tcl/Tk
 brew "python-tk@3.10"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Python interface to Tcl/Tk
 brew "python-tk@3.12"
 # Generic machine emulator and virtualizer
