@@ -244,6 +244,10 @@ return {
             require('telescope').extensions.cmake_preset_selector.stop_current_cmake_build()
          end, { nargs = 0 })
 
+         vim.api.nvim_create_user_command('ShowLastBuildMessages', function()
+            require('telescope').extensions.cmake_preset_selector.show_last_build_messages()
+         end, { nargs = 0 })
+
          vim.api.nvim_create_user_command('ShowSelectedBuildPreset', function()
             vim.print(
                'Current CMake Build Preset: ',
