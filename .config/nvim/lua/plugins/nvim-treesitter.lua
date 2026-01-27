@@ -42,8 +42,6 @@ return {
          ensure_installed = {
             "bash",
             "cmake",
-            "clojure",
-            "commonlisp",
             "cpp",
             "css",
             "csv",
