@@ -1,5 +1,8 @@
 --[===[
+Gitsigns
+Deep buffer integration for Git
 Adds custom signs for current git status
+
 URL: https://github.com/lewis6991/gitsigns.nvim
 --]===]
 
@@ -22,7 +25,7 @@ return {
          },
          numhl = true, -- Change color of line number
          word_diff = false, -- Toggle word diff
-         current_line_blame = true, -- Show git blame info at the end of line
+         current_line_blame = true, -- Show git blame info for current line
          current_line_blame_formatter = '  <author> • <author_time:%R> • <summary>  ',
          current_line_blame_formatter_nc = '  Not Committed Yet  ',
          current_line_blame_opts = {
