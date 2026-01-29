@@ -6,6 +6,7 @@ URL: https://github.com/luckasRanarison/nvim-devdocs
 
 return {
    'luckasRanarison/nvim-devdocs',
+   enabled = true,
    cmd = {
       'DevdocsOpen',
       'DevdocsInstall',
