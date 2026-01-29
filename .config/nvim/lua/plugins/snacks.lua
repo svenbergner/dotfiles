@@ -53,6 +53,35 @@ local zen_opts = {
    },
 }
 
+local indent_opts = {
+   enabled = true,
+   indent = {
+      priority = 1,
+      enabeled = true,
+      only_scope = true,
+      only_current = true,
+      char = '▎',
+      blank = '·',
+      hl = {
+         'SnacksIndent1',
+         'SnacksIndent2',
+         'SnacksIndent3',
+         'SnacksIndent4',
+         'SnacksIndent5',
+         'SnacksIndent6',
+         'SnacksIndent7',
+         'SnacksIndent8',
+      },
+   },
+   scope = {
+      char = '▎',
+   },
+   blank = {
+      char = '·',
+      hl = 'SnacksIndentBlank', ---@type string | string[] hl group for blank spaces
+   },
+}
+
 return {
    'folke/snacks.nvim',
    priority = 1000,
@@ -65,30 +94,7 @@ return {
       git = { enabled = true, },
       gitbrowse = { enabled = true, },
       image = { enabled = true, },
-      indent = {
-         enabled = true,
-         indent = {
-            char = '▎',
-            blank = '·',
-            hl = {
-               'SnacksIndent1',
-               'SnacksIndent2',
-               'SnacksIndent3',
-               'SnacksIndent4',
-               'SnacksIndent5',
-               'SnacksIndent6',
-               'SnacksIndent7',
-               'SnacksIndent8',
-            },
-         },
-         scope = {
-            char = '▎',
-         },
-         blank = {
-            char = '·',
-            hl = 'SnacksIndentBlank', ---@type string | string[] hl group for blank spaces
-         },
-      },
+      indent = indent_opts,
       input = { enabled = true, },
       lazygit = { enabled = true, },
       notify = { enabled = true, },
