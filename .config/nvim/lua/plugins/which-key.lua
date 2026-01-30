@@ -28,6 +28,7 @@ return {
             { '<leader>dj',       group = '[d]apview [j]ump to', icon = '' },
             { '<leader>ds',       group = '[d]apview [s]how',    icon = '' },
             { '<leader>D',        group = '[D]iff',              icon = '󰕛' },
+            { '<leader>e',        group = '[e]lixir',            icon = '' },
             { '<leader>f',        group = '[f]ind',              icon = '' },
             { '<leader>g',        group = '[g]it',               icon = '' },
             { '<leader>l',        group = '[l]azy',              icon = '' },
