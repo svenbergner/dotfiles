@@ -195,6 +195,9 @@ return {
             'nerdfont',
             'env',
          },
+         per_filetype = {
+            org = { 'orgmode' },
+         },
          providers = {
             copilot = {
                name = 'copilot',
@@ -246,7 +249,11 @@ return {
                -- make lazydev completions top priority (see `:h blink.cmp`)
                score_offset = 100,
             },
-
+            orgmode = {
+               name = 'orgmode',
+               module = 'orgmode.org.autocompletion.blink',
+               fallbacks = {'buffer'},
+            },
          },
       },
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

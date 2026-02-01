@@ -37,6 +37,7 @@ return {
             { '<leader>N',        group = '[N]oice and [N]ews',  icon = '' },
             { '<leader>o',        group = '[o]rg mode',          icon = '' },
             { '<leader>q',        group = '[q]uickfix list',     icon = '' },
+            { '<leader>r',        group = 'org [r]oam',          icon = '' },
             { '<leader>s',        group = '[s]wap',              icon = '󰣁' },
             { '<leader>t',        group = '[t]oggle',            icon = '' },
             { '<leader>T',        group = '[T]est',              icon = '󰙨' },
