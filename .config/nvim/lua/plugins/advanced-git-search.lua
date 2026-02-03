@@ -69,7 +69,6 @@ return {
    end,
    dependencies = {
       {
-         -- 'nvim-telescope/telescope.nvim',
          'folke/snacks.nvim',
          'tpope/vim-fugitive',
          'tpope/vim-rhubarb',
