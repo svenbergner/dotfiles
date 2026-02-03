@@ -73,7 +73,7 @@ return {
       vim.keymap.set('v', '<leader>gs', function()
          gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
       end, { desc = '[g]it [s]tage or unstage visual selected hunk' })
-      vim.keymap.set('n', '<leader>gt', gitsigns.preview_hunk_inline, { desc = '[g]it [T]oggle deleted' })
+      vim.keymap.set('n', '<leader>gt', gitsigns.preview_hunk_inline, { desc = '[g]it [t]oggle deleted' })
       vim.keymap.set('n', '<leader>gv', gitsigns.select_hunk, { desc = '[g]it [v]isual select current hunk' })
       vim.keymap.set('n', '<leader>gw', gitsigns.toggle_word_diff, { desc = '[g]it toggle [w]ord diff' })
 
