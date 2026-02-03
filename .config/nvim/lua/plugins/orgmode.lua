@@ -2,7 +2,7 @@
 Orgmode clone written in Lua for Neovim
 
 URL: https://github.com/nvim-orgmode/orgmode
-URL: https://github.com/danilshvalov/org-modern.nvim
+URL: https://github.com/danilshvalov/org-modern.nvim     -- This plugin adds a modern style to Org mode buffers.
 URL: https://github.com/nvim-orgmode/org-bullets.nvim
 URL: https://github.com/neovim/nvim-lspconfig
 --]===]
