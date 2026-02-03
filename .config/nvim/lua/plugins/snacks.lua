@@ -234,8 +234,8 @@ return {
       -- git / lazygit
       -- { "<leader>gB", function() Snacks.picker.git_branches() end,          desc = "show [g]it [B]ranches" },
       { '<leader>gC', function() Snacks.lazygit.log() end,                  desc = 'lazy[g]it [C]ommits' },
-      { '<leader>gc', function() Snacks.lazygit.log_file() end,             desc = 'lazy[g]it [c]urrent file log' },
       { '<leader>gd', function() Snacks.picker.git_diff() end,              desc = '[g]it [d]iff (Hunks)' },
+      { '<leader>gf', function() Snacks.lazygit.log_file() end,             desc = 'lazy[g]it current [f]ile log' },
       {
          '<leader>gg',
          function()

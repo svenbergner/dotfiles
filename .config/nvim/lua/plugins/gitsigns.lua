@@ -24,8 +24,8 @@ return {
             topdelete = { text = '‾' },
             changedelete = { text = '' },
          },
-         numhl = true, -- Change color of line number
-         word_diff = false, -- Toggle word diff
+         numhl = true,              -- Change color of line number
+         word_diff = false,         -- Toggle word diff
          current_line_blame = true, -- Show git blame info for current line
          current_line_blame_formatter = '  <author> • <author_time:%R> • <summary>  ',
          current_line_blame_formatter_nc = '  Not Committed Yet  ',
@@ -47,6 +47,7 @@ return {
       vim.keymap.set('n', '<leader>gB', function()
          gitsigns.blame()
       end, { desc = '[g]it [B]lame current buffer' })
+      vim.keymap.set('n', '<leader>gc', function() vim.cmd('G commit -v') end, { desc = '[g]it [c]ommit' })
       vim.keymap.set('n', '<leader>gD', gitsigns.diffthis, { desc = '[g]it [D]iff this' })
       vim.keymap.set('n', '<leader>gh', gitsigns.preview_hunk, { desc = '[g]it preview [h]unk' })
       vim.keymap.set('n', '<leader>gn', function()
