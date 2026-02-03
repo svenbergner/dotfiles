@@ -244,9 +244,10 @@ return {
          end,
          desc = 'lazy[g]it'
       },
-      { "<leader>gi", function() Snacks.picker.gh_issue() end,                  desc = "GitHub Issues (open)" },
-      { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
-      { "<leader>gP", function() Snacks.picker.gh_pr() end,                     desc = "GitHub [P]ull Requests (open)" },
+      -- GitHub PRs and Issues (requires GitHub CLI)
+      -- { "<leader>gi", function() Snacks.picker.gh_issue() end,                  desc = "GitHub Issues (open)" },
+      -- { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
+      -- { "<leader>gP", function() Snacks.picker.gh_pr() end,                     desc = "GitHub [P]ull Requests (open)" },
       -- { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end,    desc = "GitHub Pull Requests (all)" },
 
       { '<leader>gl', function() Snacks.picker.git_log_line() end, desc = '[g]it [L]og current line' },
