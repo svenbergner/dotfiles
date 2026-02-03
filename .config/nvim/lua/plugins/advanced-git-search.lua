@@ -12,6 +12,7 @@ return {
       { '<leader>ga' },
    },
    cmd = 'AdvancedGitSearch',
+   cmd = 'G',
    config = function()
       require('advanced_git_search.snacks').setup({
          -- fugitive or diffview
