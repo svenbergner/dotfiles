@@ -58,6 +58,7 @@ return {
             or filetype == 'snacks_picker_input'
             or filetype == 'neo-tree'
             or filetype == 'neo-tree-popup'
+            or filetype == 'gitcommit'
          then
             return false
          end
