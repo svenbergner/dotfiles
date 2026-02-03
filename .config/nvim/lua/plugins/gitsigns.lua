@@ -56,6 +56,7 @@ return {
       vim.keymap.set('n', '<leader>gN', function()
          gitsigns.nav_hunk('prev')
       end, { desc = '[g]it hu[N]k previous' })
+      vim.keymap.set('n', '<leader>gp', function() vim.cmd('G push') end, { desc = '[g]it [p]ush' })
       vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { desc = '[g]it [r]eset hunk' })
       vim.keymap.set('v', '<leader>gr', function()
          gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
