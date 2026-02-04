@@ -5,14 +5,59 @@ URL: https://github.com/aaronhallaert/advanced-git-search.nvim
 URL: https://github.com/sindrets/diffview.nvim
 --]===]
 
+local function open_git_advanced_search()
+   local global_picker = require('advanced_git_search.global_picker')
+   local keys = global_picker.keys('snacks')
+   local items = {}
+   for _, key in ipairs(keys) do
+      table.insert(items, { text = key })
+   end
+
+   Snacks.picker.pick(nil, {
+      items = items,
+      layout = {
+         preset = 'select',
+         preview = false,
+         layout = {
+            width = 20,
+            height = 10,
+         },
+      },
+      win = {
+         input = {
+            keys = {
+               ['<CR>'] = { 'open_picker', mode = { 'n', 'i' } },
+            },
+         },
+      },
+      actions = {
+         open_picker = function(picker, item)
+            picker:close()
+            global_picker.execute_git_function(item.text, 'snacks')
+         end,
+      },
+      format = function(item)
+         local ret = {}
+         ret[#ret + 1] = { item.text, 'SnacksPickerGitMsg' }
+         return ret
+      end,
+   })
+end
+
 return {
    'aaronhallaert/advanced-git-search.nvim',
    enabled = true,
    keys = {
-      { '<leader>ga' },
+      {
+         -- keymap for show_custom_functions with custom layout
+         '<leader>ga',
+         function()
+            open_git_advanced_search()
+         end,
+         desc = '[g]it [a]dvanced search',
+      },
    },
-   cmd = 'AdvancedGitSearch',
-   cmd = 'G',
+   cmd = { 'AdvancedGitSearch', 'G' },
    config = function()
       require('advanced_git_search.snacks').setup({
          -- fugitive or diffview
@@ -27,46 +72,6 @@ return {
          show_builtin_git_pickers = false,
          entry_default_author_or_date = 'author', -- one of "author" or "date"
       })
-
-      -- Eigener Keymap für show_custom_functions mit benutzerdefiniertem Layout
-      vim.keymap.set('n', '<leader>ga', function()
-         local global_picker = require('advanced_git_search.global_picker')
-         local keys = global_picker.keys('snacks')
-         local items = {}
-         for _, key in ipairs(keys) do
-            table.insert(items, { text = key })
-         end
-
-         Snacks.picker.pick(nil, {
-            items = items,
-            layout = {
-               preset = 'select',
-               preview = false,
-               layout = {
-                  width = 0.4,
-                  height = 0.4,
-               },
-            },
-            win = {
-               input = {
-                  keys = {
-                     ['<CR>'] = { 'open_picker', mode = { 'n', 'i' } },
-                  },
-               },
-            },
-            actions = {
-               open_picker = function(picker, item)
-                  picker:close()
-                  global_picker.execute_git_function(item.text, 'snacks')
-               end,
-            },
-            format = function(item)
-               local ret = {}
-               ret[#ret + 1] = { item.text, 'SnacksPickerGitMsg' }
-               return ret
-            end,
-         })
-      end, { desc = '[g]it [a]dvanced search' })
    end,
    dependencies = {
       {
