@@ -35,7 +35,7 @@ URL: https://github.com/mattn/calendar-vim
 --]===]
 
 return {
-   "vimwiki/vimwiki",
+   'vimwiki/vimwiki',
    enabled = true,
    event = 'VeryLazy',
    dependencies = {
@@ -47,30 +47,30 @@ return {
          {
             path = '~/Repos/vimwiki',
             syntax = 'markdown',
-            ext = 'md'
+            ext = 'md',
          },
          {
             path = '~/Repos/buch',
             syntax = 'markdown',
-            ext = 'md'
+            ext = 'md',
          },
       }
 
       vim.g.vimwiki_global_ext = 0
 
       vim.g.vimwiki_diary_months = {
-         ["1"] = "Januar",
-         ["2"] = "Februar",
-         ["3"] = "März",
-         ["4"] = "April",
-         ["5"] = "Mai",
-         ["6"] = "Juni",
-         ["7"] = "Juli",
-         ["8"] = "August",
-         ["9"] = "September",
-         ["10"] = "Oktober",
-         ["11"] = "November",
-         ["12"] = "Dezember",
+         ['1'] = 'Januar',
+         ['2'] = 'Februar',
+         ['3'] = 'März',
+         ['4'] = 'April',
+         ['5'] = 'Mai',
+         ['6'] = 'Juni',
+         ['7'] = 'Juli',
+         ['8'] = 'August',
+         ['9'] = 'September',
+         ['10'] = 'Oktober',
+         ['11'] = 'November',
+         ['12'] = 'Dezember',
       }
 
       local api = vim.api
@@ -78,10 +78,10 @@ return {
 
       local vimwikigroup = api.nvim_create_augroup('vimwikigroup', { clear = true })
 
-      api.nvim_create_autocmd("FileType", {
+      api.nvim_create_autocmd('FileType', {
          group = vimwikigroup,
-         pattern = "*/vimwiki/*",
-         command = 'setlocal shiftwidth=4 tabstop=4 expandtab'
+         pattern = '*/vimwiki/*',
+         command = 'setlocal shiftwidth=4 tabstop=4 expandtab',
       })
 
       -- api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
@@ -103,24 +103,26 @@ return {
       -- automatically update links on read diary
       api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
          group = vimwikigroup,
-         pattern = "diary.md",
-         command = "VimwikiDiaryGenerateLinks",
+         pattern = 'diary.md',
+         command = 'VimwikiDiaryGenerateLinks',
       })
 
       -- insert diary entry header
-      api.nvim_create_autocmd("BufNewFile", {
+      api.nvim_create_autocmd('BufNewFile', {
          group = vimwikigroup,
-         pattern = "*/diary/[0-9]*.md",
-         command =
-         'call append(0,[ "# " . strftime("%d.%m.%Y"), "", "## Tagebuch", "", "","","## Die 3 schönsten Dinge des Tages","  1. ", "  2. ", "  3. ","", "## Erkenntnis des Tages", "" ])',
+         pattern = '*/diary/[0-9]*.md',
+         command = 'call append(0,[ "# " . strftime("%d.%m.%Y"), "", "## Tagebuch", "", "","","## Die 3 schönsten Dinge des Tages","  1. ", "  2. ", "  3. ","", "## Erkenntnis des Tages", "" ])',
       })
 
-      vim.keymap.set("n", "<S-F3>",
+      vim.keymap.set(
+         'n',
+         '<S-F3>',
          ':language de_DE.UTF-8<CR>i<C-R>=strftime("%A, %d.%m.%Y %H:%M")<CR><ESC>:language en_US.UTF-8<CR>',
-         { desc = "Insert current date and time" })
-      vim.keymap.set("i", "<S-F3>", '<C-R>=strftime("%d.%m.%Y %H:%M")<CR>', { desc = "Insert current date" })
+         { desc = 'Insert current date and time' }
+      )
+      vim.keymap.set('i', '<S-F3>', '<C-R>=strftime("%d.%m.%Y %H:%M")<CR>', { desc = 'Insert current date' })
 
-      vim.keymap.set("n", "<F3>", ':i<C-R>=strftime("%Y-%m-%d")<CR><ESC>', { desc = "Insert current date and time" })
-      vim.keymap.set("i", "<F3>", '<C-R>=strftime("%Y-%m-%d")<CR>', { desc = "Insert current date" })
-   end
+      vim.keymap.set('n', '<F3>', ':i<C-R>=strftime("%Y-%m-%d")<CR><ESC>', { desc = 'Insert current date and time' })
+      vim.keymap.set('i', '<F3>', '<C-R>=strftime("%Y-%m-%d")<CR>', { desc = 'Insert current date' })
+   end,
 }

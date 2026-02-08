@@ -13,33 +13,33 @@ whole filtering isn't instant.
 --]===]
 
 return {
-   "max397574/better-escape.nvim",
+   'max397574/better-escape.nvim',
    enabled = true,
    keys = {
-      { "jk", mode = { "i", "c", "t", "s" } },
-      { "jj", mode = { "i", "c" } },
+      { 'jk', mode = { 'i', 'c', 't', 's' } },
+      { 'jj', mode = { 'i', 'c' } },
    },
    config = function()
-      require("better_escape").setup({
+      require('better_escape').setup({
          timeout = vim.o.timeoutlen,
          default_mappings = false,
          mappings = {
             i = {
                j = {
                   -- These can all also be functions
-                  k = "<Esc>",
-                  j = "<Esc>",
+                  k = '<Esc>',
+                  j = '<Esc>',
                },
             },
             c = {
                j = {
-                  k = "<Esc>",
-                  j = "<Esc>",
+                  k = '<Esc>',
+                  j = '<Esc>',
                },
             },
             t = {
                j = {
-                  k = "<C-\\><C-n>",
+                  k = '<C-\\><C-n>',
                },
             },
             -- v = {
@@ -49,7 +49,7 @@ return {
             -- },
             s = {
                j = {
-                  k = "<Esc>",
+                  k = '<Esc>',
                },
             },
          },

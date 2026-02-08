@@ -29,6 +29,6 @@ return {
    --    },
    -- },
    -- { "ThePrimeagen/vim-be-good", }
-   { "svenbergner/sudokusolver.nvim", enabled = true, cmd = 'SudokuSolverStart', dev = true },
+   { 'svenbergner/sudokusolver.nvim', enabled = true, cmd = 'SudokuSolverStart', dev = true },
    { 'vuciv/golf', enabled = true, cmd = 'Golf' },
 }

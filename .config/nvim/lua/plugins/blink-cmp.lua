@@ -253,7 +253,7 @@ return {
             orgmode = {
                name = 'orgmode',
                module = 'orgmode.org.autocompletion.blink',
-               fallbacks = {'buffer'},
+               fallbacks = { 'buffer' },
             },
          },
       },

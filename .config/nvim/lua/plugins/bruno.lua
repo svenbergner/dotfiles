@@ -14,30 +14,28 @@ URL: https://github.com/romek-codes/bruno.nvim
 --]===]
 
 return {
-   "romek-codes/bruno.nvim",
+   'romek-codes/bruno.nvim',
    ft = 'bruno',
    dependencies = {
-      "nvim-lua/plenary.nvim",
+      'nvim-lua/plenary.nvim',
       -- Pickers
       {
-         "folke/snacks.nvim",
+         'folke/snacks.nvim',
          opts = { picker = { enabled = true } },
       },
    },
    config = function()
-      require("bruno").setup(
-         {
-            -- Paths to your bruno collections.
-            collection_paths = {
-               { name = "Main", path = vim.fn.expand("$HOME") .. "/Repos/node-taxcore-api-v2/" },
-            },
-            -- Which picker to use, "fzf-lua" or "snacks" are also allowed.
-            picker = "snacks",
-            -- If output should be formatted by default.
-            show_formatted_output = true,
-            -- If formatting fails for whatever reason, don't show error message (will always fallback to unformatted output).
-            suppress_formatting_errors = false
-         }
-      )
-   end
+      require('bruno').setup({
+         -- Paths to your bruno collections.
+         collection_paths = {
+            { name = 'Main', path = vim.fn.expand('$HOME') .. '/Repos/node-taxcore-api-v2/' },
+         },
+         -- Which picker to use, "fzf-lua" or "snacks" are also allowed.
+         picker = 'snacks',
+         -- If output should be formatted by default.
+         show_formatted_output = true,
+         -- If formatting fails for whatever reason, don't show error message (will always fallback to unformatted output).
+         suppress_formatting_errors = false,
+      })
+   end,
 }

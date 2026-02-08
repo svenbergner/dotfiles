@@ -5,21 +5,21 @@ URL: https://github.com/nvim-telescope/telescope.nvim
 
 return {
    {
-      "nvim-telescope/telescope.nvim",
+      'nvim-telescope/telescope.nvim',
       enabled = true,
       dependencies = {
-         "nvim-lua/plenary.nvim",
-         { "j-hui/fidget.nvim", opts = {} },
-         { "svenbergner/telescope-debugee-selector",      dev = true },
-         { "svenbergner/telescope-cmake-preset-selector", dev = true },
+         'nvim-lua/plenary.nvim',
+         { 'j-hui/fidget.nvim', opts = {} },
+         { 'svenbergner/telescope-debugee-selector', dev = true },
+         { 'svenbergner/telescope-cmake-preset-selector', dev = true },
       },
       config = function()
-         require("telescope").setup({
-            path_display = { "truncate" },
+         require('telescope').setup({
+            path_display = { 'truncate' },
             pickers = {
                find_files = {
                   -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-                  find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+                  find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*' },
                },
             },
             defaults = {
@@ -27,8 +27,8 @@ return {
             },
          })
          -- Personal extensions
-         require("telescope").load_extension("cmake_preset_selector")
-         require("telescope").load_extension("debugee_selector")
+         require('telescope').load_extension('cmake_preset_selector')
+         require('telescope').load_extension('debugee_selector')
       end,
    },
 }

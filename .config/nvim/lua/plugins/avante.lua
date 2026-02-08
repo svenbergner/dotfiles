@@ -7,12 +7,12 @@ URL: https://github.com/yetone/avante.nvim
 --]===]
 
 return {
-   "yetone/avante.nvim",
+   'yetone/avante.nvim',
    enabled = true,
    keys = { '<leader>a', mode = { 'n', 'v' } },
    version = false, -- Never set this value to "*"! Never!
    opts = {
-      provider = "copilot",
+      provider = 'copilot',
       providers = {
          -- You can use multiple providers, but only one will be used at a time.
          -- The first provider that is available will be used.
@@ -29,7 +29,7 @@ return {
             },
          },
       },
-      auto_suggestions_provider = "copilot",
+      auto_suggestions_provider = 'copilot',
       behaviour = {
          auto_suggestions = false, -- Experimental stage
          auto_set_highlight_group = true,
@@ -41,83 +41,83 @@ return {
       mappings = {
          --- @class AvanteConflictMappings
          diff = {
-            ours = "co",
-            theirs = "ct",
-            all_theirs = "ca",
-            both = "cb",
-            cursor = "cc",
-            next = "]x",
-            prev = "[x",
+            ours = 'co',
+            theirs = 'ct',
+            all_theirs = 'ca',
+            both = 'cb',
+            cursor = 'cc',
+            next = ']x',
+            prev = '[x',
          },
          suggestion = {
-            accept = "<M-Tab>",
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
+            accept = '<M-Tab>',
+            next = '<M-]>',
+            prev = '<M-[>',
+            dismiss = '<C-]>',
          },
          jump = {
-            next = "]]",
-            prev = "[[",
+            next = ']]',
+            prev = '[[',
          },
          submit = {
-            normal = "<CR>",
-            insert = "<C-s>",
+            normal = '<CR>',
+            insert = '<C-s>',
          },
       },
       hints = { enabled = true },
       file_selector = {
-         provider = "snacks",
+         provider = 'snacks',
          provider_opts = {},
       },
       windows = {
          ---@type "right" | "left" | "top" | "bottom"
-         position = "right",  -- the position of the sidebar
-         wrap = true,         -- similar to vim.o.wrap
-         width = 30,          -- default % based on available width
+         position = 'right', -- the position of the sidebar
+         wrap = true, -- similar to vim.o.wrap
+         width = 30, -- default % based on available width
          sidebar_header = {
-            align = "center", -- left, center, right for title
+            align = 'center', -- left, center, right for title
             rounded = true,
          },
          edit = {
-            border = "rounded",
+            border = 'rounded',
             start_insert = true,
          },
          ask = {
             floating = false,
-            border = "rounded",
+            border = 'rounded',
             start_insert = true,
-         }
+         },
       },
       highlights = {
          ---@class AvanteConflictHighlights
          diff = {
-            current = "DiffText",
-            incoming = "DiffAdd",
-            modified = "DiffChange", -- Neue Option
-            deleted = "DiffDelete",  -- Neue Option
+            current = 'DiffText',
+            incoming = 'DiffAdd',
+            modified = 'DiffChange', -- Neue Option
+            deleted = 'DiffDelete', -- Neue Option
          },
       },
       --- @class AvanteConflictUserConfig
       diff = {
          autojump = true,
          ---@type string | fun(): any
-         list_opener = "copen",
+         list_opener = 'copen',
       },
    },
    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-   build = "make",
+   build = 'make',
    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
       --- The below dependencies are optional,
-      "nvim-tree/nvim-web-devicons", -- or nvim-mini/mini.icons
-      "zbirenbaum/copilot.lua",      -- for providers='copilot'
+      'nvim-tree/nvim-web-devicons', -- or nvim-mini/mini.icons
+      'zbirenbaum/copilot.lua', -- for providers='copilot'
       {
          -- support for image pasting
-         "HakonHarnes/img-clip.nvim",
-         event = "VeryLazy",
+         'HakonHarnes/img-clip.nvim',
+         event = 'VeryLazy',
          opts = {
             -- recommended settings
             default = {
@@ -135,9 +135,9 @@ return {
          -- Make sure to set this up properly if you have lazy=true
          'MeanderingProgrammer/render-markdown.nvim',
          opts = {
-            file_types = { "markdown", "Avante" },
+            file_types = { 'markdown', 'Avante' },
          },
-         ft = { "markdown", "Avante" },
+         ft = { 'markdown', 'Avante' },
       },
    },
 }

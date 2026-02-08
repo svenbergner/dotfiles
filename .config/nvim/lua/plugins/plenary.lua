@@ -11,6 +11,6 @@ URL: https://github.com/nvim-lua/plenary.nvim
 --]===]
 
 return {
-   "nvim-lua/plenary.nvim",
+   'nvim-lua/plenary.nvim',
    enabled = true,
 }

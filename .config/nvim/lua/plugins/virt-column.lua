@@ -4,10 +4,10 @@ URL: https://github.com/lukas-reineke/virt-column.nvim
 --]===]
 
 return {
-   "lukas-reineke/virt-column.nvim",
+   'lukas-reineke/virt-column.nvim',
    enabled = true,
    event = 'VeryLazy',
    opts = {
-      virtcolumn = "80,120"
-   }
+      virtcolumn = '80,120',
+   },
 }

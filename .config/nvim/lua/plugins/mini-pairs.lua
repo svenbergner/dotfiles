@@ -1,6 +1,6 @@
---[===[ 
+--[===[
 Minimal and fast autopairs
-URL: https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-pairs.md 
+URL: https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-pairs.md
 --]===]
 
 return {

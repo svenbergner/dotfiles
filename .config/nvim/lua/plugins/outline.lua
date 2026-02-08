@@ -4,12 +4,12 @@ URL: https://github.com/hedyhli/outline.nvim
 --]===]
 
 return {
-   "hedyhli/outline.nvim",
+   'hedyhli/outline.nvim',
    enabled = true,
    lazy = true,
-   cmd = { "Outline", "OutlineOpen" },
+   cmd = { 'Outline', 'OutlineOpen' },
    keys = {
-      { "<leader>To", "<cmd>Outline<CR>", desc = "[T]oggle [o]utline" },
+      { '<leader>To', '<cmd>Outline<CR>', desc = '[T]oggle [o]utline' },
    },
    opts = {},
 }

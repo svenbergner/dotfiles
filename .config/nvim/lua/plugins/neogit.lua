@@ -7,7 +7,7 @@ URL: https://github.com/NeogitOrg/neogit
 
 return {
    'NeogitOrg/neogit',
-   lazy = true,
+   enabled = true,
    dependencies = {
       'nvim-lua/plenary.nvim', -- required
       'sindrets/diffview.nvim', -- optional - Diff integration

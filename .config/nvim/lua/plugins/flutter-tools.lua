@@ -1,15 +1,16 @@
---[===[ Plugin which adds some tools for developing with flutter
+--[===[
+Plugin which adds some tools for developing with flutter
 URL: https://github.com/akinsho/flutter-tools.nvim
 --]===]
 
 return {
-   "akinsho/flutter-tools.nvim",
+   'akinsho/flutter-tools.nvim',
    enabled = true,
    lazy = true,
-   ft = { "dart" },
+   ft = { 'dart' },
    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "dart-lang/dart-vim-plugin",
+      'nvim-lua/plenary.nvim',
+      'dart-lang/dart-vim-plugin',
    },
    config = function()
       -- dart-vim-plugin options
@@ -18,10 +19,10 @@ return {
       vim.g.dart_trailing_comma_indent = true
 
       -- local line = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
-      require("flutter-tools").setup({
+      require('flutter-tools').setup({
          fvm = true,
          ui = {
-            border = "rounded",
+            border = 'rounded',
             notification_style = 'native',
          },
          decorations = {
@@ -29,30 +30,30 @@ return {
                app_version = true,
                device = true,
                project_config = true,
-            }
+            },
          },
          debugger = {
             enabled = true,
             register_configurations = function(_)
-               require("dap").configurations.dart = {
+               require('dap').configurations.dart = {
                   {
-                     type = "dart",
-                     request = "launch",
-                     name = "Launch Dart Program",
-                     program = "${file}",
-                     cwd = "${workspaceFolder}",
-                     args = { "--dart-define-from-file=env-vars.json" },      -- Note for Dart Apps this is args, for Flutter apps toolArgs
-                     toolsArgs = { "--dart-define-from-file=env-vars.json" }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
+                     type = 'dart',
+                     request = 'launch',
+                     name = 'Launch Dart Program',
+                     program = '${file}',
+                     cwd = '${workspaceFolder}',
+                     args = { '--dart-define-from-file=env-vars.json' }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
+                     toolsArgs = { '--dart-define-from-file=env-vars.json' }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
                   },
                   {
-                     type = "dart",
-                     request = "launch",
-                     name = "Launch Dart Web App (Chrome)",
-                     program = "${file}",
-                     cwd = "${workspaceFolder}",
-                     args = { "-d chrome", "--web-port=1337", "--dart-define-from-file=env-vars.json" },      -- Note for Dart Apps this is args, for Flutter apps toolArgs
-                     toolsArgs = { "-d chrome", "--web-port=1337", "--dart-define-from-file=env-vars.json" }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
-                  }
+                     type = 'dart',
+                     request = 'launch',
+                     name = 'Launch Dart Web App (Chrome)',
+                     program = '${file}',
+                     cwd = '${workspaceFolder}',
+                     args = { '-d chrome', '--web-port=1337', '--dart-define-from-file=env-vars.json' }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
+                     toolsArgs = { '-d chrome', '--web-port=1337', '--dart-define-from-file=env-vars.json' }, -- Note for Dart Apps this is args, for Flutter apps toolArgs
+                  },
                }
             end,
             -- run_via_dap = true,
@@ -95,8 +96,8 @@ return {
                updateImportsOnRename = true,
                completeFunctionCalls = true,
                enableSnippets = true,
-            }
-         }
+            },
+         },
       })
 
       -- require("flutter-tools").setup_project({
@@ -112,6 +113,8 @@ return {
       end
       nmap('<F2>', vim.lsp.buf.rename, 'Rename <F2>')
       nmap('<C-S-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-      nmap('<F5>', function() vim.cmd('FlutterDebug') end, 'Start/Continue Debugging')
+      nmap('<F5>', function()
+         vim.cmd('FlutterDebug')
+      end, 'Start/Continue Debugging')
    end,
 }

@@ -8,7 +8,7 @@ local file_opts = {
 }
 
 local config_path = {
-   cwd = vim.fn.expand('$HOME') .. '/Repos/dotfiles/.config/nvim'
+   cwd = vim.fn.expand('$HOME') .. '/Repos/dotfiles/.config/nvim',
 }
 
 local help_opts = {
@@ -88,23 +88,23 @@ return {
    lazy = false,
    ---@class snacks.Config
    opts = {
-      bigfile = { enabled = true, },
-      bufdelete = { enabled = true, },
-      dim = { enabled = true, },
-      git = { enabled = true, },
-      gitbrowse = { enabled = true, },
-      image = { enabled = true, },
+      bigfile = { enabled = true },
+      bufdelete = { enabled = true },
+      dim = { enabled = true },
+      git = { enabled = true },
+      gitbrowse = { enabled = true },
+      image = { enabled = true },
       indent = indent_opts,
-      input = { enabled = true, },
-      lazygit = { enabled = true, },
-      notify = { enabled = true, },
-      notifier = { enabled = true, },
+      input = { enabled = true },
+      lazygit = { enabled = true },
+      notify = { enabled = true },
+      notifier = { enabled = true },
       picker = {
          enabled = true,
          win = {
             input = {
                keys = {
-                  ['<a-s>'] = { 'flash', mode = { 'n', 'i' }, },
+                  ['<a-s>'] = { 'flash', mode = { 'n', 'i' } },
                   ['<s>'] = { 'flash' },
                },
             },
@@ -137,17 +137,17 @@ return {
             frecency = true,
          },
       },
-      quickfile = { enabled = true, },
-      rename = { enabled = true, },
-      scope = { enabled = true, },
-      scroll = { enabled = true, },
+      quickfile = { enabled = true },
+      rename = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
       statuscolumn = {
          enabled = true,
          left = { 'mark', 'sign' }, -- Priority of signs on the left (high to low)
          right = { 'fold', 'git' }, -- Priority of signs on the right (high to low)
          folds = {
-            open = true,            -- show open fold icons
-            git_hl = true,          -- Use Git Signs hl for fold icons
+            open = true, -- show open fold icons
+            git_hl = true, -- Use Git Signs hl for fold icons
          },
          git = {
             -- patterns to match Git signs
@@ -155,52 +155,280 @@ return {
          },
          refresh = 50, -- refresh at most every 50 milliseconds
       },
-      terminal = { enabled = true, },
-      toggle = { enabled = true, },
-      words = { enabled = true, },
-      zen = { enabled = true, },
+      terminal = { enabled = true },
+      toggle = { enabled = true },
+      words = { enabled = true },
+      zen = { enabled = true },
    },
 
    keys = {
-      { '<leader>.',  function() Snacks.scratch() end,                   desc = 'Toggle Scratch Buffer' },
-      { '<leader>S',  function() Snacks.scratch.select() end,            desc = '[S]elect Scratch Buffer' },
-      { '<leader>nh', function() Snacks.notifier.show_history() end,     desc = 'Notification History' },
-      { '<leader>bd', function() Snacks.bufdelete() end,                 desc = 'Delete Buffer' },
-      { '<leader>:',  function() Snacks.picker.command_history() end,    desc = '[p] Show command history' },
-      { '<leader>h',  function() Snacks.notifier.hide() end,             desc = '[h]ide all notifications' },
-      { '<leader>zm', function() Snacks.zen(zen_opts) end,               desc = 'Toggle [z]en [m]ode' },
-      { '<leader>zz', function() Snacks.zen.zoom() end,                  desc = '[z]oom [z]en' },
+      {
+         '<leader>.',
+         function()
+            Snacks.scratch()
+         end,
+         desc = 'Toggle Scratch Buffer',
+      },
+      {
+         '<leader>S',
+         function()
+            Snacks.scratch.select()
+         end,
+         desc = '[S]elect Scratch Buffer',
+      },
+      {
+         '<leader>nh',
+         function()
+            Snacks.notifier.show_history()
+         end,
+         desc = 'Notification History',
+      },
+      {
+         '<leader>bd',
+         function()
+            Snacks.bufdelete()
+         end,
+         desc = 'Delete Buffer',
+      },
+      {
+         '<leader>:',
+         function()
+            Snacks.picker.command_history()
+         end,
+         desc = '[p] Show command history',
+      },
+      {
+         '<leader>h',
+         function()
+            Snacks.notifier.hide()
+         end,
+         desc = '[h]ide all notifications',
+      },
+      {
+         '<leader>zm',
+         function()
+            Snacks.zen(zen_opts)
+         end,
+         desc = 'Toggle [z]en [m]ode',
+      },
+      {
+         '<leader>zz',
+         function()
+            Snacks.zen.zoom()
+         end,
+         desc = '[z]oom [z]en',
+      },
       -- Picker
-      { '<leader>fp', function() Snacks.picker.pickers() end,            desc = '[f]ind [p]ickers' },
-      { '<leader>fa', function() Snacks.picker.autocmds() end,           desc = '[f]ind [a]utocommands' },
-      { '<leader>fb', function() Snacks.picker.buffers() end,            desc = '[f]ind [b]uffers' },
-      { '<leader>fB', function() Snacks.picker.grep_buffers() end,       desc = '[f]ind [g]rep in open buffers' },
-      { '<leader>fc', function() Snacks.picker.files(config_path) end,   desc = '[f]ind [c]onfig files' },
-      { '<leader>fC', function() Snacks.picker.colorschemes() end,       desc = '[f]ind [C]olorschemes' },
-      { '<leader>fd', function() Snacks.picker.diagnostics() end,        desc = '[f]ind [d]iagnostics' },
-      { '<leader>fD', function() Snacks.picker.diagnostics_buffer() end, desc = '[f]ind all [d]iagnostics of git repo', },
-      { '<leader>fe', function() Snacks.picker.explorer() end,           desc = '[f]ind [e]xplorer' },
-      { '<leader>ff', function() Snacks.picker.files(file_opts) end,     desc = '[f]ind [f]iles' },
-      { '<leader>fF', function() Snacks.picker.smart() end,              desc = '[f]ind [F]iles smart' },
-      { '<leader>fg', function() Snacks.picker.grep(file_opts) end,      desc = '[f]ind [g]rep' },
-      { '<leader>fw', function() Snacks.picker.grep_word(file_opts) end, desc = '[f]ind [w]ord under cursor' },
-      { '<leader>fh', function() Snacks.picker.help(help_opts) end,      desc = '[f]ind [h]elp' },
-      { '<leader>fH', function() Snacks.picker.highlights() end,         desc = '[f]ind [H]ighlights' },
-      { '<leader>fj', function() Snacks.picker.jumps() end,              desc = '[f]ind [j]umps' },
-      { '<leader>fk', function() Snacks.picker.keymaps() end,            desc = '[f]ind [k]eymaps' },
-      { '<leader>fl', function() Snacks.picker.lazy() end,               desc = '[f]ind [l]azy plugins specs' },
-      { '<leader>/',  function() Snacks.picker.lines() end,              desc = '[/] fuzzy search in buffer' },
-      { '<leader>fm', function() Snacks.picker.marks(marks_opts) end,    desc = '[f]ind [m]arks' },
-      { '<leader>fn', function() Snacks.picker.noice(noice_opts) end,    desc = '[f]ind [n]oice messages' },
-      { '<leader>fo', function() Snacks.picker.recent() end,             desc = '[f]ind [o]ld files' },
-      { '<leader>fr', function() Snacks.picker.resume() end,             desc = '[f]ind [r]esume last search' },
-      { '<leader>fR', function() Snacks.picker.registers() end,          desc = '[f]ind [r]egisters' },
-      { '<leader>ft', function() Snacks.picker.todo_comments() end,      desc = '[f]ind [t]odos' },
-      { '<leader>fT', function() Snacks.picker.treesitter() end,         desc = '[f]ind [T]reesitter' },
-      { '<leader>fu', function() Snacks.picker.undo() end,               desc = '[f]ind [u]ndo history' },
-      { '<leader>fz', function() Snacks.picker.zoxide() end,             desc = '[f]ind [z]oxide' },
-      { '<leader>fi', function() Snacks.picker.icons() end,              desc = '[f]ind [i]cons' },
-      { '<leader>z=', function() Snacks.picker.spelling() end,           desc = 'Show spellings' },
+      {
+         '<leader>fp',
+         function()
+            Snacks.picker.pickers()
+         end,
+         desc = '[f]ind [p]ickers',
+      },
+      {
+         '<leader>fa',
+         function()
+            Snacks.picker.autocmds()
+         end,
+         desc = '[f]ind [a]utocommands',
+      },
+      {
+         '<leader>fb',
+         function()
+            Snacks.picker.buffers()
+         end,
+         desc = '[f]ind [b]uffers',
+      },
+      {
+         '<leader>fB',
+         function()
+            Snacks.picker.grep_buffers()
+         end,
+         desc = '[f]ind [g]rep in open buffers',
+      },
+      {
+         '<leader>fc',
+         function()
+            Snacks.picker.files(config_path)
+         end,
+         desc = '[f]ind [c]onfig files',
+      },
+      {
+         '<leader>fC',
+         function()
+            Snacks.picker.colorschemes()
+         end,
+         desc = '[f]ind [C]olorschemes',
+      },
+      {
+         '<leader>fd',
+         function()
+            Snacks.picker.diagnostics()
+         end,
+         desc = '[f]ind [d]iagnostics',
+      },
+      {
+         '<leader>fD',
+         function()
+            Snacks.picker.diagnostics_buffer()
+         end,
+         desc = '[f]ind all [d]iagnostics of git repo',
+      },
+      {
+         '<leader>fe',
+         function()
+            Snacks.picker.explorer()
+         end,
+         desc = '[f]ind [e]xplorer',
+      },
+      {
+         '<leader>ff',
+         function()
+            Snacks.picker.files(file_opts)
+         end,
+         desc = '[f]ind [f]iles',
+      },
+      {
+         '<leader>fF',
+         function()
+            Snacks.picker.smart()
+         end,
+         desc = '[f]ind [F]iles smart',
+      },
+      {
+         '<leader>fg',
+         function()
+            Snacks.picker.grep(file_opts)
+         end,
+         desc = '[f]ind [g]rep',
+      },
+      {
+         '<leader>fw',
+         function()
+            Snacks.picker.grep_word(file_opts)
+         end,
+         desc = '[f]ind [w]ord under cursor',
+      },
+      {
+         '<leader>fh',
+         function()
+            Snacks.picker.help(help_opts)
+         end,
+         desc = '[f]ind [h]elp',
+      },
+      {
+         '<leader>fH',
+         function()
+            Snacks.picker.highlights()
+         end,
+         desc = '[f]ind [H]ighlights',
+      },
+      {
+         '<leader>fj',
+         function()
+            Snacks.picker.jumps()
+         end,
+         desc = '[f]ind [j]umps',
+      },
+      {
+         '<leader>fk',
+         function()
+            Snacks.picker.keymaps()
+         end,
+         desc = '[f]ind [k]eymaps',
+      },
+      {
+         '<leader>fl',
+         function()
+            Snacks.picker.lazy()
+         end,
+         desc = '[f]ind [l]azy plugins specs',
+      },
+      {
+         '<leader>/',
+         function()
+            Snacks.picker.lines()
+         end,
+         desc = '[/] fuzzy search in buffer',
+      },
+      {
+         '<leader>fm',
+         function()
+            Snacks.picker.marks(marks_opts)
+         end,
+         desc = '[f]ind [m]arks',
+      },
+      {
+         '<leader>fn',
+         function()
+            Snacks.picker.noice(noice_opts)
+         end,
+         desc = '[f]ind [n]oice messages',
+      },
+      {
+         '<leader>fo',
+         function()
+            Snacks.picker.recent()
+         end,
+         desc = '[f]ind [o]ld files',
+      },
+      {
+         '<leader>fr',
+         function()
+            Snacks.picker.resume()
+         end,
+         desc = '[f]ind [r]esume last search',
+      },
+      {
+         '<leader>fR',
+         function()
+            Snacks.picker.registers()
+         end,
+         desc = '[f]ind [r]egisters',
+      },
+      {
+         '<leader>ft',
+         function()
+            Snacks.picker.todo_comments()
+         end,
+         desc = '[f]ind [t]odos',
+      },
+      {
+         '<leader>fT',
+         function()
+            Snacks.picker.treesitter()
+         end,
+         desc = '[f]ind [T]reesitter',
+      },
+      {
+         '<leader>fu',
+         function()
+            Snacks.picker.undo()
+         end,
+         desc = '[f]ind [u]ndo history',
+      },
+      {
+         '<leader>fz',
+         function()
+            Snacks.picker.zoxide()
+         end,
+         desc = '[f]ind [z]oxide',
+      },
+      {
+         '<leader>fi',
+         function()
+            Snacks.picker.icons()
+         end,
+         desc = '[f]ind [i]cons',
+      },
+      {
+         '<leader>z=',
+         function()
+            Snacks.picker.spelling()
+         end,
+         desc = 'Show spellings',
+      },
       -- Show latest Neovim News
       {
          '<leader>NN',
@@ -223,26 +451,93 @@ return {
          end,
       },
       -- LSP
-      { 'gC',         function() Snacks.picker.lsp_config() end,            desc = 'LSP: [g]oto [C]onfig' },
-      { 'gD',         function() Snacks.picker.lsp_declarations() end,      desc = 'LSP: [g]oto [D]eclaration' },
-      { 'gd',         function() Snacks.picker.lsp_definitions() end,       desc = 'LSP: [g]oto [d]efinition' },
-      { 'gi',         function() Snacks.picker.lsp_implementations() end,   desc = 'LSP: [G]oto [i]mplementation' },
-      { 'gr',         function() Snacks.picker.lsp_references() end,        desc = 'LSP: [g]oto [r]eferences',             nowait = true },
-      { 'gt',         function() Snacks.picker.lsp_type_definitions() end,  desc = 'LSP: [g]oto [t]ype Definition' },
-      { '<leader>fs', function() Snacks.picker.lsp_symbols() end,           desc = 'LSP: [f]ind [s]ymbols in current file' },
-      { '<leader>fS', function() Snacks.picker.lsp_workspace_symbols() end, desc = 'LSP: [f]ind [S]ymbols in workspace ' },
+      {
+         'gC',
+         function()
+            Snacks.picker.lsp_config()
+         end,
+         desc = 'LSP: [g]oto [C]onfig',
+      },
+      {
+         'gD',
+         function()
+            Snacks.picker.lsp_declarations()
+         end,
+         desc = 'LSP: [g]oto [D]eclaration',
+      },
+      {
+         'gd',
+         function()
+            Snacks.picker.lsp_definitions()
+         end,
+         desc = 'LSP: [g]oto [d]efinition',
+      },
+      {
+         'gi',
+         function()
+            Snacks.picker.lsp_implementations()
+         end,
+         desc = 'LSP: [G]oto [i]mplementation',
+      },
+      {
+         'gr',
+         function()
+            Snacks.picker.lsp_references()
+         end,
+         desc = 'LSP: [g]oto [r]eferences',
+         nowait = true,
+      },
+      {
+         'gt',
+         function()
+            Snacks.picker.lsp_type_definitions()
+         end,
+         desc = 'LSP: [g]oto [t]ype Definition',
+      },
+      {
+         '<leader>fs',
+         function()
+            Snacks.picker.lsp_symbols()
+         end,
+         desc = 'LSP: [f]ind [s]ymbols in current file',
+      },
+      {
+         '<leader>fS',
+         function()
+            Snacks.picker.lsp_workspace_symbols()
+         end,
+         desc = 'LSP: [f]ind [S]ymbols in workspace ',
+      },
       -- git / lazygit
       -- { "<leader>gB", function() Snacks.picker.git_branches() end,          desc = "show [g]it [B]ranches" },
-      { '<leader>gC', function() Snacks.lazygit.log() end,                  desc = 'lazy[g]it [C]ommits' },
-      { '<leader>gd', function() Snacks.picker.git_diff() end,              desc = '[g]it [d]iff (Hunks)' },
-      { '<leader>gf', function() Snacks.lazygit.log_file() end,             desc = 'lazy[g]it current [f]ile log' },
+      {
+         '<leader>gC',
+         function()
+            Snacks.lazygit.log()
+         end,
+         desc = 'lazy[g]it [C]ommits',
+      },
+      {
+         '<leader>gd',
+         function()
+            Snacks.picker.git_diff()
+         end,
+         desc = '[g]it [d]iff (Hunks)',
+      },
+      {
+         '<leader>gf',
+         function()
+            Snacks.lazygit.log_file()
+         end,
+         desc = 'lazy[g]it current [f]ile log',
+      },
       {
          '<leader>gg',
          function()
             vim.cmd('wa')
             Snacks.lazygit()
          end,
-         desc = 'lazy[g]it'
+         desc = 'lazy[g]it',
       },
       -- GitHub PRs and Issues (requires GitHub CLI)
       -- { "<leader>gi", function() Snacks.picker.gh_issue() end,                  desc = "GitHub Issues (open)" },
@@ -250,10 +545,28 @@ return {
       -- { "<leader>gP", function() Snacks.picker.gh_pr() end,                     desc = "GitHub [P]ull Requests (open)" },
       -- { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end,    desc = "GitHub Pull Requests (all)" },
 
-      { '<leader>gl', function() Snacks.picker.git_log_line() end, desc = '[g]it [L]og current line' },
+      {
+         '<leader>gl',
+         function()
+            Snacks.picker.git_log_line()
+         end,
+         desc = '[g]it [L]og current line',
+      },
       -- { '<leader>gs', function() Snacks.picker.git_status() end,   desc = '[g]it [s]tatus' },
-      { '<leader>gL', function() Snacks.picker.git_log() end,      desc = 'search all [g]it [L]ogs' },
-      { '<leader>gx', function() Snacks.gitbrowse() end,           desc = 'open [g]it repo in e[x]tern browser' },
+      {
+         '<leader>gL',
+         function()
+            Snacks.picker.git_log()
+         end,
+         desc = 'search all [g]it [L]ogs',
+      },
+      {
+         '<leader>gx',
+         function()
+            Snacks.gitbrowse()
+         end,
+         desc = 'open [g]it repo in e[x]tern browser',
+      },
    },
    init = function()
       vim.api.nvim_create_autocmd('User', {
@@ -275,10 +588,12 @@ return {
             Snacks.toggle.indent():map('<leader>tg')
             Snacks.toggle.inlay_hints():map('<leader>th')
             Snacks.toggle.line_number():map('<leader>tL')
-            Snacks.toggle.option('background', { off = 'light', on = 'dark', name = 'Dark Background' }):map(
-               '<leader>tB')
-            Snacks.toggle.option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-                :map('<leader>tc')
+            Snacks.toggle
+               .option('background', { off = 'light', on = 'dark', name = 'Dark Background' })
+               :map('<leader>tB')
+            Snacks.toggle
+               .option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+               :map('<leader>tc')
             Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map('<leader>tl')
             Snacks.toggle.option('spell', { name = 'Spelling' }):map('<leader>ts')
             Snacks.toggle.option('wrap', { name = 'Wrap' }):map('<leader>tw')

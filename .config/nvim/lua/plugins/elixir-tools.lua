@@ -43,16 +43,11 @@ return {
                   ':ElixirToPipe<cr>',
                   { desc = 'Convert nested expressions to the pipe operator.', buffer = true, noremap = true }
                )
-               vim.keymap.set(
-                  'v',
-                  '<leader>eem',
-                  ':ElixirExpandMacro<cr>',
-                  {
-                     desc = 'For the given [range], expand any macros and display it in a floating window.',
-                     buffer = true,
-                     noremap = true,
-                  }
-               )
+               vim.keymap.set('v', '<leader>eem', ':ElixirExpandMacro<cr>', {
+                  desc = 'For the given [range], expand any macros and display it in a floating window.',
+                  buffer = true,
+                  noremap = true,
+               })
             end,
          },
          projectionist = {

@@ -47,6 +47,7 @@ end
 return {
    'aaronhallaert/advanced-git-search.nvim',
    enabled = true,
+   dev = true,
    keys = {
       {
          -- keymap for show_custom_functions with custom layout

@@ -6,7 +6,7 @@ static analysis and code actions directly in neovim.
 URL: https://gitlab.com/schrieveslaach/sonarlint.nvim
 --]===]
 
-local analyzers_path = vim.fn.stdpath 'data' .. '/mason/packages/sonarlint-language-server/extension/analyzers/'
+local analyzers_path = vim.fn.stdpath('data') .. '/mason/packages/sonarlint-language-server/extension/analyzers/'
 
 local sonarlint_ft = {
    'c',
@@ -41,13 +41,13 @@ return {
             'sonarlint-language-server',
             '-stdio',
             '-analyzers',
-            analyzers_path .. 'sonargo.jar',      -- Go
+            analyzers_path .. 'sonargo.jar', -- Go
             analyzers_path .. 'sonarcfamily.jar', -- C, C++
-            analyzers_path .. 'sonarhtml.jar',    -- HTML
-            analyzers_path .. 'sonariac.jar',     -- Infrastructure-as-Code
-            analyzers_path .. 'sonarjs.jar',      -- JavaScript, TypeScript
-            analyzers_path .. 'sonarpython.jar',  -- Python
-            analyzers_path .. 'sonarxml.jar',     -- XML, XSLT
+            analyzers_path .. 'sonarhtml.jar', -- HTML
+            analyzers_path .. 'sonariac.jar', -- Infrastructure-as-Code
+            analyzers_path .. 'sonarjs.jar', -- JavaScript, TypeScript
+            analyzers_path .. 'sonarpython.jar', -- Python
+            analyzers_path .. 'sonarxml.jar', -- XML, XSLT
             -- analyzers_path .. "sonarjava.jar",
             -- analyzers_path .. "sonarjavasymbolicexecution.jar",
             -- analyzers_path .. "sonarphp.jar",
@@ -62,9 +62,9 @@ return {
                   -- https://sonarsource.github.io/rspec/#/rspec/SXXXX
                   -- or search for a rule by name
                   -- https://sonarsource.github.io/rspec/#/rspec/?lang=cfamily&query=replace+new
-                  ['cpp:S125']  = { level = 'off' }, -- Sections of code should not be commented out
-                  ['cpp:S134']  = { level = 'off' }, -- Control flow statements "IF", "CASE", "DO", "LOOP", "SELECT", "WHILE" and "PROVIDE" should not be nested too deeply
-                  ['cpp:S995']  = { level = 'off' }, -- Change to pointer-to-const
+                  ['cpp:S125'] = { level = 'off' }, -- Sections of code should not be commented out
+                  ['cpp:S134'] = { level = 'off' }, -- Control flow statements "IF", "CASE", "DO", "LOOP", "SELECT", "WHILE" and "PROVIDE" should not be nested too deeply
+                  ['cpp:S995'] = { level = 'off' }, -- Change to pointer-to-const
                   ['cpp:S1066'] = { level = 'off' }, -- Mergeable "if" statements should be combined
                   ['cpp:S3471'] = { level = 'off' }, -- "override" or "final" should be used instead of "virtual"
                   ['cpp:S3576'] = { level = 'off' }, -- "final" classes should not have "virtual" functions
