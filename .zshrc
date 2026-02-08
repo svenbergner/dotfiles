@@ -70,16 +70,19 @@ setopt autocd
 
 # If you come from bash you might have to change your $PATH.
 if [[ "$OSTYPE" =~ "darwin".* ]] then
-   export PATH="/usr/local/sbin:$PATH:/Users/sven.bergner/fvm/default/bin"
+  export PATH="/usr/local/sbin:$PATH:/Users/sven.bergner/fvm/default/bin"
   export CMAKE_ANDROID_NDK=/Users/sven.bergner/Library/Android/sdk/ndk/28.0.12674087
 else
    export PATH=/home/bergner/Repos/flutter/bin/:$PATH
 fi
 
+export PATH="$PATH:$HOME/.local/bin"
+
 # Shell integrations
 source <(fzf --zsh)
 source <(zoxide init --cmd cd zsh)
 source <(gitleaks completion zsh)
+source <(but completions zsh)
 
 # -- Use fd instead of fzf --
 
@@ -239,3 +242,4 @@ fi
 export GPG_TTY=$(tty)
 
 eval $(starship completions zsh)
+export PATH="$PATH:$HOME/.local/bin"
