@@ -20,7 +20,7 @@ local function open_git_advanced_search()
          preview = false,
          layout = {
             width = 20,
-            height = 10,
+            height = 14,
          },
       },
       win = {
@@ -69,7 +69,7 @@ return {
          -- e.g. flags such as { "--raw" }
          git_diff_flags = {},
          -- Show builtin git pickers when executing "show_custom_functions" or :AdvancedGitSearch
-         show_builtin_git_pickers = false,
+         show_builtin_git_pickers = true,
          entry_default_author_or_date = 'author', -- one of "author" or "date"
       })
    end,
