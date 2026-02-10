@@ -1,11 +1,30 @@
 # dotfiles
+
+<!--toc:start-->
+- [dotfiles](#dotfiles)
+  - [Active used configs](#active-used-configs)
+    - [Neovim lua config](#neovim-lua-config)
+    - [lazygit](#lazygit)
+    - [wezterm](#wezterm)
+    - [eza](#eza)
+    - [zoxide](#zoxide)
+    - [delta](#delta)
+    - [bat](#bat)
+    - [stow](#stow)
+  - [Colors](#colors)
+  - [Scripts](#scripts)
+    - [cht.sh](#chtsh)
+  - [Fallback config](#fallback-config)
+    - [vimrc](#vimrc)
+<!--toc:end-->
+
 My config files
 
 ## Active used configs
 
 ### Neovim lua config
 After using several IDEs and Vim I ended up using Neovim as my PDE (Personal Development Environment.)
-[NeoVim Readme](/.config/nvim/README.md)
+[Neovim Readme](.config/nvim/README.md)
 
 ### lazygit
 My preferred way to deal with my git repos. I even have a neovim plugin to have it all the time right at my
@@ -42,7 +61,8 @@ A cat clone with syntax highlighting and git integration. I use it as my default
 
 ### stow
 I use stow to manage my dotfiles. It is a symlink farm manager. I reorganized my dotfiles to use stow.
-URL: https://youtu.be/y6XCebnB9gs?si=cisaCuaYR3tC28Qm
+Youtube Video
+https://youtu.be/y6XCebnB9gs?si=cisaCuaYR3tC28Qm
 
 ## Colors
 
