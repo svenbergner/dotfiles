@@ -22,3 +22,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
    desc = 'Reload the current module on save',
 })
 
+vim.opt.textwidth=79
+vim.opt.formatexpr=''
+vim.opt.formatprg=''
+vim.opt.formatoptions='qcjtln'
