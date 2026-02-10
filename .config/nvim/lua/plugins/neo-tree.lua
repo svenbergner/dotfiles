@@ -1,6 +1,6 @@
 --[===[
 Plugin that adds a neat file tree
-URL: https://github.com/nvim-neo-tree/neo-tree.nvim
+https://github.com/nvim-neo-tree/neo-tree.nvim
 --]===]
 
 local function file_contains(filename, pattern)

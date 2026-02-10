@@ -1,12 +1,12 @@
 --[===[
 quicker.nvim
+https://github.com/stevearc/quicker.nvim
+
 Features:
 - Improved styling - including syntax highlighting of grep results.
 - Show context lines - easily view lines above and below the quickfix results.
 - Editable buffer - make changes across your whole project by editing the quickfix buffer and :w.
-- API helpers - some helper methods for common tasks, such as toggling the quickfix.
-
-URL: https://github.com/stevearc/quicker.nvim
+- API helpers - some helper methods for common tasks, such as toggling the quickfix
 --]===]
 
 return {

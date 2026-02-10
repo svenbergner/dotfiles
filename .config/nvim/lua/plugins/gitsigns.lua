@@ -1,9 +1,10 @@
 --[===[
 Gitsigns
-Deep buffer integration for Git
-Adds custom signs for current git status
+https://github.com/lewis6991/gitsigns.nvim
 
-URL: https://github.com/lewis6991/gitsigns.nvim
+Features:
+- Deep buffer integration for Git
+- Adds custom signs for current git status
 --]===]
 
 ---@diagnostic disable: param-type-mismatch

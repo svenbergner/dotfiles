@@ -1,5 +1,5 @@
 -- Language Server Protocol configuration for Bash
--- URL: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#bashls
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#bashls
 
 return {
    cmd = { 'bash-language-server', 'start' },

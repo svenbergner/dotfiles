@@ -1,8 +1,8 @@
 --[=====[
 Generate/update a Markdown TOC
 To generate the TOC I use the markdown-toc plugin
-URL: https://github.com/jonschlinkert/markdown-toc
-And the markdown-toc plugin installed as a LazyExtra 
+https://github.com/jonschlinkert/markdown-toc
+And the markdown-toc plugin installed as a LazyExtra
 --]=====]
 
 -- Function to update the Markdown TOC with customizable headings
@@ -63,7 +63,7 @@ local function update_markdown_toc(heading2, heading3)
   -- vim.fn.system("markdown-toc -i " .. path)
   -- I want my bulletpoints to be created only as "-" so passing that option as
   -- an argument according to the docs
-  -- URL: https://github.com/jonschlinkert/markdown-toc?tab=readme-ov-file#optionsbullets
+  -- https://github.com/jonschlinkert/markdown-toc?tab=readme-ov-file#optionsbullets
   vim.fn.system('markdown-toc --bullets "-" -i ' .. path)
   vim.cmd("edit!") -- Reloads the file to reflect the changes made by markdown-toc
   vim.cmd("silent write") -- Silently save the file

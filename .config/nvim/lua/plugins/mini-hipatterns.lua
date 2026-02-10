@@ -1,6 +1,6 @@
 --[===[
 Highlight patterns in text
-URL: https://github.com/nvim-mini/mini.hipatterns
+https://github.com/nvim-mini/mini.hipatterns
 --]===]
 
 return {

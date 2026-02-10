@@ -1,7 +1,6 @@
 --[===[
 Nvim Devdocs Plugin
-
-URL: https://github.com/luckasRanarison/nvim-devdocs
+https://github.com/luckasRanarison/nvim-devdocs
 --]===]
 
 return {

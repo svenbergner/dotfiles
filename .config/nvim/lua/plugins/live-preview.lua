@@ -1,5 +1,6 @@
 --[===[
 Live Preview for Neovim
+https://github.com/brianhuster/live-preview.nvim
 
 This is a plugin for Neovim that allows you to view Markdown,
 HTML (along with CSS, JavaScript), AsciiDoc and SVG files in a web browser
@@ -13,8 +14,6 @@ Features ✨
 - Syntax highlighting for code blocks in Markdown and AsciiDoc 🖍️
 - Supports sync scrolling in the browser as you scroll in the Markdown files in Neovim.
 - Integration with telescope.nvim 🔭, fzf-lua and mini.pick
-
-URL: https://github.com/brianhuster/live-preview.nvim
 --]===]
 
 return {

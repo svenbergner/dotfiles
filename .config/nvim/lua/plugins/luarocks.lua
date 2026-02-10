@@ -1,7 +1,7 @@
 --[===[
 luarocks.nvim
-A LuaRocks frontend for Neovim.
-URL: https://github.com/vhyrro/luarocks.nvim
+A LuaRocks frontend for Neovim
+https://github.com/vhyrro/luarocks.nvim
 --]===]
 
 return {

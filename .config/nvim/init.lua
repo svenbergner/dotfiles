@@ -7,11 +7,12 @@
                                                                                 |___/
 
 Starting point for the configuration of Neovim. This file is loaded when Neovim
-is started and is responsible for setting up the configuration.
-URL: https://githhub.com/svenbergner/dotfiles
+is started and is responsible for setting up the configuration
 
-URL: https://neovim.io/doc/user/lua.html
-URL: https://github.com/folke/lazy.nvim
+URLs:
+https://githhub.com/svenbergner/dotfiles
+https://neovim.io/doc/user/lua.html
+https://github.com/folke/lazy.nvim
 --]=====]
 
 require('mason-path')

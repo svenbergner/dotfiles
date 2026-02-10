@@ -1,5 +1,5 @@
 -- Language Server Protocol configuration for Lua
--- URL: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
 
 return {
    cmd = { 'lua-language-server' },

@@ -1,5 +1,7 @@
 --[===[
 Highlight todo, notes, etc in comments
+https://www.github.com/folke/todo-comments.nvim
+
 TODO:
 OPTIMIZE:
 PERFORMANCE:
@@ -12,7 +14,6 @@ HACK:
 NOTE:
 INFO:
 
-URL: https://www.github.com/folke/todo-comments.nvim
 --]===]
 
 return {

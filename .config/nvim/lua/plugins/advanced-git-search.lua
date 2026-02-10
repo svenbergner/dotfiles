@@ -1,8 +1,8 @@
 --[===[
 Advanced git search extension for telescope, fzf-lua and snacks.
 Search git history by commit message, content and author in Neovim
-URL: https://github.com/aaronhallaert/advanced-git-search.nvim
-URL: https://github.com/sindrets/diffview.nvim
+https://github.com/aaronhallaert/advanced-git-search.nvim
+https://github.com/sindrets/diffview.nvim
 --]===]
 
 local function open_git_advanced_search()

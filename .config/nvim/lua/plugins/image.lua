@@ -1,6 +1,6 @@
 --[===[
-This plugin adds image support to Neovim.
-URL: https://github.com/3rd/image.nvim
+This plugin adds image support to Neovim
+https://github.com/3rd/image.nvim
 --]===]
 
 -- Example for configuring Neovim to load user-installed installed Lua rocks:

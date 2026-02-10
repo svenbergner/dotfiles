@@ -1,9 +1,9 @@
 --[===[
 Sonarqube
-sonarqube integrates with the sonarlint-language-server to deliver real-time
-static analysis and code actions directly in neovim.
+https://gitlab.com/schrieveslaach/sonarlint.nvim
 
-URL: https://gitlab.com/schrieveslaach/sonarlint.nvim
+Integrates with the sonarlint-language-server to deliver real-time
+static analysis and code actions directly in neovim
 --]===]
 
 local analyzers_path = vim.fn.stdpath('data') .. '/mason/packages/sonarlint-language-server/extension/analyzers/'

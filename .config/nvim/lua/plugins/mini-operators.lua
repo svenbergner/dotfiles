@@ -1,6 +1,6 @@
 --[===[
 Text edit operators
-URL: https://github.com/nvim-mini/mini.operators
+https://github.com/nvim-mini/mini.operators
 
 Features:
  - Operators:

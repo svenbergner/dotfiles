@@ -1,7 +1,6 @@
 --[===[
 Define special keymaps for treesitter textobjects
-
-URL: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 --]===]
 
 return {

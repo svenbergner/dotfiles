@@ -1,6 +1,6 @@
 --[===[
 Add or remove line or block comments
-URL: https://github.com/numToStr/Comment.nvim
+https://github.com/numToStr/Comment.nvim
 --]===]
 
 return {

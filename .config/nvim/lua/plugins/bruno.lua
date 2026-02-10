@@ -1,5 +1,6 @@
 --[===[
 bruno.nvim
+https://github.com/romek-codes/bruno.nvim
 
 Features:
 - Execute Bruno requests - Run .bru files directly from Neovim
@@ -9,8 +10,6 @@ Features:
 - Output toggle - Switch between formatted and raw JSON output
 - Content search - Search Bruno files by their contents using your chosen picker
 - Persistent sidebar - Reuses output buffer to avoid window clutter
-
-URL: https://github.com/romek-codes/bruno.nvim
 --]===]
 
 return {

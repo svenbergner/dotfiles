@@ -59,7 +59,7 @@ M.apply_to_config = function(config, wezterm)
       -- Right status
       window:set_right_status(gitstatus .. wezterm.format({
          -- Wezterm has a built-in nerd fonts
-         -- URL: https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
+         -- https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
          { Foreground = { Color = "#d65d0e" } },
          { Text = "" },
          { Background = { Color = "#d65d0e" } },

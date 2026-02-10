@@ -1,7 +1,6 @@
 --[===[
 Github Copilot Plugin
-
-URL: https://github.com/zbirenbaum/copilot.lua
+https://github.com/zbirenbaum/copilot.lua
 --]===]
 
 return {

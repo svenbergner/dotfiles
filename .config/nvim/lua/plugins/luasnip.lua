@@ -1,11 +1,10 @@
 --[===[
-These are custom snippets created using LuaSnip
-
-URL: https://github.com/L3MON4D3/LuaSnip
+These are custom snippets created using LuaSnip:
+https://github.com/L3MON4D3/LuaSnip
 
 I have added a few snippets for markdown files, including code blocks and links.
 I took the idea from this video:
-URL: https://youtu.be/FmHhonPjvvA?si=8NrcRWu4GGdmTzee
+https://youtu.be/FmHhonPjvvA?si=8NrcRWu4GGdmTzee
 --]===]
 
 return {

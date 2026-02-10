@@ -1,6 +1,7 @@
 --[===[
 MiniAI plugin
-URL: https://github.com/nvim-mini/mini.ai
+https://github.com/nvim-mini/mini.ai
+
 Extend and create a/i textobjects
 Features:
 - Customizable creation of a/i textobjects using Lua patterns and functions. Supports:

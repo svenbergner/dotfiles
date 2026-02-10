@@ -1,6 +1,6 @@
 --[===[
 Shows a preview of the code action before applying it
-URL: https://github.com/aznhe21/actions-preview.nvim
+https://github.com/aznhe21/actions-preview.nvim
 --]===]
 
 return {

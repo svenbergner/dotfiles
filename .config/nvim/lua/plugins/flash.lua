@@ -1,9 +1,11 @@
 --[===[
 Flash
-URL: https://github.com/folke/flash.nvim
-flash.nvim lets you navigate your code with search labels,
-enhanced character motions, and Treesitter integration.
-Features
+https://github.com/folke/flash.nvim
+
+Lets you navigate your code with search labels, enhanced character motions,
+and Treesitter integration.
+
+Features:
 🔍 Search Integration: integrate flash.nvim with your regular search
    using / or ?. Labels appear next to the matches, allowing you to quickly
    jump to any location. Labels are guaranteed not to exist as a continuation

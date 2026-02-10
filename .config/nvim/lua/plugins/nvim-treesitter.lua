@@ -1,6 +1,6 @@
 --[===[
 Treesitter configuration
-URL: https://github.com/nvim-treesitter/nvim-treesitter
+https://github.com/nvim-treesitter/nvim-treesitter
 --]===]
 
 return {

@@ -1,6 +1,6 @@
 --[===[
 Telescope - the swiss army knife for finding things
-URL: https://github.com/nvim-telescope/telescope.nvim
+https://github.com/nvim-telescope/telescope.nvim
 --]===]
 
 return {

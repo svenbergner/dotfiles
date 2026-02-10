@@ -1,5 +1,4 @@
----@brief
----
+--- Langserver configuration for clangd, see:
 --- https://clangd.llvm.org/installation.html
 ---
 ---  NOTE: Clang >= 11 is recommended! See [#23](https://github.com/neovim/nvim-lspconfig/issues/23).

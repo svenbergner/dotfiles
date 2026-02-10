@@ -1,5 +1,5 @@
 -- Language Server Protocol configuration for marksman
--- URL: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
 
 return {
    cmd = { "marksman", "server" },

@@ -1,9 +1,8 @@
 --[===[
 Tiny Inline Diagnostic
+https://github.com/rachartier/tiny-inline-diagnostic.nvim
 
 A Neovim plugin for displaying inline diagnostic messages with customizable styles and icons.
-
-URL: https://github.com/rachartier/tiny-inline-diagnostic.nvim
 --]===]
 
 return {

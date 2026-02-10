@@ -1,6 +1,6 @@
 --[===[
 Neovim status line configuration
-URL: https://github.com/nvim-lualine/lualine.nvim
+https://github.com/nvim-lualine/lualine.nvim
 --]===]
 
 local function getMaxLineLength()

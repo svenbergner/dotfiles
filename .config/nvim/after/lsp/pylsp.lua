@@ -1,5 +1,5 @@
 -- Language Server Protocol configuration for pylsp
--- URL: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#pylsp
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#pylsp
 
 return {
    cmd = { "pylsp" },

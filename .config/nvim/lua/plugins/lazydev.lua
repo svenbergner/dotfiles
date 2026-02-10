@@ -1,7 +1,9 @@
 --[===[
 💻 lazydev.nvim
-lazydev.nvim is a plugin that properly configures LuaLS for editing your
-Neovim config by lazily updating your workspace libraries.
+https://github.com/folke/lazydev.nvim
+
+A plugin that properly configures LuaLS for editing your Neovim config by
+lazily updating your workspace libraries.
 
 ⚠️ Limitations
 If you have files that only use types from a plugin, then those types won't
@@ -10,8 +12,6 @@ Completion for module names when typing require(...) will only return loaded
 modules in your workspace.
 To get around the above, you can: pre-load those plugins with the library option.
 Use the nvim-cmp completion source to get all available modules.
-
-URL: https://github.com/folke/lazydev.nvim
 --]===]
 
 return {

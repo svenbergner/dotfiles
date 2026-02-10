@@ -1,6 +1,6 @@
 --[===[
-Snacks.nvim: A collection of small QoL plugins for Neovim.
-URL: https://github.com/folke/snacks.nvim
+Snacks.nvim: A collection of small QoL plugins for Neovim
+https://github.com/folke/snacks.nvim
 --]===]
 
 local file_opts = {

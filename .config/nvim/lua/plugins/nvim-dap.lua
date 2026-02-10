@@ -1,9 +1,9 @@
 --[===[
 Debugger configuration
-URL: https://github.com/mfussenegger/nvim-dap
+https://github.com/mfussenegger/nvim-dap
 
 NVIM-Dap-View:
-URL: https://github.com/igorlfs/nvim-dap-view
+https://github.com/igorlfs/nvim-dap-view
 
 Default keybindings:
 Each view has its own keymaps, listed below.
@@ -40,11 +40,11 @@ use "g?" to show a "help" window that lists all of them.
 
 Dependencies:
 one-small-step-for-vimkind a.k.a. osv is an adapter for the Neovim lua language.
-It allows you to debug any lua code running in a Neovim instance.
-URL: https://github.com/jbyuki/one-small-step-for-vimkind
+It allows you to debug any lua code running in a Neovim instance
+https://github.com/jbyuki/one-small-step-for-vimkind
 
-The nvim-dap-python is a DAP adapter for python using debugpy.
-URL: https://codeberg.org/mfussenegger/nvim-dap-python
+The nvim-dap-python is a DAP adapter for python using debugpy
+https://codeberg.org/mfussenegger/nvim-dap-python
 --]===]
 
 ---@diagnostic disable: undefined-field

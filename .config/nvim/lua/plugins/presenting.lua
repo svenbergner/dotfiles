@@ -1,6 +1,6 @@
 --[===[
-Show markdown file as a slide presentation.
-URL: https://github.com/sotte/presenting.nvim
+Show markdown file as a slide presentation:markdown
+https://github.com/sotte/presenting.nvim
 --]===]
 
 return {

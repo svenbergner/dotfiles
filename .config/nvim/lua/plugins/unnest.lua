@@ -1,5 +1,7 @@
 --[===[
 unnest.nvim
+https://github.com/brianhuster/unnest.nvim
+
 Unnest your nested Neovim sessions.
 
 Introduction
@@ -9,8 +11,6 @@ running inside another Neovim session. This can be confusing and inefficient.
 
 Solves this by detecting when it's being run in a nested session, then it will
 instruct the parent Neovim instance to open files in a in the parent Neovim instance.
-
-URL: https://github.com/brianhuster/unnest.nvim
 --]===]
 
 return {

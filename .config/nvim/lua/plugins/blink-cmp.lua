@@ -8,19 +8,20 @@ pipeline. Plenty of work has been put into making each stage of the pipeline
 as intelligent as possible, such as frecency and proximity bonus on fuzzy
 matching, and this work is on-going.
 
-URL: https://github.com/saghen/blink.cmp
-Docs: https://cmp.saghen.dev/
+URLs:
+https://github.com/saghen/blink.cmp
+https://cmp.saghen.dev/               -- Documentation
 
-Sources: https://cmp.saghen.dev/configuration/sources#community-sources
-Gives access to additional completion sources for blink.cmp.
-URL: https://github.com/Kaiser-Yang/blink-cmp-avante        A blink.cmp source for avante.nvim
-URL: https://github.com/giuxtaposition/blink-cmp-copilot    A blink.cmp source for GitHub Copilot suggestions.
-URL: https://github.com/rafamadriz/friendly-snippets        A blink.cmp source for friendly-snippets
-URL: https://github.com/moyiz/blink-emoji.nvim              A blink.cmp source for emojis.
-URL: https://github.com/MahanRahmati/blink-nerdfont.nvim    A blink.cmp source for nerd fonts.
-URL: https://github.com/bydlw98/blink-cmp-env               A blink.cmp source for environment variables.
-URL: https://github.com/nvim-mini/mini.snippets             A minimal snippet engine for Neovim.
-URL: https://github.com/L3MON4D3/LuaSnip                    A snippet engine for Neovim written in Lua.
+Completion-Sources:
+https://cmp.saghen.dev/configuration/sources#community-sources   -- Gives access to additional completion sources for blink.cmp
+https://github.com/Kaiser-Yang/blink-cmp-avante                  -- A blink.cmp source for avante.nvim
+https://github.com/giuxtaposition/blink-cmp-copilot              -- A blink.cmp source for GitHub Copilot suggestions
+https://github.com/rafamadriz/friendly-snippets                  -- A blink.cmp source for friendly-snippets
+https://github.com/moyiz/blink-emoji.nvim                        -- A blink.cmp source for emojis
+https://github.com/MahanRahmati/blink-nerdfont.nvim              -- A blink.cmp source for nerd fonts
+https://github.com/bydlw98/blink-cmp-env                         -- A blink.cmp source for environment variables
+https://github.com/nvim-mini/mini.snippets                       -- A minimal snippet engine for Neovim
+https://github.com/L3MON4D3/LuaSnip                              -- A snippet engine for Neovim written in Lua
 --]===]
 
 return {

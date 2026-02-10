@@ -1,6 +1,8 @@
 --[===[
-VimWiki is a personal wiki for Vim -- a number of linked text files that
-have their own syntax highlighting.
+VimWiki is a personal wiki for Vim
+https://github.com/vimwiki/vimwiki
+
+A number of linked text files that have their own syntax highlighting
 See the VimWiki Wiki for an example website built with VimWiki!
 
 Key bindings
@@ -27,11 +29,11 @@ Refer to the complete documentation at :h vimwiki-mappings to see many more bind
 Commands
 :Vimwiki2HTML -- Convert current wiki link to HTML.
 :VimwikiAll2HTML -- Convert all your wiki links to HTML.
-:help vimwiki-commands -- List all commands.
-:help vimwiki -- General vimwiki help docs.
+:help vimwiki-commands -- List all commands
+:help vimwiki -- General vimwiki help docs
 
-URL: https://github.com/vimwiki/vimwiki
-URL: https://github.com/mattn/calendar-vim
+Dependencies:
+https://github.com/mattn/calendar-vim
 --]===]
 
 return {

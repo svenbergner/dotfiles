@@ -1,5 +1,8 @@
 --[===[
-elixir-tools.nvim provides a nice experience for writing Elixir applications with Neovim.
+elixir-tools.nvim
+https://github.com/elixir-tools/elixir-tools.nvim
+
+Provides a nice experience for writing Elixir applications with Neovim.
 
 NOTE: This plugin does not provide autocompletion, I recommend using nvim-cmp.
 NOTE: This plugin does not provide syntax highlighting, I recommend using nvim-treesitter.
@@ -9,8 +12,6 @@ Features:
 - ElixirLS installation and configuration.
 - :Mix command with autocomplete
 - vim-projectionist support
-
-URL: https://github.com/elixir-tools/elixir-tools.nvim
 --]===]
 
 return {

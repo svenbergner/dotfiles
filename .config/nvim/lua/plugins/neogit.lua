@@ -1,8 +1,8 @@
 --[===[
 Neogit
-A git interface for Neovim, inspired by Magit.
+https://github.com/NeogitOrg/neogit
 
-URL: https://github.com/NeogitOrg/neogit
+A git interface for Neovim, inspired by Magit.
 --]===]
 
 return {

@@ -1,7 +1,7 @@
 --[===[
 Language Server Protocol configuration for Azure Pipelines
-URL: https://github.com/microsoft/azure-pipelines-language-server
-URL: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#azure_pipelines_ls
+https://github.com/microsoft/azure-pipelines-language-server
+https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#azure_pipelines_ls
 --]===]
 
 local util = require("lspconfig.util")

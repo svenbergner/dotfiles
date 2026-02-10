@@ -1,5 +1,7 @@
 --[===[
 neowiki.nvim
+https://github.com/echaya/neowiki.nvim
+
 Modern Vimwiki Successor for Instant Notes & GTD 🚀📝
 
 🌟 Introduction
@@ -30,8 +32,6 @@ Neovim-Powered Efficiency ⚙️
 Built for Neovim 0.10+, leveraging Lua for speed and seamless integration with
 other plugins: Treesitter, markdown rendering, completion, pickers, and your
 existing config.
-
-URL: https://github.com/echaya/neowiki.nvim
 --]===]
 
 return {

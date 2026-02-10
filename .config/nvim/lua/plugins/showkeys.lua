@@ -1,7 +1,9 @@
 --[===[
-  Showkeys
-  Show the keys that are pressed in the bottom right corner.
-  URL: https://github.com/nvzone/showkeys
+Showkeys
+https://github.com/nvzone/showkeys
+
+Show the last keys that are pressed in a box on the screen.
+Useful for screencasts and presentations.
 --]===]
 
 return {

@@ -1,10 +1,12 @@
 --[===[
 Unit Test support
 
-See :h neotest.run.run() for parameters.
-URL: https://github.com/nvim-neotest/neotest
-URL: https://github.com/orjangj/neotest-ctest
-URL: https://github.com/Shatur/neovim-tasks
+See :h neotest.run.run() for parameters
+
+URLs:
+https://github.com/nvim-neotest/neotest
+https://github.com/orjangj/neotest-ctest
+https://github.com/Shatur/neovim-tasks
 --]===]
 
 return {

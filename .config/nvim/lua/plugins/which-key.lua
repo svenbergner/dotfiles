@@ -1,7 +1,7 @@
 --[===[
 Shows the available keymaps
-URL: http://github.com/folke/which-key.nvim
-URL: http://github.com/nvim-mini/mini.icons
+http://github.com/folke/which-key.nvim
+http://github.com/nvim-mini/mini.icons
 --]===]
 
 return {
