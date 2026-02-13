@@ -45,6 +45,7 @@ return {
             { '<leader>w',        group = 'vim[w]iki',           icon = '󰖬' },
             { '<leader>w<Space>', group = 'Diary',               icon = '󰖬' },
             { '<leader>W',        group = 'LSP [W]orkspace',     icon = '' },
+            { '<leader>y',        group = '[y]ank',              icon = '' },
             { '<leader>z',        group = '[z]en',               icon = '󱅻' },
          },
          notify = true,

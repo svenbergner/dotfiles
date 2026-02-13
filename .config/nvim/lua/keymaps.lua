@@ -47,9 +47,6 @@ vim.keymap.set('n', '<F8>', ':cn<CR>', { silent = true, desc = 'Go to next item 
 vim.keymap.set('n', '<S-F8>', ':cp<CR>', { silent = true, desc = 'Go to previous item in quickfix list' })
 vim.keymap.set('n', '<F20>', ':cp<CR>', { silent = true, desc = 'Go to previous item in quickfix list' })
 
-vim.keymap.set('n', '<leader>F', '<cmd>let @+=@%<CR><cmd>lua vim.notify("Filename copied to clipboard")<CR>',
-   { silent = true, desc = 'copy [F]ilename to clipboard' })
-
 vim.keymap.set('n', '<BS>', '^', { desc = 'Move to the first non-blank character in the line' })
 
 -- visual mode keymaps
@@ -106,6 +103,12 @@ vim.keymap.set('n', '<leader>lc', '<CMD>Lazy check<CR>', { silent = true, desc =
 vim.keymap.set('n', '<leader>lp', '<CMD>Lazy profile<CR>', { silent = true, desc = '[l]azy [p]rofile' })
 vim.keymap.set('n', '<leader>lh', '<CMD>Lazy help<CR>', { silent = true, desc = '[l]azy [h]elp' })
 
+-- Yank mappings
+vim.keymap.set('n', '<leader>yf', '<cmd>let @"=@%<CR>', { silent = true, desc = '[y]ank [f]ilename' })
+vim.keymap.set('n', '<leader>yF', '<cmd>let @+=@%<CR>', { silent = true, desc = '[y]ank [F]ilename to clipboard' })
+vim.keymap.set('n', '<leader>yb', ':%y<CR>', { silent = true, desc = '[y]ank [b]uffer content' })
+vim.keymap.set('n', '<leader>yB', ':%y+<CR>', { silent = true, desc = '[y]ank [B]uffer content to the clipboard' })
+-- vim.keymap.set('n', '<leader>y', '', { silent = false, desc = '[y]ank []' })
 
 -- Toggle true false
 local function toggle_boolean()
