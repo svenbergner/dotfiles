@@ -82,7 +82,6 @@ export PATH="$PATH:$HOME/.local/bin"
 source <(fzf --zsh)
 source <(zoxide init --cmd cd zsh)
 source <(gitleaks completion zsh)
-source <(but completions zsh)
 
 # -- Use fd instead of fzf --
 
