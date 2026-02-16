@@ -8,7 +8,7 @@
 --- My Wezterm config file
 --- https://wezfurlong.org/wezterm/config/lua/config/index.html
 
-local wezterm = require("wezterm")
+local wezterm = require('wezterm')
 local smart_splits = wezterm.plugin.require('https://github.com/mrjones2014/smart-splits.nvim')
 local act = wezterm.action
 
@@ -23,15 +23,15 @@ wezterm.add_to_config_reload_watch_list('layouts')
 wezterm.add_to_config_reload_watch_list('utils')
 
 -- Setup default layout
-require("layouts.personal").setup_layout(wezterm)
-require("layouts.development").setup_layout(wezterm)
+require('layouts.personal').setup_layout(wezterm)
+require('layouts.development').setup_layout(wezterm)
 
 require('utils.background').toggleBackground(config)
 
 -- Settings
 config.max_fps = 120
 config.enable_kitty_graphics = true
-config.audible_bell = "Disabled"
+config.audible_bell = 'Disabled'
 config.visual_bell = {
    fade_in_function = 'EaseIn',
    fade_in_duration_ms = 150,
@@ -40,22 +40,22 @@ config.visual_bell = {
 }
 
 config.colors = {
-   visual_bell = '#202020'
+   visual_bell = '#202020',
 }
 
-config.color_scheme = "Gruvbox Dark (Gogh)"
+config.color_scheme = 'Gruvbox Dark (Gogh)'
 config.font = wezterm.font_with_fallback({
-   { family = "JetBrainsMono Nerd Font Propo", scale = 1.2, weight = "Medium", },
+   { family = 'JetBrainsMono Nerd Font Propo', scale = 1.2, weight = 'Medium' },
 })
-config.window_decorations = "RESIZE"
-config.window_close_confirmation = "AlwaysPrompt"
+config.window_decorations = 'RESIZE'
+config.window_close_confirmation = 'AlwaysPrompt'
 config.scrollback_lines = 10000
-config.default_workspace = "Development"
+config.default_workspace = 'Development'
 
 -- Dim inactive panes
 config.inactive_pane_hsb = {
    saturation = 0.24,
-   brightness = 0.5
+   brightness = 0.5,
 }
 
 config.window_frame = {

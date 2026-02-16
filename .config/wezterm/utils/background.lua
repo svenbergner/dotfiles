@@ -1,16 +1,16 @@
 local M = {}
-local wezterm = require("wezterm")
+local wezterm = require('wezterm')
 
 M.getFancyBackground = function()
    local home_dir = wezterm.home_dir
    return {
       {
          source = {
-            File = home_dir .. "/.config/wezterm/background/Matrix-Wallpaper.gif"
+            File = home_dir .. '/.config/wezterm/background/Matrix-Wallpaper.gif',
          },
          width = '100%',
-         hsb = { brightness = .3 },
-      }
+         hsb = { brightness = 0.3 },
+      },
    }
 end
 
@@ -23,11 +23,11 @@ M.getSimpleBackground = function()
    return {
       {
          source = {
-            File = home_dir .. "/.config/wezterm/background/neovim3.png"
+            File = home_dir .. '/.config/wezterm/background/neovim3.png',
          },
          width = '100%',
-         hsb = { brightness = .3 },
-      }
+         hsb = { brightness = 0.3 },
+      },
    }
 end
 

@@ -1,9 +1,9 @@
 local M = {}
 
 M.addTab = function(window, cwd, title, command)
-   local tab, pane, _ = window:spawn_tab {
+   local tab, pane, _ = window:spawn_tab({
       cwd = cwd,
-   }
+   })
    tab:set_title(title)
    if #command > 0 then
       pane:send_text(command)
@@ -18,10 +18,10 @@ M.setup_layout = function(wezterm)
       if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
          home_dir = '/C'
       end
-      local first_tab, first_pane, window = mux.spawn_window {
+      local first_tab, first_pane, window = mux.spawn_window({
          workspace = 'Personal',
          cwd = home_dir .. '/Repos/dotfiles/',
-      }
+      })
       first_tab:set_title('Dotfiles')
       first_pane:send_text('')
 

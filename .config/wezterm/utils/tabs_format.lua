@@ -1,7 +1,7 @@
 local wezterm = require('wezterm')
 
 -- The filled in variant of the < symbol
-local SOLID_LEFT_ARROW = ""
+local SOLID_LEFT_ARROW = ''
 
 -- The filled in variant of the > symbol
 -- local SOLID_RIGHT_ARROW = ""
@@ -21,65 +21,63 @@ local function tab_title(tab_info)
    return tab_info.active_pane.title
 end
 
-wezterm.on('format-tab-title',
-   function(tab, tabs, panes, config, hover, max_width)
-      local edge_background = '#3c3836'
-      local background = '#1b1032'
-      local foreground = '#808080'
+wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
+   local edge_background = '#3c3836'
+   local background = '#1b1032'
+   local foreground = '#808080'
 
-      local pane_count = ""
-      if #tab.panes > 1 then
-         pane_count = " (" .. #tab.panes .. ")"
-      end
-
-      if tab.is_active then
-         background = '#fe8019'
-         foreground = '#1d2021'
-      else
-         background = '#83a598'
-         foreground = '#1d2021'
-      end
-
-      local edge_foreground = "#fbf1cf"
-
-      local title = tab_title(tab)
-
-      -- ensure that the titles fit in the available space,
-      -- and that we have room for the edges.
-      local pane_count_width = #pane_count
-      local offset = 5
-      local max_title_width = max_width - pane_count_width - offset
-      title = wezterm.truncate_right(title, max_title_width)
-
-      local title_intensity = "Normal"
-      local zoom_indicator = ""
-      local p = tab.active_pane
-      if p.is_zoomed then
-         zoom_indicator = " 👀"
-      end
-
-      local tab_index_intensity = "Normal"
-      if tab.is_active then
-         tab_index_intensity = "Bold"
-      end
-      return {
-         { Background = { Color = edge_background } },
-         { Text = " " },
-         { Foreground = { Color = background } },
-         { Text = SOLID_LEFT_ARROW },
-         { Background = { Color = background } },
-         { Foreground = { Color = foreground } },
-         { Attribute = { Intensity = tab_index_intensity } },
-         { Text = tab.tab_index + 1 .. zoom_indicator .. " " },
-         { Attribute = { Intensity = "Normal" } },
-         { Background = { Color = edge_background } },
-         { Foreground = { Color = edge_foreground } },
-         { Attribute = { Intensity = title_intensity } },
-         { Text = " " .. title .. pane_count },
-         { Attribute = { Intensity = "Normal" } },
-      }
+   local pane_count = ''
+   if #tab.panes > 1 then
+      pane_count = ' (' .. #tab.panes .. ')'
    end
-)
+
+   if tab.is_active then
+      background = '#fe8019'
+      foreground = '#1d2021'
+   else
+      background = '#83a598'
+      foreground = '#1d2021'
+   end
+
+   local edge_foreground = '#fbf1cf'
+
+   local title = tab_title(tab)
+
+   -- ensure that the titles fit in the available space,
+   -- and that we have room for the edges.
+   local pane_count_width = #pane_count
+   local offset = 5
+   local max_title_width = max_width - pane_count_width - offset
+   title = wezterm.truncate_right(title, max_title_width)
+
+   local title_intensity = 'Normal'
+   local zoom_indicator = ''
+   local p = tab.active_pane
+   if p.is_zoomed then
+      zoom_indicator = ' 👀'
+   end
+
+   local tab_index_intensity = 'Normal'
+   if tab.is_active then
+      tab_index_intensity = 'Bold'
+   end
+   return {
+      { Background = { Color = edge_background } },
+      { Text = ' ' },
+      { Foreground = { Color = background } },
+      { Text = SOLID_LEFT_ARROW },
+      { Background = { Color = background } },
+      { Foreground = { Color = foreground } },
+      { Attribute = { Intensity = tab_index_intensity } },
+      { Text = tab.tab_index + 1 .. zoom_indicator .. ' ' },
+      { Attribute = { Intensity = 'Normal' } },
+      { Background = { Color = edge_background } },
+      { Foreground = { Color = edge_foreground } },
+      { Attribute = { Intensity = title_intensity } },
+      { Text = ' ' .. title .. pane_count },
+      { Attribute = { Intensity = 'Normal' } },
+   }
+end)
 
 return {}
 
