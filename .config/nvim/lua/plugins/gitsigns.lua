@@ -82,7 +82,7 @@ return {
       vim.keymap.set('n', '<leader>gv', gitsigns.select_hunk, { desc = '[g]it [v]isual select current hunk' })
       vim.keymap.set('n', '<leader>gw', gitsigns.toggle_word_diff, { desc = '[g]it toggle [w]ord diff' })
 
-      -- Remove last search highlight after cursor moved
+      -- Set color of current line blame to the color of the blue signs
       local autocmd = vim.api.nvim_create_autocmd
       local augroup = vim.api.nvim_create_augroup
       autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'WinEnter' }, {
