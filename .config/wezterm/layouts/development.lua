@@ -33,6 +33,8 @@ M.setup_layout = function(wezterm)
       M.addTab(window, home_dir .. '/Repos/SSE28/Dev', 'SSE 28', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/SSE27/Dev', 'SSE 27', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/Content/StP/31', 'Content StP 31', 'nvim\n')
+      M.addTab(window, home_dir .. '/Repos/Content/StP/29', 'Content StP 29', 'nvim\n')
+      M.addTab(window, home_dir .. '/Repos/BuildAgentIAC', 'BuildAgentIAC', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/SSE/Tools', 'Tools', 'nvim\n')
       -- M.addTab(window, home_dir .. '/Repos/SetupSSE', 'SetupSSE', 'nvim\n')
 
