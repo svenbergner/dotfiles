@@ -89,8 +89,10 @@ vim.keymap.set('n', '<C-F7>', '<cmd>StopCMakeBuild<CR>', { desc = 'Stop cmake bu
 vim.keymap.set('n', '<F31>', '<cmd>StopCMakeBuild<CR>', { desc = 'Stop cmake build' })
 vim.keymap.set('n', '<F43>', '<cmd>RunCMakeBuildWithTarget<CR>', { desc = 'Run cmake build with target' })
 vim.keymap.set('n', '<C-S-F7>', '<cmd>RunCMakeBuildWithTarget<CR>', { desc = 'Run cmake build with target' })
-vim.keymap.set('n', '<M-F7>', '<cmd>ShowLastBuildMessages<CR>', { desc = 'Show messages from last build' })
-vim.keymap.set('n', '<F55>', '<cmd>ShowLastBuildMessages<CR>', { desc = 'Show messages from last build' })
+vim.keymap.set('n', '<M-F7>', '<cmd>ShowLastBuildMessage<CR>', { desc = 'Show message from last build' })
+vim.keymap.set('n', '<F55>', '<cmd>ShowLastBuildMessage<CR>', { desc = 'Show message from last build' })
+vim.keymap.set('n', '<M-S-F7>', '<cmd>ShowLastBuildMessages<CR>', { desc = 'Show messages from last build' })
+vim.keymap.set('n', '<F67>', '<cmd>ShowLastBuildMessages<CR>', { desc = 'Show messages from last build' })
 vim.keymap.set('n', '<F7>', function()
    vim.cmd('RunCMakeBuild')
    -- Switch to normal mode only if currently in insert mode
