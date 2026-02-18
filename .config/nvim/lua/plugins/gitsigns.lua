@@ -87,8 +87,10 @@ return {
                end, all_lines)
                local msg = #filtered > 0 and table.concat(filtered, '\n') or 'Done'
                if code == 0 then
+                  msg = msg .. '\nDone!\n'
                   Snacks.notify.info(msg, { title = 'Git Push', id = notif_id })
                else
+                  msg = msg .. '\n\nFailed to push to remote!'
                   Snacks.notify.error(msg, { title = 'Git Push', id = notif_id })
                end
             end,
