@@ -52,19 +52,14 @@ local function open_in_floating_window()
       end
    end
 
-   -- Map <Esc><Esc> to close (but not single <Esc> since it's needed in insert mode)
+   -- Map <Esc><Esc> to abort (but not single <Esc> since it's needed in insert mode)
    vim.keymap.set(
       'n',
       '<Esc><Esc>',
       close_float,
-      { buffer = buf, noremap = true, silent = true, desc = 'Close git commit window' }
+      { buffer = buf, noremap = true, silent = true, desc = 'Abort git commit' }
    )
-   vim.keymap.set(
-      'n',
-      'q',
-      close_float,
-      { buffer = buf, noremap = true, silent = true, desc = 'Close git commit window' }
-   )
+   vim.keymap.set('n', 'q', close_float, { buffer = buf, noremap = true, silent = true, desc = 'Abort git commit' })
 
    -- Also allow closing with ZZ, :q or :wq as normal
    vim.api.nvim_create_autocmd('WinClosed', {
