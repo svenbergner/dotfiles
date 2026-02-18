@@ -61,12 +61,8 @@ local function open_in_floating_window()
    )
    vim.keymap.set('n', 'q', close_float, { buffer = buf, noremap = true, silent = true, desc = 'Abort git commit' })
 
-   -- Also allow closing with ZZ, :q or :wq as normal
-   vim.api.nvim_create_autocmd('WinClosed', {
-      pattern = tostring(float_win),
-      once = true,
-      callback = close_float,
-   })
+   -- Enter insert mode immediately
+   vim.cmd('startinsert')
 end
 
 -- Trigger the floating window creation with a delay to ensure buffer is fully loaded
