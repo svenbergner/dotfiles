@@ -10,7 +10,8 @@ these recommendations directly to their source files with minimal effort.
 return {
    'yetone/avante.nvim',
    enabled = true,
-   keys = { '<leader>a', mode = { 'n', 'v' } },
+   event = 'VeryLazy',
+   keys = { '<leader>a', mode = { 'n', 'v' }, desc = 'Avante' },
    version = false, -- Never set this value to "*"! Never!
    opts = {
       provider = 'copilot',
