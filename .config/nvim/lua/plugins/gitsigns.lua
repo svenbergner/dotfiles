@@ -60,8 +60,19 @@ return {
          gitsigns.nav_hunk('prev')
       end, { desc = '[g]it hu[N]k previous' })
       vim.keymap.set('n', '<leader>gp', function()
-         vim.notify('Pushing to remote...', 'info', { title = 'Git' })
-         vim.cmd('G push')
+         local notif_id = 'gitsigns_git_push'
+         Snacks.notify.info('Pushing to remote...', { title = 'Git Push', id = notif_id })
+         vim.fn.FugitiveExecute({ 'push' }, vim.schedule_wrap(function(result)
+            local lines = vim.tbl_filter(function(l)
+               return l ~= ''
+            end, result.stdout or {})
+            local msg = #lines > 0 and table.concat(lines, '\n') or 'Done'
+            if result.exit_status == 0 then
+               Snacks.notify.info(msg, { title = 'Git Push', id = notif_id })
+            else
+               Snacks.notify.error(msg, { title = 'Git Push', id = notif_id })
+            end
+         end))
       end, { desc = '[g]it [p]ush' })
       vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { desc = '[g]it [r]eset hunk' })
       vim.keymap.set('v', '<leader>gr', function()
