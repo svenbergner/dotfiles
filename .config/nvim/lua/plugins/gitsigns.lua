@@ -60,6 +60,7 @@ return {
          gitsigns.nav_hunk('prev')
       end, { desc = '[g]it hu[N]k previous' })
       vim.keymap.set('n', '<leader>gp', function()
+         vim.notify('Pushing to remote...', 'info', { title = 'Git' })
          vim.cmd('G push')
       end, { desc = '[g]it [p]ush' })
       vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { desc = '[g]it [r]eset hunk' })
