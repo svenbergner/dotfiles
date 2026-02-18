@@ -62,17 +62,37 @@ return {
       vim.keymap.set('n', '<leader>gp', function()
          local notif_id = 'gitsigns_git_push'
          Snacks.notify.info('Pushing to remote...', { title = 'Git Push', id = notif_id })
-         vim.fn.FugitiveExecute({ 'push' }, vim.schedule_wrap(function(result)
-            local lines = vim.tbl_filter(function(l)
-               return l ~= ''
-            end, result.stdout or {})
-            local msg = #lines > 0 and table.concat(lines, '\n') or 'Done'
-            if result.exit_status == 0 then
-               Snacks.notify.info(msg, { title = 'Git Push', id = notif_id })
-            else
-               Snacks.notify.error(msg, { title = 'Git Push', id = notif_id })
-            end
-         end))
+         local stdout_lines = {}
+         local stderr_lines = {}
+         vim.fn.jobstart({ 'git', 'push' }, {
+            stdout_buffered = true,
+            stderr_buffered = true,
+            on_stdout = function(_, data)
+               if data then
+                  vim.list_extend(stdout_lines, data)
+               end
+            end,
+            on_stderr = function(_, data)
+               if data then
+                  vim.list_extend(stderr_lines, data)
+               end
+            end,
+            on_exit = function(_, code)
+               -- Combine stdout and stderr, filter empty lines
+               local all_lines = {}
+               vim.list_extend(all_lines, stdout_lines)
+               vim.list_extend(all_lines, stderr_lines)
+               local filtered = vim.tbl_filter(function(l)
+                  return l ~= ''
+               end, all_lines)
+               local msg = #filtered > 0 and table.concat(filtered, '\n') or 'Done'
+               if code == 0 then
+                  Snacks.notify.info(msg, { title = 'Git Push', id = notif_id })
+               else
+                  Snacks.notify.error(msg, { title = 'Git Push', id = notif_id })
+               end
+            end,
+         })
       end, { desc = '[g]it [p]ush' })
       vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { desc = '[g]it [r]eset hunk' })
       vim.keymap.set('v', '<leader>gr', function()
