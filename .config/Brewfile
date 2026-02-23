@@ -316,7 +316,3 @@ cask "utm"
 cask "virtualbuddy"
 # Multimedia player
 cask "vlc"
-# Free and open-source real time strategy game
-cask "warzone-2100"
-# Native desktop client for WhatsApp
-cask "whatsapp"
