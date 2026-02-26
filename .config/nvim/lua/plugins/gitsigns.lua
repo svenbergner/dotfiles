@@ -7,12 +7,17 @@ Features:
 - Adds custom signs for current git status
 --]===]
 
-local function git_push()
-   local notif_id = 'gitsigns_git_push'
-   Snacks.notify.info('Pushing to remote...', { title = 'Git Push', id = notif_id })
+--- @param command string Git command to run (e.g., 'pull', 'push' or 'status')
+--- @param notif_title string Title for the notification
+--- @param notify_text string Text to show while the command is running
+--- @param success_msg string Message to show on successful execution
+--- @param error_msg string Message to show on failed execution
+local function run_git_command(command, notif_title, notify_text, success_msg, error_msg)
+   local notif_id = 'gitsigns_git_' .. command
+   Snacks.notify.info(notify_text, { title = notif_title, id = notif_id })
    local stdout_lines = {}
    local stderr_lines = {}
-   vim.fn.jobstart({ 'git', 'push' }, {
+   vim.fn.jobstart({ 'git', command }, {
       stdout_buffered = true,
       stderr_buffered = true,
       on_stdout = function(_, data)
@@ -35,53 +40,46 @@ local function git_push()
          end, all_lines)
          local msg = #filtered > 0 and table.concat(filtered, '\n') or 'Done'
          if code == 0 then
-            msg = msg .. '\nDone!\n'
-            Snacks.notify.info(msg, { title = 'Git Push', id = notif_id })
+            msg = msg .. '\n' .. success_msg .. '\n'
+            Snacks.notify.info(msg, { title = notif_title, id = notif_id })
          else
-            msg = msg .. '\n\nFailed to push to remote!'
-            Snacks.notify.error(msg, { title = 'Git Push', id = notif_id })
+            msg = msg .. '\n\n' .. error_msg
+            Snacks.notify.error(msg, { title = notif_title, id = notif_id })
          end
       end,
    })
 end
 
-local function git_pull()
-   local notif_id = 'gitsigns_git_pull'
-   Snacks.notify.info('Pulling latest changes...', { title = 'Git Pull', id = notif_id })
-   local stdout_lines = {}
-   local stderr_lines = {}
-   vim.fn.jobstart({ 'git', 'pull' }, {
-      stdout_buffered = true,
-      stderr_buffered = true,
-      on_stdout = function(_, data)
-         if data then
-            vim.list_extend(stdout_lines, data)
-         end
-      end,
-      on_stderr = function(_, data)
-         if data then
-            vim.list_extend(stderr_lines, data)
-         end
-      end,
-      on_exit = function(_, code)
-         -- Combine stdout and stderr, filter empty lines
-         local all_lines = {}
-         vim.list_extend(all_lines, stdout_lines)
-         vim.list_extend(all_lines, stderr_lines)
-         local filtered = vim.tbl_filter(function(l)
-            return l ~= ''
-         end, all_lines)
-         local msg = #filtered > 0 and table.concat(filtered, '\n') or 'Done'
-         if code == 0 then
-            msg = msg .. '\nDone!\n'
-            Snacks.notify.info(msg, { title = 'Git Pull', id = notif_id })
-         else
-            msg = msg .. '\n\nFailed to pull from remote!'
-            Snacks.notify.error(msg, { title = 'Git Pull', id = notif_id })
-         end
-      end,
-   })
+local function git_push()
+   run_git_command(
+      'push',
+      'Git Push',
+      'Pushing to remote...',
+      'Done!',
+      'Failed to push to remote!'
+   )
 end
+
+local function git_pull()
+   run_git_command(
+      'pull',
+      'Git Pull',
+      'Pulling latest changes...',
+      'Done!',
+      'Failed to pull from remote!'
+   )
+end
+
+local function git_status()
+   run_git_command(
+      'status',
+      'Git Status',
+      'Retrieving current git status...',
+      'Git status retrieved successfully!',
+      'Failed to retrieve git status!'
+   )
+end
+
 ---@diagnostic disable: param-type-mismatch
 return {
    'lewis6991/gitsigns.nvim',
@@ -135,6 +133,7 @@ return {
       end, { desc = '[g]it hu[N]k previous' })
       vim.keymap.set('n', '<leader>gp', git_push, { desc = '[g]it [p]ush' })
       vim.keymap.set('n', '<leader>gP', git_pull, { desc = '[g]it [P]ull' })
+      vim.keymap.set('n', '<leader>go', git_status, { desc = '[g]it [o]verview (status)' })
       vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { desc = '[g]it [r]eset hunk' })
       vim.keymap.set('v', '<leader>gr', function()
          gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
