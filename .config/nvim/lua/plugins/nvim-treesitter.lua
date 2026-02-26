@@ -6,8 +6,8 @@ https://github.com/nvim-treesitter/nvim-treesitter
 return {
    'nvim-treesitter/nvim-treesitter',
    enabled = true,
+   lazy = false,
    build = ':TSUpdate',
-   event = { 'BufReadPre', 'BufNewFile' },
    dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
    },
