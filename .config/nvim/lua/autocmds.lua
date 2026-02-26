@@ -91,3 +91,11 @@ vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
       vim.opt_local.cursorline = false
    end,
 })
+
+-- start insert mode when entering terminal
+autocmd('TermOpen', {
+   group = augroup('terminal_insert', { clear = true }),
+   callback = function()
+      vim.cmd.startinsert()
+   end,
+})
