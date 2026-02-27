@@ -99,3 +99,13 @@ autocmd('TermOpen', {
       vim.cmd.startinsert()
    end,
 })
+
+-- auto save buffer on leaving insert mode
+autocmd('InsertLeave', {
+   group = augroup('auto_save', { clear = true }),
+   callback = function()
+      if vim.bo.modified then
+         vim.cmd.write()
+      end
+   end,
+})
