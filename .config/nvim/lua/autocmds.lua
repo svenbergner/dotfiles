@@ -140,9 +140,8 @@ vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave', 'CursorHold', 'LspAt
 vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
 -- Activate Treesitter for specific filetypes
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '<filetype>' },
+  pattern = { 'lua' },
   callback = function()
-     print('Activating Treesitter for ' .. vim.bo.filetype)
      vim.treesitter.start()
   end,
 })
