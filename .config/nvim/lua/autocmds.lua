@@ -109,3 +109,11 @@ autocmd('InsertLeave', {
       end
    end,
 })
+
+-- Activate Treesitter for specific filetypes
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'lua' },
+  callback = function()
+     vim.treesitter.start()
+  end,
+})
