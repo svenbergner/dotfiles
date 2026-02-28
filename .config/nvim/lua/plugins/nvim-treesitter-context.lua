@@ -10,22 +10,23 @@ loops or conditions are surrounding the visible code.
 --]===]
 
 return {
-   'nvim-treesitter/nvim-treesitter-context',
-   enabled = true,
-   event = 'VeryLazy',
-   opts = {
-      enable = true,
-      mode = 'cursor',
-      max_lines = 0,
-   },
-   keys = {
-      {
-         '<leader>TC',
-         function()
-            local tsc = require('treesitter-context')
-            tsc.toggle()
-         end,
-         desc = '[T]oggle Treesitter [C]ontext',
-      },
-   },
+--    'nvim-treesitter/nvim-treesitter-context',
+--    enabled = true,
+--    branch = 'master',
+--    event = 'VeryLazy',
+--    opts = {
+--       enable = true,
+--       mode = 'cursor',
+--       max_lines = 0,
+--    },
+--    keys = {
+--       {
+--          '<leader>TC',
+--          function()
+--             local tsc = require('treesitter-context')
+--             tsc.toggle()
+--          end,
+--          desc = '[T]oggle Treesitter [C]ontext',
+--       },
+--    },
 }
