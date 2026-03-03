@@ -12,5 +12,12 @@
          "$CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR"
       ],
       "description": "Insert current date in local format snippet"
+   },
+   "Github url": {
+      "prefix": "gh",
+      "body": [
+         "https://github.com/"
+      ],
+      "description": "Insert github URL snippet"
    }
 }
