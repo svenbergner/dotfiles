@@ -35,3 +35,18 @@
         updateRefs = true
 [alias]
 	loglog = log --oneline --graph --all
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+    side-by-side = true  # show added and removed lines in a side-by-side view
+    line-numbers = true  # show line numbers in the diff output
+
+[merge]
+    conflictStyle = zdiff3
