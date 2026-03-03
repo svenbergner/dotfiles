@@ -104,7 +104,7 @@ autocmd('TermOpen', {
 autocmd('InsertLeave', {
    group = augroup('auto_save', { clear = true }),
    callback = function()
-      if vim.bo.modified then
+      if vim.bo.modified and vim.bo.buftype == '' then
          vim.cmd.write()
       end
    end,
