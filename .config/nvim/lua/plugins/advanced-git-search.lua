@@ -2,6 +2,9 @@
 Advanced git search extension for telescope, fzf-lua and snacks.
 Search git history by commit message, content and author in Neovim
 https://github.com/aaronhallaert/advanced-git-search.nvim
+https://github.com/folke/snacks.nvim
+https://github.com/tpope/vim-fugitive
+https://github.com/tpope/vim-rhubarb
 https://github.com/sindrets/diffview.nvim
 --]===]
 
