@@ -141,12 +141,8 @@ return {
       vim.keymap.set('n', '<leader>gR', gitsigns.reset_buffer, { desc = '[g]it [R]eset buffer' })
       vim.keymap.set('n', '<leader>gs', gitsigns.stage_hunk, { desc = '[g]it [s]tage or unstage hunk' })
       vim.keymap.set('n', '<leader>gS', gitsigns.stage_buffer, { desc = '[g]it [S]tage current buffer' })
-      vim.keymap.set(
-         'n',
-         '<leader>gt',
-         gitsigns.toggle_current_line_blame,
-         { desc = '[g]it [t]oggle current line blame' }
-      )
+      vim.keymap.set( 'n', '<leader>gt', gitsigns.toggle_current_line_blame,
+         { desc = '[g]it [t]oggle current line blame' })
       vim.keymap.set('v', '<leader>gs', function()
          gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
       end, { desc = '[g]it [s]tage or unstage visual selected hunk' })
