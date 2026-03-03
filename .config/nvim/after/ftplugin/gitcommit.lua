@@ -10,6 +10,11 @@ local function open_in_floating_window()
       return
    end
 
+   -- Cannot convert the only window into a floating window
+   if #vim.api.nvim_list_wins() <= 1 then
+      return
+   end
+
    -- Get editor dimensions
    local ui = vim.api.nvim_list_uis()[1]
    if not ui then
