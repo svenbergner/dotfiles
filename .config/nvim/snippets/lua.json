@@ -47,5 +47,12 @@
          ""
       ],
       "description": "Neovim Module snippet"
+   },
+   "Disable Sonarqube rule": {
+      "prefix": "dsr",
+      "body": [
+         "['cpp:S'] = { level = 'off' }, -- "
+      ],
+      "description": "Disable Sonarqube rule snippet for lua"
    }
 }
