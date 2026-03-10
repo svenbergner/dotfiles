@@ -51,7 +51,7 @@
    "Disable Sonarqube rule": {
       "prefix": "dsr",
       "body": [
-         "['cpp:S'] = { level = 'off' }, -- "
+         "['cpp:S$1'] = { level = 'off' }, -- $2"
       ],
       "description": "Disable Sonarqube rule snippet for lua"
    }
