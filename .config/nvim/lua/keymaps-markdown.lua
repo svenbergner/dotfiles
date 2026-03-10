@@ -90,37 +90,37 @@ local function update_markdown_toc(heading2, heading3)
 end
 
 -- Keymap for English TOC
-vim.keymap.set("n", "<leader>mtt", function()
-  update_markdown_toc("## Contents", "### Table of contents")
-end, { desc = "[P]Insert/update Markdown TOC (English)" })
+-- vim.keymap.set("n", "<leader>mtt", function()
+--   update_markdown_toc("## Contents", "### Table of contents")
+-- end, { desc = "[P]Insert/update Markdown TOC (English)" })
 
 -- Save the cursor position globally to access it across different mappings
 _G.saved_positions = {}
 
 -- Mapping to jump to the first line of the TOC
-vim.keymap.set("n", "<leader>mm", function()
-  -- Save the current cursor position
-  _G.saved_positions["toc_return"] = vim.api.nvim_win_get_cursor(0)
-  -- Perform a silent search for the <!-- toc --> marker and move the cursor two lines below it
-  vim.cmd("silent! /<!-- toc -->\\n\\n\\zs.*")
-  -- Clear the search highlight without showing the "search hit BOTTOM, continuing at TOP" message
-  vim.cmd("nohlsearch")
-  -- Retrieve the current cursor position (after moving to the TOC)
-  local cursor_pos = vim.api.nvim_win_get_cursor(0)
-  local row = cursor_pos[1]
-  -- local col = cursor_pos[2]
-  -- Move the cursor to column 15 (starts counting at 0)
-  -- I like just going down on the TOC and press gd to go to a section
-  vim.api.nvim_win_set_cursor(0, { row, 14 })
-end, { desc = "[P]Jump to the first line of the TOC" })
+-- vim.keymap.set("n", "<leader>mm", function()
+--   -- Save the current cursor position
+--   _G.saved_positions["toc_return"] = vim.api.nvim_win_get_cursor(0)
+--   -- Perform a silent search for the <!-- toc --> marker and move the cursor two lines below it
+--   vim.cmd("silent! /<!-- toc -->\\n\\n\\zs.*")
+--   -- Clear the search highlight without showing the "search hit BOTTOM, continuing at TOP" message
+--   vim.cmd("nohlsearch")
+--   -- Retrieve the current cursor position (after moving to the TOC)
+--   local cursor_pos = vim.api.nvim_win_get_cursor(0)
+--   local row = cursor_pos[1]
+--   -- local col = cursor_pos[2]
+--   -- Move the cursor to column 15 (starts counting at 0)
+--   -- I like just going down on the TOC and press gd to go to a section
+--   vim.api.nvim_win_set_cursor(0, { row, 14 })
+-- end, { desc = "[P]Jump to the first line of the TOC" })
 
 -- Mapping to return to the previously saved cursor position
-vim.keymap.set("n", "<leader>mn", function()
-  local pos = _G.saved_positions["toc_return"]
-  if pos then
-    vim.api.nvim_win_set_cursor(0, pos)
-  end
-end, { desc = "[P]Return to position before jumping" })
+-- vim.keymap.set("n", "<leader>mn", function()
+--   local pos = _G.saved_positions["toc_return"]
+--   if pos then
+--     vim.api.nvim_win_set_cursor(0, pos)
+--   end
+-- end, { desc = "[P]Return to position before jumping" })
 
 -- Search UP for a markdown header
 -- Make sure to follow proper markdown convention, and you have a single H1
