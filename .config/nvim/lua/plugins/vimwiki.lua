@@ -38,7 +38,7 @@ https://github.com/mattn/calendar-vim
 
 return {
    'vimwiki/vimwiki',
-   enabled = true,
+   enabled = false,
    event = 'VeryLazy',
    dependencies = {
       'mattn/calendar-vim',
