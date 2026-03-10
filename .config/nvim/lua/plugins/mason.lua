@@ -26,7 +26,7 @@ return {
          'elixirls',
          'jsonls',
          'lua_ls',
-         'marksman',
+         -- 'marksman',
          'pico8_ls',
          'pylsp',
          'terraformls',
