@@ -72,6 +72,7 @@ return {
                   ['cpp:S5350'] = { level = 'off' }, -- Pointer and reference local variables should be "const" if the corresponding object is not modified
                   ['cpp:S5566'] = { level = 'off' }, -- STL algorithms and range-based for loops should be preferred to traditional for loops
                   ['cpp:S6004'] = { level = 'off' }, -- "if" and "switch" initializer should be used to reduce scope of variables
+                  ['cpp:S6177'] = { level = 'off' }, -- "using enum" should be used in scopes with high concentration of "enum" constants
                },
                connectedMode = {
                   connections = {
