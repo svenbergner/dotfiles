@@ -21,9 +21,7 @@ vim.keymap.set('v', 'p', '"_dP', { desc = 'Replace visual selection' })
 vim.keymap.set('n', 'Y', 'y$', { desc = 'Yank from cursor to end of line' })
 
 -- Save and source the current file
-vim.keymap.set(
-   'n',
-   '<leader>x',
+vim.keymap.set( 'n', '<leader>x',
    '<cmd>w<CR><cmd>source %<CR><cmd>lua print(\'File \' .. vim.fn.expand(\'%:t\') .. \' sourced.\')<CR>',
    { silent = true, desc = 'Save and e[x]ecute the current file' }
 )
