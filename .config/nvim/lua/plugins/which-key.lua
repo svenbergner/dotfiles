@@ -23,7 +23,7 @@ return {
             { '<leader>a',        group = '[a]vante',                   icon = '💬' },
             { '<leader>b',        group = '[b]uffer',                   icon = '' },
             { '<leader>bo',       group = '[o]rder by',                 icon = ' ' },
-            { '<leader>c',        group = 'vimwiki [c]alendar',         icon = '' },
+            { '<leader>c',        group = '[c]ode',                     icon = '' },
             { '<leader>d',        group = '[d]ap',                      icon = '' },
             { '<leader>dj',       group = '[d]apview [j]ump to',        icon = '' },
             { '<leader>ds',       group = '[d]apview [s]how',           icon = '' },
