@@ -21,18 +21,26 @@ vim.keymap.set('v', 'p', '"_dP', { desc = 'Replace visual selection' })
 vim.keymap.set('n', 'Y', 'y$', { desc = 'Yank from cursor to end of line' })
 
 -- Save and source the current file
-vim.keymap.set( 'n', '<leader>x',
+vim.keymap.set(
+   'n',
+   '<leader>x',
    '<cmd>w<CR><cmd>source %<CR><cmd>lua print(\'File \' .. vim.fn.expand(\'%:t\') .. \' sourced.\')<CR>',
    { silent = true, desc = 'Save and e[x]ecute the current file' }
 )
 
 -- Source the current line
-vim.keymap.set( 'n', '<leader>X', ':.lua<CR><cmd>lua print(\'Current line sourced.\')<CR>',
+vim.keymap.set(
+   'n',
+   '<leader>X',
+   ':.lua<CR><cmd>lua print(\'Current line sourced.\')<CR>',
    { silent = true, desc = 'E[X]ecute the current line' }
 )
 
 -- Source the current selection
-vim.keymap.set( 'v', '<leader>X', ':lua<CR><cmd>lua print(\'Current selection sourced.\')<CR>',
+vim.keymap.set(
+   'v',
+   '<leader>X',
+   ':lua<CR><cmd>lua print(\'Current selection sourced.\')<CR>',
    { silent = true, desc = 'E[X]ecute the current selection' }
 )
 
@@ -79,17 +87,26 @@ end
 vim.keymap.set('n', '<leader>DD', function()
    toggle_diff_mode()
 end, { desc = 'Toggle [D]iff [D]iff', noremap = true, silent = true })
-vim.keymap.set( 'n', '<leader>DT', ':Neotree close<CR>:windo diffthis<cr>',
+vim.keymap.set(
+   'n',
+   '<leader>DT',
+   ':Neotree close<CR>:windo diffthis<cr>',
    { desc = '[D]iff [T]his', noremap = true, silent = true }
 )
 vim.keymap.set('n', '<leader>Do', ':windo diffoff<cr>', { desc = '[D]iff [o]ff', noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>DC', ':DiffviewClose<cr>', { desc = '[D]iffview [C]lose', noremap = true, silent = true })
-vim.keymap.set( 'n', '<leader>DF', ':DiffviewToggleFiles<cr>',
+vim.keymap.set(
+   'n',
+   '<leader>DF',
+   ':DiffviewToggleFiles<cr>',
    { desc = '[D]iffview Toggle [F]iles', noremap = true, silent = true }
 )
 vim.keymap.set('n', '<leader>DO', ':DiffviewOpen<cr>', { desc = '[D]iffview [O]pen', noremap = true, silent = true })
-vim.keymap.set( 'n', '<leader>DR', ':DiffviewRefresh<cr>',
+vim.keymap.set(
+   'n',
+   '<leader>DR',
+   ':DiffviewRefresh<cr>',
    { desc = '[D]iffview [R]efresh', noremap = true, silent = true }
 )
 
@@ -155,5 +172,60 @@ local function toggle_boolean()
    end
 end
 
-vim.keymap.set('n', '<leader>tb', function() toggle_boolean() end,
-   { desc = '[t]oggle [b]ool', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tb', function()
+   toggle_boolean()
+end, { desc = '[t]oggle [b]ool', noremap = true, silent = true })
+
+-- Coding Keymaps
+vim.keymap.set('n', '<leader>cf', function()
+   vim.lsp.buf.format({ async = true })
+end, { desc = '[c]ode [f]ormat', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ca', function()
+   vim.lsp.buf.code_action()
+end, { desc = '[c]ode [a]ction', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cr', function()
+   vim.lsp.buf.rename()
+end, { desc = '[c]ode [r]ename', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cd', function()
+   vim.lsp.buf.definition()
+end, { desc = '[c]ode [d]efinition', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cD', function()
+   vim.lsp.buf.declaration()
+end, { desc = '[c]ode [D]eclaration', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ct', function()
+   vim.lsp.buf.type_definition()
+end, { desc = '[c]ode [t]ype definition', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ci', function()
+   vim.lsp.buf.implementation()
+end, { desc = '[c]ode [i]mplementation', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cR', function()
+   vim.lsp.buf.references()
+end, { desc = '[c]ode [R]eferences', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cs', function()
+   vim.lsp.buf.signature_help()
+end, { desc = '[c]ode [s]ignature help', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cS', function()
+   vim.lsp.buf.workspace_symbol()
+end, { desc = '[c]ode [S]ymbols in workspace', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ch', function()
+   vim.lsp.buf.hover()
+end, { desc = '[c]ode [h]over', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cH', function()
+   vim.lsp.buf.hover({ focusable = true })
+end, { desc = '[c]ode [H]over with focus', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cE', function()
+   vim.lsp.buf.show_line_diagnostics({ border = 'rounded' })
+end, { desc = '[c]ode [E]rror diagnostics', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cW', function()
+   vim.lsp.buf.workspace_symbol()
+end, { desc = '[c]ode [W]orkspace symbols', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cL', function()
+   vim.lsp.buf.incoming_calls()
+end, { desc = '[c]ode [L]ist incoming calls', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cO', function()
+   vim.lsp.buf.outgoing_calls()
+end, { desc = '[c]ode [O]utgoing calls', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cg', '<cmd>ChangeIncludeGuardToPragmaOnce<CR>'
+, { desc = '[c]ode change include [g]uard', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cc', '<cmd>RemoveDividerComments<CR>'
+, { desc = '[c]ode remove divider [c]omments', noremap = true, silent = true })
