@@ -57,6 +57,31 @@ return {
                      or file_path:match('test_.*%.cpp$') ~= nil
                      or file_path:match('.*Test%.cpp$') ~= nil
                end,
+               framework = { 'catch2' },
+               -- compile_commands.json in the source root is a symlink to the
+               -- build directory. Resolve it to find where CTestTestfile.cmake is.
+               root = function(dir)
+                  -- Walk up from 'dir' to find compile_commands.json
+                  local path = vim.fn.isdirectory(dir) == 1 and dir or vim.fn.fnamemodify(dir, ':h')
+                  local home = vim.loop.os_homedir()
+                  while path and path ~= home and path ~= '/' do
+                     local cc = path .. '/compile_commands.json'
+                     if vim.loop.fs_stat(cc) then
+                        local real = vim.loop.fs_realpath(cc)
+                        if real then
+                           local build_dir = vim.fn.fnamemodify(real, ':h')
+                           if build_dir ~= path then
+                              return build_dir
+                           end
+                        end
+                        return path
+                     end
+                     local parent = vim.fn.fnamemodify(path, ':h')
+                     if parent == path then break end
+                     path = parent
+                  end
+                  return nil
+               end,
             }),
          },
       })
