@@ -105,7 +105,7 @@ return {
             min_width = 1,
             max_width = 100,
             max_height = 10,
-            border = nil, -- Defaults to `vim.o.winborder` on nvim 0.11+ or 'padded' when not defined/<=0.10
+            border = 'rounded',
             winblend = 0,
             winhighlight = 'Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder',
             scrollbar = false, -- Note that the gutter will be disabled when border ~= 'none'
