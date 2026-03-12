@@ -112,7 +112,7 @@ autocmd('InsertLeave', {
 
 -- activate codelens if supported by any attached LSP client
 local function check_codelens_support()
-local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+local clients = vim.lsp.get_clients({ bufnr = 0 })
 for _, c in ipairs(clients) do
   if c.server_capabilities.codeLensProvider then
     return true
