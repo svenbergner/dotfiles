@@ -13,12 +13,12 @@ return {
    'nvim-neotest/neotest',
    enabled = true,
    keys = {
-      { '<leader>TN', mode = 'n' },
-      { '<leader>TS', mode = 'n' },
-      { '<leader>TA', mode = 'n' },
-      { '<leader>TD', mode = 'n' },
-      { '<leader>TR', mode = 'n' },
-      { '<leader>TT', mode = 'n' },
+      { '<leader>TN', mode = 'n', desc = '[T]est: run [N]earest' },
+      { '<leader>TS', mode = 'n', desc = '[T]est: [s]top running test' },
+      { '<leader>TA', mode = 'n', desc = '[T]ests run [A]ll in file'  },
+      { '<leader>TD', mode = 'n', desc = '[T]est: [D]ebug nearest test' },
+      { '<leader>TR', mode = 'n', desc = 'Show [T]est [R]esults' },
+      { '<leader>TT', mode = 'n', desc = '[T]oggle [T]est summary' },
    },
    dependencies = {
       'mfussenegger/nvim-dap',
