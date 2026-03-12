@@ -43,14 +43,7 @@ vim.keymap.set('i', '<M-o>', sw, { desc = 'LSP: Meta + o - switch source/header'
 -- Options for LSP
 vim.lsp.set_log_level('OFF') -- Set log level to OFF to disable logging
 
-vim.lsp.start({
-   handlers = {
-      ['textDocument/hover'] = vim.lsp.buf.hover,
-      { border = 'rounded' },
-      ['textDocument/signatureHelp'] = vim.lsp.buf.signature_help,
-      { border = 'rounded' },
-   },
-})
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
 
 vim.lsp.inlay_hint.enable(true)
 
