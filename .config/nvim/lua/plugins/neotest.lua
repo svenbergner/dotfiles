@@ -35,6 +35,29 @@ return {
    config = function()
       require('tasks').setup({})
 
+      -- Monkey-patch ctest:new() to skip slow plenary.scandir when CTestTestfile.cmake
+      -- is already at the root of the directory returned by our root() function.
+      local ok, ctest_mod = pcall(require, "neotest-ctest.ctest")
+      if ok then
+         local nio = require("nio")
+         local orig_new = ctest_mod.new
+         ctest_mod.new = function(self, cwd)
+            -- Fast path: skip slow plenary.scandir when CTestTestfile.cmake
+            -- is already at the root of the directory returned by root().
+            if vim.loop.fs_stat(cwd .. "/CTestTestfile.cmake") then
+               local session = {
+                  _test_dir = cwd,
+                  _output_junit_path = nio.fn.tempname(),
+                  _output_log_path = nio.fn.tempname(),
+               }
+               setmetatable(session, self)
+               self.__index = self
+               return session
+            end
+            return orig_new(self, cwd)
+         end
+      end
+
       local neotest = require('neotest')
       neotest.setup({
          adapters = {
