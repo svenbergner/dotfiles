@@ -221,6 +221,16 @@ fi
 ## magic-space expands !!
 bindkey ' ' magic-space
 
+## pet support
+function pet-select() {
+  BUFFER=$(pet search --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N pet-select
+stty -ixon
+bindkey '^s' pet-select
+
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
 if [[ -f /Users/sven.bergner/.dart-cli-completion/zsh-config.zsh ]] then 
