@@ -64,6 +64,12 @@ I use stow to manage my dotfiles. It is a symlink farm manager. I reorganized my
 Youtube Video
 https://youtu.be/y6XCebnB9gs?si=cisaCuaYR3tC28Qm
 
+Usage: 
+```bash
+cd ~/Repos/dotfiles/
+stow .
+```
+
 ## Colors
 
 My preferred colorscheme is **gruvbox dark**. Therefore I have the colors as iTerm colors and in a simply json format.
