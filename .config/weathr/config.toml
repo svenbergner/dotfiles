@@ -1,0 +1,17 @@
+hide_hud = false
+
+silent = false
+
+[location]
+latitude = 49.3483
+longitude = 8.1446
+
+# How to display the location in the HUD: "coordinates" | "city" | "mixed"
+display = "mixed"
+
+[units]
+temperature = "celsius"
+
+wind_speed = "kmh"
+
+precipitation = "mm"
