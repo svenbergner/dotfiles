@@ -5,6 +5,7 @@ tap "hashicorp/tap"
 tap "leoafarias/fvm"
 tap "lusingander/tap"
 tap "sst/tap"
+tap "veirt/veirt"
 # Simple, modern, secure file encryption
 brew "age"
 # Record and share terminal sessions
@@ -267,6 +268,8 @@ brew "leoafarias/fvm/fvm"
 brew "lusingander/tap/serie"
 # The AI coding agent built for the terminal.
 brew "sst/tap/opencode"
+# Terminal weather app with ASCII animations
+brew "veirt/veirt/weathr"
 # Tools for building Android applications
 cask "android-studio"
 # Tool to flash OS images to SD cards & USB drives
