@@ -110,11 +110,11 @@ return {
                --    LZ_ROOT="/Users/sven.bergner/Downloads/package/lz/",
                --    DYLD_PRINT_LIBRARIES="YES", -- Print loaded libraries
                -- },
-               args = { '' },
+               -- args = { '' },
                -- args = { "-update" },
                -- args = { "-c", "-mnormal" },
                -- args = { "-mnormal" }, -- Start with normal mode
-               -- args = { "-n", "-mnormal" }, -- Start with normal mode and new file with intro
+               args = { "-n", "-mnormal" }, -- Start with normal mode and new file with intro
                -- args = { "-nih" }, -- BelegManager: no instance handling
                -- args = { "Im Modus normal liefert der Bereich Weitere Angaben (/.tdlSteuererklaerung) einen Themenfilter-Content." },
                -- args = { "Versenden der Einkommensteuer per ELSTER" },
@@ -219,7 +219,8 @@ return {
 
          vim.api.nvim_create_user_command('ResetDebuggee', function()
             require('telescope').extensions.debugee_selector.reset_search_path()
-            require('telescope').extensions.debugee_selector.show_debugee_candidates()
+            require('telescope').extensions.debugee_selector.reset_debugee_args()
+            require('telescope').extensions.debugee_selector.selectSearchPathRoot()
          end, { nargs = 0 })
 
          vim.api.nvim_create_user_command('ConfigureCMakeBuild', function()
