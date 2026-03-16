@@ -223,6 +223,10 @@ return {
             require('telescope').extensions.debugee_selector.selectSearchPathRoot()
          end, { nargs = 0 })
 
+         vim.api.nvim_create_user_command('EditDebuggeeArgs', function()
+            require('telescope').extensions.debugee_selector.edit_debugee_args()
+         end, { nargs = 0 })
+
          vim.api.nvim_create_user_command('ConfigureCMakeBuild', function()
             require('telescope').extensions.cmake_preset_selector.show_cmake_configure_presets()
          end, { nargs = 0 })
