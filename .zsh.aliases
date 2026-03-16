@@ -79,6 +79,10 @@ function ba() {
         echo "         bi:  Show info about a brew package"
         echo "         bs:  Search for a brew package"
         echo "         bba: Add a package to the Brewfile"
+        echo "         bbac: Add a cask to the Brewfile"
+        echo "         bbat: Add a tap to the Brewfile"
+        echo "         bbav: Add a vscode to the Brewfile"
+        echo "         bbau: Add a uv to the Brewfile"
         echo "         bbc: Cleanup Brewfile packages"
         echo "         bbe: Edit the Brewfile"
         echo "         bbi: Install an application"
@@ -100,13 +104,21 @@ alias bi='brew info'
 alias bs='brew search'
 function bba() {
     if [[ -z "$1" ]]; then
-        echo "Usage: bba <package_name>"
+        echo "Usage: bba [--cask|--tap|--vscode|--uv] <package_name>"
         return 1
     fi
-    brew bundle add "$1" && echo "Package '$1' added to Brewfile." || echo "Failed to add package '$1'."
+    if [[ "$1" == --cask || "$1" == --tap || "$1" == --vscode || "$1" == --uv ]] && [[ -z "$2" ]]; then
+        echo "Usage: bba $1 <package_name>"
+        return 1
+    fi
+    brew bundle add "$@" && echo "Package '$*' added to Brewfile." || echo "Failed to add package '$*'."
     brew bundle -q && echo "Brew bundle succeeded." || echo "Brew bundle failed."
     brew bundle dump --describe --force && echo "Brewfile updated!" || echo "Failed to update Brewfile."
 }
+alias bbac='bba --cask'
+alias bbat='bba --tap'
+alias bbav='bba --vscode'
+alias bbau='bba --uv'
 alias bbc='brew bundle cleanup'
 alias bbe='pushd ~/Repos/dotfiles && brew bundle edit && popd'
 alias bbi='brew install'
