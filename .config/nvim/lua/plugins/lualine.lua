@@ -63,6 +63,26 @@ local function diffActive()
    end
 end
 
+local function getDebugInfos()
+   local last_program = require('telescope').extensions.debugee_selector.get_last_program()
+   local last_debugee_args = require('telescope').extensions.debugee_selector.get_last_debugee_args()
+   local debug_infos = ''
+
+   if #last_program > 0 then
+      local program_name = last_program and vim.fn.fnamemodify(last_program, ':t') or 'unknown'
+      debug_infos = debug_infos .. ': ' .. program_name
+   end
+
+   if #last_debugee_args > 0 then
+      if #debug_infos > 0 then
+         debug_infos = debug_infos .. ' '
+      end
+      debug_infos = debug_infos .. ': ' .. last_debugee_args
+   end
+
+   return debug_infos
+end
+
 return {
    'nvim-lualine/lualine.nvim',
    config = function()
@@ -113,6 +133,7 @@ return {
                { 'filetype' },
                { 'encoding' },
                { 'fileformat' },
+               { getDebugInfos },
             },
             lualine_y = {
                { 'progress' },
