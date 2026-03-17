@@ -87,6 +87,8 @@ vim.keymap.set('n', '<F55>', '<cmd>ShowLastBuildMessage<CR>', { desc = 'Show mes
 vim.keymap.set('n', '<M-S-F7>', '<cmd>ShowLastBuildMessages<CR>', { desc = 'Show messages from last build' })
 vim.keymap.set('n', '<F67>', '<cmd>ShowLastBuildMessages<CR>', { desc = 'Show messages from last build' })
 vim.keymap.set('n', '<F7>', function()
+   require('dap').terminate()
+   vim.cmd({ cmd = 'StopCMakeBuild', args = { 'true' } })
    vim.cmd('RunCMakeBuild')
    -- Switch to normal mode only if currently in insert mode
    vim.schedule(function()
