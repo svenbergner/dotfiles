@@ -110,11 +110,11 @@ return {
                --    LZ_ROOT="/Users/sven.bergner/Downloads/package/lz/",
                --    DYLD_PRINT_LIBRARIES="YES", -- Print loaded libraries
                -- },
-               -- args = { '' },
+               args = { '' },
                -- args = { "-update" },
                -- args = { "-c", "-mnormal" },
                -- args = { "-mnormal" }, -- Start with normal mode
-               args = { "-n", "-mnormal" }, -- Start with normal mode and new file with intro
+               -- args = { '-n', '-mnormal' }, -- Start with normal mode and new file with intro
                -- args = { "-nih" }, -- BelegManager: no instance handling
                -- args = { "Im Modus normal liefert der Bereich Weitere Angaben (/.tdlSteuererklaerung) einen Themenfilter-Content." },
                -- args = { "Versenden der Einkommensteuer per ELSTER" },
@@ -246,9 +246,15 @@ return {
             require('telescope').extensions.cmake_preset_selector.show_cmake_build_presets_with_target()
          end, { nargs = 0 })
 
-         vim.api.nvim_create_user_command('StopCMakeBuild', function()
-            require('telescope').extensions.cmake_preset_selector.stop_current_cmake_build()
-         end, { nargs = 0 })
+         vim.api.nvim_create_user_command('StopCMakeBuild', function(opts)
+            local quiet = false
+            if opts.args ~= '' then
+               quiet = opts.args == 'true'
+            else
+               quiet = false
+            end
+            require('telescope').extensions.cmake_preset_selector.stop_current_cmake_build(quiet)
+         end, { nargs = '?' })
 
          vim.api.nvim_create_user_command('ShowLastBuildMessage', function()
             require('telescope').extensions.cmake_preset_selector.show_last_build_message()
