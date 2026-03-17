@@ -830,3 +830,4 @@ Quelltextinfos
 pragma
 scandir
 CTestTestfile
+enum
