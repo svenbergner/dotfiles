@@ -4,8 +4,6 @@ https://github.com/microsoft/azure-pipelines-language-server
 https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#azure_pipelines_ls
 --]===]
 
-local util = require("lspconfig.util")
-
 return {
    cmd = { "azure-pipelines-language-server", "--stdio" },
    filetypes = { "yaml", "yml" },

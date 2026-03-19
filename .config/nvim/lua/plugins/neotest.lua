@@ -15,7 +15,7 @@ return {
    keys = {
       { '<leader>TN', mode = 'n', desc = '[T]est: run [N]earest' },
       { '<leader>TS', mode = 'n', desc = '[T]est: [s]top running test' },
-      { '<leader>TA', mode = 'n', desc = '[T]ests run [A]ll in file'  },
+      { '<leader>TA', mode = 'n', desc = '[T]ests run [A]ll in file' },
       { '<leader>TD', mode = 'n', desc = '[T]est: [D]ebug nearest test' },
       { '<leader>TR', mode = 'n', desc = 'Show [T]est [R]esults' },
       { '<leader>TT', mode = 'n', desc = '[T]oggle [T]est summary' },
@@ -37,14 +37,14 @@ return {
 
       -- Monkey-patch ctest:new() to skip slow plenary.scandir when CTestTestfile.cmake
       -- is already at the root of the directory returned by our root() function.
-      local ok, ctest_mod = pcall(require, "neotest-ctest.ctest")
+      local ok, ctest_mod = pcall(require, 'neotest-ctest.ctest')
       if ok then
-         local nio = require("nio")
+         local nio = require('nio')
          local orig_new = ctest_mod.new
          ctest_mod.new = function(self, cwd)
             -- Fast path: skip slow plenary.scandir when CTestTestfile.cmake
             -- is already at the root of the directory returned by root().
-            if vim.loop.fs_stat(cwd .. "/CTestTestfile.cmake") then
+            if vim.loop.fs_stat(cwd .. '/CTestTestfile.cmake') then
                local session = {
                   _test_dir = cwd,
                   _output_junit_path = nio.fn.tempname(),
@@ -81,6 +81,7 @@ return {
                      or file_path:match('.*Test%.cpp$') ~= nil
                end,
                framework = { 'catch2' },
+               extra_args = { '[.GUI],[matcher]' },
                -- compile_commands.json in the source root is a symlink to the
                -- build directory. Resolve it to find where CTestTestfile.cmake is.
                root = function(dir)
@@ -100,7 +101,9 @@ return {
                         return path
                      end
                      local parent = vim.fn.fnamemodify(path, ':h')
-                     if parent == path then break end
+                     if parent == path then
+                        break
+                     end
                      path = parent
                   end
                   return nil
