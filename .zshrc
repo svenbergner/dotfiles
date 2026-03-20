@@ -250,5 +250,7 @@ fi
 
 export GPG_TTY=$(tty)
 
+eval "$(mise activate zsh)"
+
 eval $(starship completions zsh)
 export PATH="$PATH:$HOME/.local/bin"
