@@ -63,6 +63,27 @@ local function diffActive()
    end
 end
 
+-- Returns current compiler state
+---@return string
+local function getBuildState()
+   local s = require('telescope').extensions.cmake_preset_selector.get_build_state()
+   if #s.text < 2 then
+      return ''
+   end
+   local src_hl = s.state == 'successful' and 'DiagnosticOk' or 'DiagnosticError'
+   if s.state == 'building' then
+      src_hl = 'lualine_c_normal'
+   end
+   local custom_hl = s.state == 'successful' and 'LualineBuildOk' or 'LualineBuildFail'
+   local default_hl = 'lualine_c_normal'
+   local fg = vim.api.nvim_get_hl(0, { name = src_hl, link = false }).fg
+   local fg_normal = vim.api.nvim_get_hl(0, { name = 'lualine_c_normal', link = false }).fg
+   local bg = vim.api.nvim_get_hl(0, { name = 'lualine_c_normal', link = false }).bg
+   vim.api.nvim_set_hl(0, custom_hl, { fg = fg, bg = bg })
+   vim.api.nvim_set_hl(0, default_hl, { fg = fg_normal, bg = bg })
+   return '%#' .. custom_hl .. '#' .. s.icon .. '%*' .. '%#' .. default_hl .. '# ' .. s.text .. '%*'
+end
+
 local function getDebugInfos()
    local last_program = require('telescope').extensions.debugee_selector.get_last_program()
    local last_debugee_args = require('telescope').extensions.debugee_selector.get_last_debugee_args()
@@ -133,7 +154,18 @@ return {
                { 'filetype' },
                { 'encoding' },
                { 'fileformat' },
-               { getDebugInfos },
+               {
+                  getBuildState,
+                  cond = function()
+                     return #getBuildState() > 2
+                  end,
+               },
+               {
+                  getDebugInfos,
+                  cond = function()
+                     return #getDebugInfos() > 2
+                  end,
+               },
             },
             lualine_y = {
                { 'progress' },
