@@ -354,6 +354,7 @@ return {
          vim.keymap.set('n', '<leader>do', dapview.open, { desc = '[d]apview [o]pen' })
          vim.keymap.set('n', '<leader>dq', dapview.close, { desc = '[d]apview [q]uit' })
 
+         -- Show different dapview panes
          vim.keymap.set('n', '<leader>dsw', function()
             vim.cmd('DapViewShow watches')
          end, { desc = '[d]apview [s]how [w]atches' })
@@ -373,6 +374,7 @@ return {
             vim.cmd('DapViewShow repl')
          end, { desc = '[d]apview [s]how [r]epl' })
 
+         -- Jump to different dapview panes
          vim.keymap.set('n', '<leader>djw', function()
             vim.cmd('DapViewJump watches')
          end, { desc = '[d]apview [j]ump to [w]atches' })
@@ -392,11 +394,14 @@ return {
             vim.cmd('DapViewJump repl')
          end, { desc = '[d]apview [j]ump to [r]epl' })
 
+         -- Setting breakpoints
          vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Toggle [d]ab [b]reakpoint' })
          vim.keymap.set('n', '<leader>dB', function()
             dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
          end, { desc = 'Set [d]ap conditional [B]reakpoint' })
+
          vim.keymap.set('n', '<leader>dc', dap.run_to_cursor, { desc = '[d]ab: Run to [c]ursor' })
+
          vim.keymap.set('n', '<leader>de', function ()
             vim.cmd('EditDebuggeeArgs')
          end, { desc = '[d]ab: [e]dit debugee args' })
