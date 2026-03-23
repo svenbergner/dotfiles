@@ -224,6 +224,8 @@ brew "starship"
 brew "stow"
 # Modern and pretty fancy file manager for the terminal
 brew "superfile"
+# General purpose fuzzy finder TUI
+brew "television"
 # Simplified and community-driven man pages
 brew "tldr"
 # Color-based alternative to figlet (uses libcaca)
