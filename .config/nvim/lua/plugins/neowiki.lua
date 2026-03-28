@@ -48,9 +48,15 @@ return {
             name = 'Work',
             path = '~/Repos/workwiki/',
          },
+         {
+            name = 'Erinnerungen',
+            path = '~/Repos/Erinnerungen/',
+         },
       },
    },
    keys = {
-      { '<leader>WW', '<cmd>lua require(\'neowiki\').open_wiki_floating()<cr>', desc = 'Open Wiki in Floating Window' },
+      { '<leader>ww', '<cmd>lua require(\'neowiki\').open_wiki_floating()<cr>', desc = 'Open Wiki in Floating Window' },
+      { '<leader>we', '<cmd>lua require(\'neowiki\').open_wiki_floating("Erinnerungen")<cr>', desc = 'Open Erinnerungen Wiki in Floating Window' },
+      { '<leader>wp', '<cmd>lua require(\'neowiki\').open_wiki_floating("Personal")<cr>', desc = 'Open Personal Wiki in Floating Window' },
    },
 }
