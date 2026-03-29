@@ -2,6 +2,17 @@
 Sonarqube
 https://gitlab.com/schrieveslaach/sonarlint.nvim
 
+New cfamily plugins:
+https://binaries.sonarsource.com/?prefix=CommercialDistribution/sonar-cfamily-plugin/
+
+Current version:
+~/.local/share/nvim/mason/packages/sonarlint-language-server/extension/package.json
+
+```bash
+jq '.. | objects | select(.artifactId? == "sonar-cfamily-plugin") | .version' \
+  ~/.local/share/nvim/mason/packages/sonarlint-language-server/extension/package.json
+```
+
 Integrates with the sonarlint-language-server to deliver real-time
 static analysis and code actions directly in neovim
 --]===]
