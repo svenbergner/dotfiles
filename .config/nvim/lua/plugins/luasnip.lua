@@ -10,6 +10,8 @@ https://youtu.be/FmHhonPjvvA?si=8NrcRWu4GGdmTzee
 return {
    'L3MON4D3/LuaSnip',
    enabled = true,
+   version = '2.*',
+   build = 'make install_jsregexp',
    opts = function(_, opts)
       -- Load my personal snippets
       local snippets_path = vim.fn.stdpath('config') .. '/snippets'
