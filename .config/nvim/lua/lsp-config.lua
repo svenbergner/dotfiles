@@ -41,9 +41,7 @@ vim.keymap.set('i', '<A-o>', sw, { desc = 'LSP: Alt + o - switch source/header' 
 vim.keymap.set('i', '<M-o>', sw, { desc = 'LSP: Meta + o - switch source/header' })
 
 -- Options for LSP
-vim.lsp.set_log_level('OFF') -- Set log level to OFF to disable logging
-
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+vim.lsp.log.set_level('OFF') -- Set log level to OFF to disable logging
 
 vim.lsp.inlay_hint.enable(true)
 
@@ -106,7 +104,7 @@ local function restart_lsp(bufnr)
    local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
    for _, client in ipairs(clients) do
-      vim.lsp.stop_client(client.id)
+      client:stop(1000)
    end
 
    vim.defer_fn(function()
@@ -251,7 +249,7 @@ local function lsp_info()
    print('')
 
    -- Basic info
-   print('󰈙 Language client log: ' .. vim.lsp.get_log_path())
+   print('󰈙 Language client log: ' .. vim.lsp.log.get_filename())
    print('󰈔 Detected filetype: ' .. vim.bo.filetype)
    print('󰈮 Buffer: ' .. bufnr)
    print('󰈔 Root directory: ' .. (vim.fn.getcwd() or 'N/A'))
