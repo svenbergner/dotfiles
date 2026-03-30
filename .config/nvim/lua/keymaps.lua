@@ -20,6 +20,14 @@ vim.keymap.set('v', 'p', '"_dP', { desc = 'Replace visual selection' })
 -- Yank from cursor to end of line
 vim.keymap.set('n', 'Y', 'y$', { desc = 'Yank from cursor to end of line' })
 
+-- Restart Neovim
+vim.keymap.set(
+   'n',
+   '<leader>R',
+   '<cmd>wa<CR><cmd>restart<CR>',
+   { silent = true, desc = 'Save all bufferns and [R]esart current Neovim instance.' }
+)
+
 -- Save and source the current file
 vim.keymap.set(
    'n',
