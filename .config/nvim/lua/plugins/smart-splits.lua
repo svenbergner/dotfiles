@@ -1,4 +1,7 @@
 --[===[
+Smart-Splits.nvim
+https://github.com/mrjones2014/smart-splits.nvim
+
 Smarter and more intuitive split pane management that uses a mental model of
 left/right/up/down instead of wider/narrower/taller/shorter for resizing.
 Supports seamless navigation between Neovim and terminal multiplexer split panes.
