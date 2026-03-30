@@ -146,6 +146,8 @@ brew "luarocks"
 brew "lynx"
 # Generate a markdown TOC (table of contents) with Remarkable
 brew "markdown-toc"
+# CLI for Mermaid library
+brew "mermaid-cli"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # FTP client with an advanced user interface
@@ -224,6 +226,8 @@ brew "starship"
 brew "stow"
 # Modern and pretty fancy file manager for the terminal
 brew "superfile"
+# Modernized, complete, self-contained TeX/LaTeX engine
+brew "tectonic"
 # General purpose fuzzy finder TUI
 brew "television"
 # Simplified and community-driven man pages
