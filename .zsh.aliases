@@ -68,7 +68,7 @@ alias dp='delta --dark --paging=always --line-numbers --features side-by-side --
 
 # Homebrew aliases, functions, and environment variables
 export HOMEBREW_BUNDLE_FILE=~/.config/Brewfile
-export HOMEBREW_BUNDLE_DUMP_DESCRIBE=1
+export HOMEBREW_BUNDLE_DESCRIBE=1
 export HOMEBREW_BUNDLE_INSTALL_CLEANUP=1
 export HOMEBREW_NO_ENV_HINTS=1
 function ba() {
