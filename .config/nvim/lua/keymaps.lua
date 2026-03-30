@@ -233,7 +233,15 @@ end, { desc = '[c]ode [L]ist incoming calls', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cO', function()
    vim.lsp.buf.outgoing_calls()
 end, { desc = '[c]ode [O]utgoing calls', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cg', '<cmd>ChangeIncludeGuardToPragmaOnce<CR>'
-, { desc = '[c]ode change include [g]uard', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cc', '<cmd>RemoveDividerComments<CR>'
-, { desc = '[c]ode remove divider [c]omments', noremap = true, silent = true })
+vim.keymap.set(
+   'n',
+   '<leader>cg',
+   '<cmd>ChangeIncludeGuardToPragmaOnce<CR>',
+   { desc = '[c]ode change include [g]uard', noremap = true, silent = true }
+)
+vim.keymap.set(
+   'n',
+   '<leader>cc',
+   '<cmd>RemoveDividerComments<CR>',
+   { desc = '[c]ode remove divider [c]omments', noremap = true, silent = true }
+)
