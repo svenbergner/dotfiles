@@ -195,9 +195,7 @@ return {
             'nerdfont',
             'env',
          },
-         per_filetype = {
-            org = { 'orgmode' },
-         },
+         per_filetype = {},
          providers = {
             copilot = {
                name = 'copilot',
@@ -248,11 +246,6 @@ return {
                module = 'lazydev.integrations.blink',
                -- make lazydev completions top priority (see `:h blink.cmp`)
                score_offset = 100,
-            },
-            orgmode = {
-               name = 'orgmode',
-               module = 'orgmode.org.autocompletion.blink',
-               fallbacks = { 'buffer' },
             },
          },
       },
