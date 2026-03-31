@@ -20,7 +20,8 @@ return {
             keys = {},
          },
          spec = {
-            { '<leader>a',        group = '[a]vante',                   icon = '💬' },
+            { 'g',                group = '[g]lobal',                   icon = '', },
+            { '<leader>a',        group = '[a]vante',                   icon = '' },
             { '<leader>b',        group = '[b]uffer',                   icon = '' },
             { '<leader>bo',       group = '[o]rder by',                 icon = ' ' },
             { '<leader>c',        group = '[c]ode',                     icon = '' },
