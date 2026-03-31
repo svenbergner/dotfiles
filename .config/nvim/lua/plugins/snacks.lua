@@ -473,14 +473,14 @@ return {
          desc = 'LSP: [g]oto [d]efinition',
       },
       {
-         'gi',
+         'gri',
          function()
             Snacks.picker.lsp_implementations()
          end,
          desc = 'LSP: [G]oto [i]mplementation',
       },
       {
-         'gr',
+         'grr',
          function()
             Snacks.picker.lsp_references()
          end,
