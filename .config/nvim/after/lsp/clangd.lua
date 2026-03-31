@@ -17,7 +17,7 @@ local function switch_source_header(bufnr)
       return vim.notify(('method %s is not supported by any servers active on the current buffer'):format(method_name))
    end
    local params = vim.lsp.util.make_text_document_params(bufnr)
-   client.request(method_name, params, function(err, result)
+   client:request(method_name, params, function(err, result)
       if err then
          error(tostring(err))
       end
