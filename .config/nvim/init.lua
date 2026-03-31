@@ -23,6 +23,7 @@ require('keymaps')
 require('keymaps-markdown')
 require('autocmds')
 require('usercmds')
+require('lsp-keymaps')
 
 -- Bootstrap the lazy.nvim package manager
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'

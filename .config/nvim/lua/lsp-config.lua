@@ -1,5 +1,5 @@
 --[===[
-LSP Diagnostics Configuration and Key Mappings
+LSP Diagnostics Configuration and User Commands
 --]===]
 
 vim.diagnostic.config({
@@ -33,72 +33,11 @@ vim.diagnostic.config({
    -- },
 })
 
-local sw = '<cmd>LspClangdSwitchSourceHeader<CR>'
-vim.keymap.set('n', '<F4>', sw, { desc = 'LSP: F4 - switch source/header' })
-vim.keymap.set('n', '<A-o>', sw, { desc = 'LSP: Alt + o - switch source/header' })
-vim.keymap.set('n', '<M-o>', sw, { desc = 'LSP: Meta + o - switch source/header' })
-vim.keymap.set('i', '<A-o>', sw, { desc = 'LSP: Alt + o - switch source/header' })
-vim.keymap.set('i', '<M-o>', sw, { desc = 'LSP: Meta + o - switch source/header' })
-
 -- Options for LSP
 vim.lsp.log.set_level('OFF') -- Set log level to OFF to disable logging
-
 vim.lsp.inlay_hint.enable(true)
 
--- Key mappings for LSP
-vim.keymap.set('n', '<F6>', function()
-   vim.diagnostic.jump({ count = 1, float = true })
-   vim.cmd('normal! zz')
-end, { desc = 'Go to next diagnostic message' })
-
-vim.keymap.set('n', '<S-F6>', function()
-   vim.diagnostic.jump({ count = -1, float = true })
-   vim.cmd('normal! zz')
-end, { desc = 'Go to previous diagnostic message' })
-
-vim.keymap.set('n', '<F18>', function()
-   vim.diagnostic.jump({ count = -1, float = true })
-end, { desc = 'Go to previous diagnostic message' })
-
-vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, { desc = 'LSP: Rename <F2>' })
-vim.keymap.set('n', 'K', function()
-   vim.lsp.buf.hover({ border = 'rounded' })
-end, { desc = 'LSP: Hover Documentation' })
-vim.keymap.set('n', '<C-S-k>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature Documentation' })
-vim.keymap.set('n', '<leader>Wa', vim.lsp.buf.add_workspace_folder, { desc = 'LSP: [W]orkspace [A]dd Folder' })
-vim.keymap.set('n', '<leader>Wr', vim.lsp.buf.remove_workspace_folder, { desc = 'LSP: [W]orkspace [R]emove Folder' })
-vim.keymap.set('n', '<leader>Wl', function()
-   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-end, { desc = 'LSP: [W]orkspace [L]ist Folders' })
-
-vim.api.nvim_buf_create_user_command(0, 'Format', function(_)
-   vim.lsp.buf.format()
-end, { desc = 'Format current buffer with LSP' })
-vim.keymap.set('n', '<S-F7>', '<cmd>ConfigureCMakeBuild<CR>', { desc = 'Run cmake configure' })
-vim.keymap.set('n', '<F19>', '<cmd>ConfigureCMakeBuild<CR>', { desc = 'Run cmake configure' })
-vim.keymap.set('n', '<C-F7>', '<cmd>StopCMakeBuild<CR>', { desc = 'Stop cmake build' })
-vim.keymap.set('n', '<F31>', '<cmd>StopCMakeBuild<CR>', { desc = 'Stop cmake build' })
-vim.keymap.set('n', '<F43>', '<cmd>RunCMakeBuildWithTarget<CR>', { desc = 'Run cmake build with target' })
-vim.keymap.set('n', '<C-S-F7>', '<cmd>RunCMakeBuildWithTarget<CR>', { desc = 'Run cmake build with target' })
-vim.keymap.set('n', '<M-F7>', '<cmd>ShowLastBuildMessage<CR>', { desc = 'Show message from last build' })
-vim.keymap.set('n', '<F55>', '<cmd>ShowLastBuildMessage<CR>', { desc = 'Show message from last build' })
-vim.keymap.set('n', '<M-S-F7>', '<cmd>ShowLastBuildMessages<CR>', { desc = 'Show messages from last build' })
-vim.keymap.set('n', '<F67>', '<cmd>ShowLastBuildMessages<CR>', { desc = 'Show messages from last build' })
-vim.keymap.set('n', '<F7>', function()
-   require('dap').terminate()
-   vim.cmd({ cmd = 'StopCMakeBuild', args = { 'true' } })
-   vim.cmd('RunCMakeBuild')
-   -- Switch to normal mode only if currently in insert mode
-   vim.schedule(function()
-      local mode = vim.api.nvim_get_mode().mode
-      if mode == 'i' or mode == 'ic' or mode == 'ix' then
-         vim.cmd('stopinsert')
-      end
-   end)
-end, { desc = 'LSP: Run cmake build' })
-
 -- Extras
-
 local function restart_lsp(bufnr)
    bufnr = bufnr or vim.api.nvim_get_current_buf()
    local clients = vim.lsp.get_clients({ bufnr = bufnr })
@@ -112,9 +51,7 @@ local function restart_lsp(bufnr)
    end, 100)
 end
 
-vim.api.nvim_create_user_command('LspRestart', function()
-   restart_lsp()
-end, {})
+vim.api.nvim_create_user_command('LspRestart', restart_lsp, {})
 
 local function lsp_status()
    local bufnr = vim.api.nvim_get_current_buf()
@@ -359,104 +296,104 @@ end
 -- Create command
 vim.api.nvim_create_user_command('LspInfo', lsp_info, { desc = 'Show comprehensive LSP information' })
 
-local function lsp_status_short()
-   local bufnr = vim.api.nvim_get_current_buf()
-   local clients = vim.lsp.get_clients({ bufnr = bufnr })
-
-   if #clients == 0 then
-      return '' -- Return empty string when no LSP
-   end
-
-   local names = {}
-   for _, client in ipairs(clients) do
-      table.insert(names, client.name)
-   end
-
-   return '󰒋 ' .. table.concat(names, ',')
-end
-
-local function git_branch()
-   local ok, handle = pcall(io.popen, 'git branch --show-current 2>/dev/null')
-   if not ok or not handle then
-      return ''
-   end
-   local branch = handle:read('*a')
-   handle:close()
-   if branch and branch ~= '' then
-      branch = branch:gsub('\n', '')
-      return '󰊢 ' .. branch
-   end
-   return ''
-end
-
-local function formatter_status()
-   local ok, conform = pcall(require, 'conform')
-   if not ok then
-      return ''
-   end
-
-   local formatters = conform.list_formatters_to_run(0)
-   if #formatters == 0 then
-      return ''
-   end
-
-   local formatter_names = {}
-   for _, formatter in ipairs(formatters) do
-      table.insert(formatter_names, formatter.name)
-   end
-
-   return '󰉿 ' .. table.concat(formatter_names, ',')
-end
-
-local function linter_status()
-   local ok, lint = pcall(require, 'lint')
-   if not ok then
-      return ''
-   end
-
-   local linters = lint.linters_by_ft[vim.bo.filetype] or {}
-   if #linters == 0 then
-      return ''
-   end
-
-   return '󰁨 ' .. table.concat(linters, ',')
-end
--- Safe wrapper functions for statusline
-local function safe_git_branch()
-   local ok, result = pcall(git_branch)
-   return ok and result or ''
-end
-
-local function safe_lsp_status()
-   local ok, result = pcall(lsp_status_short)
-   return ok and result or ''
-end
-
-local function safe_formatter_status()
-   local ok, result = pcall(formatter_status)
-   return ok and result or ''
-end
-
-local function safe_linter_status()
-   local ok, result = pcall(linter_status)
-   return ok and result or ''
-end
-
-_G.git_branch = safe_git_branch
-_G.lsp_status = safe_lsp_status
-_G.formatter_status = safe_formatter_status
-_G.linter_status = safe_linter_status
-
--- THEN set the statusline
-vim.opt.statusline = table.concat({
-   '%{v:lua.git_branch()}', -- Git branch
-   '%f', -- File name
-   '%m', -- Modified flag
-   '%r', -- Readonly flag
-   '%=', -- Right align
-   '%{v:lua.linter_status()}', -- Linter status
-   '%{v:lua.formatter_status()}', -- Formatter status
-   '%{v:lua.lsp_status()}', -- LSP status
-   ' %l:%c', -- Line:Column
-   ' %p%%', -- Percentage through file
-}, ' ')
+-- local function lsp_status_short()
+--    local bufnr = vim.api.nvim_get_current_buf()
+--    local clients = vim.lsp.get_clients({ bufnr = bufnr })
+--
+--    if #clients == 0 then
+--       return '' -- Return empty string when no LSP
+--    end
+--
+--    local names = {}
+--    for _, client in ipairs(clients) do
+--       table.insert(names, client.name)
+--    end
+--
+--    return '󰒋 ' .. table.concat(names, ',')
+-- end
+--
+-- local function git_branch()
+--    local ok, handle = pcall(io.popen, 'git branch --show-current 2>/dev/null')
+--    if not ok or not handle then
+--       return ''
+--    end
+--    local branch = handle:read('*a')
+--    handle:close()
+--    if branch and branch ~= '' then
+--       branch = branch:gsub('\n', '')
+--       return '󰊢 ' .. branch
+--    end
+--    return ''
+-- end
+--
+-- local function formatter_status()
+--    local ok, conform = pcall(require, 'conform')
+--    if not ok then
+--       return ''
+--    end
+--
+--    local formatters = conform.list_formatters_to_run(0)
+--    if #formatters == 0 then
+--       return ''
+--    end
+--
+--    local formatter_names = {}
+--    for _, formatter in ipairs(formatters) do
+--       table.insert(formatter_names, formatter.name)
+--    end
+--
+--    return '󰉿 ' .. table.concat(formatter_names, ',')
+-- end
+--
+-- local function linter_status()
+--    local ok, lint = pcall(require, 'lint')
+--    if not ok then
+--       return ''
+--    end
+--
+--    local linters = lint.linters_by_ft[vim.bo.filetype] or {}
+--    if #linters == 0 then
+--       return ''
+--    end
+--
+--    return '󰁨 ' .. table.concat(linters, ',')
+-- end
+-- -- Safe wrapper functions for statusline
+-- local function safe_git_branch()
+--    local ok, result = pcall(git_branch)
+--    return ok and result or ''
+-- end
+--
+-- local function safe_lsp_status()
+--    local ok, result = pcall(lsp_status_short)
+--    return ok and result or ''
+-- end
+--
+-- local function safe_formatter_status()
+--    local ok, result = pcall(formatter_status)
+--    return ok and result or ''
+-- end
+--
+-- local function safe_linter_status()
+--    local ok, result = pcall(linter_status)
+--    return ok and result or ''
+-- end
+--
+-- _G.git_branch = safe_git_branch
+-- _G.lsp_status = safe_lsp_status
+-- _G.formatter_status = safe_formatter_status
+-- _G.linter_status = safe_linter_status
+--
+-- -- THEN set the statusline
+-- vim.opt.statusline = table.concat({
+--    '%{v:lua.git_branch()}', -- Git branch
+--    '%f', -- File name
+--    '%m', -- Modified flag
+--    '%r', -- Readonly flag
+--    '%=', -- Right align
+--    '%{v:lua.linter_status()}', -- Linter status
+--    '%{v:lua.formatter_status()}', -- Formatter status
+--    '%{v:lua.lsp_status()}', -- LSP status
+--    ' %l:%c', -- Line:Column
+--    ' %p%%', -- Percentage through file
+-- }, ' ')
