@@ -50,10 +50,10 @@ autocmd('BufEnter', {
 -- Prevent Telescope from entering insert mode after leaving a prompt
 autocmd({ 'BufLeave', 'BufWinLeave' }, {
    callback = function(event)
-      if vim.bo[event.buf].filetype == "TelescopePrompt" then
-         vim.api.nvim_exec2("silent! stopinsert!", {})
+      if vim.bo[event.buf].filetype == 'TelescopePrompt' then
+         vim.api.nvim_exec2('silent! stopinsert!', {})
       end
-   end
+   end,
 })
 
 -- Disable spell checking in the quickfix list
@@ -119,22 +119,21 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 -- activate codelens if supported by any attached LSP client
 local function check_codelens_support()
-local clients = vim.lsp.get_clients({ bufnr = 0 })
-for _, c in ipairs(clients) do
-  if c.server_capabilities.codeLensProvider then
-    return true
-  end
-end
-return false
+   local clients = vim.lsp.get_clients({ bufnr = 0 })
+   for _, c in ipairs(clients) do
+      if c.server_capabilities.codeLensProvider then
+         return true
+      end
+   end
+   return false
 end
 
 vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave', 'CursorHold', 'LspAttach', 'BufEnter' }, {
-buffer = bufnr,
-callback = function ()
-  if check_codelens_support() then
-    vim.lsp.codelens.refresh({bufnr = 0})
-  end
-end
+   callback = function()
+      if check_codelens_support() then
+         vim.lsp.codelens.enable(true)
+      end
+   end,
 })
 
 -- trigger codelens refresh
