@@ -239,6 +239,7 @@ return {
          end, { nargs = 0 })
 
          vim.api.nvim_create_user_command('RunCMakeBuild', function()
+            vim.cmd('cclose')
             require('telescope').extensions.cmake_preset_selector.show_cmake_build_presets()
          end, { nargs = 0 })
 
