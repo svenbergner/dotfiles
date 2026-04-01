@@ -81,7 +81,6 @@ return {
                      or file_path:match('.*Test%.cpp$') ~= nil
                end,
                framework = { 'catch2' },
-               extra_args = { '[.GUI],[matcher]' },
                -- compile_commands.json in the source root is a symlink to the
                -- build directory. Resolve it to find where CTestTestfile.cmake is.
                root = function(dir)
