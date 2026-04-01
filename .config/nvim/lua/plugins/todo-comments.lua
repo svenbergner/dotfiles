@@ -13,6 +13,7 @@ WARN:
 HACK:
 NOTE:
 INFO:
+IMPORTANT:
 
 --]===]
 
@@ -31,7 +32,7 @@ return {
          TODO = { icon = ' ', color = 'info', alt = { 'TODO' } },
          TEST = { icon = '󰙨 ', color = 'info' },
          WARN = { icon = ' ', color = 'warning', alt = { 'WARN', 'WARNING' } },
-         NOTE = { icon = ' ', color = 'hint', alt = { 'INFO' } },
+         NOTE = { icon = ' ', color = 'hint', alt = { 'INFO', 'IMPORTANT' } },
       },
    },
 }
