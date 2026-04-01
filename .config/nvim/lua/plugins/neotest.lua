@@ -35,15 +35,15 @@ return {
    config = function()
       require('tasks').setup({})
 
-      -- Monkey-patch ctest:new() to skip slow plenary.scandir when CTestTestfile.cmake
-      -- is already at the root of the directory returned by our root() function.
+      -- Monkey-patch ctest:new() so it resolves the build directory from
+      -- compile_commands.json when called with the SOURCE directory (which is
+      -- what root() now returns for a clean neotest summary tree).
       local ok, ctest_mod = pcall(require, 'neotest-ctest.ctest')
       if ok then
          local nio = require('nio')
          local orig_new = ctest_mod.new
          ctest_mod.new = function(self, cwd)
-            -- Fast path: skip slow plenary.scandir when CTestTestfile.cmake
-            -- is already at the root of the directory returned by root().
+            -- Fast path 1: cwd is already a build dir with CTestTestfile.cmake.
             if vim.loop.fs_stat(cwd .. '/CTestTestfile.cmake') then
                local session = {
                   _test_dir = cwd,
@@ -53,6 +53,25 @@ return {
                setmetatable(session, self)
                self.__index = self
                return session
+            end
+            -- Fast path 2: cwd is a source dir with a compile_commands.json symlink
+            -- that resolves to a build dir containing CTestTestfile.cmake.
+            local cc = cwd .. '/compile_commands.json'
+            if vim.loop.fs_stat(cc) then
+               local real = vim.loop.fs_realpath(cc)
+               if real then
+                  local build_dir = vim.fn.fnamemodify(real, ':h')
+                  if vim.loop.fs_stat(build_dir .. '/CTestTestfile.cmake') then
+                     local session = {
+                        _test_dir = build_dir,
+                        _output_junit_path = nio.fn.tempname(),
+                        _output_log_path = nio.fn.tempname(),
+                     }
+                     setmetatable(session, self)
+                     self.__index = self
+                     return session
+                  end
+               end
             end
             return orig_new(self, cwd)
          end
@@ -82,7 +101,9 @@ return {
                end,
                framework = { 'catch2' },
                -- compile_commands.json in the source root is a symlink to the
-               -- build directory. Resolve it to find where CTestTestfile.cmake is.
+               -- build directory. root() gibt das SOURCE-Verzeichnis zurück damit
+               -- die neotest-Summary die Quell-Struktur zeigt (nicht den Build-Dir).
+               -- Der Monkey-Patch in ctest:new() löst daraus das Build-Dir auf.
                root = function(dir)
                   -- Walk up from 'dir' to find compile_commands.json
                   local path = vim.fn.isdirectory(dir) == 1 and dir or vim.fn.fnamemodify(dir, ':h')
@@ -90,14 +111,7 @@ return {
                   while path and path ~= home and path ~= '/' do
                      local cc = path .. '/compile_commands.json'
                      if vim.loop.fs_stat(cc) then
-                        local real = vim.loop.fs_realpath(cc)
-                        if real then
-                           local build_dir = vim.fn.fnamemodify(real, ':h')
-                           if build_dir ~= path then
-                              return build_dir
-                           end
-                        end
-                        return path
+                        return path -- Source-Dir zurückgeben, nicht das aufgelöste Build-Dir
                      end
                      local parent = vim.fn.fnamemodify(path, ':h')
                      if parent == path then
