@@ -6,7 +6,7 @@ https://github.com/cuducos/yaml.nvim
 return {
    'cuducos/yaml.nvim',
    enabled = true,
-   ft = { 'yaml', 'yml' },
+   ft = { 'yaml' },
    dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'nvim-telescope/telescope.nvim', -- optional
