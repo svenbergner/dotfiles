@@ -6,6 +6,7 @@ https://github.com/nvim-treesitter/nvim-treesitter
 return {
    'nvim-treesitter/nvim-treesitter',
    enabled = true,
+   branch = 'master',
    lazy = false,
    build = ':TSUpdate',
    dependencies = {
