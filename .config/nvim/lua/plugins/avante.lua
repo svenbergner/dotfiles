@@ -2,6 +2,15 @@
 avante.nvim
 https://github.com/yetone/avante.nvim
 
+Dependencies:
+https://github.com/HakonHarnes/img-clip.nvim
+https://github.com/MeanderingProgrammer/render-markdown.nvim
+https://github.com/MunifTanjim/nui.nvim
+https://github.com/nvim-lua/plenary.nvim
+https://github.com/nvim-tree/nvim-web-devicons
+https://github.com/nvim-treesitter/nvim-treesitter
+https://github.com/zbirenbaum/copilot.lua
+
 A Neovim plugin designed to emulate the behaviour of the Cursor AI IDE.
 It provides users with AI-driven code suggestions and the ability to apply
 these recommendations directly to their source files with minimal effort.
