@@ -132,6 +132,7 @@ vim.keymap.set('n', '<leader>ls', '<CMD>Lazy sync<CR>', { silent = true, desc = 
 vim.keymap.set('n', '<leader>lc', '<CMD>Lazy check<CR>', { silent = true, desc = '[l]azy [c]heck' })
 vim.keymap.set('n', '<leader>lp', '<CMD>Lazy profile<CR>', { silent = true, desc = '[l]azy [p]rofile' })
 vim.keymap.set('n', '<leader>lh', '<CMD>Lazy help<CR>', { silent = true, desc = '[l]azy [h]elp' })
+vim.keymap.set('n', '<leader>lm', '<CMD>Mason<CR>', { silent = true, desc = 'show [l][m]ason' })
 
 -- Yank mappings
 vim.keymap.set('n', '<leader>yf', '<cmd>let @"=@%<CR>', { silent = true, desc = '[y]ank [f]ilename' })
