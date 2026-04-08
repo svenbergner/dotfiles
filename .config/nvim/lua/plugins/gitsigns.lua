@@ -162,5 +162,23 @@ return {
             })
          end,
       })
+
+      -- Hide current line blame while DAP is stopped at a breakpoint
+      vim.schedule(function()
+         local ok, dap = pcall(require, 'dap')
+         if not ok then return end
+         dap.listeners.after.event_stopped['gitsigns_hide_blame'] = function()
+            gitsigns.toggle_current_line_blame(false)
+         end
+         dap.listeners.after.event_continued['gitsigns_show_blame'] = function()
+            gitsigns.toggle_current_line_blame(true)
+         end
+         dap.listeners.after.event_terminated['gitsigns_show_blame'] = function()
+            gitsigns.toggle_current_line_blame(true)
+         end
+         dap.listeners.after.event_exited['gitsigns_show_blame'] = function()
+            gitsigns.toggle_current_line_blame(true)
+         end
+      end)
    end,
 }
