@@ -236,6 +236,8 @@ brew "tldr"
 brew "toilet"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Parser generator tool
+brew "tree-sitter-cli"
 # Ncurses-based klondike solitaire game
 brew "tty-solitaire"
 # Markup-based typesetting system
