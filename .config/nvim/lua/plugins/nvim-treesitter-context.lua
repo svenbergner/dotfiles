@@ -12,6 +12,7 @@ loops or conditions are surrounding the visible code.
 return {
    'nvim-treesitter/nvim-treesitter-context',
    enabled = true,
+   branch = 'master',
    event = 'VeryLazy',
    opts = {
       enable = true,
