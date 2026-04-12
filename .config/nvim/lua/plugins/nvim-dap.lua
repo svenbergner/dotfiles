@@ -340,7 +340,9 @@ return {
             vim.cmd('SetDebuggee')
          end, { desc = 'Set Debugee' })
          vim.keymap.set('n', '<F5>', function()
-            dap.continue()
+            if vim.bo.filetype ~= 'markdown' then
+               dap.continue()
+            end
          end, { desc = 'Start/Continue Debugging' })
          vim.keymap.set('n', '<S-F5>', dap.terminate, { desc = 'Stop Debugging' })
          vim.keymap.set('n', '<F17>', dap.terminate, { desc = 'Stop Debugging' })
@@ -403,7 +405,7 @@ return {
 
          vim.keymap.set('n', '<leader>dc', dap.run_to_cursor, { desc = '[d]ab: Run to [c]ursor' })
 
-         vim.keymap.set('n', '<leader>de', function ()
+         vim.keymap.set('n', '<leader>de', function()
             vim.cmd('EditDebuggeeArgs')
          end, { desc = '[d]ab: [e]dit debugee args' })
          vim.keymap.set('n', '<Leader>dt', function()
