@@ -4,3 +4,4 @@
 .zsh.local
 Library/Application Support/nushell/history.txt
 /Library/Application Support/weathr
+nvim-pack-lock.json
