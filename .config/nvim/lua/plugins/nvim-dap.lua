@@ -45,9 +45,11 @@ https://github.com/jbyuki/one-small-step-for-vimkind
 
 The nvim-dap-python is a DAP adapter for python using debugpy
 https://codeberg.org/mfussenegger/nvim-dap-python
+
+DAP Virtual Text:
+https://github.com/theHamsta/nvim-dap-virtual-text
 --]===]
 
----@diagnostic disable: undefined-field
 return {
    {
       'mfussenegger/nvim-dap',
