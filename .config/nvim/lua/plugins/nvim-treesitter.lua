@@ -9,31 +9,6 @@ return {
    branch = 'main',
    lazy = false,
    build = ':TSUpdate',
-   -- opts = {
-   --    inlay_hints = {
-   --       inline = true,
-   --    },
-   --    ast = {
-   --       --These require codicons (https://github.com/microsoft/vscode-codicons)
-   --       role_icons = {
-   --          type = '',
-   --          declaration = '',
-   --          expression = '',
-   --          specifier = '',
-   --          statement = '',
-   --          ['template argument'] = '',
-   --       },
-   --       kind_icons = {
-   --          Compound = '',
-   --          Recovery = '',
-   --          TranslationUnit = '',
-   --          PackExpansion = '',
-   --          TemplateTypeParm = '',
-   --          TemplateTemplateParm = '',
-   --          TemplateParamObject = '',
-   --       },
-   --    },
-   -- },
    config = function()
       vim.opt.foldmethod = 'expr'
       vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
