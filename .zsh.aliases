@@ -1,5 +1,4 @@
 alias v='nvim'
-alias vt='NVIM_APPNAME=nvim-treesitter ; nvim'
 
 alias o="bat"
 
