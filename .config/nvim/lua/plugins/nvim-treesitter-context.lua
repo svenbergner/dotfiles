@@ -21,12 +21,12 @@ return {
    },
    keys = {
       {
-         '<leader>TC',
+         '<leader>tC',
          function()
             local tsc = require('treesitter-context')
             tsc.toggle()
          end,
-         desc = '[T]oggle Treesitter [C]ontext',
+         desc = '[t]oggle Treesitter [C]ontext',
       },
    },
 }
