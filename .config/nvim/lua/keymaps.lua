@@ -24,7 +24,7 @@ vim.keymap.set('n', 'Y', 'y$', { desc = 'Yank from cursor to end of line' })
 vim.keymap.set(
    'n',
    '<leader>R',
-   '<cmd>wa<CR><cmd>restart<CR>',
+   '<cmd>wa<CR><cmd>AutoSession save<CR><cmd>restart<CR>',
    { silent = true, desc = 'Save all bufferns and [R]esart current Neovim instance.' }
 )
 
