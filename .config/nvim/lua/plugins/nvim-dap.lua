@@ -434,9 +434,20 @@ return {
             },
          })
 
-         dap.listeners.before.attach['dapui_config'] = dapview.open
-         dap.listeners.before.launch['dapui_config'] = dapview.open
-         dap.listeners.after.event_initialized['dapui_config'] = dapview.open
+         -- Open dapview without stealing focus (prevents terminal from triggering insert mode)
+         local function open_dapview_without_focus()
+            local win = vim.api.nvim_get_current_win()
+            dapview.open()
+            vim.schedule(function()
+               if vim.api.nvim_win_is_valid(win) then
+                  vim.api.nvim_set_current_win(win)
+               end
+            end)
+         end
+
+         dap.listeners.before.attach['dapui_config'] = open_dapview_without_focus
+         dap.listeners.before.launch['dapui_config'] = open_dapview_without_focus
+         dap.listeners.after.event_initialized['dapui_config'] = open_dapview_without_focus
          dap.listeners.before.event_terminated['dapui_config'] = dapview.close
          dap.listeners.before.event_exited['dapui_config'] = dapview.close
       end,
