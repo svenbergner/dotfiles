@@ -110,13 +110,6 @@ autocmd('InsertLeave', {
    end,
 })
 
--- Activate Treesitter for specific filetypes
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'lua' },
-  callback = function()
-     vim.treesitter.start()
-  end,
-})
 -- activate codelens if supported by any attached LSP client
 local function check_codelens_support()
    local clients = vim.lsp.get_clients({ bufnr = 0 })
@@ -138,10 +131,4 @@ vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave', 'CursorHold', 'LspAt
 
 -- trigger codelens refresh
 vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
--- Activate Treesitter for specific filetypes
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'lua' },
-  callback = function()
-     vim.treesitter.start()
-  end,
-})
+
