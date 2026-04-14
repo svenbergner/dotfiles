@@ -15,6 +15,10 @@ return {
       vim.opt.foldlevel = 99
       vim.opt.foldlevelstart = 99
       vim.opt.foldcolumn = '1'
+      -- Prevent session restore from overriding foldmethod with 'manual'.
+      -- Treesitter recomputes folds on every buffer open, so saving fold
+      -- state in sessions is unnecessary.
+      vim.opt.sessionoptions:remove('folds')
       vim.keymap.set('n', '<CR>', 'za', { noremap = true, silent = true, desc = 'Toggle current fold' })
    end,
 }
