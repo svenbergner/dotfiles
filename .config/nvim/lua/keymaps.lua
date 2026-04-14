@@ -25,7 +25,7 @@ vim.keymap.set(
    'n',
    '<leader>R',
    '<cmd>wa<CR><cmd>AutoSession save<CR><cmd>restart<CR>',
-   { silent = true, desc = 'Save all bufferns and [R]esart current Neovim instance.' }
+   { silent = true, desc = 'Save buffers and session => [R]estart Neovim' }
 )
 
 -- Save and source the current file
