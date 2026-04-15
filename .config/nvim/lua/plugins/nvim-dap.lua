@@ -407,9 +407,10 @@ return {
 
          vim.keymap.set('n', '<leader>dc', dap.run_to_cursor, { desc = '[d]ab: Run to [c]ursor' })
 
-         vim.keymap.set('n', '<leader>de', function()
+         vim.keymap.set('n', '<leader>da', function()
             vim.cmd('EditDebuggeeArgs')
-         end, { desc = '[d]ab: [e]dit debugee args' })
+         end, { desc = '[d]ab: edit debugee [a]rgs' })
+
          vim.keymap.set('n', '<Leader>dt', function()
             dap.set_breakpoint(nil, nil, vim.fn.input('Trace point message: '))
          end, { desc = 'Set [d]ap [t]racepoint' })
