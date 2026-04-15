@@ -415,7 +415,7 @@ return {
             dap.set_breakpoint(nil, nil, vim.fn.input('Trace point message: '))
          end, { desc = 'Set [d]ap [t]racepoint' })
          vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
-            require('dap.ui.widgets').hover()
+            require('dap.ui.widgets').hover(nil, { border = 'rounded' })
          end, { desc = '[d]apui [h]over information' })
 
          vim.keymap.set('n', '<leader>dl', function()
@@ -424,7 +424,7 @@ return {
 
          vim.keymap.set('n', '<leader>df', function()
             local widgets = require('dap.ui.widgets')
-            widgets.centered_float(widgets.frames)
+            widgets.centered_float(widgets.frames, { border = 'rounded' })
          end, { desc = '[d]apui floating [f]rames' })
 
          dapview.setup({
