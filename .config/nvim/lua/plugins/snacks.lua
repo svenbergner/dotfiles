@@ -601,8 +601,8 @@ return {
             Snacks.toggle.treesitter():map('<leader>tt')
             Snacks.toggle.scroll():map('<leader>tS')
             Snacks.toggle.words():map('<leader>tW')
-            Snacks.toggle.zen():map('<leader>tz')
-            Snacks.toggle.zoom():map('<leader>tZ')
+            Snacks.toggle.zen():map('<leader>tZ')
+            Snacks.toggle.zoom():map('<leader>tz')
          end,
       })
    end,
