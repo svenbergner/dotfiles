@@ -11,6 +11,8 @@ return {
       local words = {
          ['enabled = true'] = '#B8BB26',
          ['enabled = false'] = '#CC241D',
+         ['enable = true'] = '#B8BB26',
+         ['enable = false'] = '#CC241D',
       }
 
       local word_color_group = function(_, match)
@@ -27,6 +29,8 @@ return {
                pattern = {
                   'enabled = true',
                   'enabled = false',
+                  'enable = true',
+                  'enable = false',
                },
                group = word_color_group,
             },
