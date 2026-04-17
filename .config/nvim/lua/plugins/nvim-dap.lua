@@ -88,7 +88,7 @@ return {
             display_callback = function(variable, _, _, _, _)
                return '<' .. variable.name .. ' = ' .. variable.value:gsub('%s+', ' ') .. '>'
             end,
-            virt_text_win_col = 120,
+            virt_text_win_col = 130,
             virt_text_pos = 'inline',
          })
 
@@ -401,6 +401,7 @@ return {
 
          -- Setting breakpoints
          vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Toggle [d]ab [b]reakpoint' })
+
          vim.keymap.set('n', '<leader>dB', function()
             dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
          end, { desc = 'Set [d]ap conditional [B]reakpoint' })
@@ -414,6 +415,7 @@ return {
          vim.keymap.set('n', '<Leader>dt', function()
             dap.set_breakpoint(nil, nil, vim.fn.input('Trace point message: '))
          end, { desc = 'Set [d]ap [t]racepoint' })
+
          vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
             require('dap.ui.widgets').hover(nil, { border = 'rounded' })
          end, { desc = '[d]apui [h]over information' })
