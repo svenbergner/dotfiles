@@ -98,6 +98,8 @@ brew "git-delta"
 brew "git-series"
 # Audit git repos for secrets
 brew "gitleaks"
+# Idiomatic, lean, fast & safe pure Rust implementation of Git
+brew "gitoxide"
 # Render markdown on the CLI
 brew "glow"
 # Plays the game of Go
