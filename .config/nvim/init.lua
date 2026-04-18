@@ -70,4 +70,7 @@ require('lazy').setup({
    change_detection = {
       enable = true,
    },
+   ui = {
+      border = 'rounded',
+   },
 })
