@@ -28,6 +28,7 @@ M.setup_layout = function(wezterm)
       first_pane:send_text('fastfetch\n')
 
       local activatedTab = M.addTab(window, home_dir .. '/Repos/SSE/Dev', 'SSE master', 'nvim\n')
+      M.addTab(window, home_dir .. '/Repos/SSE-helpjson/Dev', 'SSE helpjson', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/SSE30/Dev', 'SSE 30', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/SSE29/Dev', 'SSE 29', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/SSE28/Dev', 'SSE 28', 'nvim\n')
