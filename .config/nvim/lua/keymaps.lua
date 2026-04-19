@@ -134,6 +134,9 @@ vim.keymap.set('n', '<leader>lp', '<CMD>Lazy profile<CR>', { silent = true, desc
 vim.keymap.set('n', '<leader>lh', '<CMD>Lazy help<CR>', { silent = true, desc = '[l]azy [h]elp' })
 vim.keymap.set('n', '<leader>lm', '<CMD>Mason<CR>', { silent = true, desc = 'show [l][m]ason' })
 
+-- Vim Package Manager
+vim.keymap.set('n', '<leader>vu', function() vim.pack.update() end, { silent = true, desc = '[v]im pack [u]pdate' })
+
 -- Yank mappings
 vim.keymap.set('n', '<leader>yf', '<cmd>let @"=@%<CR>', { silent = true, desc = '[y]ank [f]ilename' })
 vim.keymap.set('n', '<leader>yF', '<cmd>let @+=@%<CR>', { silent = true, desc = '[y]ank [F]ilename to clipboard' })
