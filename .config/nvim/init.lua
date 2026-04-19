@@ -15,8 +15,9 @@ https://neovim.io/doc/user/lua.html
 https://github.com/folke/lazy.nvim
 --]=====]
 
+-- vim._core.ui2 is disabled to avoid conflicts with noice.nvim.
 require('vim._core.ui2').enable({
-   enable = true,
+   enable = false,
    msg = { -- Options related to the message module.
       ---@type 'cmd'|'msg' Default message target, either in the
       ---cmdline or in a separate ephemeral message window.
@@ -37,7 +38,6 @@ require('vim._core.ui2').enable({
          height = 0.5, -- Maximum height.
       },
    },
-
 })
 
 require('mason-path')
