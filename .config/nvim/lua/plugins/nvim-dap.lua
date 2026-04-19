@@ -69,15 +69,15 @@ return {
          local dapview = require('dap-view')
 
          require('nvim-dap-virtual-text').setup({
-            enabled = true, -- enables this plugin
-            enabled_commands = true, -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
+            enabled = true,                     -- enables this plugin
+            enabled_commands = true,            -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
             highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
-            highlight_new_as_changed = true, -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
-            show_stop_reason = true, -- show stop reason when stopped for exceptions
-            commented = false, -- prefix virtual text with comment string
-            only_first_definition = false, -- only show virtual text at first definition (if there are multiple)
-            all_references = true, -- show virtual text on all all references of the variable (not only definitions)
-            clear_on_continue = true, -- clear virtual text on "continue" (might cause flickering when stepping)
+            highlight_new_as_changed = true,    -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
+            show_stop_reason = true,            -- show stop reason when stopped for exceptions
+            commented = false,                  -- prefix virtual text with comment string
+            only_first_definition = false,      -- only show virtual text at first definition (if there are multiple)
+            all_references = true,              -- show virtual text on all all references of the variable (not only definitions)
+            clear_on_continue = true,           -- clear virtual text on "continue" (might cause flickering when stepping)
             -- A callback that determines how a variable is displayed or whether it should be omitted
             -- @param variable Variable https://microsoft.github.io/debug-adapter-protocol/specification#Types_Variable
             -- @param buf number
@@ -132,8 +132,8 @@ return {
                      table.insert(
                         commands,
                         'script -l python -- import sys; sys.path += [ "'
-                           .. vim.fn.expand('$HOME')
-                           .. '/Library/Python/3.9/lib/python/site-packages" ]'
+                        .. vim.fn.expand('$HOME')
+                        .. '/Library/Python/3.9/lib/python/site-packages" ]'
                      )
                   end
                   table.insert(commands, 'settings set target.load-script-from-symbol-file true')
@@ -167,7 +167,7 @@ return {
                name = 'Launch Dart Program',
                program = '${file}',
                cwd = '${workspaceFolder}',
-               args = { '-d chrome', '--web-port=1337', '--dart-define-from-file=env-vars.json' }, -- NOTE: args is for Dart Apps
+               args = { '-d chrome', '--web-port=1337', '--dart-define-from-file=env-vars.json' },      -- NOTE: args is for Dart Apps
                toolsArgs = { '-d chrome', '--web-port=1337', '--dart-define-from-file=env-vars.json' }, -- NOTE: toolsArgs is for Flutter apps
             },
          }
