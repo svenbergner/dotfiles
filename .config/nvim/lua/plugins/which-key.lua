@@ -44,6 +44,7 @@ return {
             { '<leader>t',        group = '[t]oggle',                   icon = '' },
             { '<leader>T',        group = '[T]est',                     icon = '󰙨' },
             { '<leader>u',        group = '[u]nicode',                  icon = '󰻐' },
+            { '<leader>v',        group = '[v]im pack',                 icon = ' ' },
             { '<leader>w',        group = 'vim[w]iki',                  icon = '󰖬' },
             { '<leader>w<Space>', group = 'Diary',                      icon = '󰖬' },
             { '<leader>W',        group = 'LSP [W]orkspace',            icon = '' },
