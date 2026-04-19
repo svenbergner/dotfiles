@@ -358,6 +358,9 @@ return {
          vim.keymap.set('n', '<leader>dd', dapview.toggle, { desc = 'toggle [d]apview [d]isplay' })
          vim.keymap.set('n', '<leader>do', dapview.open, { desc = '[d]apview [o]pen' })
          vim.keymap.set('n', '<leader>dq', dapview.close, { desc = '[d]apview [q]uit' })
+         vim.keymap.set('n', '<leader>dr', function ()
+            vim.cmd('ResetDebuggee')
+         end, { desc = '[d]ap [r]eset debugee' })
 
          -- Show different dapview panes
          vim.keymap.set('n', '<leader>dsw', function()
