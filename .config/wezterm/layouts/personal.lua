@@ -26,8 +26,8 @@ M.setup_layout = function(wezterm)
       first_pane:send_text('')
 
       M.addTab(window, home_dir .. '/Repos/vimwiki', 'VimWiki', '')
-      M.addTab(window, home_dir .. '/Repos/telescope-cmake-preset-selector', 'CMake Preset Selector', '')
-      M.addTab(window, home_dir .. '/Repos/telescope-debugee-selector', 'Debugee Selector', '')
+      M.addTab(window, home_dir .. '/Repos/cmake-preset-selector', 'CMake Preset Selector', '')
+      M.addTab(window, home_dir .. '/Repos/dap-debugee-selector', 'Debugee Selector', '')
       M.addTab(window, home_dir .. '/Repos/presenter.nvim', 'Presenter', '')
       -- M.addTab(window, home_dir .. '/Repos/snacks.nvim', 'Snacks', '')
 

@@ -10,8 +10,8 @@ return {
       dependencies = {
          'nvim-lua/plenary.nvim',
          { 'j-hui/fidget.nvim', opts = {} },
-         { 'svenbergner/telescope-debugee-selector', dev = true },
-         { 'svenbergner/telescope-cmake-preset-selector', dev = true },
+         { 'svenbergner/dap-debugee-selector', dev = true },
+         { 'svenbergner/cmake-preset-selector', dev = true },
       },
       config = function()
          require('telescope').setup({

@@ -57,7 +57,7 @@ return {
          'folke/lazydev.nvim',
          'igorlfs/nvim-dap-view',
          'nvim-neotest/nvim-nio',
-         'svenbergner/telescope-debugee-selector',
+         'svenbergner/dap-debugee-selector',
          'theHamsta/nvim-dap-virtual-text',
          'williamboman/mason.nvim',
          'jbyuki/one-small-step-for-vimkind',
