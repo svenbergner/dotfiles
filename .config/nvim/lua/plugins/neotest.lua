@@ -54,22 +54,38 @@ return {
                self.__index = self
                return session
             end
-            -- Fast path 2: cwd is a source dir with a compile_commands.json symlink
-            -- that resolves to a build dir containing CTestTestfile.cmake.
+            -- Fast path 2: cwd is a source dir with a compile_commands.json symlink.
+            -- Resolve the build dir, then find the shallowest CTestTestfile.cmake
+            -- (depth=2) so we pick the top-level test directory (e.g. SSE/) rather
+            -- than a randomly ordered sub-module directory.
             local cc = cwd .. '/compile_commands.json'
             if vim.loop.fs_stat(cc) then
                local real = vim.loop.fs_realpath(cc)
                if real then
                   local build_dir = vim.fn.fnamemodify(real, ':h')
-                  if vim.loop.fs_stat(build_dir .. '/CTestTestfile.cmake') then
-                     local session = {
-                        _test_dir = build_dir,
-                        _output_junit_path = nio.fn.tempname(),
-                        _output_log_path = nio.fn.tempname(),
-                     }
-                     setmetatable(session, self)
-                     self.__index = self
-                     return session
+                  if vim.loop.fs_stat(build_dir) then
+                     local lib = require('neotest.lib')
+                     local scandir = require('plenary.scandir')
+                     local roots = scandir.scan_dir(build_dir, {
+                        respect_gitignore = false,
+                        depth = 2,
+                        search_pattern = 'CTestTestfile.cmake',
+                        silent = true,
+                     })
+                     if roots and #roots > 0 then
+                        -- Sort by path length so the shallowest entry comes first.
+                        table.sort(roots, function(a, b) return #a < #b end)
+                        local test_dir = lib.files.parent(roots[1])
+                        local session = {
+                           _test_dir = test_dir,
+                           _output_junit_path = nio.fn.tempname(),
+                           _output_log_path = nio.fn.tempname(),
+                        }
+                        setmetatable(session, self)
+                        self.__index = self
+                        return session
+                     end
+                     return orig_new(self, build_dir)
                   end
                end
             end
@@ -98,6 +114,7 @@ return {
                      or file_path:match('.*_test%.c$') ~= nil
                      or file_path:match('test_.*%.cpp$') ~= nil
                      or file_path:match('.*Test%.cpp$') ~= nil
+                     or file_path:match('.*Tests%.cpp$') ~= nil
                end,
                framework = { 'catch2' },
                -- compile_commands.json in the source root is a symlink to the
