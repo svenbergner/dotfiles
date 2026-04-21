@@ -21,7 +21,7 @@ return {
    },
    keys = {
       {
-         '<leader>tC',
+         '<leader>TC',
          function()
             local tsc = require('treesitter-context')
             tsc.toggle()

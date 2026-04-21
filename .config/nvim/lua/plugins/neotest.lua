@@ -13,12 +13,12 @@ return {
    'nvim-neotest/neotest',
    enabled = true,
    keys = {
-      { '<leader>TN', mode = 'n', desc = '[T]est: run [N]earest' },
-      { '<leader>TS', mode = 'n', desc = '[T]est: [s]top running test' },
-      { '<leader>TA', mode = 'n', desc = '[T]ests run [A]ll in file' },
-      { '<leader>TD', mode = 'n', desc = '[T]est: [D]ebug nearest test' },
-      { '<leader>TR', mode = 'n', desc = 'Show [T]est [R]esults' },
-      { '<leader>TT', mode = 'n', desc = '[T]oggle [T]est summary' },
+      { '<leader>tn', mode = 'n', desc = '[t]est: run [n]earest' },
+      { '<leader>ts', mode = 'n', desc = '[t]est: [s]top running test' },
+      { '<leader>ta', mode = 'n', desc = '[t]ests run [a]ll in file' },
+      { '<leader>td', mode = 'n', desc = '[t]est: [d]ebug nearest test' },
+      { '<leader>tr', mode = 'n', desc = 'Show [t]est [r]esults' },
+      { '<leader>tt', mode = 'n', desc = '[t]oggle [t]est summary' },
    },
    dependencies = {
       'mfussenegger/nvim-dap',
@@ -142,30 +142,30 @@ return {
          },
       })
 
-      vim.keymap.set('n', '<leader>TN', function()
+      vim.keymap.set('n', '<leader>tn', function()
          vim.cmd('wa')
          neotest.run.run()
-      end, { desc = '[T]est: run [N]earest' })
+      end, { desc = '[t]est: run [n]earest' })
 
-      vim.keymap.set('n', '<leader>TS', function()
+      vim.keymap.set('n', '<leader>ts', function()
          neotest.run.stop()
-      end, { desc = '[T]est: [s]top running test' })
+      end, { desc = '[t]est: [s]top running test' })
 
-      vim.keymap.set('n', '<leader>TA', function()
+      vim.keymap.set('n', '<leader>ta', function()
          vim.cmd('wa')
          neotest.run.run(vim.fn.expand('%'))
-      end, { desc = '[T]ests run [A]ll in file' })
+      end, { desc = '[t]ests run [a]ll in file' })
 
-      vim.keymap.set('n', '<leader>TD', function()
+      vim.keymap.set('n', '<leader>td', function()
          neotest.run.run({ strategy = 'dap' })
-      end, { desc = '[T]est: [D]ebug nearest test' })
+      end, { desc = '[t]est: [d]ebug nearest test' })
 
-      vim.keymap.set('n', '<leader>TR', function()
+      vim.keymap.set('n', '<leader>tr', function()
          neotest.output.open({ enter = true, quiet = true, auto_close = true, last_run = true })
-      end, { desc = 'Show [T]est [R]esults' })
+      end, { desc = 'Show [t]est [r]esults' })
 
-      vim.keymap.set('n', '<leader>TT', function()
+      vim.keymap.set('n', '<leader>tt', function()
          neotest.summary.toggle()
-      end, { desc = '[T]oggle [T]est summary' })
+      end, { desc = '[t]oggle [t]est summary' })
    end,
 }

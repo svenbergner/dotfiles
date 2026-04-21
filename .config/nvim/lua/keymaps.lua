@@ -182,7 +182,7 @@ local function toggle_boolean()
    end
 end
 
-vim.keymap.set('n', '<leader>tb', function()
+vim.keymap.set('n', '<leader>Tb', function()
    toggle_boolean()
 end, { desc = '[t]oggle [b]ool', noremap = true, silent = true })
 
