@@ -92,11 +92,15 @@ vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
    end,
 })
 
--- start insert mode when entering terminal
+-- start insert mode when entering terminal (only if it is the active window)
 autocmd('TermOpen', {
    group = augroup('terminal_insert', { clear = true }),
-   callback = function()
-      vim.cmd.startinsert()
+   callback = function(args)
+      -- Skip insert mode for DAP-related terminals (REPL, dapview) that open
+      -- in the background and would otherwise steal focus from the editor.
+      if vim.api.nvim_get_current_buf() == args.buf then
+         vim.cmd.startinsert()
+      end
    end,
 })
 
