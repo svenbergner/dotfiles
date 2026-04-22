@@ -30,7 +30,7 @@ return {
       'nvim-neotest/neotest-plenary',
       'antoinemadec/FixCursorHold.nvim',
       'Shatur/neovim-tasks',
-      'orjangj/neotest-ctest',
+      { 'orjangj/neotest-ctest', dev = true },
    },
    config = function()
       require('tasks').setup({})
@@ -74,7 +74,9 @@ return {
                      })
                      if roots and #roots > 0 then
                         -- Sort by path length so the shallowest entry comes first.
-                        table.sort(roots, function(a, b) return #a < #b end)
+                        table.sort(roots, function(a, b)
+                           return #a < #b
+                        end)
                         local test_dir = lib.files.parent(roots[1])
                         local session = {
                            _test_dir = test_dir,
@@ -109,6 +111,7 @@ return {
             }),
             require('neotest-plenary')({}),
             require('neotest-ctest').setup({
+               dap_adapter = 'lldb',
                is_test_file = function(file_path)
                   return file_path:match('test_.*%.c$') ~= nil
                      or file_path:match('.*_test%.c$') ~= nil
