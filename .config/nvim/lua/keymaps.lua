@@ -199,3 +199,6 @@ vim.keymap.set(
    '<cmd>RemoveDividerComments<CR>',
    { desc = '[c]ode remove divider [c]omments', noremap = true, silent = true }
 )
+
+-- Follow link in neovim help files
+vim.keymap.set('n', 'gl', '<C-]>', { desc = '[g]oto [l]ink in help files' })
