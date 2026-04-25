@@ -98,42 +98,47 @@ return {
       -- Custom consumer: places a gutter sign for every discovered test position,
       -- so tests are visible even before they have been run.
       local function test_signs_consumer(client)
-        local sign_name = 'NeotestDefined'
-        local sign_group = 'neotest-defined'
-        vim.fn.sign_define(sign_name, { text = '󰙨', texthl = 'NeotestIndentMarker' })
+         local sign_name = 'NeotestDefined'
+         local sign_group = 'neotest-defined'
+         vim.fn.sign_define(sign_name, { text = ' 󰙨', texthl = 'GruvboxGreen' })
 
-        local function render_file(adapter_id, file_path)
-          local bufnr = vim.fn.bufnr(file_path)
-          if bufnr == -1 or not vim.api.nvim_buf_is_valid(bufnr) then
-            return
-          end
-          vim.fn.sign_unplace(sign_group, { buffer = bufnr })
-          local tree = client:get_position(file_path, { adapter = adapter_id })
-          if not tree then
-            return
-          end
-          for _, node in tree:iter_nodes() do
-            local pos = node:data()
-            if pos.range and pos.type == 'test' then
-              vim.fn.sign_place(0, sign_group, sign_name, bufnr, { lnum = pos.range[1] + 1 })
+         local function render_file(adapter_id, file_path)
+            local bufnr = vim.fn.bufnr(file_path)
+            if bufnr == -1 or not vim.api.nvim_buf_is_valid(bufnr) then
+               return
             end
-          end
-        end
+            vim.fn.sign_unplace(sign_group, { buffer = bufnr })
+            local tree = client:get_position(file_path, { adapter = adapter_id })
+            if not tree then
+               return
+            end
+            for _, node in tree:iter_nodes() do
+               local pos = node:data()
+               if pos.range and pos.type == 'test' then
+                  vim.fn.sign_place(0, sign_group, sign_name, bufnr, { lnum = pos.range[1] + 1 })
+               end
+            end
+         end
 
-        client.listeners.discover_positions = function(adapter_id, tree)
-          local data = tree:data()
-          if data.type == 'file' then
-            render_file(adapter_id, data.path)
-          end
-        end
+         client.listeners.discover_positions = function(adapter_id, tree)
+            local data = tree:data()
+            if data.type == 'file' then
+               render_file(adapter_id, data.path)
+            end
+         end
 
-        client.listeners.test_file_focused = function(adapter_id, file_path)
-          render_file(adapter_id, file_path)
-        end
+         client.listeners.test_file_focused = function(adapter_id, file_path)
+            render_file(adapter_id, file_path)
+         end
       end
 
       local neotest = require('neotest')
       neotest.setup({
+         floating = {
+            border = 'rounded',
+            max_height = 0.6,
+            max_width = 0.6,
+         },
          consumers = {
             test_signs = test_signs_consumer,
          },
@@ -187,7 +192,6 @@ return {
       })
 
       vim.keymap.set('n', '<leader>tn', function()
-         vim.cmd('wa')
          neotest.run.run()
       end, { desc = '[t]est: run [n]earest' })
 
@@ -196,7 +200,6 @@ return {
       end, { desc = '[t]est: [s]top running test' })
 
       vim.keymap.set('n', '<leader>ta', function()
-         vim.cmd('wa')
          neotest.run.run(vim.fn.expand('%'))
       end, { desc = '[t]ests run [a]ll in file' })
 
@@ -211,5 +214,13 @@ return {
       vim.keymap.set('n', '<leader>tt', function()
          neotest.summary.toggle()
       end, { desc = '[t]oggle [t]est summary' })
+
+      vim.keymap.set('n', '<leader>tjn', function()
+         neotest.jump.next({ status = 'failed' })
+      end, { desc = '[t]est [j]ump to [n]ext failed' })
+
+      vim.keymap.set('n', '<leader>tjp', function()
+         neotest.jump.previous({ status = 'failed' })
+      end, { desc = '[t]est [j]ump to [p]revious failed' })
    end,
 }
