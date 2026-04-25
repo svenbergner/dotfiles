@@ -96,8 +96,12 @@ vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
 autocmd('TermOpen', {
    group = augroup('terminal_insert', { clear = true }),
    callback = function(args)
-      -- Skip insert mode for DAP-related terminals (REPL, dapview) that open
-      -- in the background and would otherwise steal focus from the editor.
+      -- Skip insert mode for DAP-related terminals (REPL, dapview) and neotest
+      -- terminals that open in the background and would otherwise steal focus.
+      local ft = vim.bo[args.buf].filetype
+      if ft:match('^neotest') then
+         return
+      end
       if vim.api.nvim_get_current_buf() == args.buf then
          vim.cmd.startinsert()
       end
