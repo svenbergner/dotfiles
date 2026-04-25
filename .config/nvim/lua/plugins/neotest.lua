@@ -95,8 +95,48 @@ return {
          end
       end
 
+      -- Custom consumer: places a gutter sign for every discovered test position,
+      -- so tests are visible even before they have been run.
+      local function test_signs_consumer(client)
+        local sign_name = 'NeotestDefined'
+        local sign_group = 'neotest-defined'
+        vim.fn.sign_define(sign_name, { text = '󰙨', texthl = 'NeotestIndentMarker' })
+
+        local function render_file(adapter_id, file_path)
+          local bufnr = vim.fn.bufnr(file_path)
+          if bufnr == -1 or not vim.api.nvim_buf_is_valid(bufnr) then
+            return
+          end
+          vim.fn.sign_unplace(sign_group, { buffer = bufnr })
+          local tree = client:get_position(file_path, { adapter = adapter_id })
+          if not tree then
+            return
+          end
+          for _, node in tree:iter_nodes() do
+            local pos = node:data()
+            if pos.range and pos.type == 'test' then
+              vim.fn.sign_place(0, sign_group, sign_name, bufnr, { lnum = pos.range[1] + 1 })
+            end
+          end
+        end
+
+        client.listeners.discover_positions = function(adapter_id, tree)
+          local data = tree:data()
+          if data.type == 'file' then
+            render_file(adapter_id, data.path)
+          end
+        end
+
+        client.listeners.test_file_focused = function(adapter_id, file_path)
+          render_file(adapter_id, file_path)
+        end
+      end
+
       local neotest = require('neotest')
       neotest.setup({
+         consumers = {
+            test_signs = test_signs_consumer,
+         },
          adapters = {
             require('neotest-dart')({
                command = 'fvm flutter',
@@ -112,6 +152,7 @@ return {
             require('neotest-plenary')({}),
             require('neotest-ctest').setup({
                dap_adapter = 'lldb',
+               dap_args = { stopOnEntry = false, exception_breakpoints = {} },
                is_test_file = function(file_path)
                   return file_path:match('test_.*%.c$') ~= nil
                      or file_path:match('.*_test%.c$') ~= nil
