@@ -14,6 +14,7 @@ Features:
 
 return {
    'romek-codes/bruno.nvim',
+   enabled = false,
    ft = 'bruno',
    dependencies = {
       'nvim-lua/plenary.nvim',

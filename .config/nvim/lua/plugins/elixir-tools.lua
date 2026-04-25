@@ -16,7 +16,7 @@ Features:
 
 return {
    'elixir-tools/elixir-tools.nvim',
-   enabled = true,
+   enabled = false,
    version = '*',
    event = { 'BufReadPre', 'BufNewFile' },
    config = function()
