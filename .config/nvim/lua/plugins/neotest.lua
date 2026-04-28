@@ -7,6 +7,17 @@ URLs:
 https://github.com/nvim-neotest/neotest
 https://github.com/orjangj/neotest-ctest
 https://github.com/Shatur/neovim-tasks
+
+Dependencies:
+https://github.com/mfussenegger/nvim-dap
+https://github.com/nvim-neotest/nvim-nio
+https://github.com/nvim-lua/plenary.nvim
+https://github.com/nvim-treesitter/nvim-treesitter
+https://github.com/sidlatau/neotest-dart
+https://github.com/nvim-neotest/neotest-python
+https://github.com/nvim-neotest/neotest-plenary
+https://github.com/Shatur/neovim-tasks
+https://github.com/orjangj/neotest-ctest
 --]===]
 
 return {
@@ -28,7 +39,6 @@ return {
       'sidlatau/neotest-dart',
       'nvim-neotest/neotest-python',
       'nvim-neotest/neotest-plenary',
-      'antoinemadec/FixCursorHold.nvim',
       'Shatur/neovim-tasks',
       { 'orjangj/neotest-ctest', dev = true },
    },
