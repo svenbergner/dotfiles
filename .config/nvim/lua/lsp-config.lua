@@ -39,6 +39,8 @@ vim.lsp.inlay_hint.enable(true)
 
 -- Extras
 
+vim.api.nvim_create_user_command('LspStart', '<cmd>lsp enable<CR>', {})
+vim.api.nvim_create_user_command('LspStop', '<cmd>lsp disable<CR>', {})
 vim.api.nvim_create_user_command('LspRestart', '<cmd>lsp restart<CR>', {})
 
 local function lsp_status()
