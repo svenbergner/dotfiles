@@ -63,9 +63,6 @@ return {
    cmd = 'Neotree',
    keys = {
       { '<leader>nn', mode = 'n' },
-      { '<leader>nf', mode = 'n' },
-      { '<leader>nb', mode = 'n' },
-      { '<leader>ng', mode = 'n' },
    },
    branch = 'v3.x',
    dependencies = {
@@ -108,31 +105,11 @@ return {
          ':Neotree filesystem reveal left<CR>',
          { silent = true, desc = '[n]eotree filesystem' }
       )
-      vim.keymap.set(
-         'n',
-         '<leader>nf',
-         ':Neotree filesystem reveal left<CR>',
-         { silent = true, desc = '[n]eotree [f]ilesystem' }
-      )
-      vim.keymap.set(
-         'n',
-         '<leader>nb',
-         ':Neotree buffers reveal left<CR>',
-         { silent = true, desc = '[n]eotree [b]uffers' }
-      )
-      vim.keymap.set(
-         'n',
-         '<leader>ng',
-         ':Neotree git_status reveal left<CR>',
-         { silent = true, desc = '[n]eotree [g]it status' }
-      )
       vim.keymap.set('n', '<leader>nc', ':Neotree close<CR>', { silent = true, desc = '[n]eotree [c]lose ' })
 
       require('neo-tree').setup({
          sources = {
             'filesystem',
-            'buffers',
-            'git_status',
          },
          popup_border_style = 'rounded',
          close_if_last_window = false,
@@ -140,24 +117,14 @@ return {
          default_source = 'filesystem',
          enable_git_status = true,
          enable_diagnostics = true,
-         open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' }, -- when opening files, do not use windows containing these filetypes or buftypes
+         open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf', 'dap-view-term' }, -- when opening files, do not use windows containing these filetypes or buftypes
          use_libuv_file_watcher = true,
          source_selector = {
             winbar = true,
             status_line = true,
             sources = {
                { source = 'filesystem' },
-               { source = 'buffers' },
-               { source = 'git_status' },
             },
-         },
-         git_status = {
-            follow_current_file = true,
-         },
-         buffers = {
-            follow_current_file = { enabled = true },
-            group_empty_dirs = true,
-            show_unloaded = true,
          },
          filesystem = {
             follow_current_file = { enabled = true },
