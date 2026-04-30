@@ -16,6 +16,7 @@ https://github.com/nvim-treesitter/nvim-treesitter
 https://github.com/sidlatau/neotest-dart
 https://github.com/nvim-neotest/neotest-python
 https://github.com/nvim-neotest/neotest-plenary
+https://github.com/antoinemadec/FixCursorHold.nvim -- The repo claims it is no longer needed but it is still recommended
 https://github.com/Shatur/neovim-tasks
 https://github.com/orjangj/neotest-ctest
 --]===]
@@ -28,6 +29,7 @@ return {
       { '<leader>ts', mode = 'n', desc = '[t]est: [s]top running test' },
       { '<leader>ta', mode = 'n', desc = '[t]ests run [a]ll in file' },
       { '<leader>td', mode = 'n', desc = '[t]est: [d]ebug nearest test' },
+      { '<leader>tf', mode = 'n', desc = '[t]est: run all [f]ailed' },
       { '<leader>tr', mode = 'n', desc = 'Show [t]est [r]esults' },
       { '<leader>tt', mode = 'n', desc = '[t]oggle [t]est summary' },
    },
@@ -39,6 +41,7 @@ return {
       'sidlatau/neotest-dart',
       'nvim-neotest/neotest-python',
       'nvim-neotest/neotest-plenary',
+      "antoinemadec/FixCursorHold.nvim",
       'Shatur/neovim-tasks',
       { 'orjangj/neotest-ctest', dev = true },
    },
@@ -107,7 +110,10 @@ return {
 
       -- Custom consumer: places a gutter sign for every discovered test position,
       -- so tests are visible even before they have been run.
+      -- Also stores a reference to the client for the "run failed" keymap below.
+      local neotest_client = nil
       local function test_signs_consumer(client)
+         neotest_client = client
          local sign_name = 'NeotestDefined'
          local sign_group = 'neotest-defined'
          vim.fn.sign_define(sign_name, { text = ' 󰙨', texthl = 'GruvboxGreen' })
@@ -224,6 +230,36 @@ return {
       vim.keymap.set('n', '<leader>tt', function()
          neotest.summary.toggle()
       end, { desc = '[t]oggle [t]est summary' })
+
+      vim.keymap.set('n', '<leader>tf', function()
+         if not neotest_client then
+            vim.notify('neotest: no adapter active yet', vim.log.levels.WARN)
+            return
+         end
+         local failed_ids = {}
+         for _, adapter_id in ipairs(neotest.state.adapter_ids()) do
+            local results = neotest_client:get_results(adapter_id)
+            local positions = neotest.state.positions(adapter_id)
+            if positions then
+               for _, node in positions:iter_nodes() do
+                  local pos = node:data()
+                  if pos.type == 'test' then
+                     local result = results[pos.id]
+                     if result and (result.status == 'failed' or result.status == 'skipped') then
+                        failed_ids[#failed_ids + 1] = pos.id
+                     end
+                  end
+               end
+            end
+         end
+         if #failed_ids == 0 then
+            vim.notify('neotest: no failed tests', vim.log.levels.INFO)
+            return
+         end
+         for _, pos_id in ipairs(failed_ids) do
+            neotest.run.run(pos_id)
+         end
+      end, { desc = '[t]est: run all [f]ailed' })
 
       vim.keymap.set('n', '<leader>tjn', function()
          neotest.jump.next({ status = 'failed' })
