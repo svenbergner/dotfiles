@@ -22,10 +22,25 @@ M.getSimpleBackground = function()
    local home_dir = wezterm.home_dir
    return {
       {
-         source = {
-            File = home_dir .. '/.config/wezterm/background/neovim3.png',
-         },
+         -- Base color layer shown around the image
+         source = { Color = '#000000' },
          width = '100%',
+         height = '100%',
+         horizontal_align = 'Center',
+         vertical_align = 'Middle',
+      },
+      {
+         source = {
+            -- File = home_dir .. '/.config/wezterm/background/neovim3.png',
+            File = home_dir ..
+               '/.config/wezterm/background/OnoSendaiCyberspace7.jpg',
+         },
+         width = '50%',
+         height = '50%',
+         horizontal_align = 'Center',
+         vertical_align = 'Middle',
+         repeat_x = 'NoRepeat',
+         repeat_y = 'NoRepeat',
          hsb = { brightness = 0.3 },
       },
    }
