@@ -112,9 +112,9 @@ vim.keymap.set('n', '<leader>cH', function()
    vim.lsp.buf.hover({ focusable = true })
 end, { desc = '[c]ode [H]over with focus', noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>cE', function()
+vim.keymap.set('n', '<leader>ce', function()
    vim.lsp.buf.show_line_diagnostics({ border = 'rounded' })
-end, { desc = '[c]ode [E]rror diagnostics', noremap = true, silent = true })
+end, { desc = '[c]ode [e]rror diagnostics', noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>cW', function()
    vim.lsp.buf.workspace_symbol()
