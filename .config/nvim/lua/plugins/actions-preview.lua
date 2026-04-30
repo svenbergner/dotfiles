@@ -5,10 +5,14 @@ https://github.com/aznhe21/actions-preview.nvim
 
 return {
    'aznhe21/actions-preview.nvim',
-   keys = { '<leader>ca', mode = { 'n', 'v' } },
    enabled = true,
    config = function()
-      vim.keymap.set({ 'v', 'n' }, 'ca', require('actions-preview').code_actions, { desc = 'Preview [c]ode [a]ctions' })
+      vim.keymap.set(
+         { 'v', 'n' },
+         '<leader>ca',
+         require('actions-preview').code_actions,
+         { desc = '[c]ode preview [a]ctions' }
+      )
 
       require('actions-preview').setup({
          telescope = {

@@ -68,10 +68,6 @@ vim.keymap.set('n', '<leader>cf', function()
    vim.lsp.buf.format({ async = true })
 end, { desc = '[c]ode [f]ormat', noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>ca', function()
-   vim.lsp.buf.code_action()
-end, { desc = '[c]ode [a]ction', noremap = true, silent = true })
-
 vim.keymap.set('n', 'gra', function()
    vim.lsp.buf.code_action()
 end, { desc = '[g]lobal [r]un [c]code action', noremap = true, silent = true })
