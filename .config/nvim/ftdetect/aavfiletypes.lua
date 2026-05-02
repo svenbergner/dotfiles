@@ -1,10 +1,2 @@
--- Autocommands for setting filetypes for files with specific extensions
-
-vim.api.nvim_create_autocmd(
-   { 'BufEnter', 'BufRead', 'BufNewFile', 'VimEnter' },
-   {
-      pattern = {'*.htd', '*.htd.inc'},
-      command = 'set filetype=html',
-   }
-)
-
+-- AAV/ContentDev filetypes are registered in lua/contentdev.lua.
+-- Keep this file so older references to ftdetect/aavfiletypes.lua stay valid.

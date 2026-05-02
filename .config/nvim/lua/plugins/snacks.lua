@@ -468,7 +468,9 @@ return {
       {
          'gd',
          function()
-            Snacks.picker.lsp_definitions()
+            Snacks.picker.lsp_definitions({
+               include_current = vim.tbl_contains(require('contentdev').filetypes, vim.bo.filetype),
+            })
          end,
          desc = 'LSP: [g]oto [d]efinition',
       },
