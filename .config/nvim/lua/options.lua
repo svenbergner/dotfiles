@@ -80,6 +80,7 @@ vim.opt.ttimeoutlen = 100
 -- Show signs on the left
 vim.opt.signcolumn = 'yes'
 
+-- complete options
 vim.opt.completeopt = 'menu,menuone,fuzzy,noinsert'
 
 -- Wild menu settings
