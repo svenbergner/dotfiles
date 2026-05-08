@@ -9,7 +9,6 @@ https://github.com/nvim-mini/mini.surround
   - Replace surrounding with sr.
   - Find surrounding with sf or sF (move cursor right or left).
   - Highlight surrounding with sh.
-  - Change number of neighbor lines with sn (see |MiniSurround-algorithm|).
 
 - Surrounding is identified by a single character as both "input"
   (in delete and replace start, find, and highlight) and "output"
