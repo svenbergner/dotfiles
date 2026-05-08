@@ -36,6 +36,8 @@ brew "cava"
 brew "cbonsai"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
+# Create and view interactive cheat sheets for *nix commands
+brew "cheat"
 # Cross-platform make
 brew "cmake"
 # Console Matrix
@@ -84,6 +86,8 @@ brew "figlet"
 brew "fish"
 # Fort Knox for your secrets - flexible secret management tool
 brew "fnox"
+# Infamous electronic fortune-cookie generator
+brew "fortune"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Interact with Google Gemini AI models from the command-line
