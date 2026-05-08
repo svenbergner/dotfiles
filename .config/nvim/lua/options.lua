@@ -2,6 +2,7 @@
 vim.api.nvim_exec2("language en_US.UTF-8", { output = true })
 
 vim.opt.compatible = false
+vim.opt.confirm = true
 
 vim.opt.exrc = true
 
@@ -78,6 +79,8 @@ vim.opt.ttimeoutlen = 100
 
 -- Show signs on the left
 vim.opt.signcolumn = 'yes'
+
+vim.opt.completeopt = 'menu,menuone,fuzzy,noinsert'
 
 -- Wild menu settings
 vim.opt.wildmenu = true
