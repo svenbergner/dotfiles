@@ -266,7 +266,7 @@ return {
       end, { desc = '[t]est [j]ump to [n]ext failed' })
 
       vim.keymap.set('n', '<leader>tjp', function()
-         neotest.jump.previous({ status = 'failed' })
+         neotest.jump.prev({ status = 'failed' })
       end, { desc = '[t]est [j]ump to [p]revious failed' })
    end,
 }
