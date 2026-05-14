@@ -26,7 +26,10 @@ wezterm.add_to_config_reload_watch_list('utils')
 require('layouts.personal').setup_layout(wezterm)
 require('layouts.development').setup_layout(wezterm)
 
-require('utils.background').toggleBackground(config)
+config.background = require('utils.background').getSimpleBackground()
+if wezterm.GLOBAL.fancy_background == nil then
+   wezterm.GLOBAL.fancy_background = false
+end
 
 -- Settings
 config.max_fps = 120

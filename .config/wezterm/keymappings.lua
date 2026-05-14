@@ -33,9 +33,18 @@ M.add_to_config = function(config, wezterm, act)
       {
          key = 'b',
          mods = 'LEADER',
-         action = wezterm.action_callback(function()
-            require('utils.background').toggleBackground(config)
-            wezterm.reload_configuration()
+         action = wezterm.action_callback(function(window)
+            require('utils.background').toggleBackground(window)
+         end),
+      },
+      {
+         key = 'B',
+         mods = 'LEADER',
+         action = wezterm.action_callback(function(window)
+            local overrides = window:get_config_overrides() or {}
+            overrides.background = require('utils.background').getEmptyBackground()
+            overrides.window_background_opacity = 1
+            window:set_config_overrides(overrides)
          end),
       },
 

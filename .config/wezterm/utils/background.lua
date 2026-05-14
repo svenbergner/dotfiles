@@ -15,7 +15,16 @@ M.getFancyBackground = function()
 end
 
 M.getEmptyBackground = function()
-   return {}
+   return {
+      {
+         -- Base color layer shown around the image
+         source = { Color = '#1d2021' },
+         width = '100%',
+         height = '100%',
+         horizontal_align = 'Center',
+         vertical_align = 'Middle',
+      },
+   }
 end
 
 M.getSimpleBackground = function()
@@ -32,8 +41,7 @@ M.getSimpleBackground = function()
       {
          source = {
             -- File = home_dir .. '/.config/wezterm/background/neovim3.png',
-            File = home_dir ..
-               '/.config/wezterm/background/OnoSendaiCyberspace7.jpg',
+            File = home_dir .. '/.config/wezterm/background/OnoSendaiCyberspace7.jpg',
          },
          width = '50%',
          height = '50%',
@@ -46,16 +54,22 @@ M.getSimpleBackground = function()
    }
 end
 
-M.toggleBackground = function(config)
+M.toggleBackground = function(window)
+   local overrides = window:get_config_overrides() or {}
    if wezterm.GLOBAL.fancy_background then
-      config.background = M.getFancyBackground()
-      config.window_background_opacity = 1
+      overrides.background = M.getSimpleBackground()
       wezterm.GLOBAL.fancy_background = false
    else
-      config.background = M.getSimpleBackground()
-      config.window_background_opacity = 1
+      overrides.background = M.getFancyBackground()
       wezterm.GLOBAL.fancy_background = true
    end
+   overrides.window_background_opacity = 1
+   window:set_config_overrides(overrides)
+end
+
+M.setBlankBackground = function(config)
+   config.background = M.getEmptyBackground()
+   config.window_background_opacity = 1
 end
 
 return M
