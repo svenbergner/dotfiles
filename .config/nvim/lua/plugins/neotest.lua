@@ -12,7 +12,6 @@ Dependencies:
 https://github.com/mfussenegger/nvim-dap
 https://github.com/nvim-neotest/nvim-nio
 https://github.com/nvim-lua/plenary.nvim
-https://github.com/nvim-treesitter/nvim-treesitter
 https://github.com/sidlatau/neotest-dart
 https://github.com/nvim-neotest/neotest-python
 https://github.com/nvim-neotest/neotest-plenary
@@ -37,7 +36,6 @@ return {
       'mfussenegger/nvim-dap',
       'nvim-neotest/nvim-nio',
       'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
       'sidlatau/neotest-dart',
       'nvim-neotest/neotest-python',
       'nvim-neotest/neotest-plenary',

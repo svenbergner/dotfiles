@@ -1,24 +1,13 @@
 --[===[
 Treesitter configuration
-https://github.com/nvim-treesitter/nvim-treesitter
+Uses Neovim's built-in treesitter APIs plus local parser/query management.
 --]===]
 
 return {
-   'nvim-treesitter/nvim-treesitter',
-   enabled = true,
-   branch = 'main',
+   dir = vim.fn.stdpath('config'),
+   name = 'local-treesitter',
    lazy = false,
-   build = ':TSUpdate',
    config = function()
-      vim.opt.foldmethod = 'expr'
-      vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.opt.foldlevel = 99
-      vim.opt.foldlevelstart = 99
-      vim.opt.foldcolumn = '1'
-      -- Prevent session restore from overriding foldmethod with 'manual'.
-      -- Treesitter recomputes folds on every buffer open, so saving fold
-      -- state in sessions is unnecessary.
-      vim.opt.sessionoptions:remove('folds')
-      vim.keymap.set('n', '<CR>', 'za', { noremap = true, silent = true, desc = 'Toggle current fold' })
+      require('treesitter').setup()
    end,
 }

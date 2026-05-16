@@ -8,7 +8,6 @@ https://github.com/MeanderingProgrammer/render-markdown.nvim
 https://github.com/MunifTanjim/nui.nvim
 https://github.com/nvim-lua/plenary.nvim
 https://github.com/nvim-tree/nvim-web-devicons
-https://github.com/nvim-treesitter/nvim-treesitter
 https://github.com/zbirenbaum/copilot.lua
 
 A Neovim plugin designed to emulate the behaviour of the Cursor AI IDE.
@@ -119,7 +118,6 @@ return {
    build = 'make',
    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
       --- The below dependencies are optional,

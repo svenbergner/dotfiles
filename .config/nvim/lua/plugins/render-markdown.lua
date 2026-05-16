@@ -7,7 +7,6 @@ return {
    'MeanderingProgrammer/render-markdown.nvim',
    enabled = true,
    dependencies = {
-      { 'nvim-treesitter/nvim-treesitter', branch = 'main' },
       'nvim-treesitter/nvim-web-devicons',
    },
    config = function()

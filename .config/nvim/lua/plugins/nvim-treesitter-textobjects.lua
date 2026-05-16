@@ -6,7 +6,7 @@ https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 return {
    'nvim-treesitter/nvim-treesitter-textobjects',
    enabled = true,
-   lazy = true,
+   event = 'VeryLazy',
    branch = 'main',
    config = function()
       require('nvim-treesitter-textobjects').setup({
