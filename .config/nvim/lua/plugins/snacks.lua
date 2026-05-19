@@ -11,6 +11,10 @@ local config_path = {
    cwd = vim.fn.expand('$HOME') .. '/Repos/dotfiles/.config/nvim',
 }
 
+local buffers_opts = {
+   sort_lastused = false,
+}
+
 local help_opts = {
    win = {
       input = {
@@ -146,8 +150,8 @@ return {
          left = { 'mark', 'sign' }, -- Priority of signs on the left (high to low)
          right = { 'fold', 'git' }, -- Priority of signs on the right (high to low)
          folds = {
-            open = true, -- show open fold icons
-            git_hl = true, -- Use Git Signs hl for fold icons
+            open = true,            -- show open fold icons
+            git_hl = true,          -- Use Git Signs hl for fold icons
          },
          git = {
             -- patterns to match Git signs
@@ -236,16 +240,9 @@ return {
       {
          '<leader>fb',
          function()
-            Snacks.picker.buffers()
+            Snacks.picker.buffers(buffers_opts)
          end,
          desc = '[f]ind [b]uffers',
-      },
-      {
-         '<leader>fB',
-         function()
-            Snacks.picker.grep_buffers()
-         end,
-         desc = '[f]ind [g]rep in open buffers',
       },
       {
          '<leader>fc',
@@ -302,6 +299,13 @@ return {
             Snacks.picker.grep(file_opts)
          end,
          desc = '[f]ind [g]rep',
+      },
+      {
+         '<leader>fG',
+         function()
+            Snacks.picker.grep_buffers()
+         end,
+         desc = '[f]ind [G]rep in open buffers',
       },
       {
          '<leader>fw',
@@ -591,11 +595,11 @@ return {
             Snacks.toggle.inlay_hints():map('<leader>Th')
             Snacks.toggle.line_number():map('<leader>TL')
             Snacks.toggle
-               .option('background', { off = 'light', on = 'dark', name = 'Dark Background' })
-               :map('<leader>TB')
+                .option('background', { off = 'light', on = 'dark', name = 'Dark Background' })
+                :map('<leader>TB')
             Snacks.toggle
-               .option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-               :map('<leader>Tc')
+                .option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+                :map('<leader>Tc')
             Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map('<leader>Tl')
             Snacks.toggle.option('spell', { name = 'Spelling' }):map('<leader>Ts')
             Snacks.toggle.option('wrap', { name = 'Wrap' }):map('<leader>Tw')
