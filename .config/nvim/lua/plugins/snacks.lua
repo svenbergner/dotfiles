@@ -596,7 +596,7 @@ return {
             Snacks.toggle.line_number():map('<leader>TL')
             Snacks.toggle
                 .option('background', { off = 'light', on = 'dark', name = 'Dark Background' })
-                :map('<leader>TB')
+                :map('<leader>Tb')
             Snacks.toggle
                 .option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
                 :map('<leader>Tc')
