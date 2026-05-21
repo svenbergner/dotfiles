@@ -148,8 +148,90 @@ return {
          end
       end
 
+      local ok_subprocess, subprocess = pcall(function()
+         return require('neotest.lib').subprocess
+      end)
+      if ok_subprocess and not subprocess._aav_add_treesitter_root then
+         local add_paths_to_rtp = subprocess.add_paths_to_rtp
+         subprocess.add_paths_to_rtp = function(paths)
+            local ts_init = vim.api.nvim_get_runtime_file('lua/nvim-treesitter/init.lua', false)[1]
+               or vim.api.nvim_get_runtime_file('lua/nvim-treesitter.lua', false)[1]
+            if ts_init then
+               local ts_root = ts_init:match("(.+)/lua/nvim%-treesitter/init%.lua") or ts_init:match("(.+)/lua/nvim%-treesitter%.lua")
+               if ts_root and ts_root ~= '' then
+                  local seen = false
+                  for _, path in ipairs(paths) do
+                     if path == ts_root then
+                        seen = true
+                        break
+                     end
+                  end
+                  if not seen then
+                     paths[#paths + 1] = ts_root
+                  end
+               end
+            end
+            return add_paths_to_rtp(paths)
+         end
+         subprocess._aav_add_treesitter_root = true
+      end
+
+      local function existing_ctest_dir(path)
+         if path and vim.loop.fs_stat(path .. '/CTestTestfile.cmake') then
+            return path
+         end
+         return nil
+      end
+
+      local function build_variant_from_compile_commands(source_root)
+         local cc = source_root .. '/compile_commands.json'
+         if not vim.loop.fs_stat(cc) then
+            return nil
+         end
+
+         local real = vim.loop.fs_realpath(cc) or ''
+         if real:find('/debug/', 1, true) or real:find('-debug/', 1, true) then
+            return 'debug'
+         elseif real:find('/release/', 1, true) or real:find('-release/', 1, true) then
+            return 'release'
+         end
+         return nil
+      end
+
+      local function sse_ctest_root(root, position)
+         if not root or not position or not position.path then
+            return root
+         end
+         if vim.loop.os_uname().sysname ~= 'Darwin' then
+            return root
+         end
+         if not position.path:find('/AavTaxCore/Test/', 1, true) then
+            return root
+         end
+
+         local build_root = root:gsub('/Dev$', '/build')
+         if build_root == root then
+            return root
+         end
+
+         local variant = build_variant_from_compile_commands(root) or 'release'
+         local variants = variant == 'debug' and { 'debug', 'release' } or { 'release', 'debug' }
+         for _, candidate_variant in ipairs(variants) do
+            local candidate = build_root .. '/macos-taxcore-ub-' .. candidate_variant
+            local ctest_root = existing_ctest_dir(candidate)
+            if ctest_root then
+               return ctest_root
+            end
+         end
+
+         return root
+      end
+
       local neotest = require('neotest')
       neotest.setup({
+         running = {
+            concurrent = false,
+         },
          floating = {
             border = 'rounded',
             max_height = 0.6,
@@ -174,12 +256,32 @@ return {
             require('neotest-ctest').setup({
                dap_adapter = 'lldb',
                dap_args = { stopOnEntry = false, exception_breakpoints = {} },
+               ctest_root = sse_ctest_root,
                is_test_file = function(file_path)
-                  return file_path:match('test_.*%.c$') ~= nil
-                     or file_path:match('.*_test%.c$') ~= nil
-                     or file_path:match('test_.*%.cpp$') ~= nil
-                     or file_path:match('.*Test%.cpp$') ~= nil
-                     or file_path:match('.*Tests%.cpp$') ~= nil
+                  if file_path:match("/CatchMain%.cpp$") then
+                     return false
+                  end
+                  if file_path:match("/%.!%d+!.*") then
+                     return false
+                  end
+                  if file_path:find("/ExternalLibs/", 1, true) or file_path:find("/kdsoap/", 1, true) then
+                     return false
+                  end
+                  if not (file_path:match("%.c$") or file_path:match("%.cpp$")) then
+                     return false
+                  end
+                  if not (file_path:match("/Test/") or file_path:match("Test%.cpp$") or file_path:match("Tests%.cpp$")) then
+                     return false
+                  end
+
+                  local file = io.open(file_path, "r")
+                  if not file then
+                     return false
+                  end
+                  local content = file:read(8192) or ""
+                  file:close()
+                  return content:find('#include%s+[<"]catch2/') ~= nil
+                     or content:find('#include%s+[<"]catch_amalgamated%.hpp') ~= nil
                end,
                framework = { 'catch2' },
                -- compile_commands.json in the source root is a symlink to the
