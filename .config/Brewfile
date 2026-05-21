@@ -38,6 +38,8 @@ brew "cbonsai"
 brew "chafa"
 # Create and view interactive cheat sheets for *nix commands
 brew "cheat"
+# Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
+brew "clang-format"
 # Cross-platform make
 brew "cmake"
 # Console Matrix
@@ -339,3 +341,4 @@ cask "utm"
 cask "virtualbuddy"
 # Multimedia player
 cask "vlc"
+npm "neovim"
