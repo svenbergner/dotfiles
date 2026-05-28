@@ -343,4 +343,6 @@ cask "utm"
 cask "virtualbuddy"
 # Multimedia player
 cask "vlc"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm@nightly"
 npm "neovim"
