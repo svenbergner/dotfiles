@@ -1,0 +1,61 @@
+;; Kanata configuration
+;; Homerow Mods: tap for letter, hold + other key for modifier, hold alone for repeat
+;; Layout: asdf jklö
+;;   a/ö → Control (left/right)
+;;   s/l → Shift (left/right)
+;;   d/k → Option/Alt (left/right)
+;;   f/j → Command/Meta (left/right)
+;;
+;; Caps Lock → Ctrl when held, Esc when tapped
+;;
+;; Simple remaps:
+;;   grave ↔ non_us_backslash (ISO keyboard fix)
+
+(defcfg
+  ;; macOS input/output
+  process-unmapped-keys yes
+  ;; Treat a held key as a modifier immediately when another key is pressed
+  ;; (prevents accidental modifier activation while typing fast)
+  concurrent-tap-hold yes
+)
+
+(defsrc
+  caps grv  nubs
+  a    s    d    f
+  j    k    l    scln
+)
+
+(deflayer base
+  @caps @grv @nubs
+  @a    @s   @d   @f
+  @j    @k   @l   @semi
+)
+
+;; tap-hold-release:
+;;   - tap (quick press/release)  → letter
+;;   - hold + another key pressed → modifier
+;;   - hold alone                 → key repeat of the letter
+;;
+;; Syntax: (tap-hold-release tap-timeout hold-timeout tap-action hold-action)
+
+(defalias
+  ;; Caps Lock: tap = Esc, hold = LCtrl
+  caps (tap-hold 200 200 esc lctl)
+
+  ;; ISO keyboard: swap grave and non_us_backslash
+  grv  nubs
+  nubs grv
+
+  ;; Left hand homerow mods
+  a (tap-hold-release 200 200 a lctl)
+  s (tap-hold-release 200 200 s lsft)
+  d (tap-hold-release 200 200 d lalt)
+  f (tap-hold-release 200 200 f lmet)
+
+  ;; Right hand homerow mods
+  j (tap-hold-release 200 200 j rmet)
+  k (tap-hold-release 200 200 k ralt)
+  l (tap-hold-release 200 200 l rsft)
+  semi (tap-hold-release 200 200 scln rctl)
+)
+
