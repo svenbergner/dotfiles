@@ -41,72 +41,12 @@ return {
       'sidlatau/neotest-dart',
       'nvim-neotest/neotest-python',
       'nvim-neotest/neotest-plenary',
-      "antoinemadec/FixCursorHold.nvim",
+      'antoinemadec/FixCursorHold.nvim',
       'Shatur/neovim-tasks',
       { 'orjangj/neotest-ctest', dev = true },
    },
    config = function()
       require('tasks').setup({})
-
-      -- Monkey-patch ctest:new() so it resolves the build directory from
-      -- compile_commands.json when called with the SOURCE directory (which is
-      -- what root() now returns for a clean neotest summary tree).
-      local ok, ctest_mod = pcall(require, 'neotest-ctest.ctest')
-      if ok then
-         local nio = require('nio')
-         local orig_new = ctest_mod.new
-         ctest_mod.new = function(self, cwd)
-            -- Fast path 1: cwd is already a build dir with CTestTestfile.cmake.
-            if vim.loop.fs_stat(cwd .. '/CTestTestfile.cmake') then
-               local session = {
-                  _test_dir = cwd,
-                  _output_junit_path = nio.fn.tempname(),
-                  _output_log_path = nio.fn.tempname(),
-               }
-               setmetatable(session, self)
-               self.__index = self
-               return session
-            end
-            -- Fast path 2: cwd is a source dir with a compile_commands.json symlink.
-            -- Resolve the build dir, then find the shallowest CTestTestfile.cmake
-            -- (depth=2) so we pick the top-level test directory (e.g. SSE/) rather
-            -- than a randomly ordered sub-module directory.
-            local cc = cwd .. '/compile_commands.json'
-            if vim.loop.fs_stat(cc) then
-               local real = vim.loop.fs_realpath(cc)
-               if real then
-                  local build_dir = vim.fn.fnamemodify(real, ':h')
-                  if vim.loop.fs_stat(build_dir) then
-                     local lib = require('neotest.lib')
-                     local scandir = require('plenary.scandir')
-                     local roots = scandir.scan_dir(build_dir, {
-                        respect_gitignore = false,
-                        depth = 2,
-                        search_pattern = 'CTestTestfile.cmake',
-                        silent = true,
-                     })
-                     if roots and #roots > 0 then
-                        -- Sort by path length so the shallowest entry comes first.
-                        table.sort(roots, function(a, b)
-                           return #a < #b
-                        end)
-                        local test_dir = lib.files.parent(roots[1])
-                        local session = {
-                           _test_dir = test_dir,
-                           _output_junit_path = nio.fn.tempname(),
-                           _output_log_path = nio.fn.tempname(),
-                        }
-                        setmetatable(session, self)
-                        self.__index = self
-                        return session
-                     end
-                     return orig_new(self, build_dir)
-                  end
-               end
-            end
-            return orig_new(self, cwd)
-         end
-      end
 
       -- Custom consumer: places a gutter sign for every discovered test position,
       -- so tests are visible even before they have been run.
@@ -116,14 +56,18 @@ return {
          neotest_client = client
          local sign_name = 'NeotestDefined'
          local sign_group = 'neotest-defined'
-         vim.fn.sign_define(sign_name, { text = ' 󰙨', texthl = 'GruvboxGreen' })
+
+         local function define_sign()
+            vim.fn.sign_define(sign_name, { text = ' 󰙨', texthl = 'GruvboxGreen' })
+         end
 
          local function render_file(adapter_id, file_path)
+            define_sign()
             local bufnr = vim.fn.bufnr(file_path)
             if bufnr == -1 or not vim.api.nvim_buf_is_valid(bufnr) then
                return
             end
-            vim.fn.sign_unplace(sign_group, { buffer = bufnr })
+            pcall(vim.fn.sign_unplace, sign_group, { buffer = bufnr })
             local tree = client:get_position(file_path, { adapter = adapter_id })
             if not tree then
                return
@@ -131,7 +75,7 @@ return {
             for _, node in tree:iter_nodes() do
                local pos = node:data()
                if pos.range and pos.type == 'test' then
-                  vim.fn.sign_place(0, sign_group, sign_name, bufnr, { lnum = pos.range[1] + 1 })
+                  pcall(vim.fn.sign_place, 0, sign_group, sign_name, bufnr, { lnum = pos.range[1] + 1 })
                end
             end
          end
@@ -145,8 +89,7 @@ return {
 
          client.listeners.test_file_focused = function(adapter_id, file_path)
             render_file(adapter_id, file_path)
-         end
-      end
+         end      end
 
       local ok_subprocess, subprocess = pcall(function()
          return require('neotest.lib').subprocess
@@ -157,7 +100,8 @@ return {
             local ts_init = vim.api.nvim_get_runtime_file('lua/nvim-treesitter/init.lua', false)[1]
                or vim.api.nvim_get_runtime_file('lua/nvim-treesitter.lua', false)[1]
             if ts_init then
-               local ts_root = ts_init:match("(.+)/lua/nvim%-treesitter/init%.lua") or ts_init:match("(.+)/lua/nvim%-treesitter%.lua")
+               local ts_root = ts_init:match('(.+)/lua/nvim%-treesitter/init%.lua')
+                  or ts_init:match('(.+)/lua/nvim%-treesitter%.lua')
                if ts_root and ts_root ~= '' then
                   local seen = false
                   for _, path in ipairs(paths) do
@@ -183,21 +127,6 @@ return {
          return nil
       end
 
-      local function build_variant_from_compile_commands(source_root)
-         local cc = source_root .. '/compile_commands.json'
-         if not vim.loop.fs_stat(cc) then
-            return nil
-         end
-
-         local real = vim.loop.fs_realpath(cc) or ''
-         if real:find('/debug/', 1, true) or real:find('-debug/', 1, true) then
-            return 'debug'
-         elseif real:find('/release/', 1, true) or real:find('-release/', 1, true) then
-            return 'release'
-         end
-         return nil
-      end
-
       local function sse_ctest_root(root, position)
          if not root or not position or not position.path then
             return root
@@ -205,26 +134,31 @@ return {
          if vim.loop.os_uname().sysname ~= 'Darwin' then
             return root
          end
-         if not position.path:find('/AavTaxCore/Test/', 1, true) then
+         local cc = root .. '/compile_commands.json'
+         if not vim.loop.fs_stat(cc) then
+            vim.notify('neotest-ctest: compile_commands.json nicht gefunden: ' .. cc, vim.log.levels.ERROR)
             return root
          end
 
-         local build_root = root:gsub('/Dev$', '/build')
-         if build_root == root then
+         local real = vim.loop.fs_realpath(cc)
+         if not real then
+            vim.notify(
+               'neotest-ctest: compile_commands.json konnte nicht aufgeloest werden: ' .. cc,
+               vim.log.levels.ERROR
+            )
             return root
          end
 
-         local variant = build_variant_from_compile_commands(root) or 'release'
-         local variants = variant == 'debug' and { 'debug', 'release' } or { 'release', 'debug' }
-         for _, candidate_variant in ipairs(variants) do
-            local candidate = build_root .. '/macos-taxcore-ub-' .. candidate_variant
-            local ctest_root = existing_ctest_dir(candidate)
-            if ctest_root then
-               return ctest_root
-            end
+         local build_dir = vim.fn.fnamemodify(real, ':h')
+         if not existing_ctest_dir(build_dir) then
+            vim.notify(
+               'neotest-ctest: Build-Ordner aus compile_commands.json ist kein CTest-Root: ' .. build_dir,
+               vim.log.levels.ERROR
+            )
+            return root
          end
 
-         return root
+         return build_dir
       end
 
       local neotest = require('neotest')
@@ -258,32 +192,34 @@ return {
                dap_args = { stopOnEntry = false, exception_breakpoints = {} },
                ctest_root = sse_ctest_root,
                is_test_file = function(file_path)
-                  if file_path:match("/CatchMain%.cpp$") then
+                  if file_path:match('/CatchMain%.cpp$') then
                      return false
                   end
-                  if file_path:match("/%.!%d+!.*") then
+                  if file_path:match('/%.!%d+!.*') then
                      return false
                   end
-                  if file_path:find("/ExternalLibs/", 1, true) or file_path:find("/kdsoap/", 1, true) then
+                  if file_path:find('/ExternalLibs/', 1, true) or file_path:find('/kdsoap/', 1, true) then
                      return false
                   end
-                  if not (file_path:match("%.c$") or file_path:match("%.cpp$")) then
+                  if not (file_path:match('%.c$') or file_path:match('%.cpp$')) then
                      return false
                   end
-                  if not (file_path:match("/Test/") or file_path:match("Test%.cpp$") or file_path:match("Tests%.cpp$")) then
+                  if
+                     not (file_path:match('/Test/') or file_path:match('Test%.cpp$') or file_path:match('Tests%.cpp$'))
+                  then
                      return false
                   end
 
-                  local file = io.open(file_path, "r")
+                  local file = io.open(file_path, 'r')
                   if not file then
                      return false
                   end
-                  local content = file:read(8192) or ""
+                  local content = file:read(8192) or ''
                   file:close()
                   return content:find('#include%s+[<"]catch2/') ~= nil
                      or content:find('#include%s+[<"]catch_amalgamated%.hpp') ~= nil
                end,
-               framework = { 'catch2' },
+               hide_unavailable_tests = true,
                -- compile_commands.json in the source root is a symlink to the
                -- build directory. root() gibt das SOURCE-Verzeichnis zurück damit
                -- die neotest-Summary die Quell-Struktur zeigt (nicht den Build-Dir).
@@ -321,6 +257,10 @@ return {
          neotest.run.run(vim.fn.expand('%'))
       end, { desc = '[t]ests run [a]ll in file' })
 
+      vim.keymap.set('n', '<leader>tA', function()
+         require('neotest').run.run({ suite = true })
+      end, { desc = '[t]ests run [A]ll in tree' })
+
       vim.keymap.set('n', '<leader>td', function()
          neotest.run.run({ strategy = 'dap' })
       end, { desc = '[t]est: [d]ebug nearest test' })
@@ -332,6 +272,36 @@ return {
       vim.keymap.set('n', '<leader>tt', function()
          neotest.summary.toggle()
       end, { desc = '[t]oggle [t]est summary' })
+
+      vim.keymap.set('n', '<leader>tR', function()
+         local ctest_adapter = require('neotest-ctest')
+         if ctest_adapter.clear_cache then
+            ctest_adapter.clear_cache()
+         end
+
+         if not neotest_client then
+            vim.notify('neotest: no adapter active yet', vim.log.levels.WARN)
+            return
+         end
+
+         local file_path = vim.fn.expand('%:p')
+         require('nio').run(function()
+            local adapter_id = neotest_client:get_adapter(file_path)
+            if not adapter_id then
+               vim.schedule(function()
+                  vim.notify('neotest: no adapter for current file', vim.log.levels.WARN)
+               end)
+               return
+            end
+
+            local root = neotest.state.positions(adapter_id)
+            local root_path = root and root:data().path or vim.loop.cwd()
+            neotest_client:_update_positions(root_path, { adapter = adapter_id })
+            vim.schedule(function()
+               vim.notify('neotest: test tree refreshed', vim.log.levels.INFO)
+            end)
+         end)
+      end, { desc = '[t]est: [R]efresh tree' })
 
       vim.keymap.set('n', '<leader>tf', function()
          if not neotest_client then
