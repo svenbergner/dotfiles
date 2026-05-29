@@ -104,6 +104,49 @@ local function getDebugInfos()
    return debug_infos
 end
 
+local function pathParent(path)
+   return path and path:match('^(.+)/[^/]+$') or nil
+end
+
+local function pathBasename(path)
+   return path and path:match('([^/]+)$') or ''
+end
+
+local function findCompileCommandsBuildDir()
+   local path = vim.api.nvim_buf_get_name(0)
+   if path == '' then
+      path = vim.loop.cwd()
+   end
+   if vim.loop.fs_stat(path) and vim.loop.fs_stat(path).type ~= 'directory' then
+      path = pathParent(path)
+   end
+
+   local home = vim.loop.os_homedir()
+   while path and path ~= home and path ~= '/' do
+      local cc = path .. '/compile_commands.json'
+      if vim.loop.fs_stat(cc) then
+         local real = vim.loop.fs_realpath(cc)
+         if real then
+            return pathParent(real)
+         end
+      end
+      local parent = pathParent(path)
+      if parent == path then
+         break
+      end
+      path = parent
+   end
+   return nil
+end
+
+local function getTestBuildContext()
+   local build_dir = findCompileCommandsBuildDir()
+   if not build_dir or build_dir == '' then
+      return ''
+   end
+   return '󰏗 ' .. pathBasename(build_dir)
+end
+
 return {
    'nvim-lualine/lualine.nvim',
    config = function()
@@ -151,6 +194,12 @@ return {
             },
             lualine_x = {
                { 'copilot' },
+               {
+                  getTestBuildContext,
+                  cond = function()
+                     return #getTestBuildContext() > 0
+                  end,
+               },
                { 'filetype' },
                { 'encoding' },
                { 'fileformat' },
