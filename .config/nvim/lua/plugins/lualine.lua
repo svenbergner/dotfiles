@@ -144,7 +144,7 @@ local function getTestBuildContext()
    if not build_dir or build_dir == '' then
       return ''
    end
-   return '󰏗 ' .. pathBasename(build_dir)
+   return '󰙨 ' .. pathBasename(build_dir)
 end
 
 return {
