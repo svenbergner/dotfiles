@@ -194,15 +194,15 @@ return {
             },
             lualine_x = {
                { 'copilot' },
+               { 'filetype' },
+               { 'encoding' },
+               { 'fileformat' },
                {
                   getTestBuildContext,
                   cond = function()
                      return #getTestBuildContext() > 0
                   end,
                },
-               { 'filetype' },
-               { 'encoding' },
-               { 'fileformat' },
                {
                   getBuildState,
                   cond = function()
