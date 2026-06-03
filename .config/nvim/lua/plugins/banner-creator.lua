@@ -6,4 +6,5 @@ https://github.com/svenbergner/banner_creator.nvim
 return {
    'svenbergner/banner_creator.nvim',
    dev = true,
+   enabled = true,
 }

@@ -6,6 +6,7 @@ https://github.com/MeanderingProgrammer/treesitter-modules.nvim
 
 return {
    'MeanderingProgrammer/treesitter-modules.nvim',
+   enabled = true,
    dependencies = { 'nvim-treesitter/nvim-treesitter' },
    branch = 'main',
    ---@module 'treesitter-modules'
