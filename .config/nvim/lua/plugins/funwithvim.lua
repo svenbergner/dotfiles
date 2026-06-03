@@ -1,13 +1,11 @@
 --[===[
 Collection of plugins that are fun to use
-01 https://github.com/eandrju/cellular-automaton.nvim
-02 https://github.com/tamton-aquib/duck.nvim
-03 https://github.com/AndrewRadev/typewriter.vim
-04 https://github.com/rhysd/vim-syntax-christmas-tree
-05 https://github.com/AndrewRadev/dealwithit.vim
-06 https://github.com/folke/drop.nvim
-07 https://github.com/ThePrimeagen/vim-be-good
-09 https://github.com/vuciv/golf
+https://github.com/eandrju/cellular-automaton.nvim
+https://github.com/tamton-aquib/duck.nvim
+https://github.com/rhysd/vim-syntax-christmas-tree
+https://github.com/folke/drop.nvim
+https://github.com/ThePrimeagen/vim-be-good
+https://github.com/svenbergner/sudokusolver.nvim
 --]===]
 
 return {
@@ -19,9 +17,7 @@ return {
    --       vim.keymap.set('n', '<leader>da', function() require("duck").cook_all() end, {})
    --    end
    -- },
-   -- { 'AndrewRadev/typewriter.vim' },
    -- { 'rhysd/vim-syntax-christmas-tree', -- Shows a christmas tree in a split with :MerryChristmas },
-   -- { 'AndrewRadev/dealwithit.vim' },
    -- { "folke/drop.nvim",
    --    opt = {
    --       screensaver = 1000 * 60 * 5, -- show after 5 minutes. Set to false, to disable
@@ -30,5 +26,4 @@ return {
    -- },
    -- { "ThePrimeagen/vim-be-good", }
    { 'svenbergner/sudokusolver.nvim', enabled = true, cmd = 'SudokuSolverStart', dev = true },
-   { 'vuciv/golf', enabled = true, cmd = 'Golf' },
 }
