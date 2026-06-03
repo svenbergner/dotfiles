@@ -44,6 +44,7 @@ return {
       'antoinemadec/FixCursorHold.nvim',
       'Shatur/neovim-tasks',
       { 'orjangj/neotest-ctest', dev = true },
+      { 'svenbergner/neotest-dmctest', dev = true },
    },
    config = function()
       require('tasks').setup({})
@@ -89,7 +90,8 @@ return {
 
          client.listeners.test_file_focused = function(adapter_id, file_path)
             render_file(adapter_id, file_path)
-         end      end
+         end
+      end
 
       local ok_subprocess, subprocess = pcall(function()
          return require('neotest.lib').subprocess
@@ -241,6 +243,12 @@ return {
                   end
                   return nil
                end,
+            }),
+            require('neotest-dmctest')({
+               -- Defaults point at /Users/sven.bergner/Repos/Content/StP/31.
+               -- Override these when using a different checkout or LZ.
+               product_root = '/Users/sven.bergner/Repos/Content/StP/31',
+               lz_root = '/Users/sven.bergner/Repos/Content/StP/31/lz',
             }),
          },
       })
