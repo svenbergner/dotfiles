@@ -115,6 +115,21 @@ return {
          list_opener = 'copen',
       },
    },
+   config = function(_, opts)
+      require('avante').setup(opts)
+      -- Re-apply border highlights after Avante's auto_set_highlight_group
+      -- to ensure they are not overridden by Avante's defaults.
+      local function set_border_highlights()
+         vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#a89984', bg = '#1d2021' })
+         vim.api.nvim_set_hl(0, 'AvantePromptInputBorder', { fg = '#a89984', bg = '#3c3836' })
+         vim.api.nvim_set_hl(0, 'AvanteSidebarWinSeparator', { fg = '#a89984', bg = '#3c3836' })
+      end
+      set_border_highlights()
+      vim.api.nvim_create_autocmd('ColorScheme', {
+         pattern = '*',
+         callback = set_border_highlights,
+      })
+   end,
    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
    build = 'make',
    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows

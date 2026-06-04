@@ -29,7 +29,9 @@ return {
       inverse = true, -- invert background for search, diffs, statuslines and errors
       contrast = '', -- can be "hard", "soft" or empty string
       palette_overrides = {},
-      overrides = {},
+      overrides = {
+         FloatBorder = { fg = '#a89984', bg = '#1d2021' },
+      },
       dim_inactive = false,
       transparent_mode = false,
    },
