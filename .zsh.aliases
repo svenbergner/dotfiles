@@ -112,7 +112,7 @@ function bba() {
         return 1
     fi
     brew bundle add "$@" && echo "Package '$*' added to Brewfile." || echo "Failed to add package '$*'."
-    brew bundle -q && echo "Brew bundle succeeded." || echo "Brew bundle failed."
+    brew bundle -q --force && echo "Brew bundle succeeded." || echo "Brew bundle failed."
     brew bundle dump --describe --force && echo "Brewfile updated!" || echo "Failed to update Brewfile."
 }
 alias bbac='bba --cask'
