@@ -7,6 +7,5 @@ https://github.com/svenbergner/presenter.nvim
 return {
    'svenbergner/presenter.nvim',
    enabled = true,
-   cmd = 'PresenterStart',
    dev = true,
 }
