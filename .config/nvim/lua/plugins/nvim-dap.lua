@@ -62,6 +62,7 @@ return {
          'williamboman/mason.nvim',
          'jbyuki/one-small-step-for-vimkind',
          'mfussenegger/nvim-dap-python',
+         'Weissle/persistent-breakpoints.nvim',
       },
       config = function()
          require('lazydev').setup({})
@@ -250,6 +251,11 @@ return {
          -- require("dap-python").setup("python3")
          require('dap-python').setup('uv')
 
+         -- Persist breakpoints across sessions
+         require('persistent-breakpoints').setup({
+            load_breakpoints_event = { 'BufReadPost' },
+         })
+
          vim.api.nvim_create_user_command('SetDebuggee', function()
             require('telescope').extensions.debugee_selector.selectSearchPathRoot()
          end, { nargs = 0 })
@@ -389,7 +395,7 @@ return {
          vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Step into' })
          vim.keymap.set('n', '<S-F11>', dap.step_out, { desc = 'Step out' })
          vim.keymap.set('n', '<F23>', dap.step_out, { desc = 'Step out' })
-         vim.keymap.set('n', '<F9>', dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
+         vim.keymap.set('n', '<F9>', require('persistent-breakpoints.api').toggle_breakpoint, { desc = 'Toggle breakpoint' })
          vim.keymap.set('n', '<leader>dd', dapview.toggle, { desc = 'toggle [d]apview [d]isplay' })
          vim.keymap.set('n', '<leader>do', dapview.open, { desc = '[d]apview [o]pen' })
          vim.keymap.set('n', '<leader>dq', dapview.close, { desc = '[d]apview [q]uit' })
@@ -438,11 +444,9 @@ return {
          end, { desc = '[d]apview [j]ump to [r]epl' })
 
          -- Setting breakpoints
-         vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Toggle [d]ab [b]reakpoint' })
+         vim.keymap.set('n', '<leader>db', require('persistent-breakpoints.api').toggle_breakpoint, { desc = 'Toggle [d]ap [b]reakpoint' })
 
-         vim.keymap.set('n', '<leader>dB', function()
-            dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
-         end, { desc = 'Set [d]ap conditional [B]reakpoint' })
+         vim.keymap.set('n', '<leader>dB', require('persistent-breakpoints.api').set_conditional_breakpoint, { desc = 'Set [d]ap conditional [B]reakpoint' })
 
          vim.keymap.set('n', '<leader>dc', dap.run_to_cursor, { desc = '[d]ab: Run to [c]ursor' })
 
