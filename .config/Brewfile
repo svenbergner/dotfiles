@@ -212,6 +212,10 @@ brew "python-tk@3.10"
 brew "python@3.12"
 # Python interface to Tcl/Tk
 brew "python-tk@3.12"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
+# Python interface to Tcl/Tk
+brew "python-tk@3.14"
 # Generic machine emulator and virtualizer
 brew "qemu"
 # File browser
