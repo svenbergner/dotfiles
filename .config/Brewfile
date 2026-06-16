@@ -307,12 +307,8 @@ cask "epson-print-layout"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
-# Terminal emulator that uses platform-native UI and GPU acceleration
-cask "ghostty"
 # Free and open-source image editor
 cask "gimp"
-# Git client for simultaneous branches on top of your existing workflow
-cask "gitbutler"
 # Open Source Multimedia Framework
 cask "gstreamer-runtime"
 # Adds an OpenGL renderer to the ZDoom source port
