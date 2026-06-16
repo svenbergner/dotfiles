@@ -1,0 +1,3 @@
+;; extends
+
+(identifier) @local.reference

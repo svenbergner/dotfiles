@@ -70,7 +70,7 @@ return {
 
          require('nvim-dap-virtual-text').setup({
             enabled = true,                     -- enables this plugin
-            enabled_commands = true,            -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
+            enable_commands = true,             -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
             highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
             highlight_new_as_changed = true,    -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
             show_stop_reason = true,            -- show stop reason when stopped for exceptions
@@ -91,6 +91,17 @@ return {
             virt_text_win_col = 130,
             virt_text_pos = 'inline',
          })
+
+         dap.listeners.after.stackTrace['dmc_test_virtual_text'] = function(session)
+            if not session or not session.config or session.config.type ~= 'dmc_test' then
+               return
+            end
+
+            local frame = session.current_frame
+            if frame and (not frame.scopes or #frame.scopes == 0) then
+               pcall(session._request_scopes, session, frame)
+            end
+         end
 
          dap.adapters.lldb = {
             name = 'lldb',
@@ -171,6 +182,30 @@ return {
                toolsArgs = { '-d chrome', '--web-port=1337', '--dart-define-from-file=env-vars.json' }, -- NOTE: toolsArgs is for Flutter apps
             },
          }
+
+         dap.adapters.dmc_test = {
+            type = 'executable',
+            command = vim.env.DMC_DAP_ADAPTER or '/Users/sven.bergner/Repos/SSE/build/mac-dmc-release/lz/dmc',
+            args = { '--testDebugAdapter' },
+         }
+
+         local dmc_test_configuration = {
+            type = 'dmc_test',
+            request = 'launch',
+            name = 'Debug dmc test file',
+            cwd = '/Users/sven.bergner/Repos/Content/StP/31/lz',
+            testFile = '${file}',
+            productRoot = '/Users/sven.bergner/Repos/Content/StP/31',
+            lzRoot = '/Users/sven.bergner/Repos/Content/StP/31/lz',
+            defaultSchema = 'normal.ddb',
+            licenseFile = '/Users/sven.bergner/Repos/Content/StP/31/lz/License/License.aavdrm',
+            compilerCommand = '/Users/sven.bergner/Repos/Content/StP/31/Tools/DMScriptC',
+            compilerOptions = '-d',
+            forceCompile = true,
+         }
+
+         dap.configurations.contentdev_dmscript = { dmc_test_configuration }
+         dap.configurations.tst = { dmc_test_configuration }
 
          dap.configurations.lua = {
             {
@@ -442,10 +477,24 @@ return {
             },
          })
 
+         local dapview_configuration_done = dap.listeners.after.configurationDone['dap-view']
+         if dapview_configuration_done then
+            dap.listeners.after.configurationDone['dap-view'] = function(...)
+               local session = dap.session()
+               if not session then
+                  return
+               end
+               if session.config and session.config.type == 'dmc_test' then
+                  return
+               end
+               return dapview_configuration_done(...)
+            end
+         end
+
          -- Open dapview without stealing focus (prevents terminal from triggering insert mode)
          local function open_dapview_without_focus()
             local win = vim.api.nvim_get_current_win()
-            dapview.open()
+            pcall(dapview.open)
             vim.schedule(function()
                if vim.api.nvim_win_is_valid(win) then
                   vim.api.nvim_set_current_win(win)
