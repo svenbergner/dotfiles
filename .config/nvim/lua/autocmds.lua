@@ -47,15 +47,6 @@ autocmd('BufEnter', {
    end,
 })
 
--- Prevent Telescope from entering insert mode after leaving a prompt
--- autocmd({ 'BufLeave', 'BufWinLeave' }, {
---    callback = function(event)
---       if vim.bo[event.buf].filetype == 'TelescopePrompt' then
---          vim.api.nvim_exec2('silent! stopinsert!', {})
---       end
---    end,
--- })
-
 -- Disable spell checking in the quickfix list
 autocmd('FileType', {
    pattern = 'qf',
@@ -91,22 +82,6 @@ vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
       vim.opt_local.cursorline = false
    end,
 })
-
--- start insert mode when entering terminal (only if it is the active window)
--- autocmd('TermOpen', {
---    group = augroup('terminal_insert', { clear = true }),
---    callback = function(args)
---       -- Skip insert mode for DAP-related terminals (REPL, dapview) and neotest
---       -- terminals that open in the background and would otherwise steal focus.
---       local ft = vim.bo[args.buf].filetype
---       if ft:match('^neotest') then
---          return
---       end
---       if vim.api.nvim_get_current_buf() == args.buf then
---          vim.cmd.startinsert()
---       end
---    end,
--- })
 
 -- auto save buffer on leaving insert mode
 autocmd('InsertLeave', {
