@@ -168,8 +168,6 @@ brew "neovim"
 brew "ninja"
 # Modern shell for the GitHub era
 brew "nushell"
-# Prompt theme engine for any shell
-brew "oh-my-posh"
 # Command-line Git information tool
 brew "onefetch"
 # Development kit for the Java programming language
