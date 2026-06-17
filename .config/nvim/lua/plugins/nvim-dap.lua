@@ -48,6 +48,9 @@ https://codeberg.org/mfussenegger/nvim-dap-python
 
 DAP Virtual Text:
 https://github.com/theHamsta/nvim-dap-virtual-text
+
+Persistent breakpoints:
+https://github.com/Weissle/persistent-breakpoints.nvim
 --]===]
 
 return {
