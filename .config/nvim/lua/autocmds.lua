@@ -47,9 +47,9 @@ autocmd('BufEnter', {
    end,
 })
 
--- Disable spell checking in the quickfix list
+-- Disable spell checking in the quickfix list and DAP buffers
 autocmd('FileType', {
-   pattern = 'qf',
+   pattern = { 'qf', 'dap-view', 'dap-view-term', 'dap-repl' },
    callback = function()
       vim.opt_local.spell = false
    end,
