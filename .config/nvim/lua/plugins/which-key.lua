@@ -25,6 +25,7 @@ return {
             { '<leader>b',        group = '[b]uffer',                   icon = '' },
             { '<leader>bo',       group = '[o]rder by',                 icon = ' ' },
             { '<leader>c',        group = '[c]ode',                     icon = '' },
+            { '<leader>C',        group = '[C]compile',                 icon = '' },
             { '<leader>d',        group = '[d]ap',                      icon = '' },
             { '<leader>dj',       group = '[d]apview [j]ump to',        icon = '' },
             { '<leader>ds',       group = '[d]apview [s]how',           icon = '' },
