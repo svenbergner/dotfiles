@@ -144,7 +144,46 @@ local function getTestBuildContext()
    if not build_dir or build_dir == '' then
       return ''
    end
-   return '󰙨 ' .. pathBasename(build_dir)
+
+   local label = '󰙨 ' .. pathBasename(build_dir)
+
+   local ok, neotest = pcall(require, 'neotest')
+   if not ok or not neotest.state then
+      return label
+   end
+
+   local total, passed, failed, skipped, running = 0, 0, 0, 0, 0
+   for _, adapter_id in ipairs(neotest.state.adapter_ids()) do
+      local ok2, counts = pcall(neotest.state.status_counts, adapter_id)
+      if ok2 and counts then
+         total = total + (counts.total or 0)
+         passed  = passed  + (counts.passed  or 0)
+         failed  = failed  + (counts.failed  or 0)
+         skipped = skipped + (counts.skipped or 0)
+         running = running + (counts.running or 0)
+      end
+   end
+
+   if total == 0 and passed == 0 and failed == 0 and skipped == 0 and running == 0 then
+      return label
+   end
+
+   -- Build per-state highlight groups (fg from semantic hl, bg from lualine)
+   local bg = vim.api.nvim_get_hl(0, { name = 'lualine_c_normal', link = false }).bg
+   local function colored(text, src_hl, custom_hl)
+      local fg = vim.api.nvim_get_hl(0, { name = src_hl, link = false }).fg
+      vim.api.nvim_set_hl(0, custom_hl, { fg = fg, bg = bg })
+      return '%#' .. custom_hl .. '#' .. text .. '%*'
+   end
+
+   local parts = {}
+   if total   > 0 then parts[#parts + 1] = colored(' ' .. total,   'NeotestTest',    'LualineTestTotal')   end
+   if passed  > 0 then parts[#parts + 1] = colored(' ' .. passed,  'NeotestPassed',  'LualineTestPassed')  end
+   if failed  > 0 then parts[#parts + 1] = colored(' ' .. failed,  'NeotestFailed',  'LualineTestFailed')  end
+   if running > 0 then parts[#parts + 1] = colored(' ' .. running, 'NeotestRunning', 'LualineTestRunning') end
+   if skipped > 0 then parts[#parts + 1] = colored(' ' .. skipped, 'NeotestSkipped', 'LualineTestSkipped') end
+
+   return label .. '' .. table.concat(parts, '')
 end
 
 return {
