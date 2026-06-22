@@ -112,7 +112,7 @@ function bba() {
     fi
     brew bundle add "$@" && echo "Package '$*' added to Brewfile." || echo "Failed to add package '$*'."
     brew bundle -q --force && echo "Brew bundle succeeded." || echo "Brew bundle failed."
-    brew bundle dump --describe --force && echo "Brewfile updated!" || echo "Failed to update Brewfile."
+    brew bundle dump --force && echo "Brewfile updated!" || echo "Failed to update Brewfile."
 }
 alias bbac='bba --cask'
 alias bbat='bba --tap'
@@ -123,7 +123,7 @@ alias bbe='pushd ~/Repos/dotfiles && brew bundle edit && popd'
 alias bbi='brew install'
 alias bbl='brew bundle list'
 alias bbr='brew bundle remove'
-alias bbu='echo "Updating Brewfile..." && brew bundle dump --describe --force && echo "Brewfile updated!" || echo "Failed to update Brewfile."'
+alias bbu='echo "Updating Brewfile..." && brew bundle dump --force && echo "Brewfile updated!" || echo "Failed to update Brewfile."'
 
 # Flutter aliases
 alias flutter='flutter --no-version-check'
