@@ -75,6 +75,8 @@ brew "elixir"
 brew "expat"
 # Modern, maintained replacement for ls
 brew "eza"
+# Powerful, lightweight programming language
+brew "lua"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
@@ -115,6 +117,8 @@ brew "gnu-go"
 brew "go"
 # Ping, but with a graph
 brew "gping"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
 # GNU troff text-formatting system
 brew "groff"
 # Tool for glamorous shell scripts
@@ -147,8 +151,6 @@ brew "lld"
 brew "llm"
 # Rainbows and unicorns in your console!
 brew "lolcat"
-# Powerful, lightweight programming language
-brew "lua"
 # Package manager for the Lua programming language
 brew "luarocks"
 # Text-based web browser
@@ -209,8 +211,6 @@ brew "python-tk@3.10"
 brew "python@3.12"
 # Python interface to Tcl/Tk
 brew "python-tk@3.12"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
 # Python interface to Tcl/Tk
 brew "python-tk@3.14"
 # Generic machine emulator and virtualizer
