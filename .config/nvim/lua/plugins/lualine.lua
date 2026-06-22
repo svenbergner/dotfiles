@@ -17,7 +17,7 @@ local function getMaxLineLength()
    return max_length
 end
 
-local getLineInfo = function()
+local function getLineInfo()
    local current_line = vim.fn.line('.')
    local total_lines = vim.fn.line('$')
    local current_column = vim.fn.col('.')
@@ -29,7 +29,7 @@ local getLineInfo = function()
    return string.format(format_string, current_line, total_lines, current_column, line_length)
 end
 
-local getWords = function()
+local function getWords()
    if vim.bo.filetype == 'text' or vim.bo.filetype == 'markdown' or vim.bo.filetype == 'vimwiki' then
       if vim.fn.wordcount().visual_words == 1 then
          return tostring(vim.fn.wordcount().visual_words) .. ' word'
@@ -43,7 +43,7 @@ local getWords = function()
    end
 end
 
-local getNeoVimSymbol = function()
+local function getNeoVimSymbol()
    return ''
 end
 
@@ -63,8 +63,8 @@ local function diffActive()
    end
 end
 
--- Returns current compiler state
----@return string
+--- Returns current compiler state
+--- @return string
 local function getBuildState()
    local s = require('telescope').extensions.cmake_preset_selector.get_build_state()
    if #s.text < 2 then
@@ -115,10 +115,10 @@ end
 local function findCompileCommandsBuildDir()
    local path = vim.api.nvim_buf_get_name(0)
    if path == '' then
-      path = vim.loop.cwd()
+      path = vim.loop.cwd() or ''
    end
    if vim.loop.fs_stat(path) and vim.loop.fs_stat(path).type ~= 'directory' then
-      path = pathParent(path)
+      path = pathParent(path) or ''
    end
 
    local home = vim.loop.os_homedir()
@@ -130,7 +130,7 @@ local function findCompileCommandsBuildDir()
             return pathParent(real)
          end
       end
-      local parent = pathParent(path)
+      local parent = pathParent(path) or ''
       if parent == path then
          break
       end
@@ -140,12 +140,12 @@ local function findCompileCommandsBuildDir()
 end
 
 local function getTestBuildContext()
+   local label = '󰙨'
+
    local build_dir = findCompileCommandsBuildDir()
    if not build_dir or build_dir == '' then
-      return ''
+      label = label .. ' ' .. pathBasename(build_dir)
    end
-
-   local label = '󰙨 ' .. pathBasename(build_dir)
 
    local ok, neotest = pcall(require, 'neotest')
    if not ok or not neotest.state then
@@ -157,8 +157,8 @@ local function getTestBuildContext()
       local ok2, counts = pcall(neotest.state.status_counts, adapter_id)
       if ok2 and counts then
          total = total + (counts.total or 0)
-         passed  = passed  + (counts.passed  or 0)
-         failed  = failed  + (counts.failed  or 0)
+         passed = passed + (counts.passed or 0)
+         failed = failed + (counts.failed or 0)
          skipped = skipped + (counts.skipped or 0)
          running = running + (counts.running or 0)
       end
@@ -177,11 +177,21 @@ local function getTestBuildContext()
    end
 
    local parts = {}
-   if total   > 0 then parts[#parts + 1] = colored(' ' .. total,   'NeotestTest',    'LualineTestTotal')   end
-   if passed  > 0 then parts[#parts + 1] = colored(' ' .. passed,  'NeotestPassed',  'LualineTestPassed')  end
-   if failed  > 0 then parts[#parts + 1] = colored(' ' .. failed,  'NeotestFailed',  'LualineTestFailed')  end
-   if running > 0 then parts[#parts + 1] = colored(' ' .. running, 'NeotestRunning', 'LualineTestRunning') end
-   if skipped > 0 then parts[#parts + 1] = colored(' ' .. skipped, 'NeotestSkipped', 'LualineTestSkipped') end
+   if total > 0 then
+      parts[#parts + 1] = colored(' ' .. total, 'NeotestTest', 'LualineTestTotal')
+   end
+   if passed > 0 then
+      parts[#parts + 1] = colored(' ' .. passed, 'NeotestPassed', 'LualineTestPassed')
+   end
+   if failed > 0 then
+      parts[#parts + 1] = colored(' ' .. failed, 'NeotestFailed', 'LualineTestFailed')
+   end
+   if running > 0 then
+      parts[#parts + 1] = colored(' ' .. running, 'NeotestRunning', 'LualineTestRunning')
+   end
+   if skipped > 0 then
+      parts[#parts + 1] = colored(' ' .. skipped, 'NeotestSkipped', 'LualineTestSkipped')
+   end
 
    return label .. '' .. table.concat(parts, '')
 end
