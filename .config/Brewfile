@@ -308,6 +308,8 @@ cask "font-jetbrains-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
 # Free and open-source image editor
 cask "gimp"
+# Git client for simultaneous branches on top of your existing workflow
+cask "gitbutler"
 # Open Source Multimedia Framework
 cask "gstreamer-runtime"
 # Adds an OpenGL renderer to the ZDoom source port
