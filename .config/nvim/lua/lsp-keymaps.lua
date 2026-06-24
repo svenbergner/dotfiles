@@ -44,7 +44,7 @@ vim.keymap.set('n', '<F7>', function()
    require('dap').terminate()
    local contentdev = require('contentdev')
    if contentdev.is_contentdev_buffer(0) then
-      pcall(vim.cmd, { cmd = 'StopCMakeBuild', args = { 'true' } })
+      pcall(function() vim.cmd({ cmd = 'StopCMakeBuild', args = { 'true' } }) end)
       contentdev.build_current_buffer()
    else
       vim.cmd({ cmd = 'StopCMakeBuild', args = { 'true' } })
@@ -153,7 +153,9 @@ local function compile_current_file()
          break
       end
       local parent = vim.fn.fnamemodify(dir, ':h')
-      if parent == dir then break end
+      if parent == dir then
+         break
+      end
       dir = parent
    end
 
