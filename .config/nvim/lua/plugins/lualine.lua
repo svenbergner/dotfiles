@@ -139,6 +139,17 @@ local function findCompileCommandsBuildDir()
    return nil
 end
 
+local hourglass_frames = { '', '', '' }
+local hourglass_index = 1
+
+-- Returns the next hourglass frame, cycling through all 3 frames on each call
+---@return string
+local function get_hourglass()
+  local frame = hourglass_frames[hourglass_index]
+  hourglass_index = (hourglass_index % #hourglass_frames) + 1
+  return frame
+end
+
 local function getTestBuildContext()
    local label = '󰙨'
 
@@ -176,6 +187,8 @@ local function getTestBuildContext()
       return '%#' .. custom_hl .. '#' .. text .. '%*'
    end
 
+   local running_hourglass = ''
+
    local parts = {}
    if total > 0 then
       parts[#parts + 1] = colored(' ' .. total, 'NeotestTest', 'LualineTestTotal')
@@ -187,13 +200,14 @@ local function getTestBuildContext()
       parts[#parts + 1] = colored(' ' .. failed, 'NeotestFailed', 'LualineTestFailed')
    end
    if running > 0 then
+      running_hourglass = get_hourglass()
       parts[#parts + 1] = colored(' ' .. running, 'NeotestRunning', 'LualineTestRunning')
    end
    if skipped > 0 then
       parts[#parts + 1] = colored(' ' .. skipped, 'NeotestSkipped', 'LualineTestSkipped')
    end
 
-   return label .. '' .. table.concat(parts, '')
+   return label .. running_hourglass .. table.concat(parts, '')
 end
 
 return {
