@@ -6,6 +6,7 @@ gui:
   filterMode: fuzzy
   expandFocusedSidePanel: true
   showRandomTip: false
+  shrinkSidePanelsToContent: true
 git:
   pagers:
     - colorArg: always
