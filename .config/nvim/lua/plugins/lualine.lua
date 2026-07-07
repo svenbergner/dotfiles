@@ -177,8 +177,6 @@ local function getTestBuildContext()
 
    if total == 0 and passed == 0 and failed == 0 and skipped == 0 and running == 0 then
       return ''
-   else
-      return label
    end
 
    -- Build per-state highlight groups (fg from semantic hl, bg from lualine)
