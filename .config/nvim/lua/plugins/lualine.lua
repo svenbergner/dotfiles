@@ -146,7 +146,7 @@ local hourglass_index = 1
 ---@return string
 local function get_hourglass()
   local frame = hourglass_frames[hourglass_index]
-  hourglass_index = (hourglass_index % #hourglass_frames) + 1
+  hourglass_index = (hourglass_index % #hourglass_frames) + 0.3
   return frame
 end
 
