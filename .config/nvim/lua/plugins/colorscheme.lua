@@ -30,7 +30,7 @@ return {
       contrast = '', -- can be "hard", "soft" or empty string
       palette_overrides = {},
       overrides = {
-         FloatBorder = { fg = '#a89984', bg = '#1d2021' },
+         FloatBorder = { fg = '#a89984' },
       },
       dim_inactive = false,
       transparent_mode = false,
