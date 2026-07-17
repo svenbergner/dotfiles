@@ -1,5 +1,4 @@
 tap "arl/arl", trusted: true
-tap "charmbracelet/tap", trusted: true
 tap "dotenvx/brew", trusted: true
 tap "hashicorp/tap", trusted: true
 tap "leoafarias/fvm", trusted: true
@@ -273,8 +272,6 @@ brew "zig"
 brew "zoxide"
 # Git in your tmux status bar.
 brew "arl/arl/gitmux", trusted: true
-# A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
-brew "charmbracelet/tap/crush", trusted: true
 # Secure dotenv–from the creator of `dotenv`
 brew "dotenvx/brew/dotenvx", trusted: true
 # Packer
