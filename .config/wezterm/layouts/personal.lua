@@ -29,7 +29,7 @@ M.setup_layout = function(wezterm)
       M.addTab(window, home_dir .. '/Repos/cmake-preset-selector', 'CMake Preset Selector', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/dap-debugee-selector', 'Debugee Selector', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/presenter.nvim', 'Presenter', 'nvim\n')
-      -- M.addTab(window, home_dir .. '/Repos/snacks.nvim', 'Snacks', 'nvim\n')
+      M.addTab(window, home_dir .. '/Repos/neotest-dmctest', 'neotest-dmctest', 'nvim\n')
 
       first_tab:activate()
    end)
