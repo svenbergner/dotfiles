@@ -1079,14 +1079,41 @@ end
 local tree_sitter_group = vim.api.nvim_create_augroup('contentdev_treesitter', { clear = true })
 local lsp_group = vim.api.nvim_create_augroup('contentdev_lsp', { clear = true })
 
+local commentstrings = {
+   contentdev_ddf      = '// %s',
+   contentdev_yaddl    = '// %s',
+   contentdev_help     = '<!-- %s -->',
+   contentdev_dmscript = '// %s',
+}
+
+local function setup_treesitter_for_buf(bufnr)
+   M.ensure_runtimepath()
+   pcall(vim.treesitter.start, bufnr)
+   vim.wo.foldmethod = 'expr'
+   vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+   local cs = commentstrings[vim.bo[bufnr].filetype]
+   if cs then
+      vim.bo[bufnr].commentstring = cs
+   end
+end
+
 vim.api.nvim_create_autocmd('FileType', {
    group = tree_sitter_group,
    pattern = M.filetypes,
    callback = function(args)
-      M.ensure_runtimepath()
-      pcall(vim.treesitter.start, args.buf)
-      vim.wo.foldmethod = 'expr'
-      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      setup_treesitter_for_buf(args.buf)
+   end,
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+   group = tree_sitter_group,
+   callback = function(args)
+      if M.is_contentdev_buffer(args.buf) then
+         local cs = commentstrings[vim.bo[args.buf].filetype]
+         if cs and vim.bo[args.buf].commentstring ~= cs then
+            vim.bo[args.buf].commentstring = cs
+         end
+      end
    end,
 })
 
