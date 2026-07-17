@@ -132,7 +132,8 @@ vim.keymap.set('n', '<leader>ls', '<CMD>Lazy sync<CR>', { silent = true, desc = 
 vim.keymap.set('n', '<leader>lc', '<CMD>Lazy check<CR>', { silent = true, desc = '[l]azy [c]heck' })
 vim.keymap.set('n', '<leader>lp', '<CMD>Lazy profile<CR>', { silent = true, desc = '[l]azy [p]rofile' })
 vim.keymap.set('n', '<leader>lh', '<CMD>Lazy help<CR>', { silent = true, desc = '[l]azy [h]elp' })
-vim.keymap.set('n', '<leader>lm', '<CMD>Mason<CR>', { silent = true, desc = 'show [l][m]ason' })
+vim.keymap.set('n', '<leader>mm', '<CMD>Mason<CR>', { silent = true, desc = '[m]anage [m]ason' })
+vim.keymap.set('n', '<leader>mu', '<CMD>MasonUpdate<CR>', { silent = true, desc = '[m]ason [u]pdate' })
 
 -- Vim Package Manager
 vim.keymap.set('n', '<leader>vu', function() vim.pack.update() end, { silent = true, desc = '[v]im pack [u]pdate' })
