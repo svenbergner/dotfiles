@@ -1230,8 +1230,8 @@ end, { desc = 'Show ContentDev Neovim paths' })
 
 local function enable_lsp()
    if vim.lsp and vim.lsp.config and vim.lsp.enable then
-      pcall(vim.lsp.config, 'contentdev_lsp', M.lsp_config())
-      pcall(vim.lsp.enable, 'contentdev_lsp')
+      pcall(function() vim.lsp.config('contentdev_lsp', M.lsp_config()) end)
+      pcall(function() vim.lsp.enable('contentdev_lsp') end)
    end
 end
 
