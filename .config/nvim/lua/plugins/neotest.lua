@@ -244,12 +244,10 @@ return {
                   return nil
                end,
             }),
-            require('neotest-dmctest')({
-               -- Defaults point at /Users/sven.bergner/Repos/Content/StP/31.
-               -- Override these when using a different checkout or LZ.
-               product_root = '/Users/sven.bergner/Repos/Content/StP/31',
-               lz_root = '/Users/sven.bergner/Repos/Content/StP/31/lz',
-            }),
+            -- product_root is auto-detected from the file under test by
+            -- walking up the directory tree until "DMSource/test" and
+            -- "Scripts/test.py" are found. No manual path needed.
+            require('neotest-dmctest')({}),
          },
       })
 
