@@ -44,19 +44,23 @@ M.languages = {
 vim.filetype.add({
    extension = {
       ddf = 'contentdev_ddf',
+      DDF = 'contentdev_ddf',
       tdl = 'contentdev_ddf',
+      TDL = 'contentdev_ddf',
       yaddl = 'contentdev_yaddl',
       template = 'contentdev_yaddl',
       htd = 'contentdev_help',
       help = 'contentdev_help',
       cnv = 'contentdev_dmscript',
       frw = 'contentdev_dmscript',
+      FRW = 'contentdev_dmscript',
       tst = 'contentdev_dmscript',
       ecf = 'contentdev_dmscript',
    },
    pattern = {
       ['.*/[Dd][Dd][Ff]/.*%.inc'] = 'contentdev_ddf',
       ['.*/[Tt][Dd][Ll]/.*%.inc'] = 'contentdev_ddf',
+      ['.*/[Ff][Rr][Ww]/.*%.inc'] = 'contentdev_dmscript',
       ['.*/[Yy]addl/.*%.inc'] = 'contentdev_yaddl',
       ['.*/[Hh]elp/.*%.inc'] = 'contentdev_help',
    },
