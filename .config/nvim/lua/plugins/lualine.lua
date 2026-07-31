@@ -112,6 +112,42 @@ local function pathBasename(path)
    return path and path:match('([^/]+)$') or ''
 end
 
+--- Strips the leading "~/Repos" (or "$HOME/Repos") prefix from a path, if present.
+--- @param path string|nil
+--- @return string
+local function stripReposPrefix(path)
+   if not path or path == '' then
+      return ''
+   end
+
+   local home = vim.loop.os_homedir() or ''
+   local repos_prefix = home .. '/Repos/'
+   if path:sub(1, #repos_prefix) == repos_prefix then
+      return path:sub(#repos_prefix + 1)
+   end
+
+   local repos_prefix_no_slash = home .. '/Repos'
+   if path == repos_prefix_no_slash then
+      return ''
+   end
+
+   return path
+end
+
+local function getContentDevOutputDir()
+   local ok, contentdev = pcall(require, 'contentdev')
+   if not ok or not contentdev.is_contentdev_buffer(0) then
+      return ''
+   end
+
+   local output_dir = contentdev.output_dir_for_buffer(0)
+   if not output_dir or output_dir == '' then
+      return '󰝰 (not set)'
+   end
+
+   return '󰝰 ' .. stripReposPrefix(output_dir)
+end
+
 local function findCompileCommandsBuildDir()
    local path = vim.api.nvim_buf_get_name(0)
    if path == '' then
@@ -263,6 +299,12 @@ return {
                { 'filetype' },
                { 'encoding' },
                { 'fileformat' },
+               {
+                  getContentDevOutputDir,
+                  cond = function()
+                     return #getContentDevOutputDir() > 0
+                  end,
+               },
                {
                   getTestBuildContext,
                   cond = function()

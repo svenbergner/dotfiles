@@ -409,6 +409,30 @@ local function resolve_output_dir(root, callback)
    end)
 end
 
+function M.output_dir_for_buffer(bufnr)
+   bufnr = bufnr or 0
+   if not M.is_contentdev_buffer(bufnr) then
+      return nil
+   end
+
+   local root = M.root_for_buffer(bufnr)
+   return M.output_dir_for_root(root)
+end
+
+function M.set_output_dir_to_cwd()
+   local bufnr = vim.api.nvim_get_current_buf()
+   if not M.is_contentdev_buffer(bufnr) then
+      vim.notify('Current buffer is not a ContentDev buffer.', vim.log.levels.WARN)
+      return
+   end
+
+   local root = M.root_for_buffer(bufnr)
+   local cwd = normalize_path(vim.fn.getcwd())
+   if set_persisted_output_dir(root, cwd) then
+      vim.notify('ContentDev output base directory set to current working directory for ' .. root .. ': ' .. cwd, vim.log.levels.INFO)
+   end
+end
+
 function M.set_output_dir_for_current_root(path)
    local bufnr = vim.api.nvim_get_current_buf()
    if not M.is_contentdev_buffer(bufnr) then

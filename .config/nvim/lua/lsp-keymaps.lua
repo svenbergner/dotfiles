@@ -239,3 +239,12 @@ vim.keymap.set('n', '<leader>CC', compile_current_file, {
    noremap = true,
    silent = true,
 })
+
+-- ContentDev: let the user pick/enter the output/compile directory for the current root
+vim.keymap.set('n', '<leader>Co', function()
+   require('contentdev').set_output_dir_for_current_root()
+end, {
+   desc = '[C]ontentDev set [o]utput dir',
+   noremap = true,
+   silent = true,
+})
