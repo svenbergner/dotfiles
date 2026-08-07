@@ -26,7 +26,7 @@ return {
    ft = { 'yaml' },
    dependencies = {
       'nvim-treesitter/nvim-treesitter',
-      'nvim-telescope/telescope.nvim', -- optional
+      'folke/snacks.nvim', -- optional
    },
    config = function()
       require('yaml_nvim').setup({
@@ -41,7 +41,7 @@ return {
          end,
       })
 
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>yt', ':YAMLTelescope<CR>', { noremap = false })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>ys', ':YAMLSnacks<CR>', { noremap = false })
       vim.api.nvim_buf_set_keymap(0, 'n', '<leader>yl', ':!yamllint %<CR>', { noremap = true, silent = true })
    end,
 }
