@@ -1,6 +1,6 @@
 --[===[
 Simple tools to help developers working YAML in Neovim
-https://github.com/cuducos/yaml.nvim
+https://tangled.org/cuducos.me/yaml.nvim
 
 Command                    Lua API                      Description
 :YAMLView                  yaml.view()                  Shows the full path and value of the current key/value pair
@@ -21,7 +21,7 @@ Command                    Lua API                      Description
 --]===]
 
 return {
-   'cuducos/yaml.nvim',
+   'https://tangled.org/cuducos.me/yaml.nvim',
    enabled = true,
    ft = { 'yaml' },
    dependencies = {
