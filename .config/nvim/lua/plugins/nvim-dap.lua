@@ -187,9 +187,28 @@ return {
             },
          }
 
+         local function resolve_dmc_product_root()
+            if vim.env.DMC_PRODUCT_ROOT and vim.env.DMC_PRODUCT_ROOT ~= '' then
+               return vim.env.DMC_PRODUCT_ROOT
+            end
+
+            local buf_path = vim.api.nvim_buf_get_name(0)
+            local match = buf_path:match('(.*/Content/StP/%d+)')
+            if match then
+               return match
+            end
+
+            return vim.fn.getcwd()
+         end
+
          dap.adapters.dmc_test = {
             type = 'executable',
-            command = vim.env.DMC_DAP_ADAPTER or '/Users/sven.bergner/Repos/SSE/build/mac-dmc-release/lz/dmc',
+            command = function()
+               if vim.env.DMC_DAP_ADAPTER and vim.env.DMC_DAP_ADAPTER ~= '' then
+                  return vim.env.DMC_DAP_ADAPTER
+               end
+               return (vim.env.DMC_LZ_ROOT or (resolve_dmc_product_root() .. '/lz')) .. '/dmc'
+            end,
             args = { '--testDebugAdapter' },
          }
 
@@ -197,19 +216,29 @@ return {
             type = 'dmc_test',
             request = 'launch',
             name = 'Debug dmc test file',
-            cwd = '/Users/sven.bergner/Repos/Content/StP/31/lz',
+            cwd = function()
+               return vim.env.DMC_LZ_ROOT or (resolve_dmc_product_root() .. '/lz')
+            end,
             testFile = '${file}',
-            productRoot = '/Users/sven.bergner/Repos/Content/StP/31',
-            lzRoot = '/Users/sven.bergner/Repos/Content/StP/31/lz',
+            productRoot = function()
+               return resolve_dmc_product_root()
+            end,
+            lzRoot = function()
+               return vim.env.DMC_LZ_ROOT or (resolve_dmc_product_root() .. '/lz')
+            end,
             defaultSchema = 'normal.ddb',
-            licenseFile = '/Users/sven.bergner/Repos/Content/StP/31/lz/License/License.aavdrm',
-            compilerCommand = '/Users/sven.bergner/Repos/Content/StP/31/Tools/DMScriptC',
+            licenseFile = function()
+               return vim.env.DMC_LICENSE_FILE
+                  or (resolve_dmc_product_root() .. '/lz/License/License.aavdrm')
+            end,
+            compilerCommand = function()
+               return vim.env.DMC_COMPILER_COMMAND or (resolve_dmc_product_root() .. '/Tools/DMScriptC')
+            end,
             compilerOptions = '-d',
             forceCompile = true,
          }
 
          dap.configurations.contentdev_dmscript = { dmc_test_configuration }
-         dap.configurations.tst = { dmc_test_configuration }
 
          dap.configurations.lua = {
             {

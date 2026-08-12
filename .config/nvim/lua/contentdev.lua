@@ -19,6 +19,7 @@ M.tools_root = vim.env.CONTENTDEV_TOOLS_ROOT or default_tools_root
 M.runtime_dir = vim.env.CONTENTDEV_NVIM_TS_RUNTIME or (vim.fn.stdpath('data') .. '/contentdev')
 M.compiler_dir = vim.env.CONTENTDEV_COMPILER_DIR or default_compiler_dir
 M.lsp_path = vim.env.CONTENTDEV_LSP or (M.compiler_dir .. '/contentdev-lsp')
+M.compiler_meta_dir_flag = vim.env.CONTENTDEV_COMPILER_META_DIR_FLAG
 M.output_state_path = vim.fn.stdpath('state') .. '/contentdev/output-dirs.json'
 M.root_state_path = vim.fn.stdpath('state') .. '/contentdev/root-targets.json'
 
@@ -121,6 +122,12 @@ end
 local function grammar_dir(language)
    return join(M.tools_root, 'Compiler/tree-sitter', language.grammar)
 end
+
+local source_base_from_root
+local stp_major_from_root
+local tools_root_for_root
+local compiler_dir_for_root
+local lsp_path_for_root
 
 local function runtimepath_contains(path)
    for _, value in ipairs(vim.opt.runtimepath:get()) do
@@ -464,7 +471,7 @@ function M.set_output_dir_for_current_root(path)
    end)
 end
 
-local function compiler_for_language(language)
+local function compiler_for_language(language, root)
    if vim.env[language.env] and vim.env[language.env] ~= '' then
       return normalize_path(vim.env[language.env])
    end
@@ -474,7 +481,7 @@ local function compiler_for_language(language)
       exe = exe .. '.exe'
    end
 
-   local candidate = normalize_path(join(M.compiler_dir, exe))
+   local candidate = normalize_path(join(compiler_dir_for_root(root), exe))
    if file_readable(candidate) then
       return candidate
    end
@@ -494,7 +501,7 @@ local function is_root_file(path, language)
    return language.root_exts[file_extension(path)] == true
 end
 
-local function source_base_from_root(root)
+source_base_from_root = function(root)
    local normalized = normalize_path(root)
    if normalized:match('/DMSource$') then
       return normalized
@@ -506,6 +513,38 @@ local function source_base_from_root(root)
    end
 
    return normalized
+end
+
+stp_major_from_root = function(root)
+   local source_base = source_base_from_root(root)
+   return source_base:match('/Repos/Content/StP/(%d+)/DMSource$')
+end
+
+tools_root_for_root = function(root)
+   local major = stp_major_from_root(root)
+   if major then
+      return normalize_path(join(vim.fn.expand('~/Repos/Content/StP'), major, 'Tools'))
+   end
+
+   return normalize_path(M.tools_root)
+end
+
+compiler_dir_for_root = function(root)
+   local candidate = tools_root_for_root(root)
+   if candidate ~= '' and path_exists(candidate) then
+      return candidate
+   end
+
+   return normalize_path(M.compiler_dir)
+end
+
+lsp_path_for_root = function(root)
+   local candidate = normalize_path(join(compiler_dir_for_root(root), 'contentdev-lsp'))
+   if file_readable(candidate) then
+      return candidate
+   end
+
+   return normalize_path(M.lsp_path)
 end
 
 local function dependency_root_for_include(path, root, language)
@@ -884,7 +923,7 @@ local function build_args(language, target, output_base_dir, root)
       vim.fn.mkdir(help_dependency_dir, 'p')
    end
 
-   local args = { compiler_for_language(language) }
+   local args = { compiler_for_language(language, root) }
    append_common_compiler_context(args, language, target, output_base_dir)
 
    if language.dsl == 'dmscript' then
@@ -900,8 +939,11 @@ local function build_args(language, target, output_base_dir, root)
       '--continueAfterError',
       '--usePortableUserInput',
       '-o' .. out_file,
-      '-l' .. meta_dir,
    })
+
+   if M.compiler_meta_dir_flag and M.compiler_meta_dir_flag ~= '' then
+      table.insert(args, M.compiler_meta_dir_flag .. meta_dir)
+   end
 
    if language.dsl == 'help' then
       table.insert(args, '-i' .. help_dependency_dir)
@@ -1083,13 +1125,14 @@ function M.configure_diagnostics(client, bufnr)
 end
 
 function M.lsp_config()
+   local root = M.root_for_buffer(0)
    return {
       name = 'contentdev_lsp',
-      cmd = { M.lsp_path },
+      cmd = { lsp_path_for_root(root) },
       filetypes = M.filetypes,
       root_dir = contentdev_root,
       init_options = {
-         compilerDir = M.compiler_dir,
+         compilerDir = compiler_dir_for_root(root),
          liveSyntaxDiagnostics = true,
          compilerDiagnosticsOnSave = true,
       },
@@ -1246,11 +1289,11 @@ vim.api.nvim_create_user_command('ContentDevInfo', function()
    local current_file = normalize_path(vim.api.nvim_buf_get_name(0))
    local root_file = persisted_root_target(root, current_file) or '(not set)'
    print(table.concat({
-      'ContentDev LSP: ' .. M.lsp_path,
-      'ContentDev compiler dir: ' .. M.compiler_dir,
+      'ContentDev LSP: ' .. lsp_path_for_root(root),
+      'ContentDev compiler dir: ' .. compiler_dir_for_root(root),
       'ContentDev output base dir: ' .. output_dir,
       'ContentDev selected root file: ' .. root_file,
-      'ContentDev tools root: ' .. M.tools_root,
+      'ContentDev tools root: ' .. tools_root_for_root(root),
       'ContentDev root: ' .. root,
       'ContentDev Tree-sitter runtime: ' .. M.runtime_dir,
    }, '\n'))
