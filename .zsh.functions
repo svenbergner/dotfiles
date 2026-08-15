@@ -32,7 +32,7 @@ function fsb() {
 
 # https://levelup.gitconnected.com/search-git-branches-and-commits-using-fzf-33df960fcc9c
 
-functiob y()
+function y()
 {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     yazi "$@" --cwd-file="$tmp"
