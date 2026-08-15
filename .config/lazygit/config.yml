@@ -8,8 +8,8 @@ gui:
   showRandomTip: false
   shrinkSidePanelsToContent: true
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --dark --paging=never --line-numbers --features side-by-side --syntax-theme gruvbox-dark --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+      command: delta --dark --paging=never --line-numbers --features side-by-side --syntax-theme gruvbox-dark --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
   disableForcePushing: false
   overrideGpg: true
