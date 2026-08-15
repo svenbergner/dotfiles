@@ -3,13 +3,15 @@ tap "dotenvx/brew", trusted: true
 tap "hashicorp/tap", trusted: true
 tap "leoafarias/fvm", trusted: true
 tap "lusingander/tap", trusted: true
-tap "veirt/veirt", trusted: true
+tap "veirt/veirt", "https://github.com/Veirt/homebrew-veirt", trusted: true
 # Simple, modern, secure file encryption
 brew "age"
 # Record and share terminal sessions
 brew "asciinema"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Bash shell debugger
@@ -32,6 +34,8 @@ brew "btop"
 brew "cava"
 # Console Bonsai is a bonsai tree generator, written in C using ncurses
 brew "cbonsai"
+# TIFF library and utilities
+brew "libtiff"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
 # Create and view interactive cheat sheets for *nix commands
@@ -74,8 +78,6 @@ brew "elixir"
 brew "expat"
 # Modern, maintained replacement for ls
 brew "eza"
-# Powerful, lightweight programming language
-brew "lua"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
@@ -116,8 +118,6 @@ brew "gnu-go"
 brew "go"
 # Ping, but with a graph
 brew "gping"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
 # GNU troff text-formatting system
 brew "groff"
 # Tool for glamorous shell scripts
@@ -150,6 +150,8 @@ brew "lld"
 brew "llm"
 # Rainbows and unicorns in your console!
 brew "lolcat"
+# Powerful, lightweight programming language
+brew "lua"
 # Package manager for the Lua programming language
 brew "luarocks"
 # Text-based web browser
@@ -307,8 +309,6 @@ cask "font-symbols-only-nerd-font"
 cask "gimp"
 # Git client for simultaneous branches on top of your existing workflow
 cask "gitbutler"
-# Open Source Multimedia Framework
-cask "gstreamer-runtime"
 # Adds an OpenGL renderer to the ZDoom source port
 cask "gzdoom"
 # Vector graphics editor
