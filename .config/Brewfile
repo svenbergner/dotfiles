@@ -206,14 +206,6 @@ brew "pwgen"
 brew "pyright"
 # Simple, correct PEP 517 build frontend
 brew "python-build"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
-# Python interface to Tcl/Tk
-brew "python-tk@3.10"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
-# Python interface to Tcl/Tk
-brew "python-tk@3.12"
 # Python interface to Tcl/Tk
 brew "python-tk@3.14"
 # Generic machine emulator and virtualizer
