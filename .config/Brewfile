@@ -198,6 +198,8 @@ brew "poppler"
 brew "pstree"
 # Pretty, minimal and fast ZSH prompt
 brew "pure"
+# Monitor data's progress through a pipe
+brew "pv"
 # Password generator
 brew "pwgen"
 # Static type checker for Python
