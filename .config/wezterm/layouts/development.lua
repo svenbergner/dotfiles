@@ -40,6 +40,7 @@ M.setup_layout = function(wezterm)
       -- M.addTab(window, home_dir .. '/Repos/Content/StP/28', 'Content StP 28', 'nvim\n')
       -- M.addTab(window, home_dir .. '/Repos/BuildAgentIAC', 'BuildAgentIAC', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/SSE/Tools', 'Tools', 'nvim\n')
+      M.addTab(window, home_dir .. '/Repos/SSE/Tools_dmc/dmc', 'Tools dmc', 'nvim\n')
       -- M.addTab(window, home_dir .. '/Repos/SetupSSE', 'SetupSSE', 'nvim\n')
 
       activatedTab:activate()
