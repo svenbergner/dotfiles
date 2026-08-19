@@ -77,7 +77,6 @@ return {
                   ['cpp:S134'] = { level = 'off' },  -- Control flow statements "IF", "CASE", "DO", "LOOP", "SELECT", "WHILE" and "PROVIDE" should not be nested too deeply
                   ['cpp:S995'] = { level = 'off' },  -- Change to pointer-to-const
                   ['cpp:S1066'] = { level = 'off' }, -- Mergeable "if" statements should be combined
-                  ['cpp:S3471'] = { level = 'off' }, -- "override" or "final" should be used instead of "virtual"
                   ['cpp:S3576'] = { level = 'off' }, -- "final" classes should not have "virtual" functions
                   ['cpp:S5025'] = { level = 'off' }, -- Memory should not be managed manually
                   ['cpp:S5350'] = { level = 'off' }, -- Pointer and reference local variables should be "const" if the corresponding object is not modified
