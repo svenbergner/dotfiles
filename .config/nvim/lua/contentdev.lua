@@ -67,6 +67,24 @@ vim.filetype.add({
    },
 })
 
+-- Normalize filetypes restored by older sessions.  In particular, sessions
+-- containing the historic typo `content_dmcript` would otherwise bypass the
+-- ContentDev build path and make <F7> start a CMake build instead.
+local legacy_filetypes = {
+   content_ddf = 'contentdev_ddf',
+   content_yaddl = 'contentdev_yaddl',
+   content_help = 'contentdev_help',
+   content_dmscript = 'contentdev_dmscript',
+   content_dmcript = 'contentdev_dmscript',
+}
+
+vim.api.nvim_create_autocmd('FileType', {
+   pattern = vim.tbl_keys(legacy_filetypes),
+   callback = function(args)
+      vim.bo[args.buf].filetype = legacy_filetypes[vim.bo[args.buf].filetype]
+   end,
+})
+
 local function join(...)
    return table.concat({ ... }, '/')
 end
