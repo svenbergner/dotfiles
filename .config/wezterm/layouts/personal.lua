@@ -31,6 +31,7 @@ M.setup_layout = function(wezterm)
       M.addTab(window, home_dir .. '/Repos/presenter.nvim', 'Presenter', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/neotest-dmctest', 'neotest-dmctest', 'nvim\n')
       M.addTab(window, home_dir .. '/Repos/neotest-ctest', 'neotest-ctest', 'nvim\n')
+      M.addTab(window, home_dir .. '/Repos/SSE/Tools/Compiler/contentdev-lsp', 'contentdev-lsp', 'nvim\n')
 
       first_tab:activate()
    end)
