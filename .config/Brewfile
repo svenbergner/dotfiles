@@ -208,6 +208,8 @@ brew "pyright"
 brew "python-build"
 # Python interface to Tcl/Tk
 brew "python-tk@3.14"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Generic machine emulator and virtualizer
 brew "qemu"
 # File browser
@@ -282,6 +284,8 @@ brew "lusingander/tap/serie", trusted: true
 brew "veirt/veirt/weathr", trusted: true
 # Tools for building Android applications
 cask "android-studio"
+# Multi-track audio editor and recorder
+cask "audacity"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # E-books management software
@@ -313,6 +317,8 @@ cask "karabiner-elements"
 cask "kitty"
 # 2D game framework for Lua
 cask "love"
+# Local-first alternative to Logitech Options+ for HID++ devices
+cask "openlogi"
 # Programmable solid 3D CAD modeller
 cask "openscad"
 # Utility to uninstall apps and remove leftover files from old/uninstalled apps
