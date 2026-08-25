@@ -31,11 +31,13 @@ return {
       palette_overrides = {},
       overrides = {
          FloatBorder = { fg = '#a89984' },
+         WhichKeyIcon = { fg = '#83a598', underline = false },
       },
       dim_inactive = false,
       transparent_mode = false,
    },
-   config = function()
+   config = function(_, opts)
+      require('gruvbox').setup(opts)
       vim.cmd.colorscheme('gruvbox')
    end,
 }
