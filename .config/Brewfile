@@ -152,8 +152,6 @@ brew "llm"
 brew "lolcat"
 # Powerful, lightweight programming language
 brew "lua"
-# Package manager for the Lua programming language
-brew "luarocks"
 # Text-based web browser
 brew "lynx"
 # Generate a markdown TOC (table of contents) with Remarkable
