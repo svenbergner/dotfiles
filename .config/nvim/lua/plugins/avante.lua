@@ -32,6 +32,7 @@ return {
          -- The function should return the provider name as a string.
          copilot = {
             model = 'claude-sonnet-5',
+            -- model = 'gpt-5.3-codex',
             -- model = 'gpt-5.6-luna', -- (Lightweight): 80 % cheaper
             -- model = 'gpt-5.6-terra',   -- (Standard): cheaper
             -- model = 'gpt-5.6-sol',  -- (High-End): same price as before, but more powerful
