@@ -46,3 +46,34 @@ The folder spell contains spell checking files for the German language.
 
 The folder syntax contains a vimscript file which adds syntax highlighting for
 Qt qmake files.
+
+## Remote document opening
+
+The `remote_open` Lua module allows an external program to select a running
+Neovim instance by project directory and open a document at a source position.
+It is loaded from `init.lua` and activates only when `WEZTERM_PANE` is present.
+Other Neovim sessions keep their normal startup behavior.
+
+During startup the module records the normalized initial working directory,
+WezTerm pane ID, WezTerm GUI socket, and a focus timestamp. It starts a unique
+Neovim RPC Unix socket below `stdpath('cache')/remote-open`. `FocusGained`
+updates the timestamp, while `VimLeavePre` stops the server and removes its
+socket.
+
+The module exposes two functions to trusted local RPC clients:
+
+- `info()` returns the project root, pane ID, WezTerm socket, focus timestamp,
+  and protocol version used for instance selection.
+- `open(payload)` decodes a Base64-encoded JSON payload, validates the existing
+  file and positive position, uses `:drop` to reuse an existing buffer where
+  possible, and moves the cursor.
+
+The cache directory is created with user-only permissions. Encoding the payload
+and using Neovim's structured command API avoids constructing Ex commands from
+the document path.
+
+The companion `~/scripts/nvim-open` command discovers these sockets, ignores and
+removes unreachable entries, chooses the longest matching project root, and
+focuses the registered pane after a successful RPC call. User-facing setup,
+examples, Qt integration, and troubleshooting are documented in the
+[main README](../../README.md#nvim-open).

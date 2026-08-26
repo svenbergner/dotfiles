@@ -49,6 +49,7 @@ require('autocmds')
 require('usercmds')
 require('lsp-keymaps')
 require('contentdev')
+require('remote_open').setup()
 
 -- Bootstrap the lazy.nvim package manager
 vim.pack.add({ 'https://github.com/folke/lazy.nvim' })

@@ -1,0 +1,196 @@
+#!/bin/zsh
+
+set -u
+setopt null_glob
+
+readonly PROGRAM_NAME=${0:t}
+
+usage() {
+   cat <<EOF
+Usage: ${PROGRAM_NAME} <file> <line> [column]
+
+Open an existing document in the running Neovim instance whose startup
+directory is the longest parent of the document path. Line and column are
+1-based; column defaults to 1.
+
+No Neovim instance is started when no matching instance is available.
+EOF
+}
+
+fail() {
+   print -u2 -- "${PROGRAM_NAME}: $1"
+   exit "${2:-1}"
+}
+
+find_executable() {
+   local override=$1
+   shift
+
+   if [[ -n $override ]]; then
+      [[ -x $override ]] || return 1
+      print -r -- "$override"
+      return 0
+   fi
+
+   local candidate
+   for candidate in "$@"; do
+      if [[ -n $candidate && -x $candidate ]]; then
+         print -r -- "$candidate"
+         return 0
+      fi
+   done
+   return 1
+}
+
+if (( $# == 1 )) && [[ $1 == '-h' || $1 == '--help' ]]; then
+   usage
+   exit 0
+fi
+
+(( $# == 2 || $# == 3 )) || {
+   usage >&2
+   exit 64
+}
+
+readonly INPUT_FILE=$1
+readonly INPUT_LINE=$2
+readonly INPUT_COLUMN=${3:-1}
+
+[[ $INPUT_LINE == <1-> ]] || fail "line must be a positive integer: ${INPUT_LINE}" 64
+[[ $INPUT_COLUMN == <1-> ]] || fail "column must be a positive integer: ${INPUT_COLUMN}" 64
+[[ -f $INPUT_FILE ]] || fail "document does not exist or is not a regular file: ${INPUT_FILE}" 66
+
+FILE_PATH=$(/bin/realpath "$INPUT_FILE") || fail "could not resolve document path: ${INPUT_FILE}" 66
+readonly FILE_PATH
+
+path_command() {
+   command -v "$1" 2>/dev/null || true
+}
+
+NVIM_BIN=$(find_executable "${NVIM_OPEN_NVIM:-}" "$(path_command nvim)" /opt/homebrew/bin/nvim /usr/local/bin/nvim) \
+   || fail 'could not find nvim' 69
+readonly NVIM_BIN
+WEZTERM_BIN=$(find_executable "${NVIM_OPEN_WEZTERM:-}" "$(path_command wezterm)" /Applications/WezTerm.app/Contents/MacOS/wezterm /opt/homebrew/bin/wezterm /usr/local/bin/wezterm) \
+   || fail 'could not find wezterm' 69
+readonly WEZTERM_BIN
+JQ_BIN=$(find_executable "${NVIM_OPEN_JQ:-}" "$(path_command jq)" /opt/homebrew/bin/jq /usr/local/bin/jq) \
+   || fail 'could not find jq' 69
+readonly JQ_BIN
+OPEN_BIN=$(find_executable "${NVIM_OPEN_OPEN:-}" /usr/bin/open) \
+   || fail 'could not find the macOS open command' 69
+readonly OPEN_BIN
+
+readonly CACHE_ROOT=${XDG_CACHE_HOME:-${HOME}/.cache}
+readonly SOCKET_DIR=${NVIM_OPEN_SOCKET_DIR:-${CACHE_ROOT}/nvim/remote-open}
+[[ -d $SOCKET_DIR ]] || fail "no remote-enabled Neovim instances found (${SOCKET_DIR} does not exist)" 69
+
+typeset -a candidate_sockets candidate_roots candidate_panes candidate_focus candidate_wezterm_sockets
+typeset -i longest_root=0
+
+readonly INFO_EXPRESSION='luaeval("vim.json.encode(require([[remote_open]]).info())")'
+
+for socket in "$SOCKET_DIR"/*.sock(N); do
+   if ! info=$($NVIM_BIN --server "$socket" --remote-expr "$INFO_EXPRESSION" </dev/null 2>/dev/null); then
+      socket_name=${socket:t}
+      if [[ $socket_name =~ '^nvim-([0-9]+)-' ]]; then
+         socket_pid=${match[1]}
+         /bin/kill -0 "$socket_pid" 2>/dev/null || /bin/rm -f -- "$socket"
+      fi
+      continue
+   fi
+
+   root=$(print -r -- "$info" | $JQ_BIN -er '.root | select(type == "string" and length > 0)' 2>/dev/null) || continue
+   pane=$(print -r -- "$info" | $JQ_BIN -er '.pane_id | select(type == "string" and length > 0)' 2>/dev/null) || continue
+   focus=$(print -r -- "$info" | $JQ_BIN -er '.last_focus | select(type == "number")' 2>/dev/null) || continue
+   wezterm_socket=$(print -r -- "$info" | $JQ_BIN -er '.wezterm_socket // "" | select(type == "string")' 2>/dev/null) || continue
+
+   case "$FILE_PATH" in
+      "$root"|"$root"/*) ;;
+      *) continue ;;
+   esac
+
+   root_length=${#root}
+   if (( root_length > longest_root )); then
+      candidate_sockets=("$socket")
+      candidate_roots=("$root")
+      candidate_panes=("$pane")
+      candidate_focus=("$focus")
+      candidate_wezterm_sockets=("$wezterm_socket")
+      longest_root=$root_length
+   elif (( root_length == longest_root )); then
+      candidate_sockets+=("$socket")
+      candidate_roots+=("$root")
+      candidate_panes+=("$pane")
+      candidate_focus+=("$focus")
+      candidate_wezterm_sockets+=("$wezterm_socket")
+   fi
+done
+
+(( ${#candidate_sockets} > 0 )) || fail "no running Neovim instance matches ${FILE_PATH}" 69
+
+typeset -i selected=1
+if (( ${#candidate_sockets} > 1 )); then
+   typeset -i best_idle_seconds=-1 best_idle_nanos=-1
+   typeset -i focused_match=0
+
+   for (( index = 1; index <= ${#candidate_sockets}; index++ )); do
+      if [[ -n ${candidate_wezterm_sockets[index]} ]]; then
+         clients=$(WEZTERM_UNIX_SOCKET=${candidate_wezterm_sockets[index]} $WEZTERM_BIN cli list-clients --format json 2>/dev/null) || clients='[]'
+      else
+         clients=$($WEZTERM_BIN cli list-clients --format json 2>/dev/null) || clients='[]'
+      fi
+
+      idle=(${(s: :)$($JQ_BIN -r --argjson pane "${candidate_panes[index]}" '
+         [.[] | select(.focused_pane_id == $pane)]
+         | min_by(.idle_time.secs, .idle_time.nanos)
+         | if . == null then empty else "\(.idle_time.secs) \(.idle_time.nanos)" end
+      ' <<< "$clients")})
+
+      if (( ${#idle} == 2 )) && {
+         (( focused_match == 0 )) ||
+         (( idle[1] < best_idle_seconds )) ||
+         (( idle[1] == best_idle_seconds && idle[2] < best_idle_nanos ))
+      }; then
+         selected=$index
+         best_idle_seconds=$idle[1]
+         best_idle_nanos=$idle[2]
+         focused_match=1
+      fi
+   done
+
+   if (( focused_match == 0 )); then
+      typeset -i newest_focus=-1 focus_ties=0
+      for (( index = 1; index <= ${#candidate_sockets}; index++ )); do
+         current_focus=${candidate_focus[index]%%.*}
+         if (( current_focus > newest_focus )); then
+            selected=$index
+            newest_focus=$current_focus
+            focus_ties=0
+         elif (( current_focus == newest_focus )); then
+            focus_ties=1
+         fi
+      done
+      (( focus_ties == 0 )) || fail "multiple equally recent Neovim instances match ${candidate_roots[1]}" 69
+   fi
+fi
+
+payload=$($JQ_BIN -cn \
+   --arg path "$FILE_PATH" \
+   --argjson line "$INPUT_LINE" \
+   --argjson column "$INPUT_COLUMN" \
+   '{path: $path, line: $line, column: $column}') || fail 'could not encode RPC payload' 70
+encoded_payload=$(print -rn -- "$payload" | /usr/bin/base64 | /usr/bin/tr -d '\n') \
+   || fail 'could not encode RPC payload' 70
+open_expression="luaeval(\"require([[remote_open]]).open(_A)\", \"${encoded_payload}\")"
+
+$NVIM_BIN --server "${candidate_sockets[selected]}" --remote-expr "$open_expression" </dev/null >/dev/null 2>&1 \
+   || fail "Neovim failed to open ${FILE_PATH}" 70
+
+$OPEN_BIN -a WezTerm >/dev/null 2>&1 || fail 'document opened, but WezTerm could not be activated' 70
+if [[ -n ${candidate_wezterm_sockets[selected]} ]]; then
+   WEZTERM_UNIX_SOCKET=${candidate_wezterm_sockets[selected]} $WEZTERM_BIN cli activate-pane --pane-id "${candidate_panes[selected]}" >/dev/null \
+      || fail 'document opened, but its WezTerm pane could not be focused' 70
+else
+   $WEZTERM_BIN cli activate-pane --pane-id "${candidate_panes[selected]}" >/dev/null \
+      || fail 'document opened, but its WezTerm pane could not be focused' 70
+fi
