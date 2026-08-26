@@ -141,6 +141,8 @@ vim.keymap.set('n', '<leader>vu', function() vim.pack.update() end, { silent = t
 -- Yank mappings
 vim.keymap.set('n', '<leader>yf', '<cmd>let @"=@%<CR>', { silent = true, desc = '[y]ank [f]ilename' })
 vim.keymap.set('n', '<leader>yF', '<cmd>let @+=@%<CR>', { silent = true, desc = '[y]ank [F]ilename to clipboard' })
+vim.keymap.set('n', '<leader>yp', '<cmd>let @"=expand("%:p")<CR>', { silent = true, desc = '[y]ank absolute file[p]ath' })
+vim.keymap.set('n', '<leader>yP', '<cmd>let @+=expand("%:p")<CR>', { silent = true, desc = '[y]ank absolute file[P]ath to clipboard' })
 vim.keymap.set('n', '<leader>yb', ':%y<CR>', { silent = true, desc = '[y]ank [b]uffer content' })
 vim.keymap.set('n', '<leader>yB', ':%y+<CR>', { silent = true, desc = '[y]ank [B]uffer content to the clipboard' })
 -- vim.keymap.set('n', '<leader>y', '', { silent = false, desc = '[y]ank []' })
