@@ -85,9 +85,9 @@ This script can be used to look up information from the cht.sh website.
 ### nvim-open
 
 `nvim-open` opens an existing document in the matching running Neovim instance,
-moves the cursor to a requested line and column, and focuses the WezTerm pane
-that contains that instance. It is intended for integrations with desktop tools
-that know a document path and source position.
+moves the cursor to a requested line and column, switches to the pane's WezTerm
+workspace, and focuses the pane that contains that instance. It is intended for
+integrations with desktop tools that know a document path and source position.
 
 #### Requirements and installation
 

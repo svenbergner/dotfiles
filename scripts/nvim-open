@@ -187,6 +187,39 @@ $NVIM_BIN --server "${candidate_sockets[selected]}" --remote-expr "$open_express
    || fail "Neovim failed to open ${FILE_PATH}" 70
 
 $OPEN_BIN -a WezTerm >/dev/null 2>&1 || fail 'document opened, but WezTerm could not be activated' 70
+
+if [[ -n ${candidate_wezterm_sockets[selected]} ]]; then
+   panes=$(WEZTERM_UNIX_SOCKET=${candidate_wezterm_sockets[selected]} $WEZTERM_BIN cli list --format json 2>/dev/null) \
+      || fail 'document opened, but its WezTerm workspace could not be determined' 70
+   clients=$(WEZTERM_UNIX_SOCKET=${candidate_wezterm_sockets[selected]} $WEZTERM_BIN cli list-clients --format json 2>/dev/null) \
+      || fail 'document opened, but the active WezTerm pane could not be determined' 70
+else
+   panes=$($WEZTERM_BIN cli list --format json 2>/dev/null) \
+      || fail 'document opened, but its WezTerm workspace could not be determined' 70
+   clients=$($WEZTERM_BIN cli list-clients --format json 2>/dev/null) \
+      || fail 'document opened, but the active WezTerm pane could not be determined' 70
+fi
+
+target_workspace=$(print -r -- "$panes" | $JQ_BIN -er --argjson pane "${candidate_panes[selected]}" '
+   [.[] | select(.pane_id == $pane)]
+   | if length == 1 then .[0].workspace else empty end
+' 2>/dev/null) || fail 'document opened, but its WezTerm workspace could not be determined' 70
+focused_tty=$(print -r -- "$clients" | $JQ_BIN -er '
+   min_by(.idle_time.secs, .idle_time.nanos).focused_pane_id
+' 2>/dev/null | {
+   read -r focused_pane
+   print -r -- "$panes" | $JQ_BIN -er --argjson pane "$focused_pane" '
+      [.[] | select(.pane_id == $pane)]
+      | if length == 1 then .[0].tty_name else empty end
+   '
+} 2>/dev/null) || fail 'document opened, but the active WezTerm terminal could not be determined' 70
+[[ -w $focused_tty ]] || fail "document opened, but the active WezTerm terminal is not writable: ${focused_tty}" 70
+
+encoded_workspace=$(print -rn -- "$target_workspace" | /usr/bin/base64 | /usr/bin/tr -d '\n') \
+   || fail 'document opened, but its WezTerm workspace could not be encoded' 70
+print -rn -- $'\e]1337;SetUserVar=nvim_open_workspace='"$encoded_workspace"$'\a' > "$focused_tty" \
+   || fail 'document opened, but its WezTerm workspace could not be activated' 70
+
 if [[ -n ${candidate_wezterm_sockets[selected]} ]]; then
    WEZTERM_UNIX_SOCKET=${candidate_wezterm_sockets[selected]} $WEZTERM_BIN cli activate-pane --pane-id "${candidate_panes[selected]}" >/dev/null \
       || fail 'document opened, but its WezTerm pane could not be focused' 70
