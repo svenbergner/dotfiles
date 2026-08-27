@@ -317,6 +317,7 @@ local function save_json_state(path, state)
 end
 
 local output_state = nil
+local output_dir_history_key = '__history'
 
 local function load_output_state()
    if output_state == nil then
@@ -358,6 +359,44 @@ local function persisted_output_dir(root)
    return state[normalize_path(root)]
 end
 
+local function persisted_output_dirs(root)
+   local state = load_output_state()
+   local dirs = {}
+   local seen = {}
+
+   local function add(path)
+      if type(path) ~= 'string' then
+         return
+      end
+
+      path = normalize_path(path)
+      if path == '' or seen[path] then
+         return
+      end
+
+      seen[path] = true
+      table.insert(dirs, path)
+   end
+
+   add(state[normalize_path(root)])
+   for _, path in ipairs(state[output_dir_history_key] or {}) do
+      add(path)
+   end
+
+   local other_dirs = {}
+   for key, path in pairs(state) do
+      if key ~= output_dir_history_key and type(path) == 'string' then
+         table.insert(other_dirs, path)
+      end
+   end
+   table.sort(other_dirs)
+   for _, path in ipairs(other_dirs) do
+      add(path)
+   end
+
+   return dirs
+end
+
 local function set_persisted_output_dir(root, output_dir)
    local normalized_root = normalize_path(root)
    local normalized_output_dir = normalize_path(output_dir)
@@ -366,7 +405,34 @@ local function set_persisted_output_dir(root, output_dir)
    end
 
    local state = load_output_state()
+   local history = {}
+   local seen = {}
+   local function add_to_history(path)
+      if type(path) ~= 'string' then
+         return
+      end
+
+      path = normalize_path(path)
+      if path == '' or seen[path] then
+         return
+      end
+
+      seen[path] = true
+      table.insert(history, path)
+   end
+
+   add_to_history(normalized_output_dir)
+   for _, path in ipairs(state[output_dir_history_key] or {}) do
+      add_to_history(path)
+   end
+   for key, path in pairs(state) do
+      if key ~= output_dir_history_key then
+         add_to_history(path)
+      end
+   end
+
    state[normalized_root] = normalized_output_dir
+   state[output_dir_history_key] = history
    return save_output_state()
 end
 
@@ -477,15 +543,54 @@ function M.set_output_dir_for_current_root(path)
       return
    end
 
-   vim.ui.input({
-      prompt = 'ContentDev output base directory for ' .. root .. ': ',
-      default = M.output_dir_for_root(root) or default_output_dir(root),
-      completion = 'dir',
-   }, function(input)
-      input = strip(input)
-      if input ~= '' then
-         persist(input)
+   local function prompt_for_output_dir(default_dir)
+      vim.ui.input({
+         prompt = 'ContentDev output base directory for ' .. root .. ': ',
+         default = default_dir or M.output_dir_for_root(root) or default_output_dir(root),
+         completion = 'dir',
+      }, function(input)
+         input = strip(input)
+         if input ~= '' then
+            persist(input)
+         end
+      end)
+   end
+
+   local previous_dirs = persisted_output_dirs(root)
+   if #previous_dirs == 0 then
+      prompt_for_output_dir()
+      return
+   end
+
+   local current_dir = normalize_path(M.output_dir_for_root(root))
+   local choices = {}
+   for _, output_dir in ipairs(previous_dirs) do
+      table.insert(choices, {
+         path = output_dir,
+         label = output_dir .. (output_dir == current_dir and ' (current)' or ''),
+      })
+   end
+   table.insert(choices, {
+      label = 'Choose another directory...',
+      manual = true,
+   })
+
+   vim.ui.select(choices, {
+      prompt = 'ContentDev output base directory for ' .. root .. ':',
+      format_item = function(item)
+         return item.label
+      end,
+   }, function(choice)
+      if not choice then
+         return
       end
+
+      if choice.manual then
+         prompt_for_output_dir()
+         return
+      end
+
+      prompt_for_output_dir(choice.path)
    end)
 end
 
