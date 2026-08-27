@@ -3,7 +3,7 @@ ContentDev DSL support for filetypes, LSP and Tree-sitter.
 --]===]
 
 local M = {}
-local list_unpack = table.unpack or unpack
+local list_unpack = table.unpack
 
 M.filetypes = {
    'contentdev_ddf',
@@ -98,7 +98,7 @@ end
 ---@param value? string
 ---@return string
 local function strip(value)
-   return (value or ''):gsub('^%s+', ''):gsub('%s+$', '')
+   return ((value or ''):gsub('^%s+', ''):gsub('%s+$', ''))
 end
 
 ---Convert a value to lowercase, treating nil as an empty string.
@@ -588,9 +588,10 @@ local function resolve_output_dir(root, callback)
       prompt = 'ContentDev output base directory for ' .. root .. ': ',
       default = default_dir,
       completion = 'dir',
-   }, function(input)
+   },
    ---Validate, persist, and return the directory entered by the user.
    ---@param input? string
+   function(input)
       input = strip(input)
       if input == '' then
          vim.notify('ContentDev build cancelled: no output directory selected.', vim.log.levels.WARN)
@@ -663,9 +664,10 @@ function M.set_output_dir_for_current_root(path)
          prompt = 'ContentDev output base directory for ' .. root .. ': ',
          default = default_dir or M.output_dir_for_root(root) or default_output_dir(root),
          completion = 'dir',
-      }, function(input)
+      },
       ---Persist a non-empty directory entered by the user.
       ---@param input? string
+      function(input)
          input = strip(input)
          if input ~= '' then
             persist(input)
@@ -700,9 +702,10 @@ function M.set_output_dir_for_current_root(path)
       format_item = function(item)
          return item.label
       end,
-   }, function(choice)
+   },
    ---Handle a directory-history selection or open the manual-entry prompt.
    ---@param choice? table
+   function(choice)
       if not choice then
          return
       end
@@ -1022,7 +1025,7 @@ local function choose_root_file(root, source, language, candidates, callback)
       format_item = function(item)
          return item.label
       end,
-   }, function(choice)
+   },
    ---Persist a selected root candidate or prompt for a custom file.
    ---@param choice? table
    function(choice)
@@ -1036,9 +1039,10 @@ local function choose_root_file(root, source, language, candidates, callback)
             prompt = 'ContentDev root file: ',
             default = normalize_path(join(source_base_from_root(root), language.source_dirs[1] or '', basename(source))),
             completion = 'file',
-         }, function(input)
+         },
          ---Validate and persist a manually entered root-file path.
          ---@param input? string
+         function(input)
             input = strip(input)
             if input == '' then
                callback(nil, 'No root file selected.')
@@ -1478,7 +1482,7 @@ function M.build_current_buffer()
          current_build = vim.system(args, { text = true }, function(result)
             ---Update editor state from the scheduled main-loop callback.
             vim.schedule(function()
-               finish_build(language, target, out_dir, result)
+               finish_build(language, target, assert(out_dir), result)
             end)
          end)
       end)
