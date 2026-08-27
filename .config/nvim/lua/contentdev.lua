@@ -1475,6 +1475,15 @@ function M.build_current_buffer()
             return
          end
 
+         ---Save all buffers while converting command errors into build errors.
+         local saved, save_error = pcall(function()
+            vim.cmd('wall')
+         end)
+         if not saved then
+            vim.notify('ContentDev build cancelled: could not save all buffers: ' .. tostring(save_error), vim.log.levels.ERROR)
+            return
+         end
+
          vim.cmd('cclose')
          vim.notify('ContentDev ' .. language.name .. ' build started: ' .. target, vim.log.levels.INFO)
          ---Transfer the asynchronous compiler result back to Neovim's main loop.
