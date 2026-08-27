@@ -113,6 +113,78 @@ return {
             command = vim.fn.expand('~/.local/share/nvim/mason/bin/codelldb'),
          }
 
+         local function detect_qt_version(program)
+            if vim.fn.has('mac') ~= 1 or not program or program == '' then
+               return nil
+            end
+
+            local result = vim.system({ 'otool', '-L', program }, { text = true }):wait()
+            if result.code ~= 0 then
+               return nil
+            end
+
+            return result.stdout:match('QtCore%.framework.-current version (%d+%.%d+%.%d+)')
+         end
+
+         local function qt_source_map_command()
+            local selector = require('telescope').extensions.debugee_selector
+            local program = selector.get_last_program()
+            local version = vim.env.QT_VERSION
+            if not version or version == '' then
+               version = detect_qt_version(program)
+            end
+
+            if not version then
+               vim.notify('Could not detect Qt version for ' .. (program or '<unknown>'), vim.log.levels.WARN)
+               return nil
+            end
+
+            local source_root = vim.fs.normalize(vim.fn.expand('$HOME/Qt/' .. version .. '/Src'))
+            if vim.fn.isdirectory(source_root) ~= 1 then
+               vim.notify('Qt sources not installed for version ' .. version, vim.log.levels.WARN)
+               return nil
+            end
+
+            return string.format(
+               'settings set target.source-map %q %q',
+               '/Users/qt/work/qt/',
+               source_root .. '/'
+            )
+         end
+
+         local function find_qt_creator_lldb_bridge()
+            if vim.env.QT_CREATOR_LLDB_BRIDGE and vim.env.QT_CREATOR_LLDB_BRIDGE ~= '' then
+               return vim.env.QT_CREATOR_LLDB_BRIDGE
+            end
+
+            local bridge = vim.fn.expand('$HOME/Qt/Qt Creator.app/Contents/Resources/debugger/lldbbridge.py')
+            if vim.fn.filereadable(bridge) == 1 then
+               return bridge
+            end
+
+            return nil
+         end
+
+         local function find_pygdbmi_site_packages()
+            local pattern = vim.fn.expand('$HOME') .. '/Library/Python/*/lib/python/site-packages/pygdbmi'
+            local packages = vim.fn.glob(pattern, false, true)
+            table.sort(packages, function(lhs, rhs)
+               local lhs_major, lhs_minor = lhs:match('/Python/(%d+)%.(%d+)/')
+               local rhs_major, rhs_minor = rhs:match('/Python/(%d+)%.(%d+)/')
+
+               lhs_major, lhs_minor = tonumber(lhs_major) or 0, tonumber(lhs_minor) or 0
+               rhs_major, rhs_minor = tonumber(rhs_major) or 0, tonumber(rhs_minor) or 0
+
+               if lhs_major ~= rhs_major then
+                  return lhs_major > rhs_major
+               end
+               return lhs_minor > rhs_minor
+            end)
+
+            local package = packages[1]
+            return package and vim.fs.dirname(package) or nil
+         end
+
          dap.configurations.cpp = {
             {
                name = 'Launch',
@@ -137,20 +209,37 @@ return {
                -- args = { "Versenden der Einkommensteuer per ELSTER" },
                -- args = { "Die Dateien in einem Ordner können per Wildcard ermittelt werden." },
                initCommands = function()
-                  local commands = {}
-                  table.insert(commands, 'breakpoint name configure --disable cpp_exception')
+                  local commands = {
+                     'breakpoint name configure --disable cpp_exception',
+                  }
+
                   if vim.fn.has('mac') == 1 then
-                     table.insert(
-                        commands,
-                        'settings set target.source-map /Users/qt/work/qt/ /Users/sven.bergner/Qt/6.9.3/Src/'
-                     )
-                     table.insert(
-                        commands,
-                        'script -l python -- import sys; sys.path += [ "'
-                        .. vim.fn.expand('$HOME')
-                        .. '/Library/Python/3.9/lib/python/site-packages" ]'
-                     )
+                     local source_map = qt_source_map_command()
+                     if source_map then
+                        table.insert(commands, source_map)
+                     end
+
+                     local pygdbmi_site_packages = find_pygdbmi_site_packages()
+                     if pygdbmi_site_packages then
+                        table.insert(
+                           commands,
+                           string.format(
+                              'script import sys; sys.path.insert(0, %q)',
+                              pygdbmi_site_packages
+                           )
+                        )
+                     else
+                        vim.notify('pygdbmi is not installed for the Qt LLDB bridge', vim.log.levels.WARN)
+                     end
+
+                     local lldb_bridge = find_qt_creator_lldb_bridge()
+                     if lldb_bridge then
+                        table.insert(commands, string.format('command script import %q', lldb_bridge))
+                     else
+                        vim.notify('Could not find the Qt Creator LLDB bridge', vim.log.levels.WARN)
+                     end
                   end
+
                   table.insert(commands, 'settings set target.load-script-from-symbol-file true')
                   return commands
                end,
