@@ -121,8 +121,6 @@ return {
          diff = {
             current = 'DiffText',
             incoming = 'DiffAdd',
-            modified = 'DiffChange', -- Neue Option
-            deleted = 'DiffDelete', -- Neue Option
          },
       },
       --- @class AvanteConflictUserConfig
