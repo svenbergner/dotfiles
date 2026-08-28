@@ -147,7 +147,9 @@ return {
       })
    end,
    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-   build = 'make clean && make',
+   build = 'make',
+   -- To force a rebuild from source, you can use the following command:
+   -- build = 'make clean && make',
    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
    dependencies = {
       'nvim-treesitter/nvim-treesitter',
