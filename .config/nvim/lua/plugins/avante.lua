@@ -145,7 +145,9 @@ return {
          vim.api.nvim_set_hl(0, 'AvanteSidebarWinSeparator', { fg = '#a89984', bg = '#3c3836' })
       end
       set_border_highlights()
+      local highlight_group = vim.api.nvim_create_augroup('AvanteHighlights', { clear = true })
       vim.api.nvim_create_autocmd('ColorScheme', {
+         group = highlight_group,
          pattern = '*',
          callback = set_border_highlights,
       })
