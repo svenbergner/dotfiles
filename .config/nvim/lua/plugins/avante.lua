@@ -16,6 +16,18 @@ It provides users with AI-driven code suggestions and the ability to apply
 these recommendations directly to their source files with minimal effort.
 --]===]
 
+local response_api_models = {
+   ['gpt-5.6-luna'] = true,
+   ['gpt-5.6-terra'] = true,
+   ['gpt-5.6-sol'] = true,
+}
+
+local function copilot_uses_response_api(provider)
+   local model = provider and provider.model
+   return type(model) == 'string'
+      and (response_api_models[model] == true or model:match('gpt%-%d+%.?%d*%-codex') ~= nil)
+end
+
 return {
    'yetone/avante.nvim',
    enabled = true,
@@ -31,11 +43,12 @@ return {
          -- The function will be called with the current buffer and the current file type.
          -- The function should return the provider name as a string.
          copilot = {
-            model = 'claude-sonnet-5',
+            -- model = 'claude-sonnet-5',
             -- model = 'gpt-5.3-codex',
             -- model = 'gpt-5.6-luna', -- (Lightweight): 80 % cheaper
             -- model = 'gpt-5.6-terra',   -- (Standard): cheaper
-            -- model = 'gpt-5.6-sol',  -- (High-End): same price as before, but more powerful
+            model = 'gpt-5.6-sol',  -- (High-End): same price as before, but more powerful
+            use_response_api = copilot_uses_response_api,
             extra_request_body = {
                -- You can add extra request body parameters here.
                -- For example, you can add the `temperature` parameter to control the randomness of the response.
