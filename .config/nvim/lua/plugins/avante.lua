@@ -37,11 +37,6 @@ return {
    opts = {
       provider = 'copilot',
       providers = {
-         -- You can use multiple providers, but only one will be used at a time.
-         -- The first provider that is available will be used.
-         -- If you want to use multiple providers, you can set the `provider` option to a function that returns the provider name.
-         -- The function will be called with the current buffer and the current file type.
-         -- The function should return the provider name as a string.
          copilot = {
             -- model = 'claude-sonnet-5',
             -- model = 'gpt-5.3-codex',
