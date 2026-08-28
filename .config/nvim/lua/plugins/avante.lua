@@ -93,7 +93,7 @@ return {
          },
       },
       hints = { enabled = true },
-      file_selector = {
+      selector = {
          provider = 'snacks',
          provider_opts = {},
       },
