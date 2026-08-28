@@ -34,6 +34,8 @@ return {
    event = 'VeryLazy',
    keys = { '<leader>a', mode = { 'n', 'v' }, desc = 'Avante' },
    version = false, -- Never set this value to "*"! Never!
+   ---@module 'avante'
+   ---@type avante.Config
    opts = {
       provider = 'copilot',
       providers = {
@@ -41,8 +43,8 @@ return {
             -- model = 'claude-sonnet-5',
             -- model = 'gpt-5.3-codex',
             -- model = 'gpt-5.6-luna', -- (Lightweight): 80 % cheaper
-            -- model = 'gpt-5.6-terra',   -- (Standard): cheaper
-            model = 'gpt-5.6-sol',  -- (High-End): same price as before, but more powerful
+            -- model = 'gpt-5.6-terra', -- (Standard): cheaper
+            model = 'gpt-5.6-sol', -- (High-End): same price as before, but more powerful
             use_response_api = copilot_uses_response_api,
             extra_request_body = {
                -- You can add extra request body parameters here.
