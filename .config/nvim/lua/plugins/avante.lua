@@ -63,8 +63,14 @@ return {
          auto_set_highlight_group = true,
          auto_set_keymaps = true,
          auto_apply_diff_after_generation = false,
+         auto_approve_tool_permissions = {
+            'git_diff',
+            'glob',
+            'read_file',
+            'read_file_toplevel_symbols',
+            'search_keyword',
+         },
          support_paste_from_clipboard = true,
-         enable_cursor_planning_mode = true,
       },
       mappings = {
          --- @class AvanteConflictMappings
