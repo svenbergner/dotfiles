@@ -98,7 +98,6 @@ return {
             insert = '<C-s>',
          },
       },
-      hints = { enabled = true },
       selector = {
          provider = 'snacks',
          provider_opts = {},
