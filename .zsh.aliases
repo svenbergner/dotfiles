@@ -77,6 +77,7 @@ function ba() {
         echo "         bd:  Run brew doctor"
         echo "         bi:  Show info about a brew package"
         echo "         bs:  Search for a brew package"
+        echo "         bu:  Run brew upgrade"
         echo "         bba: Add a package to the Brewfile"
         echo "         bbac: Add a cask to the Brewfile"
         echo "         bbat: Add a tap to the Brewfile"
@@ -91,7 +92,7 @@ function ba() {
 }
 function bb() {
         echo "Running brew bundle..."
-        if brew bundle -q --force; then
+        if brew bundle --force; then
             echo "Brew bundle succeeded. Running cleanup..."
             brew bundle cleanup -q --force && echo "Done!" || echo "Cleanup failed."
         else
@@ -101,6 +102,7 @@ function bb() {
 alias bd='brew doctor'
 alias bi='brew info'
 alias bs='brew search'
+alias bu='brew upgrade'
 function bba() {
     if [[ -z "$1" ]]; then
         echo "Usage: bba [--cask|--tap|--vscode|--uv] <package_name>"
@@ -111,7 +113,7 @@ function bba() {
         return 1
     fi
     brew bundle add "$@" && echo "Package '$*' added to Brewfile." || echo "Failed to add package '$*'."
-    brew bundle -q --force && echo "Brew bundle succeeded." || echo "Brew bundle failed."
+    brew bundle --force && echo "Brew bundle succeeded." || echo "Brew bundle failed."
     brew bundle dump --force && echo "Brewfile updated!" || echo "Failed to update Brewfile."
 }
 alias bbac='bba --cask'
