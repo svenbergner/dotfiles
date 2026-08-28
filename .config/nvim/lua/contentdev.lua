@@ -3,7 +3,6 @@ ContentDev DSL support for filetypes, LSP and Tree-sitter.
 --]===]
 
 local M = {}
-local list_unpack = table.unpack
 
 M.filetypes = {
    'contentdev_ddf',
@@ -1208,7 +1207,7 @@ local function language_output_dir(language, target, output_base_dir, root)
       table.insert(output_parts, language.output_dir)
    end
 
-   return normalize_path(join(list_unpack(output_parts)))
+   return normalize_path(table.concat(output_parts, '/'))
 end
 
 ---Resolve the generated file extension for a language target.
