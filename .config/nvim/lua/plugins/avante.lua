@@ -141,8 +141,8 @@ return {
       -- Re-apply border highlights after Avante's auto_set_highlight_group
       -- to ensure they are not overridden by Avante's defaults.
       local function set_border_highlights()
-         vim.api.nvim_set_hl(0, 'AvantePromptInputBorder', { fg = '#a89984', bg = '#3c3836' })
-         vim.api.nvim_set_hl(0, 'AvanteSidebarWinSeparator', { fg = '#a89984', bg = '#3c3836' })
+         vim.api.nvim_set_hl(0, 'AvantePromptInputBorder', { link = 'FloatBorder' })
+         vim.api.nvim_set_hl(0, 'AvanteSidebarWinSeparator', { link = 'WinSeparator' })
       end
       set_border_highlights()
       local highlight_group = vim.api.nvim_create_augroup('AvanteHighlights', { clear = true })
