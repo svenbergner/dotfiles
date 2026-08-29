@@ -14,7 +14,11 @@ return {
          { desc = '[c]ode preview [a]ctions' }
       )
 
+      local hl = require('actions-preview.highlight')
       require('actions-preview').setup({
+         highlight_command = {
+            hl.delta('delta --no-gitconfig --side-by-side'),
+         },
          telescope = {
             sorting_strategy = 'ascending',
             layout_strategy = 'vertical',
@@ -27,24 +31,6 @@ return {
                   return max_lines - 15
                end,
             },
-         },
-      })
-
-      local hl = require('actions-preview.highlight')
-      require('actions-preview').setup({
-         highlight_command = {
-            -- Highlight diff using delta: https://github.com/dandavison/delta
-            -- The argument is optional, in which case "delta" is assumed to be specified.
-            -- hl.delta("path/to/delta --option1 --option2"),
-            -- You may need to specify "--no-gitconfig" since it is dependent on
-            -- the gitconfig of the project by default.
-            hl.delta('delta --no-gitconfig --side-by-side'),
-
-            -- Functions can also be specified for items. Functions are executed during setup.
-            -- This is useful for `require(...)` at definition time, such as in lazy.nvim.
-            function()
-               return require('actions-preview.highlight').delta()
-            end,
          },
       })
    end,
