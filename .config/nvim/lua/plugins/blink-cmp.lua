@@ -26,7 +26,7 @@ https://github.com/L3MON4D3/LuaSnip                              -- A snippet en
 return {
    'saghen/blink.cmp',
    enabled = true,
-   event = { 'InsertEnter', 'CmdwinEnter' },
+   event = { 'InsertEnter', 'CmdlineEnter', 'CmdwinEnter' },
    -- optional: provides snippets for the snippet source
    dependencies = {
       'giuxtaposition/blink-cmp-copilot',
@@ -57,7 +57,6 @@ return {
             or filetype == 'snacks_picker_input'
             or filetype == 'neo-tree'
             or filetype == 'neo-tree-popup'
-            or filetype == 'gitcommit'
          then
             return false
          end
@@ -195,7 +194,6 @@ return {
             'snippets',
             'buffer',
             'omni',
-            'cmdline',
             'emoji',
             'nerdfont',
             'env',
