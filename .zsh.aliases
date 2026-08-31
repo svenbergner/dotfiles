@@ -66,6 +66,8 @@ alias gmb='git branch --merged'
 
 alias dp='delta --dark --paging=always --line-numbers --features side-by-side --syntax-theme gruvbox-dark'
 
+alias sonarqube_version="jq '.. | objects | select(.artifactId? == \"sonar-cfamily-plugin\") | .version' ~/.local/share/nvim/mason/packages/sonarlint-language-server/extension/package.json"
+
 # Homebrew aliases, functions, and environment variables
 export HOMEBREW_BUNDLE_FILE=~/.config/Brewfile
 export HOMEBREW_BUNDLE_INSTALL_CLEANUP=1
