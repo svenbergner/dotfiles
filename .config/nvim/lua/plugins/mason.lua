@@ -53,20 +53,16 @@ return {
          opts = {
             ensure_installed = {
                -- LSPs
-               'codelldb',
                'sonarlint-language-server',
 
                -- DAPs
                'bash-debug-adapter',
-               'dart-debug-adapter',
+               'codelldb',
 
                -- Formatters and Linters
                'clang-format',
-               'cmakelint',
-               'flake8',
                'hclfmt',
                'markdown-toc',
-               'pyright',
                'stylua',
                'terraform',
             },
