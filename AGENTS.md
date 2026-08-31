@@ -72,6 +72,7 @@ Before finishing, inspect the diff and verify that no secrets, host-specific val
 
 - `.config/nvim/init.lua` is the entry point. Core behavior is split across modules in `.config/nvim/lua/`; plugin specifications are discovered from `lua/plugins/` by lazy.nvim.
 - LSP overrides live in `.config/nvim/after/lsp/`; filetype-specific settings live in `.config/nvim/after/ftplugin/`.
+- External formatter mappings live in `.config/nvim/lua/plugins/conform.lua`; keep domain-specific HCL formatting separate (`packer fmt`, `terraform fmt`, and `hclfmt`).
 - Do not manually edit plugin lock files unless the task is specifically about dependency locking.
 - Headless startup may bootstrap or update plugins and can require network access. Prefer syntax and formatting checks for isolated changes; only perform a full startup check when its side effects are acceptable.
 

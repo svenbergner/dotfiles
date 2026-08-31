@@ -27,9 +27,16 @@ vim.keymap.set('n', '<leader>Wl', function()
    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end, { desc = 'LSP: [W]orkspace [L]ist Folders' })
 
-vim.api.nvim_buf_create_user_command(0, 'Format', function(_)
-   vim.lsp.buf.format()
-end, { desc = 'Format current buffer with LSP' })
+local function format_buffer(opts)
+   require('conform').format({
+      async = opts and opts.async or false,
+      lsp_format = 'fallback',
+   })
+end
+
+vim.api.nvim_buf_create_user_command(0, 'Format', function()
+   format_buffer()
+end, { desc = 'Format current buffer' })
 vim.keymap.set('n', '<S-F7>', '<cmd>ConfigureCMakeBuild<CR>', { desc = 'Run cmake configure' })
 vim.keymap.set('n', '<F19>', '<cmd>ConfigureCMakeBuild<CR>', { desc = 'Run cmake configure' })
 vim.keymap.set('n', '<C-F7>', '<cmd>StopCMakeBuild<CR>', { desc = 'Stop cmake build' })
@@ -44,7 +51,9 @@ vim.keymap.set('n', '<F7>', function()
    require('dap').terminate()
    local contentdev = require('contentdev')
    if contentdev.is_contentdev_buffer(0) then
-      pcall(function() vim.cmd({ cmd = 'StopCMakeBuild', args = { 'true' } }) end)
+      pcall(function()
+         vim.cmd({ cmd = 'StopCMakeBuild', args = { 'true' } })
+      end)
       contentdev.build_current_buffer()
    else
       vim.cmd({ cmd = 'StopCMakeBuild', args = { 'true' } })
@@ -67,13 +76,9 @@ vim.keymap.set('n', '<M-o>', sw, { desc = 'LSP: Meta + o - switch source/header'
 vim.keymap.set('i', '<A-o>', sw, { desc = 'LSP: Alt + o - switch source/header' })
 vim.keymap.set('i', '<M-o>', sw, { desc = 'LSP: Meta + o - switch source/header' })
 
-vim.keymap.set('n', '<leader>bf', vim.lsp.buf.format, { desc = 'Format the current buffer' })
+vim.keymap.set('n', '<leader>bf', format_buffer, { desc = '[b]uffer [f]ormat', noremap = true, silent = true })
 
 -- Coding Keymaps
-vim.keymap.set('n', '<leader>cf', function()
-   vim.lsp.buf.format({ async = true })
-end, { desc = '[c]ode [f]ormat', noremap = true, silent = true })
-
 vim.keymap.set('n', 'gra', function()
    vim.lsp.buf.code_action()
 end, { desc = '[g]lobal [r]un [c]code action', noremap = true, silent = true })
