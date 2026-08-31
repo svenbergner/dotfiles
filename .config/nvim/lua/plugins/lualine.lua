@@ -193,7 +193,7 @@ local function getTestBuildContext()
    local label = '󰙨'
 
    local build_dir = findCompileCommandsBuildDir()
-   if not build_dir or build_dir == '' then
+   if build_dir and build_dir ~= '' then
       label = label .. ' ' .. pathBasename(build_dir)
    end
 
