@@ -181,12 +181,12 @@ local hourglass_index = 1.0
 -- Returns the next hourglass frame, cycling through all 3 frames on each call
 ---@return string
 local function get_hourglass()
-  local frame = hourglass_frames[vim.fn.round( hourglass_index )]
-  hourglass_index = (hourglass_index % #hourglass_frames) + 0.2
-  if hourglass_index > #hourglass_frames then
-    hourglass_index = 1.0
-  end
-  return frame
+   local frame = hourglass_frames[vim.fn.round(hourglass_index)]
+   hourglass_index = (hourglass_index % #hourglass_frames) + 0.2
+   if hourglass_index > #hourglass_frames then
+      hourglass_index = 1.0
+   end
+   return frame
 end
 
 local function getTestBuildContext()
