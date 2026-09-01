@@ -103,6 +103,10 @@ vim.keymap.set('n', '<leader>ci', function()
    vim.lsp.buf.implementation()
 end, { desc = '[c]ode [i]mplementation', noremap = true, silent = true })
 
+vim.keymap.set( 'n', '<leader>cr',
+   vim.cmd('RemoveDividerComments'),
+   { desc = '[c]ode [r]emove divider comments', noremap = true, silent = true })
+
 vim.keymap.set('n', '<leader>cR', function()
    vim.lsp.buf.references()
 end, { desc = '[c]ode [R]eferences', noremap = true, silent = true })
