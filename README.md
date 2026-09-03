@@ -89,6 +89,12 @@ moves the cursor to a requested line and column, switches to the pane's WezTerm
 workspace, and focuses the pane that contains that instance. It is intended for
 integrations with desktop tools that know a document path and source position.
 
+The Neovim SonarLint configuration also uses this command for SonarQube's
+**Open in IDE** button. The project must be open in a remote-enabled Neovim
+instance and bound to the same SonarQube project in Connected Mode. Restart
+Neovim after installing or updating the configuration so that the custom
+`sonarlint/showIssue` handler is registered.
+
 #### Requirements and installation
 
 The integration is designed for local Neovim instances running in WezTerm on

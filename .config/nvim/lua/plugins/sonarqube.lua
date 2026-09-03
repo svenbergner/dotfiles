@@ -45,6 +45,10 @@ return {
    enabled = true,
    ft = sonarlint_ft,
    dependencies = { 'lewis6991/gitsigns.nvim' },
+   config = function(_, opts)
+      vim.lsp.handlers['sonarlint/showIssue'] = require('sonarlint_open').show_issue
+      require('sonarlint').setup(opts)
+   end,
    opts = {
       connected = {
          get_credentials = function(_, _)

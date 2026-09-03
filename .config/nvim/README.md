@@ -77,3 +77,8 @@ removes unreachable entries, chooses the longest matching project root, and
 focuses the registered pane after a successful RPC call. User-facing setup,
 examples, Qt integration, and troubleshooting are documented in the
 [main README](../../README.md#nvim-open).
+
+The SonarLint plugin configuration registers a handler for the language
+server's `sonarlint/showIssue` notification. It converts the SonarQube file URI
+and source range to `nvim-open` arguments so that SonarQube's **Open in IDE**
+button opens and focuses the matching Neovim instance.
