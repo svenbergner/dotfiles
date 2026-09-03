@@ -17,13 +17,16 @@ Integrates with the sonarlint-language-server to deliver real-time
 static analysis and code actions directly in neovim
 --]===]
 
-local analyzers_path = vim.fn.stdpath('data') .. '/mason/packages/sonarlint-language-server/extension/analyzers/'
+local extension_path = vim.fn.stdpath('data') .. '/mason/packages/sonarlint-language-server/extension'
+local analyzers_path = extension_path .. '/analyzers/'
+
+local missing_token_notified = false
 
 local sonarlint_ft = {
    'c',
    'cpp',
    'css',
-   'docker',
+   'dockerfile',
    'go',
    'html',
    'java',
@@ -34,17 +37,34 @@ local sonarlint_ft = {
    'typescript',
    'typescriptreact',
    'xml',
-   'yaml.docker-compose',
+   'yaml',
 }
 
 return {
    'https://gitlab.com/schrieveslaach/sonarlint.nvim',
    enabled = true,
    ft = sonarlint_ft,
+   dependencies = { 'lewis6991/gitsigns.nvim' },
    opts = {
       connected = {
          get_credentials = function(_, _)
-            return vim.fn.getenv('SONAR_TOKEN')
+            local token = vim.env.SONAR_TOKEN
+            if token and token ~= '' then
+               return token
+            end
+
+            if not missing_token_notified then
+               missing_token_notified = true
+               vim.schedule(function()
+                  vim.notify(
+                     'SONAR_TOKEN is missing or empty; SonarLint is starting in local mode.',
+                     vim.log.levels.WARN,
+                     { title = 'SonarLint' }
+                  )
+               end)
+            end
+
+            return nil
          end,
       },
       server = {
@@ -59,13 +79,12 @@ return {
             analyzers_path .. 'sonarjs.jar', -- JavaScript, TypeScript
             analyzers_path .. 'sonarpython.jar', -- Python
             analyzers_path .. 'sonarxml.jar', -- XML, XSLT
-            -- analyzers_path .. "sonarjava.jar",
-            -- analyzers_path .. "sonarjavasymbolicexecution.jar",
-            -- analyzers_path .. "sonarphp.jar",
+            analyzers_path .. 'sonarjava.jar', -- Java
+            analyzers_path .. 'sonarjavasymbolicexecution.jar', -- Java symbolic execution
+            analyzers_path .. 'sonarphp.jar', -- PHP
          },
          settings = {
             sonarlint = {
-               pathToCompileCommands = analyzers_path .. 'compile_commands.json',
                rules = {
                   -- Disable some rules that are not useful in our context
                   -- or that produce too many false positives.
@@ -73,9 +92,9 @@ return {
                   -- https://sonarsource.github.io/rspec/#/rspec/SXXXX
                   -- or search for a rule by name
                   -- https://sonarsource.github.io/rspec/#/rspec/?lang=cfamily&query=replace+new
-                  ['cpp:S125'] = { level = 'off' },  -- Sections of code should not be commented out
-                  ['cpp:S134'] = { level = 'off' },  -- Control flow statements "IF", "CASE", "DO", "LOOP", "SELECT", "WHILE" and "PROVIDE" should not be nested too deeply
-                  ['cpp:S995'] = { level = 'off' },  -- Change to pointer-to-const
+                  ['cpp:S125'] = { level = 'off' }, -- Sections of code should not be commented out
+                  ['cpp:S134'] = { level = 'off' }, -- Control flow statements "IF", "CASE", "DO", "LOOP", "SELECT", "WHILE" and "PROVIDE" should not be nested too deeply
+                  ['cpp:S995'] = { level = 'off' }, -- Change to pointer-to-const
                   ['cpp:S1066'] = { level = 'off' }, -- Mergeable "if" statements should be combined
                   ['cpp:S5025'] = { level = 'off' }, -- Memory should not be managed manually
                   ['cpp:S5350'] = { level = 'off' }, -- Pointer and reference local variables should be "const" if the corresponding object is not modified
@@ -83,6 +102,7 @@ return {
                   ['cpp:S6004'] = { level = 'off' }, -- "if" and "switch" initializer should be used to reduce scope of variables
                   ['cpp:S6045'] = { level = 'off' }, -- Transparent function objects should be used with associative "std::string" containers
                   ['cpp:S6177'] = { level = 'off' }, -- "using enum" should be used in scopes with high concentration of "enum" constants
+                  ['cpp:S7034'] = { level = 'off' }, -- cxx23 contains
                },
                connectedMode = {
                   connections = {
@@ -100,20 +120,37 @@ return {
          },
 
          before_init = function(params, config)
-            -- Your personal configuration needs to provide a mapping of root
-            -- folders and project keys
-            --
-            -- In the future a integration with
-            -- https://github.com/folke/neoconf.nvim or some similar
-            -- plugin, might be worthwhile.
-            local project_root_and_ids = {
-               ['~/Repos/SSE/Dev/'] = 'TAA.DE.Steuertipps.SSE',
+            local project_root = vim.fs.normalize(vim.fn.expand('~/Repos/SSE/Dev'))
+            local projects = {
+               [project_root] = {
+                  project_key = 'TAA.DE.Steuertipps.SSE',
+                  compile_commands = project_root .. '/compile_commands.json',
+               },
                -- … further mappings …
             }
 
+            local root_path = params.rootPath
+            if not root_path and params.rootUri then
+               root_path = vim.uri_to_fname(params.rootUri)
+            end
+
+            local normalized_root = root_path and vim.fs.normalize(root_path)
+            local project = normalized_root and projects[normalized_root]
+            if not project then
+               vim.schedule(function()
+                  vim.notify(
+                     'No SonarQube project mapping configured for root: ' .. (normalized_root or '<unknown>'),
+                     vim.log.levels.WARN,
+                     { title = 'SonarLint' }
+                  )
+               end)
+               return
+            end
+
+            config.settings.sonarlint.pathToCompileCommands = project.compile_commands
             config.settings.sonarlint.connectedMode.project = {
                connectionId = 'https-sonarqube-cloud-dev-wolterskluwer-eu-',
-               projectKey = project_root_and_ids[params.rootPath],
+               projectKey = project.project_key,
             }
          end,
       },
