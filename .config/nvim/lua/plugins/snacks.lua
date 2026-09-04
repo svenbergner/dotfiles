@@ -13,6 +13,32 @@ local config_path = {
 
 local buffers_opts = {
    sort_lastused = false,
+   format = function(item, picker)
+      local ret = Snacks.picker.format.buffer(item, picker)
+      local diagnostics = vim.diagnostic.count(item.buf)
+      local virtual_text = {}
+
+      for severity, name in ipairs({ 'Error', 'Warn', 'Info', 'Hint' }) do
+         local count = diagnostics[severity] or 0
+         if count > 0 then
+            virtual_text[#virtual_text + 1] = {
+               picker.opts.icons.diagnostics[name] .. count .. ' ',
+               'Diagnostic' .. name,
+            }
+         end
+      end
+
+      if #virtual_text > 0 then
+         ret[#ret + 1] = {
+            col = 0,
+            virt_text = virtual_text,
+            virt_text_pos = 'right_align',
+            hl_mode = 'combine',
+         }
+      end
+
+      return ret
+   end,
 }
 
 local help_opts = {
