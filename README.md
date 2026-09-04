@@ -95,11 +95,15 @@ instance and bound to the same SonarQube project in Connected Mode. Restart
 Neovim after installing or updating the configuration so that the custom
 `sonarlint/showIssue` handler is registered.
 
+Within a SonarLint-enabled buffer, `<leader>cq` opens the SonarQube issue on the
+current line or falls back to the bound project's dashboard.
+
 #### Requirements and installation
 
 The integration is designed for local Neovim instances running in WezTerm on
-macOS. It requires `nvim`, `wezterm`, and `jq`; all three are included in the
-Brewfile. Install the dotfiles links and restart the relevant Neovim instances:
+macOS. It requires `nvim`, `wezterm`, `jq`, and `curl`; all four are included in
+the Brewfile. Install the dotfiles links and restart the relevant Neovim
+instances:
 
 ```bash
 cd ~/Repos/dotfiles

@@ -45,8 +45,22 @@ return {
    enabled = true,
    ft = sonarlint_ft,
    dependencies = { 'lewis6991/gitsigns.nvim' },
+   keys = {
+      {
+         '<leader>cq',
+         function()
+            require('sonarlint_web').open_current()
+         end,
+         desc = '[c]ode open Sonar[q]ube issue or project',
+      },
+   },
    config = function(_, opts)
       vim.lsp.handlers['sonarlint/showIssue'] = require('sonarlint_open').show_issue
+
+      -- TODO: Remove this override and sonarlint_resolve.lua once sonarlint.nvim uses the
+      -- issue information supplied in the SonarLint.ResolveIssue command arguments.
+      require('sonarlint.connected_mode').resolve_issue = require('sonarlint_resolve').resolve_issue
+
       require('sonarlint').setup(opts)
    end,
    opts = {
