@@ -70,7 +70,6 @@ alias sonarqube_version="jq '.. | objects | select(.artifactId? == \"sonar-cfami
 
 # Homebrew aliases, functions, and environment variables
 export HOMEBREW_BUNDLE_FILE=~/.config/Brewfile
-export HOMEBREW_BUNDLE_INSTALL_CLEANUP=1
 export HOMEBREW_NO_ENV_HINTS=1
 function ba() {
         figlet -w 53 -c HomeBrew Aliases | boxes -d peek | lolcat -f
@@ -124,7 +123,7 @@ alias bbav='bba --vscode'
 alias bbau='bba --uv'
 alias bbc='brew bundle cleanup'
 alias bbe='pushd ~/Repos/dotfiles && brew bundle edit && popd'
-alias bbi='brew install'
+alias bbi='brew bundle install'
 alias bbl='brew bundle list'
 alias bbr='brew bundle remove'
 alias bbu='echo "Updating Brewfile..." && brew bundle dump --force && echo "Brewfile updated!" || echo "Failed to update Brewfile."'
