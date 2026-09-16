@@ -22,6 +22,45 @@ local analyzers_path = extension_path .. '/analyzers/'
 
 local missing_token_notified = false
 
+local function forget_client(client_id)
+   local sonarlint = require('sonarlint')
+   for root_dir, cached_client_id in pairs(sonarlint._client_id_by_root_dir) do
+      if cached_client_id == client_id then
+         sonarlint._client_id_by_root_dir[root_dir] = nil
+      end
+   end
+end
+
+local function stop_unused_client(event)
+   vim.schedule(function()
+      local client = vim.lsp.get_client_by_id(event.data.client_id)
+      if not client or client.name ~= 'sonarlint.nvim' or next(client.attached_buffers) then
+         return
+      end
+
+      forget_client(client.id)
+      client:stop()
+   end)
+end
+
+local function filter_disabled_rule_diagnostics(original_handler)
+   return function(err, result, ctx, config)
+      local client = vim.lsp.get_client_by_id(ctx.client_id)
+      if not err and result and client and client.name == 'sonarlint.nvim' then
+         local settings = client.settings or client.config.settings or {}
+         local rules = settings.sonarlint and settings.sonarlint.rules or {}
+
+         result = vim.deepcopy(result)
+         result.diagnostics = vim.tbl_filter(function(diagnostic)
+            local rule = rules[diagnostic.code]
+            return not rule or rule.level ~= 'off'
+         end, result.diagnostics or {})
+      end
+
+      return original_handler(err, result, ctx, config)
+   end
+end
+
 local sonarlint_ft = {
    'c',
    'cpp',
@@ -56,12 +95,24 @@ return {
    },
    config = function(_, opts)
       vim.lsp.handlers['sonarlint/showIssue'] = require('sonarlint_open').show_issue
+      vim.lsp.handlers['textDocument/publishDiagnostics'] =
+         filter_disabled_rule_diagnostics(vim.lsp.handlers['textDocument/publishDiagnostics'])
+
+      vim.api.nvim_create_user_command('SonarLintDebugCurrent', function()
+         require('sonarlint_web').debug_current()
+      end, { desc = 'Inspect the current SonarLint diagnostic and binding' })
 
       -- TODO: Remove this override and sonarlint_resolve.lua once sonarlint.nvim uses the
       -- issue information supplied in the SonarLint.ResolveIssue command arguments.
       require('sonarlint.connected_mode').resolve_issue = require('sonarlint_resolve').resolve_issue
 
       require('sonarlint').setup(opts)
+
+      vim.api.nvim_create_autocmd('LspDetach', {
+         group = vim.api.nvim_create_augroup('sonarlint-lifecycle', { clear = true }),
+         callback = stop_unused_client,
+         desc = 'Stop SonarLint when its last buffer detaches',
+      })
    end,
    opts = {
       connected = {
@@ -86,6 +137,12 @@ return {
          end,
       },
       server = {
+         -- The server occasionally acknowledges shutdown without exiting. Do not let it
+         -- keep the Neovim process alive indefinitely in that case.
+         exit_timeout = 1000,
+         on_exit = function(_, _, client_id)
+            forget_client(client_id)
+         end,
          cmd = {
             'sonarlint-language-server',
             '-stdio',

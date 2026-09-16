@@ -71,7 +71,75 @@ local function open_issue_url(server_url, project_key, issue_key)
       .. encode_query_value(project_key)
       .. '&open='
       .. encode_query_value(issue_key)
+
    open_url(issue_url)
+end
+
+local function clear_issue_diagnostic(client, bufnr, issue_key)
+   local namespace = vim.lsp.diagnostic.get_namespace(client.id)
+   local diagnostics = vim.diagnostic.get(bufnr, { namespace = namespace })
+   local remaining = vim.tbl_filter(function(diagnostic)
+      local lsp_diagnostic = diagnostic.user_data and diagnostic.user_data.lsp
+      local data = lsp_diagnostic and lsp_diagnostic.data
+      return not (data and data.serverIssueKey == issue_key)
+   end, diagnostics)
+
+   vim.diagnostic.set(namespace, bufnr, remaining)
+end
+
+local function open_active_issue(client, bufnr, server_url, project_key, issue_key)
+   local token = vim.env.SONAR_TOKEN
+   if not token or token == '' then
+      open_issue_url(server_url, project_key, issue_key)
+      return
+   end
+
+   local command = {
+      'curl',
+      '--silent',
+      '--show-error',
+      '--fail',
+      '--get',
+      '--config',
+      '-',
+      '--data-urlencode',
+      'issues=' .. issue_key,
+      server_url .. '/api/issues/search',
+   }
+   local escaped_token = token:gsub('\\', '\\\\'):gsub('"', '\\"')
+   local curl_config = 'header = "Authorization: Bearer ' .. escaped_token .. '"\n'
+
+   vim.system(command, { text = true, stdin = curl_config }, function(result)
+      vim.schedule(function()
+         if result.code ~= 0 then
+            notify('Could not retrieve the SonarQube issue status.', vim.log.levels.ERROR)
+            return
+         end
+
+         local ok, response = pcall(vim.json.decode, result.stdout)
+         local issue = ok and type(response) == 'table' and response.issues and response.issues[1]
+         if not issue then
+            notify('This SonarQube issue no longer exists.', vim.log.levels.WARN)
+            return
+         end
+
+         local issue_status = issue.issueStatus or issue.status
+         local inactive_statuses = {
+            ACCEPTED = true,
+            CLOSED = true,
+            FALSE_POSITIVE = true,
+            FIXED = true,
+            RESOLVED = true,
+         }
+         if inactive_statuses[issue_status] then
+            clear_issue_diagnostic(client, bufnr, issue_key)
+            notify('This SonarQube issue is already ' .. issue_status:lower() .. '.', vim.log.levels.INFO)
+            return
+         end
+
+         open_issue_url(server_url, project_key, issue_key)
+      end)
+   end)
 end
 
 local function component_path(issue, project_key)
@@ -143,6 +211,8 @@ local function lookup_server_issue(server_url, project_key, diagnostic, file_pat
       '--data-urlencode',
       'rules=' .. diagnostic.code,
       '--data-urlencode',
+      'issueStatuses=OPEN,CONFIRMED',
+      '--data-urlencode',
       'ps=500',
       server_url .. '/api/issues/search',
    }
@@ -179,6 +249,50 @@ local function lookup_server_issue(server_url, project_key, diagnostic, file_pat
    end)
 end
 
+function M.debug_current()
+   local bufnr = vim.api.nvim_get_current_buf()
+   local client = get_client(bufnr)
+   if not client then
+      notify('Could not inspect SonarLint: no SonarLint client is attached.', vim.log.levels.WARN)
+      return
+   end
+
+   local settings = client.settings or client.config.settings or {}
+   local sonarlint = settings.sonarlint or {}
+   local connected_mode = sonarlint['connectedMode'] or {}
+   local diagnostics = get_cursor_diagnostics(client, bufnr)
+   local diagnostic_details = vim.tbl_map(function(diagnostic)
+      local lsp_diagnostic = diagnostic.user_data and diagnostic.user_data.lsp
+      return {
+         code = diagnostic.code,
+         message = diagnostic.message,
+         source = diagnostic.source,
+         range = {
+            diagnostic.lnum,
+            diagnostic.col,
+            diagnostic.end_lnum,
+            diagnostic.end_col,
+         },
+         lsp_data = lsp_diagnostic and lsp_diagnostic.data,
+      }
+   end, diagnostics)
+
+   vim.print({
+      client = {
+         id = client.id,
+         name = client.name,
+         root_dir = client.config.root_dir,
+         workspace_folders = client.workspace_folders,
+         commands = client.server_capabilities.executeCommandProvider
+               and client.server_capabilities.executeCommandProvider.commands
+            or {},
+      },
+      connected_project = connected_mode.project,
+      local_rule = sonarlint['rules'] and sonarlint['rules']['cpp:S6177'],
+      diagnostics = diagnostic_details,
+   })
+end
+
 function M.open_current()
    local bufnr = vim.api.nvim_get_current_buf()
    local client = get_client(bufnr)
@@ -208,7 +322,7 @@ function M.open_current()
       local lsp_diagnostic = diagnostic.user_data and diagnostic.user_data.lsp
       local server_issue_key = lsp_diagnostic and lsp_diagnostic.data and lsp_diagnostic.data.serverIssueKey
       if type(server_issue_key) == 'string' and server_issue_key ~= '' then
-         open_issue_url(server_url, project_key, server_issue_key)
+         open_active_issue(client, bufnr, server_url, project_key, server_issue_key)
          return
       end
 
