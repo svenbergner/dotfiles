@@ -110,15 +110,8 @@ return {
                   -- https://sonarsource.github.io/rspec/#/rspec/SXXXX
                   -- or search for a rule by name
                   -- https://sonarsource.github.io/rspec/#/rspec/?lang=cfamily&query=replace+new
-                  ['cpp:S125'] = { level = 'off' }, -- Sections of code should not be commented out
-                  ['cpp:S134'] = { level = 'off' }, -- Control flow statements "IF", "CASE", "DO", "LOOP", "SELECT", "WHILE" and "PROVIDE" should not be nested too deeply
-                  ['cpp:S995'] = { level = 'off' }, -- Change to pointer-to-const
                   ['cpp:S1066'] = { level = 'off' }, -- Mergeable "if" statements should be combined
-                  ['cpp:S5025'] = { level = 'off' }, -- Memory should not be managed manually
-                  ['cpp:S5350'] = { level = 'off' }, -- Pointer and reference local variables should be "const" if the corresponding object is not modified
-                  ['cpp:S5566'] = { level = 'off' }, -- STL algorithms and range-based for loops should be preferred to traditional for loops
                   ['cpp:S6004'] = { level = 'off' }, -- "if" and "switch" initializer should be used to reduce scope of variables
-                  ['cpp:S6045'] = { level = 'off' }, -- Transparent function objects should be used with associative "std::string" containers
                   ['cpp:S6177'] = { level = 'off' }, -- "using enum" should be used in scopes with high concentration of "enum" constants
                   ['cpp:S7034'] = { level = 'off' }, -- cxx23 contains
                },
@@ -138,14 +131,7 @@ return {
          },
 
          before_init = function(params, config)
-            local project_root = vim.fs.normalize(vim.fn.expand('~/Repos/SSE/Dev'))
-            local projects = {
-               [project_root] = {
-                  project_key = 'TAA.DE.Steuertipps.SSE',
-                  compile_commands = project_root .. '/compile_commands.json',
-               },
-               -- … further mappings …
-            }
+            local connected_project_root = vim.fs.normalize(vim.fn.expand('~/Repos/SSE/Dev'))
 
             local root_path = params.rootPath
             if not root_path and params.rootUri then
@@ -153,22 +139,27 @@ return {
             end
 
             local normalized_root = root_path and vim.fs.normalize(root_path)
-            local project = normalized_root and projects[normalized_root]
-            if not project then
-               vim.schedule(function()
-                  vim.notify(
-                     'No SonarQube project mapping configured for root: ' .. (normalized_root or '<unknown>'),
-                     vim.log.levels.WARN,
-                     { title = 'SonarLint' }
-                  )
-               end)
+            if normalized_root then
+               local repos_root = vim.fs.normalize(vim.fn.expand('~/Repos'))
+               local workspace_name = vim.fs.basename(normalized_root)
+               if normalized_root == repos_root then
+                  workspace_name = 'Repos'
+               elseif vim.startswith(normalized_root, repos_root .. '/') then
+                  workspace_name = 'Repos/' .. normalized_root:sub(#repos_root + 2)
+               end
+
+               params.initializationOptions = params.initializationOptions or {}
+               params.initializationOptions.workspaceName = workspace_name
+            end
+
+            if normalized_root ~= connected_project_root then
                return
             end
 
-            config.settings.sonarlint.pathToCompileCommands = project.compile_commands
+            config.settings.sonarlint.pathToCompileCommands = connected_project_root .. '/compile_commands.json'
             config.settings.sonarlint.connectedMode.project = {
                connectionId = 'https-sonarqube-cloud-dev-wolterskluwer-eu-',
-               projectKey = project.project_key,
+               projectKey = 'TAA.DE.Steuertipps.SSE',
             }
          end,
       },

@@ -81,7 +81,11 @@ examples, Qt integration, and troubleshooting are documented in the
 The SonarLint plugin configuration registers a handler for the language
 server's `sonarlint/showIssue` notification. It converts the SonarQube file URI
 and source range to `nvim-open` arguments so that SonarQube's **Open in IDE**
-button opens and focuses the matching Neovim instance.
+button opens and focuses the matching Neovim instance. Each instance registers
+with its project path beginning at the `Repos` directory, for example
+`Repos/SSE/Dev`.
+Connected Mode is enabled only for `~/Repos/SSE/Dev`; all other projects use
+SonarLint's local analysis.
 
 Press `<leader>cq` in a SonarLint-enabled buffer to open the SonarQube issue on
 the current line. If there is no server issue on that line, the bound project's

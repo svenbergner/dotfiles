@@ -94,6 +94,10 @@ The Neovim SonarLint configuration also uses this command for SonarQube's
 instance and bound to the same SonarQube project in Connected Mode. Restart
 Neovim after installing or updating the configuration so that the custom
 `sonarlint/showIssue` handler is registered.
+SonarQube identifies each running Neovim instance by its project path beginning
+at the `Repos` directory, for example `Repos/SSE/Dev`.
+Connected Mode is enabled only for `~/Repos/SSE/Dev`; SonarLint analyzes all
+other projects in local mode.
 
 Within a SonarLint-enabled buffer, `<leader>cq` opens the SonarQube issue on the
 current line or falls back to the bound project's dashboard.
