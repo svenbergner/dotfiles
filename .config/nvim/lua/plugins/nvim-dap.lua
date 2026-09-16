@@ -376,6 +376,7 @@ return {
          require('persistent-breakpoints').setup({
             load_breakpoints_event = { 'BufReadPost' },
          })
+         local persistent_breakpoints = require('persistent-breakpoints.api')
 
          vim.api.nvim_create_user_command('SetDebuggee', function()
             require('telescope').extensions.debugee_selector.selectSearchPathRoot()
@@ -516,7 +517,7 @@ return {
          vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Step into' })
          vim.keymap.set('n', '<S-F11>', dap.step_out, { desc = 'Step out' })
          vim.keymap.set('n', '<F23>', dap.step_out, { desc = 'Step out' })
-         vim.keymap.set('n', '<F9>', require('persistent-breakpoints.api').toggle_breakpoint, { desc = 'Toggle breakpoint' })
+         vim.keymap.set('n', '<F9>', persistent_breakpoints.toggle_breakpoint, { desc = 'Toggle breakpoint' })
          vim.keymap.set('n', '<leader>dd', dapview.toggle, { desc = 'toggle [d]apview [d]isplay' })
          vim.keymap.set('n', '<leader>do', dapview.open, { desc = '[d]apview [o]pen' })
          vim.keymap.set('n', '<leader>dq', dapview.close, { desc = '[d]apview [q]uit' })
@@ -564,9 +565,9 @@ return {
          end, { desc = '[d]apview [j]ump to [r]epl' })
 
          -- Setting breakpoints
-         vim.keymap.set('n', '<leader>db', require('persistent-breakpoints.api').toggle_breakpoint, { desc = 'Toggle [d]ap [b]reakpoint' })
+         vim.keymap.set('n', '<leader>db', persistent_breakpoints.toggle_breakpoint, { desc = 'Toggle [d]ap [b]reakpoint' })
 
-         vim.keymap.set('n', '<leader>dB', require('persistent-breakpoints.api').set_conditional_breakpoint, { desc = 'Set [d]ap conditional [B]reakpoint' })
+         vim.keymap.set('n', '<leader>dB', persistent_breakpoints.set_conditional_breakpoint, { desc = 'Set [d]ap conditional [B]reakpoint' })
 
          vim.keymap.set('n', '<leader>dc', dap.run_to_cursor, { desc = '[d]ab: Run to [c]ursor' })
 
@@ -600,6 +601,21 @@ return {
                },
             },
          })
+
+         -- nvim-dap-view removes breakpoints directly from nvim-dap. Synchronize
+         -- the affected source buffer with persistent-breakpoints afterwards.
+         local dapview_breakpoint_actions = require('dap-view.breakpoints.actions')
+         local dapview_remove_breakpoint = dapview_breakpoint_actions.remove
+         dapview_breakpoint_actions.remove = function(line)
+            local path = require('dap-view.state').breakpoint_paths_by_line[line]
+            local bufnr = path and require('dap-view.views.util').get_bufnr_from_path(path)
+
+            dapview_remove_breakpoint(line)
+
+            if bufnr and vim.api.nvim_buf_is_valid(bufnr) then
+               vim.api.nvim_buf_call(bufnr, persistent_breakpoints.breakpoints_changed_in_current_buffer)
+            end
+         end
 
          local dapview_configuration_done = dap.listeners.after.configurationDone['dap-view']
          if dapview_configuration_done then
