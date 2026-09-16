@@ -40,11 +40,29 @@ local function get_web_config(client)
    end
 end
 
-local function get_line_diagnostics(client, bufnr)
-   local cursor = vim.api.nvim_win_get_cursor(0)
-   local line = cursor[1] - 1
+local function is_sonarlint_diagnostic(diagnostic)
+   local source = type(diagnostic.source) == 'string' and diagnostic.source:lower() or ''
+   if source:find('sonar', 1, true) then
+      return true
+   end
+
+   local lsp_diagnostic = diagnostic.user_data and diagnostic.user_data.lsp
+   return lsp_diagnostic and lsp_diagnostic.data and lsp_diagnostic.data.serverIssueKey ~= nil
+end
+
+local function get_cursor_diagnostics(client, bufnr)
+   local cursor_line = vim.api.nvim_win_get_cursor(0)[1] - 1
    local namespace = vim.lsp.diagnostic.get_namespace(client.id)
-   return vim.diagnostic.get(bufnr, { namespace = namespace, lnum = line })
+   local diagnostics = vim.diagnostic.get(bufnr, { namespace = namespace })
+
+   if vim.tbl_isempty(diagnostics) then
+      diagnostics = vim.tbl_filter(is_sonarlint_diagnostic, vim.diagnostic.get(bufnr))
+   end
+
+   return vim.tbl_filter(function(diagnostic)
+      local end_line = diagnostic.end_lnum or diagnostic.lnum
+      return diagnostic.lnum <= cursor_line and cursor_line <= end_line
+   end, diagnostics)
 end
 
 local function open_issue_url(server_url, project_key, issue_key)
@@ -176,7 +194,7 @@ function M.open_current()
    end
 
    local project_url = server_url .. '/dashboard?id=' .. encode_query_value(project_key)
-   local diagnostics = get_line_diagnostics(client, bufnr)
+   local diagnostics = get_cursor_diagnostics(client, bufnr)
    if vim.tbl_isempty(diagnostics) then
       open_url(project_url)
       return
