@@ -93,7 +93,7 @@ function ba() {
 }
 function bb() {
         echo "Running brew bundle..."
-        if brew bundle --force; then
+        if brew bundle -q --force; then
             echo "Brew bundle succeeded. Running cleanup..."
             brew bundle cleanup -q --force && echo "Done!" || echo "Cleanup failed."
         else
