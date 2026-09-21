@@ -4,8 +4,10 @@
 	name = Sven Bergner
 [commit]
         gpgsign = true
+        verbose = true
 [tag]
         gpgsign = true
+        sort = version:refname
 [push]
         default = simple
 	autoSetupRemote = true
@@ -20,8 +22,6 @@
         ui = auto 
 [branch]
         sort = -committerdate
-[tag]
-        sort = version:refname
 [diff]
         algorithm = histogram
         colorMoved = plain
@@ -37,16 +37,21 @@
 	loglog = log --oneline --graph --all
 
 [core]
+    editor = nvim
     pager = delta
 
 [interactive]
     diffFilter = delta --color-only
+
+[include]
+    path = ~/.config/delta/themes.gitconfig
 
 [delta]
     navigate = true  # use n and N to move between diff sections
     dark = true      # or light = true, or omit for auto-detection
     side-by-side = true  # show added and removed lines in a side-by-side view
     line-numbers = true  # show line numbers in the diff output
+    features = gruvmax-fang
 
 [merge]
     conflictStyle = zdiff3
