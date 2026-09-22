@@ -193,7 +193,7 @@ end, { desc = '[t]oggle [b]ool', noremap = true, silent = true })
 vim.keymap.set(
    'n',
    '<leader>cg',
-   '<cmd>ChangeIncludeGuardToPragmaOnce<CR>',
+   '<cmd>ChangeIncludeGuardToPragmaOnce<CR><cmd>w<CR>',
    { desc = '[c]ode change include [g]uard', noremap = true, silent = true }
 )
 vim.keymap.set(
