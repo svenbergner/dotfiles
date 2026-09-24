@@ -7,12 +7,14 @@ tap "lusingander/tap", trusted: true
 tap "veirt/veirt", "https://github.com/Veirt/homebrew-veirt", trusted: true
 # Simple, modern, secure file encryption
 brew "age"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
+# Dependency manager for AI agent configuration
+brew "apm"
 # Record and share terminal sessions
 brew "asciinema"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Bash shell debugger
@@ -271,7 +273,7 @@ brew "zoxide"
 brew "arl/arl/gitmux", trusted: true
 # A terminal markdown reader that actually looks good
 brew "borghei/tap/ink"
-# Secure dotenv–from the creator of `dotenv`
+# Secure dotenv—from the creator of `dotenv`
 brew "dotenvx/brew/dotenvx", trusted: true
 # Packer
 brew "hashicorp/tap/packer", trusted: true
