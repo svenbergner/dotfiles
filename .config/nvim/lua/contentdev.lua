@@ -1578,6 +1578,115 @@ local commentstrings = {
    contentdev_dmscript = '// %s',
 }
 
+local help_fold_cache = {}
+
+---Build lookup tables for Help folds whose delimiters are separate syntax nodes.
+---@param bufnr integer Neovim buffer number.
+---@param root TSNode syntax tree root
+---@return table<string, table<string, integer[]>> ranges
+local function help_fold_ranges(bufnr, root)
+   local changedtick = vim.api.nvim_buf_get_changedtick(bufnr)
+   local cached = help_fold_cache[bufnr]
+   if cached and cached.changedtick == changedtick then
+      return cached.ranges
+   end
+
+   local ranges = { topic = {}, tag = {} }
+   local topic_stack = {}
+   local tag_stacks = {}
+
+   local function push(stack, node)
+      local row, col = node:start()
+      table.insert(stack, { row = row, col = col })
+   end
+
+   local function pop(stack, kind, node)
+      local start = table.remove(stack)
+      if start then
+         local end_row, end_col = node:end_()
+         local function add_range(fold_start)
+            ranges[kind][string.format('%d:%d', fold_start.row, fold_start.col)] = {
+               fold_start.row,
+               fold_start.col,
+               end_row,
+               end_col,
+            }
+         end
+
+         add_range(start)
+         if start.else_start then
+            add_range(start.else_start)
+         end
+      end
+   end
+
+   for child in root:iter_children() do
+      if child:type() == 'topic_marker' then
+         local marker = vim.treesitter.get_node_text(child, bufnr)
+         if marker:match('^@@BEGINTOPIC') then
+            push(topic_stack, child)
+         elseif marker:match('^@@ENDTOPIC') then
+            pop(topic_stack, 'topic', child)
+         end
+      elseif child:type() == 'tag' or child:type() == 'end_tag' then
+         local name_node = child:field('name')[1]
+         local name = name_node and vim.treesitter.get_node_text(name_node, bufnr):upper() or ''
+         if name ~= '' then
+            tag_stacks[name] = tag_stacks[name] or {}
+            if child:type() == 'tag' then
+               if name == 'ELSE' then
+                  local if_stack = tag_stacks.IF or {}
+                  local current_if = if_stack[#if_stack]
+                  if current_if then
+                     local row, col = child:start()
+                     current_if.else_start = { row = row, col = col }
+                  end
+               elseif not vim.treesitter.get_node_text(child, bufnr):match('/%s*>$') then
+                  push(tag_stacks[name], child)
+               end
+            else
+               pop(tag_stacks[name], 'tag', child)
+            end
+         end
+      end
+   end
+
+   help_fold_cache[bufnr] = { changedtick = changedtick, ranges = ranges }
+   return ranges
+end
+
+vim.treesitter.query.add_directive('contentdev-help-fold!', function(match, _, source, predicate, metadata)
+   if type(source) ~= 'number' then
+      return
+   end
+
+   local capture_id = predicate[2]
+   local kind = predicate[3]
+   local nodes = match[capture_id]
+   if type(capture_id) ~= 'number' or type(kind) ~= 'string' or not nodes or #nodes ~= 1 then
+      return
+   end
+
+   local start_row, start_col = nodes[1]:start()
+   local root = nodes[1]
+   while root:parent() do
+      root = root:parent()
+   end
+
+   local range = help_fold_ranges(source, root)[kind][string.format('%d:%d', start_row, start_col)]
+   if range then
+      metadata[capture_id] = metadata[capture_id] or {}
+      metadata[capture_id].range = range
+   end
+end, { force = true })
+
+vim.api.nvim_create_autocmd('BufWipeout', {
+   group = tree_sitter_group,
+   callback = function(args)
+      help_fold_cache[args.buf] = nil
+   end,
+})
+
 ---Enable Tree-sitter, folding, and comment settings for a ContentDev buffer.
 ---@param bufnr integer Neovim buffer number.
 local function setup_treesitter_for_buf(bufnr)
