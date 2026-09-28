@@ -157,6 +157,7 @@ return {
       'nvim-treesitter/nvim-treesitter',
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
+      { 'ColinKennedy/mega.cmdparse', dependencies = { 'ColinKennedy/mega.logging' } },
       --- The below dependencies are optional,
       'nvim-tree/nvim-web-devicons', -- or nvim-mini/mini.icons
       'zbirenbaum/copilot.lua', -- for providers='copilot'
