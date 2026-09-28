@@ -37,6 +37,7 @@ return {
    ---@module 'avante'
    ---@type avante.Config
    opts = {
+      instructions_file = 'AGENTS.md',
       provider = 'copilot',
       providers = {
          copilot = {
@@ -50,7 +51,8 @@ return {
                -- You can add extra request body parameters here.
                -- For example, you can add the `temperature` parameter to control the randomness of the response.
                temperature = 0,
-               max_tokens = 8192,
+               max_tokens = 20480,
+               reasoning_effort = 'medium',
             },
          },
       },
