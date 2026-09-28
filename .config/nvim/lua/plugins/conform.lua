@@ -16,6 +16,7 @@ vim.treesitter.language.register('hcl', 'packer')
 
 return {
    'stevearc/conform.nvim',
+   enabled = true,
    opts = {
       default_format_opts = {
          lsp_format = 'fallback',
