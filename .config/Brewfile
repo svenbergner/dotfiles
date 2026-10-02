@@ -283,8 +283,6 @@ brew "hashicorp/tap/terraform", trusted: true
 brew "leoafarias/fvm/fvm", trusted: true
 # A rich git commit graph in your terminal, like magic
 brew "lusingander/tap/serie", trusted: true
-# Terminal weather app with ASCII animations
-brew "veirt/veirt/weathr", trusted: true
 # Tools for building Android applications
 cask "android-studio"
 # Multi-track audio editor and recorder
@@ -297,10 +295,6 @@ cask "calibre"
 cask "codex"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
-# Utilities designed to make common development tasks easier
-cask "devtoys"
-# Screen annotation tool
-cask "drawpen"
 # Software to layout and print images with Epson printers
 cask "epson-print-layout"
 cask "font-hack-nerd-font"
@@ -308,26 +302,12 @@ cask "font-jetbrains-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
 # Free and open-source image editor
 cask "gimp"
-# Git client for simultaneous branches on top of your existing workflow
-cask "gitbutler"
-# Adds an OpenGL renderer to the ZDoom source port
-cask "gzdoom"
 # Vector graphics editor
 cask "inkscape"
 # Keyboard customiser
 cask "karabiner-elements"
-# GPU-based terminal emulator
-cask "kitty"
-# 2D game framework for Lua
-cask "love"
 # Local-first alternative to Logitech Options+ for HID++ devices
 cask "openlogi"
-# Programmable solid 3D CAD modeller
-cask "openscad"
-# Utility to uninstall apps and remove leftover files from old/uninstalled apps
-cask "pearcleaner"
-# Keyboard-driven, vim-like browser based on PyQt5
-cask "qutebrowser"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Instant messaging application focusing on security
