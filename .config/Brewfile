@@ -35,8 +35,6 @@ brew "boxes"
 brew "btop"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
-# Console Bonsai is a bonsai tree generator, written in C using ncurses
-brew "cbonsai"
 # TIFF library and utilities
 brew "libtiff"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
@@ -91,8 +89,6 @@ brew "ffmpeg"
 brew "ffmpegthumbnailer"
 # Banner-like program prints strings as ASCII art
 brew "figlet"
-# User-friendly command-line shell for UNIX-like operating systems
-brew "fish"
 # Fort Knox for your secrets - flexible secret management tool
 brew "fnox"
 # Infamous electronic fortune-cookie generator
