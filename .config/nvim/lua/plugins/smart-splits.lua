@@ -31,12 +31,10 @@ return {
       vim.keymap.set('n', '<C-j>', smartsplits.move_cursor_down, { desc = 'Move focus to the bottom pane' })
       vim.keymap.set('n', '<C-k>', smartsplits.move_cursor_up, { desc = 'Move focus to the top pane' })
       vim.keymap.set('n', '<C-l>', smartsplits.move_cursor_right, { desc = 'Move focus to the right pane' })
-      vim.keymap.set('n', '<C-\\>', smartsplits.move_cursor_previous, { desc = 'Move focus to the previous pane' })
       vim.keymap.set('v', '<C-h>', smartsplits.move_cursor_left, { desc = 'Move focus to the left pane' })
       vim.keymap.set('v', '<C-j>', smartsplits.move_cursor_down, { desc = 'Move focus to the bottom pane' })
       vim.keymap.set('v', '<C-k>', smartsplits.move_cursor_up, { desc = 'Move focus to the top pane' })
       vim.keymap.set('v', '<C-l>', smartsplits.move_cursor_right, { desc = 'Move focus to the right pane' })
-      vim.keymap.set('v', '<C-\\>', smartsplits.move_cursor_previous, { desc = 'Move focus to the previous pane' })
 
       -- swapping buffers between windows
       vim.keymap.set('n', '<leader>Sh', smartsplits.swap_buf_left, { desc = 'Swap current pane with the left' })
