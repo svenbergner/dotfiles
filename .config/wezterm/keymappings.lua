@@ -12,6 +12,9 @@ M.add_to_config = function(config, wezterm, act)
       -- When copy mode is active vim keymapping could be used to move around the
       -- scrollback buffer to select and copy text
       { key = 'c', mods = 'LEADER', action = act.ActivateCopyMode },
+      -- Toggle fullscreen with F11 instead of the default Alt-Enter
+      { key = 'F11', action = act.ToggleFullScreen },
+      { key = 'Enter', mods = 'ALT', action = act.DisableDefaultAssignment },
       -- Shows all available commands in a popup menu
       { key = 'phys:Space', mods = 'LEADER', action = act.ActivateCommandPalette },
 
