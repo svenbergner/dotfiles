@@ -10,7 +10,14 @@ Supports seamless navigation between Neovim and terminal multiplexer split panes
 return {
    'mrjones2014/smart-splits.nvim',
    enabled = true,
+   dependencies = {
+      { 'smart-splits-nvim/backend-wezterm', main = 'smart-splits-backend-wezterm', opts = {} },
+   },
    config = function()
+      require('smart-splits').setup({
+         mux = { backend = 'smart-splits-backend-wezterm' },
+      })
+
       -- recommended mappings
       -- resizing splits
       -- these keymaps will also accept a range,

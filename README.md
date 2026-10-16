@@ -47,6 +47,11 @@ Following points were my reason to switch:
  - supports kitty image protocol
  - fast and lightweight
 
+`Ctrl+h/j/k/l` moves between Neovim windows and WezTerm panes. Smart-Splits v3
+needs its WezTerm backend in both Neovim and WezTerm. After updating the dotfiles,
+restart WezTerm and Neovim so both plugins load. If navigation does not cross a
+pane boundary, run `:checkhealth smart-splits` in Neovim.
+
 ### eza
 A modern replacement for the ls command. It is written in rust and has a lot of features.
 I use it as my default ls command. 
