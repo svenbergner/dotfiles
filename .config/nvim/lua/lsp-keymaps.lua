@@ -243,8 +243,8 @@ end
 vim.api.nvim_create_user_command('CompileCurrentFile', compile_current_file, {
    desc = 'Compile the current buffer file via compile_commands.json',
 })
-vim.keymap.set('n', '<leader>CC', compile_current_file, {
-   desc = '[C]ompile [C]urrent file',
+vim.keymap.set('n', '<leader>cf', compile_current_file, {
+   desc = '[c]ode compile current [f]ile',
    noremap = true,
    silent = true,
 })
