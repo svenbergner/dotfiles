@@ -25,6 +25,7 @@ wezterm.add_to_config_reload_watch_list('utils')
 -- Setup default layout
 require('layouts.personal').setup_layout(wezterm)
 require('layouts.development').setup_layout(wezterm)
+-- require('layouts.updates').setup_layout(wezterm)
 
 wezterm.on('user-var-changed', function(_, _, name, value)
    if name ~= 'nvim_open_workspace' then
