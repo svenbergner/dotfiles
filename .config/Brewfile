@@ -1,8 +1,8 @@
 tap "arl/arl", trusted: true
 tap "borghei/tap", trusted: true
+tap "btwld/fvm", "https://github.com/btwld/homebrew-fvm.git"
 tap "dotenvx/brew", trusted: true
 tap "hashicorp/tap", trusted: true
-tap "leoafarias/fvm", trusted: true
 tap "lusingander/tap", trusted: true
 tap "veirt/veirt", "https://github.com/Veirt/homebrew-veirt", trusted: true
 # Simple, modern, secure file encryption
@@ -93,6 +93,8 @@ brew "figlet"
 brew "fnox"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
+# Manage Flutter SDK versions per project
+brew "fvm"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Interact with Google Gemini AI models from the command-line
@@ -275,8 +277,6 @@ brew "dotenvx/brew/dotenvx", trusted: true
 brew "hashicorp/tap/packer", trusted: true
 # Terraform
 brew "hashicorp/tap/terraform", trusted: true
-# Simple cli to manage Flutter SDK versions per project
-brew "leoafarias/fvm/fvm", trusted: true
 # A rich git commit graph in your terminal, like magic
 brew "lusingander/tap/serie", trusted: true
 # Tools for building Android applications
