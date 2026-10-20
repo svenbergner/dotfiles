@@ -16,19 +16,6 @@ It provides users with AI-driven code suggestions and the ability to apply
 these recommendations directly to their source files with minimal effort.
 --]===]
 
-local response_api_models = {
-   ['gpt-5.6-luna'] = true,
-   ['gpt-5.6-terra'] = true,
-   ['gpt-5.6-sol'] = true,
-   ['gpt-6-sol'] = true,
-}
-
-local function copilot_uses_response_api(provider)
-   local model = provider and provider.model
-   return type(model) == 'string'
-      and (response_api_models[model] == true or model:match('gpt%-%d+%.?%d*%-codex') ~= nil)
-end
-
 return {
    'yetone/avante.nvim',
    enabled = true,
@@ -42,8 +29,7 @@ return {
       provider = 'copilot',
       providers = {
          copilot = {
-            model = 'gpt-6-sol',
-            use_response_api = copilot_uses_response_api,
+            model = 'gpt-6.1-sol',
             extra_request_body = {
                max_tokens = 20480,
                reasoning_effort = 'medium',
