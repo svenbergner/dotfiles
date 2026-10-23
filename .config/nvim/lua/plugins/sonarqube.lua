@@ -176,9 +176,9 @@ return {
                   connections = {
                      sonarqube = {
                         {
-                           connectionId = 'https-sonarqube-cloud-dev-wolterskluwer-eu-',
+                           connectionId = 'https-sonar-enterprise-wolterskluwer-io-',
                            -- this is the url that will go into get_credentials
-                           serverUrl = 'https://sonarqube.cloud-dev.wolterskluwer.eu/',
+                           serverUrl = 'https://sonar.enterprise.wolterskluwer.io/',
                            disableNotifications = false,
                         },
                      },
@@ -215,7 +215,7 @@ return {
 
             config.settings.sonarlint.pathToCompileCommands = connected_project_root .. '/compile_commands.json'
             config.settings.sonarlint.connectedMode.project = {
-               connectionId = 'https-sonarqube-cloud-dev-wolterskluwer-eu-',
+               connectionId = 'https-sonar-enterprise-wolterskluwer-io-',
                projectKey = 'TAA.DE.Steuertipps.SSE',
             }
          end,
