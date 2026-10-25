@@ -1319,6 +1319,13 @@ local function build_args(language, target, output_base_dir, root)
       '-o' .. out_file,
    })
 
+   if language.dsl == 'ddf' then
+      local definition_file = normalize_path(vim.fn.fnamemodify(target, ':r') .. '.def')
+      if file_readable(definition_file) then
+         table.insert(args, '@' .. definition_file)
+      end
+   end
+
    if M.compiler_meta_dir_flag and M.compiler_meta_dir_flag ~= '' then
       table.insert(args, M.compiler_meta_dir_flag .. meta_dir)
    end
@@ -1487,7 +1494,11 @@ function M.build_current_buffer()
          vim.notify('ContentDev ' .. language.name .. ' build started: ' .. target, vim.log.levels.INFO)
          ---Transfer the asynchronous compiler result back to Neovim's main loop.
          ---@param result table
-         current_build = vim.system(args, { text = true }, function(result)
+         local system_options = { text = true }
+         if language.dsl == 'ddf' then
+            system_options.cwd = dirname(target)
+         end
+         current_build = vim.system(args, system_options, function(result)
             ---Update editor state from the scheduled main-loop callback.
             vim.schedule(function()
                finish_build(language, target, assert(out_dir), result)
