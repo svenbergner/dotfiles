@@ -292,10 +292,18 @@ return {
 
          local file_path = vim.fn.expand('%:p')
          require('nio').run(function()
-            local adapter_id = neotest_client:get_adapter(file_path)
+            local adapter_id = file_path ~= '' and neotest_client:get_adapter(file_path) or nil
+            if not adapter_id then
+               for _, active_adapter_id in ipairs(neotest.state.adapter_ids()) do
+                  if vim.startswith(active_adapter_id, ctest_adapter.name .. ':') then
+                     adapter_id = active_adapter_id
+                     break
+                  end
+               end
+            end
             if not adapter_id then
                vim.schedule(function()
-                  vim.notify('neotest: no adapter for current file', vim.log.levels.WARN)
+                  vim.notify('neotest: no active adapter to refresh', vim.log.levels.WARN)
                end)
                return
             end
