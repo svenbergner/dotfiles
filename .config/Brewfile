@@ -7,14 +7,14 @@ tap "lusingander/tap", trusted: true
 tap "veirt/veirt", "https://github.com/Veirt/homebrew-veirt", trusted: true
 # Simple, modern, secure file encryption
 brew "age"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
 # Dependency manager for AI agent configuration
 brew "apm"
 # Record and share terminal sessions
 brew "asciinema"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Bash shell debugger
@@ -171,8 +171,14 @@ brew "ninja"
 brew "nushell"
 # Command-line Git information tool
 brew "onefetch"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# AI coding agent, built for the terminal
+brew "opencode"
 # Development kit for the Java programming language
 brew "openjdk"
+# Spec-driven development (SDD) for AI coding assistants
+brew "openspec"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Port of pdftk in java
@@ -215,8 +221,6 @@ brew "qemu"
 brew "ranger"
 # Find duplicate files based on content (NOT file names)
 brew "rdfind"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Safe, concurrent, practical language
 brew "rust"
 # Intuitive find & replace CLI
@@ -270,7 +274,7 @@ brew "zoxide"
 # Git in your tmux status bar.
 brew "arl/arl/gitmux", trusted: true
 # A terminal markdown reader that actually looks good
-brew "borghei/tap/ink"
+brew "borghei/tap/ink", trusted: true
 # Secure dotenv—from the creator of `dotenv`
 brew "dotenvx/brew/dotenvx", trusted: true
 # Packer

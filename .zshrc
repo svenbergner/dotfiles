@@ -1,3 +1,10 @@
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+fpath=('/Users/sven.bergner/.zsh/completions' $fpath)
+autoload -Uz compinit
+compinit
+# OPENSPEC:END
+
 # zinit zsh plugin manager
 # zinit home folder
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
