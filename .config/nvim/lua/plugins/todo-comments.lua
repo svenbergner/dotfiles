@@ -21,8 +21,10 @@ Usage:
 --]===]
 
 local function show_help()
-   local keywords = require('todo-comments.config').options.keywords
+   local options = require('todo-comments.config').options
+   local keywords = options.keywords
    local highlights = {}
+   local color_highlights = {}
    local lines = {
       '  Use KEYWORD: text inside a comment, e.g. TODO: Add error handling.',
       '',
@@ -38,6 +40,29 @@ local function show_help()
       local icon = '      ' .. (opts.icon or '   ') .. '    '
       lines[#lines + 1] = string.format('%s%-10s %s', icon, keyword .. ':', table.concat(aliases, ', '))
       highlights[#highlights + 1] = { row = #lines - 1, keyword = keyword, col = #icon }
+   end
+
+   lines[#lines + 1] = ''
+   lines[#lines + 1] = '  Available colors:'
+   local util = require('todo-comments.util')
+   for _, name in ipairs(vim.fn.sort(vim.tbl_keys(options.colors))) do
+      local colors = options.colors[name]
+      colors = type(colors) == 'string' and { colors } or colors
+      local hex
+      for _, color in ipairs(colors) do
+         if color:sub(1, 1) == '#' then
+            hex = color
+         else
+            hex = util.get_hl(color).foreground
+         end
+         if hex then
+            break
+         end
+      end
+      lines[#lines + 1] = string.format('    ■ %-10s %s', name, hex or '(unavailable)')
+      if hex then
+         color_highlights[#color_highlights + 1] = { row = #lines - 1, name = name, color = hex }
+      end
    end
 
    lines[#lines + 1] = ''
@@ -68,6 +93,14 @@ local function show_help()
             vim.api.nvim_buf_set_extmark(win.buf, ns, highlight.row, keyword_end, {
                end_col = #lines[highlight.row + 1],
                hl_group = 'TodoFg' .. highlight.keyword,
+            })
+         end
+         for _, highlight in ipairs(color_highlights) do
+            local group = 'TodoHelpColor_' .. highlight.name
+            vim.api.nvim_set_hl(0, group, { fg = highlight.color })
+            vim.api.nvim_buf_set_extmark(win.buf, ns, highlight.row, 4, {
+               end_col = #lines[highlight.row + 1],
+               hl_group = group,
             })
          end
       end,
