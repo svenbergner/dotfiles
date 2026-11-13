@@ -47,6 +47,19 @@ The folder spell contains spell checking files for the German language.
 The folder syntax contains a vimscript file which adds syntax highlighting for
 Qt qmake files.
 
+## ContentDev product keys
+
+Use `:ContentDevProductKeys` or `<leader>Ck` (Space, Shift+C, k) to open
+`~/Repos/Content/StP/32/Doku/Arbeitsumgebung/ProductKeys.txt` in a read-only popup.
+Move the cursor onto a product key and press `y` to copy only that key to the
+system clipboard (`+` register). Letters, digits, hyphens, and underscores form
+a single token; surrounding quotes, separators, and whitespace are not copied.
+Normal navigation and search work in the popup. Press `q` or `Esc` to close it.
+
+The popup uses an unlisted scratch buffer without swap or undo history and
+wipes it when closed. Keys are not included in notifications. Copying requires
+a working Neovim clipboard provider (for example, `pbcopy` on macOS).
+
 ## Remote document opening
 
 The `remote_open` Lua module allows an external program to select a running

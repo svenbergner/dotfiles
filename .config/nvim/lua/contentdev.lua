@@ -1818,6 +1818,86 @@ function M.install_treesitter()
    vim.notify('ContentDev Tree-sitter parsers installed in ' .. M.runtime_dir, vim.log.levels.INFO)
 end
 
+---Show product keys without creating a file buffer or persisting their contents.
+function M.show_product_keys()
+   local path = vim.fn.expand('~/Repos/Content/StP/32/Doku/Arbeitsumgebung/ProductKeys.txt')
+   local ok, lines = pcall(vim.fn.readfile, path)
+   if not ok then
+      vim.notify('Cannot read ProductKeys.txt: ' .. path, vim.log.levels.ERROR)
+      return
+   end
+
+   local bufnr = vim.api.nvim_create_buf(false, true)
+   vim.bo[bufnr].bufhidden = 'wipe'
+   vim.bo[bufnr].swapfile = false
+   vim.bo[bufnr].undolevels = -1
+   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+   vim.bo[bufnr].modifiable = false
+   vim.bo[bufnr].readonly = true
+
+   local width = math.max(1, math.min(120, vim.o.columns - 4))
+   local height = math.max(1, math.min(#lines, math.floor(vim.o.lines * 0.8), vim.o.lines - 4))
+   local win = vim.api.nvim_open_win(bufnr, true, {
+      relative = 'editor',
+      width = width,
+      height = height,
+      row = math.max(0, math.floor((vim.o.lines - height - 2) / 2)),
+      col = math.max(0, math.floor((vim.o.columns - width - 2) / 2)),
+      style = 'minimal',
+      border = 'rounded',
+      title = ' ProductKeys ',
+      title_pos = 'center',
+      footer = ' y: copy code | q/Esc: close ',
+      footer_pos = 'center',
+   })
+   vim.wo[win].wrap = false
+   vim.wo[win].spell = false
+   vim.wo[win].cursorline = true
+
+   local function close()
+      if vim.api.nvim_win_is_valid(win) then
+         vim.api.nvim_win_close(win, true)
+      end
+   end
+
+   local function copy_code()
+      local cursor = vim.api.nvim_win_get_cursor(win)
+      local line = vim.api.nvim_buf_get_lines(bufnr, cursor[1] - 1, cursor[1], false)[1] or ''
+      local column = cursor[2] + 1
+      local offset = 1
+      while true do
+         local first, last = line:find('[%w_-]+', offset)
+         if not first then
+            break
+         end
+         if first <= column and column <= last then
+            if vim.fn.has('clipboard') == 0 then
+               vim.notify('No system clipboard provider available', vim.log.levels.ERROR)
+               return
+            end
+            local copied, result = pcall(vim.fn.setreg, '+', line:sub(first, last), 'v')
+            if not copied or result ~= 0 then
+               vim.notify('Could not copy product key to the system clipboard', vim.log.levels.ERROR)
+               return
+            end
+            vim.notify('Product key copied to the system clipboard', vim.log.levels.INFO)
+            return
+         end
+         offset = last + 1
+      end
+      vim.notify('Place the cursor on a product key to copy it', vim.log.levels.WARN)
+   end
+
+   vim.keymap.set('n', 'y', copy_code, { buffer = bufnr, desc = 'Copy product key to system clipboard' })
+   for _, key in ipairs({ 'q', '<Esc>' }) do
+      vim.keymap.set('n', key, close, { buffer = bufnr, desc = 'Close product keys' })
+   end
+end
+
+vim.api.nvim_create_user_command('ContentDevProductKeys', function()
+   M.show_product_keys()
+end, { desc = 'Show ContentDev product keys' })
+
 ---Install ContentDev Tree-sitter assets from the user command.
 vim.api.nvim_create_user_command('ContentDevInstallTreesitter', function()
    M.install_treesitter()

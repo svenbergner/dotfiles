@@ -249,6 +249,14 @@ vim.keymap.set('n', '<leader>cf', compile_current_file, {
    silent = true,
 })
 
+vim.keymap.set('n', '<leader>Ck', function()
+   require('contentdev').show_product_keys()
+end, {
+   desc = '[C]ontentDev product [k]eys',
+   noremap = true,
+   silent = true,
+})
+
 -- ContentDev: let the user pick/enter the output/compile directory for the current root
 vim.keymap.set('n', '<leader>Co', function()
    require('contentdev').set_output_dir_for_current_root()
