@@ -1824,7 +1824,7 @@ function M.show_product_keys()
    local ok, lines = pcall(vim.fn.readfile, path)
    if not ok then
       vim.notify('Cannot read ProductKeys.txt: ' .. path, vim.log.levels.ERROR)
-      return
+      lines = {}
    end
 
    local bufnr = vim.api.nvim_create_buf(false, true)
@@ -1835,21 +1835,25 @@ function M.show_product_keys()
    vim.bo[bufnr].modifiable = false
    vim.bo[bufnr].readonly = true
 
-   local width = math.max(1, math.min(120, vim.o.columns - 4))
-   local height = math.max(1, math.min(#lines, math.floor(vim.o.lines * 0.8), vim.o.lines - 4))
-   local win = vim.api.nvim_open_win(bufnr, true, {
-      relative = 'editor',
-      width = width,
-      height = height,
-      row = math.max(0, math.floor((vim.o.lines - height - 2) / 2)),
-      col = math.max(0, math.floor((vim.o.columns - width - 2) / 2)),
-      style = 'minimal',
-      border = 'rounded',
-      title = ' ProductKeys ',
-      title_pos = 'center',
-      footer = ' y: copy code | q/Esc: close ',
-      footer_pos = 'center',
-   })
+   local products = { 'StP', 'NK', 'EP' }
+   local function window_config(product, content)
+      local width = math.max(1, math.min(120, vim.o.columns - 4))
+      local height = math.max(1, math.min(#content, math.floor(vim.o.lines * 0.8), vim.o.lines - 4))
+      return {
+         relative = 'editor',
+         width = width,
+         height = height,
+         row = math.max(0, math.floor((vim.o.lines - height - 2) / 2)),
+         col = math.max(0, math.floor((vim.o.columns - width - 2) / 2)),
+         style = 'minimal',
+         border = 'rounded',
+         title = ' ProductKeys: ' .. product .. ' ',
+         title_pos = 'center',
+         footer = ' 1: StP | 2: NK | 3: EP | y: copy | q/Esc: close ',
+         footer_pos = 'center',
+      }
+   end
+   local win = vim.api.nvim_open_win(bufnr, true, window_config('StP', lines))
    vim.wo[win].wrap = false
    vim.wo[win].spell = false
    vim.wo[win].cursorline = true
@@ -1888,6 +1892,55 @@ function M.show_product_keys()
       vim.notify('Place the cursor on a product key to copy it', vim.log.levels.WARN)
    end
 
+   local function show_list(product, selected_path)
+      if not selected_path or not vim.api.nvim_win_is_valid(win) or not vim.api.nvim_buf_is_valid(bufnr) then
+         return
+      end
+
+      local read_ok, content = pcall(vim.fn.readfile, selected_path)
+      if not read_ok then
+         vim.notify('Cannot read ProductKeys.txt: ' .. selected_path, vim.log.levels.ERROR)
+         return
+      end
+
+      vim.bo[bufnr].readonly = false
+      vim.bo[bufnr].modifiable = true
+      vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, content)
+      vim.bo[bufnr].modifiable = false
+      vim.bo[bufnr].readonly = true
+      vim.api.nvim_win_set_config(win, window_config(product, content))
+      vim.api.nvim_win_set_cursor(win, { 1, 0 })
+   end
+
+   local function select_product(product)
+      if product == 'StP' then
+         show_list(product, path)
+         return
+      end
+
+      local root = vim.fn.expand('~/Repos/Content/' .. product)
+      local candidates = vim.fn.globpath(root, '**/ProductKeys.txt', false, true)
+      if #candidates == 0 then
+         vim.notify('No ProductKeys.txt found for ' .. product .. ' in ' .. root, vim.log.levels.WARN)
+      else
+         local selected_path = candidates[1]
+         local highest_version = -1
+         for _, candidate in ipairs(candidates) do
+            local version = tonumber(relative_to_root(candidate, root):match('^(%d+)/')) or -1
+            if version > highest_version then
+               selected_path = candidate
+               highest_version = version
+            end
+         end
+         show_list(product, selected_path)
+      end
+   end
+
+   for index, product in ipairs(products) do
+      vim.keymap.set('n', tostring(index), function()
+         select_product(product)
+      end, { buffer = bufnr, desc = 'Show ' .. product .. ' product keys' })
+   end
    vim.keymap.set('n', 'y', copy_code, { buffer = bufnr, desc = 'Copy product key to system clipboard' })
    for _, key in ipairs({ 'q', '<Esc>' }) do
       vim.keymap.set('n', key, close, { buffer = bufnr, desc = 'Close product keys' })

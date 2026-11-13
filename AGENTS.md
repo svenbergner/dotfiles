@@ -75,6 +75,7 @@ Before finishing, inspect the diff and verify that no secrets, host-specific val
 - External formatter mappings live in `.config/nvim/lua/plugins/conform.lua`; keep domain-specific HCL formatting separate (`packer fmt`, `terraform fmt`, and `hclfmt`).
 - The Snacks buffer picker extends the built-in buffer formatter in `.config/nvim/lua/plugins/snacks.lua` to show per-severity diagnostic counts right-aligned.
 - `contentdev.show_product_keys()` opens the local ProductKeys.txt in a read-only scratch popup via `:ContentDevProductKeys` or `<leader>Ck`; `y` copies the token under the cursor to `+`, and `q`/`Esc` closes and wipes the buffer. Preserve hyphens/underscores in codes and never include keys in notifications or test fixtures. Test with synthetic file contents and a mocked clipboard provider rather than reading the real file or modifying the system clipboard.
+- The ProductKeys popup switches products with `1` (StP), `2` (NK), and `3` (EP). NK/EP recursively discover `ProductKeys.txt` and automatically use the highest numeric version directory directly below the product root, not lexicographic path order. Test discovery and reads with synthetic paths and contents only.
 - Do not manually edit plugin lock files unless the task is specifically about dependency locking.
 - Headless startup may bootstrap or update plugins and can require network access. Prefer syntax and formatting checks for isolated changes; only perform a full startup check when its side effects are acceptable.
 

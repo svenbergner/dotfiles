@@ -51,6 +51,14 @@ Qt qmake files.
 
 Use `:ContentDevProductKeys` or `<leader>Ck` (Space, Shift+C, k) to open
 `~/Repos/Content/StP/32/Doku/Arbeitsumgebung/ProductKeys.txt` in a read-only popup.
+Switch lists directly in the popup with `1` for StP, `2` for NK, or `3` for EP.
+The title shows the active product. NK and EP lists are discovered recursively
+as `ProductKeys.txt` under `~/Repos/Content/NK` and `~/Repos/Content/EP`.
+When multiple files are found, the list in the highest numbered version folder
+directly below the product root opens automatically (for example, `10` over `9`).
+Missing or unreadable lists produce a notification without replacing the current list;
+the popup still opens if the initial StP list is unavailable.
+
 Move the cursor onto a product key and press `y` to copy only that key to the
 system clipboard (`+` register). Letters, digits, hyphens, and underscores form
 a single token; surrounding quotes, separators, and whitespace are not copied.
