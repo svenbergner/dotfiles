@@ -121,6 +121,8 @@ brew "gping"
 brew "groff"
 # Tool for glamorous shell scripts
 brew "gum"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Add GitHub support to git on the command-line
@@ -159,6 +161,8 @@ brew "markdown-toc"
 brew "mermaid-cli"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# NCurses Disk Usage
+brew "ncdu"
 # FTP client with an advanced user interface
 brew "ncftp"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -304,6 +308,8 @@ cask "gimp"
 cask "inkscape"
 # Keyboard customiser
 cask "karabiner-elements"
+# Htop on steroids
+cask "neohtop"
 # Local-first alternative to Logitech Options+ for HID++ devices
 cask "openlogi"
 # Control your tools with a few keystrokes
